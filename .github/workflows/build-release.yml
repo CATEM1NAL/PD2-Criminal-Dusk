@@ -28,9 +28,9 @@ jobs:
         uses: TheDoctor0/zip-release@0.7.6
         with:
           type: 'zip'
-          filename: 'BLT-Criminal_Dawn.zip'
+          filename: 'Criminal_Dusk.zip'
           exclusions: '*.git* meta.json README.md LICENSE'
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: 'BLT-Criminal_Dawn.zip'
+          artifacts: 'Criminal_Dusk.zip'
           allowUpdates: true
