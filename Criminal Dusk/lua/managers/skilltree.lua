@@ -1,0 +1,1 @@
+Hooks:OverrideFunction(SkillTreeManager, "skill_cost", function() return 12 end)
