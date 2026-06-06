@@ -10,11 +10,6 @@ Hooks:PostHook(BlackMarketManager, "get_item_amount", "CrimDawn_BMInfiniteItems"
   if category ~= "weapon_skins" then return 2 end
 end)
 
--- Force default throwable to Ace of Spades
-Hooks:PostHook(BlackMarketManager, "_setup", "CrimDawn_BMSetup", function(self)
-  self._defaults.grenade = "wpn_prj_ace"
-end)
-
 -- Assign random van skin
 Hooks:OverrideFunction(BlackMarketManager, "equipped_van_skin", function()
   local skins = { "default", "brown", "green", "grey", "red", "white", "yellow", "icecream", "spooky" }

@@ -13,18 +13,6 @@ function CrimDawn:Init()
   if not self.SettingsData then self.SettingsData = {} end
 
   MenuHelper:LoadFromJsonFile(self.ModPath .. "menus/settings.json", self, self.SettingsData)
-  MenuHelper:LoadFromJsonFile(self.ModPath .. "menus/heist1.json", self, self.SettingsData)
-  MenuHelper:LoadFromJsonFile(self.ModPath .. "menus/heist2.json", self, self.SettingsData)
-  MenuHelper:LoadFromJsonFile(self.ModPath .. "menus/heist3.json", self, self.SettingsData)
-  MenuHelper:LoadFromJsonFile(self.ModPath .. "menus/heist4.json", self, self.SettingsData)
-  MenuHelper:LoadFromJsonFile(self.ModPath .. "menus/heist5.json", self, self.SettingsData)
-
-  -- Disable stealth-only heists by default
-  if not self.SettingsData.kosugi then self.SettingsData.kosugi = false end
-  if not self.SettingsData.cage then self.SettingsData.cage = false end
-  if not self.SettingsData.dark then self.SettingsData.dark = false end
-  if not self.SettingsData.fish then self.SettingsData.fish = false end
-  if not self.SettingsData.tag then self.SettingsData.tag = false end
 
   self.state = { maskup_time = false,
                  heist_started = false,
@@ -242,7 +230,7 @@ if Global.CrimDawn then SetColours() end
 -- THIS SECTION ONLY RUNS ONCE ON GAME LAUNCH --
 if Global.CrimDawn then return end
 Global.CrimDawn = {
-  tables = {},
+  regen_time = { 0.5, 1, 2, 3, 4.5, 6, 7.5 },
 
   archicolours = {
     green = Color(255, 117, 194, 117) / 255,
@@ -276,7 +264,6 @@ function Global.CrimDawn:Init()
   end
 
   self.data.game.deathlink_in = os.time()
-  dofile(CrimDawn.ModPath .. "lua/tables/etc.lua")
 
   SetColours()
 end

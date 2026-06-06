@@ -1,3 +1,7 @@
+Hooks:OverrideFunction(PlayerInventoryGui, "open_specialization_menu", function()
+  managers.menu:open_node("skilltree_new", {})
+end)
+
 local function format_round(num, round_value)
 	return round_value and tostring(math.round(num)) or string.format("%.1f", num):gsub("%.?0+$", "")
 end
@@ -92,7 +96,7 @@ Hooks:OverrideFunction(PlayerInventoryGui, "_get_armor_stats", function(self, na
 
 		elseif stat.name == "stamina" then
 			local skill = managers.player:body_armor_regen_multiplier()
-			local base_value = Global.CrimDawn.tables.etc.regen_time[upgrade_level]
+			local base_value = Global.CrimDawn.regen_time[upgrade_level]
 			local skill_value = base_value * skill
 			base_stats[stat.name] = { value = base_value }
 			skill_stats[stat.name] = { value = skill_value - base_value }

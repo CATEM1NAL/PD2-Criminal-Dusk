@@ -4,7 +4,7 @@ local FileIdent = "PlayerDamage"
 Hooks:PostHook(PlayerDamage, "init", "CrimDawn_InitPlayerDamage", function(self)
   self._dodge_stack = 0
   self._entropy = 0
-  self._entropy_mult = 1
+  self._entropy_mult = 0.1
   self._armor_broken = false
   self._armor_break_t = managers.player:player_timer():time() + 3
 end)
@@ -13,7 +13,7 @@ end)
 Hooks:OverrideFunction(PlayerDamage, "set_regenerate_timer_to_max", function(self)
   local mul = managers.player:body_armor_regen_multiplier(alive(self._unit) and self._unit:movement():current_state()._moving, self:health_ratio())
   local armour = tonumber(managers.blackmarket:equipped_armor(true, true):sub(-1))
-  self._regenerate_timer = Global.CrimDawn.tables.etc.regen_time[armour] * mul
+  self._regenerate_timer = Global.CrimDawn.regen_time[armour] * mul
   self._regenerate_timer = self._regenerate_timer * managers.player:upgrade_value("player", "armor_regen_time_mul", 1)
   self._regenerate_speed = self._regenerate_speed or 1
   self._current_state = self._update_regenerate_timer
@@ -42,7 +42,7 @@ Hooks:OverrideFunction(PlayerDamage, "_start_regen_on_the_side", function(self, 
   local mul = managers.player:body_armor_regen_multiplier(alive(self._unit) and self._unit:movement():current_state()._moving, self:health_ratio())
   local armour = tonumber(managers.blackmarket:equipped_armor(true, true):sub(7))
   if self._regen_on_the_side_timer <= 0 and time > 0 then
-    self._regen_on_the_side_timer = Global.CrimDawn.tables.etc.regen_time[armour] * math.max(mul / 2, 1.5)
+    self._regen_on_the_side_timer = Global.CrimDawn.regen_time[armour] * math.max(mul / 2, 3)
     self._regen_on_the_side = true
   end
 end)
@@ -126,11 +126,11 @@ Hooks:OverrideFunction(PlayerDamage, "damage_bullet", function(self, attack_data
 	end
 
 	local dodge_value = self._dodge_stack or 0
-	local armor_dodge_chance = pm:body_armor_value("dodge")
 	local skill_dodge_chance = pm:skill_dodge_chance(self._unit:movement():running(), self._unit:movement():crouching(), self._unit:movement():zipline_unit())
-	dodge_value = dodge_value + armor_dodge_chance + skill_dodge_chance - (0.05 * self._entropy * self._entropy_mult)
-	--log("base dodge: " .. dodge_value + armor_dodge_chance + skill_dodge_chance)
-	--log("entropy: " .. 0.05 * self._entropy * self._entropy_mult)
+	skill_dodge_chance = skill_dodge_chance + pm:body_armor_value("dodge")
+	dodge_value = dodge_value + skill_dodge_chance - (skill_dodge_chance * self._entropy * self._entropy_mult)
+	--log("current dodge: " .. dodge_value + skill_dodge_chance)
+	--log("entropy: " .. (skill_dodge_chance) * self._entropy * self._entropy_mult)
 	--log("final dodge: " .. dodge_value)
 
 	if self._temporary_dodge_t and TimerManager:game():time() < self._temporary_dodge_t then
@@ -207,12 +207,12 @@ end)
 Hooks:PreHook(PlayerDamage, "pre_destroy", "CrimDawn_DamageCustody", function(self)
   if Utils:IsInCustody() then
     CrimDawn.lives = -1
-    CrimDawn.Log(FileIdent, "Taken into custody!")
+    --CrimDawn.Log(FileIdent, "Taken into custody!")
   end
 end)
 
 -- Update stored lives
 Hooks:PreHook(PlayerDamage, "_send_set_revives", "CrimDawn_SendSetRevives", function(self)
   CrimDawn.lives = Application:digest_value(self._revives, false) - 1
-  CrimDawn.Log(FileIdent, "Lives remaining: " .. CrimDawn.lives)
+  --CrimDawn.Log(FileIdent, "Lives remaining: " .. CrimDawn.lives)
 end)

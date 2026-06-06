@@ -14,7 +14,7 @@ Hooks:PreHook(MenuCallbackHandler, "start_the_game", "CrimDawn_PreStartGame", fu
   if Utils:IsInGameState() or CrimDawn.state.heist_started then return end
 
   -- Activate mutators
-  dofile(CrimDawn.ModPath .. "lua/tables/mutators.lua")
+  dofile(CrimDawn.ModPath .. "lua/mutators.lua")
 
   -- Prevent from running again, otherwise peer mutators become desynced
   CrimDawn.state.heist_started = true

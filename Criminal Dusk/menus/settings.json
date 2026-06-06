@@ -5,24 +5,6 @@
   "description" : "crimdawn_settings_desc",
   "items" : [
     {
-      "type" : "multiple_choice",
-      "id" : "crimdawn_diff_cap",
-      "title" : "crimdawn_difficulty",
-      "description" : "crimdawn_difficulty_desc",
-      "callback" : "CrimDawn_SaveChoiceSettings",
-      "items" : [
-        "menu_difficulty_normal",
-        "menu_difficulty_hard",
-        "menu_difficulty_very_hard",
-        "menu_difficulty_overkill",
-        "menu_difficulty_easy_wish",
-        "menu_difficulty_apocalypse",
-        "menu_difficulty_sm_wish"
-      ],
-      "value" : "diff_cap",
-      "default_value" : 4
-    },
-    {
       "type" : "toggle",
       "id" : "crimdawn_mutators",
       "title" : "menu_mutators",
@@ -30,10 +12,6 @@
       "callback" : "CrimDawn_SaveToggleSettings",
       "value" : "mutators",
       "default_value" : true
-    },
-    {
-      "type" : "divider",
-      "size" : 16
     }
   ]
 }
