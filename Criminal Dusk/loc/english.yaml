@@ -4,6 +4,10 @@ crimdawn_settings_name : "Criminal Dusk"
 crimdawn_settings_desc : "Tweak the gameplay to your liking."
 crimdawn_mutator_desc : "When enabled, random mutators will be picked at the start of each heist.\nDifficulty specific mutators will still be enabled even if this is disabled!"
 
+## LOBBY
+crimdawn_play_next_title : "Play Next Heist [$HEIST_NUM]"
+crimdawn_play_next_desc : "Next heist is $HEIST!"
+
 ### STRING OVERRIDES ###
 # Locked Items
 bm_global_value_gage_pack_jobs_unlock : "Buy the Gage Mod Courier DLC to unlock!"

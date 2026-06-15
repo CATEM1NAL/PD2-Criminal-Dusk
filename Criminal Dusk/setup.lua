@@ -6,7 +6,7 @@ function CrimDawn:Init()
   self.ModPath = ModPath
   self.SavePath = SavePath
 
-  self.SaveFile = self.SavePath .. "crimdawn_save.txt"
+  self.SaveFile = self.SavePath .. "crimdusk_save.txt"
   self.SettingsFile = self.SavePath .. "crimdusk_settings.txt"
 
   self.SettingsData = io.load_as_json(CrimDawn.SettingsFile) or {}
@@ -24,29 +24,6 @@ function CrimDawn:Init()
     log("[DAWN>" .. FileIdent .. "] " .. LogMessage)
   end -- Yes, this WILL crash without a FileIdent. This is intentional.
 
-  function self.ScoreNeeded()
-    local n = math.ceil((math.sqrt(1 + 8 * (Global.CrimDawn.data.game.score) - 1) / 2))
-    return (n * (n + 1) / 2) - math.floor(Global.CrimDawn.data.game.score)
-  end
-
-  function self.GoMode()
-  return Global.CrimDawn.data.game.progression_items >= Global.CrimDawn.data.game.max_progression_items end
-
-  function self.OnFinalHeist()
-    local RunLength = Global.CrimDawn.data.game.run_length
-    local HeistsWon = Global.CrimDawn.data.game.heists_won
-    local HeistNum = #Global.CrimDawn.data.game.heists
-  return HeistsWon < RunLength and HeistNum == RunLength end
-
-  function self.InfiniteTime()
-  return CrimDawn.SettingsData.inftime and CrimDawn.GoMode() end
-
-  function self.TimeFromUpgrade()
-    local TimePerUpgrade = { 6, 18, 26, 36, 44, 48, 90 }
-    local RunLength = Global.CrimDawn.data.game.run_length
-    if RunLength == 0 then RunLength = 7 end
-  return TimePerUpgrade[RunLength] end
-
   function self.ChatNotify(message)
     if not managers.chat then return end
     managers.chat:_receive_message(ChatManager.GAME, "CRIMINAL DAWN", message, Global.CrimDawn.archicolours.orange)
@@ -58,134 +35,20 @@ function CrimDawn:Init()
     self.Log(FileIdent, "Saved " .. self.SaveFile .. " (" .. SaveReason .. ")")
   end -- Yes, this WILL crash without a FileIdent or SaveReason. This is intentional.
 
-  function self.CorrectSaveLoaded()
-    local SaveSeed, SaveSlot = Global.CrimDawn.data.game.seed, Global.CrimDawn.data.game.slot
-    local ClientSeed, ClientSlot = CrimDawnClient.data.seed, CrimDawnClient.data.slot
-    if SaveSeed == ClientSeed and SaveSlot == ClientSlot then return true
-    else CrimDawn.Log(FileIdent, "Save is invalid!") return false end
-  end
-
-  function self:RunReset(FileIdent)
-    Global.CrimDawn.data.upgrades = {}
-
-    -- Generate new random upgrades
-    self:RandomUpgrade(Global.CrimDawn.data.x.skills, "skills")
-    self:RandomUpgrade(Global.CrimDawn.data.x.perks, "perks")
-    self:RandomUpgrade(Global.CrimDawn.data.x.stats, "stats")
-    
-    local DeployableUpgrades = 0
-    for _, deployable in ipairs(Global.CrimDawn.tables.etc.deployables) do
-      if Global.CrimDawn.data.unlocks[deployable] then DeployableUpgrades = DeployableUpgrades + 1 end
-    end
-
-    self:RandomUpgrade(DeployableUpgrades, "deployable")
-
-    -- Setup next run
-    if NetworkHelper:IsHost() then
-      Global.CrimDawn.data.game.run = Global.CrimDawn.data.game.run + 1
-      Global.CrimDawn.data.game.ponr = false
-      Global.CrimDawn.data.game.previous_run = {}
-
-      local skip = { vit = true, deep = true, cd_28stores = true }
-      for _, heist in ipairs(Global.CrimDawn.data.game.heists) do
-        if not skip[heist] then Global.CrimDawn.data.game.previous_run[heist] = true end
-      end
-
-      Global.CrimDawn.data.game.heists = {}
-    end
-
-    Global.CrimDawn.data.x.lives = Global.CrimDawn.data.x.max_lives
-
-    self:WriteSave(FileIdent, "run failed")
-  end
-
   -- Difficulty scaling
-  function self.DiffScale(ignore_settings, max_value)
-    if not Global.CrimDawn.data.game.max_progression_items then return 0 end
+  function self.DiffScale(ignore_cap)
+    local HeistsWon = Global.CrimDawn.data.heists_won
+    local RawDiff = HeistsWon / #Global.CrimDawn.campaign * 7 + 2
+    local RoundedDiff = math.floor(RawDiff + 0.5)
 
-    local RunLength = Global.CrimDawn.data.game.run_length
-    if RunLength == 0 then RunLength = 6 end
-    if max_value then RunLength = max_value end
-
-    local MaxDiff = ignore_settings and RunLength or CrimDawn.SettingsData.diff_cap
-    local ItemCount = Global.CrimDawn.data.game.progression_items
-    local MaxItems = Global.CrimDawn.data.game.max_progression_items
-
-    return math.max(math.floor(ItemCount / (MaxItems / MaxDiff)), 0)
+    if ignore_cap then return RoundedDiff end
+    return math.min(RoundedDiff, 8)
   end
 
-  local function CalculateDiff(offset)
-    local DiffCap = CrimDawn.SettingsData.diff_cap
-    local HeistNum = #Global.CrimDawn.data.game.heists - offset
-    local RunLength = Global.CrimDawn.data.game.run_length
-    if RunLength == 0 then RunLength = 6 end
-
-    -- Any questions about this equation should be directed to @jordansds
-    local BaseDiff = (1 + HeistNum / RunLength) * (1 + (HeistNum + CrimDawn.DiffScale()) / RunLength) * 2
-    return math.max(math.min(math.floor(BaseDiff), 8) + (DiffCap - 7), 2)
-  end
-
-  function self.DiffIndex()
-    if #Global.CrimDawn.data.game.heists == 1 then return CalculateDiff(0)
-    else return math.min(CalculateDiff(0), CalculateDiff(1) + 1) end
-  end
-
-  -- Score cap
-  function self.CalculateScoreCap()
-    if not Global.CrimDawn then return 0 end
-    local state = Global.CrimDawn.data.game
-
-    for i = 1, state.max_score_checks do
-      local ReqItems = (i - 1) * state.max_progression_items / state.max_score_checks
-      if ReqItems > state.progression_items + 1 then return (i - 1) * i / 2 end
-    end
-
-  return state.max_score_checks * (state.max_score_checks + 1) / 2 end
-
-  function self.IsScoreCapped(points)
-    local NewScore = Global.CrimDawn.data.game.score + points
-    if NewScore >= CrimDawn.CalculateScoreCap() then CrimDawnClient:PollProgression() end
-    local ScoreCap = CrimDawn.CalculateScoreCap()
-    if NewScore >= ScoreCap then
-      Global.CrimDawn.data.game.score = ScoreCap
-      CrimDawn.state.cap_reached = true
-
-      local hint = managers.localization:text("crimdawn_chat_score_cap_hint")
-      if CrimDawn.GoMode() then hint = "" end
-
-      CrimDawn.ChatNotify(managers.localization:text("crimdawn_chat_score_capped", {
-        SCORE_ICON = "",
-        SCORE_CAP = ScoreCap,
-        HINT = hint
-      }))
-      return true
-
-    else Global.CrimDawn.data.game.score = NewScore return false end
-  end
-
-  -- Wipe save data
+  -- Reset campaign state
   function self:Reset()
-    Global.CrimDawn.data = {
-      upgrades = {},
-      unlocks = {},
-
-      x = {
-        bots = 0, skills = 0, permaskills = 0, perks = 0, permaperks = 0,
-        max_lives = 1, lives = 1, stats = 0, saws = 0, coins = 0
-      },
-
-      game = {
-        seed = false, slot = false, max_progression_items = false, run_length = 0, inf_time = false, score = 0, f_score = 0,
-        max_score_checks = 0, ponr = false, deathlink_in = os.time(), deathlink_out = 0, previous_run = {}, run = 1,
-        heists_won = 0, heists = {}, cash = 0, goal = false, campaign = false, progression_items = 0
-      },
-
-      chat = { message = "", timestamp = 0 },
-      safehouse = {}
-    }
+    Global.CrimDawn.data = { heists_won = 0, lives = 5 }
   end
-
-  if Global.CrimDawn then Global.CrimDawn.data.chat = { message = "", timestamp = 0 } end
 end
 
 CrimDawn:Init()
@@ -263,7 +126,18 @@ function Global.CrimDawn:Init()
     CrimDawn:Reset()
   end
 
-  self.data.game.deathlink_in = os.time()
+  self.campaign = {
+    "red2", "flat", "dinner", "pal", "man", "nmh", -- PDTH Prologue
+    "four_stores", "mallcrasher", "branchbank_prof", "ukrainian_job_prof", "nightclub", -- Early Vlad
+    "cd_watchdogs1", "cd_watchdogs2", "cd_frame3", "cd_bigoil", "cd_firestarter1", "cd_firestarter2", "alex", -- Hector/Elephant
+    "family", "cd_transport", "arm_for", "roberts", "cd_erection_wrapper", "kosugi", -- Post Launch
+    "big", "cd_miami1", "cd_miami2", "gallery", "cd_hox1", "cd_hox2", "pines", "mus", -- Dentist
+    "cd_bomb", "cage", "hox_3", "shoutout_raid", "arena", "kenaz", "jolly", "pbr", "pbr2", "cane", -- 2015
+    "cd_goat1", "cd_goat2", "dark", "mad", "cd_biker1", "cd_biker2", "moon", "friend", -- 2016
+    "spa", "fish", "run", "glace", "wwh", "dah", "cd_reservoir", "brb", "tag", "des", "sah", -- Final Arc
+    "mex", "chas", "bex", "sand", "pex", "chca", "fex", "pent", "bph", "ranc", "trai", "corp", -- Bopocalypse
+    "vit", "deep" -- Conclusion
+  }
 
   SetColours()
 end

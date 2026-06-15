@@ -2,10 +2,10 @@ local FileIdent = "UpgradeHandler"
 
 Hooks:OverrideFunction(PlayerManager, "verify_equipment", function() return true end)
 Hooks:OverrideFunction(PlayerManager, "health_skill_multiplier", function() return 1 end)
-Hooks:OverrideFunction(PlayerManager, "health_regen", function() return 0 end)
 Hooks:OverrideFunction(PlayerManager, "carry_blocked_by_cooldown", function() return false end)
+Hooks:OverrideFunction(PlayerManager, "health_regen", function() return 0 end)
 
-Hooks:OverrideFunction(PlayerManager, "_dodge_replenish_armor", function(self)
+Hooks:OverrideFunction(PlayerManager, "fixed_health_regen", function(self)
   local health_regen = 0
 
 	if not health_ratio or not self:is_damage_health_ratio_active(health_ratio) then

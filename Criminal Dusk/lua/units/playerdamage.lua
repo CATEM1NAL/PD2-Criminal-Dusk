@@ -7,6 +7,7 @@ Hooks:PostHook(PlayerDamage, "init", "CrimDawn_InitPlayerDamage", function(self)
   self._entropy_mult = 0.1
   self._armor_broken = false
   self._armor_break_t = managers.player:player_timer():time() + 3
+  self._max_lives = self._lives_init + managers.player:upgrade_value("player", "additional_lives", 0)
 end)
 
 -- Regen time varies with armour
@@ -59,19 +60,18 @@ Hooks:OverrideFunction(PlayerDamage, "_regenerated", function(self, no_messiah)
   end
 
   -- Initial lives (start of heist)
-  local MaxLives = self._lives_init + managers.player:upgrade_value("player", "additional_lives", 0)
-  if Application:digest_value(self._revives, false) == 0 and not CrimDawn.lives then
-    self._revives = Application:digest_value(MaxLives, true)
+  if Application:digest_value(self._revives, false) == 0 and Global.CrimDawn.data.x.lives >= 0 then
+    self._revives = Application:digest_value(math.min(Global.CrimDawn.data.x.lives + 1, self._max_lives), true)
     managers.environment_controller:set_last_life(false)
 
   -- Traded from custody
-  elseif CrimDawn.lives == -1 then
+  elseif Global.CrimDawn.data.x.lives == -1 then
     self._revives = Application:digest_value(1, true)
     managers.environment_controller:set_last_life(true)
 
   -- Doctor bag
   else local NewDowns = Application:digest_value(self._revives, false) + 1
-    self._revives = Application:digest_value(math.min(NewDowns, MaxLives), true)
+    self._revives = Application:digest_value(math.min(NewDowns, self._max_lives), true)
     managers.environment_controller:set_last_life(false)
   end
 
@@ -206,13 +206,13 @@ end)
 -- Custody
 Hooks:PreHook(PlayerDamage, "pre_destroy", "CrimDawn_DamageCustody", function(self)
   if Utils:IsInCustody() then
-    CrimDawn.lives = -1
-    --CrimDawn.Log(FileIdent, "Taken into custody!")
+    Global.CrimDawn.data.x.lives = -1
+    CrimDawn.Log(FileIdent, "Taken into custody!")
   end
 end)
 
 -- Update stored lives
 Hooks:PreHook(PlayerDamage, "_send_set_revives", "CrimDawn_SendSetRevives", function(self)
-  CrimDawn.lives = Application:digest_value(self._revives, false) - 1
-  --CrimDawn.Log(FileIdent, "Lives remaining: " .. CrimDawn.lives)
+  Global.CrimDawn.data.x.lives = Application:digest_value(self._revives, false) - 1
+  CrimDawn.Log(FileIdent, "Lives remaining: " .. Global.CrimDawn.data.x.lives)
 end)

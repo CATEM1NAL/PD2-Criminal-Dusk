@@ -11,7 +11,7 @@ managers.mutators:set_enabled("MutatorCloakerArrest")
 local SpecialMutators = { CloakerEffect = true, CloakerArrest = true, MedicDozer = true, DozerRage = true,
                           MedicAdrenaline = true, MedicRage = true, ZealSniper = true, Heavies = true }
 
-local Difficulty = tweak_data:difficulty_to_index(Global.game_settings.difficulty)
+local Difficulty = CrimDawn.DiffScale(true)
 local Mutators = math.random(1 + Difficulty - 2, 3 + Difficulty - 2)
 
 if Difficulty >= 3 then -- Hard

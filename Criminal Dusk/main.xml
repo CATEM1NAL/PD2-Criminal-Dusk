@@ -181,6 +181,39 @@
 			<value_node value="1"/>
 		</contract_cost>
 	</narrative>
+	<narrative id = "cd_firestarter2" name_id = "heist_firestarter_2_hl" brief_id = "heist_firestarter_2_briefing" contact = "hector"
+	package = "packages/job_firestarter">
+		<chain>
+			<table level_id = "firestarter_2"/>
+		</chain>
+		<min_mission_xp>
+			<value_node value = "1"/>
+			<value_node value = "1"/>
+			<value_node value = "1"/>
+			<value_node value = "1"/>
+			<value_node value = "1"/>
+			<value_node value = "1"/>
+			<value_node value = "1"/>
+		</min_mission_xp>
+		<max_mission_xp>
+			<value_node value = "1"/>
+			<value_node value = "1"/>
+			<value_node value = "1"/>
+			<value_node value = "1"/>
+			<value_node value = "1"/>
+			<value_node value = "1"/>
+			<value_node value = "1"/>
+		</max_mission_xp>
+		<contract_cost>
+			<value_node value="1"/>
+			<value_node value="1"/>
+			<value_node value="1"/>
+			<value_node value="1"/>
+			<value_node value="1"/>
+			<value_node value="1"/>
+			<value_node value="1"/>
+		</contract_cost>
+	</narrative>
 	<narrative id = "cd_biker1" name_id = "heist_born_hl" brief_id = "heist_born_briefing" contact = "the_elephant"
 	load_screen = "guis/dlcs/pic/textures/loading/job_born">
 		<chain>
