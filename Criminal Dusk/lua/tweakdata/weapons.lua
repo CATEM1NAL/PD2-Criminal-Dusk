@@ -91,8 +91,8 @@ local WeaponClasses = {
     [123] = { "rsh12" }
   },
   smgs = {
-    [38] = { "cobray", "pm9", "fmg9", "baka", "polymer", "mac10", "mp7", "mp9", "p90", "tec9" },
-    [46] = { "akmsu", "hajk", "vityaz", "mp5", "m1928", "shepheard", "sr2", "uzi" },
+    [38] = { "cobray", "pm9", "fmg9", "baka", "polymer", "mac10", "mp7", "mp9", "p90", "tec9", "scorpion" },
+    [46] = { "akmsu", "hajk", "vityaz", "new_mp5", "m1928", "shepheard", "sr2", "uzi" },
     [60] = { "m45", "schakal", "olympic", "erma", "coal" },
     [90] = { "speen", "sterling" }
   }
@@ -102,6 +102,7 @@ Hooks:PostHook(WeaponTweakData, "init", "CrimDusk_WeaponTweakInit", function(sel
   for _, class in pairs(WeaponClasses) do
     for NewDamage, weapons in pairs(class) do
       for _, WeaponName in ipairs(weapons) do
+        log(WeaponName)
         self[WeaponName].stats.damage = NewDamage
 
         -- New ammo pickup
