@@ -6,13 +6,13 @@ Hooks:OverrideFunction(BlackMarketManager, "has_unlocked_erma", function() retur
 Hooks:OverrideFunction(BlackMarketManager, "has_unlocked_victor", function() return true end)
 
 -- Force game to register 2 of every item
-Hooks:PostHook(BlackMarketManager, "get_item_amount", "CrimDawn_BMInfiniteItems", function(self, _, category)
+Hooks:PostHook(BlackMarketManager, "get_item_amount", "CrimDusk_BMInfiniteItems", function(self, _, category)
   if category ~= "weapon_skins" then return 2 end
 end)
 
 -- Assign random van skin
 Hooks:OverrideFunction(BlackMarketManager, "equipped_van_skin", function()
   local skins = { "default", "brown", "green", "grey", "red", "white", "yellow", "icecream", "spooky" }
-  if not Global.CrimDawn.DLC and managers.dlc:is_dlc_unlocked("overkill_pack") then table.insert(skins, "overkill") end
+  if managers.dlc:is_dlc_unlocked("overkill_pack") then table.insert(skins, "overkill") end
   return skins[math.random(1, #skins)]
 end)

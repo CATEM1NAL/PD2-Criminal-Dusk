@@ -4,7 +4,7 @@ Hooks:OverrideFunction(GenericDLCManager, "is_content_crimespree_locked", functi
 Hooks:OverrideFunction(GenericDLCManager, "is_weapon_mod_achievement_locked", function() return false end)
 Hooks:OverrideFunction(GenericDLCManager, "is_weapon_mod_achievement_milestone_locked", function() return false end)
 
-Hooks:PostHook(GenericDLCManager, "has_dlc", "CrimDawn_GiveCommunityItems", function(self, dlc)
-  if Global.CrimDawn.DLC then return false end
+Hooks:PostHook(GenericDLCManager, "has_dlc", "CrimDusk_GiveCommunityItems", function(self, dlc)
+  if Global.CrimDusk.DLC then return false end
   if dlc == "pd2_clan" then return true end
 end)

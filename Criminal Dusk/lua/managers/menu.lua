@@ -1,19 +1,19 @@
 local FileIdent = "MenuManager"
 
-function MenuCallbackHandler:CrimDawn_CreateLobby() self:create_lobby() end
+function MenuCallbackHandler:CrimDusk_CreateLobby() self:create_lobby() end
 
-function MenuCallbackHandler:CrimDawn_SaveToggleSettings(item)
-  CrimDawn.SettingsData[item:name():sub(10)] = item:value() == "on"
-	io.save_as_json(CrimDawn.SettingsData, CrimDawn.SettingsFile)
+function MenuCallbackHandler:CrimDusk_SaveToggleSettings(item)
+  CrimDusk.SettingsData[item:name():sub(10)] = item:value() == "on"
+  io.save_as_json(CrimDusk.SettingsData, CrimDusk.SettingsFile)
 end
 
-function MenuCallbackHandler:CrimDawn_SaveChoiceSettings(item)
-  CrimDawn.SettingsData[item:name():sub(10)] = item:value()
-	io.save_as_json(CrimDawn.SettingsData, CrimDawn.SettingsFile)
+function MenuCallbackHandler:CrimDusk_SaveChoiceSettings(item)
+  CrimDusk.SettingsData[item:name():sub(10)] = item:value()
+  io.save_as_json(CrimDusk.SettingsData, CrimDusk.SettingsFile)
 end
 
 -- Add custom buttons to menu
-local function InjectCrimDawnButtons(node)
+local function InjectCrimDuskButtons(node)
   local data = {
     type = "CoreMenuItem.Item",
   }
@@ -22,7 +22,7 @@ local function InjectCrimDawnButtons(node)
     name = "crimdawn_createlobby_btn",
     text_id = "crimdawn_enter_lobby_title",
     help_id = "crimdawn_enter_lobby_desc",
-    callback = "CrimDawn_CreateLobby",
+    callback = "CrimDusk_CreateLobby",
     font_size = 35,
     font = tweak_data.menu.pd2_large_font
   }
@@ -40,7 +40,7 @@ end
 
 
 -- MENU CHANGES START HERE --
-Hooks:Add("MenuManagerBuildCustomMenus", "CrimDawn_MenuTweaks", function(menu_manager, nodes)
+Hooks:Add("MenuManagerBuildCustomMenus", "CrimDusk_MenuTweaks", function(menu_manager, nodes)
   local mainmenu = nodes.main
   local pausemenu = nodes.pause
   local lobbymenu = nodes.lobby
@@ -51,14 +51,14 @@ Hooks:Add("MenuManagerBuildCustomMenus", "CrimDawn_MenuTweaks", function(menu_ma
     -- Play button
     managers.localization:add_localized_strings({
       ["crimdawn_continue_run_desc"] = managers.localization:text("crimdawn_play_next_desc", {
-        HEIST = managers.localization:text("heist_" .. Global.CrimDawn.campaign[Global.CrimDawn.data.heists_won + 1])
+        HEIST = managers.localization:text("heist_" .. Global.CrimDusk.campaign[Global.CrimDusk.data.heists_won + 1])
       })
     })
 
     local HeistNumText = ""
-    local IsEndless = Global.CrimDawn.data.heists_won >= #Global.CrimDawn.campaign
-    if IsEndless then HeistNumText = (Global.CrimDawn.data.heists_won + 1)
-    else HeistNumText = Global.CrimDawn.data.heists_won + 1 .. "/" .. #Global.CrimDawn.campaign end
+    local IsEndless = Global.CrimDusk.data.heists_won >= #Global.CrimDusk.campaign
+    if IsEndless then HeistNumText = (Global.CrimDusk.data.heists_won + 1)
+    else HeistNumText = Global.CrimDusk.data.heists_won + 1 .. "/" .. #Global.CrimDusk.campaign end
 
     managers.localization:add_localized_strings({
       ["crimdawn_continue_run_title"] = managers.localization:text("crimdawn_play_next_title", {
@@ -72,7 +72,7 @@ Hooks:Add("MenuManagerBuildCustomMenus", "CrimDawn_MenuTweaks", function(menu_ma
       ["crimdawn_enter_lobby_desc"] = managers.localization:text("crimdawn_create_lobby_desc")
     })
 
-    InjectCrimDawnButtons(mainmenu)
+    InjectCrimDuskButtons(mainmenu)
 
     -- Hides all the unnecessary menu buttons
     local HiddenButtons = {
@@ -140,44 +140,29 @@ Hooks:Add("MenuManagerBuildCustomMenus", "CrimDawn_MenuTweaks", function(menu_ma
 end)
 -- MENU CHANGES END HERE --
 
-Hooks:PreHook(MenuCallbackHandler, "start_the_game", "CrimDawn_PreStartGame", function(self)
-  if Utils:IsInGameState() or CrimDawn.state.heist_started then return end
-
+Hooks:PreHook(MenuCallbackHandler, "start_the_game", "CrimDusk_PreStartGame", function(self)
+  if Utils:IsInGameState() or CrimDusk.state.heist_started then return end
 
   if NetworkHelper:IsHost() then -- Pick starting heist if no active run
     -- Activate mutators
-    dofile(CrimDawn.ModPath .. "lua/tables/mutators.lua")
+    dofile(CrimDusk.ModPath .. "lua/mutators.lua")
 
     local NextJob
     -- Select next heist in campaign...
-    if Global.CrimDawn.campaign[Global.CrimDawn.data.heists_won + 1] then
-      NextJob = Global.CrimDawn.campaign[Global.CrimDawn.data.heists_won + 1]
-    else NextJob = Global.CrimDawn.campaign[math.random(#Global.CrimDawn.campaign)] end
+    if Global.CrimDusk.campaign[Global.CrimDusk.data.heists_won + 1] then
+      NextJob = Global.CrimDusk.campaign[Global.CrimDusk.data.heists_won + 1]
+    else NextJob = Global.CrimDusk.campaign[math.random(#Global.CrimDusk.campaign)] end
     -- ...or random heist if campaign is completed!
 
     self:start_job({
-      difficulty = tweak_data.difficulties[CrimDawn.DiffScale()],
+      difficulty = tweak_data.difficulties[CrimDusk.DiffScale()],
       job_id = NextJob
     })
 
-    CrimDawn.Log(FileIdent, "Loading " .. managers.localization:text("heist_" .. NextJob) .. " on " ..
-    tweak_data.difficulties[CrimDawn.DiffScale()])
+    CrimDusk.Log(FileIdent, "Loading " .. managers.localization:text("heist_" .. NextJob) .. " on " ..
+    tweak_data.difficulties[CrimDusk.DiffScale()])
   end
 
   -- Prevent from running again, otherwise peer mutators become desynced
-  CrimDawn.state.heist_started = true
-end)
-
-Hooks:OverrideFunction(MenuCallbackHandler, "abort_mission", function(self)
-  if game_state_machine:current_state_name() == "disconnected" then return end
-
-  local function yes_func()
-    NetworkHelper:SendToPeers("CrimDawn_ResetRun", true)
-    CrimDawn:RunReset(FileIdent)
-
-    self:load_start_menu_lobby()
-    managers.preplanning:reset_rebuy_assets()
-  end
-
-  managers.menu:show_abort_mission_dialog({ yes_func = yes_func })
+  CrimDusk.state.heist_started = true
 end)

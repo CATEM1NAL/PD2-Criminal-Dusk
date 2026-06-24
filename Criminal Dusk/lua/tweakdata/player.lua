@@ -1,5 +1,5 @@
 Hooks:PostHook(PlayerTweakData, "init", "CrimDawn_InitPlayerTweakData", function(self)
-  self.damage.HEALTH_INIT = 20
+  self.damage.HEALTH_INIT = 10
 end)
 
 Hooks:PostHook(PlayerTweakData, "_set_normal", "CrimDawn_PlayerSetDifficulty", function(self)

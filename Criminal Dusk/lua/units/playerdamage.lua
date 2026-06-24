@@ -1,20 +1,20 @@
 local FileIdent = "PlayerDamage"
 
 -- Setup new values
-Hooks:PostHook(PlayerDamage, "init", "CrimDawn_InitPlayerDamage", function(self)
+Hooks:PostHook(PlayerDamage, "init", "CrimDusk_InitPlayerDamage", function(self)
   self._dodge_stack = 0
   self._entropy = 0
   self._entropy_mult = 0.1
   self._armor_broken = false
   self._armor_break_t = managers.player:player_timer():time() + 3
-  self._max_lives = self._lives_init + managers.player:upgrade_value("player", "additional_lives", 0)
+  self._max_lives = 3
 end)
 
 -- Regen time varies with armour
 Hooks:OverrideFunction(PlayerDamage, "set_regenerate_timer_to_max", function(self)
   local mul = managers.player:body_armor_regen_multiplier(alive(self._unit) and self._unit:movement():current_state()._moving, self:health_ratio())
   local armour = tonumber(managers.blackmarket:equipped_armor(true, true):sub(-1))
-  self._regenerate_timer = Global.CrimDawn.regen_time[armour] * mul
+  self._regenerate_timer = Global.CrimDusk.regen_time[armour] * mul
   self._regenerate_timer = self._regenerate_timer * managers.player:upgrade_value("player", "armor_regen_time_mul", 1)
   self._regenerate_speed = self._regenerate_speed or 1
   self._current_state = self._update_regenerate_timer
@@ -25,16 +25,16 @@ Hooks:OverrideFunction(PlayerDamage, "build_suppression", function(self, amount)
   local armour = tonumber(managers.blackmarket:equipped_armor(true, true):sub(-1))
   if armour > 4 then return end -- Flak/CTV/ICTV are unaffected
 
-	amount = amount * managers.player:upgrade_value("player", "suppressed_multiplier", 1)
-	amount = amount * tweak_data.player.suppression.receive_mul
+  amount = amount * managers.player:upgrade_value("player", "suppressed_multiplier", 1)
+  amount = amount * tweak_data.player.suppression.receive_mul
 
   local data = self._supperssion_data
-	data.value = math.min(tweak_data.player.suppression.max_value, (data.value or 0) + amount * tweak_data.player.suppression.receive_mul)
-	data.decay_start_t = managers.player:player_timer():time() + tweak_data.player.suppression.decay_start_delay
+  data.value = math.min(tweak_data.player.suppression.max_value, (data.value or 0) + amount * tweak_data.player.suppression.receive_mul)
+  data.decay_start_t = managers.player:player_timer():time() + tweak_data.player.suppression.decay_start_delay
 end)
 
 -- Regenerating armour resets armour break flag
-Hooks:PostHook(PlayerDamage, "_regenerate_armor", "CrimDawn_PlayerRegenerateArmour", function(self)
+Hooks:PostHook(PlayerDamage, "_regenerate_armor", "CrimDusk_PlayerRegenerateArmour", function(self)
   self._armor_broken = false
 end)
 
@@ -43,7 +43,7 @@ Hooks:OverrideFunction(PlayerDamage, "_start_regen_on_the_side", function(self, 
   local mul = managers.player:body_armor_regen_multiplier(alive(self._unit) and self._unit:movement():current_state()._moving, self:health_ratio())
   local armour = tonumber(managers.blackmarket:equipped_armor(true, true):sub(7))
   if self._regen_on_the_side_timer <= 0 and time > 0 then
-    self._regen_on_the_side_timer = Global.CrimDawn.regen_time[armour] * math.max(mul / 2, 3)
+    self._regen_on_the_side_timer = Global.CrimDusk.regen_time[armour] * math.max(mul / 2, 3)
     self._regen_on_the_side = true
   end
 end)
@@ -60,12 +60,13 @@ Hooks:OverrideFunction(PlayerDamage, "_regenerated", function(self, no_messiah)
   end
 
   -- Initial lives (start of heist)
-  if Application:digest_value(self._revives, false) == 0 and Global.CrimDawn.data.x.lives >= 0 then
-    self._revives = Application:digest_value(math.min(Global.CrimDawn.data.x.lives + 1, self._max_lives), true)
+  if Application:digest_value(self._revives, false) == 0 and Global.CrimDusk.data.lives >= 0 then
+    self._max_lives = self._lives_init + managers.player:upgrade_value("player", "additional_lives", 0)
+    self._revives = Application:digest_value(math.min(Global.CrimDusk.data.lives + 1, self._max_lives), true)
     managers.environment_controller:set_last_life(false)
 
   -- Traded from custody
-  elseif Global.CrimDawn.data.x.lives == -1 then
+  elseif Global.CrimDusk.data.lives == -1 then
     self._revives = Application:digest_value(1, true)
     managers.environment_controller:set_last_life(true)
 
@@ -204,15 +205,15 @@ Hooks:OverrideFunction(PlayerDamage, "damage_bullet", function(self, attack_data
 end)
 
 -- Custody
-Hooks:PreHook(PlayerDamage, "pre_destroy", "CrimDawn_DamageCustody", function(self)
+Hooks:PreHook(PlayerDamage, "pre_destroy", "CrimDusk_DamageCustody", function(self)
   if Utils:IsInCustody() then
-    Global.CrimDawn.data.x.lives = -1
-    CrimDawn.Log(FileIdent, "Taken into custody!")
+    Global.CrimDusk.data.lives = -1
+    CrimDusk.Log(FileIdent, "Taken into custody!")
   end
 end)
 
 -- Update stored lives
-Hooks:PreHook(PlayerDamage, "_send_set_revives", "CrimDawn_SendSetRevives", function(self)
-  Global.CrimDawn.data.x.lives = Application:digest_value(self._revives, false) - 1
-  CrimDawn.Log(FileIdent, "Lives remaining: " .. Global.CrimDawn.data.x.lives)
+Hooks:PreHook(PlayerDamage, "_send_set_revives", "CrimDusk_SendSetRevives", function(self)
+  Global.CrimDusk.data.lives = Application:digest_value(self._revives, false) - 1
+  CrimDusk.Log(FileIdent, "Lives remaining: " .. Global.CrimDusk.data.lives)
 end)

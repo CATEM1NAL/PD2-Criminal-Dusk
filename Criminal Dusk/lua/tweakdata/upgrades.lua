@@ -1,16 +1,17 @@
 -- Defines values for custom upgrade levels
-Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "CrimDawn_InitPD2UpgradeTweakData", function(self)
+Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "CrimDusk_InitPD2UpgradeTweakData", function(self)
   self.values.player.additional_lives = { 1, 2 }
   self.values.player.drill_autorepair_1 = { 0.5 }
   self.values.player.drill_autorepair_2 = { 0.5 }
+  self.values.weapon.passive_swap_speed_multiplier = { 1.8, 2.6 }
 
   -- Rise Above
-  self.values.player.health_decrease = { 5, 7.5, 10 }
-  self.values.player.armor_increase = { 1, 2, 3 }
+  self.values.player.health_decrease = { 2.5, 5, 7.5 }
+  self.values.player.armor_increase = { 1, 2.5, 5 }
 
   -- Hysteria stacks
   self.cocaine_stacks_tick_rounding = 2
-  self.cocaine_stacks_decay_t = cocaine_stacks_tick_rounding
+  self.cocaine_stacks_decay_t = self.cocaine_stacks_tick_rounding
   self.cocaine_stacks_decay_amount_per_tick = 0
   self.cocaine_stacks_decay_percentage_per_tick = 1
 
@@ -37,8 +38,12 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "CrimDawn_InitPD2UpgradeTw
   self.values.first_aid_kit.downs_restore_chance[1] = 0.5
 end)
 
+Hooks:PostHook(UpgradesTweakData, "_init_values", "CrimDusk_InitUpgradeTweakData", function(self)
+  self.values.weapon.swap_speed_multiplier = { 1.615 }
+end)
+
 -- Creates definitions for custom upgrade levels
-Hooks:PostHook(UpgradesTweakData, "_player_definitions", "CrimDawn_PlayerUpgradeDefinitions", function(self)
+Hooks:PostHook(UpgradesTweakData, "_player_definitions", "CrimDusk_PlayerUpgradeDefinitions", function(self)
   for i = 2, 3 do -- Rise Above
     self.definitions["player_health_decrease_" .. i] = deep_clone(self.definitions.player_health_decrease_1)
     self.definitions["player_health_decrease_" .. i].upgrade.value = i

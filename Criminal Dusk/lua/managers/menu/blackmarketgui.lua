@@ -1,4 +1,4 @@
-Hooks:PostHook(BlackMarketGui, "show_stats", "CrimDawn_SetupBlackMarketGUI", function(self)
+Hooks:PostHook(BlackMarketGui, "show_stats", "CrimDusk_SetupBlackMarketGUI", function(self)
   if tweak_data.blackmarket.armors[self._slot_data.name] then
     local equipped_slot = managers.blackmarket:equipped_armor_slot()
     local equipped_item = managers.blackmarket:equipped_item(self._slot_data.category)
@@ -94,7 +94,7 @@ Hooks:OverrideFunction(BlackMarketGui, "_get_armor_stats", function(self, name)
 
 		elseif stat.name == "stamina" then
 			local skill = managers.player:body_armor_regen_multiplier()
-			local base_value = Global.CrimDawn.regen_time[upgrade_level]
+			local base_value = Global.CrimDusk.regen_time[upgrade_level]
 			local skill_value = base_value * skill
 			base_stats[stat.name] = { value = base_value }
 			skill_stats[stat.name] = { value = skill_value - base_value }

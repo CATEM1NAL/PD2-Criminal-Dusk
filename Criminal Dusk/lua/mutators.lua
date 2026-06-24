@@ -11,7 +11,7 @@ managers.mutators:set_enabled("MutatorCloakerArrest")
 local SpecialMutators = { CloakerEffect = true, CloakerArrest = true, MedicDozer = true, DozerRage = true,
                           MedicAdrenaline = true, MedicRage = true, ZealSniper = true, Heavies = true }
 
-local Difficulty = CrimDawn.DiffScale(true)
+local Difficulty = CrimDusk.DiffScale(true)
 local Mutators = math.random(1 + Difficulty - 2, 3 + Difficulty - 2)
 
 if Difficulty >= 3 then -- Hard
@@ -37,14 +37,13 @@ if Difficulty >= 7 then -- Death Wish
 end
 
 if Difficulty >= 8 then -- Death Sentence
-  managers.mutators:set_enabled("MutatorTitandozers")
 end
 
-if CrimDawn.SettingsData and CrimDawn.SettingsData.mutators then
-  if not CrimDawn.SettingsData.mutators then Mutators = 0 end
+if CrimDusk.SettingsData and CrimDusk.SettingsData.mutators then
+  if not CrimDusk.SettingsData.mutators then Mutators = 0 end
 end
 
-CrimDawn.Log(FileIdent, "Generating " .. Mutators .. " mutators:")
+CrimDusk.Log(FileIdent, "Generating " .. Mutators .. " mutators:")
 
 local CurrentIndex
 
@@ -83,7 +82,7 @@ for i = 1, Mutators do
 
   if DefaultMutators[CurrentMutator] then state = false end
   managers.mutators:set_enabled("Mutator" .. CurrentMutator, state)
-  CrimDawn.Log(FileIdent, CurrentMutator)
+  CrimDusk.Log(FileIdent, CurrentMutator)
   table.remove(MutatorTable, CurrentIndex)
 end
 

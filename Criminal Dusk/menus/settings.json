@@ -9,7 +9,7 @@
       "id" : "crimdawn_mutators",
       "title" : "menu_mutators",
       "description" : "crimdawn_mutator_desc",
-      "callback" : "CrimDawn_SaveToggleSettings",
+      "callback" : "CrimDusk_SaveToggleSettings",
       "value" : "mutators",
       "default_value" : true
     }
