@@ -1,1 +1,0 @@
-Hooks:OverrideFunction(PlayerMovement, "subtract_stamina", function() end)
