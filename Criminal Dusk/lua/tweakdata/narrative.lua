@@ -1,0 +1,167 @@
+Hooks:PostHook(NarrativeTweakData, "init", "CrimDusk_NarrativeTweakInit", function(self, tweak_data)
+  -- Tutorials
+  self.jobs.cd_tut1 = deep_clone(self.jobs.short1)
+  self.jobs.cd_tut1.name_id = "heist_short1_stage1_hl"
+  self.jobs.cd_tut1.briefing_id = "heist_short1_stage1_briefing"
+  self.jobs.cd_tut1.chain = { self.stages.short_1_1 }
+
+  self.jobs.cd_tut2 = deep_clone(self.jobs.short1)
+  self.jobs.cd_tut2.name_id = "heist_short1_stage2_hl"
+  self.jobs.cd_tut2.briefing_id = "heist_short1_stage2_briefing"
+  self.jobs.cd_tut2.chain = { self.stages.short_1_2 }
+
+  self.jobs.cd_tut3 = deep_clone(self.jobs.short2)
+  self.jobs.cd_tut3.name_id = "heist_short2_stage1_hl"
+  self.jobs.cd_tut3.briefing_id = "heist_short2_stage1_briefing"
+  self.jobs.cd_tut3.chain = { self.stages.short_2_1 }
+
+  -- Standalone days
+  self.jobs.cd_hox1 = deep_clone(self.jobs.hox)
+  self.jobs.cd_hox1.name_id = "heist_hox_1_hl"
+  self.jobs.cd_hox1.briefing_id = "heist_hox_1_briefing"
+  self.jobs.cd_hox1.chain = { self.stages.hox_1 }
+
+  self.jobs.cd_hox2 = deep_clone(self.jobs.hox)
+  self.jobs.cd_hox2.name_id = "heist_hox_2_hl"
+  self.jobs.cd_hox2.briefing_id = "heist_hox_2_briefing"
+  self.jobs.cd_hox2.chain = { self.stages.hox_2 }
+  self.jobs.cd_hox2.contact = "hoxton"
+
+  self.jobs.hox_3.contact = "hoxton"
+
+  self.jobs.cd_frame3 = deep_clone(self.jobs.framing_frame)
+  self.jobs.cd_frame3.name_id = "heist_framing_frame_3_hl"
+  self.jobs.cd_frame3.briefing_id = "heist_framing_frame_3_briefing"
+  self.jobs.cd_frame3.chain = { self.stages.framing_frame_3 }
+
+  self.jobs.cd_firestarter1 = deep_clone(self.jobs.firestarter)
+  self.jobs.cd_firestarter1.name_id = "heist_firestarter_1_hl"
+  self.jobs.cd_firestarter1.briefing_id = "heist_firestarter_1_briefing"
+  self.jobs.cd_firestarter1.chain = { self.stages.firestarter_1 }
+
+  self.jobs.cd_firestarter2 = deep_clone(self.jobs.firestarter)
+  self.jobs.cd_firestarter2.name_id = "heist_firestarter_2_hl"
+  self.jobs.cd_firestarter2.briefing_id = "heist_firestarter_2_briefing"
+  self.jobs.cd_firestarter2.chain = { self.stages.firestarter_2 }
+
+  self.jobs.cd_biker1 = deep_clone(self.jobs.born)
+  self.jobs.cd_biker1.name_id = "heist_born_hl"
+  self.jobs.cd_biker1.briefing_id = "heist_born_briefing"
+  self.jobs.cd_biker1.chain = { self.stages.born }
+
+  self.jobs.cd_biker2 = deep_clone(self.jobs.born)
+  self.jobs.cd_biker2.name_id = "heist_chew_hl"
+  self.jobs.cd_biker2.briefing_id = "heist_chew_briefing"
+  self.jobs.cd_biker2.chain = { self.stages.chew }
+
+  self.jobs.cd_bigoil = deep_clone(self.jobs.welcome_to_the_jungle_wrapper)
+  self.jobs.cd_bigoil.name_id = "heist_welcome_to_the_jungle_2_hl"
+  self.jobs.cd_bigoil.briefing_id = "heist_welcome_to_the_jungle_2_briefing"
+  self.jobs.cd_bigoil.chain = { self.stages.welcome_to_the_jungle_2 }
+  self.jobs.cd_bigoil.job_wrapper = nil
+
+  self.jobs.cd_reservoir = deep_clone(self.jobs.rvd)
+  self.jobs.cd_reservoir.name_id = "heist_rvd2_hl"
+  self.jobs.cd_reservoir.briefing_id = "heist_rvd2_briefing"
+  self.jobs.cd_reservoir.chain = { self.stages.rvd2 }
+
+  self.jobs.cd_miami1 = deep_clone(self.jobs.mia)
+  self.jobs.cd_miami1.name_id = "heist_mia_1_hl"
+  self.jobs.cd_miami1.briefing_id = "heist_mia_1_briefing"
+  self.jobs.cd_miami1.chain = { self.stages.mia_1 }
+
+  self.jobs.cd_miami2 = deep_clone(self.jobs.mia)
+  self.jobs.cd_miami2.name_id = "heist_mia_2_hl"
+  self.jobs.cd_miami2.briefing_id = "heist_mia_2_briefing"
+  self.jobs.cd_miami2.chain = { self.stages.mia_2 }
+
+  self.jobs.cd_goat1 = deep_clone(self.jobs.peta)
+  self.jobs.cd_goat1.name_id = "heist_peta_hl"
+  self.jobs.cd_goat1.briefing_id = "heist_peta_briefing"
+  self.jobs.cd_goat1.chain = { self.stages.peta }
+
+  self.jobs.cd_goat2 = deep_clone(self.jobs.peta)
+  self.jobs.cd_goat2.name_id = "heist_peta2_hl"
+  self.jobs.cd_goat2.briefing_id = "heist_peta2_briefing"
+  self.jobs.cd_goat2.chain = { self.stages.peta2 }
+
+  -- Wrappers
+  self.jobs.cd_erection1 = deep_clone(self.jobs.election_day)
+  self.jobs.cd_erection1.name_id = "heist_election_day_2_hl"
+  self.jobs.cd_erection1.briefing_id = "eday2_brief"
+  self.jobs.cd_erection1.chain = { self.stages.election_day_2 }
+
+  self.jobs.cd_erection2 = deep_clone(self.jobs.election_day)
+  self.jobs.cd_erection2.name_id = "heist_election_day_3_hl"
+  self.jobs.cd_erection2.briefing_id = "eday3_brief_skip1"
+  self.jobs.cd_erection2.chain = { self.stages.election_day_3 }
+  
+  self.jobs.cd_erection_wrapper = deep_clone(self.jobs.arm_wrapper)
+  self.jobs.cd_erection_wrapper.name_id = "heist_election_day"
+  self.jobs.cd_erection_wrapper.briefing_id = "heist_election_day_crimenet"
+  self.jobs.cd_erection_wrapper.contact = "the_elephant"
+  self.jobs.cd_erection_wrapper.job_wrapper = { "cd_erection1", "cd_erection2" }
+  self.jobs.cd_erection_wrapper.jc = 40
+
+  self.jobs.cd_bomb = deep_clone(self.jobs.arm_wrapper)
+  self.jobs.cd_bomb.name_id = "heist_bomb"
+  self.jobs.cd_bomb.briefing_id = "heist_bomb_crimenet"
+  self.jobs.cd_bomb.contact = "the_butcher"
+  self.jobs.cd_bomb.job_wrapper = { "crojob1", "crojob_wrapper" }
+  self.jobs.cd_bomb.jc = 60
+
+  self.jobs.cd_watchdogs1_d = deep_clone(self.jobs.watchdogs)
+  self.jobs.cd_watchdogs1_d.name_id = "heist_watchdogs_1_hl"
+  self.jobs.cd_watchdogs1_d.briefing_id = "heist_watchdogs_1_briefing"
+  self.jobs.cd_watchdogs1_d.chain = { self.stages.watchdogs_1_d }
+  self.jobs.cd_watchdogs1_n = deep_clone(self.jobs.watchdogs)
+  self.jobs.cd_watchdogs1_n.name_id = "heist_watchdogs_1_hl"
+  self.jobs.cd_watchdogs1_n.briefing_id = "heist_watchdogs_1_briefing"
+  self.jobs.cd_watchdogs1_n.chain = { self.stages.watchdogs_1_n }
+
+  self.jobs.cd_watchdogs1_wrapper = deep_clone(self.jobs.watchdogs_wrapper)
+  self.jobs.cd_watchdogs1_wrapper.name_id = "heist_watchdogs_1_hl"
+  self.jobs.cd_watchdogs1_wrapper.briefing_id = "heist_watchdogs_1_briefing"
+  self.jobs.cd_watchdogs1_wrapper.job_wrapper = { "cd_watchdogs1_d", "cd_watchdogs1_n" }
+
+  self.jobs.cd_watchdogs2_d = deep_clone(self.jobs.watchdogs)
+  self.jobs.cd_watchdogs2_d.name_id = "heist_watchdogs_2_hl"
+  self.jobs.cd_watchdogs2_d.briefing_id = "heist_watchdogs_2_briefing"
+  self.jobs.cd_watchdogs2_d.chain = { self.stages.watchdogs_2_d }
+  self.jobs.cd_watchdogs2_n = deep_clone(self.jobs.watchdogs)
+  self.jobs.cd_watchdogs2_n.name_id = "heist_watchdogs_2_hl"
+  self.jobs.cd_watchdogs2_n.briefing_id = "heist_watchdogs_2_briefing"
+  self.jobs.cd_watchdogs2_n.chain = { self.stages.watchdogs_2_n }
+
+  self.jobs.cd_watchdogs2_wrapper = deep_clone(self.jobs.watchdogs_wrapper)
+  self.jobs.cd_watchdogs2_wrapper.name_id = "heist_watchdogs_2_hl"
+  self.jobs.cd_watchdogs2_wrapper.briefing_id = "heist_watchdogs_2_briefing"
+  self.jobs.cd_watchdogs2_wrapper.job_wrapper = { "cd_watchdogs2_d", "cd_watchdogs2_n" }
+
+  table.insert(self._jobs_index, "cd_tut1")
+  table.insert(self._jobs_index, "cd_tut2")
+  table.insert(self._jobs_index, "cd_tut3")
+  table.insert(self._jobs_index, "cd_hox1")
+  table.insert(self._jobs_index, "cd_hox2")
+  table.insert(self._jobs_index, "cd_frame3")
+  table.insert(self._jobs_index, "cd_firestarter1")
+  table.insert(self._jobs_index, "cd_firestarter2")
+  table.insert(self._jobs_index, "cd_biker1")
+  table.insert(self._jobs_index, "cd_biker2")
+  table.insert(self._jobs_index, "cd_bigoil")
+  table.insert(self._jobs_index, "cd_reservoir")
+  table.insert(self._jobs_index, "cd_watchdogs1_wrapper")
+  table.insert(self._jobs_index, "cd_watchdogs1_d")
+  table.insert(self._jobs_index, "cd_watchdogs1_n")
+  table.insert(self._jobs_index, "cd_watchdogs2_wrapper")
+  table.insert(self._jobs_index, "cd_watchdogs2_d")
+  table.insert(self._jobs_index, "cd_watchdogs2_n")
+  table.insert(self._jobs_index, "cd_miami1")
+  table.insert(self._jobs_index, "cd_miami2")
+  table.insert(self._jobs_index, "cd_goat1")
+  table.insert(self._jobs_index, "cd_goat2")
+  table.insert(self._jobs_index, "cd_erection_wrapper")
+  table.insert(self._jobs_index, "cd_erection1")
+  table.insert(self._jobs_index, "cd_erection2")
+  table.insert(self._jobs_index, "cd_bomb")
+end)

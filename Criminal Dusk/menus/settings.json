@@ -1,0 +1,17 @@
+{
+  "menu_id" : "crimdawn_settings",
+  "parent_menu_id" : "blt_options",
+  "title" : "crimdawn_settings_name",
+  "description" : "crimdawn_settings_desc",
+  "items" : [
+    {
+      "type" : "toggle",
+      "id" : "crimdawn_mutators",
+      "title" : "menu_mutators",
+      "description" : "crimdawn_mutator_desc",
+      "callback" : "CrimDusk_SaveToggleSettings",
+      "value" : "mutators",
+      "default_value" : true
+    }
+  ]
+}

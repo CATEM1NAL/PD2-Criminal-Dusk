@@ -1,0 +1,189 @@
+### MENUS ###
+## MOD SETTINGS
+crimdawn_settings_name : "Criminal Dusk"
+crimdawn_settings_desc : "Tweak the gameplay to your liking."
+crimdawn_mutator_desc : "When enabled, random mutators will be picked at the start of each heist.\nDifficulty specific mutators will still be enabled even if this is disabled!"
+
+## LOBBY
+crimdawn_play_next_title : "Play Next Heist [$HEIST_NUM]"
+crimdawn_play_next_desc : "Next heist is $HEIST!"
+
+### STRING OVERRIDES ###
+# Weapons
+bm_w_lemming_desc: "This weapon penetrates enemies and body armor."
+bm_w_maxim9_desc: "This weapon is integrally suppressed."
+
+# Locked Items
+bm_global_value_gage_pack_jobs_unlock : "Buy the Gage Mod Courier DLC to unlock!"
+
+# Upgrade Requirements
+
+# Perk Effects
+bm_menu_armor_max_health_store : "Break: can store up to $amount health."
+bm_menu_disables_damage_to_hot : "Dopamine is disabled while wearing this armor!"
+
+# Perk Consumables
+bm_ability_chico_injector_desc: "Press the throwable key to activate. While active, 75% of all damage taken is converted into healing. This effect lasts 6 seconds."
+bm_grenade_smoke_screen_grenade_desc: "Grants 50% dodge chance to all crewmates standing inside the cloud, and decreases enemy accuracy by 50% if they enter it. Lasts 10 seconds."
+bm_grenade_tag_team_desc: "Press the throwable key while looking at an ally to activate. When you or the tagged ally get a kill, you restore 2 health and the tagged ally restores 1. This effect lasts 12 seconds, but is extended by 1 second per kill."
+bm_grenade_pocket_ecm_jammer_desc: "Press the throwable key to activate for 6 seconds. During stealth this will function like a regular ECM, and benefits from any ECM skills you may have. In loud it will instead activate feedback, potentially stunning enemies within 25m."
+bm_grenade_copr_ability_desc: "Press the throwable key to activate for 6 seconds. While active your armor is disabled and your health is divided into 5 segments. Taking damage removes a segment (two if the damage is higher than 200), while killing 2 enemies restores 1 segment. All kills block damage for 1 second."
+bm_grenade_damage_control_desc: "Press the throwable key to negate stacked damage."
+
+# Black Market
+bm_menu_stamina : "Recovery Time"
+menu_bm_total_cost : ""
+
+# Infamy
+menu_infamy_go_infamous_error_money : "You need $200,000,000 in offshore."
+
+### CUSTOM HEISTS ###
+heist_cd_28stores_name: "Twenty Four Plus Four Stores"
+heist_cd_28stores_brief: "This is it... the big one. Or, big twenty eight.\n\nI believe in you guys. Make Vlad proud."
+
+### SKILLS ###
+# Description Changes
+st_menu_perks: "Specialist"
+st_menu_perks_tree1: "Agent"
+st_menu_perks_tree2: "Mercenary"
+st_menu_perks_tree3: "Substance Abuser"
+
+st_menu_bonus: "Outcast"
+st_menu_bonus_tree1: "Veteran"
+st_menu_bonus_tree2: "Gun Enthusiast"
+st_menu_bonus_tree3: "Tree 3"
+
+temp_skill_name: "SKILL NOT NAMED YET"
+
+## Enforcer
+menu_underdog_beta_desc: "$lv1;Deal ##15%## more damage while three enemies are within ##18m## of you."
+
+menu_overdog: "Overdog"
+menu_overdog_desc: "$lv1;Take ##10%## less damage while three enemies are within ##18m## of you."
+
+menu_shotgun_impact_beta_desc: "$lv1;Shotguns deal ##5%## more damage.\n\n$lv2;Shotguns deal ##15%## more damage."
+
+menu_shotgun_stability_desc: "$lv1;Stability with shotguns increased by ##8##."
+
+menu_shotgun_cqb_beta_desc: "$lv1;Reload shotguns ##15%## faster.\n\n$lv2;Reload shotguns ##35%## faster."
+
+menu_shotgun_ads_speed_desc: "$lv1;ADS with shotguns ##125%## faster."
+
+menu_close_by_beta_desc: "$lv1;Hipfire shotguns while sprinting."
+
+menu_shotgun_rof: "Slamfire"
+menu_shotgun_rof_desc: "$lv1;Rate of fire with semi-auto shotguns is increased by ##35%## when hipfiring."
+
+menu_shotgun_accuracy_desc: "$lv1;Shotgun accuracy is increased by ##40%## while ADS."
+
+menu_far_away_beta_desc: "$lv1;Shotgun effective range is increased by ##50%## while ADS."
+
+menu_overkill_beta_desc: "$lv1;Kills with a shotgun or OVE9000 saw grant a ##75%## damage bonus for ##20## seconds.\n\n$lv2;Damage bonus now applies to any ranged weapon, but still requires a shotgun or saw kill to activate."
+
+menu_team_armor_regen_desc: "$lv1;Armor recovery speed for the crew is increased by ##25%##. This does not stack."
+menu_iron_man_beta_desc: "$lv1;Hitting a shield can cause it to stagger. Meleeing a shield will always cause it to stagger."
+
+menu_nerves_of_steel_name: "Nerves of Steel"
+menu_nerves_of_steel_desc: "$lv1;Damage taken is reduced by ##50%## while performing an interaction."
+
+menu_show_of_force_beta_desc: "$lv1;Armor of the three ballistic vests is increased by ##20##."
+
+menu_pack_mule_beta_desc: "$lv1;Bag throwing distance is increased by ##50%##."
+
+menu_armor_bag_reduction_desc: "$lv1;Bag movement penalty is reduced by ##1%## for every ##10## points of armor."
+
+menu_oppressor_beta_desc: "$lv1;Your armor recovers ##15%## faster."
+
+menu_stun_resistance: "Stun Resistance"
+menu_stun_resistance_desc: "$lv1;Recover from flashbangs slightly faster.\n\n$lv2;Recover from flashbangs significantly faster."
+
+menu_bulletproof_name: "Bulletproof"
+menu_bulletproof_desc: "$lv1;Armor is increased by ##30%##."
+
+menu_juggernaut_beta_desc: "$lv1;Unlocks the ##Improved Combined Tactical Vest##."
+
+menu_extra_ammo_box_desc: "$lv1;Every 6th enemy killed drops an extra ammo box."
+
+menu_scavenger_desc: "$lv1;Ammo pickup range is increased by ##50%##."
+
+menu_portable_saw_desc: "$lv1;Unlocks the secondary OVE9000 saw."
+
+menu_carbon_blade: "Carbon Blade"
+menu_carbon_blade_desc: "$lv1;OVE9000 saw is ##40%## more efficient against locks.\n\n$lv2;OVE9000 saw is ##80%## more efficient against enemies and penetrates body armor.\n\n$lv3;OVE9000 saw penetrates shields and has a ##50%## chance on kill to cause panic within ##10m##."
+
+menu_ammo_reservoir_beta_desc: "$lv1;Your ammo bags grant infinite ammo for up to ##5## seconds after use.\n\n$lv2;Infinite ammo lasts an additional ##15## seconds."
+
+menu_stockpile_name: "Stockpile"
+menu_stockpile_desc: "$lv1;Start heists with one extra ammo bag."
+
+menu_ammobag_capacity_desc: "$lv1;Your ammo bags hold ##50%## more ammo."
+
+menu_fully_loaded_desc: "$lv1;Ammo pickup is increased by ##35%##.\n\n$lv2;Ammo pickup is increased by ##75%##."
+
+menu_scrounger_name: "Scrounger"
+menu_scrounger_desc: "$lv1;##5%## chance to instantly regain a throwable on ammo pickup. This chance increases by ##1%## for each failed roll, and resets when successful."
+
+menu_max_ammo_inc_desc: "$lv1;Ammo capacity increased by ##25%##."
+
+## Ghost
+menu_scavenger_beta_desc: "$lv1;Movement speed is increased by ##30%## for ##5## seconds on armor break.\n\n$lv2;Also applies to the crew when triggered."
+
+## Perk Decks
+menu_perk_dmg: "$lv1;Weapon damage increased by ##5%##.\n\n$lv2;Headshot damage increased by ##25%##."
+
+menu_deck2_1_skill: "$lv1;Max health increased by ##10##.\n\n$lv2;Max health increased by ##20##.\n\n$lv3;Max health increased by ##40##.\n\n$lv4;Max health increased by ##80##.\n\n$lv5;Max health increased by ##100##.\n\n$lv6;Your armor is converted into health."
+
+menu_deck2_7_skill: "$lv1;Suppressed enemies can panic. Enemies are ##15%## more likely to target you."
+
+menu_armorer_skill: "Impact Plate"
+menu_armorer_skill_desc: "$lv1;Armor increased by ##5%##.\n\n$lv2;Armor increased by ##10%##.\n\n$lv3;Armor increased by ##20%##.\n\n$lv4;Armor increased by ##30%##.\n\n$lv5;Armor increased by ##40%##.\n\n$lv6;Your armor is constantly recovering at a slower rate. This recovery cannot be accelerated."
+
+menu_yakuza_speed: "Adrenaline"
+menu_yakuza_speed_desc: "$lv1;While below ##50%## health your armor recovery speed scales with health lost, to a maximum of ##60%##.\n\n$lv2;Movement speed also increases by up to ##20%## with health lost."
+
+menu_deck4_5_skill: "$lv1;Dodge increased by ##15##.\n\n$lv2;Dodge increased by ##30##.\n\n$lv3;Dodge increased by ##45##.\n\n$lv4;Dodge increased by ##60##.\n\n$lv5;Dodge increased by ##80##.\n\n$lv6;Dodging a bullet damages the enemy that fired it."
+
+menu_rogue_switch: "$lv1;Weapon switch speed is increased by ##80%##.\n\n$lv2;Weapon switch speed is increased by ##160%##.\n\n$lv3;Weapon switch speed is increased by ##320%##."
+
+menu_hitman_skill_desc: "$lv1;Armor recovers ##5%## faster.\n\n$lv2;Armor recovers ##15%## faster.\n\n$lv3;Armor recovers ##25%## faster.\n\n$lv4;Armor recovers ##35%## faster.\n\n$lv5;Armor recovers ##45%## faster.\n\n$lv6;When your armor breaks it will recover at twice the normal speed (minimum of ##3## seconds), regardless of the situation.\n"
+
+menu_break_skill: "$lv1;Store ##4## health per crew kill that is consumed on armor recovery.\n\n$lv2;Store ##8## health per crew kill.\n\n$lv3;Store ##12## health per crew kill."
+
+menu_crook_skill: "Composure"
+menu_crook_skill_desc: "$lv1;Ballistic vests have their armor increased by ##20%## and their dodge increased by ##5##.\n\n$lv2;Armor is now increased by ##40%## and dodge is increased by ##15##.\n\n$lv3;Armor is increased further to ##65%## and dodge is increased by ##25##."
+
+menu_burglar_stealth: "$lv1;Bag corpses ##20%## faster.\n\n$lv2;Answer pagers ##10%## faster.\n\n$lv3;Pick locks ##20%## faster."
+
+menu_infil_melee: "Psychopath"
+menu_infil_melee_desc: "$lv1;Consecutive melee hits performed within ##1## second deal ##10x## damage.\n\n$lv2;Damage boost is now active for ##7## seconds."
+menu_infil_close: "Close Combat"
+menu_infil_close_desc: "$lv1;Gain ##8%## damage reduction while an enemy is within ##18m## of you.\n\n$lv2;Damage reduction is now ##16%##.\n\n$lv3;Damage reduction is now ##24%##."
+menu_infil_heal_desc: "$lv1;Heal ##20%## of your max health when dealing melee damage. This can only occur once every ##10## seconds.\n\n$lv2;Heal ##10%## of your max health on melee kill."
+
+menu_deck14_1_skill: "$lv1;Every ##2## seconds you and the crew gain ##1## damage absorption (up to ##20##) for every ##30## damage you dealt during that period.\n\n$lv2;Damage required is now ##25## per point of damage absorption.\n\n$lv3;Any damage absorption you apply to yourself is doubled."
+
+menu_anarch_rise: "$lv1;Armor is increased by ##10##, but health is reduced by ##25##.\n\n$lv2;Armor is increased by ##50##, but health is reduced by ##75##.\n\n$lv3;Armor is increased by ##50##, but health is reduced by ##75##."
+
+menu_mag_throw: "Mag Throw"
+menu_mag_throw_desc: "$lv1;Picking up ammo triggers a half ammo pickup for the rest of the crew. Can only occur once every ##5## seconds."
+
+menu_gambler_heal: "$lv1;Picking up ammo heals you for ##16## to ##24## health. The crew heals for ##50%## of your healing. This can only happen once every ##3## seconds.\n\n$lv2;Healing is increased to ##24## to ##32## health.\n\n$lv3;Healing is further increased to ##32## to ##40## health."
+
+menu_kingpin_priority: "$lv1;Target priority is increased by ##1000%## while the ##Injector## is active."
+menu_kingpin_cooldown: "$lv1;Cooldown of the ##Injector## is reduced by ##1## second for every ##50## health restored while at max health."
+menu_kingpin_healing: "$lv1;While the ##Injector## is active and you are below half health, all damage taken becomes healing."
+
+menu_stoic_skill: "$lv1;Unlocks the ##Stoic's Hip Flask##. All damage taken is now applied quickly over ##6## seconds. Using the flask negates any remaining damage with a ##10## second cooldown, reduced by ##1## second per kill.\n\n$lv2;Cooldown is reduced by ##2## seconds per kill when health is below ##35%##."
+menu_stoic_negation: "$lv1;Remaining damage from ##Virtue## is negated after not taking damage for ##1.5## seconds."
+menu_stoic_regen: "$lv1;Your armor is converted into health.\n\n$lv2;##50%## of negated damage from ##Virtue## is turned into healing."
+
+menu_h3h3_cooldown: "$lv1;Kills from your ##Gas Dispenser## target decrease the cooldown by ##2## seconds."
+menu_h3h3_absorb: "$lv1;Kills from you or your ##Gas Dispenser## target grant ##1## absorption (max ##20##) while the Gas Dispenser is active."
+
+menu_leech_swan: "$lv1;Running out of health while the ##Leech Ampule## is active allows you to keep fighting with ##80%## reduced movement speed.\n\n$lv2;The ##Leech Ampule## can be used while down to get back up temporarily. Using a ##doctor bag## or reviving a crewmate allows you to stay up if you have health when the effect ends."
+menu_leech_duration: "$lv1;Cooldown of the ##Leech Ampule## is reduced by ##1## second per kill.\n\n$lv2;Effect of the ##Leech Ampule## now lasts ##10## seconds."
+menu_leech_healing: "$lv1;Crewmates recover ##10## health when you take damage while the ##Leech Ampule## is active.\n\n$lv2;You recover ##2 segments## when activating the ##Leech Ampule##."
+menu_leech_segments: "$lv1;Activating the ##Leech Ampule## divides your health into ##10## segments, instead of ##5##."
+
+menu_tac_reload: "Tactical Reload"
+menu_tac_reload_desc: "$lv1;Your unequipped weapon is reloaded after ##10## kills.\n\n$lv2;Weapon switch speed is increased by ##160%## for ##3## seconds after reload is triggered."

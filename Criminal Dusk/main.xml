@@ -1,0 +1,5 @@
+<mod name="Criminal Dusk">
+	<localization directory="loc" default_language="english">
+		<loc file="english.yaml" language="english"/>
+	</localization>
+</mod>
