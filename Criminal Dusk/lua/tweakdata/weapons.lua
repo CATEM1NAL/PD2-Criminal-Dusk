@@ -78,10 +78,12 @@ local WeaponClasses = {
     [120] = { "hcar", "m60" }
   },
   snipers = {
+    [90] = { "sbl" },
     [185] = { "wa2000", "siltstone", "qbu88", "tti", "victor" },
-    [123] = { "msr", "winchester1874", "scout", "r700" },
-    [90] = { "r93", "sbl", "model70", "desertfox", "mosin", "m95", "contender" },
-    [150] = { "awp" }
+    [120] = { "msr", "winchester1874", "scout", "r700" },
+    [115] = { "r93", "model70", "desertfox", "mosin", "contender" },
+    [150] = { "awp" },
+    [90] = { "m95" }
   },
   pistols = {
     [45] = { "glock_17", "ppk", "b92fs", "legacy", "g22c", "shrew", "g26", "glock_18c", "beer", "czech", "holt", "maxim9", "pl14", "packrat", "welrod" },
@@ -89,7 +91,7 @@ local WeaponClasses = {
     [78] = { "lemming", "model3" },
     [85] = { "peacemaker" },
     [170] = { "deagle", "mateba", "new_raging_bull", "chinchilla", "korth" },
-    [123] = { "rsh12" }
+    [120] = { "rsh12" }
   },
   smgs = {
     [38] = { "cobray", "pm9", "fmg9", "baka", "polymer", "mac10", "mp7", "mp9", "p90", "tec9", "scorpion" },

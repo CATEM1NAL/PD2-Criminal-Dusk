@@ -3,11 +3,13 @@ Hooks:PostHook(PlayerTweakData, "init", "CrimDawn_InitPlayerTweakData", function
 end)
 
 Hooks:PostHook(PlayerTweakData, "_set_normal", "CrimDawn_PlayerSetDifficulty", function(self)
+  self.damage.automatic_respawn_time = nil
   self.damage.MIN_DAMAGE_INTERVAL = 2
   self.damage.REVIVE_HEALTH_STEPS = { 0.5 }
 end)
 
 Hooks:PostHook(PlayerTweakData, "_set_hard", "CrimDawn_PlayerSetDifficulty", function(self)
+  self.damage.automatic_respawn_time = nil
   self.damage.MIN_DAMAGE_INTERVAL = 1.5
 end)
 

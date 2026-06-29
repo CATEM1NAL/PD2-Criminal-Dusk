@@ -36,6 +36,8 @@ end)
 -- Regenerating armour resets armour break flag
 Hooks:PostHook(PlayerDamage, "_regenerate_armor", "CrimDusk_PlayerRegenerateArmour", function(self)
   self._armor_broken = false
+  self._regen_on_the_side = false
+  self._regen_on_the_side_timer = 0
 end)
 
 -- Stoic damage tick
@@ -114,7 +116,7 @@ Hooks:OverrideFunction(PlayerDamage, "_regenerated", function(self, no_messiah)
 
   -- Initial lives (start of heist)
   if Application:digest_value(self._revives, false) == 0 and Global.CrimDusk.data.lives >= 0 then
-    self._max_lives = self._lives_init + managers.player:upgrade_value("player", "additional_lives", 0)
+    self._max_lives = 3 + managers.player:upgrade_value("player", "additional_lives", 0)
     self._revives = Application:digest_value(math.min(Global.CrimDusk.data.lives + 1, self._max_lives), true)
     managers.environment_controller:set_last_life(false)
 

@@ -53,7 +53,7 @@ end
 
 CrimDusk:Init()
 
-if Global.CrimDusk and (Global.CrimDusk.data.heists_won or 0) < 5 then
+if NetworkHelper:IsHost() and Global.CrimDusk and (Global.CrimDusk.data.heists_won or 0) < 5 then
   Hooks:Add("LocalizationManagerPostInit", "CrimDusk_PDTHNames", function(loc)
     loc:load_localization_file(CrimDusk.ModPath .. "loc/pdth_difficulties.json")
   end)

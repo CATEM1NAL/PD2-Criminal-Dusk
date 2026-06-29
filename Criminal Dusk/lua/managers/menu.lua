@@ -156,6 +156,7 @@ Hooks:PreHook(MenuCallbackHandler, "start_the_game", "CrimDusk_PreStartGame", fu
 
     self:start_job({
       difficulty = tweak_data.difficulties[CrimDusk.DiffScale()],
+      one_down = CrimDusk.SettingsData.permadeath,
       job_id = NextJob
     })
 

@@ -1,8 +1,7 @@
+if NetworkHelper:IsClient() then return end
 local FileIdent = "Victory"
 
 Hooks:PostHook(VictoryState, "at_enter", "CrimDusk_HeistWon", function(self)
-  if NetworkHelper:IsClient() then return end
-
   -- Heist completion
   if managers.job:on_last_stage() then
     Global.CrimDusk.data.heists_won = Global.CrimDusk.data.heists_won + 1

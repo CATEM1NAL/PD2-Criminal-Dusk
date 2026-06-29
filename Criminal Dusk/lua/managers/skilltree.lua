@@ -1,65 +1,60 @@
+SkillTreeManager.VERSION = 1
+
 Hooks:OverrideFunction(SkillTreeManager, "skill_cost", function(self, tier) return tier end)
-Hooks:OverrideFunction(SkillTreeManager, "level_up", function() end)
+Hooks:OverrideFunction(SkillTreeManager, "level_up", function()
+  if managers.experience:current_level() % 5 == 0 then self:_aquire_points(1) end
+end)
 
 Hooks:OverrideFunction(SkillTreeManager, "_setup_skill_switches", function(self)
-  	if not self._global.skill_switches then
-		self._global.skill_switches = {}
-		local switch_data = nil
+  if not self._global.skill_switches then
+    self._global.skill_switches = {}
+    local switch_data = nil
 
-		for i = 1, #tweak_data.skilltree.skill_switches do
-			self._global.skill_switches[i] = {
-				specialization = false,
-				unlocked = i == 1,
-				points = Application:digest_value(1, true)
-			}
-			switch_data = self._global.skill_switches[i]
-			switch_data.trees = {}
+    for i = 1, #tweak_data.skilltree.skill_switches do
+      self._global.skill_switches[i] = {
+        specialization = false,
+        unlocked = i == 1,
+        points = Application:digest_value(1, true)
+      }
 
-			for tree, data in pairs(tweak_data.skilltree.trees) do
-				switch_data.trees[tree] = {
-					unlocked = true,
-					points_spent = Application:digest_value(0, true)
-				}
-			end
+      switch_data = self._global.skill_switches[i]
+      switch_data.trees = {}
 
-			switch_data.skills = {}
+      for tree, data in pairs(tweak_data.skilltree.trees) do
+        switch_data.trees[tree] = { unlocked = true, points_spent = Application:digest_value(0, true) }
+      end
 
-			for skill_id, data in pairs(tweak_data.skilltree.skills) do
-				switch_data.skills[skill_id] = {
-					unlocked = 0,
-					total = #data
-				}
-			end
-		end
-	else
-		local switch_data = nil
+      switch_data.skills = {}
 
-		for i = 1, #tweak_data.skilltree.skill_switches do
-			switch_data = self._global.skill_switches[i]
-			switch_data.trees = {}
+      for skill_id, data in pairs(tweak_data.skilltree.skills) do
+        switch_data.skills[skill_id] = { unlocked = 0, total = #data }
+      end
+    end
 
-			for tree, data in pairs(tweak_data.skilltree.trees) do
-				switch_data.trees[tree] = {
-					unlocked = true,
-					points_spent = Application:digest_value(0, true)
-				}
-			end
+  else
+    local switch_data = nil
 
-			switch_data.skills = {}
+    for i = 1, #tweak_data.skilltree.skill_switches do
+      switch_data = self._global.skill_switches[i]
+      switch_data.trees = {}
 
-			for skill_id, data in pairs(tweak_data.skilltree.skills) do
-				switch_data.skills[skill_id] = {
-					unlocked = 0,
-					total = #data
-				}
-			end
-		end
-	end
+      for tree, data in pairs(tweak_data.skilltree.trees) do
+        switch_data.trees[tree] = { unlocked = true, points_spent = Application:digest_value(0, true) }
+      end
+
+      switch_data.skills = {}
+
+      for skill_id, data in pairs(tweak_data.skilltree.skills) do
+        switch_data.skills[skill_id] = { unlocked = 0, total = #data }
+      end
+
+    end
+  end
 end)
 
 Hooks:OverrideFunction(SkillTreeManager, "_verify_loaded_data", function(self, points_aquired_during_load)
 	for i, switch_data in ipairs(self._global.skill_switches) do
-		local points = points_aquired_during_load
+		local points = points_aquired_during_load + math.floor(managers.experience:current_level() / 5)
 
 		for skill_id, data in pairs(clone(switch_data.skills)) do
 			if not tweak_data.skilltree.skills[skill_id] then
@@ -85,9 +80,7 @@ Hooks:OverrideFunction(SkillTreeManager, "_verify_loaded_data", function(self, p
 
 		local unlocked = self:trees_unlocked(switch_data.trees)
 
-		while unlocked > 0 do
-			unlocked = unlocked - 1
-		end
+		while unlocked > 0 do unlocked = unlocked - 1 end
 
 		switch_data.points = Application:digest_value(points, true)
 	end
@@ -130,11 +123,5 @@ Hooks:OverrideFunction(SkillTreeManager, "_verify_loaded_data", function(self, p
 end)
 
 Hooks:OverrideFunction(SkillTreeManager, "max_points_for_current_level", function()
-  local rep_upgrade_points = 0
-
-	for _, rep_upgrade in ipairs(managers.upgrades:aquired_by_category("rep_upgrade")) do
-		rep_upgrade_points = rep_upgrade_points + managers.upgrades:get_value(rep_upgrade)
-	end
-
-  return 1 + rep_upgrade_points
+  return 1 + math.floor(managers.experience:current_level() / 5)
 end)

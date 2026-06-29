@@ -6,6 +6,15 @@
   "items" : [
     {
       "type" : "toggle",
+      "id" : "crimdawn_permadeath",
+      "title" : "crimdawn_permadeath_name",
+      "description" : "crimdawn_permadeath_desc",
+      "callback" : "CrimDusk_SaveToggleSettings",
+      "value" : "permadeath",
+      "default_value" : false
+    },
+    {
+      "type" : "toggle",
       "id" : "crimdawn_mutators",
       "title" : "menu_mutators",
       "description" : "crimdawn_mutator_desc",

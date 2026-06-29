@@ -3,12 +3,19 @@
 crimdawn_settings_name : "Criminal Dusk"
 crimdawn_settings_desc : "Tweak the gameplay to your liking."
 crimdawn_mutator_desc : "When enabled, random mutators will be picked at the start of each heist.\nDifficulty specific mutators will still be enabled even if this is disabled!"
+crimdawn_permadeath_name: "Professional Mode"
+crimdawn_permadeath_desc: "Failing a heist resets your campaign progress.\nYou go back one heist when disabled."
 
 ## LOBBY
 crimdawn_play_next_title : "Play Next Heist [$HEIST_NUM]"
 crimdawn_play_next_desc : "Next heist is $HEIST!"
 
 ### STRING OVERRIDES ###
+# Menu
+menu_one_down: "Professional"
+menu_pro_warning: "Quitting and restarting have been disabled!"
+cn_menu_pro_job: ""
+
 # Weapons
 bm_w_lemming_desc: "This weapon penetrates enemies and body armor."
 bm_w_maxim9_desc: "This weapon is integrally suppressed."
@@ -116,7 +123,7 @@ menu_ammo_reservoir_beta_desc: "$lv1;Your ammo bags grant infinite ammo for up t
 menu_stockpile_name: "Stockpile"
 menu_stockpile_desc: "$lv1;Start heists with one extra ammo bag."
 
-menu_ammobag_capacity_desc: "$lv1;Your ammo bags hold ##50%## more ammo."
+menu_ammobag_capacity_desc: "$lv1;Your ammo bags hold ##100%## more ammo.\n\n$lv2;Your ammo bags hold ##200%## more ammo."
 
 menu_fully_loaded_desc: "$lv1;Ammo pickup is increased by ##35%##.\n\n$lv2;Ammo pickup is increased by ##75%##."
 
@@ -162,7 +169,7 @@ menu_infil_heal_desc: "$lv1;Heal ##20%## of your max health when dealing melee d
 
 menu_deck14_1_skill: "$lv1;Every ##2## seconds you and the crew gain ##1## damage absorption (up to ##20##) for every ##30## damage you dealt during that period.\n\n$lv2;Damage required is now ##25## per point of damage absorption.\n\n$lv3;Any damage absorption you apply to yourself is doubled."
 
-menu_anarch_rise: "$lv1;Armor is increased by ##10##, but health is reduced by ##25##.\n\n$lv2;Armor is increased by ##50##, but health is reduced by ##75##.\n\n$lv3;Armor is increased by ##50##, but health is reduced by ##75##."
+menu_anarch_rise: "$lv1;Armor is increased by ##20##, but health is reduced by ##25##.\n\n$lv2;Armor is increased by ##40##, but health is reduced by ##50##.\n\n$lv3;Armor is increased by ##60##, but health is reduced by ##75##."
 
 menu_mag_throw: "Mag Throw"
 menu_mag_throw_desc: "$lv1;Picking up ammo triggers a half ammo pickup for the rest of the crew. Can only occur once every ##5## seconds."
@@ -187,3 +194,66 @@ menu_leech_segments: "$lv1;Activating the ##Leech Ampule## divides your health i
 
 menu_tac_reload: "Tactical Reload"
 menu_tac_reload_desc: "$lv1;Your unequipped weapon is reloaded after ##10## kills.\n\n$lv2;Weapon switch speed is increased by ##160%## for ##3## seconds after reload is triggered."
+
+## Outcast
+# Removed skills
+menu_oldholm_syndrome: "Helsinki Syndrome"
+menu_oldholm_syndrome_desc: "$lv1;Untied civilians may revive you when shouting at them.\n\n$lv2;Potentially receive an ammo pickup when revived by a civilian."
+
+menu_tough_guy: "Tough Guy"
+menu_tough_guy_desc: "$lv1;Screen shake from damage reduced by ##50%##."
+
+menu_hip_accuracy: "From The Hip"
+menu_hip_accuracy_desc: "$lv1;Hipfire spread reduced by ##50%##."
+
+menu_mag_plus: "Mag Plus"
+menu_mag_plus_desc: "$lv1;Magazine capacity increased by ##5##.\n\n$lv2;Magazine capacity increased by ##15##.\n\nDoes not apply to sniper rifles, revolvers, double-barrelled shotguns, or most special weapons."
+
+menu_smg_rof: "SMG Specialist"
+menu_smg_rof_desc: "$lv1;Fire rate with SMGs increased by ##20%##."
+
+menu_custody_timer: "Master Trader"
+menu_custody_timer_desc: "$lv1;Custody timer reduced by ##50%##."
+
+menu_crouch_dodge: "Duck and Cover"
+menu_crouch_dodge_desc: "$lv1;Gain ##5## dodge while crouching.\n\n$lv2;Gain ##15## dodge while crouching."
+
+menu_dominator: "Dominator"
+menu_dominator_desc: "$lv1;Shout at cops to dominate them, turning them into a hostage."
+
+menu_oppressor_name: "Oppressor"
+menu_oppressor_desc: "$lv1;Threat is increased by ##10%##.\n\n$lv2;Threat is increased by ##20%##.\n\n$lv3;Threat is increased by ##50%##."
+
+menu_downed_ads: "Last Stand"
+menu_downed_ads_desc: "$lv1;You can use your primary weapon while down.\n\n$lv2;You can ADS while down."
+
+menu_shinobi: "Shinobi"
+menu_shinobi_desc: "$lv1;Walk ##25%## faster and move ##10%## faster while crouched."
+
+menu_drop_cloth: "Drop Cloth"
+menu_drop_cloth_desc: "$lv1;Enemy death alert radius reduced by ##95%##."
+
+menu_daredevil: "Thrilling"
+menu_daredevil_desc: "$lv1;Ladder climbing speed increased by ##20%##.\n\n$lv2;Ladder climbing speed increased by ##75%##."
+
+# Weapon skills
+menu_ar_stability: ""
+menu_ar_stability_desc: "$lv1;Stability with assault rifles is increased by ##8##."
+
+menu_lmg_stability: ""
+menu_lmg_stability_desc: "$lv1;Stability with LMGs is increased by ##4##."
+
+menu_single_shot_acc: ""
+menu_single_shot_acc_desc: "$lv1;Single fire weapons have their spread reduced by ##20%##."
+
+menu_reload_speed: ""
+menu_reload_speed_desc: "$lv1;All weapons reload ##10%## faster."
+
+menu_lmg_reload_speed: ""
+menu_lmg_reload_speed_desc: "$lv1;LMGs reload ##25%## faster."
+
+menu_tinkerer: "Tinkerer"
+menu_tinkerer_desc: "$lv1;Weapons with attachments gain a ##10%## bonus to their damage, accuracy, and stability.\n\n$lv2;All weapons gain a ##100%## bonus to their fire rate."
+
+menu_silencer_statboost: ""
+menu_silencer_statboost_desc: "$lv1;Silenced weapons gain ##50%## more stability.\n\n$lv2;Silenced weapons gain ##50%## more accuracy."

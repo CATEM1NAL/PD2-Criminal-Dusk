@@ -138,6 +138,7 @@ Hooks:PostHook(NarrativeTweakData, "init", "CrimDusk_NarrativeTweakInit", functi
   self.jobs.cd_watchdogs2_wrapper.briefing_id = "heist_watchdogs_2_briefing"
   self.jobs.cd_watchdogs2_wrapper.job_wrapper = { "cd_watchdogs2_d", "cd_watchdogs2_n" }
 
+  -- Job index
   table.insert(self._jobs_index, "cd_tut1")
   table.insert(self._jobs_index, "cd_tut2")
   table.insert(self._jobs_index, "cd_tut3")
