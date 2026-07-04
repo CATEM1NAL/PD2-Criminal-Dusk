@@ -6,8 +6,9 @@ Hooks:OverrideFunction(BlackMarketManager, "has_unlocked_erma", function() retur
 Hooks:OverrideFunction(BlackMarketManager, "has_unlocked_victor", function() return true end)
 
 -- Force game to register 2 of every item
+local BlockedCategories = { weapon_skins = true, masks = true }
 Hooks:PostHook(BlackMarketManager, "get_item_amount", "CrimDusk_BMInfiniteItems", function(self, _, category)
-  if category ~= "weapon_skins" then return 2 end
+  if not BlockedCategories[category] then return 2 end
 end)
 
 -- Assign random van skin

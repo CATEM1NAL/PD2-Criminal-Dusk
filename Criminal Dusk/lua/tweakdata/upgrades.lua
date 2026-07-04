@@ -13,6 +13,7 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "CrimDusk_InitPD2UpgradeTw
   self.values.player.drill_autorepair_1 = { 0.5 }
   self.values.player.drill_autorepair_2 = { 0.5 }
   self.values.weapon.passive_swap_speed_multiplier = { 1.8, 2.6 }
+  self.values.weapon.clip_ammo_increase = { 0.5, 1 }
   self.values.player.flashbang_multiplier = { 0.75, 0.25 }
   self.values.player.suppression_multiplier = { 1.25 }
   self.values.snp.graze_damage = {
@@ -56,7 +57,7 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "CrimDusk_InitPD2UpgradeTw
   self.values.player.minion_master_health_multiplier = { 3 }
 
   -- Health regen
-  self.values.player.passive_health_regen = { 0.3 }
+  self.values.player.passive_health_regen = { 0.1 }
   self.values.player.hostage_health_regen_addend = { 0.2, 0.5 }
 
   -- Armour

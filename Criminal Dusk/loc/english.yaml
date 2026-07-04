@@ -7,6 +7,9 @@ crimdawn_permadeath_name: "Professional Mode"
 crimdawn_permadeath_desc: "Failing a heist resets your campaign progress.\nYou go back one heist when disabled."
 
 ## LOBBY
+crimdawn_create_lobby_title : "Create Lobby"
+crimdawn_create_lobby_desc : "Begin playing Criminal Dawn."
+
 crimdawn_play_next_title : "Play Next Heist [$HEIST_NUM]"
 crimdawn_play_next_desc : "Next heist is $HEIST!"
 
@@ -22,6 +25,8 @@ bm_w_maxim9_desc: "This weapon is integrally suppressed."
 
 # Locked Items
 bm_global_value_gage_pack_jobs_unlock : "Buy the Gage Mod Courier DLC to unlock!"
+bm_menu_skill_locked_tag_team: "Buy the h3h3 Character Pack to unlock!"
+bm_menu_skill_locked_damage_control: "Requires the 'Virtue' skill! (Specialist)"
 
 # Upgrade Requirements
 
@@ -57,7 +62,7 @@ st_menu_perks_tree3: "Substance Abuser"
 
 st_menu_bonus: "Outcast"
 st_menu_bonus_tree1: "Veteran"
-st_menu_bonus_tree2: "Gun Enthusiast"
+st_menu_bonus_tree2: "Gunsmith"
 st_menu_bonus_tree3: "Tree 3"
 
 temp_skill_name: "SKILL NOT NAMED YET"
@@ -87,7 +92,9 @@ menu_far_away_beta_desc: "$lv1;Shotgun effective range is increased by ##50%## w
 
 menu_overkill_beta_desc: "$lv1;Kills with a shotgun or OVE9000 saw grant a ##75%## damage bonus for ##20## seconds.\n\n$lv2;Damage bonus now applies to any ranged weapon, but still requires a shotgun or saw kill to activate."
 
+menu_team_armor_regen: "Herd Mentality"
 menu_team_armor_regen_desc: "$lv1;Armor recovery speed for the crew is increased by ##25%##. This does not stack."
+
 menu_iron_man_beta_desc: "$lv1;Hitting a shield can cause it to stagger. Meleeing a shield will always cause it to stagger."
 
 menu_nerves_of_steel_name: "Nerves of Steel"
@@ -95,8 +102,10 @@ menu_nerves_of_steel_desc: "$lv1;Damage taken is reduced by ##50%## while perfor
 
 menu_show_of_force_beta_desc: "$lv1;Armor of the three ballistic vests is increased by ##20##."
 
+menu_pack_mule_beta: "Catapult"
 menu_pack_mule_beta_desc: "$lv1;Bag throwing distance is increased by ##50%##."
 
+menu_armor_bag_reduction: "Pack Mule"
 menu_armor_bag_reduction_desc: "$lv1;Bag movement penalty is reduced by ##1%## for every ##10## points of armor."
 
 menu_oppressor_beta_desc: "$lv1;Your armor recovers ##15%## faster."
@@ -138,7 +147,7 @@ menu_scavenger_beta_desc: "$lv1;Movement speed is increased by ##30%## for ##5##
 ## Perk Decks
 menu_perk_dmg: "$lv1;Weapon damage increased by ##5%##.\n\n$lv2;Headshot damage increased by ##25%##."
 
-menu_deck2_1_skill: "$lv1;Max health increased by ##10##.\n\n$lv2;Max health increased by ##20##.\n\n$lv3;Max health increased by ##40##.\n\n$lv4;Max health increased by ##80##.\n\n$lv5;Max health increased by ##100##.\n\n$lv6;Your armor is converted into health."
+menu_deck2_1_skill: "$lv1;Max health increased by ##10##.\n\n$lv2;Max health increased by ##20##.\n\n$lv3;Max health increased by ##40##.\n\n$lv4;Max health increased by ##80##.\n\n$lv5;Max health increased by ##100##.\n\n$lv6;Restore ##1## health every ##5## seconds."
 
 menu_deck2_7_skill: "$lv1;Suppressed enemies can panic. Enemies are ##15%## more likely to target you."
 
@@ -152,9 +161,9 @@ menu_deck4_5_skill: "$lv1;Dodge increased by ##15##.\n\n$lv2;Dodge increased by 
 
 menu_rogue_switch: "$lv1;Weapon switch speed is increased by ##80%##.\n\n$lv2;Weapon switch speed is increased by ##160%##.\n\n$lv3;Weapon switch speed is increased by ##320%##."
 
-menu_hitman_skill_desc: "$lv1;Armor recovers ##5%## faster.\n\n$lv2;Armor recovers ##15%## faster.\n\n$lv3;Armor recovers ##25%## faster.\n\n$lv4;Armor recovers ##35%## faster.\n\n$lv5;Armor recovers ##45%## faster.\n\n$lv6;When your armor breaks it will recover at twice the normal speed (minimum of ##3## seconds), regardless of the situation.\n"
+menu_hitman_skill_desc: "$lv1;Armor recovers ##5%## faster.\n\n$lv2;Armor recovers ##15%## faster.\n\n$lv3;Armor recovers ##25%## faster.\n\n$lv4;Armor recovers ##35%## faster.\n\n$lv5;Armor recovers ##45%## faster.\n\n$lv6;Your armor will always recover after ##3## seconds, even while taking damage.\n"
 
-menu_break_skill: "$lv1;Store ##4## health per crew kill that is consumed on armor recovery.\n\n$lv2;Store ##8## health per crew kill.\n\n$lv3;Store ##12## health per crew kill."
+menu_break_skill: "$lv1;While you have armor, store ##4## health per crew kill that is consumed on armor recovery.\n\n$lv2;Store ##8## health per crew kill.\n\n$lv3;Store ##12## health per crew kill."
 
 menu_crook_skill: "Composure"
 menu_crook_skill_desc: "$lv1;Ballistic vests have their armor increased by ##20%## and their dodge increased by ##5##.\n\n$lv2;Armor is now increased by ##40%## and dodge is increased by ##15##.\n\n$lv3;Armor is increased further to ##65%## and dodge is increased by ##25##."
@@ -207,7 +216,7 @@ menu_hip_accuracy: "From The Hip"
 menu_hip_accuracy_desc: "$lv1;Hipfire spread reduced by ##50%##."
 
 menu_mag_plus: "Mag Plus"
-menu_mag_plus_desc: "$lv1;Magazine capacity increased by ##5##.\n\n$lv2;Magazine capacity increased by ##15##.\n\nDoes not apply to sniper rifles, revolvers, double-barrelled shotguns, or most special weapons."
+menu_mag_plus_desc: "$lv1;Magazine capacity increased by ##50%## for all weapons.\n\n$lv2;Magazine capacity increased by ##100%## for all weapons."
 
 menu_smg_rof: "SMG Specialist"
 menu_smg_rof_desc: "$lv1;Fire rate with SMGs increased by ##20%##."
@@ -237,23 +246,23 @@ menu_daredevil: "Thrilling"
 menu_daredevil_desc: "$lv1;Ladder climbing speed increased by ##20%##.\n\n$lv2;Ladder climbing speed increased by ##75%##."
 
 # Weapon skills
-menu_ar_stability: ""
+menu_ar_stability: "Barrel Alignment"
 menu_ar_stability_desc: "$lv1;Stability with assault rifles is increased by ##8##."
 
-menu_lmg_stability: ""
+menu_lmg_stability: "Heat Shield"
 menu_lmg_stability_desc: "$lv1;Stability with LMGs is increased by ##4##."
 
-menu_single_shot_acc: ""
+menu_single_shot_acc: "Barrel Crown"
 menu_single_shot_acc_desc: "$lv1;Single fire weapons have their spread reduced by ##20%##."
 
-menu_reload_speed: ""
+menu_reload_speed: "Magazine Funnel"
 menu_reload_speed_desc: "$lv1;All weapons reload ##10%## faster."
 
-menu_lmg_reload_speed: ""
+menu_lmg_reload_speed: "Belt Link"
 menu_lmg_reload_speed_desc: "$lv1;LMGs reload ##25%## faster."
 
 menu_tinkerer: "Tinkerer"
 menu_tinkerer_desc: "$lv1;Weapons with attachments gain a ##10%## bonus to their damage, accuracy, and stability.\n\n$lv2;All weapons gain a ##100%## bonus to their fire rate."
 
-menu_silencer_statboost: ""
+menu_silencer_statboost: "Chamber Vent"
 menu_silencer_statboost_desc: "$lv1;Silenced weapons gain ##50%## more stability.\n\n$lv2;Silenced weapons gain ##50%## more accuracy."

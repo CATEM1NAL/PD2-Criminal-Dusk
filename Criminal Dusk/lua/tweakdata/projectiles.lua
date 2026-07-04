@@ -3,9 +3,9 @@ Hooks:PostHook(BlackMarketTweakData, "_init_projectiles", "CrimDusk_ProjectileTw
 
   local throwables = {
     [12] = { laser_watch = 10, xmas_snowball = 2 },
-    [30] = { concussion = 1, fir_com = 2 },
+    [30] = { wpn_gre_electric = 1, concussion = 2, fir_com = 2 },
     [45] = { frag_com = 2, frag = 1, dada_com = 1 },
-    [60] = { wpn_gre_electric = 1, sticky_grenade = 1, dynamite = 1 },
+    [60] = { sticky_grenade = 1, dynamite = 1 },
     [75] = { molotov = 1, poison_gas_grenade = 1 }
   }
 

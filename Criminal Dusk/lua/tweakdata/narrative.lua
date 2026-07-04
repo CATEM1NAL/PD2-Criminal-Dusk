@@ -78,12 +78,12 @@ Hooks:PostHook(NarrativeTweakData, "init", "CrimDusk_NarrativeTweakInit", functi
   self.jobs.cd_goat1 = deep_clone(self.jobs.peta)
   self.jobs.cd_goat1.name_id = "heist_peta_hl"
   self.jobs.cd_goat1.briefing_id = "heist_peta_briefing"
-  self.jobs.cd_goat1.chain = { self.stages.peta }
+  self.jobs.cd_goat1.chain = { self.stages.peta_1 }
 
   self.jobs.cd_goat2 = deep_clone(self.jobs.peta)
   self.jobs.cd_goat2.name_id = "heist_peta2_hl"
   self.jobs.cd_goat2.briefing_id = "heist_peta2_briefing"
-  self.jobs.cd_goat2.chain = { self.stages.peta2 }
+  self.jobs.cd_goat2.chain = { self.stages.peta_2 }
 
   -- Wrappers
   self.jobs.cd_erection1 = deep_clone(self.jobs.election_day)

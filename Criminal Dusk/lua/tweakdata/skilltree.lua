@@ -148,7 +148,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
   }
   self.skills.crew_recovery = {
     { upgrades = { "team_armor_regen_time_multiplier" }, cost = self.costs.default },
-    name_id = "temp_skill_name", desc_id = "menu_team_armor_regen_desc", icon_xy = { 8, 10 }
+    name_id = "menu_team_armor_regen", desc_id = "menu_team_armor_regen_desc", icon_xy = { 8, 10 }
   }
   self.skills.shock_awe = {
     { upgrades = { "player_shield_knock" }, cost = self.costs.default },
@@ -168,7 +168,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
   }
   self.skills.armor_bag_reduction = {
     { upgrades = { "player_armor_carry_bonus_1" }, cost = self.costs.default },
-    name_id = "temp_skill_name", desc_id = "menu_armor_bag_reduction_desc", icon_xy = { 6, 0 }
+    name_id = "menu_armor_bag_reduction", desc_id = "menu_armor_bag_reduction_desc", icon_xy = { 6, 0 }
   }
   self.skills.enforcer_recovery = {
     { upgrades = { "player_armor_regen_time_mul_1" }, cost = self.costs.default },
@@ -243,9 +243,9 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
   }
   self.trees[6].tiers = {
     { "scavenger", "extra_ammo_box", "portable_saw" },
-    { "ammo_reservoir", "carbon_blade" },
-    { "ammobag_quantity", "ammobag_capacity" },
-    { "max_ammo_increase", "fully_loaded", "scrounger" }
+    { "ammobag_capacity", "max_ammo_increase", "carbon_blade" },
+    { "ammobag_quantity", "ammo_reservoir" },
+    { "fully_loaded", "scrounger" }
   }
 
   -- TECHNICIAN --
@@ -339,6 +339,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     { upgrades = { "player_passive_health_multiplier_3" }, cost = self.costs.default },
     { upgrades = { "player_passive_health_multiplier_4" }, cost = self.costs.default },
     { upgrades = { "player_passive_health_multiplier_5" }, cost = self.costs.default },
+    { upgrades = { "player_passive_health_regen" }, cost = self.costs.default },
     name_id = "menu_deck2_1", desc_id = "menu_deck2_1_skill", icon_xy = { 0, 0 }
   }
   self.skills.muscle_panic = {
@@ -695,28 +696,28 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
   }
   self.skills.ar_stability = {
     { upgrades = { "assault_rifle_recoil_index_addend" }, cost = self.costs.default },
-    name_id = "temp_skill_name", desc_id = "menu_ar_stability_desc", icon_xy = { 0, 0 }
+    name_id = "menu_ar_stability", desc_id = "menu_ar_stability_desc", icon_xy = { 0, 0 }
   }
   self.skills.lmg_stability = {
     { upgrades = { "lmg_recoil_index_addend" }, cost = self.costs.default },
-    name_id = "temp_skill_name", desc_id = "menu_lmg_stability_desc", icon_xy = { 0, 0 }
+    name_id = "menu_lmg_stability", desc_id = "menu_lmg_stability_desc", icon_xy = { 0, 0 }
   }
   self.skills.single_shot_accuracy = {
     { upgrades = { "weapon_single_spread_multiplier" }, cost = self.costs.default },
-    name_id = "temp_skill_name", desc_id = "menu_single_shot_acc_desc", icon_xy = { 0, 0 }
+    name_id = "menu_single_shot_acc", desc_id = "menu_single_shot_acc_desc", icon_xy = { 0, 0 }
   }
   self.skills.reload_speed = {
     { upgrades = { "weapon_passive_reload_speed_multiplier" }, cost = self.costs.default },
-    name_id = "temp_skill_name", desc_id = "menu_reload_speed_desc", icon_xy = { 0, 0 }
+    name_id = "menu_reload_speed", desc_id = "menu_reload_speed_desc", icon_xy = { 0, 0 }
   }
   self.skills.lmg_reload_speed = {
     { upgrades = { "lmg_reload_speed_multiplier" }, cost = self.costs.default },
-    name_id = "temp_skill_name", desc_id = "menu_lmg_reload_speed_desc", icon_xy = { 0, 0 }
+    name_id = "menu_lmg_reload_speed", desc_id = "menu_lmg_reload_speed_desc", icon_xy = { 0, 0 }
   }
   self.skills.silencer_statboost = {
     { upgrades = { "weapon_silencer_recoil_multiplier" }, cost = self.costs.default },
     { upgrades = { "weapon_silencer_spread_multiplier" }, cost = self.costs.default },
-    name_id = "temp_skill_name", desc_id = "menu_silencer_statboost_desc", icon_xy = { 4, 4 }
+    name_id = "menu_silencer_statboost", desc_id = "menu_silencer_statboost_desc", icon_xy = { 4, 4 }
   }
 
   local BonusTree2 = {

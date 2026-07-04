@@ -95,7 +95,7 @@ Hooks:OverrideFunction(PlayerInventoryGui, "_get_armor_stats", function(self, na
 			skill_stats[stat.name] = { value = skill_value * tweak_data.gui.stats_present_multiplier }
 
 		elseif stat.name == "stamina" then
-			local skill = managers.player:body_armor_regen_multiplier()
+			local skill = managers.player:body_armor_regen_multiplier() * managers.player:upgrade_value("player", "armor_regen_time_mul", 1)
 			local base_value = Global.CrimDusk.regen_time[upgrade_level]
 			local skill_value = base_value * skill
 			base_stats[stat.name] = { value = base_value }

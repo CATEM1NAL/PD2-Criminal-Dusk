@@ -59,7 +59,7 @@ if NetworkHelper:IsHost() and Global.CrimDusk and (Global.CrimDusk.data.heists_w
   end)
 end
 
-local function SetColours()
+local function SetTweakData()
   local player1 = Global.CrimDusk.archicolours.blue
   local player2 = Global.CrimDusk.archicolours.pink
   local player3 = Global.CrimDusk.archicolours.red
@@ -82,6 +82,13 @@ local function SetColours()
   tweak_data.chat_colors[4] = player4
   tweak_data.preplanning_peer_colors[4] = Global.CrimDusk.archicolours.yellow_alt
 
+  for i = 1, #tweak_data.chat_colors - 1 do
+    local theme_id = "spy_camera_peer_" .. i
+
+    tweak_data.camera_themes[theme_id] = clone(tweak_data.camera_themes.spy_camera)
+    tweak_data.camera_themes[theme_id].tint_color = tweak_data.chat_colors[i]:with_alpha(0.2)
+  end
+
   tweak_data.peer_vector_colors[5] = team_ai
   tweak_data.chat_colors[5] = team_ai
 
@@ -92,9 +99,40 @@ local function SetColours()
   tweak_data.screen_colors.button_stage_3 = Global.CrimDusk.archicolours.red
   tweak_data.screen_colors.risk = Global.CrimDusk.archicolours.yellow
   tweak_data.screen_colors.ghost_color = Global.CrimDusk.archicolours.red
+
+  -- XP Curve
+  local xp = 1000
+  for i = 1, 100 do
+      tweak_data.experience_manager.levels[i] = { points = xp }
+      xp = 1000 * (i + 1)
+  end
+
+  tweak_data.experience_manager.prestige_xp_max = 10000000
+  tweak_data.experience_manager.difficulty_multiplier = { 1.5, 2, 2.5, 3, 3.5, 4 }
+  tweak_data.experience_manager.level_limit.pc_difference_multipliers = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }
+  tweak_data.experience_manager.level_limit.low_cap_multiplier = 1
+
+  -- Projectiles
+  local ProjDmg = {
+    frag = 90, dynamite = 90, dada_com = 90, frag_com = 45, wpn_gre_electric = 12, poison_gas_grenade = 0, sticky_grenade = 72,
+    molotov = 0, fir_com = 0, wpn_prj_four = 12, wpn_prj_ace = 0.1, wpn_prj_jav = 350, wpn_prj_hur = 125, wpn_prj_target = 125,
+    xmas_snowball = 24,
+  }
+
+  for proj, dmg in pairs(ProjDmg) do
+    tweak_data.projectiles[proj].damage = dmg
+    tweak_data.projectiles[proj].player_damage = dmg * 0.1
+  end
+
+  tweak_data.projectiles.poison_gas_grenade.poison_gas_duration = 15
+  tweak_data.projectiles.launcher_poison.poison_gas_duration = 3
+
+  tweak_data.medic.cooldown = 0
+
+  tweak_data:digest_tweak_data()
 end
 
-if Global.CrimDusk then SetColours() end
+if Global.CrimDusk then SetTweakData() end
 
 -- THIS SECTION ONLY RUNS ONCE ON GAME LAUNCH --
 if Global.CrimDusk then return end
@@ -146,7 +184,7 @@ function Global.CrimDusk:Init()
     "vit", "deep" -- Conclusion
   }
 
-  SetColours()
+  SetTweakData()
 end
 
 -- Logo replacements

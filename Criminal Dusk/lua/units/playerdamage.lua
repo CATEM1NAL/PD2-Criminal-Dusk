@@ -95,10 +95,8 @@ end)
 
 -- Tooth & Claw regens at twice the speed, instead of fixed 1.5s
 Hooks:OverrideFunction(PlayerDamage, "_start_regen_on_the_side", function(self, time)
-  local mul = managers.player:body_armor_regen_multiplier(alive(self._unit) and self._unit:movement():current_state()._moving, self:health_ratio())
-  local armour = tonumber(managers.blackmarket:equipped_armor(true, true):sub(7))
   if self._regen_on_the_side_timer <= 0 and time > 0 then
-    self._regen_on_the_side_timer = Global.CrimDusk.regen_time[armour] * math.max(mul / 2, 3)
+    self._regen_on_the_side_timer = 3
     self._regen_on_the_side = true
   end
 end)

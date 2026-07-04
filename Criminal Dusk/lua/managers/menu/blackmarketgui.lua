@@ -18,9 +18,9 @@ Hooks:PostHook(BlackMarketGui, "show_stats", "CrimDusk_SetupBlackMarketGUI", fun
     else local equip = math.max(equip_base_stats.stamina.value + equip_skill_stats.stamina.value, 0)
       if value > equip then
         self._armor_stats_texts.stamina.total:set_color(tweak_data.screen_colors.stats_negative)
-		  elseif value < equip then
-			  self._armor_stats_texts.stamina.total:set_color(tweak_data.screen_colors.stats_positive)
-		  else self._armor_stats_texts.stamina.total:set_color(tweak_data.screen_colors.text) end
+      elseif value < equip then
+        self._armor_stats_texts.stamina.total:set_color(tweak_data.screen_colors.stats_positive)
+      else self._armor_stats_texts.stamina.total:set_color(tweak_data.screen_colors.text) end
     end
   end
 end)
@@ -93,7 +93,7 @@ Hooks:OverrideFunction(BlackMarketGui, "_get_armor_stats", function(self, name)
 			skill_stats[stat.name] = { value = skill_value * tweak_data.gui.stats_present_multiplier }
 
 		elseif stat.name == "stamina" then
-			local skill = managers.player:body_armor_regen_multiplier()
+			local skill = managers.player:body_armor_regen_multiplier() * managers.player:upgrade_value("player", "armor_regen_time_mul", 1)
 			local base_value = Global.CrimDusk.regen_time[upgrade_level]
 			local skill_value = base_value * skill
 			base_stats[stat.name] = { value = base_value }
