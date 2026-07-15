@@ -1,0 +1,2 @@
+SentryGunBase.DEPLOYEMENT_COST = { 1, 1, 1 }
+SentryGunBase.MIN_DEPLOYEMENT_COST = 0

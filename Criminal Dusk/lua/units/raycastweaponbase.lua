@@ -5,3 +5,7 @@ Hooks:OverrideFunction(NewRaycastWeaponBase, "calculate_ammo_max_per_clip", func
 
   return math.floor(ammo)
 end)
+
+Hooks:OverrideFunction(NewRaycastWeaponBase, "get_add_head_shot_mul", function(self)
+  return managers.player:upgrade_value("weapon", "automatic_head_shot_add", nil)
+end)

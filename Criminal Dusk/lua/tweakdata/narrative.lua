@@ -63,7 +63,7 @@ Hooks:PostHook(NarrativeTweakData, "init", "CrimDusk_NarrativeTweakInit", functi
   self.jobs.cd_reservoir = deep_clone(self.jobs.rvd)
   self.jobs.cd_reservoir.name_id = "heist_rvd2_hl"
   self.jobs.cd_reservoir.briefing_id = "heist_rvd2_briefing"
-  self.jobs.cd_reservoir.chain = { self.stages.rvd2 }
+  self.jobs.cd_reservoir.chain = { self.stages.rvd_2 }
 
   self.jobs.cd_miami1 = deep_clone(self.jobs.mia)
   self.jobs.cd_miami1.name_id = "heist_mia_1_hl"

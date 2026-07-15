@@ -7,4 +7,8 @@ Hooks:PostHook(LevelsTweakData, "init", "CrimDusk_LevelTweakInit", function(self
 
   self.short2_stage1.force_equipment = nil
   self.short2_stage1.disable_mutators = nil
+
+  if Global.CrimDusk then
+    for _, LevelID in ipairs(Global.CrimDusk.LoudHeists) do self[LevelID].ghost_bonus = nil end
+  end
 end)

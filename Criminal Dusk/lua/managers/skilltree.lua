@@ -1,22 +1,22 @@
-SkillTreeManager.VERSION = 1
+SkillTreeManager.VERSION = 4
 
 Hooks:PreHook(SkillTreeManager, "_setup", "CrimDusk_SkillTreeManagerSetup", function(self)
   self.StartingPoints = 1 -- How many points the player has at Level 0
   self.MaxSkillPoints = 21 -- How many skill points the player has at Level 100
   self.MaxInfamyPoints = 13 -- How many extra skill points the player has at Infamy 52
-
-  local InfamiesPerPoint = 52 / self.MaxInfamyPoints
-  local InfamyPoints = math.floor(managers.experience:current_rank() / InfamiesPerPoint)
   
-  self.StartingPoints = self.StartingPoints + math.min(InfamyPoints, 31)
-  self.MaxSkillPoints = math.min(self.MaxSkillPoints + InfamyPoints, 100 + self.StartingPoints)
-  -- Player gains extra skill points for infamy
-  -- Total points gained from level up are equal to (MaxSkillPoints - StartingPoints)
-  -- If the number of level up points is higher than 100, it may cause problems!
-
   -- Spread skill points evenly across levels
   local PointsFromLevels = self.MaxSkillPoints - self.StartingPoints
   self.LevelsPerPoint = 100 / PointsFromLevels
+
+  -- Player gains extra skill points for infamy
+  local InfamiesPerPoint = 52 / self.MaxInfamyPoints
+  local InfamyPoints = math.floor(managers.experience:current_rank() / InfamiesPerPoint)
+
+  self.StartingPoints = self.StartingPoints + InfamyPoints
+  self.MaxSkillPoints = math.min(self.MaxSkillPoints + InfamyPoints, 100 + self.StartingPoints)
+  -- Total points gained from level up are equal to (MaxSkillPoints - StartingPoints)
+  -- If the number of level up points is higher than 100, it may cause problems!
 end)
 
 Hooks:OverrideFunction(SkillTreeManager, "skill_cost", function(self, tier) return tier end)

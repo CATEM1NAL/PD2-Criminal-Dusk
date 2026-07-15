@@ -1,5 +1,7 @@
 Hooks:PostHook(PlayerTweakData, "init", "CrimDawn_InitPlayerTweakData", function(self)
   self.damage.HEALTH_INIT = 10
+  self.gravity = -1800
+  self.movement_state.standard.movement.jump_velocity.z = 650
 end)
 
 Hooks:PostHook(PlayerTweakData, "_set_normal", "CrimDawn_PlayerSetDifficulty", function(self)

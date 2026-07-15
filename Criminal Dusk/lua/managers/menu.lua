@@ -12,6 +12,12 @@ function MenuCallbackHandler:CrimDusk_SaveChoiceSettings(item)
   io.save_as_json(CrimDusk.SettingsData, CrimDusk.SettingsFile)
 end
 
+function MenuCallbackHandler:CrimDusk_ResetCampaign()
+  Global.CrimDusk.data.heists_won = 0
+  Global.CrimDusk.data.lives = 5
+  CrimDusk:WriteSave(FileIdent, "campaign reset")
+end
+
 -- Add custom buttons to menu
 local function InjectCrimDuskButtons(node)
   local data = {
@@ -19,9 +25,9 @@ local function InjectCrimDuskButtons(node)
   }
 
   local params = {
-    name = "crimdawn_createlobby_btn",
-    text_id = "crimdawn_enter_lobby_title",
-    help_id = "crimdawn_enter_lobby_desc",
+    name = "crimdusk_createlobby_btn",
+    text_id = "crimdusk_enter_lobby_title",
+    help_id = "crimdusk_enter_lobby_desc",
     callback = "CrimDusk_CreateLobby",
     font_size = 35,
     font = tweak_data.menu.pd2_large_font
@@ -49,11 +55,16 @@ Hooks:Add("MenuManagerBuildCustomMenus", "CrimDusk_MenuTweaks", function(menu_ma
   if mainmenu ~= nil then
 
     -- Play button
-    managers.localization:add_localized_strings({
-      ["crimdawn_continue_run_desc"] = managers.localization:text("crimdawn_play_next_desc", {
-        HEIST = managers.localization:text("heist_" .. Global.CrimDusk.campaign[Global.CrimDusk.data.heists_won + 1])
+    if Global.CrimDusk.campaign[Global.CrimDusk.data.heists_won + 1] then
+      managers.localization:add_localized_strings({
+        ["crimdusk_continue_run_desc"] = managers.localization:text("crimdusk_play_next_desc", {
+          HEIST = managers.localization:text("heist_" .. Global.CrimDusk.campaign[Global.CrimDusk.data.heists_won + 1])
+        })
       })
-    })
+    else managers.localization:add_localized_strings({
+        ["crimdusk_continue_run_desc"] = managers.localization:text("crimdusk_play_next_random")
+      })
+    end
 
     local HeistNumText = ""
     local IsEndless = Global.CrimDusk.data.heists_won >= #Global.CrimDusk.campaign
@@ -61,15 +72,15 @@ Hooks:Add("MenuManagerBuildCustomMenus", "CrimDusk_MenuTweaks", function(menu_ma
     else HeistNumText = Global.CrimDusk.data.heists_won + 1 .. "/" .. #Global.CrimDusk.campaign end
 
     managers.localization:add_localized_strings({
-      ["crimdawn_continue_run_title"] = managers.localization:text("crimdawn_play_next_title", {
+      ["crimdusk_continue_run_title"] = managers.localization:text("crimdusk_play_next_title", {
         HEIST_NUM = HeistNumText
       })
     })
 
     -- Create Lobby
     managers.localization:add_localized_strings({
-      ["crimdawn_enter_lobby_title"] = managers.localization:text("crimdawn_create_lobby_title"),
-      ["crimdawn_enter_lobby_desc"] = managers.localization:text("crimdawn_create_lobby_desc")
+      ["crimdusk_enter_lobby_title"] = managers.localization:text("crimdusk_create_lobby_title"),
+      ["crimdusk_enter_lobby_desc"] = managers.localization:text("crimdusk_create_lobby_desc")
     })
 
     InjectCrimDuskButtons(mainmenu)
@@ -99,8 +110,8 @@ Hooks:Add("MenuManagerBuildCustomMenus", "CrimDusk_MenuTweaks", function(menu_ma
       if item._parameters.name == "start_the_game" then
         table.remove(item._visible_callback_list, 2)
 
-        item._parameters.text_id = "crimdawn_continue_run_title"
-        item._parameters.help_id = "crimdawn_continue_run_desc"
+        item._parameters.text_id = "crimdusk_continue_run_title"
+        item._parameters.help_id = "crimdusk_continue_run_desc"
         break
       end
     end

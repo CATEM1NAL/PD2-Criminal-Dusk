@@ -4,7 +4,7 @@ end
 
 Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", function(self)
   self.tier_unlocks = { digest(0), digest(0), digest(0), digest(0) }
-  self.tier_cost = { { 1, 1, 1, 1, 1, 1 }, { 2, 2, 2, 2, 2 }, { 3, 3, 3, 3, 3 }, { 4, 4, 4, 4, 4 } }
+  self.tier_cost = { { 1, 1, 1, 1, 1, 1 }, { 2, 2, 2, 2, 2, 2 }, { 3, 3, 3, 3, 3, 3 }, { 4, 4, 4, 4, 4, 4 } }
 
   -- Default upgrades
   self.default_upgrades = {
@@ -23,9 +23,6 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     "temporary_passive_revive_damage_reduction_2",
     "akimbo_recoil_index_addend_1",
     "cable_tie",
-    "ammo_bag_ammo_increase1",
-    "doctor_bag_amount_increase1",
-    -- REMOVE WHEN SKILLS ARE ADDED:
     "doctor_bag",
     "ammo_bag",
     "trip_mine",
@@ -33,7 +30,6 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     "first_aid_kit",
     "sentry_gun",
     "bodybags_bag",
-    "saw",
     "cable_tie",
     "jowi",
     "x_1911",
@@ -51,15 +47,11 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     "x_mp7",
     "x_ppk"
   }
-  table.insert(self.default_upgrades, "chico_injector")
+
   table.insert(self.default_upgrades, "temporary_chico_injector_1")
-  table.insert(self.default_upgrades, "smoke_screen_grenade")
-  table.insert(self.default_upgrades, "tag_team")
   table.insert(self.default_upgrades, "player_tag_team_base")
   table.insert(self.default_upgrades, "player_tag_team_cooldown_drain_1")
-  table.insert(self.default_upgrades, "pocket_ecm_jammer")
   table.insert(self.default_upgrades, "player_pocket_ecm_jammer_base")
-  table.insert(self.default_upgrades, "copr_ability")
   table.insert(self.default_upgrades, "temporary_copr_ability_1")
   table.insert(self.default_upgrades, "player_copr_static_damage_ratio_1")
   table.insert(self.default_upgrades, "player_copr_kill_life_leech_1")
@@ -77,35 +69,151 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
   }
 
   -- MASTERMIND --
+  self.skills.revive_reduction = {
+    { upgrades = { "player_revive_damage_reduction_1" }, cost = self.costs.default },
+    { upgrades = { "temporary_revive_damage_reduction_1" }, cost = self.costs.default },
+    name_id = "menu_combat_medic_beta", desc_id = "menu_revive_reduction_desc", icon_xy = { 6, 6 }
+  }
+  self.skills.revived_player_reduction = {
+    { upgrades = { "player_revive_damage_reduction_level_1" }, cost = self.costs.default },
+    { upgrades = { "player_revive_damage_reduction_level_2" }, cost = self.costs.default },
+    name_id = "menu_fast_learner_beta", desc_id = "menu_fast_learner_beta_desc", icon_xy = { 0, 10 }
+  }
+  self.skills.revived_bonus_heal = {
+    { upgrades = { "player_revive_health_boost" }, cost = self.costs.default },
+    { upgrades = { "player_revive_health_boost_2" }, cost = self.costs.default },
+    name_id = "menu_reviver_bonus_heal", desc_id = "menu_reviver_bonus_heal_desc", icon_xy = { 5, 7 }
+  }
+  self.skills.healing_deploy_speed = {
+    { upgrades = { "first_aid_kit_deploy_time_multiplier" }, cost = self.costs.default },
+    name_id = "menu_tea_time_beta", desc_id = "menu_tea_time_beta_desc", icon_xy = { 1, 11 }
+  }
+  self.skills.healing_damage_reduction = {
+    { upgrades = { "first_aid_kit_damage_reduction_upgrade" }, cost = self.costs.default },
+    name_id = "menu_healing_damage_reduction", desc_id = "menu_healing_damage_reduction_desc", icon_xy = { 1, 11 }
+  }
+  self.skills.fak_capacity = {
+    { upgrades = { "first_aid_kit_quantity_increase_1" }, cost = self.costs.default },
+    { upgrades = { "first_aid_kit_quantity_increase_2" }, cost = self.costs.default },
+    name_id = "menu_fak_capacity", desc_id = "menu_fak_capacity_desc", icon_xy = { 2, 11 }
+  }
+  self.skills.uppers = {
+    { upgrades = { "first_aid_kit_auto_recovery_1" }, cost = self.costs.default },
+    name_id = "menu_tea_cookies_beta", desc_id = "menu_uppers_desc", icon_xy = { 3, 10 }
+  }
+  self.skills.docbag_quantity = {
+    { upgrades = { "doctor_bag_quantity" }, cost = self.costs.default },
+    { upgrades = { "doctor_bag_quantity_2" }, cost = self.costs.default },
+    name_id = "menu_docbag_quantity", desc_id = "menu_docbag_quantity_desc", icon_xy = { 5, 8 }
+  }
+  self.skills.docbag_capacity = {
+    { upgrades = { "doctor_bag_amount_increase1" }, cost = self.costs.default },
+    { upgrades = { "doctor_bag_amount_increase_2" }, cost = self.costs.default },
+    name_id = "menu_docbag_capacity", desc_id = "menu_docbag_capacity_desc", icon_xy = { 2, 7 }
+  }
+  self.skills.code_blue = {
+    { upgrades = { "player_revive_interaction_speed_multiplier" }, cost = self.costs.default },
+    name_id = "menu_code_blue", desc_id = "menu_code_blue_desc", icon_xy = { 4, 9 }
+  }
+  self.skills.inspire = {
+    { upgrades = { "player_morale_boost" }, cost = self.costs.default },
+    { upgrades = { "cooldown_long_dis_revive" }, cost = self.costs.default },
+    name_id = "menu_inspire_beta", desc_id = "menu_inspire_beta_desc", icon_xy = { 4, 9 }
+  }
+  self.skills.fak_lives = {
+    { upgrades = { "first_aid_kit_downs_restore_chance" }, cost = self.costs.default },
+    { upgrades = { "first_aid_kit_downs_restore_chance_2" }, cost = self.costs.default },
+    name_id = "menu_fak_lives", desc_id = "menu_fak_lives_desc", icon_xy = { 3, 10 }
+  }
 
   self.trees[1].tiers = {
-    { "combat_medic" },
-    { "tea_time", "fast_learner" },
-    { "tea_cookies", "medic_2x" },
-    { "inspire" }
+    { "healing_damage_reduction", "revived_bonus_heal", "healing_deploy_speed" },
+    { "fak_capacity", "revived_player_reduction", "docbag_capacity" },
+    { "revive_reduction", "code_blue", "docbag_quantity" },
+    { "uppers", "inspire", "fak_lives" }
   }
+
+  self.skills.cable_guy = {
+    { upgrades = { "cable_tie_quantity" }, cost = self.costs.default },
+    { upgrades = { "cable_tie_quantity_2" }, cost = self.costs.default },
+    name_id = "menu_cable_guy", desc_id = "menu_cable_guy_desc", icon_xy = { 4, 7 }
+  }
+  self.skills.hostage_absorption = {
+    { upgrades = { "team_damage_hostage_absorption" }, cost = self.costs.default },
+    name_id = "menu_triathlete_beta", desc_id = "menu_triathlete_beta_desc", icon_xy = { 4, 7 }
+  }
+  self.skills.deep_throat = {
+    { upgrades = { "player_intimidate_range_mul" }, cost = self.costs.default },
+    { upgrades = { "player_intimidate_range_mul_2" }, cost = self.costs.default },
+    name_id = "menu_deep_throat", desc_id = "menu_deep_throat_desc", icon_xy = { 2, 8 }
+  }
+  self.skills.joker = {
+    { upgrades = { "player_convert_enemies", "player_convert_enemies_max_minions_1" }, cost = self.costs.default },
+    { upgrades = { "player_convert_enemies_interaction_speed_multiplier", "player_convert_enemies_max_minions_2" }, cost = self.costs.default },
+    name_id = "menu_joker_beta", desc_id = "menu_joker_beta_desc", icon_xy = { 6, 8 }
+  }
+  self.skills.joker_damage = {
+    { upgrades = { "player_convert_enemies_damage_multiplier_1" }, cost = self.costs.default },
+    { upgrades = { "player_convert_enemies_damage_multiplier_2" }, cost = self.costs.default },
+    name_id = "menu_joker_damage", desc_id = "menu_joker_damage_desc", icon_xy = { 6, 8 }
+  }
+  self.skills.joker_dr = {
+    { upgrades = { "player_passive_convert_enemies_health_multiplier_1" }, cost = self.costs.default },
+    { upgrades = { "player_passive_convert_enemies_health_multiplier_2" }, cost = self.costs.default },
+    name_id = "menu_joker_dr", desc_id = "menu_joker_dr_desc", icon_xy = { 6, 8 }
+  }
+  self.skills.joker_player_stats = {
+    { upgrades = { "player_minion_master_speed_multiplier" }, cost = self.costs.default },
+    { upgrades = { "player_minion_master_health_multiplier" }, cost = self.costs.default },
+    name_id = "menu_control_freak_beta", desc_id = "menu_control_freak_beta_desc", icon_xy = { 1, 10 }
+  }
+  self.skills.stockholm_syndrome = {
+    { upgrades = { "player_super_syndrome_1" }, cost = self.costs.default },
+    name_id = "menu_stockholm_syndrome_beta", desc_id = "menu_stockholm_syndrome_beta_desc", icon_xy = { 3, 8 }
+  }
+  self.skills.crowd_control = {
+    { upgrades = { "player_intimidate_aura" }, cost = self.costs.default },
+    { upgrades = { "player_civ_calming_alerts" }, cost = self.costs.default },
+    name_id = "menu_crowd_control", desc_id = "menu_crowd_control_desc", icon_xy = { 6, 7 }
+  }
+
   self.trees[2].tiers = {
-    { "triathlete" },
-    { "cable_guy", "joker" },
-    { "stockholm_syndrome", "control_freak" },
-    { "black_marketeer" }
-    
+    { "cable_guy", "deep_throat" },
+    { "hostage_absorption", "crowd_control" },
+    { "stockholm_syndrome", "joker" },
+    { "joker_dr", "joker_player_stats", "joker_damage" }
   }
+
+  self.skills.stable_shot = {
+    { upgrades = { "player_not_moving_accuracy_increase_bonus_1" }, cost = self.costs.default },
+    name_id = "menu_stable_shot_beta", desc_id = "menu_stable_shot_beta_desc", icon_xy = { 0, 5 }
+  }
+  self.skills.mobile = {
+    { upgrades = { "assault_rifle_move_spread_index_addend", "snp_move_spread_index_addend", "smg_move_spread_index_addend" }, cost = self.costs.default },
+    { upgrades = { "player_steelsight_normal_movement_speed" }, cost = self.costs.default },
+    name_id = "menu_mobile", desc_id = "menu_mobile_desc", icon_xy = { 6, 5 }
+  }
+  self.skills.target_acquisition = {
+    { upgrades = { "weapon_enter_steelsight_speed_multiplier" }, cost = self.costs.default },
+    { upgrades = { "assault_rifle_zoom_increase", "snp_zoom_increase", "smg_zoom_increase", "lmg_zoom_increase", "pistol_zoom_increase" }, cost = self.costs.default },
+    name_id = "menu_target_acquisition", desc_id = "menu_target_acquisition_desc", icon_xy = { 6, 5 }
+  }
+  self.skills.speedy_reload = {
+    { upgrades = { "temporary_single_shot_fast_reload_1" }, cost = self.costs.default },
+    name_id = "menu_speedy_reload_beta", desc_id = "menu_speedy_reload_beta_desc", icon_xy = { 8, 3 }
+  }
+
   self.trees[3].tiers = {
-    { "stable_shot" },
-    { "rifleman", "sharpshooter" },
-    { "spotter_teamwork", "speedy_reload" },
+    { "stable_shot", "mobile" },
+    { "target_acquisition", "spotter_teamwork" },
+    { "speedy_reload" },
     { "single_shot_ammo_return" }
   }
 
   -- ENFORCER --
-  self.skills.underdog = {
-    { upgrades = { "player_damage_multiplier_outnumbered" }, cost = self.costs.default },
-    name_id = "menu_underdog_beta", desc_id = "menu_underdog_beta_desc", icon_xy = { 2, 1 }
-  }
   self.skills.overdog = {
     { upgrades = { "player_damage_dampener_outnumbered" }, cost = self.costs.default },
-    name_id = "menu_overdog", desc_id = "menu_overdog_desc", icon_xy = { 6, 6 }
+    name_id = "menu_underdog_beta", desc_id = "menu_overdog_desc", icon_xy = { 2, 1 }
   }
   self.skills.shotgun_impact = {
     { upgrades = { "shotgun_damage_multiplier_1" }, cost = self.costs.default },
@@ -124,10 +232,6 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
   self.skills.shotgun_ads_speed = {
     { upgrades = { "shotgun_enter_steelsight_speed_multiplier" }, cost = self.costs.default },
     name_id = "temp_skill_name", desc_id = "menu_shotgun_ads_speed_desc", icon_xy = { 8, 5 }
-  }
-  self.skills.shotgun_hipfire = {
-    { upgrades = { "shotgun_hip_run_and_shoot_1" }, cost = self.costs.default },
-    name_id = "menu_close_by_beta", desc_id = "menu_close_by_beta_desc", icon_xy = { 8, 6 }
   }
   self.skills.shotgun_rof = {
     { upgrades = { "shotgun_hip_rate_of_fire_1" }, cost = self.costs.default },
@@ -196,6 +300,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     name_id = "menu_scavenging_beta", desc_id = "menu_scavenger_desc", icon_xy = { 8, 11 }
   }
   self.skills.portable_saw = {
+    { upgrades = { "saw" }, cost = self.costs.default },
     { upgrades = { "saw_secondary" }, cost = self.costs.default },
     name_id = "menu_portable_saw_beta", desc_id = "menu_portable_saw_desc", icon_xy = { 0, 1 }
   }
@@ -207,11 +312,12 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
   }
   self.skills.ammobag_quantity = {
     { upgrades = { "ammo_bag_quantity" }, cost = self.costs.default },
+    { upgrades = { "ammo_bag_quantity_2" }, cost = self.costs.default },
     name_id = "menu_stockpile_name", desc_id = "menu_stockpile_desc", icon_xy = { 7, 1 }
   }
   self.skills.ammobag_capacity = {
-    { upgrades = { "ammo_bag_ammo_increase2" }, cost = self.costs.default },
-    { upgrades = { "ammo_bag_ammo_increase3" }, cost = self.costs.default },
+    { upgrades = { "ammo_bag_ammo_increase1" }, cost = self.costs.default },
+    { upgrades = { "ammo_bag_ammo_increase_2" }, cost = self.costs.default },
     name_id = "temp_skill_name", desc_id = "menu_ammobag_capacity_desc", icon_xy = { 1, 0 }
   }
   self.skills.fully_loaded = {
@@ -221,6 +327,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
   }
   self.skills.scrounger = {
     { upgrades = { "player_regain_throwable_from_ammo_1" }, cost = self.costs.default },
+    { upgrades = { "player_regain_throwable_from_ammo_2" }, cost = self.costs.default },
     name_id = "menu_scrounger_name", desc_id = "menu_scrounger_desc", icon_xy = { 3, 0 }
   }
   self.skills.max_ammo_increase = {
@@ -229,10 +336,10 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
   }
 
   self.trees[4].tiers = {
-    { "underdog", "shotgun_ads_speed", "overdog", },
-    { "shotgun_stability", "shotgun_accuracy", "shotgun_reload" },
-    { "shotgun_impact", "shotgun_range", "shotgun_rof",  },
-    { "shotgun_hipfire", "overkill" }
+    { "overdog" },
+    { "shotgun_accuracy" },
+    { "shotgun_range", "shotgun_rof" },
+    { "overkill" }
   }
   self.trees[5].tiers = {
     { "transporter", "stun_resistance" },
@@ -249,25 +356,83 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
   }
 
   -- TECHNICIAN --
-  
+
+
   self.trees[7].tiers = {
     { "defense_up" },
     { "sentry_targeting_package", "eco_sentry" },
     { "engineering", "jack_of_all_trades" },
     { "tower_defense" }
   }
-  self.trees[8].tiers = {
-    { "hardware_expert" },
-    { "combat_engineering", "drill_expert" },
-    { "more_fire_power", "kick_starter" },
-    { "fire_trap" }
-    
+
+  self.skills.toolkit = {
+    { upgrades = { "player_drill_fix_interaction_speed_multiplier" }, cost = self.costs.default },
+    name_id = "menu_toolkit", desc_id = "menu_toolkit_desc", icon_xy = { 5, 5 }
   }
+  self.skills.silent_drilling = {
+    { upgrades = { "player_drill_alert" }, cost = self.costs.default },
+    { upgrades = { "player_silent_drill" }, cost = self.costs.default },
+    name_id = "menu_silent_drilling", desc_id = "menu_silent_drilling_desc", icon_xy = { 2, 6 }
+  }
+  self.skills.drill_restart = {
+    { upgrades = { "player_drill_autorepair_1" }, cost = self.costs.default },
+    { upgrades = { "player_drill_autorepair_2" }, cost = self.costs.default },
+    name_id = "menu_drill_restart", desc_id = "menu_drill_restart_desc", icon_xy = { 5, 5 }
+  }
+  self.skills.trip_mine_damage = {
+    { upgrades = { "trip_mine_damage_multiplier_1" }, cost = self.costs.default },
+    name_id = "menu_trip_mine_damage", desc_id = "menu_trip_mine_damage_desc", icon_xy = { 7, 4 }
+  }
+  self.skills.trip_mine_radius = {
+    { upgrades = { "trip_mine_explosion_size_multiplier_1" }, cost = self.costs.default },
+    { upgrades = { "trip_mine_explosion_size_multiplier_2" }, cost = self.costs.default },
+    name_id = "menu_trip_mine_radius", desc_id = "menu_trip_mine_radius_desc", icon_xy = { 1, 5 }
+  }
+  self.skills.trip_mine_quantity = {
+    { upgrades = { "trip_mine_quantity_increase_1" }, cost = self.costs.default },
+    { upgrades = { "trip_mine_quantity_increase_2" }, cost = self.costs.default },
+    name_id = "menu_trip_mine_quantity", desc_id = "menu_trip_mine_quantity_desc", icon_xy = { 2, 5 }
+  }
+  self.skills.shaped_charge = {
+    { upgrades = { "shape_charge_quantity_increase_1" }, cost = self.costs.default },
+    { upgrades = { "shape_charge_quantity_increase_2" }, cost = self.costs.default },
+    { upgrades = { "shape_charge_quantity_increase_3" }, cost = self.costs.default },
+    name_id = "menu_shaped_charge", desc_id = "menu_shaped_charge_desc", icon_xy = { 0, 7 }
+  }
+  self.skills.kick_starter = {
+    { upgrades = { "player_drill_melee_hit_restart_chance_1" }, cost = self.costs.default },
+    name_id = "menu_kick_starter_beta", desc_id = "menu_kick_starter_beta_desc", icon_xy = { 9, 8 }
+  }
+  self.skills.sensor_mines = {
+    { upgrades = { "trip_mine_sensor_toggle", "trip_mine_sensor_highlight" }, cost = self.costs.default },
+    name_id = "menu_sensor_mines", desc_id = "menu_sensor_mines_desc", icon_xy = { 6, 9 }
+  }
+
+  self.trees[8].tiers = {
+    { "toolkit", "silent_drilling", "trip_mine_radius" },
+    { "drill_expert", "trip_mine_damage", "trip_mine_quantity" },
+    { "kick_starter", "fire_trap", "sensor_mines" },
+    { "drill_restart", "shaped_charge" }
+  }
+
+  self.skills.fire_control = {
+    { upgrades = { "player_hip_fire_accuracy_inc_1" }, cost = self.costs.default },
+    name_id = "menu_fire_control_beta", desc_id = "menu_fire_control_beta_desc", icon_xy = { 9, 10 }
+  }
+  self.skills.lock_load = {
+    { upgrades = { "player_automatic_faster_reload_1" }, cost = self.costs.default },
+    name_id = "menu_shock_and_awe_beta", desc_id = "menu_shock_and_awe_beta_desc", icon_xy = { 10, 0 }
+  }
+  self.skills.sprint_shoot = {
+    { upgrades = { "player_run_and_shoot_1" }, cost = self.costs.default },
+    name_id = "menu_sprint_shoot", desc_id = "menu_sprint_shoot_desc", icon_xy = { 10, 0 }
+  }
+
   self.trees[9].tiers = {
-    { "steady_grip" },
-    { "heavy_impact", "fire_control" },
-    { "shock_and_awe", "fast_fire" },
-    { "body_expertise" }
+    { "heavy_impact" },
+    { "fire_control" },
+    { "lock_load" },
+    { "body_expertise", "sprint_shoot" }
   }
 
   -- GHOST --
@@ -326,8 +491,13 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
   -- Global perks
   self.skills.perk_dmg = {
     { upgrades = { "weapon_passive_damage_multiplier" }, cost = self.costs.default },
+    { upgrades = { "weapon_passive_damage_multiplier_2" }, cost = self.costs.default },
+    name_id = "menu_deckall_8", desc_id = "menu_perk_dmg", icon_xy = { 0, 0 }
+  }
+  self.skills.helmet_popping = {
     { upgrades = { "weapon_passive_headshot_damage_multiplier" }, cost = self.costs.default },
-    name_id = "menu_deckall_2", desc_id = "menu_perk_dmg", icon_xy = { 0, 0 }
+    { upgrades = { "weapon_passive_headshot_damage_multiplier_2" }, cost = self.costs.default },
+    name_id = "menu_deckall_2", desc_id = "menu_perk_headshot", icon_xy = { 0, 0 }
   }
 
   -- Crew Chief
@@ -480,7 +650,8 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
   -- Infiltrator
   self.skills.infil_melee = {
     { upgrades = { "melee_stacking_hit_damage_multiplier_1" }, cost = self.costs.default },
-    { upgrades = { "melee_stacking_hit_expire_t" }, cost = self.costs.default },
+    { upgrades = { "melee_stacking_hit_damage_multiplier_2", "melee_stacking_hit_expire_t" }, cost = self.costs.default },
+    { upgrades = { "melee_stacking_hit_damage_multiplier_3", "melee_stacking_hit_expire_t_2" }, cost = self.costs.default },
     name_id = "menu_infil_melee", desc_id = "menu_infil_melee_desc", icon_xy = { 0, 0 }
   }
   self.skills.infil_close = {
@@ -573,10 +744,10 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     unlocked = true,
     background_texture = "guis/textures/pd2/skilltree/bg_mastermind",
     tiers = {
-      { "rogue_dodge", "perk_dmg", "rogue_switch" },
-      { "crook_skill", "burglar_stealth", "copycat_reload" },
+      { "rogue_dodge", "burglar_stealth", "rogue_switch" },
+      { "crook_skill", "perk_dmg", "copycat_reload" },
       { "ex_pres", "anarch_rise" },
-      { "yakuza_speed" }
+      { "helmet_popping", "yakuza_speed" }
     }
   } -- Stats
   local PerkTree2 = {
@@ -587,8 +758,8 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     tiers = {
       { "muscle_health", "armorer_perk", "hitman_perk" },
       { "infil_close", "gambler_mag_throw", "infil_melee" },
-      { "muscle_panic", "gambler_heal", "infil_heal" },
-      { "maniac_base" }
+      { "muscle_panic", "infil_heal" },
+      { "gambler_heal", "maniac_base" }
     }
   } -- Consumables
   local PerkTree3 = {
@@ -599,8 +770,8 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     tiers = {
       { "kingpin_cooldown", "h3h3_cooldown", "leech_duration" },
       { "stoic_base", "leech_healing" },
-      { "stoic_negation", "kingpin_prio", "leech_segments" },
-      { "stoic_regen", "kingpin_healing", "h3h3_absorb", "leech_swan" }
+      { "stoic_regen", "kingpin_prio", "leech_segments" },
+      { "stoic_negation", "kingpin_healing", "h3h3_absorb", "leech_swan" }
     }
   }
 
@@ -649,6 +820,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
   }
   self.skills.dominator = {
     { upgrades = { "player_intimidate_enemies" }, cost = self.costs.default },
+    { upgrades = { "player_intimidation_multiplier" }, cost = self.costs.default },
     name_id = "menu_dominator", desc_id = "menu_dominator_desc", icon_xy = { 2, 8 }
   }
   self.skills.threat_inc = {
@@ -676,7 +848,6 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     name_id = "menu_shinobi", desc_id = "menu_shinobi_desc", icon_xy = { 0, 3 }
   }
 
-  -- Removed skills
   local BonusTree1 = {
     skill = "bonus",
     name_id = "st_menu_bonus_tree1",
@@ -688,18 +859,28 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       { "drop_cloth", "custody_timer", "oldholm_syndrome" },
       { "mag_plus", "dominator" }
     }
-  } -- Weapon stat boosts
+  }
+
+  -- Weapon stat boosts
   self.skills.tinkerer = {
-    { upgrades = { "weapon_modded_damage_multiplier", "weapon_modded_spread_multiplier", "weapon_modded_recoil_multiplier" }, cost = self.costs.default },
-    { upgrades = { "weapon_fire_rate_multiplier" }, cost = self.costs.default },
+    { upgrades = { "weapon_modded_recoil_multiplier" }, cost = self.costs.default },
+    { upgrades = { "weapon_modded_spread_multiplier" }, cost = self.costs.default },
+    { upgrades = { "weapon_modded_damage_multiplier" }, cost = self.costs.default },
     name_id = "menu_tinkerer", desc_id = "menu_tinkerer_desc", icon_xy = { 1, 7 }
   }
-  self.skills.ar_stability = {
-    { upgrades = { "assault_rifle_recoil_index_addend" }, cost = self.costs.default },
+  self.skills.illegal_parts = {
+    { upgrades = { "weapon_fire_rate_multiplier" }, cost = self.costs.default },
+    { upgrades = { "weapon_fire_rate_multiplier_2" }, cost = self.costs.default },
+    name_id = "menu_illegal_parts", desc_id = "menu_illegal_parts_desc", icon_xy = { 10, 2 }
+  }
+  self.skills.accuracy_increase = {
+    { upgrades = { "player_weapon_accuracy_increase_1" }, cost = self.costs.default },
+    { upgrades = { "player_weapon_accuracy_increase_2" }, cost = self.costs.default },
     name_id = "menu_ar_stability", desc_id = "menu_ar_stability_desc", icon_xy = { 0, 0 }
   }
-  self.skills.lmg_stability = {
-    { upgrades = { "lmg_recoil_index_addend" }, cost = self.costs.default },
+  self.skills.stability_increase = {
+    { upgrades = { "player_stability_increase_bonus_1" }, cost = self.costs.default },
+    { upgrades = { "player_stability_increase_bonus_2" }, cost = self.costs.default },
     name_id = "menu_lmg_stability", desc_id = "menu_lmg_stability_desc", icon_xy = { 0, 0 }
   }
   self.skills.single_shot_accuracy = {
@@ -708,16 +889,19 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
   }
   self.skills.reload_speed = {
     { upgrades = { "weapon_passive_reload_speed_multiplier" }, cost = self.costs.default },
+    { upgrades = { "weapon_passive_reload_speed_multiplier_2" }, cost = self.costs.default },
+    { upgrades = { "weapon_passive_reload_speed_multiplier_3" }, cost = self.costs.default },
     name_id = "menu_reload_speed", desc_id = "menu_reload_speed_desc", icon_xy = { 0, 0 }
-  }
-  self.skills.lmg_reload_speed = {
-    { upgrades = { "lmg_reload_speed_multiplier" }, cost = self.costs.default },
-    name_id = "menu_lmg_reload_speed", desc_id = "menu_lmg_reload_speed_desc", icon_xy = { 0, 0 }
   }
   self.skills.silencer_statboost = {
     { upgrades = { "weapon_silencer_recoil_multiplier" }, cost = self.costs.default },
     { upgrades = { "weapon_silencer_spread_multiplier" }, cost = self.costs.default },
     name_id = "menu_silencer_statboost", desc_id = "menu_silencer_statboost_desc", icon_xy = { 4, 4 }
+  }
+  self.skills.hollow_point = {
+    { upgrades = { "weapon_passive_armor_piercing_chance" }, cost = self.costs.default },
+    { upgrades = { "player_ap_bullets_1" }, cost = self.costs.default },
+    name_id = "menu_hollow_point", desc_id = "menu_hollow_point_desc", icon_xy = { 0, 0 }
   }
 
   local BonusTree2 = {
@@ -726,26 +910,73 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     unlocked = true,
     background_texture = "guis/textures/pd2/skilltree/bg_mastermind",
     tiers = {
-      { "lmg_stability", "single_shot_accuracy" },
-      { "ar_stability", "smg_rof" },
-      { "lmg_reload_speed", "reload_speed" },
-      { "tinkerer", "silencer_statboost" }
+      { "stability_increase", "single_shot_accuracy" },
+      { "accuracy_increase", "tinkerer" },
+      { "reload_speed", "hollow_point" },
+      { "illegal_parts", "silencer_statboost" }
     }
-  } -- Misc. unused skills
+  }
+
+  -- Misc. unused skills
+  self.skills.beast_of_burden = {
+    { upgrades = { "carry_movement_penalty_nullifier" }, cost = self.costs.default },
+    name_id = "menu_beast_of_burden", desc_id = "menu_beast_of_burden_desc", icon_xy = { 6, 0 }
+  }
+  self.skills.loud_and_proud = {
+    { upgrades = { "player_detection_risk_damage_multiplier" }, cost = self.costs.default },
+    { upgrades = { "player_detection_risk_damage_multiplier_2" }, cost = self.costs.default },
+    name_id = "menu_loud_and_proud", desc_id = "menu_loud_and_proud_desc", icon_xy = { 0, 0 }
+  }
+  self.skills.pager_snatch = {
+    { upgrades = { "player_melee_kill_snatch_pager_chance" }, cost = self.costs.default },
+    { upgrades = { "player_melee_kill_snatch_pager_chance_2" }, cost = self.costs.default },
+    { upgrades = { "player_melee_kill_snatch_pager_chance_3" }, cost = self.costs.default },
+    { upgrades = { "player_melee_kill_snatch_pager_chance_4" }, cost = self.costs.default },
+    name_id = "menu_pager_snatch", desc_id = "menu_pager_snatch_desc", icon_xy = { 0, 0 }
+  }
+  self.skills.blanks = {
+    { upgrades = { "player_civ_harmless_bullets" }, cost = self.costs.default },
+    name_id = "menu_blanks", desc_id = "menu_blanks_desc", icon_xy = { 6, 7 }
+  }
+  self.skills.shell_dimension = {
+    { upgrades = { "shotgun_consume_no_ammo_chance_1", "pistol_consume_no_ammo_chance_1", "assault_rifle_consume_no_ammo_chance_1",
+                   "snp_consume_no_ammo_chance_1", "smg_consume_no_ammo_chance_1", "lmg_consume_no_ammo_chance_1", "minigun_consume_no_ammo_chance_1" }, cost = self.costs.default },
+    { upgrades = { "shotgun_consume_no_ammo_chance_2", "pistol_consume_no_ammo_chance_2", "assault_rifle_consume_no_ammo_chance_2",
+                   "snp_consume_no_ammo_chance_2", "smg_consume_no_ammo_chance_2", "lmg_consume_no_ammo_chance_2", "minigun_consume_no_ammo_chance_2" }, cost = self.costs.default },
+    name_id = "menu_shell_dimension", desc_id = "menu_shell_dimension_desc", icon_xy = { 5, 0 }
+  }
+  self.skills.sharp_damage = {
+    { upgrades = { "player_melee_sharp_damage_multiplier" }, cost = self.costs.default },
+    { upgrades = { "player_melee_sharp_damage_multiplier_2" }, cost = self.costs.default },
+    { upgrades = { "player_melee_sharp_damage_multiplier_3" }, cost = self.costs.default },
+    name_id = "menu_sharp_damage", desc_id = "menu_sharp_damage_desc", icon_xy = { 4, 10 }
+  }
+  self.skills.hypocritical = {
+    { upgrades = { "player_critical_hit_chance_1" }, cost = self.costs.default },
+    { upgrades = { "player_critical_hit_chance_2" }, cost = self.costs.default },
+    name_id = "menu_hypocritical", desc_id = "menu_hypocritical_desc", icon_xy = { 6, 11 }
+  }
+  self.skills.nebula_plus = {
+    { upgrades = { "player_assets_cost_multiplier" }, cost = self.costs.default },
+    { upgrades = { "player_assets_cost_multiplier_2" }, cost = self.costs.default },
+    { upgrades = { "player_assets_cost_multiplier_3" }, cost = self.costs.default },
+    name_id = "menu_nebula_plus", desc_id = "menu_nebula_plus_desc", icon_xy = { 0, 8 }
+  }
+
   local BonusTree3 = {
     skill = "bonus",
     name_id = "st_menu_bonus_tree3",
     unlocked = true,
     background_texture = "guis/textures/pd2/skilltree/bg_mastermind",
     tiers = {
-      { "nine_lives" },
-      { "running_from_death", "up_you_go" },
-      { "perseverance", "feign_death" },
-      { "messiah" }
+      { "blanks" },
+      { "sharp_damage", "nebula_plus" },
+      { "loud_and_proud", "shell_dimension" },
+      { "beast_of_burden", "pager_snatch", "hypocritical" }
     }
   }
 
   table.insert(self.trees, BonusTree1)
   table.insert(self.trees, BonusTree2)
-  --table.insert(self.trees, BonusTree3)
+  table.insert(self.trees, BonusTree3)
 end)
