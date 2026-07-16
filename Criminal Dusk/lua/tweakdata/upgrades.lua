@@ -51,6 +51,8 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   self.values.weapon.fire_rate_multiplier = { 1.5, 2 } -- Illegal Parts
   self.values.weapon.knock_down = { 1.1, 1.2 } -- Heavy Impact
   self.values.weapon.armor_piercing_chance = { 0.5 } -- Black Tip
+  self.close_combat_distance = 1000 -- Distance for Close Combat/panic on kill
+  self.killshot_close_panic_range = 1000 -- Distance that panic on kill spreads
 
   -- Repair System
   self.values.player.drill_autorepair_1 = { 0.5 }

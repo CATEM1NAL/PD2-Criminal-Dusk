@@ -343,9 +343,9 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
   }
   self.trees[5].tiers = {
     { "transporter", "stun_resistance" },
-    { "thick_skin", "enforcer_recovery", "armor_bag_reduction" },
-    { "crew_recovery", "nerves_of_steel", "shock_awe" },
-    { "bulletproof", "juggernaut" }
+    { "armor_bag_reduction", "juggernaut", "enforcer_recovery" },
+    { "thick_skin", "nerves_of_steel" },
+    { "bulletproof", "shock_awe", "crew_recovery" }
     
   }
   self.trees[6].tiers = {
@@ -356,13 +356,40 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
   }
 
   -- TECHNICIAN --
-
+  self.skills.sentry_shield = {
+    { upgrades = { "sentry_gun_shield" }, cost = self.costs.default },
+    name_id = "menu_sentry_shield", desc_id = "menu_sentry_shield_desc", icon_xy = { 9, 0 }
+  }
+  self.skills.sentry_health = {
+    { upgrades = { "sentry_gun_armor_multiplier" }, cost = self.costs.default },
+    name_id = "menu_eco_sentry_beta", desc_id = "menu_eco_sentry_beta_desc", icon_xy = { 9, 2 }
+  }
+  self.skills.sentry_ammo = {
+    { upgrades = { "sentry_gun_extra_ammo_multiplier_1" }, cost = self.costs.default },
+    name_id = "menu_sentry_ammo", desc_id = "menu_sentry_ammo_desc", icon_xy = { 5, 6 }
+  }
+  self.skills.sentry_accuracy = {
+    { upgrades = { "sentry_gun_spread_multiplier" }, cost = self.costs.default },
+    name_id = "menu_sentry_accuracy", desc_id = "menu_sentry_accuracy_desc", icon_xy = { 1, 6 }
+  }
+  self.skills.sentry_rotation = {
+    { upgrades = { "sentry_gun_rot_speed_multiplier" }, cost = self.costs.default },
+    name_id = "menu_sentry_rotation", desc_id = "menu_sentry_rotation_desc", icon_xy = { 1, 6 }
+  }
+  self.skills.sentry_ap = {
+    { upgrades = { "sentry_gun_ap_bullets", "sentry_gun_fire_rate_reduction_1" }, cost = self.costs.default },
+    name_id = "menu_sentry_ap", desc_id = "menu_sentry_ap_desc", icon_xy = { 7, 5 }
+  }
+  self.skills.jack_of_all_trades = {
+    { upgrades = { "second_deployable_1" }, cost = self.costs.default },
+    name_id = "menu_jack_of_all_trades_beta", desc_id = "menu_jack_of_all_trades_beta_desc", icon_xy = { 9, 4 }
+  }
 
   self.trees[7].tiers = {
-    { "defense_up" },
-    { "sentry_targeting_package", "eco_sentry" },
-    { "engineering", "jack_of_all_trades" },
-    { "tower_defense" }
+    { "sentry_rotation", "sentry_accuracy" },
+    { "sentry_ammo", "sentry_health" },
+    { "sentry_ap", "tower_defense" },
+    { "jack_of_all_trades", "sentry_shield" }
   }
 
   self.skills.toolkit = {
@@ -514,6 +541,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
   }
   self.skills.muscle_panic = {
     { upgrades = { "player_panic_suppression", "player_uncover_multiplier" }, cost = self.costs.default },
+    { upgrades = { "player_killshot_close_panic_chance" }, cost = self.costs.default },
     name_id = "menu_deck2_7", desc_id = "menu_deck2_7_skill", icon_xy = { 0, 0 }
   }
 

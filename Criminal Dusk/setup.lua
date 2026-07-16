@@ -111,7 +111,7 @@ local function SetTweakData()
   end
 
   -- XP tweaks
-  tweak_data.experience_manager.prestige_xp_max = 10000000
+  tweak_data.experience_manager.prestige_xp_max = 5000000
   tweak_data.experience_manager.difficulty_multiplier = { 1.5, 2, 2.5, 3, 3.5, 4 }
   tweak_data.experience_manager.level_limit.pc_difference_multipliers = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }
   tweak_data.experience_manager.level_limit.low_cap_multiplier = 1

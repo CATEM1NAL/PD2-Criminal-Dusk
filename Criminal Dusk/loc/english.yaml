@@ -137,9 +137,9 @@ menu_mobile_desc: "$lv1;Gain ##16## accuracy while moving with SMGs, assault rif
 menu_target_acquisition: "Target Acquisition"
 menu_target_acquisition_desc: "$lv1;Aim down sights ##100%## faster.\n\n$lv2;Zoom while aiming down sights is increased by ##25%##."
 
-menu_single_shot_ammo_return_beta_desc: "$lv1;While using a single shot SMG, assault rifle, or sniper rifle, landing ##3## headshots within ##6## seconds will return ##1## bullet to your magazine.\n\n$lv2;Only ##2## headshots are now required."
+menu_single_shot_ammo_return_beta_desc: "$lv1;While using a semi-auto weapon, landing ##3## headshots within ##6## seconds will return ##1## bullet to your magazine.\n\n$lv2;Only ##2## headshots are required."
 
-menu_speedy_reload_beta_desc: "$lv1;Headshot kills with single shot SMGs, assault rifles, and sniper rifles increase your reload speed by ##100%## for ##4## seconds."
+menu_speedy_reload_beta_desc: "$lv1;Headshot kills with semi-auto weapons increase your reload speed by ##100%## for ##4## seconds."
 
 menu_sniper_graze_damage_desc: "$lv1;Headshots with a sniper rifle deal ##50%## damage to all enemies within ##1m## of the bullet's trajectory.\n\n$lv2;Damage is now ##100%##, but the radius is reduced to ##50cm##."
 
@@ -262,6 +262,27 @@ menu_sprint_shoot_desc: "$lv1;You can hipfire while sprinting."
 menu_hollow_point: "Black Tip"
 menu_hollow_point_desc: "$lv1;Bullets have a ##50%## chance to ignore body armor.\n\n$lv2;Bullets will always ignore body armor."
 
+menu_sentry_shield: "Plating"
+menu_sentry_shield_desc: "$lv1;Sentries gain a frontal shield, protecting them from damage."
+
+menu_eco_sentry_beta_desc: "$lv1;Sentries have ##150%## more health."
+
+menu_sentry_ammo: "Ammo Reserve"
+menu_sentry_ammo_desc: "$lv1;Sentries have ##50%## more ammo."
+
+menu_sentry_accuracy: "Precision Engineering"
+menu_sentry_accuracy_desc: "$lv1;Sentries are ##100%## more accurate."
+
+menu_sentry_rotation: "Servo Grease"
+menu_sentry_rotation_desc: "$lv1;Sentries rotate ##150%## faster."
+
+menu_sentry_ap: "Armor Penetration"
+menu_sentry_ap_desc: "$lv1;Sentries can toggle AP rounds, lowering fire rate by ##75%## but increasing damage by ##250%## and piercing enemies/shields."
+
+menu_jack_of_all_trades_beta_desc: "$lv1;You can equip a second deployable. Your second deployable has the quantity halved."
+
+menu_tower_defense_beta_desc: "$lv1;Carry ##1## extra sentry gun.\n\n$lv2;Carry ##3## extra sentry guns."
+
 ## Ghost
 menu_scavenger_beta_desc: "$lv1;Movement speed is increased by ##30%## for ##5## seconds on armor break.\n\n$lv2;Also applies to the crew when triggered."
 
@@ -271,7 +292,7 @@ menu_perk_headshot: "$lv1;Headshot damage increased by ##25%##.\n\n$lv2;Headshot
 
 menu_deck2_1_skill: "$lv1;Max health increased by ##10##.\n\n$lv2;Max health increased by ##20##.\n\n$lv3;Max health increased by ##40##.\n\n$lv4;Max health increased by ##80##.\n\n$lv5;Max health increased by ##100##.\n\n$lv6;Restore ##1## health every ##5## seconds."
 
-menu_deck2_7_skill: "$lv1;Suppressed enemies can panic. Enemies are ##15%## more likely to target you."
+menu_deck2_7_skill: "$lv1;Suppressed enemies can panic. Enemies are ##15%## more likely to target you.\n\n$lv2;Kills within ##10m## have a ##50%## chance to cause panic."
 
 menu_armorer_skill: "Impact Plate"
 menu_armorer_skill_desc: "$lv1;Armor increased by ##5%##.\n\n$lv2;Armor increased by ##10%##.\n\n$lv3;Armor increased by ##20%##.\n\n$lv4;Armor increased by ##30%##.\n\n$lv5;Armor increased by ##40%##.\n\n$lv6;Your armor is constantly recovering at a slower rate. This recovery cannot be accelerated."

@@ -1,7 +1,7 @@
 {
 	"name" : "Criminal Dusk",
-	"description" : "A cut down version of Criminal Dawn with randomisation removed.",
-	"author" : "C@:\\EM1NAL\\",
+	"description" : "Gameplay rework that aims to make the game play more like a mix of PAYDAY: The Heist and early PAYDAY 3.",
+	"author" : "~/cat/em1/nal/",
 	"contact" : "contact@stupidcat.uk",
 	"version" : "0.0.0",
 	"blt_version" : 2,
@@ -40,6 +40,7 @@
 		{ "hook_id" : "lib/managers/menu/blackmarketgui",	"script_path" : "lua/managers/menu/blackmarketgui.lua" },
 		{ "hook_id" : "lib/managers/menu/skilltreeguinew",	"script_path" : "lua/managers/menu/skilltreegui.lua" },
 		{ "hook_id" : "lib/managers/menu/crewmanagementgui",	"script_path" : "lua/managers/menu/crewmanagementgui.lua" },
+		{ "hook_id" : "lib/managers/menu/infamytreeguinew",	"script_path" : "lua/managers/menu/infamytreegui.lua" },
 		{ "hook_id" : "lib/managers/hud/hudstageendscreen",	"script_path" : "lua/managers/menu/stageendscreen.lua" },
 		{ "hook_id" : "lib/managers/mission/elementspawndeployable",		"script_path" : "lua/managers/elements/spawndeployable.lua" },
 		{ "hook_id" : "lib/tweak_data/skilltreetweakdata",	"script_path" : "lua/tweakdata/skilltree.lua" },

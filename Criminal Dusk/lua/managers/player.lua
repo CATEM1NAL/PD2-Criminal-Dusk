@@ -55,3 +55,35 @@ Hooks:OverrideFunction(PlayerManager, "body_armor_skill_addend", function(self, 
   addend = addend + self:upgrade_value("team", "crew_add_armor", 0)
   return addend
 end)
+
+-- Aggressive Reload triggers on any single shot weapon
+Hooks:OverrideFunction(PlayerManager, "_on_activate_aggressive_reload_event", function(self, attack_data)
+  if attack_data then local weapon_unit = self:equipped_weapon_unit()
+    if weapon_unit then
+      local weapon = weapon_unit:base()
+      if weapon and weapon:fire_mode() == "single" then self:activate_temporary_upgrade("temporary", "single_shot_fast_reload") end
+    end
+  end
+end)
+
+-- Ammo Efficiency triggers on any single shot weapon
+Hooks:OverrideFunction(PlayerManager, "_on_enter_ammo_efficiency_event", function(self)
+  if not self._coroutine_mgr:is_running("ammo_efficiency") then
+    local weapon_unit = self:equipped_weapon_unit()
+    if weapon_unit and weapon_unit:base():fire_mode() == "single" then
+      self._coroutine_mgr:add_coroutine("ammo_efficiency", PlayerAction.AmmoEfficiency, self, self._ammo_efficiency.headshots, self._ammo_efficiency.ammo, Application:time() + self._ammo_efficiency.time)
+    end
+  end
+end)
+
+-- Lock n' Load triggers on any full auto weapon
+Hooks:OverrideFunction(PlayerManager, "_on_enter_shock_and_awe_event", function(self)
+  if not self._coroutine_mgr:is_running("automatic_faster_reload") then
+    local equipped_unit = self:get_current_state()._equipped_unit
+    local data = self:upgrade_value("player", "automatic_faster_reload", nil)
+
+    if data and equipped_unit and (equipped_unit:base():fire_mode() == "auto" or equipped_unit:base():fire_mode() == "burst") then
+      self._coroutine_mgr:add_and_run_coroutine("automatic_faster_reload", PlayerAction.ShockAndAwe, self, data.target_enemies, data.max_reload_increase, data.min_reload_increase, data.penalty, data.min_bullets, equipped_unit)
+    end
+  end
+end)

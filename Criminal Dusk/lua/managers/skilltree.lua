@@ -21,10 +21,9 @@ end)
 
 Hooks:OverrideFunction(SkillTreeManager, "skill_cost", function(self, tier) return tier end)
 Hooks:OverrideFunction(SkillTreeManager, "level_up", function(self)
-  if math.floor(managers.experience:current_level() % self.LevelsPerPoint) == 0 then self:_aquire_points(1) end
-  if managers.experience:current_level() == 100 and (self:points() ~= self.MaxSkillPoints) then
-    self:_aquire_points(self.MaxSkillPoints - self:points())
-  end
+  local CurrentLevel = managers.experience:current_level()
+  if CurrentLevel < 100 and math.floor(CurrentLevel % self.LevelsPerPoint) == 0 then self:_aquire_points(1)
+  elseif CurrentLevel == 100 and (self:points() ~= self.MaxSkillPoints) then self:_aquire_points(self.MaxSkillPoints - self:points()) end
 end)
 
 Hooks:OverrideFunction(SkillTreeManager, "_setup_skill_switches", function(self)
@@ -70,7 +69,7 @@ end)
 
 Hooks:OverrideFunction(SkillTreeManager, "_verify_loaded_data", function(self, points_aquired_during_load)
   for i, switch_data in ipairs(self._global.skill_switches) do
-    local points = points_aquired_during_load + math.floor(managers.experience:current_level() / self.LevelsPerPoint)
+    local points = math.min(points_aquired_during_load + math.floor(managers.experience:current_level() / self.LevelsPerPoint), self.MaxSkillPoints)
 
     for skill_id, data in pairs(clone(switch_data.skills)) do
       if not tweak_data.skilltree.skills[skill_id] then switch_data.skills[skill_id] = nil end
@@ -126,5 +125,5 @@ Hooks:OverrideFunction(SkillTreeManager, "_verify_loaded_data", function(self, p
 end)
 
 Hooks:OverrideFunction(SkillTreeManager, "max_points_for_current_level", function(self)
-  return self.StartingPoints + math.floor(managers.experience:current_level() / self.LevelsPerPoint)
+  return math.min(self.StartingPoints + math.floor(managers.experience:current_level() / self.LevelsPerPoint), self.MaxSkillPoints)
 end)
