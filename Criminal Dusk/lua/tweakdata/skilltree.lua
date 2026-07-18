@@ -346,7 +346,6 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     { "armor_bag_reduction", "juggernaut", "enforcer_recovery" },
     { "thick_skin", "nerves_of_steel" },
     { "bulletproof", "shock_awe", "crew_recovery" }
-    
   }
   self.trees[6].tiers = {
     { "scavenger", "extra_ammo_box", "portable_saw" },
@@ -463,11 +462,6 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
   }
 
   -- GHOST --
-  self.skills.second_wind = {
-    { upgrades = { "temporary_damage_speed_multiplier" }, cost = self.costs.default },
-    { upgrades = { "player_team_damage_speed_multiplier_send" }, cost = self.costs.default },
-    name_id = "menu_scavenger_beta", desc_id = "menu_scavenger_beta_desc", icon_xy = { 10, 9 }
-  }
 
   self.trees[10].tiers = {
     { "jail_workout" },
@@ -475,18 +469,58 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     { "second_chances", "ecm_booster" },
     { "ecm_2x" }
   }
-  self.trees[11].tiers = {
-    { "sprinter" },
-    { "awareness", "thick_skin" },
-    { "dire_need", "insulation" },
-    { "jail_diet" }
-    
+
+  self.skills.sprinter = {
+    { upgrades = { "player_run_speed_multiplier" }, cost = self.costs.default },
+    { upgrades = { "player_run_dodge_chance" }, cost = self.costs.default },
+    name_id = "menu_sprinter", desc_id = "menu_sprinter_desc", icon_xy = { 7, 3 }
   }
+  self.skills.move_speed = {
+    { upgrades = { "player_movement_speed_multiplier" }, cost = self.costs.default },
+    name_id = "menu_move_speed", desc_id = "menu_move_speed_desc", icon_xy = { 1, 8 }
+  }
+  self.skills.moving_target = {
+    { upgrades = { "player_can_strafe_run" }, cost = self.costs.default },
+    { upgrades = { "player_can_free_run" }, cost = self.costs.default },
+    name_id = "menu_moving_target", desc_id = "menu_moving_target_desc", icon_xy = { 2, 4 }
+  }
+  self.skills.sprint_loaded = {
+    { upgrades = { "player_run_and_reload" }, cost = self.costs.default },
+    name_id = "menu_sprint_loaded", desc_id = "menu_sprint_loaded_desc", icon_xy = { 10, 6 }
+  }
+  self.skills.hidden_blade = {
+    { upgrades = { "player_melee_concealment_modifier" }, cost = self.costs.default },
+    name_id = "menu_hidden_blade", desc_id = "menu_hidden_blade_desc", icon_xy = { 4, 10 }
+  }
+  self.skills.vest_conceal = {
+    { upgrades = { "player_ballistic_vest_concealment_1" }, cost = self.costs.default },
+    name_id = "menu_vest_conceal", desc_id = "menu_vest_conceal_desc", icon_xy = { 2, 12 }
+  }
+  self.skills.shockproof = {
+    { upgrades = { "player_resist_firing_tased" }, cost = self.costs.default },
+    { upgrades = { "player_ballistic_vest_concealment_1" }, cost = self.costs.default },
+    { upgrades = { "player_taser_self_shock", "player_escape_taser_1" }, cost = self.costs.default },
+    name_id = "menu_insulation_beta", desc_id = "menu_insulation_beta_desc", icon_xy = { 3, 5 }
+  }
+
+  self.trees[11].tiers = {
+    { "sprinter", "moving_target", "move_speed" },
+    { "hidden_blade", "vest_conceal", "jail_diet" },
+    { "dire_need", "shockproof" },
+    { "sprint_loaded" }
+  }
+
+  self.skills.second_wind = {
+    { upgrades = { "temporary_damage_speed_multiplier" }, cost = self.costs.default },
+    { upgrades = { "player_team_damage_speed_multiplier_send" }, cost = self.costs.default },
+    name_id = "menu_scavenger_beta", desc_id = "menu_scavenger_beta_desc", icon_xy = { 10, 9 }
+  }
+
   self.trees[12].tiers = {
     { "second_wind" },
     { "optic_illusions", "silence_expert" },
-    { "backstab", "hitman" },
-    { "unseen_strike" }
+    { "hitman" },
+    { "backstab" }
   }
 
   -- FUGITIVE --
@@ -497,12 +531,22 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     { "gun_fighter", "expert_handling" },
     { "trigger_happy" }
   }
+
+  self.skills.four_lives = {
+    { upgrades = { "player_additional_lives_1" }, cost = self.costs.default },
+    { upgrades = { "player_additional_lives_2" }, cost = self.costs.default },
+    name_id = "menu_four_lives", desc_id = "menu_four_lives_desc", icon_xy = { 5, 2 }
+  }
+  self.skills.bleedout_health = {
+    { upgrades = { "player_bleed_out_health_multiplier" }, cost = self.costs.default },
+    name_id = "menu_bleedout_health", desc_id = "menu_bleedout_health_desc", icon_xy = { 5, 2 }
+  }
+
   self.trees[14].tiers = {
-    { "nine_lives" },
+    { "four_lives", "bleedout_health" },
     { "running_from_death", "up_you_go" },
     { "perseverance", "feign_death" },
     { "messiah" }
-    
   }
   self.trees[15].tiers = {
     { "martial_arts" },
@@ -551,7 +595,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     { upgrades = { "player_tier_armor_multiplier_2" }, cost = self.costs.default },
     { upgrades = { "player_tier_armor_multiplier_3" }, cost = self.costs.default },
     { upgrades = { "player_tier_armor_multiplier_4" }, cost = self.costs.default },
-    { upgrades = { "player_tier_armor_multiplier_6", "mrwi_armor_multiplier_1" }, cost = self.costs.default },
+    { upgrades = { "player_tier_armor_multiplier_5" }, cost = self.costs.default },
     { upgrades = { "player_armor_grinding_1" }, cost = self.costs.default },
     name_id = "menu_armorer_skill", desc_id = "menu_armorer_skill_desc", icon_xy = { 0, 0 }
   }

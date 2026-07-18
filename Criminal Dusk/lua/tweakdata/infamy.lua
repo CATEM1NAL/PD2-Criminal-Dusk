@@ -71,11 +71,9 @@ Hooks:PostHook(InfamyTweakData, "init", "CrimDusk_InfamyTweakInit", function(sel
     infamy_stinger_017 = "infamy_glovepack_neoncity",
 
     -- Suit variants
-    infamy_color_inf_06 = "in31_suitpack_leather",
     in31_suitpack_leather_black = "in31_suitpack_leather",
     in31_suitpack_leather_red = "in31_suitpack_leather",
     in31_suitpack_leather_white = "in31_suitpack_leather",
-    infamy_color_inf_11 = "in32_suitpack_gangstercoat",
     in32_suitpack_gangstercoat_irish = "in32_suitpack_gangstercoat",
     in32_suitpack_gangstercoat_british = "in32_suitpack_gangstercoat",
     in32_suitpack_gangstercoat_french = "in32_suitpack_gangstercoat",

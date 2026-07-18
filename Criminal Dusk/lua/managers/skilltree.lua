@@ -1,4 +1,4 @@
-SkillTreeManager.VERSION = 4
+SkillTreeManager.VERSION = 7
 
 Hooks:PreHook(SkillTreeManager, "_setup", "CrimDusk_SkillTreeManagerSetup", function(self)
   self.StartingPoints = 1 -- How many points the player has at Level 0
@@ -10,11 +10,11 @@ Hooks:PreHook(SkillTreeManager, "_setup", "CrimDusk_SkillTreeManagerSetup", func
   self.LevelsPerPoint = 100 / PointsFromLevels
 
   -- Player gains extra skill points for infamy
-  local InfamiesPerPoint = 52 / self.MaxInfamyPoints
-  local InfamyPoints = math.floor(managers.experience:current_rank() / InfamiesPerPoint)
+  self.InfamiesPerPoint = 52 / self.MaxInfamyPoints
+  self.InfamyPoints = math.floor(managers.experience:current_rank() / self.InfamiesPerPoint)
 
-  self.StartingPoints = self.StartingPoints + InfamyPoints
-  self.MaxSkillPoints = math.min(self.MaxSkillPoints + InfamyPoints, 100 + self.StartingPoints)
+  self.StartingPoints = self.StartingPoints + self.InfamyPoints
+  self.MaxSkillPoints = math.min(self.MaxSkillPoints + self.InfamyPoints, 100 + self.StartingPoints)
   -- Total points gained from level up are equal to (MaxSkillPoints - StartingPoints)
   -- If the number of level up points is higher than 100, it may cause problems!
 end)
@@ -68,8 +68,14 @@ Hooks:OverrideFunction(SkillTreeManager, "_setup_skill_switches", function(self)
 end)
 
 Hooks:OverrideFunction(SkillTreeManager, "_verify_loaded_data", function(self, points_aquired_during_load)
+  local SkillPoints = math.floor(managers.experience:current_level() / self.LevelsPerPoint)
+  self.InfamyPoints = math.floor(managers.experience:current_rank() / self.InfamiesPerPoint)
+
+  self.StartingPoints = self.StartingPoints + self.InfamyPoints
+  self.MaxSkillPoints = math.min(self.MaxSkillPoints + self.InfamyPoints, 100 + self.StartingPoints)
+
   for i, switch_data in ipairs(self._global.skill_switches) do
-    local points = math.min(points_aquired_during_load + math.floor(managers.experience:current_level() / self.LevelsPerPoint), self.MaxSkillPoints)
+    local points = math.min(points_aquired_during_load + SkillPoints + self.InfamyPoints, self.MaxSkillPoints)
 
     for skill_id, data in pairs(clone(switch_data.skills)) do
       if not tweak_data.skilltree.skills[skill_id] then switch_data.skills[skill_id] = nil end
@@ -125,5 +131,10 @@ Hooks:OverrideFunction(SkillTreeManager, "_verify_loaded_data", function(self, p
 end)
 
 Hooks:OverrideFunction(SkillTreeManager, "max_points_for_current_level", function(self)
-  return math.min(self.StartingPoints + math.floor(managers.experience:current_level() / self.LevelsPerPoint), self.MaxSkillPoints)
+  local SkillPoints = math.floor(managers.experience:current_level() / self.LevelsPerPoint)
+  self.InfamyPoints = math.floor(managers.experience:current_rank() / self.InfamiesPerPoint)
+  self.StartingPoints = self.StartingPoints + self.InfamyPoints
+  self.MaxSkillPoints = math.min(self.MaxSkillPoints + self.InfamyPoints, 100 + self.StartingPoints)
+  
+  return math.min(self.StartingPoints + SkillPoints, self.MaxSkillPoints)
 end)

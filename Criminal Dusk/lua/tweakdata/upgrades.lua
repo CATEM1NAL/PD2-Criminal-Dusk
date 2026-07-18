@@ -1,7 +1,4 @@
 Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", function(self)
-  -- Remove skill points at 10th levels
-  for i = 1, 10 do self.definitions["rep_upgrade" .. i].value = 0 end
-
   -- Consumables unlock every 10 levels
   table.insert(self.level_tree[10].upgrades, "pocket_ecm_jammer") -- Pocket ECM
   table.insert(self.level_tree[20].upgrades, "smoke_screen_grenade") -- Smoke Grenade
@@ -13,6 +10,9 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
     name_id = "weapons",
     upgrades = { "bessy", "money", "xmas_snowball", "piggy_hammer", "chico_injector" }
   }
+
+  -- Remove skill points at 10th levels
+  for i = 1, 10 do self.definitions["rep_upgrade" .. i].value = 0 end
 
   for level, _ in pairs(self.level_tree) do
     for i = #self.level_tree[level].upgrades, 1, -1 do
@@ -53,6 +53,7 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   self.values.weapon.armor_piercing_chance = { 0.5 } -- Black Tip
   self.close_combat_distance = 1000 -- Distance for Close Combat/panic on kill
   self.killshot_close_panic_range = 1000 -- Distance that panic on kill spreads
+  self.values.player.tier_armor_multiplier = { 1.05, 1.1, 1.2, 1.3, 1.4, 1.4 } -- Armour increase
 
   -- Repair System
   self.values.player.drill_autorepair_1 = { 0.5 }
@@ -159,6 +160,13 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   -- Leech
   self.values.player.copr_activate_bonus_health_ratio = { 0.01, 0.4 }
   self.definitions.player_copr_activate_bonus_health_ratio_1.upgrade.value = 2
+
+  -- Kingpin
+  self.values.temporary.chico_injector = {
+    { 0.25, 6 },
+    { 0.5, 6 },
+    { 0.75, 6 }
+  }
 
   -- Health mult to flat
   self.values.player.health_multiplier = { 1 }

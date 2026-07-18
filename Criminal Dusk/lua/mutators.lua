@@ -19,8 +19,8 @@ end
 if Difficulty >= 4 then -- Very Hard
   table.insert(MutatorTable, "CloakerEffect")
   table.insert(MutatorTable, "CloakerArrest")
-  table.insert(MutatorTable, "MedicDozer")
   table.insert(MutatorTable, "DozerRage")
+  if Difficulty < 8 then table.insert(MutatorTable, "MedicDozer") end
 end
 
 if Difficulty >= 5 then -- Overkill

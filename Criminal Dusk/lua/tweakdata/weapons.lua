@@ -68,7 +68,11 @@ local function SetAIStats(self)
   self.m14_sniper_npc.trail = "effects/particles/weapons/sniper_trail"
   self.svd_snp_npc.trail = "effects/particles/weapons/sniper_trail"
   self.svdsil_snp_npc.trail = "effects/particles/weapons/sniper_trail"
+
+  self.heavy_snp_npc.DAMAGE = 5 -- ZEAL sniper
   self.heavy_snp_npc.trail = "effects/particles/weapons/sniper_trail_marshal"
+
+  self.dmr_npc.DAMAGE = 2.5 -- Marshal sniper
 end
 
 Hooks:OverrideFunction(WeaponTweakData, "_set_normal", function(self) SetAIStats(self) end)
@@ -117,7 +121,7 @@ local WeaponClasses = {
     [24] = { "p226", "colt_1911", "m1911", "c96", "type54", "breech", "hs2000", "stech", "pmm", "usp", "sparrow" },
     [32] = { "lemming", "model3" },
     [46] = { "peacemaker" },
-    [91] = { "rsh12" },
+    [50] = { "rsh12" },
     [92] = { "deagle", "mateba", "new_raging_bull", "chinchilla", "korth" }
   },
   smgs = {
@@ -127,7 +131,9 @@ local WeaponClasses = {
     [46] = { "speen", "sterling" }
   },
   akimbo = {
-    [16] = { "jowi", "x_g17" }
+    [16] = { "jowi", "x_g17" },
+    [24] = { "x_1911", "x_mp5" },
+    [92] = { "x_2006m", "x_rage" }
   }
 }
 

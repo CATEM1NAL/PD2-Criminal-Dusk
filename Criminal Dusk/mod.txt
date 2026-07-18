@@ -43,6 +43,7 @@
 		{ "hook_id" : "lib/managers/menu/infamytreeguinew",	"script_path" : "lua/managers/menu/infamytreegui.lua" },
 		{ "hook_id" : "lib/managers/hud/hudstageendscreen",	"script_path" : "lua/managers/menu/stageendscreen.lua" },
 		{ "hook_id" : "lib/managers/mission/elementspawndeployable",		"script_path" : "lua/managers/elements/spawndeployable.lua" },
+		{ "hook_id" : "lib/managers/group_ai_states/groupaistatebesiege",		"script_path" : "lua/managers/group_ai/besiege.lua" },
 		{ "hook_id" : "lib/tweak_data/skilltreetweakdata",	"script_path" : "lua/tweakdata/skilltree.lua" },
 		{ "hook_id" : "lib/tweak_data/upgradestweakdata",	"script_path" : "lua/tweakdata/upgrades.lua" },
 		{ "hook_id" : "lib/tweak_data/moneytweakdata",		"script_path" : "lua/tweakdata/money.lua" },

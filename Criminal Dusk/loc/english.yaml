@@ -42,7 +42,7 @@ bm_menu_armor_max_health_store : "Break: can store up to $amount health."
 bm_menu_disables_damage_to_hot : "Dopamine is disabled while wearing this armor!"
 
 # Perk Consumables
-bm_ability_chico_injector_desc: "Press the throwable key to activate. While active, 75% of all damage taken is converted into healing. This effect lasts 6 seconds."
+bm_ability_chico_injector_desc: "Press the throwable key to activate. While active, 25% of all damage taken is converted into healing. This effect lasts 6 seconds."
 bm_grenade_smoke_screen_grenade_desc: "Grants 50% dodge chance to all crewmates standing inside the cloud, and decreases enemy accuracy by 50% if they enter it. Lasts 10 seconds."
 bm_grenade_tag_team_desc: "Press the throwable key while looking at an ally to activate. When you or the tagged ally get a kill, you restore 2 health and the tagged ally restores 1. This effect lasts 12 seconds, but is extended by 1 second per kill."
 bm_grenade_pocket_ecm_jammer_desc: "Press the throwable key to activate for 6 seconds. During stealth this will function like a regular ECM, and benefits from any ECM skills you may have. In loud it will instead activate feedback, potentially stunning enemies within 25m."
@@ -137,9 +137,9 @@ menu_mobile_desc: "$lv1;Gain ##16## accuracy while moving with SMGs, assault rif
 menu_target_acquisition: "Target Acquisition"
 menu_target_acquisition_desc: "$lv1;Aim down sights ##100%## faster.\n\n$lv2;Zoom while aiming down sights is increased by ##25%##."
 
-menu_single_shot_ammo_return_beta_desc: "$lv1;While using a semi-auto weapon, landing ##3## headshots within ##6## seconds will return ##1## bullet to your magazine.\n\n$lv2;Only ##2## headshots are required."
+menu_single_shot_ammo_return_beta_desc: "$lv1;While using a single-fire weapon, landing ##3## headshots within ##6## seconds will return ##1## bullet to your magazine.\n\n$lv2;Only ##2## headshots are required."
 
-menu_speedy_reload_beta_desc: "$lv1;Headshot kills with semi-auto weapons increase your reload speed by ##100%## for ##4## seconds."
+menu_speedy_reload_beta_desc: "$lv1;Headshot kills with single-fire weapons increase your reload speed by ##100%## for ##4## seconds."
 
 menu_sniper_graze_damage_desc: "$lv1;Headshots with a sniper rifle deal ##50%## damage to all enemies within ##1m## of the bullet's trajectory.\n\n$lv2;Damage is now ##100%##, but the radius is reduced to ##50cm##."
 
@@ -160,7 +160,7 @@ menu_shotgun_ads_speed_desc: "$lv1;Aim down sights with shotguns ##125%## faster
 menu_close_by_beta_desc: "$lv1;Hipfire shotguns while sprinting."
 
 menu_shotgun_rof: "Slamfire"
-menu_shotgun_rof_desc: "$lv1;Rate of fire with semi-auto shotguns is increased by ##35%## when hipfiring."
+menu_shotgun_rof_desc: "$lv1;Rate of fire with single-fire shotguns is increased by ##35%## when hipfiring."
 
 menu_shotgun_accuracy_desc: "$lv1;Shotgun accuracy is increased by ##40%## while aiming down sights."
 
@@ -285,6 +285,36 @@ menu_tower_defense_beta_desc: "$lv1;Carry ##1## extra sentry gun.\n\n$lv2;Carry 
 
 ## Ghost
 menu_scavenger_beta_desc: "$lv1;Movement speed is increased by ##30%## for ##5## seconds on armor break.\n\n$lv2;Also applies to the crew when triggered."
+
+menu_dire_need_beta_desc: "$lv1;Your first shot on an enemy inflicts stagger while your armor is broken.\n\n$lv1;Effect lasts for ##6## seconds after armor recovers."
+
+menu_moving_target_desc: "$lv1;You can sprint while strafing.\n\n$lv2;You can sprint in any direction."
+
+menu_sprinter: "Sprinter"
+menu_sprinter_desc: "$lv1;Sprint speed increased by ##25%##.\n\n$lv2;Dodge is increased by ##10## while sprinting."
+
+menu_move_speed: "Endurance"
+menu_move_speed_desc: "$lv1;Movement speed increased by ##10%##."
+
+menu_sprint_loaded: "Sprint Loaded"
+menu_sprint_loaded_desc: "$lv1;You can reload while sprinting."
+
+menu_hidden_blade: "Hidden Blade"
+menu_hidden_blade_desc: "$lv1;Melee weapon concealment increased by ##2##."
+
+menu_vest_conceal: "Hidden Vest"
+menu_vest_conceal_desc: "$lv1;Ballistic vest concealment increased by ##4##."
+
+menu_insulation_beta_desc: "$lv1;Being tased no longer forces you to shoot.\n\n$lv2;You have a ##30%## chance every second to break free from a taser.\n\n$lv3;Interacting with a taser allows you to break free."
+
+menu_jail_diet_beta_desc: "$lv1;Gain ##1## dodge (up to ##10##) for each ##3## points of detection risk below 35.\n\n$lv2;Dodge is now granted for each point of detection risk below ##35##."
+
+## Fugitive
+menu_four_lives: "More Blood To Bleed"
+menu_four_lives_desc: "$lv1;Your max downs are increased by ##1##.\n\n$lv2;Your max downs are increased by ##2##."
+
+menu_bleedout_health: "Sticks And Stones"
+menu_bleedout_health_desc: "$lv1;Bleedout health increased by ##25##."
 
 ## Perk Decks
 menu_perk_dmg: "$lv1;Weapon damage increased by ##10%##.\n\n$lv2;Weapon damage increased by ##25%##."
