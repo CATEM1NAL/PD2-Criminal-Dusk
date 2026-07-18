@@ -112,7 +112,7 @@ local function SetStats(self, diff)
       for weapon_name, weapon_data in pairs(preset_data) do
         if weapon_data.FALLOFF then
           for index, DistanceData in ipairs(weapon_data.FALLOFF) do
-            if DistanceData.dmg_mul then DistanceData.dmg_mul = 1 - (index - 1 * 0.2) end
+            if DistanceData.dmg_mul then DistanceData.dmg_mul = math.max(1 - (index - 1 * 0.2), 0.01) end
           end
         end
       end
