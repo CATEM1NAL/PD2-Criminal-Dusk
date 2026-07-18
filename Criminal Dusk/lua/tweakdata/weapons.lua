@@ -86,7 +86,7 @@ Hooks:OverrideFunction(WeaponTweakData, "_set_sm_wish", function(self) SetAIStat
 -- Player weapon stats
 local WeaponClasses = {
   special = {
-    [4] = { "flamethrower_mk2", "system", "money" },
+    [4]  = { "flamethrower_mk2", "system", "money" },
     [12] = { "hunter", "ecp" },
     [15] = { "ray", "plainsrider", "rpg7", "gre_m79", "slap", "m32" },
     [20] = { "arblast", "frankish" },
@@ -137,6 +137,8 @@ local WeaponClasses = {
   }
 }
 
+local CrewNameConversion = { new_mp5 = "mp5_crew", new_m4 = "m4_crew", new_m14 = "m14_crew", new_raging_bull = "raging_bull_crew", glock_17 = "g17_crew", b92fs = "beretta92_crew", glock_18c = "glock_18_crew", colt_1911 = "c45_crew" }
+
 local NoPickup = { 0, 0 }
 local Flamethrower = { 18, 22 }
 local ForcedAmmoPickup = {
@@ -150,15 +152,22 @@ Hooks:PostHook(WeaponTweakData, "init", "CrimDusk_WeaponTweakInit", function(sel
   for ClassName, ClassData in pairs(WeaponClasses) do
     for NewDamage, weapons in pairs(ClassData) do
       for _, WeaponName in ipairs(weapons) do
-        self[WeaponName].stats.damage = NewDamage
-        if self["x_" .. WeaponName] then self["x_" .. WeaponName].stats.damage = NewDamage end
 
-        -- New ammo pickup
+        -- Damage
         local BaseMult = self[WeaponName].stats_modifiers and self[WeaponName].stats_modifiers.damage or 1
         local ShotgunMult = ClassName == "shotguns" and 2.5 or 1
         local TotalDamage = BaseMult * NewDamage * ShotgunMult
-        local PickupMod = 75 / TotalDamage
 
+        self[WeaponName].stats.damage = NewDamage
+
+        if self[WeaponName .. "_crew"] then self[WeaponName .. "_crew"].DAMAGE = NewDamage * BaseMult * 0.5
+        elseif self[CrewNameConversion[WeaponName]] then self[CrewNameConversion[WeaponName]].DAMAGE = NewDamage * BaseMult * 0.5
+        else log("No crew weapon with name " .. WeaponName .. " found!") end
+
+        if self["x_" .. WeaponName] then self["x_" .. WeaponName].stats.damage = NewDamage end
+
+        -- New ammo pickup
+        local PickupMod = 75 / TotalDamage
         local MostShotsToKill = math.max(150 / (TotalDamage * 2) + (PickupMod^2), 0.5 + PickupMod)
         local LeastShotsToKill = math.max(200 / (TotalDamage * 2.625) - 0.5, 0.5 * PickupMod)
 

@@ -79,8 +79,14 @@ local function SetStats(self, diff)
 
   -- Dozers
   self.tank.HEALTH_INIT = 300
+  self.tank.headshot_dmg_mul = 10
+
   self.tank_medic.HEALTH_INIT = self.tank.HEALTH_INIT
-  self.tank_mini.HEALTH_INIT = self.tank.HEALTH_INIT * 2
+  self.tank_medic.headshot_dmg_mul = self.tank.headshot_dmg_mul
+
+  self.tank_mini.HEALTH_INIT = self.tank.HEALTH_INIT
+
+  self.tank_mini.headshot_dmg_mul = self.tank.headshot_dmg_mul
 
   -- Cloakers
   self.spooc.HEALTH_INIT = 30
@@ -92,13 +98,25 @@ local function SetStats(self, diff)
   -- Damage fall-off (based on vanilla OVK/Mayhem)
   local expert = self.presets.weapon.expert
   local skip = { expert = true, gang_member = true, sniper = true, bot_weapons = true }
+
   for preset, preset_data in pairs(self.presets.weapon) do
+
     if not skip[preset] then
       for weapon_name, weapon_data in pairs(preset_data) do
         if weapon_data.FALLOFF and expert[weapon_name].FALLOFF then
           weapon_data.FALLOFF = expert[weapon_name].FALLOFF
         end
       end
+
+    elseif preset == "gang_member" then
+      for weapon_name, weapon_data in pairs(preset_data) do
+        if weapon_data.FALLOFF then
+          for index, DistanceData in ipairs(weapon_data.FALLOFF) do
+            if DistanceData.dmg_mul then DistanceData.dmg_mul = 1 - (index - 1 * 0.2) end
+          end
+        end
+      end
+
     end
   end
 
