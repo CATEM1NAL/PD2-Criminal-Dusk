@@ -132,7 +132,7 @@ menu_crowd_control: "Crowd Control"
 menu_crowd_control_desc: "$lv1;Civilians within ##10m## of you remain intimidated at all times.\n\n$lv2;Civilians are intimidated by noise that you make."
 
 menu_mobile: "Mobile"
-menu_mobile_desc: "$lv1;Gain ##16## accuracy while moving with SMGs, assault rifles, and sniper rifles.\n\n$lv2;Move at full speed while aiming down sights."
+menu_mobile_desc: "$lv1;Move at full speed while aiming down sights."
 
 menu_target_acquisition: "Target Acquisition"
 menu_target_acquisition_desc: "$lv1;Aim down sights ##100%## faster.\n\n$lv2;Zoom while aiming down sights is increased by ##25%##."
@@ -142,6 +142,9 @@ menu_single_shot_ammo_return_beta_desc: "$lv1;While using a single-fire weapon, 
 menu_speedy_reload_beta_desc: "$lv1;Headshot kills with single-fire weapons increase your reload speed by ##100%## for ##4## seconds."
 
 menu_sniper_graze_damage_desc: "$lv1;Headshots with a sniper rifle deal ##50%## damage to all enemies within ##1m## of the bullet's trajectory.\n\n$lv2;Damage is now ##100%##, but the radius is reduced to ##50cm##."
+
+menu_long_shot: "Long Shot"
+menu_long_shot_desc: "$lv1;Marked enemies further than ##10m## away take ##50%## more damage."
 
 ## Enforcer
 menu_underdog_beta_desc: "$lv1;Deal ##15%## more damage while three enemies are within ##18m## of you."
@@ -216,6 +219,8 @@ menu_scrounger_name: "Scrounger"
 menu_scrounger_desc: "$lv1;Picking up an ammo box reduces your grenade recharge time by ##1## second.\n\n$lv2;Time reduction is now ##2## seconds per ammo box."
 
 menu_max_ammo_inc_desc: "$lv1;Ammo capacity increased by ##25%##."
+
+menu_spotter_teamwork_beta_desc: "$lv1;Enemies that you aim at are marked.\n\n$lv2;Enemies that you mark take ##15%## more damage."
 
 ## Technician
 menu_toolkit: "Toolkit"
@@ -307,7 +312,16 @@ menu_vest_conceal_desc: "$lv1;Ballistic vest concealment increased by ##4##."
 
 menu_insulation_beta_desc: "$lv1;Being tased no longer forces you to shoot.\n\n$lv2;You have a ##30%## chance every second to break free from a taser.\n\n$lv3;Interacting with a taser allows you to break free."
 
-menu_jail_diet_beta_desc: "$lv1;Gain ##1## dodge (up to ##10##) for each ##3## points of detection risk below 35.\n\n$lv2;Dodge is now granted for each point of detection risk below ##35##."
+menu_jail_diet_beta_desc: "$lv1;Gain ##1## dodge (up to ##10##) for each ##3## points of detection risk below ##35##.\n\n$lv2;Dodge is now granted for each point of detection risk below ##35##."
+
+menu_optic_illusions_desc: "$lv1;Your target rate is reduced by ##33%##.\n\n$lv2;Your target rate is reduced by ##50%##."
+
+menu_silence_expert_beta_desc: "$lv1;Stability with silenced weapons increased by ##8##.\n\n$lv2;Accuracy with silenced weapons increased by ##12##."
+
+menu_silence_conceal: "Pocket Silencer"
+menu_silence_conceal_desc: "$lv1;Silencers gain ##1## concealment and their concealment penalty is reduced by ##2##."
+
+menu_backstab_beta_desc: "$lv1;Gain ##3%## crit chance (up to ##30%##) for each ##3## points of detection risk below ##35##.\n\n$lv2;Crit chance is now granted for each point of detection risk below ##35##."
 
 ## Fugitive
 menu_four_lives: "More Blood To Bleed"
@@ -322,7 +336,7 @@ menu_perk_headshot: "$lv1;Headshot damage increased by ##25%##.\n\n$lv2;Headshot
 
 menu_deck2_1_skill: "$lv1;Max health increased by ##10##.\n\n$lv2;Max health increased by ##20##.\n\n$lv3;Max health increased by ##40##.\n\n$lv4;Max health increased by ##80##.\n\n$lv5;Max health increased by ##100##.\n\n$lv6;Restore ##1## health every ##5## seconds."
 
-menu_deck2_7_skill: "$lv1;Suppressed enemies can panic. Enemies are ##15%## more likely to target you.\n\n$lv2;Kills within ##10m## have a ##50%## chance to cause panic."
+menu_deck2_7_skill: "$lv1;Suppressed enemies can panic. Your target rate is increased by ##15%##.\n\n$lv2;Kills within ##10m## have a ##50%## chance to cause panic."
 
 menu_armorer_skill: "Impact Plate"
 menu_armorer_skill_desc: "$lv1;Armor increased by ##5%##.\n\n$lv2;Armor increased by ##10%##.\n\n$lv3;Armor increased by ##20%##.\n\n$lv4;Armor increased by ##30%##.\n\n$lv5;Armor increased by ##40%##.\n\n$lv6;Your armor is constantly recovering at a slower rate. This recovery cannot be accelerated."
@@ -345,11 +359,10 @@ menu_burglar_stealth: "$lv1;Bag corpses ##20%## faster.\n\n$lv2;Answer pagers ##
 
 menu_infil_melee: "Psychopath"
 menu_infil_melee_desc: "$lv1;Every successful melee hit within ##5## seconds of a previous hit will deal an additional ##10%## damage, up to a total of ##1000%##.\n\n$lv2;Damage bonus is now ##50%## on each hit, but the window for activation is reduced to ##3## seconds.\n\n$lv3;Damage bonus is further increased to ##100%##, but the activation window is reduced to ##1## second."
-menu_infil_close: "Close Combat"
-menu_infil_close_desc: "$lv1;Gain ##8%## damage reduction while an enemy is within ##18m## of you.\n\n$lv2;Damage reduction is now ##16%##.\n\n$lv3;Damage reduction is now ##24%##."
+menu_infil_close_desc: "$lv1;Gain ##8%## damage reduction while an enemy within ##10m## is targeting you.\n\n$lv2;Damage reduction is now ##16%##.\n\n$lv3;Damage reduction is now ##24%##."
 menu_infil_heal_desc: "$lv1;Heal ##20%## of your max health when dealing melee damage. This can only occur once every ##10## seconds.\n\n$lv2;Heal ##10%## of your max health on melee kill."
 
-menu_deck14_1_skill: "$lv1;Every ##2## seconds you and the crew gain ##1## damage absorption (up to ##20##) for every ##30## damage you dealt during that period.\n\n$lv2;Damage required is now ##25## per point of damage absorption.\n\n$lv3;Any damage absorption you apply to yourself is doubled."
+menu_deck14_1_skill: "$lv1;The crew gains ##0.5## damage absorption (up to ##8##) for every ##30## damage you deal, resetting every ##2## seconds. If multiple people have this skill, the highest absorption is used.\n\n$lv2;Damage required is now ##20##, and the max absorption is increased to ##12##.\n\n$lv3;Any damage absorption you apply to yourself is doubled."
 
 menu_anarch_rise: "$lv1;Armor is increased by ##20##, but health is reduced by ##25##.\n\n$lv2;Armor is increased by ##40##, but health is reduced by ##50##.\n\n$lv3;Armor is increased by ##60##, but health is reduced by ##75##."
 
@@ -358,7 +371,7 @@ menu_mag_throw_desc: "$lv1;Picking up ammo triggers an ammo pickup for the rest 
 
 menu_gambler_heal: "$lv1;Picking up ammo can heal you for up to ##2## health. The crew heals for up to ##1## health.\n\n$lv2;Ammo can heal you for up to ##4## health, and the crew for ##2## health.\n\n$lv3;Ammo can heal you for up to ##6## health, and the crew for ##3## health."
 
-menu_kingpin_priority: "INJECTOR UNLOCKS AT LEVEL 40!\n\n$lv1;Target priority is increased by ##1000%## while the ##Injector## is active."
+menu_kingpin_priority: "INJECTOR UNLOCKS AT LEVEL 40!\n\n$lv1;Your target rate is increased by ##1000%## while the ##Injector## is active."
 menu_kingpin_cooldown: "INJECTOR UNLOCKS AT LEVEL 40!\n\n$lv1;Cooldown of the ##Injector## is reduced by ##1## second for every ##50## health restored while at max health."
 menu_kingpin_healing: "INJECTOR UNLOCKS AT LEVEL 40!\n\n$lv1;While the ##Injector## is active and you are below half health, all damage taken becomes healing."
 

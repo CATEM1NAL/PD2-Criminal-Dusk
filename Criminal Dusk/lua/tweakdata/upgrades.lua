@@ -54,6 +54,7 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   self.close_combat_distance = 1000 -- Distance for Close Combat/panic on kill
   self.killshot_close_panic_range = 1000 -- Distance that panic on kill spreads
   self.values.player.tier_armor_multiplier = { 1.05, 1.1, 1.2, 1.3, 1.4, 1.4 } -- Armour increase
+  self.values.player.camouflage_bonus = { 0.667, 0.5 } -- Optical Illusions
 
   -- Repair System
   self.values.player.drill_autorepair_1 = { 0.5 }
@@ -119,19 +120,20 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   self.values.player.armor_increase = { 2, 4, 6 }
 
   -- Hysteria stacks
+  self.cocaine_stacks_dmg_absorption_value = 0.05
   self.cocaine_stacks_tick_rounding = 2
   self.cocaine_stacks_tick_t = 0.1
+  self.max_cocaine_stacks_per_tick = 480
+  self.max_total_cocaine_stacks = self.max_cocaine_stacks_per_tick
   self.cocaine_stacks_decay_t = self.cocaine_stacks_tick_rounding
   self.cocaine_stacks_decay_amount_per_tick = 0
   self.cocaine_stacks_decay_percentage_per_tick = 1
+  self.cocaine_stacks_convert_levels = { 30, 20 }
 
   -- Gambler
   self.loose_ammo_restore_health_values = {
-    { 0, 1 },
-    { 0, 2 },
-    { 0, 3 },
-    base = 0,
-    cd = 0,
+    { 0, 1 }, { 0, 2 }, { 0, 3 },
+    base = 0, cd = 0,
     multiplier = 0.2
   }
   self.values.temporary.loose_ammo_restore_health = {

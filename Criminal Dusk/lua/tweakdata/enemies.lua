@@ -1,16 +1,16 @@
 local function SetStats(self, diff)
-  local flashbang_mult = { 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5 }
+  local flashbang_mult = { 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2 }
   local weapon_preset = { "normal", "normal", "good", "good", "expert", "expert", "deathwish" }
   local cloaker_cooldown = {
-    {10, 10}, {8, 10}, {6, 8}, {4, 6}, {3, 4}, {2, 3}, {0, 1}
+    { 10, 10 }, { 8, 10 }, { 6, 8 }, { 4, 6 }, { 3, 4 }, { 2, 3 }, { 1, 2 }
   }
 
-  -- ZEAL snipers are treated as snipers
+  -- ZEAL snipers are snipers
   self.heavy_swat_sniper.surrender = nil
   self.heavy_swat_sniper.tags = { "law", "marksman", "special" }
   self.heavy_swat_sniper.priority_shout = "f34"
 
-  -- Crew AI stats
+  -- Crew AI
   self.presets.gang_member_damage.REGENERATE_TIME = 2
   self.presets.gang_member_damage.REGENERATE_TIME_AWAY = 0.6
   self.presets.gang_member_damage.HEALTH_INIT = 100
@@ -79,29 +79,29 @@ local function SetStats(self, diff)
 
   -- Dozers
   self.tank.HEALTH_INIT = 300
-  self.tank.headshot_dmg_mul = 10
+  self.tank.headshot_dmg_mul = 15
 
   self.tank_medic.HEALTH_INIT = self.tank.HEALTH_INIT
   self.tank_medic.headshot_dmg_mul = self.tank.headshot_dmg_mul
 
   self.tank_mini.HEALTH_INIT = self.tank.HEALTH_INIT
-
   self.tank_mini.headshot_dmg_mul = self.tank.headshot_dmg_mul
 
   -- Cloakers
   self.spooc.HEALTH_INIT = 30
-  self.spooc.headshot_dmg_mul = 10
+  self.spooc.headshot_dmg_mul = 6
   self.spooc.spooc_attack_timeout = cloaker_cooldown[diff]
   self.spooc.spooc_attack_beating_time[1] = cloaker_cooldown[diff][1]
   self.spooc.spooc_attack_beating_time[2] = cloaker_cooldown[diff][1]
 
-  -- Damage fall-off (based on vanilla OVK/Mayhem)
+  -- Damage curves (based on vanilla OVK/Mayhem)
   local expert = self.presets.weapon.expert
   local skip = { expert = true, gang_member = true, sniper = true, bot_weapons = true }
 
   for preset, preset_data in pairs(self.presets.weapon) do
 
     if not skip[preset] then
+      -- Enemy damage steps
       for weapon_name, weapon_data in pairs(preset_data) do
         if weapon_data.FALLOFF and expert[weapon_name].FALLOFF then
           weapon_data.FALLOFF = expert[weapon_name].FALLOFF
@@ -109,6 +109,7 @@ local function SetStats(self, diff)
       end
 
     elseif preset == "gang_member" then
+      -- Remove crew AI damage multipliers, add fall-off
       for weapon_name, weapon_data in pairs(preset_data) do
         if weapon_data.FALLOFF then
           for index, DistanceData in ipairs(weapon_data.FALLOFF) do
@@ -125,34 +126,18 @@ local function SetStats(self, diff)
   self.marshal_marksman.weapon.is_rifle.focus_delay = 3
 
   self.hector_boss.weapon.is_shotgun_mag.FALLOFF = {
-    {
-      dmg_mul = 2.2, r = 200, acc = { 0.6, 0.9 }, recoil = { 0.4, 0.7 }, mode = { 0, 1, 2, 1 }
-    },
-    {
-      dmg_mul = 1.75, r = 500, acc = { 0.6, 0.9 }, recoil = { 0.4, 0.7 }, mode = { 0, 3, 3, 1 }
-    },
-    {
-      dmg_mul = 1.5, r = 1000, acc = { 0.4, 0.8 }, recoil = { 0.45, 0.8 }, mode = { 1, 2, 2, 0 }
-    },
-    {
-      dmg_mul = 1.25, r = 2000, acc = { 0.4, 0.55 }, recoil = { 0.45, 0.8 }, mode = { 3, 2, 2, 0 }
-    },
-    {
-      dmg_mul = 1, r = 3000, acc = { 0.1, 0.35 }, recoil = { 1, 1.2 }, mode = { 3, 1, 1, 0 }
-    }
+    { dmg_mul = 2.2, r = 200, acc = { 0.6, 0.9 }, recoil = { 0.4, 0.7 }, mode = { 0, 1, 2, 1 } },
+    { dmg_mul = 1.75, r = 500, acc = { 0.6, 0.9 }, recoil = { 0.4, 0.7 }, mode = { 0, 3, 3, 1 } },
+    { dmg_mul = 1.5, r = 1000, acc = { 0.4, 0.8 }, recoil = { 0.45, 0.8 }, mode = { 1, 2, 2, 0 } },
+    { dmg_mul = 1.25, r = 2000, acc = { 0.4, 0.55 }, recoil = { 0.45, 0.8 }, mode = { 3, 2, 2, 0 } },
+    { dmg_mul = 1, r = 3000, acc = { 0.1, 0.35 }, recoil = { 1, 1.2 }, mode = { 3, 1, 1, 0 } }
   }
 
   if diff > 4 then self.sniper.weapon.is_rifle.use_laser = false end
   self.sniper.weapon.is_rifle.FALLOFF = {
-    {
-      dmg_mul = 10, r = 700, acc = { 0.7, 1 }, recoil = { 3, 5 }, mode = { 1, 0, 0, 0 }
-    },
-    {
-      dmg_mul = 10, r = 4000, acc = { 0.6, 0.95 }, recoil = { 3, 5 }, mode = { 1, 0, 0, 0 }
-    },
-    {
-      dmg_mul = 6, r = 10000, acc = { 0.2, 0.5 }, recoil = { 3, 5 }, mode = { 1, 0, 0, 0 }
-    }
+    { dmg_mul = 10, r = 700, acc = { 0.7, 1 }, recoil = { 3, 5 }, mode = { 1, 0, 0, 0 } },
+    { dmg_mul = 10, r = 4000, acc = { 0.6, 0.95 }, recoil = { 3, 5 }, mode = { 1, 0, 0, 0 } },
+    { dmg_mul = 6, r = 10000, acc = { 0.2, 0.5 }, recoil = { 3, 5 }, mode = { 1, 0, 0, 0 } }
   }
 
   -- Finalization
