@@ -1,0 +1,37 @@
+{
+  "menu_id" : "crimdusk_settings",
+  "parent_menu_id" : "blt_options",
+  "title" : "crimdusk_settings_name",
+  "description" : "crimdusk_settings_desc",
+  "items" : [
+    {
+      "type" : "toggle",
+      "id" : "crimdusk_permadeath",
+      "title" : "crimdusk_permadeath_name",
+      "description" : "crimdusk_permadeath_desc",
+      "callback" : "CrimDusk_SaveToggleSettings",
+      "value" : "permadeath",
+      "default_value" : false
+    },
+    {
+      "type" : "toggle",
+      "id" : "crimdusk_mutators",
+      "title" : "menu_mutators",
+      "description" : "crimdusk_mutator_desc",
+      "callback" : "CrimDusk_SaveToggleSettings",
+      "value" : "mutators",
+      "default_value" : true
+    },
+    {
+      "type" : "divider",
+      "size" : 16
+    },
+    {
+      "type" : "button",
+      "id" : "crimdusk_reset_campaign",
+      "title" : "crimdusk_reset_campaign_name",
+      "description" : "crimdusk_reset_campaign_desc",
+      "callback" : "CrimDusk_ResetCampaign"
+    }
+  ]
+}
