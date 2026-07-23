@@ -6,18 +6,15 @@ Hooks:OverrideFunction(GroupAIStateBesiege, "phalanx_damage_reduction_enable", f
 Hooks:OverrideFunction(GroupAIStateBesiege, "phalanx_damage_reduction_disable", function() managers.hud:set_buff_enabled("vip", false) end)
 
 Hooks:OverrideFunction(GroupAIStateBesiege, "_check_spawn_phalanx", function(self)
-  -- Is Winters allowed to spawn?
   local AssaultBegun = self._task_data and self._task_data.assault.active and self._task_data.assault.phase == "build"
   local IsPhalanxValid = self._phalanx_center_pos and not self._phalanx_spawn_group and not self._phalanx_despawn_time and not self._phalanx_spawn_attempted
   local WintersCanSpawn = AssaultBegun and IsPhalanxValid
 
   if not WintersCanSpawn and not self._phalanx_spawn_timer then return
 
-  elseif self._phalanx_spawn_timer then -- Spawn approved, is it time?
-    local now = TimerManager:game():time()
-    if now >= self._phalanx_spawn_timer then self:_spawn_phalanx() return end
+  elseif self._phalanx_spawn_timer and TimerManager:game():time() >= self._phalanx_spawn_timer then self:_spawn_phalanx() return
 
-  else -- Winters can spawn but has yet to be approved
+  elseif WintersCanSpawn then
     self._phalanx_current_spawn_chance = self._phalanx_current_spawn_chance or tweak_data.group_ai.phalanx.spawn_chance.start
     if self._phalanx_current_spawn_chance <= 0 then return end
 
@@ -30,7 +27,7 @@ Hooks:OverrideFunction(GroupAIStateBesiege, "_check_spawn_phalanx", function(sel
     CrimDusk.Log(FileIdent, "Winters is spawning!")
     local BuildDuration = tweak_data.group_ai.besiege.assault.build_duration
     local LowerBound = math.max(BuildDuration - 15, 0)
-    self._phalanx_spawn_timer = now + math.random(LowerBound, BuildDuration)
+    self._phalanx_spawn_timer = TimerManager:game():time() + math.random(LowerBound, BuildDuration)
   end
 end)
 
