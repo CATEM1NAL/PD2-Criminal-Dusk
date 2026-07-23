@@ -2,13 +2,14 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "CrimDusk_InitModTweakData", func
   for _, data in pairs(self.parts) do data.is_a_unlockable = true end -- All weapon mods are infinite
 
   -- Sting grenades
-  local HighDamage = -5
-  local LowDamage = -25
+  local HighDamage = -133
+  local LowDamage = -63
   local StingDamage = {
     wpn_fps_gre_m79 = HighDamage, wpn_fps_gre_slap = HighDamage, wpn_fps_ass_contraband = HighDamage, wpn_fps_ass_groza = HighDamage,
     wpn_fps_gre_m32 = LowDamage, wpn_fps_gre_china = LowDamage, wpn_fps_gre_arbiter = LowDamage, wpn_fps_gre_ms3gl = LowDamage
   }
 
+  self.parts.wpn_fps_upg_a_grenade_launcher_hornet.custom_stats.rays = 18
   for weapon, damage in pairs(StingDamage) do
     if self[weapon].override.wpn_fps_upg_a_grenade_launcher_hornet then
       self[weapon].override.wpn_fps_upg_a_grenade_launcher_hornet.stats.damage = damage
@@ -20,8 +21,14 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "CrimDusk_InitModTweakData", func
 
   -- Shotgun ammo types
   self.parts.wpn_fps_upg_a_custom_free.custom_stats.rays = 6 -- 000 Buckshot
-  self.parts.wpn_fps_upg_a_slug.stats.damage = 25 -- Slug
-  self.parts.wpn_fps_upg_a_explosive.stats.damage = 50 -- HE
+
+  -- Slugs
+  self.parts.wpn_fps_upg_a_slug.stats.damage = 75
+  self.parts.wpn_fps_upg_a_slug.stats.spread = 8
+  self.parts.wpn_fps_upg_a_slug.stats.spread_moving = 4
+
+  -- HE
+  self.parts.wpn_fps_upg_a_explosive.stats.damage = 50
 
   -- Dragon's Breath
   self.parts.wpn_fps_upg_a_dragons_breath.stats.damage = -15
@@ -29,12 +36,15 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "CrimDusk_InitModTweakData", func
 
   -- Tombstone
   self.parts.wpn_fps_upg_a_rip.custom_stats.rays = 1
-  self.parts.wpn_fps_upg_a_rip.stats.damage = 20
-  self.parts.wpn_fps_upg_a_rip.stats.spread = 2
+  self.parts.wpn_fps_upg_a_rip.stats.damage = 25
+  self.parts.wpn_fps_upg_a_rip.stats.spread = 6
+  self.parts.wpn_fps_upg_a_rip.stats.spread_moving = 3
 
   -- Flechette
   self.parts.wpn_fps_upg_a_piercing.custom_stats.rays = 12
   self.parts.wpn_fps_upg_a_piercing.stats.damage = -5
+  self.parts.wpn_fps_upg_a_piercing.stats.spread = 4
+  self.parts.wpn_fps_upg_a_piercing.stats.spread_moving = 2
 
   -- Remove DLC buckshot
   local shotguns = { "wpn_fps_shot_saiga", "wpn_fps_shot_r870", "wpn_fps_shot_huntsman", "wpn_fps_shot_serbu", "wpn_fps_sho_ben", "wpn_fps_sho_striker",

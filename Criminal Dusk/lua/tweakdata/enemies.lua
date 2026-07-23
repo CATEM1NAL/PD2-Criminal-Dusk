@@ -68,12 +68,16 @@ local function SetStats(self, diff)
   self.phalanx_minion.damage.explosion_damage_mul = 0.8
   self.phalanx_minion.damage.shield_knocked = true
   self.phalanx_minion.damage.immune_to_knockback = nil
+  self.phalanx_minion.immune_to_knock_down = nil
+  self.phalanx_minion.immune_to_concussion = nil
   self.phalanx_minion.DAMAGE_CLAMP_BULLET = nil
   self.phalanx_minion.DAMAGE_CLAMP_EXPLOSION = nil
 
   -- Marshall shield
   self.marshal_shield.damage.shield_knocked = true
   self.marshal_shield.damage.immune_to_knockback = nil
+  self.marshal_shield.immune_to_knock_down = nil
+  self.marshal_shield.immune_to_concussion = nil
   self.marshal_shield_break.modify_health_on_tweak_change = nil
   self.marshal_shield_break.tmp_invulnerable_on_tweak_change = nil
 
@@ -141,8 +145,17 @@ local function SetStats(self, diff)
   }
 
   -- Finalization
-  for _, npc in pairs(self) do -- Enemies can't move bags
-    if type(npc) == "table" and npc.steal_loot then npc.steal_loot = nil end
+  local CanCuff = {
+    fbi = true, fbi_female = true,
+    medic = true, sniper = true, marshal_marksman = true, taser = true, 
+    swat = true, heavy_swat = true,
+    zeal_swat = true, zeal_heavy_swat = true, heavy_swat_sniper = true,
+    fbi_swat = true, fbi_heavy_swat = true, }
+  for _, npc in pairs(self) do
+    if type(npc) == "table" then
+      if npc.steal_loot then npc.steal_loot = nil end -- Enemies can't move bags
+      if CanCuff[npc] then npc.no_arrest = nil end -- All enemies can cuff
+    end
   end
 
   self.flashbang_multiplier = flashbang_mult[diff]

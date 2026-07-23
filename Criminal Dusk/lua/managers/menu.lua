@@ -154,7 +154,9 @@ end)
 Hooks:PreHook(MenuCallbackHandler, "start_the_game", "CrimDusk_PreStartGame", function(self)
   if Utils:IsInGameState() or CrimDusk.state.heist_started then return end
 
-  if NetworkHelper:IsHost() then -- Pick starting heist if no active run
+  if NetworkHelper:IsHost() then -- Pick heist
+    math.randomseed(os.time() + (os.clock() * 1000))
+
     -- Activate mutators
     dofile(CrimDusk.ModPath .. "lua/mutators.lua")
 

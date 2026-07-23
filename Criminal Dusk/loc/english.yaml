@@ -291,7 +291,7 @@ menu_tower_defense_beta_desc: "$lv1;Carry ##1## extra sentry gun.\n\n$lv2;Carry 
 ## Ghost
 menu_scavenger_beta_desc: "$lv1;Movement speed is increased by ##30%## for ##5## seconds on armor break.\n\n$lv2;Also applies to the crew when triggered."
 
-menu_dire_need_beta_desc: "$lv1;Your first shot on an enemy inflicts stagger while your armor is broken.\n\n$lv1;Effect lasts for ##6## seconds after armor recovers."
+menu_dire_need_beta_desc: "$lv1;Your first shot on an enemy inflicts stagger while your armor is broken.\n\n$lv2;Effect lasts for ##6## seconds after armor recovers."
 
 menu_moving_target_desc: "$lv1;You can sprint while strafing.\n\n$lv2;You can sprint in any direction."
 
@@ -332,7 +332,7 @@ menu_bleedout_health_desc: "$lv1;Bleedout health increased by ##25##."
 
 ## Perk Decks
 menu_perk_dmg: "$lv1;Weapon damage increased by ##10%##.\n\n$lv2;Weapon damage increased by ##25%##."
-menu_perk_headshot: "$lv1;Headshot damage increased by ##25%##.\n\n$lv2;Headshot damage increased by ##50%##."
+menu_perk_headshot: "$lv1;Headshot damage increased by ##50%##.\n\n$lv2;Headshot damage increased by ##100%##."
 
 menu_deck2_1_skill: "$lv1;Max health increased by ##10##.\n\n$lv2;Max health increased by ##20##.\n\n$lv3;Max health increased by ##40##.\n\n$lv4;Max health increased by ##80##.\n\n$lv5;Max health increased by ##100##.\n\n$lv6;Restore ##1## health every ##5## seconds."
 
@@ -367,13 +367,14 @@ menu_deck14_1_skill: "$lv1;The crew gains ##0.5## damage absorption (up to ##8##
 menu_anarch_rise: "$lv1;Armor is increased by ##20##, but health is reduced by ##25##.\n\n$lv2;Armor is increased by ##40##, but health is reduced by ##50##.\n\n$lv3;Armor is increased by ##60##, but health is reduced by ##75##."
 
 menu_mag_throw: "Mag Throw"
-menu_mag_throw_desc: "$lv1;Picking up ammo triggers an ammo pickup for the rest of the crew. Can only occur once every ##5## seconds."
+menu_mag_throw_desc: "$lv1;Picking up ammo triggers an ammo pickup for the rest of the crew."
 
 menu_gambler_heal: "$lv1;Picking up ammo can heal you for up to ##2## health. The crew heals for up to ##1## health.\n\n$lv2;Ammo can heal you for up to ##4## health, and the crew for ##2## health.\n\n$lv3;Ammo can heal you for up to ##6## health, and the crew for ##3## health."
 
 menu_kingpin_priority: "INJECTOR UNLOCKS AT LEVEL 40!\n\n$lv1;Your target rate is increased by ##1000%## while the ##Injector## is active."
 menu_kingpin_cooldown: "INJECTOR UNLOCKS AT LEVEL 40!\n\n$lv1;Cooldown of the ##Injector## is reduced by ##1## second for every ##50## health restored while at max health."
-menu_kingpin_healing: "INJECTOR UNLOCKS AT LEVEL 40!\n\n$lv1;While the ##Injector## is active and you are below half health, all damage taken becomes healing."
+menu_kingpin_healing: "INJECTOR UNLOCKS AT LEVEL 40!\n\n$lv1;While the ##Injector## is active and you are below half health, healing is increased by ##25%##."
+menu_kingpin_base: "INJECTOR UNLOCKS AT LEVEL 40!\n\n$lv1;Base healing of the ##Injector## increased to ##50%##.\n\n$lv2;Healing is further increased to ##75%##."
 
 menu_stoic_skill: "$lv1;Unlocks the ##Stoic's Hip Flask##. All damage taken is now applied quickly over ##6## seconds. Using the flask negates any remaining damage with a ##10## second cooldown, reduced by ##1## second per kill.\n\n$lv2;Cooldown is reduced by ##2## seconds per kill when health is below ##35%##."
 menu_stoic_negation: "$lv1;Remaining damage from ##Virtue## is negated after not taking damage for ##1.5## seconds."

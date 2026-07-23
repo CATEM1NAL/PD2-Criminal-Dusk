@@ -22,6 +22,6 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "CrimDusk_InitGroupAITaskDat
   if difficulty >= 6 then self.phalanx.spawn_chance = { start = 0, increase = 0.25, max = 1, decrease = 1, respawn_delay = 120 }
   else self.phalanx.spawn_chance = { start = 0, increase = 0, max = 0, decrease = 0, respawn_delay = 120 } end
 
-  self.phalanx.check_spawn_intervall = 10
+  self.phalanx.check_spawn_intervall = 25
   self.phalanx.vip.damage_reduction = { start = 0, increase = 0, max = 0, increase_intervall = 5 }
 end)

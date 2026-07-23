@@ -717,6 +717,11 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     }
 
     -- Kingpin
+    self.skills.kingpin_base = {
+      { upgrades = { "temporary_chico_injector_2" }, cost = self.costs.default },
+      { upgrades = { "temporary_chico_injector_3" }, cost = self.costs.default },
+      name_id = "menu_deck17_3", desc_id = "menu_kingpin_base", icon_xy = { 0, 0 }
+    }
     self.skills.kingpin_prio = {
       { upgrades = { "player_chico_preferred_target" }, cost = self.costs.default },
       name_id = "menu_deck17_5", desc_id = "menu_kingpin_priority", icon_xy = { 0, 0 }
@@ -867,10 +872,10 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       unlocked = true,
       background_texture = "guis/textures/pd2/skilltree/bg_mastermind",
       tiers = {
-        { "kingpin_cooldown", "h3h3_cooldown", "leech_duration" },
-        { "stoic_base", "leech_healing" },
-        { "stoic_regen", "kingpin_prio", "leech_segments" },
-        { "stoic_negation", "kingpin_healing", "h3h3_absorb", "leech_swan" }
+        { "h3h3_cooldown", "kingpin_cooldown", "leech_duration" },
+        { "stoic_base", "kingpin_prio", "leech_healing" },
+        { "stoic_regen", "kingpin_base", "leech_segments" },
+        { "stoic_negation", "h3h3_absorb", "kingpin_healing", "leech_swan" }
       }
     }
 

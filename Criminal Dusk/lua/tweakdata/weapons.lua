@@ -88,11 +88,12 @@ local WeaponClasses = {
   special = {
     [4]  = { "flamethrower_mk2", "system", "money" },
     [12] = { "hunter", "ecp" },
-    [15] = { "ray", "plainsrider", "rpg7", "gre_m79", "slap", "m32" },
+    [15] = { "ray", "plainsrider", "rpg7" },
     [20] = { "arblast", "frankish" },
     [23] = { "shuno", "m134" },
     [30] = { "long", "elastic" },
-    [75] = { "china", "ms3gl", "arbiter" }
+    [75] = { "china", "ms3gl", "arbiter" },
+    [150] = { "gre_m79", "slap", "m32" }
   },
   rifles = {
     [24] = { "famas", "asval", "corgi", "vhs", "galil", "komodo", "m16", "tkb" },
@@ -153,7 +154,7 @@ Hooks:PostHook(WeaponTweakData, "init", "CrimDusk_WeaponTweakInit", function(sel
 
         -- Damage
         local BaseMult = self[WeaponName].stats_modifiers and self[WeaponName].stats_modifiers.damage or 1
-        local ShotgunMult = ClassName == "shotguns" and 2.5 or 1
+        local ShotgunMult = ClassName == "shotguns" and 4 or 1
         local TotalDamage = BaseMult * NewDamage * ShotgunMult
 
         self[WeaponName].stats.damage = NewDamage
@@ -177,12 +178,30 @@ Hooks:PostHook(WeaponTweakData, "init", "CrimDusk_WeaponTweakInit", function(sel
     end
   end
 
+  -- Shotgun base accuracy
+  local ShotgunAcc = {
+    x_basset = 1, x_sko12 = 1,
+    x_judge = 2, x_rota = 2,
+    basset = 3, saiga = 3, sko12 = 3, aa12 = 3,
+    striker = 5, rota = 5, ultima = 5, judge = 5, spas12 = 5, benelli = 5, m590 = 5, serbu = 5,
+    r870 = 9, ksg = 9, m1897 = 9, supernova = 9, m37 = 9,
+    boot = 17, b682 = 17, huntsman = 17, coach = 17
+  }
+
+  for weapon, acc in pairs(ShotgunAcc) do
+    self[weapon].stats.spread = acc
+    self[weapon].stats.spread_moving = math.floor(acc / 2)
+  end
+
   -- Damage modifier tweaks
   self.long.stats_modifiers.damage = 10
   self.elastic.stats_modifiers.damage = 10
   self.china.stats_modifiers.damage = 1
   self.ms3gl.stats_modifiers.damage = 1
   self.arbiter.stats_modifiers.damage = 1
+  self.gre_m79.stats_modifiers.damage = 1
+  self.m32.stats_modifiers.damage = 1
+  self.slap.stats_modifiers.damage = 1
   self.ray.stats_modifiers.damage = 25
   self.m95.stats_modifiers.damage = 100
 
