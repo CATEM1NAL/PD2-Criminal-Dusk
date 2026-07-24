@@ -148,7 +148,7 @@ Hooks:OverrideFunction(PlayerDamage, "_regenerated", function(self, no_messiah)
   CrimDusk.Log(FileIdent, "Revive Health Index: " .. self._revive_health_i)
   self:_send_set_revives()
 
-  local DownTimeModifier = (math.min(Global.CrimDusk.data.lives, self._max_lives) - 2) * 5 end
+  local DownTimeModifier = (math.min(Global.CrimDusk.data.lives, self._max_lives) - 2) * 5
   self._down_time = tweak_data.player.damage.DOWNED_TIME + DownTimeModifier + managers.player:upgrade_value("player", "down_time_bonus", 0)
 end)
 
