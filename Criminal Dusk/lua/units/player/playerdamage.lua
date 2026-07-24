@@ -3,13 +3,13 @@ local FileIdent = "PlayerDamage"
 PlayerDamage._UPPERS_COOLDOWN = 1
 
 -- Setup new values
-Hooks:PostHook(PlayerDamage, "init", "CrimDusk_InitPlayerDamage", function(self)
+Hooks:PreHook(PlayerDamage, "init", "CrimDusk_InitPlayerDamage", function(self)
   self._dodge_stack = 0
   self._entropy = 0
   self._entropy_mult = 0.1
   self._armor_broken = false
   self._armor_break_t = managers.player:player_timer():time() + 3
-  self._max_lives = 3
+  self._max_lives = 3 + managers.player:upgrade_value("player", "additional_lives", 0)
 end)
 
 -- Regen time varies with armour
@@ -118,7 +118,6 @@ Hooks:OverrideFunction(PlayerDamage, "_regenerated", function(self, no_messiah)
 
   -- Initial lives (start of heist)
   if Application:digest_value(self._revives, false) == 0 and Global.CrimDusk.data.lives >= 0 then
-    self._max_lives = 3 + managers.player:upgrade_value("player", "additional_lives", 0)
     self._revives = Application:digest_value(math.min(Global.CrimDusk.data.lives + 1, self._max_lives), true)
     self._revive_health_i = MaxReviveSteps - math.min(Global.CrimDusk.data.lives, self._max_lives)
     managers.environment_controller:set_last_life(false)
@@ -149,8 +148,7 @@ Hooks:OverrideFunction(PlayerDamage, "_regenerated", function(self, no_messiah)
   CrimDusk.Log(FileIdent, "Revive Health Index: " .. self._revive_health_i)
   self:_send_set_revives()
 
-  local DownTimeModifier = 0 
-  if self._max_lives then DownTimeModifier = (math.min(Global.CrimDusk.data.lives, self._max_lives) - 2) * 5 end
+  local DownTimeModifier = (math.min(Global.CrimDusk.data.lives, self._max_lives) - 2) * 5 end
   self._down_time = tweak_data.player.damage.DOWNED_TIME + DownTimeModifier + managers.player:upgrade_value("player", "down_time_bonus", 0)
 end)
 
