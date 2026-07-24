@@ -14,7 +14,7 @@ Hooks:OverrideFunction(GroupAIStateBesiege, "_check_spawn_phalanx", function(sel
   elseif self._phalanx_spawn_timer and TimerManager:game():time() >= self._phalanx_spawn_timer then self:_spawn_phalanx() return
 
   elseif WintersCanSpawn then
-    self._phalanx_current_spawn_chance = self._phalanx_current_spawn_chance or tweak_data.group_ai.phalanx.spawn_chance.start
+    self._phalanx_current_spawn_chance = 1 --self._phalanx_current_spawn_chance or tweak_data.group_ai.phalanx.spawn_chance.start
     if self._phalanx_current_spawn_chance <= 0 then return end
 
     self._phalanx_spawn_attempted = true
@@ -33,16 +33,15 @@ Hooks:OverrideFunction(GroupAIStateBesiege, "phalanx_damage_reduction_enable", f
   managers.hud:set_buff_enabled("vip", true)
 
   -- Enemies spawn 4x faster
-  Utils.PrintTable(tweak_data.group_ai.ai_spawn_group_cooldowns, 3)
-  for _, CooldownData in pairs(tweak_data.group_ai.ai_spawn_group_cooldowns) do
-    for _, range in ipairs(CooldownData) do
-      for _, cooldown in ipairs(range) do log(cooldown) cooldown = cooldown * 0.25 end
+  for CooldownType, CooldownData in pairs(tweak_data.group_ai.ai_spawn_group_cooldowns) do
+    for CooldownIndex, range in ipairs(CooldownData) do
+      for index, cooldown in ipairs(range) do tweak_data.group_ai.ai_spawn_group_cooldowns[CooldownType][CooldownIndex][index] = cooldown * 0.25 end
     end
   end
   Utils.PrintTable(tweak_data.group_ai.ai_spawn_group_cooldowns, 3)
 
   -- Special spawn caps are doubled
-  for _, SpawnCap in pairs(tweak_data.group_ai.special_unit_spawn_limits) do SpawnCap = SpawnCap * 2 end
+  for index, SpawnCap in pairs(tweak_data.group_ai.special_unit_spawn_limits) do tweak_data.group_ai.special_unit_spawn_limits[index] = SpawnCap * 2 end
   Utils.PrintTable(tweak_data.group_ai.special_unit_spawn_limits, 1)
 end)
 
@@ -51,14 +50,14 @@ Hooks:OverrideFunction(GroupAIStateBesiege, "phalanx_damage_reduction_disable", 
 
   -- Revert enemy spawn speed
   for _, CooldownData in pairs(tweak_data.group_ai.ai_spawn_group_cooldowns) do
-    for _, range in ipairs(CooldownData) do
-      for _, cooldown in ipairs(range) do cooldown = cooldown * 4 end
+    for RangeIndex, range in ipairs(CooldownData) do
+      for index, cooldown in ipairs(range) do tweak_data.group_ai.ai_spawn_group_cooldowns[CooldownType][CooldownIndex][index] = cooldown * 4 end
     end
   end
   Utils.PrintTable(tweak_data.group_ai.ai_spawn_group_cooldowns, 3)
 
   -- Revert special spawn cap
-  for _, SpawnCap in pairs(tweak_data.group_ai.special_unit_spawn_limits) do SpawnCap = SpawnCap * 0.5 end
+  for index, SpawnCap in pairs(tweak_data.group_ai.special_unit_spawn_limits) do tweak_data.group_ai.special_unit_spawn_limits[index] = SpawnCap * 0.5 end
   Utils.PrintTable(tweak_data.group_ai.special_unit_spawn_limits, 1)
 end)
 
