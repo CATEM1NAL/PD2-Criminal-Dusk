@@ -43,9 +43,9 @@ bm_menu_disables_damage_to_hot : "Dopamine is disabled while wearing this armor!
 
 # Perk Consumables
 bm_ability_chico_injector_desc: "Press the throwable key to activate. While active, 25% of all damage taken is converted into healing. This effect lasts 6 seconds."
-bm_grenade_smoke_screen_grenade_desc: "Grants 50% dodge chance to all crewmates standing inside the cloud, and decreases enemy accuracy by 50% if they enter it. Lasts 10 seconds."
+bm_grenade_smoke_screen_grenade_desc: "Grants +50 dodge to all crewmates standing inside the cloud, and decreases enemy accuracy by 50% if they enter it. Lasts 10 seconds."
 bm_grenade_tag_team_desc: "Press the throwable key while looking at an ally to activate. When you or the tagged ally get a kill, you restore 2 health and the tagged ally restores 1. This effect lasts 12 seconds, but is extended by 1 second per kill."
-bm_grenade_pocket_ecm_jammer_desc: "Press the throwable key to activate for 6 seconds. During stealth this will function like a regular ECM, and benefits from any ECM skills you may have. In loud it will instead activate feedback, potentially stunning enemies within 25m."
+bm_grenade_pocket_ecm_jammer_desc: "Press the throwable key to activate for 6 seconds. During stealth this will function like a regular ECM. In loud it will instead activate feedback, potentially stunning enemies within 25m."
 bm_grenade_copr_ability_desc: "Press the throwable key to activate for 6 seconds. While active your armor is disabled and your health is divided into 5 segments. Taking damage removes a segment (two if the damage is higher than 200), while killing 2 enemies restores 1 segment. All kills block damage for 1 second."
 bm_grenade_damage_control_desc: "Press the throwable key to negate stacked damage."
 
@@ -165,6 +165,7 @@ menu_close_by_beta_desc: "$lv1;Hipfire shotguns while sprinting."
 menu_shotgun_rof: "Slamfire"
 menu_shotgun_rof_desc: "$lv1;Rate of fire with single-fire shotguns is increased by ##35%## when hipfiring."
 
+menu_shotgun_accuracy: "Skeet Shooting"
 menu_shotgun_accuracy_desc: "$lv1;Shotgun accuracy is increased by ##40%## while aiming down sights."
 
 menu_far_away_beta_desc: "$lv1;Shotgun effective range is increased by ##50%## while aiming down sights."
@@ -197,6 +198,7 @@ menu_bulletproof_desc: "$lv1;Armor is increased by ##50%##."
 
 menu_juggernaut_beta_desc: "$lv1;Unlocks the ##Improved Combined Tactical Vest##."
 
+menu_extra_ammo_box: "Bullet Tax"
 menu_extra_ammo_box_desc: "$lv1;Every 6th enemy killed drops an extra ammo box."
 
 menu_scavenger_desc: "$lv1;Ammo pickup range is increased by ##50%##."
@@ -206,11 +208,12 @@ menu_portable_saw_desc: "$lv1;Unlock the ##primary## OVE9000 saw.\n\n$lv2;Unlock
 menu_carbon_blade: "Carbon Blade"
 menu_carbon_blade_desc: "$lv1;OVE9000 saw is ##40%## more efficient against locks.\n\n$lv2;OVE9000 saw is ##80%## more efficient against enemies and penetrates body armor.\n\n$lv3;OVE9000 saw penetrates shields and has a ##50%## chance on kill to cause panic within ##10m##."
 
-menu_ammo_reservoir_beta_desc: "$lv1;Your ammo bags grant infinite ammo for up to ##5## seconds after use.\n\n$lv2;Infinite ammo lasts an additional ##15## seconds."
+menu_ammo_reservoir_beta_desc: "$lv1;Your ammo bags grant infinite ammo for up to ##10## seconds after use, based on how much ammo you restored.\n\n$lv2;Infinite ammo can last up to ##20## seconds."
 
-menu_stockpile_name: "Stockpile"
+menu_stockpile_name: "Deep Pockets"
 menu_stockpile_desc: "$lv1;Carry ##1## extra ammo bag.\n\n$lv2;Carry ##2## extra ammo bags."
 
+menu_ammobag_capacity: "Stockpile"
 menu_ammobag_capacity_desc: "$lv1;Your ammo bags hold ##100%## more ammo.\n\n$lv2;Your ammo bags hold ##200%## more ammo."
 
 menu_fully_loaded_desc: "$lv1;Ammo pickup is increased by ##25%##.\n\n$lv2;Ammo pickup is increased by ##50%##."
@@ -218,6 +221,7 @@ menu_fully_loaded_desc: "$lv1;Ammo pickup is increased by ##25%##.\n\n$lv2;Ammo 
 menu_scrounger_name: "Scrounger"
 menu_scrounger_desc: "$lv1;Picking up an ammo box reduces your grenade recharge time by ##1## second.\n\n$lv2;Time reduction is now ##2## seconds per ammo box."
 
+menu_max_ammo_inc: "Bandolier"
 menu_max_ammo_inc_desc: "$lv1;Ammo capacity increased by ##25%##."
 
 menu_spotter_teamwork_beta_desc: "$lv1;Enemies that you aim at are marked.\n\n$lv2;Enemies that you mark take ##15%## more damage."
@@ -324,11 +328,14 @@ menu_silence_conceal_desc: "$lv1;Silencers gain ##1## concealment and their conc
 menu_backstab_beta_desc: "$lv1;Gain ##3%## crit chance (up to ##30%##) for each ##3## points of detection risk below ##35##.\n\n$lv2;Crit chance is now granted for each point of detection risk below ##35##."
 
 ## Fugitive
-menu_four_lives: "More Blood To Bleed"
+menu_four_lives: "Life Insurance"
 menu_four_lives_desc: "$lv1;Your max downs are increased by ##1##.\n\n$lv2;Your max downs are increased by ##2##."
 
 menu_bleedout_health: "Sticks And Stones"
 menu_bleedout_health_desc: "$lv1;Bleedout health increased by ##25##."
+
+menu_bleedout_timer_skill: "More Blood To Bleed"
+menu_bleedout_timer_skill_desc: "$lv1;Bleedout timer is extended by ##5## seconds.\n\n$lv2;Bleedout timer is extended by ##10## seconds.\n\n$lv3;Bleedout timer is extended by ##15## seconds.\n\n$lv4;Bleedout timer is extended by ##20## seconds."
 
 ## Perk Decks
 menu_perk_dmg: "$lv1;Weapon damage increased by ##10%##.\n\n$lv2;Weapon damage increased by ##25%##."
@@ -376,16 +383,16 @@ menu_kingpin_cooldown: "INJECTOR UNLOCKS AT LEVEL 40!\n\n$lv1;Cooldown of the ##
 menu_kingpin_healing: "INJECTOR UNLOCKS AT LEVEL 40!\n\n$lv1;While the ##Injector## is active and you are below half health, healing is increased by ##25%##."
 menu_kingpin_base: "INJECTOR UNLOCKS AT LEVEL 40!\n\n$lv1;Base healing of the ##Injector## increased to ##50%##.\n\n$lv2;Healing is further increased to ##75%##."
 
-menu_stoic_skill: "$lv1;Unlocks the ##Stoic's Hip Flask##. All damage taken is now applied quickly over ##6## seconds. Using the flask negates any remaining damage with a ##10## second cooldown, reduced by ##1## second per kill.\n\n$lv2;Cooldown is reduced by ##2## seconds per kill when health is below ##35%##."
+menu_stoic_skill: "$lv1;Unlocks the ##Stoic's Hip Flask##. All damage taken is now applied quickly over ##6## seconds. Using the flask negates any remaining damage with a ##10## second cooldown.\n\n$lv2;Cooldown is reduced by ##1## second per kill when health is below ##100%##."
 menu_stoic_negation: "$lv1;Remaining damage from ##Virtue## is negated after not taking damage for ##1.5## seconds."
 menu_stoic_regen: "$lv1;Your armor is converted into health.\n\n$lv2;##50%## of negated damage from ##Virtue## is turned into healing."
 
-menu_h3h3_cooldown: "GAS DISPENSER UNLOCKS AT LEVEL 30!\n\n$lv1;Kills from your ##Gas Dispenser## target decrease the cooldown by ##2## seconds."
-menu_h3h3_absorb: "GAS DISPENSER UNLOCKS AT LEVEL 30!\n\n$lv1;Kills from you or your ##Gas Dispenser## target grant ##1## absorption (max ##20##) while the Gas Dispenser is active."
+menu_h3h3_cooldown: "GAS DISPENSER UNLOCKS AT LEVEL 30!\n\n$lv1;Kills from you or your ##Gas Dispenser## target decrease the cooldown by ##1## second."
+menu_h3h3_absorb: "GAS DISPENSER UNLOCKS AT LEVEL 30!\n\n$lv1;Kills from you or your ##Gas Dispenser## target grant ##0.4## absorption (max ##12##) while the Gas Dispenser is active. Absorption is reset when the cooldown expires."
 
 menu_leech_swan: "LEECH AMPULE UNLOCKS AT LEVEL 50!\n\n$lv1;Running out of health while the ##Leech Ampule## is active allows you to keep fighting with ##80%## reduced movement speed.\n\n$lv2;The ##Leech Ampule## can be used while down to get back up temporarily. Using a ##doctor bag## or reviving a crewmate allows you to stay up if you have health when the effect ends."
 menu_leech_duration: "LEECH AMPULE UNLOCKS AT LEVEL 50!\n\n$lv1;Cooldown of the ##Leech Ampule## is reduced by ##1## second per kill.\n\n$lv2;Effect of the ##Leech Ampule## now lasts ##10## seconds."
-menu_leech_healing: "LEECH AMPULE UNLOCKS AT LEVEL 50!\n\n$lv1;Crewmates recover ##10## health when you take damage while the ##Leech Ampule## is active.\n\n$lv2;You recover ##2 segments## when activating the ##Leech Ampule##."
+menu_leech_healing: "LEECH AMPULE UNLOCKS AT LEVEL 50!\n\n$lv1;Crewmates recover ##10## health when you take damage while the ##Leech Ampule## is active.\n\n$lv2;You recover ##40%## of your health when activating the ##Leech Ampule##."
 menu_leech_segments: "LEECH AMPULE UNLOCKS AT LEVEL 50!\n\n$lv1;Activating the ##Leech Ampule## divides your health into ##10## segments, instead of ##5##."
 
 menu_tac_reload: "Tactical Reload"

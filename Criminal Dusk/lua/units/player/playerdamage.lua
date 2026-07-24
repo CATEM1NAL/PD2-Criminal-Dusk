@@ -114,15 +114,19 @@ Hooks:OverrideFunction(PlayerDamage, "_regenerated", function(self, no_messiah)
     self._messiah_charges = managers.player:upgrade_value("player", "pistol_revive_from_bleed_out", 0)
   end
 
+  local MaxReviveSteps = #tweak_data.player.damage.REVIVE_HEALTH_STEPS
+
   -- Initial lives (start of heist)
   if Application:digest_value(self._revives, false) == 0 and Global.CrimDusk.data.lives >= 0 then
     self._max_lives = 3 + managers.player:upgrade_value("player", "additional_lives", 0)
     self._revives = Application:digest_value(math.min(Global.CrimDusk.data.lives + 1, self._max_lives), true)
+    self._revive_health_i = MaxReviveSteps - math.min(Global.CrimDusk.data.lives, self._max_lives)
     managers.environment_controller:set_last_life(false)
 
-elseif Application:digest_value(self._revives, false) == 0 and Global.CrimDusk.data.lives == -1 then
+  elseif Application:digest_value(self._revives, false) == 0 and Global.CrimDusk.data.lives == -1 then
     self:set_health(0)
     self._revives = Application:digest_value(1, true)
+    self._revive_health_i = MaxReviveSteps
     self:_send_set_revives()
     self:_send_set_health()
     DelayedCalls:Add("CrimDusk_ForceIntoCustody", 1, function()
@@ -132,17 +136,81 @@ elseif Application:digest_value(self._revives, false) == 0 and Global.CrimDusk.d
   -- Traded from custody
   elseif Global.CrimDusk.data.lives == -1 then
     self._revives = Application:digest_value(1, true)
+    self._revive_health_i = MaxReviveSteps
     managers.environment_controller:set_last_life(true)
 
   -- Doctor bag
   else local NewDowns = Application:digest_value(self._revives, false) + 1
     self._revives = Application:digest_value(math.min(NewDowns, self._max_lives), true)
+    self._revive_health_i = math.min(self._revive_health_i - 1, MaxReviveSteps - self._max_lives)
     managers.environment_controller:set_last_life(false)
   end
 
   self:_send_set_revives()
-  self._revive_health_i = 1
-  self._down_time = tweak_data.player.damage.DOWNED_TIME
+
+  local DownTimeModifier = (math.min(Global.CrimDusk.data.lives, self._max_lives) - 2) * 5
+  self._down_time = tweak_data.player.damage.DOWNED_TIME + DownTimeModifier + managers.player:upgrade_value("player", "down_time_bonus", 0)
+end)
+
+-- On revive
+Hooks:OverrideFunction(PlayerDamage, "revive", function(self, silent)
+  if Application:digest_value(self._revives, false) == 0 then self._revive_health_multiplier = nil return end
+  local arrested = self:arrested()
+
+  managers.player:set_player_state("standard")
+  managers.player:remove_copr_risen_cooldown()
+
+  if not silent then PlayerStandard.say_line(self, "s05x_sin") end
+
+  self._bleed_out = false
+  self._incapacitated = nil
+  self._downed_timer = nil
+  self._downed_start_time = nil
+
+  if not arrested then
+    self:set_armor(self:_max_armor())
+
+    if self:get_real_health() <= 0 then
+      self:set_health(self:_max_health() * tweak_data.player.damage.REVIVE_HEALTH_STEPS[self._revive_health_i] * (self._revive_health_multiplier or 1) * managers.player:upgrade_value("player", "revived_health_regain", 1))
+      self._revive_health_i = math.min(#tweak_data.player.damage.REVIVE_HEALTH_STEPS, self._revive_health_i + 1)
+
+      local DownTimeModifier = (math.min(Global.CrimDusk.data.lives, self._max_lives) - 2) * 5
+      self._down_time = tweak_data.player.damage.DOWNED_TIME + DownTimeModifier + managers.player:upgrade_value("player", "down_time_bonus", 0)
+    end
+
+    self._revive_miss = self._dmg_interval
+  end
+
+  self:_regenerate_armor()
+
+  managers.hud:set_player_health({
+    current = self:get_real_health(),
+    total = self:_max_health(),
+    revives = Application:digest_value(self._revives, false)
+  })
+  self:_send_set_health()
+  self:_set_health_effect()
+  managers.hud:pd_stop_progress()
+
+  self._revive_health_multiplier = nil
+
+  self._listener_holder:call("on_revive")
+
+  if managers.player:has_inactivate_temporary_upgrade("temporary", "revived_damage_resist") then
+    managers.player:activate_temporary_upgrade("temporary", "revived_damage_resist")
+  end
+
+  if managers.player:has_inactivate_temporary_upgrade("temporary", "increased_movement_speed") then
+    managers.player:activate_temporary_upgrade("temporary", "increased_movement_speed")
+  end
+
+  if managers.player:has_inactivate_temporary_upgrade("temporary", "swap_weapon_faster") then
+    managers.player:activate_temporary_upgrade("temporary", "swap_weapon_faster")
+  end
+
+  if managers.player:has_inactivate_temporary_upgrade("temporary", "reload_weapon_faster") then
+    managers.player:activate_temporary_upgrade("temporary", "reload_weapon_faster")
+  end
 end)
 
 -- This bad boy can fit so many changes
@@ -172,60 +240,66 @@ Hooks:OverrideFunction(PlayerDamage, "damage_bullet", function(self, attack_data
 		end
 	end
 
-	local damage_absorption = pm:damage_absorption()
-	if damage_absorption > 0 then attack_data.damage = attack_data.damage - damage_absorption end
+  -- Absorption (Maniac, Tag Team)
+  local damage_absorption = pm:damage_absorption()
+  if damage_absorption > 0 then attack_data.damage = attack_data.damage - damage_absorption end
   attack_data.damage = math.max(attack_data.damage, 0.1)
 
-	self:copr_update_attack_data(attack_data)
+  self:copr_update_attack_data(attack_data)
   --log("Armour broken: " .. tostring(self._armor_broken) .. "\nImmunity expires at: " .. self._armor_break_t .. "\nCurrent time: " .. managers.player:player_timer():time())
-	if self._god_mode then
-		if attack_data.damage > 0 then self:_send_damage_drama(attack_data, attack_data.damage) end
+
+  -- Sources of immunity
+  if self._god_mode then
+    if attack_data.damage > 0 then self:_send_damage_drama(attack_data, attack_data.damage) end
     self:_call_listeners(damage_info)
     return
-	elseif self._invulnerable or self._mission_damage_blockers.invulnerable then self:_call_listeners(damage_info) return
-	elseif self:incapacitated() then return
-	elseif self:is_friendly_fire(attack_data.attacker_unit) then return
-	elseif pm:player_timer():time() < self._armor_break_t then return
-	elseif self._unit:movement():current_state().immortal then return
-	elseif self._revive_miss and math.random() < self._revive_miss then self:play_whizby(attack_data.col_ray.position) return
-	end
 
-	local dodge_value = self._dodge_stack or 0
-	local skill_dodge_chance = pm:skill_dodge_chance(self._unit:movement():running(), self._unit:movement():crouching(), self._unit:movement():zipline_unit())
-	skill_dodge_chance = skill_dodge_chance + pm:body_armor_value("dodge")
-	dodge_value = dodge_value + skill_dodge_chance - (skill_dodge_chance * self._entropy * self._entropy_mult)
-	--log("current dodge: " .. dodge_value + skill_dodge_chance)
-	--log("entropy: " .. (skill_dodge_chance) * self._entropy * self._entropy_mult)
-	--log("final dodge: " .. dodge_value)
+  elseif self._invulnerable or self._mission_damage_blockers.invulnerable then self:_call_listeners(damage_info) return
+  elseif self:incapacitated() then return
+  elseif self:is_friendly_fire(attack_data.attacker_unit) then return
+  elseif pm:player_timer():time() < self._armor_break_t then return
+  elseif self._unit:movement():current_state().immortal then return
+  elseif self._revive_miss and math.random() < self._revive_miss then self:play_whizby(attack_data.col_ray.position) return
+  end
 
-	if self._temporary_dodge_t and TimerManager:game():time() < self._temporary_dodge_t then
-	  dodge_value = dodge_value + self._temporary_dodge
-	end
+  -- Dodge
+  local dodge_value = self._dodge_stack or 0
+  local skill_dodge_chance = pm:skill_dodge_chance(self._unit:movement():running(), self._unit:movement():crouching(), self._unit:movement():zipline_unit())
+  skill_dodge_chance = skill_dodge_chance + pm:body_armor_value("dodge")
+  dodge_value = dodge_value + skill_dodge_chance - (skill_dodge_chance * self._entropy * self._entropy_mult)
+  --log("current dodge: " .. dodge_value + skill_dodge_chance)
+  --log("entropy: " .. (skill_dodge_chance) * self._entropy * self._entropy_mult)
+  --log("final dodge: " .. dodge_value)
 
-	local smoke_dodge = 0
-	for _, smoke_screen in ipairs(managers.player._smoke_screen_effects or {}) do
-		if smoke_screen:is_in_smoke(self._unit) then
-			dodge_value = math.max(dodge_value, 0) + tweak_data.projectiles.smoke_screen_grenade.dodge_chance
-		break end
-	end
+  if self._temporary_dodge_t and TimerManager:game():time() < self._temporary_dodge_t then
+    dodge_value = dodge_value + self._temporary_dodge
+  end
 
-	if dodge_value >= 1 then
-	  --log(dodge_value .. " we dodged! Yippee!")
-	  self._dodge_stack = dodge_value - 1
-	  self._entropy = self._entropy + 1
-		if attack_data.damage > 0 then self:_send_damage_drama(attack_data, 0) end
+  local smoke_dodge = 0
+  for _, smoke_screen in ipairs(managers.player._smoke_screen_effects or {}) do
+    if smoke_screen:is_in_smoke(self._unit) then
+      dodge_value = math.max(dodge_value, 0) + tweak_data.projectiles.smoke_screen_grenade.dodge_chance
+    break end
+  end
 
-		self:_call_listeners(damage_info)
-		self:play_whizby(attack_data.col_ray.position)
-		self:_hit_direction(attack_data.attacker_unit:position(), attack_data.col_ray and attack_data.col_ray.ray or damage_info.attacK_dir)
+  if dodge_value >= 1 then
+    --log(dodge_value .. " we dodged! Yippee!")
+    self._dodge_stack = dodge_value - 1
+    self._entropy = self._entropy + 1
+    if attack_data.damage > 0 then self:_send_damage_drama(attack_data, 0) end
 
-		pm:send_message(Message.OnPlayerDodge, nil, attack_data)
-	return end
+    self:_call_listeners(damage_info)
+    self:play_whizby(attack_data.col_ray.position)
+    self:_hit_direction(attack_data.attacker_unit:position(), attack_data.col_ray and attack_data.col_ray.ray or damage_info.attacK_dir)
+
+    pm:send_message(Message.OnPlayerDodge, nil, attack_data)
+  return end
 
   self._dodge_stack = dodge_value
   self._entropy = 0
   --log(dodge_value .. " dodge failed :(")
 
+  -- Taking damage
 	if self:get_real_armor() > 0 then self._unit:sound():play("player_hit")
 	else self._unit:sound():play("player_hit_permadamage") end
 
@@ -259,7 +333,7 @@ Hooks:OverrideFunction(PlayerDamage, "damage_bullet", function(self, attack_data
   if self:get_real_armor() <= 0 and not self._armor_broken then
     self._armor_break_t = pm:player_timer():time() + self._dmg_interval
     self._armor_broken = true
-	end
+  end
 
 	if not self._bleed_out and health_subtracted > 0 then self:_send_damage_drama(attack_data, health_subtracted)
 	elseif self._bleed_out then self:chk_queue_taunt_line(attack_data) end

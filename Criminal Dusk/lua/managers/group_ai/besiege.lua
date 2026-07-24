@@ -33,14 +33,17 @@ Hooks:OverrideFunction(GroupAIStateBesiege, "phalanx_damage_reduction_enable", f
   managers.hud:set_buff_enabled("vip", true)
 
   -- Enemies spawn 4x faster
+  Utils.PrintTable(tweak_data.group_ai.ai_spawn_group_cooldowns, 3)
   for _, CooldownData in pairs(tweak_data.group_ai.ai_spawn_group_cooldowns) do
     for _, range in ipairs(CooldownData) do
-      for _, cooldown in ipairs(range) do cooldown = cooldown * 0.25 end
+      for _, cooldown in ipairs(range) do log(cooldown) cooldown = cooldown * 0.25 end
     end
   end
+  Utils.PrintTable(tweak_data.group_ai.ai_spawn_group_cooldowns, 3)
 
   -- Special spawn caps are doubled
   for _, SpawnCap in pairs(tweak_data.group_ai.special_unit_spawn_limits) do SpawnCap = SpawnCap * 2 end
+  Utils.PrintTable(tweak_data.group_ai.special_unit_spawn_limits, 1)
 end)
 
 Hooks:OverrideFunction(GroupAIStateBesiege, "phalanx_damage_reduction_disable", function()
@@ -52,9 +55,11 @@ Hooks:OverrideFunction(GroupAIStateBesiege, "phalanx_damage_reduction_disable", 
       for _, cooldown in ipairs(range) do cooldown = cooldown * 4 end
     end
   end
+  Utils.PrintTable(tweak_data.group_ai.ai_spawn_group_cooldowns, 3)
 
   -- Revert special spawn cap
   for _, SpawnCap in pairs(tweak_data.group_ai.special_unit_spawn_limits) do SpawnCap = SpawnCap * 0.5 end
+  Utils.PrintTable(tweak_data.group_ai.special_unit_spawn_limits, 1)
 end)
 
 Hooks:OverrideFunction(GroupAIStateBesiege, "_begin_assault_task", function(self, assault_areas)

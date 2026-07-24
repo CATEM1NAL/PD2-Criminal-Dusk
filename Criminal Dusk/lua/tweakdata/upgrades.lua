@@ -56,6 +56,17 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   self.values.player.tier_armor_multiplier = { 1.05, 1.1, 1.2, 1.3, 1.4, 1.4 } -- Armour increase
   self.values.player.camouflage_bonus = { 0.667, 0.5 } -- Optical Illusions
 
+  -- More Blood to Bleed
+  self.values.player.down_time_bonus = { 5, 10, 15, 20 } -- More Blood to Bleed
+  self.definitions.player_bleedout_timer_1 = {
+    category = "feature",
+    upgrade = {
+      category = "player",
+      upgrade = "down_time_bonus",
+      value = 1
+    }
+  }
+
   -- Repair System
   self.values.player.drill_autorepair_1 = { 0.5 }
   self.values.player.drill_autorepair_2 = { 0.5 }
@@ -154,11 +165,13 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   -- Tag Team
   self.values.player.tag_team_base[1].kill_health_gain = 0.2
   self.values.player.tag_team_base[1].kill_extension = 1
-  self.values.player.tag_team_damage_absorption[1].kill_gain = 0.1
+  self.values.player.tag_team_damage_absorption = { { kill_gain = 0.04, max = 1.2 } }
+  self.values.player.tag_team_cooldown_drain = { { owner = 0, tagged = 0 }, { owner = 1, tagged = 1 } }
 
   -- Stoic
   self.values.player.damage_control_passive[1] = { 100, 3.4 }
   self.values.player.damage_control_auto_shrug = { 1.5 }
+  self.values.player.damage_control_cooldown_drain = { { 0, 0 }, { 100, 1 } }
 
   -- Leech
   self.values.player.copr_activate_bonus_health_ratio = { 0.01, 0.4 }
@@ -217,7 +230,7 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
     doctor_bag_amount_increase = 3, ammo_bag_ammo_increase = 3, weapon_passive_reload_speed_multiplier = 3,
     temporary_chico_injector = 3,
 
-    player_melee_kill_snatch_pager_chance = 4
+    player_melee_kill_snatch_pager_chance = 4, player_bleedout_timer = 4
   }
 
   for upgrade, count in pairs(NewUpgrades) do

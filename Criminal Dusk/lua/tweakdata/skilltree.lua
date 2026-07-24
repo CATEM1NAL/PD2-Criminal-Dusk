@@ -247,7 +247,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     }
     self.skills.shotgun_accuracy = {
       { upgrades = { "shotgun_steelsight_accuracy_inc_1" }, cost = self.costs.default },
-      name_id = "temp_skill_name", desc_id = "menu_shotgun_accuracy_desc", icon_xy = { 8, 5 }
+      name_id = "menu_shotgun_accuracy", desc_id = "menu_shotgun_accuracy_desc", icon_xy = { 8, 5 }
     }
     self.skills.shotgun_range = {
       { upgrades = { "shotgun_steelsight_range_inc_1" }, cost = self.costs.default },
@@ -326,7 +326,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     self.skills.ammobag_capacity = {
       { upgrades = { "ammo_bag_ammo_increase1" }, cost = self.costs.default },
       { upgrades = { "ammo_bag_ammo_increase_2" }, cost = self.costs.default },
-      name_id = "temp_skill_name", desc_id = "menu_ammobag_capacity_desc", icon_xy = { 1, 0 }
+      name_id = "menu_ammobag_capacity", desc_id = "menu_ammobag_capacity_desc", icon_xy = { 1, 0 }
     }
     self.skills.fully_loaded = {
       { upgrades = { "player_pick_up_ammo_multiplier" }, cost = self.costs.default },
@@ -574,9 +574,16 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       { upgrades = { "player_bleed_out_health_multiplier" }, cost = self.costs.default },
       name_id = "menu_bleedout_health", desc_id = "menu_bleedout_health_desc", icon_xy = { 5, 2 }
     }
+    self.skills.bleedout_timer = {
+      { upgrades = { "player_bleedout_timer_1" }, cost = self.costs.default },
+      { upgrades = { "player_bleedout_timer_2" }, cost = self.costs.default },
+      { upgrades = { "player_bleedout_timer_3" }, cost = self.costs.default },
+      { upgrades = { "player_bleedout_timer_4" }, cost = self.costs.default },
+      name_id = "menu_bleedout_timer_skill", desc_id = "menu_bleedout_timer_skill_desc", icon_xy = { 5, 2 }
+    }
 
     self.trees[14].tiers = {
-      { "four_lives", "bleedout_health" },
+      { "bleedout_timer", "four_lives", "bleedout_health" },
       { "running_from_death", "up_you_go" },
       { "perseverance", "feign_death" },
       { "messiah" }
@@ -874,8 +881,8 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       tiers = {
         { "h3h3_cooldown", "kingpin_cooldown", "leech_duration" },
         { "stoic_base", "kingpin_prio", "leech_healing" },
-        { "stoic_regen", "kingpin_base", "leech_segments" },
-        { "stoic_negation", "h3h3_absorb", "kingpin_healing", "leech_swan" }
+        { "stoic_regen", "kingpin_healing", "leech_segments" },
+        { "stoic_negation", "h3h3_absorb", "kingpin_base", "leech_swan" }
       }
     }
 

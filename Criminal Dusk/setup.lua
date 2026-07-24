@@ -47,7 +47,7 @@ function CrimDusk:Init()
 
   -- Reset campaign state
   function self:Reset()
-    Global.CrimDusk.data = { heists_won = 0, lives = 5 }
+    Global.CrimDusk.data = { heists_won = 0, lives = 4 }
   end
 end
 
