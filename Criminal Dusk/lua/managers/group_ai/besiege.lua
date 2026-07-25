@@ -14,7 +14,7 @@ Hooks:OverrideFunction(GroupAIStateBesiege, "_check_spawn_phalanx", function(sel
   elseif self._phalanx_spawn_timer and TimerManager:game():time() >= self._phalanx_spawn_timer then self:_spawn_phalanx() return
 
   elseif WintersCanSpawn then
-    self._phalanx_current_spawn_chance = 1 --self._phalanx_current_spawn_chance or tweak_data.group_ai.phalanx.spawn_chance.start
+    self._phalanx_current_spawn_chance = self._phalanx_current_spawn_chance or tweak_data.group_ai.phalanx.spawn_chance.start
     if self._phalanx_current_spawn_chance <= 0 then return end
 
     self._phalanx_spawn_attempted = true
@@ -29,36 +29,56 @@ Hooks:OverrideFunction(GroupAIStateBesiege, "_check_spawn_phalanx", function(sel
   end
 end)
 
-Hooks:OverrideFunction(GroupAIStateBesiege, "phalanx_damage_reduction_enable", function()
+Hooks:OverrideFunction(GroupAIStateBesiege, "phalanx_damage_reduction_enable", function(self)
   managers.hud:set_buff_enabled("vip", true)
 
-  -- Enemies spawn 4x faster
+  -- Enemies spawn faster
+  GroupAIStateBesiege._MAX_SIMULTANEOUS_SPAWNS = GroupAIStateBesiege._MAX_SIMULTANEOUS_SPAWNS * 8
   for CooldownType, CooldownData in pairs(tweak_data.group_ai.ai_spawn_group_cooldowns) do
     for CooldownIndex, range in ipairs(CooldownData) do
-      for index, cooldown in ipairs(range) do tweak_data.group_ai.ai_spawn_group_cooldowns[CooldownType][CooldownIndex][index] = cooldown * 0.25 end
+      for index, cooldown in ipairs(range) do tweak_data.group_ai.ai_spawn_group_cooldowns[CooldownType][CooldownIndex][index] = cooldown * 0.1 end
     end
   end
-  Utils.PrintTable(tweak_data.group_ai.ai_spawn_group_cooldowns, 3)
 
   -- Special spawn caps are doubled
   for index, SpawnCap in pairs(tweak_data.group_ai.special_unit_spawn_limits) do tweak_data.group_ai.special_unit_spawn_limits[index] = SpawnCap * 2 end
-  Utils.PrintTable(tweak_data.group_ai.special_unit_spawn_limits, 1)
+
+  -- Cloaker spawn timers increased
+  for index, timer in ipairs(tweak_data.group_ai.besiege.recurring_group_SO.recurring_cloaker_spawn.interval) do
+    tweak_data.group_ai.besiege.recurring_group_SO.recurring_cloaker_spawn.interval[index] = timer * 0.1
+  end
+  for index, timer in ipairs(tweak_data.group_ai.besiege.recurring_group_SO.recurring_cloaker_spawn.interval) do
+    tweak_data.group_ai.besiege.recurring_group_SO.recurring_spawn_1.interval[index] = timer * 0.1
+  end
+
+  -- Enemy cap increased
+  self._task_data.assault.force = self._task_data.assault.force * 8
 end)
 
-Hooks:OverrideFunction(GroupAIStateBesiege, "phalanx_damage_reduction_disable", function()
+Hooks:OverrideFunction(GroupAIStateBesiege, "phalanx_damage_reduction_disable", function(self)
   managers.hud:set_buff_enabled("vip", false)
 
   -- Revert enemy spawn speed
-  for _, CooldownData in pairs(tweak_data.group_ai.ai_spawn_group_cooldowns) do
-    for RangeIndex, range in ipairs(CooldownData) do
-      for index, cooldown in ipairs(range) do tweak_data.group_ai.ai_spawn_group_cooldowns[CooldownType][CooldownIndex][index] = cooldown * 4 end
+  GroupAIStateBesiege._MAX_SIMULTANEOUS_SPAWNS = GroupAIStateBesiege._MAX_SIMULTANEOUS_SPAWNS * 0.125
+  for CooldownType, CooldownData in pairs(tweak_data.group_ai.ai_spawn_group_cooldowns) do
+    for CooldownIndex, range in ipairs(CooldownData) do
+      for index, cooldown in ipairs(range) do tweak_data.group_ai.ai_spawn_group_cooldowns[CooldownType][CooldownIndex][index] = cooldown * 10 end
     end
   end
-  Utils.PrintTable(tweak_data.group_ai.ai_spawn_group_cooldowns, 3)
 
   -- Revert special spawn cap
   for index, SpawnCap in pairs(tweak_data.group_ai.special_unit_spawn_limits) do tweak_data.group_ai.special_unit_spawn_limits[index] = SpawnCap * 0.5 end
-  Utils.PrintTable(tweak_data.group_ai.special_unit_spawn_limits, 1)
+
+  -- Revert cloaker spawn timers
+  for index, timer in ipairs(tweak_data.group_ai.besiege.recurring_group_SO.recurring_cloaker_spawn.interval) do
+    tweak_data.group_ai.besiege.recurring_group_SO.recurring_cloaker_spawn.interval[index] = timer * 10
+  end
+  for index, timer in ipairs(tweak_data.group_ai.besiege.recurring_group_SO.recurring_cloaker_spawn.interval) do
+    tweak_data.group_ai.besiege.recurring_group_SO.recurring_spawn_1.interval[index] = timer * 10
+  end
+
+  -- Revert enemy cap
+  self._task_data.assault.force = self._task_data.assault.force * 0.125
 end)
 
 Hooks:OverrideFunction(GroupAIStateBesiege, "_begin_assault_task", function(self, assault_areas)

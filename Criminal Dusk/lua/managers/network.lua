@@ -8,11 +8,10 @@ NetworkHelper:AddReceiveHook("CrimDusk_HeistCount", "CrimDusk_CheckRunWon", func
 
   if HeistsWon < 5 then
     Hooks:Add("LocalizationManagerPostInit", "CrimDusk_PDTHNames", function(loc)
-      loc:load_localization_file(CrimDusk.ModPath .. "loc/pdth_difficulties.json")
+      managers.localization:load_localization_file(CrimDusk.ModPath .. "loc/pdth_difficulties.json")
     end)
-  end
 
-  if HeistsWon == #Global.CrimDusk.campaign then
+  elseif HeistsWon == #Global.CrimDusk.campaign then
     CrimDusk.ChatNotify(managers.localization:text("crimdawn_chat_victory"))
     DelayedCalls:Add("CrimDusk_VictoryTease", 3, function()
       CrimDusk.ChatNotify(managers.localization:text("crimdawn_chat_victory2"))

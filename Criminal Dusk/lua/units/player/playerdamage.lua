@@ -145,7 +145,6 @@ Hooks:OverrideFunction(PlayerDamage, "_regenerated", function(self, no_messiah)
     managers.environment_controller:set_last_life(false)
   end
 
-  CrimDusk.Log(FileIdent, "Revive Health Index: " .. self._revive_health_i)
   self:_send_set_revives()
 
   local DownTimeModifier = (math.min(Global.CrimDusk.data.lives, self._max_lives) - 2) * 5
@@ -173,7 +172,6 @@ Hooks:OverrideFunction(PlayerDamage, "revive", function(self, silent)
     if self:get_real_health() <= 0 then
       self:set_health(self:_max_health() * tweak_data.player.damage.REVIVE_HEALTH_STEPS[self._revive_health_i] * (self._revive_health_multiplier or 1) * managers.player:upgrade_value("player", "revived_health_regain", 1))
       self._revive_health_i = math.min(#tweak_data.player.damage.REVIVE_HEALTH_STEPS, self._revive_health_i + 1)
-      CrimDusk.Log(FileIdent, "Revive Health Index: " .. self._revive_health_i)
 
       local DownTimeModifier = (math.min(Global.CrimDusk.data.lives, self._max_lives) - 2) * 5
       self._down_time = tweak_data.player.damage.DOWNED_TIME + DownTimeModifier + managers.player:upgrade_value("player", "down_time_bonus", 0)

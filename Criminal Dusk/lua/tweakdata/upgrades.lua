@@ -206,9 +206,11 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   -- Deployables
   self.doctor_bag_base = 1
   self.values.doctor_bag.amount_increase = { 1, 2, 3 }
+  self.values.doctor_bag.quantity = { 1, 2 }
 
   self.ammo_bag_base = 1.5
   self.values.ammo_bag.ammo_increase = { 1.5, 3, 4.5 }
+  self.values.ammo_bag.quantity = { 1, 2 }
 
   self.values.first_aid_kit.quantity[1] = 3
   self.values.first_aid_kit.downs_restore_chance = { 0.5, 1 }
