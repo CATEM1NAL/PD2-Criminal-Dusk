@@ -55,6 +55,19 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   self.killshot_close_panic_range = 1000 -- Distance that panic on kill spreads
   self.values.player.tier_armor_multiplier = { 1.05, 1.1, 1.2, 1.3, 1.4, 1.4 } -- Armour increase
   self.values.player.camouflage_bonus = { 0.667, 0.5 } -- Optical Illusions
+  self.values.player.cheat_death_chance = { 0.5, 1 } -- Feign Death
+  self.values.weapon.automatic_head_shot_add = { 0.5, 1 } -- Body Expertise
+
+  -- Lock n' Load
+  self.values.player.automatic_faster_reload = {
+    {
+      target_enemies = 3,
+      max_reload_increase = 2,
+      min_reload_increase = 1,
+      min_bullets = 5,
+      penalty = 0.04
+    }
+  }
 
   -- More Blood to Bleed
   self.values.player.down_time_bonus = { 5, 10, 15, 20 } -- More Blood to Bleed
@@ -200,7 +213,20 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   self.values.player.body_armor.dodge = { 0.25, 0, -0.10, -0.15, -0.25, -0.5, -1 }
 
   -- Weapon speed penalties
+  self.weapon_movement_penalty.pistol = 0.95
+  self.weapon_movement_penalty.revolver = 0.95
+  self.weapon_movement_penalty.smg = 0.95
+  self.weapon_movement_penalty.dartgun = 0.95
+  self.weapon_movement_penalty.akimbo = 0.9
+  self.weapon_movement_penalty.shotgun = 0.9
+  self.weapon_movement_penalty.assault_rifle = 0.85
+  self.weapon_movement_penalty.bow = 0.85
+  self.weapon_movement_penalty.snp = 0.8
+  self.weapon_movement_penalty.grenade_launcher = 0.8
+  self.weapon_movement_penalty.flamethrower = 0.8
+  self.weapon_movement_penalty.crossbow = 0.8
   self.weapon_movement_penalty.lmg = 0.75
+  self.weapon_movement_penalty.saw = 0.75
   self.weapon_movement_penalty.minigun = 0.5
 
   -- Deployables

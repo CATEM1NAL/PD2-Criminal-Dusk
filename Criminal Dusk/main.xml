@@ -21,6 +21,7 @@
     <hooks directory="lua"> <!-- Criminal Dusk/lua/ -->
       <hook source_file="lib/network/base/basenetworksession" file="peer_sync.lua"/>
       <hook source_file="lib/network/base/networkpeer" file="no_cheater_tag.lua"/>
+      <hook source_file="lib/player_actions/skills/playeractionshockandawe" file="lock_n_load.lua"/>
 
       <hooks directory="tweakdata"> <!-- Criminal Dusk/lua/tweakdata/ -->
         <hook source_file="lib/tweak_data/upgradestweakdata" file="upgrades.lua"/>

@@ -96,6 +96,7 @@ local WeaponClasses = {
     [150] = { "gre_m79", "slap", "m32" }
   },
   rifles = {
+    [12] = { "hailstorm" },
     [24] = { "famas", "asval", "corgi", "vhs", "galil", "komodo", "m16", "tkb" },
     [32] = { "s552", "aug", "groza", "sub2000", "g36", "l85a2", "new_m14", "ak5", "fal" },
     [46] = { "scar", "ak74", "new_m4", "flint", "tecci", "contraband", "g3" },
@@ -205,7 +206,16 @@ Hooks:PostHook(WeaponTweakData, "init", "CrimDusk_WeaponTweakInit", function(sel
   self.ray.stats_modifiers.damage = 25
   self.m95.stats_modifiers.damage = 100
 
+  -- Magazine size tweaks
+  local MagSize = { asval = 20, scar = 20, g3 = 20 }
+  for weapon, mag in pairs(MagSize) do
+    self[weapon].CLIP_AMMO_MAX = mag
+    self[weapon].NR_CLIPS_MAX = 5
+    self[weapon].AMMO_MAX = self[weapon].CLIP_AMMO_MAX * self[weapon].NR_CLIPS_MAX
+  end
+
   -- Attribute tweaks
+  self.hailstorm.categories = { "assault_rifle" }
   self.welrod.stats_modifiers = nil
 
   self.lemming.can_shoot_through_shield = nil

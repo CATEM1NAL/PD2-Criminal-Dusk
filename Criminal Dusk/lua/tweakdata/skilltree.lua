@@ -533,8 +533,8 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
 
     self.trees[11].tiers = {
       { "sprinter", "moving_target", "move_speed" },
-      { "second_wind", "jail_diet" },
-      { "optical_illusion", "shockproof" },
+      { "shockproof", "jail_diet" },
+      { "optical_illusion", "second_wind" },
       { "sprint_loaded" }
     }
 
@@ -572,7 +572,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     }
     self.skills.bleedout_health = {
       { upgrades = { "player_bleed_out_health_multiplier" }, cost = self.costs.default },
-      name_id = "menu_bleedout_health", desc_id = "menu_bleedout_health_desc", icon_xy = { 5, 2 }
+      name_id = "menu_bleedout_health", desc_id = "menu_bleedout_health_desc", icon_xy = { 1, 2 }
     }
     self.skills.bleedout_timer = {
       { upgrades = { "player_bleedout_timer_1" }, cost = self.costs.default },
@@ -581,12 +581,30 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       { upgrades = { "player_bleedout_timer_4" }, cost = self.costs.default },
       name_id = "menu_bleedout_timer_skill", desc_id = "menu_bleedout_timer_skill_desc", icon_xy = { 5, 2 }
     }
+    self.skills.revive_swap_speed = {
+      { upgrades = { "player_temp_swap_weapon_faster_1" }, cost = self.costs.default },
+      { upgrades = { "player_temp_reload_weapon_faster_1" }, cost = self.costs.default },
+      name_id = "menu_revive_swap_speed", desc_id = "menu_revive_swap_speed_desc", icon_xy = { 11, 3 }
+    }
+    self.skills.revive_move_speed = {
+      { upgrades = { "player_temp_increased_movement_speed_1" }, cost = self.costs.default },
+      name_id = "menu_running_from_death_beta", desc_id = "menu_running_from_death_beta_desc", icon_xy = { 11, 3 }
+    }
+    self.skills.swan_song = {
+      { upgrades = { "temporary_berserker_damage_multiplier_1" }, cost = self.costs.default },
+      { upgrades = { "temporary_berserker_damage_multiplier_2" }, cost = self.costs.default },
+      name_id = "menu_perseverance_beta", desc_id = "menu_perseverance_beta_desc", icon_xy = { 5, 12 }
+    }
+    self.skills.vengeful_swan = {
+      { upgrades = { "player_berserker_no_ammo_cost" }, cost = self.costs.default },
+      name_id = "menu_vengeful_swan", desc_id = "menu_vengeful_swan_desc", icon_xy = { 5, 12 }
+    }
 
     self.trees[14].tiers = {
-      { "bleedout_timer", "four_lives", "bleedout_health" },
-      { "running_from_death", "up_you_go" },
-      { "perseverance", "feign_death" },
-      { "messiah" }
+      { "revive_swap_speed", "bleedout_health", "bleedout_timer" },
+      { "revive_move_speed", "four_lives" },
+      { "swan_song", "messiah" },
+      { "vengeful_swan", "feign_death" }
     }
     self.trees[15].tiers = {
       { "martial_arts" },
@@ -603,12 +621,12 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     self.skills.perk_dmg = {
       { upgrades = { "weapon_passive_damage_multiplier" }, cost = self.costs.default },
       { upgrades = { "weapon_passive_damage_multiplier_2" }, cost = self.costs.default },
-      name_id = "menu_deckall_8", desc_id = "menu_perk_dmg", icon_xy = { 0, 0 }
+      name_id = "menu_deckall_8", desc_id = "menu_perk_dmg", icon_xy = { 7, 11 }
     }
     self.skills.helmet_popping = {
       { upgrades = { "weapon_passive_headshot_damage_multiplier" }, cost = self.costs.default },
       { upgrades = { "weapon_passive_headshot_damage_multiplier_2" }, cost = self.costs.default },
-      name_id = "menu_deckall_2", desc_id = "menu_perk_headshot", icon_xy = { 0, 0 }
+      name_id = "menu_deckall_2", desc_id = "menu_perk_headshot", icon_xy = { 6, 11 }
     }
 
     -- Crew Chief
@@ -621,12 +639,12 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       { upgrades = { "player_passive_health_multiplier_4" }, cost = self.costs.default },
       { upgrades = { "player_passive_health_multiplier_5" }, cost = self.costs.default },
       { upgrades = { "player_passive_health_regen" }, cost = self.costs.default },
-      name_id = "menu_deck2_1", desc_id = "menu_deck2_1_skill", icon_xy = { 0, 0 }
+      name_id = "menu_deck2_1", desc_id = "menu_deck2_1_skill", icon_xy = { 1, 1 }
     }
     self.skills.muscle_panic = {
       { upgrades = { "player_panic_suppression", "player_uncover_multiplier" }, cost = self.costs.default },
       { upgrades = { "player_killshot_close_panic_chance" }, cost = self.costs.default },
-      name_id = "menu_deck2_7", desc_id = "menu_deck2_7_skill", icon_xy = { 0, 0 }
+      name_id = "menu_deck2_7", desc_id = "menu_deck2_7_skill", icon_xy = { 7, 0 }
     }
 
     -- Armorer
@@ -637,7 +655,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       { upgrades = { "player_tier_armor_multiplier_4" }, cost = self.costs.default },
       { upgrades = { "player_tier_armor_multiplier_5" }, cost = self.costs.default },
       { upgrades = { "player_armor_grinding_1" }, cost = self.costs.default },
-      name_id = "menu_armorer_skill", desc_id = "menu_armorer_skill_desc", icon_xy = { 0, 0 }
+      name_id = "menu_armorer_skill", desc_id = "menu_armorer_skill_desc", icon_xy = { 3, 1 }
     }
 
     -- Rogue
@@ -648,13 +666,13 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       { upgrades = { "mrwi_dodge_chance_1", "mrwi_dodge_chance_2", "mrwi_dodge_chance_3" }, cost = self.costs.default },
       { upgrades = { "player_tier_dodge_chance_1",}, cost = self.costs.default },
       { upgrades = { "player_dodge_ricochet_bullets" }, cost = self.costs.default },
-      name_id = "menu_deck4_5", desc_id = "menu_deck4_5_skill", icon_xy = { 0, 0 }
+      name_id = "menu_deck4_5", desc_id = "menu_deck4_5_skill", icon_xy = { 7, 3 }
     }
     self.skills.rogue_switch = {
       { upgrades = { "weapon_passive_swap_speed_multiplier_1" }, cost = self.costs.default },
       { upgrades = { "weapon_passive_swap_speed_multiplier_2" }, cost = self.costs.default },
       { upgrades = { "weapon_swap_speed_multiplier" }, cost = self.costs.default },
-      name_id = "menu_deck4_9", desc_id = "menu_rogue_switch", icon_xy = { 0, 0 }
+      name_id = "menu_deck4_9", desc_id = "menu_rogue_switch", icon_xy = { 7, 7 }
     }
 
     -- Crook
@@ -674,7 +692,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
           "player_level_4_dodge_addend_3", "player_level_4_armor_multiplier_3" },
         cost = self.costs.default
       },
-      name_id = "menu_crook_skill", desc_id = "menu_crook_skill_desc", icon_xy = { 0, 0 }
+      name_id = "menu_crook_skill", desc_id = "menu_crook_skill_desc", icon_xy = { 2, 12 }
     }
 
     -- Hitman
@@ -685,7 +703,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       { upgrades = { "player_perk_armor_regen_timer_multiplier_4" }, cost = self.costs.default },
       { upgrades = { "player_perk_armor_regen_timer_multiplier_5" }, cost = self.costs.default },
       { upgrades = { "player_passive_always_regen_armor_1" }, cost = self.costs.default },
-      name_id = "menu_deck5_9", desc_id = "menu_hitman_skill_desc", icon_xy = { 0, 0 }
+      name_id = "menu_deck5_9", desc_id = "menu_hitman_skill_desc", icon_xy = { 2, 12 }
     }
 
     -- Burglar
@@ -693,7 +711,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       { upgrades = { "player_corpse_dispose_speed_multiplier" }, cost = self.costs.default },
       { upgrades = { "player_alarm_pager_speed_multiplier" }, cost = self.costs.default },
       { upgrades = { "player_pick_lock_speed_multiplier" }, cost = self.costs.default },
-      name_id = "menu_deck7_3", desc_id = "menu_burglar_stealth", icon_xy = { 0, 0 }
+      name_id = "menu_deck7_3", desc_id = "menu_burglar_stealth", icon_xy = { 3, 12 }
     }
 
     -- Ex-Pres
@@ -786,7 +804,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     }
     self.skills.gambler_mag_throw = {
       { upgrades = { "temporary_loose_ammo_give_team" }, cost = self.costs.default },
-      name_id = "menu_mag_throw", desc_id = "menu_mag_throw_desc", icon_xy = { 0, 0 }
+      name_id = "menu_mag_throw", desc_id = "menu_mag_throw_desc", icon_xy = { 8, 3 }
     }
 
     -- Biker
@@ -803,7 +821,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       { upgrades = { "player_armor_increase_1", "player_health_decrease_1" }, cost = self.costs.default },
       { upgrades = { "player_armor_increase_2", "player_health_decrease_2" }, cost = self.costs.default },
       { upgrades = { "player_armor_increase_3", "player_health_decrease_3" }, cost = self.costs.default },
-      name_id = "menu_deck15_7", desc_id = "menu_anarch_rise", icon_xy = { 0, 0 }
+      name_id = "menu_deck15_7", desc_id = "menu_anarch_rise", icon_xy = { 11, 8 }
     }
 
     -- Tag Team
@@ -845,7 +863,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     self.skills.copycat_reload = {
       { upgrades = { "player_primary_reload_secondary_1", "player_secondary_reload_primary_1" }, cost = self.costs.default },
       { upgrades = { "weapon_mrwi_swap_speed_multiplier_1" }, cost = self.costs.default },
-      name_id = "menu_tac_reload", desc_id = "menu_tac_reload_desc", icon_xy = { 0, 0 }
+      name_id = "menu_tac_reload", desc_id = "menu_tac_reload_desc", icon_xy = { 0, 9 }
     }
 
     -- Dodge
@@ -987,22 +1005,18 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     self.skills.accuracy_increase = {
       { upgrades = { "player_weapon_accuracy_increase_1" }, cost = self.costs.default },
       { upgrades = { "player_weapon_accuracy_increase_2" }, cost = self.costs.default },
-      name_id = "menu_ar_stability", desc_id = "menu_ar_stability_desc", icon_xy = { 0, 0 }
+      name_id = "menu_ar_stability", desc_id = "menu_ar_stability_desc", icon_xy = { 8, 5 }
     }
     self.skills.stability_increase = {
       { upgrades = { "player_stability_increase_bonus_1" }, cost = self.costs.default },
       { upgrades = { "player_stability_increase_bonus_2" }, cost = self.costs.default },
-      name_id = "menu_lmg_stability", desc_id = "menu_lmg_stability_desc", icon_xy = { 0, 0 }
-    }
-    self.skills.single_shot_accuracy = {
-      { upgrades = { "weapon_single_spread_multiplier" }, cost = self.costs.default },
-      name_id = "menu_single_shot_acc", desc_id = "menu_single_shot_acc_desc", icon_xy = { 0, 0 }
+      name_id = "menu_lmg_stability", desc_id = "menu_lmg_stability_desc", icon_xy = { 8, 5 }
     }
     self.skills.reload_speed = {
       { upgrades = { "weapon_passive_reload_speed_multiplier" }, cost = self.costs.default },
       { upgrades = { "weapon_passive_reload_speed_multiplier_2" }, cost = self.costs.default },
       { upgrades = { "weapon_passive_reload_speed_multiplier_3" }, cost = self.costs.default },
-      name_id = "menu_reload_speed", desc_id = "menu_reload_speed_desc", icon_xy = { 0, 0 }
+      name_id = "menu_reload_speed", desc_id = "menu_reload_speed_desc", icon_xy = { 1, 9 }
     }
     self.skills.silencer_statboost = {
       { upgrades = { "weapon_silencer_recoil_multiplier" }, cost = self.costs.default },
@@ -1012,7 +1026,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     self.skills.hollow_point = {
       { upgrades = { "weapon_passive_armor_piercing_chance" }, cost = self.costs.default },
       { upgrades = { "player_ap_bullets_1" }, cost = self.costs.default },
-      name_id = "menu_hollow_point", desc_id = "menu_hollow_point_desc", icon_xy = { 0, 0 }
+      name_id = "menu_hollow_point", desc_id = "menu_hollow_point_desc", icon_xy = { 11, 9 }
     }
 
     local BonusTree2 = {
@@ -1021,7 +1035,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       unlocked = true,
       background_texture = "guis/textures/pd2/skilltree/bg_mastermind",
       tiers = {
-        { "stability_increase", "single_shot_accuracy" },
+        { "stability_increase" },
         { "accuracy_increase", "tinkerer" },
         { "reload_speed", "hollow_point" },
         { "illegal_parts", "silencer_statboost" }

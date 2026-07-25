@@ -128,9 +128,7 @@ Hooks:OverrideFunction(PlayerDamage, "_regenerated", function(self, no_messiah)
     self._revive_health_i = MaxReviveSteps
     self:_send_set_revives()
     self:_send_set_health()
-    DelayedCalls:Add("CrimDusk_ForceIntoCustody", 1, function()
-      self:_check_bleed_out(nil, true)
-    end)
+    DelayedCalls:Add("CrimDusk_ForceIntoCustody", 1, function() self:_check_bleed_out(nil, true) end)
 
   -- Traded from custody
   elseif Global.CrimDusk.data.lives == -1 then
@@ -182,11 +180,7 @@ Hooks:OverrideFunction(PlayerDamage, "revive", function(self, silent)
 
   self:_regenerate_armor()
 
-  managers.hud:set_player_health({
-    current = self:get_real_health(),
-    total = self:_max_health(),
-    revives = Application:digest_value(self._revives, false)
-  })
+  managers.hud:set_player_health({ current = self:get_real_health(), total = self:_max_health(), revives = Application:digest_value(self._revives, false) })
   self:_send_set_health()
   self:_set_health_effect()
   managers.hud:pd_stop_progress()
@@ -216,28 +210,28 @@ end)
 Hooks:OverrideFunction(PlayerDamage, "damage_bullet", function(self, attack_data)
   if not self:_chk_can_take_dmg() then return end
 
-	local damage_info = {
-		result = { variant = "bullet", type = "hurt" },
-		attacker_unit = attack_data.attacker_unit,
-		attack_dir = attack_data.attacker_unit and attack_data.attacker_unit:movement():m_pos() - self._unit:movement():m_pos() or Vector3(1, 0, 0),
-		pos = mvector3.copy(self._unit:movement():m_head_pos())
-	}
+  local damage_info = {
+    result = { variant = "bullet", type = "hurt" },
+    attacker_unit = attack_data.attacker_unit,
+    attack_dir = attack_data.attacker_unit and attack_data.attacker_unit:movement():m_pos() - self._unit:movement():m_pos() or Vector3(1, 0, 0),
+    pos = mvector3.copy(self._unit:movement():m_head_pos())
+  }
 
-	local pm = managers.player
-	local dmg_mul = pm:damage_reduction_skill_multiplier("bullet")
-	attack_data.damage = attack_data.damage * dmg_mul
-	attack_data.damage = managers.mutators:modify_value("PlayerDamage:TakeDamageBullet", attack_data.damage)
-	attack_data.damage = managers.modifiers:modify_value("PlayerDamage:TakeDamageBullet", attack_data.damage, attack_data.attacker_unit:base()._tweak_table)
+  local pm = managers.player
+  local dmg_mul = pm:damage_reduction_skill_multiplier("bullet")
+  attack_data.damage = attack_data.damage * dmg_mul
+  attack_data.damage = managers.mutators:modify_value("PlayerDamage:TakeDamageBullet", attack_data.damage)
+  attack_data.damage = managers.modifiers:modify_value("PlayerDamage:TakeDamageBullet", attack_data.damage, attack_data.attacker_unit:base()._tweak_table)
 
-	if _G.IS_VR then
-		local distance = mvector3.distance(self._unit:position(), attack_data.attacker_unit:position())
+  if _G.IS_VR then
+    local distance = mvector3.distance(self._unit:position(), attack_data.attacker_unit:position())
 
-		if tweak_data.vr.long_range_damage_reduction_distance[1] < distance then
-			local step = math.clamp(distance / tweak_data.vr.long_range_damage_reduction_distance[2], 0, 1)
-			local mul = 1 - math.step(tweak_data.vr.long_range_damage_reduction[1], tweak_data.vr.long_range_damage_reduction[2], step)
-			attack_data.damage = attack_data.damage * mul
-		end
-	end
+    if tweak_data.vr.long_range_damage_reduction_distance[1] < distance then
+      local step = math.clamp(distance / tweak_data.vr.long_range_damage_reduction_distance[2], 0, 1)
+      local mul = 1 - math.step(tweak_data.vr.long_range_damage_reduction[1], tweak_data.vr.long_range_damage_reduction[2], step)
+      attack_data.damage = attack_data.damage * mul
+    end
+  end
 
   -- Absorption (Maniac, Tag Team)
   local damage_absorption = pm:damage_absorption()

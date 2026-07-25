@@ -31,6 +31,12 @@ function CrimDusk:Init()
     self.Log(FileIdent, "Saved " .. self.SaveFile .. " (" .. SaveReason .. ")")
   end -- Yes, this WILL crash without a FileIdent or SaveReason. This is intentional.
 
+  function self.GoLoud()
+    local LoudDelay = 3
+    if Global.game_settings.level_id == "friend" then LoudDelay = 5 end
+    DelayedCalls:Add("CrimDusk_GoLoudDelay", LoudDelay, function() managers.groupai:state():on_police_called("empty") end)
+  end
+
   -- Difficulty scaling
   function self.DiffScale(ignore_cap)
     if (Global.CrimDusk.data.heists_won or 0) < 5 then

@@ -21,7 +21,5 @@ end)
 
 NetworkHelper:AddReceiveHook("CrimDusk_MaskedUp", "CrimDusk_ForceLoudNetwork", function()
   if Global.CrimDusk.StealthableHeists[Global.game_settings.level_id] or managers.groupai:state():is_police_called() then return end
-  DelayedCalls:Add("CrimDusk_GoLoudDelay", 3, function()
-    managers.groupai:state():on_police_called("empty")
-  end)
+  CrimDusk.GoLoud()
 end)

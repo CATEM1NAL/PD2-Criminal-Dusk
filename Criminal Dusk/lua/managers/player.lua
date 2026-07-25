@@ -1,4 +1,6 @@
-local FileIdent = "UpgradeHandler"
+local FileIdent = "PlayerManager"
+
+PlayerManager._SHOCK_AND_AWE_TARGET_KILLS = 3
 
 Hooks:OverrideFunction(PlayerManager, "verify_equipment", function() return true end)
 Hooks:OverrideFunction(PlayerManager, "health_skill_multiplier", function() return 1 end)
