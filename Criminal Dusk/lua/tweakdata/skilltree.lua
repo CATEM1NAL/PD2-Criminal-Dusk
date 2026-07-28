@@ -301,7 +301,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     }
     self.skills.extra_ammo_box = {
       { upgrades = { "player_double_drop_1" }, cost = self.costs.default },
-      name_id = "temp_skill_name", desc_id = "menu_extra_ammo_box_desc", icon_xy = { 8, 11 }
+      name_id = "menu_extra_ammo_box", desc_id = "menu_extra_ammo_box_desc", icon_xy = { 8, 11 }
     }
     self.skills.scavenger = {
       { upgrades = { "player_increased_pickup_area_1" }, cost = self.costs.default },
@@ -340,7 +340,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     }
     self.skills.max_ammo_increase = {
       { upgrades = { "extra_ammo_multiplier1" }, cost = self.costs.default },
-      name_id = "temp_skill_name", desc_id = "menu_max_ammo_inc_desc", icon_xy = { 3, 0 }
+      name_id = "menu_max_ammo_inc", desc_id = "menu_max_ammo_inc_desc", icon_xy = { 3, 0 }
     }
     self.skills.high_value_target = {
       { upgrades = { "weapon_steelsight_highlight_specials" }, cost = self.costs.default },

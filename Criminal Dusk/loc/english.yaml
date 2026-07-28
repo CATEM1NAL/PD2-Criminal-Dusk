@@ -222,7 +222,7 @@ menu_fully_loaded_desc: "$lv1;Ammo pickup is increased by ##25%##.\n\n$lv2;Ammo 
 menu_scrounger_name: "Scrounger"
 menu_scrounger_desc: "$lv1;Picking up an ammo box reduces your grenade recharge time by ##1## second.\n\n$lv2;Time reduction is now ##2## seconds per ammo box."
 
-menu_max_ammo_inc: "Bandolier"
+menu_max_ammo_inc: "Big Game Hunter"
 menu_max_ammo_inc_desc: "$lv1;Ammo capacity increased by ##25%##."
 
 menu_spotter_teamwork_beta_desc: "$lv1;Enemies that you aim at are marked.\n\n$lv2;Enemies that you mark take ##15%## more damage."

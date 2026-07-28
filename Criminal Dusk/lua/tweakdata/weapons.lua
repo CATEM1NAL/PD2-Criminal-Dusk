@@ -119,10 +119,12 @@ local WeaponClasses = {
   pistols = {
     [16] = { "glock_17", "ppk", "b92fs", "legacy", "g22c", "shrew", "g26", "glock_18c", "beer", "czech", "holt", "maxim9", "pl14", "packrat", "welrod" },
     [24] = { "p226", "colt_1911", "m1911", "c96", "type54", "breech", "hs2000", "stech", "pmm", "usp", "sparrow" },
-    [32] = { "lemming", "model3" },
-    [46] = { "peacemaker" },
-    [50] = { "rsh12" },
-    [92] = { "deagle", "mateba", "new_raging_bull", "chinchilla", "korth" }
+    [32] = { "lemming" },
+    [50] = { "peacemaker" },
+    [65] = { "model3" },
+    [75] = { "rsh12" },
+    [80] = { "deagle", "mateba", "korth" },
+    [120] = { "new_raging_bull", "chinchilla" }
   },
   smgs = {
     [16] = { "cobray", "pm9", "fmg9", "baka", "polymer", "mac10", "mp7", "mp9", "p90", "tec9", "scorpion" },
