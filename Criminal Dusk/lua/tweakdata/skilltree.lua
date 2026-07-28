@@ -9,9 +9,12 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     -- Default upgrades
     self.default_upgrades = {
       "player_fall_health_damage_multiplier",
-      "player_special_enemy_highlight",
       "player_hostage_trade",
+      "player_special_enemy_highlight",
+      "player_special_enemy_highlight_mask_off",
       "player_sec_camera_highlight",
+      "player_sec_camera_highlight_mask_off",
+      "player_mask_off_pickup",
       "player_corpse_dispose",
       "player_corpse_dispose_amount_1",
       "carry_interact_speed_multiplier_1",
@@ -479,12 +482,53 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
 
     -- GHOST --
     -- Stealth tree
+    self.skills.inside_man = {
+      { upgrades = { "player_additional_assets" }, cost = self.costs.default },
+      { upgrades = { "player_buy_bodybags_asset", "player_buy_spotter_asset" }, cost = self.costs.default },
+      name_id = "menu_inside_man", desc_id = "menu_inside_man_desc", icon_xy = { 0, 8 }
+    }
+    self.skills.chameleon = {
+      { upgrades = { "player_standstill_omniscience" }, cost = self.costs.default },
+      name_id = "menu_chameleon_beta", desc_id = "menu_chameleon_beta_desc", icon_xy = { 6, 10 }
+    }
+    self.skills.cam_loop = {
+      { upgrades = { "player_tape_loop_duration_1" }, cost = self.costs.default },
+      { upgrades = { "player_tape_loop_duration_2" }, cost = self.costs.default },
+      { upgrades = { "player_tape_loop_interact_distance_mul_1" }, cost = self.costs.default },
+      name_id = "menu_cam_loop", desc_id = "menu_cam_loop_desc", icon_xy = { 4, 2 }
+    }
+    self.skills.lockpick_speed = {
+      { upgrades = { "player_pick_lock_easy_speed_multiplier" }, cost = self.costs.default },
+      { upgrades = { "player_pick_lock_hard" }, cost = self.costs.default },
+      name_id = "menu_lockpick_speed", desc_id = "menu_lockpick_speed_desc", icon_xy = { 10, 4 }
+    }
+    self.skills.ecm_feedback = {
+      { upgrades = { "ecm_jammer_can_activate_feedback", "ecm_jammer_interaction_speed_multiplier" }, cost = self.costs.default },
+      { upgrades = { "ecm_jammer_can_retrigger" }, cost = self.costs.default },
+      name_id = "menu_ecm_feedback", desc_id = "menu_ecm_feedback_desc", icon_xy = { 6, 2 }
+    }
+    self.skills.ecm_duration = {
+      { upgrades = { "ecm_jammer_duration_multiplier", "ecm_jammer_feedback_duration_boost" }, cost = self.costs.default },
+      { upgrades = { "ecm_jammer_duration_multiplier_2", "ecm_jammer_feedback_duration_boost_2" }, cost = self.costs.default },
+      name_id = "menu_ecm_duration", desc_id = "menu_ecm_duration_desc", icon_xy = { 1, 4 }
+    }
+    self.skills.ecm_overdrive = {
+      { upgrades = { "ecm_jammer_affects_cameras" }, cost = self.costs.default },
+      { upgrades = { "ecm_jammer_affects_pagers" }, cost = self.costs.default },
+      { upgrades = { "ecm_jammer_can_open_sec_doors" }, cost = self.costs.default },
+      name_id = "menu_ecm_booster_beta", desc_id = "menu_ecm_overdrive_desc", icon_xy = { 6, 3 }
+    }
+    self.skills.ecm_quantity = {
+      { upgrades = { "ecm_jammer_quantity_increase_1" }, cost = self.costs.default },
+      { upgrades = { "ecm_jammer_quantity_increase_2" }, cost = self.costs.default },
+      name_id = "menu_ecm_quantity", desc_id = "menu_ecm_quantity_desc", icon_xy = { 3, 4 }
+    }
 
     self.trees[10].tiers = {
-      { "jail_workout" },
-      { "cleaner", "chameleon" },
-      { "second_chances", "ecm_booster" },
-      { "ecm_2x" }
+      { "cleaner", "inside_man", "ecm_duration" },
+      { "chameleon", "cam_loop", "ecm_overdrive" },
+      { "lockpick_speed", "ecm_feedback" },
+      { "ecm_quantity" }
     }
 
     -- Movement tree
@@ -886,9 +930,9 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       background_texture = "guis/textures/pd2/skilltree/bg_mastermind",
       tiers = {
         { "muscle_health", "armorer_perk", "hitman_perk" },
-        { "gambler_mag_throw", "infil_melee" },
+        { "gambler_heal", "infil_melee" },
         { "muscle_panic", "infil_heal" },
-        { "gambler_heal", "maniac_base" }
+        { "gambler_mag_throw", "maniac_base" }
       }
     } -- Consumables
     local PerkTree3 = {

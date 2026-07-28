@@ -123,10 +123,10 @@ local function SetTweakData()
   tweak_data.experience_manager.level_limit.low_cap_multiplier = 1
 
   -- Projectile damage
-  local Grenade = 20
+  local Grenade = 40
   
-  local HighLauncher = 15
-  local LowLauncher = 7.5
+  local HighLauncher = 30
+  local LowLauncher = 15
   local ShockLauncher = 1
   
   local Bow = 15

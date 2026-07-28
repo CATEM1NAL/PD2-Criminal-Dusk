@@ -328,6 +328,31 @@ menu_silence_conceal_desc: "$lv1;Silencers gain ##1## concealment and their conc
 
 menu_backstab_beta_desc: "$lv1;Gain ##3%## crit chance (up to ##30%##) for each ##3## points of detection risk below ##35##.\n\n$lv2;Crit chance is now granted for each point of detection risk below ##35##."
 
+menu_inside_man: "Inside Man"
+menu_inside_man_desc: "$lv1;You can buy additional loud assets.\n\n$lv2;You can buy additional stealth assets."
+
+menu_chameleon_beta_desc: "$lv1;In stealth, standing still for ##3.5s## will automatically mark everyone within ##10m##."
+
+menu_cam_loop: "Cam Distortion"
+menu_cam_loop_desc: "$lv1;You can interact with a single camera to disable it for ##7.5## seconds.\n\n$lv2;Duration is extended to ##15## seconds.\n\n$lv3;You can disable cameras from ##40%## further away."
+
+menu_lockpick_speed: "Dextrous"
+menu_lockpick_speed_desc: "$lv1;Your lockpicking speed is doubled.\n\n$lv2;You can lockpick non-Titan safes."
+
+menu_cleaner_beta_desc: "$lv1;Your body bag capacity is increased by ##1##.\n\n$lv2;Carry ##1## extra body bag case."
+
+menu_ecm_feedback: "Feedback Loop"
+menu_ecm_feedback_desc: "$lv1;You can interact with placed ECMs to enable feedback, potentially stunning all cops within ##100m##.\n\n$lv2;ECMs will recharge over ##4 minutes##."
+
+menu_ecm_duration: "Lithium-ion"
+menu_ecm_duration_desc: "$lv1;Your ECMs last ##25%## longer.\n\n$lv2;Your ECMs last ##50%## longer."
+
+menu_ecm_booster_beta: "Signal Jammer"
+menu_ecm_overdrive_desc: "$lv1;Your ECMs block cameras.\n\n$lv2;Your ECMs block pagers.\n\n$lv3;You can use ECMs to open security doors."
+
+menu_ecm_quantity: "Cyber Warfare"
+menu_ecm_quantity_desc: "$lv1;Carry ##1## extra ECM.\n\n$lv2;Carry ##3## extra ECMs."
+
 ## Fugitive
 menu_four_lives: "Life Insurance"
 menu_four_lives_desc: "$lv1;Your max downs are increased by ##1##.\n\n$lv2;Your max downs are increased by ##2##."
@@ -470,7 +495,7 @@ menu_reload_speed: "Magazine Funnel"
 menu_reload_speed_desc: "$lv1;All weapons reload ##25%## faster.\n\n$lv2;Reload speed is now ##50%## faster.\n\n$lv3;Reload speed is now ##100%## faster."
 
 menu_tinkerer: "Tinkerer"
-menu_tinkerer_desc: "$lv1;Weapons with attachments gain a ##10%## bonus to ##stability##.\n\n$lv2;Bonus also applies to ##accuracy##.\n\n$lv3;Bonus also applies to ##damage##."
+menu_tinkerer_desc: "$lv1;Weapons with attachments gain a ##10%## stability bonus.\n\n$lv2;Weapons with attachments gain a ##10%## accuracy bonus.\n\n$lv3;Weapons with attachments gain a ##25%## damage bonus."
 
 menu_illegal_parts: "Illegal Parts"
 menu_illegal_parts_desc: "$lv1;All weapons gain a ##50%## bonus to their fire rate.\n\n$lv2;Fire rate is now increased by ##100%##."

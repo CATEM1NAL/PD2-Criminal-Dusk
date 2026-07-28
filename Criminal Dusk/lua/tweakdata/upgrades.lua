@@ -60,6 +60,8 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   self.values.weapon.automatic_head_shot_add = { 0.5, 1 } -- Body Expertise
   self.values.player.perk_armor_regen_timer_multiplier = { 0.9, 0.8, 0.7, 0.6, 0.5 } -- Hitman
   self.values.player.passive_dodge_chance = { 0.1, 0.25, 0.4, 0.55 } -- Rogue
+  self.values.weapon.modded_damage_multiplier = { 1.25 } -- Tinkerer (damage)
+  self.values.player.tape_loop_duration = { 2.5, 10 } -- Cam Loop
 
   -- Crook
   self.values.player.level_2_armor_multiplier = { 1.4, 1.8, 2.2 }
@@ -255,6 +257,9 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   self.values.shape_charge.quantity = { 4, 8, 12 }
   self.definitions.shape_charge_quantity_increase_3 = deep_clone(self.definitions.shape_charge_quantity_increase_2)
   self.definitions.shape_charge_quantity_increase_3.upgrade.value = 3
+
+  self.ecm_jammer_base_range = 10000
+  self.ecm_feedback_min_duration = 20
 
   -- New upgrade definitions
   NewUpgrades = {

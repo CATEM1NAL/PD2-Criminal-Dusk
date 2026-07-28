@@ -92,8 +92,7 @@ local WeaponClasses = {
     [20] = { "arblast", "frankish" },
     [23] = { "shuno", "m134" },
     [30] = { "long", "elastic" },
-    [75] = { "china", "ms3gl", "arbiter" },
-    [150] = { "gre_m79", "slap", "m32" }
+    [150] = { "china", "ms3gl", "arbiter", "gre_m79", "slap", "m32" }
   },
   rifles = {
     [12] = { "hailstorm" },
@@ -202,9 +201,9 @@ Hooks:PostHook(WeaponTweakData, "init", "CrimDusk_WeaponTweakInit", function(sel
   self.china.stats_modifiers.damage = 1
   self.ms3gl.stats_modifiers.damage = 1
   self.arbiter.stats_modifiers.damage = 1
-  self.gre_m79.stats_modifiers.damage = 1
-  self.m32.stats_modifiers.damage = 1
-  self.slap.stats_modifiers.damage = 1
+  self.gre_m79.stats_modifiers.damage = 2
+  self.m32.stats_modifiers.damage = 2
+  self.slap.stats_modifiers.damage = 2
   self.ray.stats_modifiers.damage = 25
   self.m95.stats_modifiers.damage = 100
 

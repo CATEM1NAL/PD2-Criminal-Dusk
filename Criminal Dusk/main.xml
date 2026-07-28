@@ -1,6 +1,6 @@
 <mod name="Criminal Dusk" global_key="Crim_Dusk" author="~/cat/em1/nal/" color="Color(0.734375,0.4921875,0.73828125)" image="dawn">
   <!-- Auto update from latest GitHub release -->
-  <AssetUpdates version="0.2.6" id="CATEM1NAL/PD2-Criminal-Dusk" provider="github" release="true"/>
+  <AssetUpdates version="0.3.0" id="CATEM1NAL/PD2-Criminal-Dusk" provider="github" release="true"/>
 
   <AddFiles directory="assets">
     <png path="logo/dawn"/>
@@ -43,6 +43,7 @@
         <hook source_file="lib/tweak_data/assetstweakdata" file="assets.lua"/>
         <hook source_file="lib/tweak_data/preplanningtweakdata" file="preplanning.lua"/>
         <hook source_file="lib/tweak_data/moneytweakdata" file="money.lua"/>
+        <hook source_file="lib/tweak_data/interactiontweakdata" file="interactions.lua"/>
       </hooks>
 
       <hooks directory="managers"> <!-- Criminal Dusk/lua/managers/ -->

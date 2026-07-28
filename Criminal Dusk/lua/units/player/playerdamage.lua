@@ -40,6 +40,15 @@ Hooks:OverrideFunction(PlayerDamage, "_init_armor_grinding_data", function(self)
   return false
 end)
 
+Hooks:OverrideFunction(PlayerDamage, "_update_armor_grinding", function(self, t, dt)
+  self._armor_grinding.elapsed = self._armor_grinding.elapsed + dt
+  if self._armor_grinding.elapsed >= self._armor_grinding.target_tick then
+    self._armor_grinding.elapsed = 0
+    self:change_armor(self._armor_grinding.armor_value)
+    self:_send_set_armor()
+  end
+end)
+
 -- Suppression changes
 Hooks:OverrideFunction(PlayerDamage, "build_suppression", function(self, amount)
   local armour = tweak_data.blackmarket.armors[managers.blackmarket:equipped_armor()].upgrade_level
