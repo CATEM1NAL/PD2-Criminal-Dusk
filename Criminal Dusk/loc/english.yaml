@@ -361,21 +361,21 @@ menu_deck2_1_skill: "$lv1;Max health increased by ##10##.\n\n$lv2;Max health inc
 menu_deck2_7_skill: "$lv1;Suppressed enemies can panic. Your target rate is increased by ##15%##.\n\n$lv2;Kills within ##10m## have a ##50%## chance to cause panic."
 
 menu_armorer_skill: "Impact Plate"
-menu_armorer_skill_desc: "$lv1;Armor increased by ##5%##.\n\n$lv2;Armor increased by ##10%##.\n\n$lv3;Armor increased by ##20%##.\n\n$lv4;Armor increased by ##30%##.\n\n$lv5;Armor increased by ##40%##.\n\n$lv6;Your armor is constantly recovering at a slower rate. This recovery cannot be accelerated."
+menu_armorer_skill_desc: "$lv1;Armor increased by ##25%##.\n\n$lv2;Armor increased by ##50%##.\n\n$lv3;Armor increased by ##75%##.\n\n$lv4;Armor increased by ##100%##.\n\n$lv5;Armor increased by ##125%##.\n\n$lv6;Armor increased by ##150%##. Armor recovery is ##50%## less effective and locked at ##50%## slower, but occurs even while in combat."
 
 menu_yakuza_speed: "Adrenaline"
 menu_yakuza_speed_desc: "$lv1;While below ##50%## health your armor recovery speed scales with health lost, to a maximum of ##60%##.\n\n$lv2;Movement speed also increases by up to ##20%## with health lost."
 
-menu_deck4_5_skill: "$lv1;Dodge increased by ##15##.\n\n$lv2;Dodge increased by ##30##.\n\n$lv3;Dodge increased by ##45##.\n\n$lv4;Dodge increased by ##60##.\n\n$lv5;Dodge increased by ##80##.\n\n$lv6;Dodging a bullet damages the enemy that fired it."
+menu_deck4_5_skill: "$lv1;Dodge increased by ##10##.\n\n$lv2;Dodge increased by ##25##.\n\n$lv3;Dodge increased by ##40##.\n\n$lv4;Dodge increased by ##55##.\n\n$lv5;Dodge increased by ##75##.\n\n$lv6;Dodging a bullet damages the enemy that fired it."
 
 menu_rogue_switch: "$lv1;Weapon switch speed is increased by ##80%##.\n\n$lv2;Weapon switch speed is increased by ##160%##.\n\n$lv3;Weapon switch speed is increased by ##320%##."
 
-menu_hitman_skill_desc: "$lv1;Armor recovers ##5%## faster.\n\n$lv2;Armor recovers ##15%## faster.\n\n$lv3;Armor recovers ##25%## faster.\n\n$lv4;Armor recovers ##35%## faster.\n\n$lv5;Armor recovers ##45%## faster.\n\n$lv6;Your armor will always recover after a maximum of ##3## seconds, even while taking damage.\n"
+menu_hitman_skill_desc: "$lv1;Armor recovers ##10%## faster.\n\n$lv2;Armor recovers ##20%## faster.\n\n$lv3;Armor recovers ##30%## faster.\n\n$lv4;Armor recovers ##40%## faster.\n\n$lv5;Armor recovers ##50%## faster.\n\n$lv6;Your armor will always recover after a maximum of ##3## seconds, even while taking damage.\n"
 
 menu_break_skill: "$lv1;While you have armor, store ##4## health per crew kill that is consumed on armor recovery.\n\n$lv2;Store ##8## health per crew kill.\n\n$lv3;Store ##12## health per crew kill."
 
 menu_crook_skill: "Composure"
-menu_crook_skill_desc: "$lv1;Ballistic vests have their armor increased by ##20%## and their dodge increased by ##5##.\n\n$lv2;Armor is now increased by ##40%## and dodge is increased by ##15##.\n\n$lv3;Armor is increased further to ##65%## and dodge is increased by ##25##."
+menu_crook_skill_desc: "$lv1;Ballistic vests have their armor increased by ##40%## and their dodge increased by ##5##.\n\n$lv2;Armor is now increased by ##80%## and dodge is increased by ##10##.\n\n$lv3;Armor is increased further to ##120%## and dodge is increased by ##15##."
 
 menu_burglar_stealth: "$lv1;Bag corpses ##20%## faster.\n\n$lv2;Answer pagers ##10%## faster.\n\n$lv3;Pick locks ##20%## faster."
 

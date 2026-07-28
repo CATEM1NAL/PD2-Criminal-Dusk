@@ -94,13 +94,23 @@ Hooks:OverrideFunction(PlayerInventoryGui, "_get_armor_stats", function(self, na
 			base_stats[stat.name] = { value = (base_value + mod_value) * tweak_data.gui.stats_present_multiplier }
 			skill_stats[stat.name] = { value = skill_value * tweak_data.gui.stats_present_multiplier }
 
-		elseif stat.name == "stamina" then
-			local skill = managers.player:body_armor_regen_multiplier() * managers.player:upgrade_value("player", "armor_regen_time_mul", 1)
-			local base_value = Global.CrimDusk.regen_time[upgrade_level]
-			local skill_value = base_value * skill
-			base_stats[stat.name] = { value = base_value }
-			skill_stats[stat.name] = { value = skill_value - base_value }
-		end
+    elseif stat.name == "stamina" then -- ARMOUR REGEN SPEED
+      local base_value = Global.CrimDusk.regen_time[upgrade_level]
+      local suppression = 0
+      if upgrade_level <= 4 then suppression = 0.5 end
+
+      local skill = managers.player:body_armor_regen_multiplier() * managers.player:upgrade_value("player", "armor_regen_time_mul", 1)
+      if managers.player:upgrade_value("player", "armor_grinding", nil) ~= 0 then skill = 2 end
+
+      local skill_value = base_value * skill
+      if managers.player:upgrade_value("player", "passive_always_regen_armor", nil) ~= 0 and skill_value > 3 then
+        skill_value = 3
+        suppression = 0
+      end
+
+      base_stats[stat.name] = { value = base_value + suppression }
+      skill_stats[stat.name] = { value = skill_value - base_value }
+    end
 
 		skill_stats[stat.name].skill_in_effect = skill_stats[stat.name].skill_in_effect or skill_stats[stat.name].value ~= 0
 	end

@@ -15,11 +15,28 @@ end)
 -- Regen time varies with armour
 Hooks:OverrideFunction(PlayerDamage, "set_regenerate_timer_to_max", function(self)
   local mul = managers.player:body_armor_regen_multiplier(alive(self._unit) and self._unit:movement():current_state()._moving, self:health_ratio())
-  local armour = tonumber(managers.blackmarket:equipped_armor(true, true):sub(-1))
+  local armour = tweak_data.blackmarket.armors[managers.blackmarket:equipped_armor(true, true)].upgrade_level
   self._regenerate_timer = Global.CrimDusk.regen_time[armour] * mul
   self._regenerate_timer = self._regenerate_timer * managers.player:upgrade_value("player", "armor_regen_time_mul", 1)
   self._regenerate_speed = self._regenerate_speed or 1
   self._current_state = self._update_regenerate_timer
+end)
+
+Hooks:OverrideFunction(PlayerDamage, "_init_armor_grinding_data", function(self)
+  local armor_grinding_data = managers.player:upgrade_value("player", "armor_grinding", nil)
+  if armor_grinding_data and armor_grinding_data ~= 0 then
+    local armour = tweak_data.blackmarket.armors[managers.blackmarket:equipped_armor(true, true)].upgrade_level
+    local suppression = 0
+    if armour <= 4 then suppression = 0.5 end
+
+    self._armor_grinding = {}
+    self._armor_grinding.target_tick = (Global.CrimDusk.regen_time[armour] * 2) + suppression
+    self._armor_grinding.armor_value = self:_max_armor() * 0.5
+    self._armor_grinding.elapsed = 0
+    return true
+  end
+
+  return false
 end)
 
 -- Suppression changes

@@ -358,7 +358,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       { "transporter", "stun_resistance", "high_value_target" },
       { "armor_bag_reduction", "juggernaut", "enforcer_recovery" },
       { "thick_skin", "nerves_of_steel" },
-      { "bulletproof", "shock_awe", "crew_recovery" }
+      { "shock_awe", "crew_recovery" }
     }
     self.trees[6].tiers = {
       { "scavenger", "extra_ammo_box", "portable_saw" },
@@ -654,8 +654,8 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       { upgrades = { "player_tier_armor_multiplier_3" }, cost = self.costs.default },
       { upgrades = { "player_tier_armor_multiplier_4" }, cost = self.costs.default },
       { upgrades = { "player_tier_armor_multiplier_5" }, cost = self.costs.default },
-      { upgrades = { "player_armor_grinding_1" }, cost = self.costs.default },
-      name_id = "menu_armorer_skill", desc_id = "menu_armorer_skill_desc", icon_xy = { 3, 1 }
+      { upgrades = { "player_tier_armor_multiplier_6", "player_armor_grinding_1" }, cost = self.costs.default },
+      name_id = "menu_bulletproof_name", desc_id = "menu_armorer_skill_desc", icon_xy = { 6, 4 }
     }
 
     -- Rogue
@@ -663,7 +663,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       { upgrades = { "player_passive_dodge_chance_1" }, cost = self.costs.default },
       { upgrades = { "player_passive_dodge_chance_2" }, cost = self.costs.default },
       { upgrades = { "player_passive_dodge_chance_3" }, cost = self.costs.default },
-      { upgrades = { "mrwi_dodge_chance_1", "mrwi_dodge_chance_2", "mrwi_dodge_chance_3" }, cost = self.costs.default },
+      { upgrades = { "player_passive_dodge_chance_4" }, cost = self.costs.default },
       { upgrades = { "player_tier_dodge_chance_1",}, cost = self.costs.default },
       { upgrades = { "player_dodge_ricochet_bullets" }, cost = self.costs.default },
       name_id = "menu_deck4_5", desc_id = "menu_deck4_5_skill", icon_xy = { 7, 3 }
