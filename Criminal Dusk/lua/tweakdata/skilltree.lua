@@ -906,7 +906,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     }
     self.skills.copycat_reload = {
       { upgrades = { "player_primary_reload_secondary_1", "player_secondary_reload_primary_1" }, cost = self.costs.default },
-      { upgrades = { "weapon_mrwi_swap_speed_multiplier_1" }, cost = self.costs.default },
+      { upgrades = { "weapon_mrwi_primary_reload_swap_secondary_1", "weapon_mrwi_secondary_reload_swap_primary_1" }, cost = self.costs.default },
       name_id = "menu_tac_reload", desc_id = "menu_tac_reload_desc", icon_xy = { 0, 9 }
     }
 

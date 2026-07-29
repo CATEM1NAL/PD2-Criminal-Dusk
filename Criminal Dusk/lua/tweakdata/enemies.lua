@@ -98,6 +98,13 @@ local function SetStats(self, diff)
   self.spooc.spooc_attack_beating_time[1] = cloaker_cooldown[diff][1]
   self.spooc.spooc_attack_beating_time[2] = cloaker_cooldown[diff][1]
 
+  -- Fix melee damage being absurd
+  for _, weapon_data in pairs(self.presets.weapon.expert) do
+    if weapon_data.melee_dmg and weapon_data.FALLOFF then
+      weapon_data.melee_dmg = 10
+    end
+  end
+
   -- Damage curves (based on vanilla OVK/Mayhem)
   local expert = self.presets.weapon.expert
   local skip = { expert = true, gang_member = true, sniper = true, bot_weapons = true }
@@ -110,6 +117,8 @@ local function SetStats(self, diff)
         if weapon_data.FALLOFF and expert[weapon_name].FALLOFF then
           weapon_data.FALLOFF = expert[weapon_name].FALLOFF
         end
+
+        if weapon_data.melee_dmg and weapon_data.FALLOFF then weapon_data.melee_dmg = 5 end
       end
 
     elseif preset == "gang_member" then

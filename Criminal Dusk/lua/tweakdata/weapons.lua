@@ -134,7 +134,8 @@ local WeaponClasses = {
   akimbo = {
     [16] = { "jowi", "x_g17" },
     [24] = { "x_1911", "x_mp5" },
-    [92] = { "x_2006m", "x_rage" }
+    [80] = { "x_2006m" },
+    [120] = { "x_rage" }
   }
 }
 

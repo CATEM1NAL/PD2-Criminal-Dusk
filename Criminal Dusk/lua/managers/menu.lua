@@ -162,10 +162,26 @@ Hooks:PreHook(MenuCallbackHandler, "start_the_game", "CrimDusk_PreStartGame", fu
 
     local NextJob
     -- Select next heist in campaign...
-    if Global.CrimDusk.campaign[Global.CrimDusk.data.heists_won + 1] then
-      NextJob = Global.CrimDusk.campaign[Global.CrimDusk.data.heists_won + 1]
-    else NextJob = Global.CrimDusk.campaign[math.random(#Global.CrimDusk.campaign)] end
+    if Global.CrimDusk.campaign[Global.CrimDusk.data.heists_won + 1] then NextJob = Global.CrimDusk.campaign[Global.CrimDusk.data.heists_won + 1]
+
     -- ...or random heist if campaign is completed!
+    else -- Ensure duplicate heists don't happen until we've played every heist once
+      local ValidHeists = deep_clone(Global.CrimDusk.campaign)
+
+      if Global.CrimDusk.data.heist_chain then
+        if #Global.CrimDusk.data.heist_chain == #Global.CrimDusk.campaign then Global.CrimDusk.data.heist_chain = {} end
+        for _, heist in ipairs(Global.CrimDusk.data.heist_chain) do
+          for i = #ValidHeists, 1, -1 do
+            if ValidHeists[i] == heist then table.remove(ValidHeists, i) end
+          end
+        end
+      end
+
+      NextJob = ValidHeists[math.random(#ValidHeists)]
+      if not Global.CrimDusk.data.heist_chain then Global.CrimDusk.data.heist_chain = {} end
+      table.insert(Global.CrimDusk.data.heist_chain, NextJob)
+      CrimDusk:WriteSave(FileIdent, "heist added to chain")
+    end
 
     self:start_job({
       difficulty = tweak_data.difficulties[CrimDusk.DiffScale()],
