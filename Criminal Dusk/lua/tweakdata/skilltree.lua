@@ -601,14 +601,37 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     }
 
     -- FUGITIVE --
+    -- Gunslinger tree
+    self.skills.quick_draw = {
+      { upgrades = { "weapon_passive_swap_speed_multiplier_1" }, cost = self.costs.default },
+      { upgrades = { "weapon_passive_swap_speed_multiplier_2" }, cost = self.costs.default },
+      { upgrades = { "weapon_swap_speed_multiplier" }, cost = self.costs.default },
+      name_id = "menu_quick_draw", desc_id = "menu_rogue_switch", icon_xy = { 0, 9 }
+    }
+    self.skills.akimbo = {
+      { upgrades = { "akimbo_recoil_index_addend_2" }, cost = self.costs.default },
+      { upgrades = { "akimbo_recoil_index_addend_3" }, cost = self.costs.default },
+      { upgrades = { "akimbo_recoil_index_addend_4" }, cost = self.costs.default },
+      name_id = "menu_deck5_3", desc_id = "menu_akimbo_skill_beta_desc", icon_xy = { 3, 11 }
+    }
+    self.skills.expert_handling = {
+      { upgrades = { "pistol_stacked_accuracy_bonus_1" }, cost = self.costs.default },
+      name_id = "menu_expert_handling", desc_id = "menu_expert_handling_desc", icon_xy = { 11, 1 }
+    }
+    self.skills.coup_de_grace = {
+      { upgrades = { "pistol_stacked_accuracy_bonus_1" }, cost = self.costs.default },
+      name_id = "menu_coup_de_grace", desc_id = "menu_coup_de_grace_desc", icon_xy = { 11, 2 }
+    }
+    self.skills.trigger_happy.icon_xy = { 7, 11 }
 
     self.trees[13].tiers = {
-      { "equilibrium" },
-      { "dance_instructor", "akimbo" },
-      { "gun_fighter", "expert_handling" },
-      { "trigger_happy" }
+      { "quick_draw" },
+      { "akimbo" },
+      { "trigger_happy" },
+      { "coup_de_grace" }
     }
 
+    -- Revenant tree
     self.skills.four_lives = {
       { upgrades = { "player_additional_lives_1" }, cost = self.costs.default },
       { upgrades = { "player_additional_lives_2" }, cost = self.costs.default },
@@ -650,11 +673,44 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       { "swan_song", "messiah" },
       { "vengeful_swan", "feign_death" }
     }
+
+    -- Brawler tree
+    self.skills.because_of_training = {
+      { upgrades = { "player_melee_damage_dampener" }, cost = self.costs.default },
+      { upgrades = { "player_counter_strike_melee" }, cost = self.costs.default },
+      name_id = "menu_because_of_training", desc_id = "menu_because_of_training_desc", icon_xy = { 11, 7 }
+    }
+    self.skills.bloodthirst = {
+      { upgrades = { "player_melee_damage_stacking_1" }, cost = self.costs.default },
+      name_id = "menu_bloodthirst", desc_id = "menu_bloodthirst_desc", icon_xy = { 11, 6 }
+    }
+    self.skills.melee_reload_speed = {
+      { upgrades = { "player_temp_melee_kill_increase_reload_speed_1" }, cost = self.costs.default },
+      name_id = "menu_melee_reload_speed", desc_id = "menu_melee_reload_speed_desc", icon_xy = { 11, 6 }
+    }
+    self.skills.drop_soap = {
+      { upgrades = { "player_counter_strike_spooc" }, cost = self.costs.default },
+      name_id = "menu_drop_soap_beta", desc_id = "menu_drop_soap_beta_desc", icon_xy = { 4, 12 }
+    }
+    self.skills.berserker = {
+      { upgrades = { "player_melee_damage_health_ratio_multiplier" }, cost = self.costs.default },
+      name_id = "menu_wolverine_beta", desc_id = "menu_wolverine_beta_desc", icon_xy = { 2, 2 }
+    }
+    self.skills.gunserker = {
+      { upgrades = { "player_damage_health_ratio_multiplier" }, cost = self.costs.default },
+      name_id = "menu_gunserker", desc_id = "menu_gunserker_desc", icon_xy = { 2, 2 }
+    }
+    self.skills.frenzy = {
+      { upgrades = { "player_healing_reduction_1", "player_health_damage_reduction_1", "player_max_health_reduction_1" }, cost = self.costs.default },
+      { upgrades = { "player_health_damage_reduction_2", "player_max_health_reduction_2" }, cost = self.costs.default },
+      name_id = "menu_frenzy", desc_id = "menu_frenzy_desc", icon_xy = { 11, 8 }
+    }
+
     self.trees[15].tiers = {
-      { "martial_arts" },
-      { "bloodthirst", "steroids" },
-      { "drop_soap", "wolverine" },
-      { "frenzy" }
+      { "steroids", "because_of_training" },
+      { "bloodthirst", "melee_reload_speed" },
+      { "drop_soap", "berserker" },
+      { "frenzy", "gunserker" }
     }
 
     -- Perk skill tree
@@ -711,12 +767,6 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       { upgrades = { "player_tier_dodge_chance_1",}, cost = self.costs.default },
       { upgrades = { "player_dodge_ricochet_bullets" }, cost = self.costs.default },
       name_id = "menu_deck4_5", desc_id = "menu_deck4_5_skill", icon_xy = { 7, 3 }
-    }
-    self.skills.rogue_switch = {
-      { upgrades = { "weapon_passive_swap_speed_multiplier_1" }, cost = self.costs.default },
-      { upgrades = { "weapon_passive_swap_speed_multiplier_2" }, cost = self.costs.default },
-      { upgrades = { "weapon_swap_speed_multiplier" }, cost = self.costs.default },
-      name_id = "menu_deck4_9", desc_id = "menu_rogue_switch", icon_xy = { 7, 7 }
     }
 
     -- Crook
@@ -830,7 +880,6 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     self.skills.infil_melee = {
       { upgrades = { "melee_stacking_hit_damage_multiplier_1" }, cost = self.costs.default },
       { upgrades = { "melee_stacking_hit_damage_multiplier_2", "melee_stacking_hit_expire_t" }, cost = self.costs.default },
-      { upgrades = { "melee_stacking_hit_damage_multiplier_3", "melee_stacking_hit_expire_t_2" }, cost = self.costs.default },
       name_id = "menu_infil_melee", desc_id = "menu_infil_melee_desc", icon_xy = { 0, 0 }
     }
     self.skills.infil_heal = {
@@ -917,7 +966,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       unlocked = true,
       background_texture = "guis/textures/pd2/skilltree/bg_mastermind",
       tiers = {
-        { "rogue_dodge", "burglar_stealth", "rogue_switch" },
+        { "rogue_dodge", "burglar_stealth" },
         { "crook_skill", "perk_dmg", "copycat_reload" },
         { "ex_pres", "anarch_rise" },
         { "helmet_popping", "yakuza_speed" }

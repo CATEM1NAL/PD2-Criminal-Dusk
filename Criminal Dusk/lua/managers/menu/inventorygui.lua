@@ -100,7 +100,11 @@ Hooks:OverrideFunction(PlayerInventoryGui, "_get_armor_stats", function(self, na
       if upgrade_level <= 4 then suppression = 0.5 end
 
       local skill = managers.player:body_armor_regen_multiplier() * managers.player:upgrade_value("player", "armor_regen_time_mul", 1)
-      if managers.player:upgrade_value("player", "armor_grinding", nil) ~= 0 then skill = 2 end
+      if managers.player:upgrade_value("player", "armor_grinding", nil) ~= 0 then
+        skill = 2
+        base_value = base_value + suppression
+        suppression = 0
+      end
 
       local skill_value = base_value * skill
       if managers.player:upgrade_value("player", "passive_always_regen_armor", nil) ~= 0 and skill_value > 3 then

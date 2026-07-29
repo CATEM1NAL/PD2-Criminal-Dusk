@@ -1,6 +1,6 @@
 <mod name="Criminal Dusk" global_key="Crim_Dusk" author="~/cat/em1/nal/" color="Color(0.734375,0.4921875,0.73828125)" image="dawn">
   <!-- Auto update from latest GitHub release -->
-  <AssetUpdates version="0.3.1" id="CATEM1NAL/PD2-Criminal-Dusk" provider="github" release="true"/>
+  <AssetUpdates version="0.4.0" id="CATEM1NAL/PD2-Criminal-Dusk" provider="github" release="true"/>
 
   <AddFiles directory="assets">
     <png path="logo/dawn"/>
@@ -94,10 +94,11 @@
         <hook source_file="lib/units/props/timergui" file="timergui.lua"/>
 
         <hooks directory="player"> <!-- Criminal Dusk/lua/units/player/ -->
-          <hook source_file="lib/units/beings/player/states/playerstandard" file="playerstandard.lua"/>
-          <hook source_file="lib/units/beings/player/playerdamage" file="playerdamage.lua"/>
-          <hook source_file="lib/units/beings/player/playermovement" file="playermovement.lua"/>
-          <hook source_file="lib/units/beings/player/playerinventory" file="playerinventory.lua"/>
+          <hook source_file="lib/units/beings/player/states/playerstandard" file="standard.lua"/>
+          <hook source_file="lib/units/beings/player/states/playermaskoff" file="maskoff.lua"/>
+          <hook source_file="lib/units/beings/player/playerdamage" file="damage.lua"/>
+          <hook source_file="lib/units/beings/player/playermovement" file="movement.lua"/>
+          <hook source_file="lib/units/beings/player/playerinventory" file="inventory.lua"/>
         </hooks>
 
         <hooks directory="equipment"> <!-- Criminal Dusk/lua/units/equipment/ -->

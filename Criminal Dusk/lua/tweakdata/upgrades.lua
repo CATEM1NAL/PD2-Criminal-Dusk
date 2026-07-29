@@ -54,7 +54,6 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   self.close_combat_distance = 1000 -- Distance for Close Combat/panic on kill
   self.killshot_close_panic_range = 1000 -- Distance that panic on kill spreads
   self.values.player.tier_armor_multiplier = { 1.25, 1.5, 1.75, 2, 2.25, 2.5 } -- Armour increase
-  self.values.player.armor_grinding = { { 2.5, 1.5 }, { 5, 2.5 }, { 6.25, 4.5 }, { 7.5, 6.5 }, { 10, 9 }, { 12.5, 12 }, { 15, 15 } }
   self.values.player.camouflage_bonus = { 0.667, 0.5 } -- Optical Illusions
   self.values.player.cheat_death_chance = { 0.5, 1 } -- Feign Death
   self.values.weapon.automatic_head_shot_add = { 0.5, 1 } -- Body Expertise
@@ -62,6 +61,15 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   self.values.player.passive_dodge_chance = { 0.1, 0.25, 0.4, 0.55 } -- Rogue
   self.values.weapon.modded_damage_multiplier = { 1.25 } -- Tinkerer (damage)
   self.values.player.tape_loop_duration = { 2.5, 10 } -- Cam Loop
+  self.values.player.tape_loop_interact_distance_mul = { 1.5 } -- Cam Loop distance
+  self.values.weapon.mrwi_swap_speed_multiplier = { 5.8 } -- Tactical Reload switch speed
+  self.values.player.melee_damage_dampener = { 0.5, 0 } -- Because Of Training
+  self.values.player.melee_damage_stacking = { { melee_multiplier = 1, max_multiplier = 10 } } -- Bloodthirst
+  self.values.player.melee_kill_increase_reload_speed = { { 2, 3 } } -- Mag Steal
+
+  -- Frenzy
+  self.values.player.health_damage_reduction = { 0.75, 0.5 }
+  self.values.player.max_health_reduction = { 0.25, 0.01 }
 
   -- Crook
   self.values.player.level_2_armor_multiplier = { 1.4, 1.8, 2.2 }
@@ -70,6 +78,23 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   self.values.player.level_3_dodge_addend = { 0.05, 0.1, 0.15 }
   self.values.player.level_4_armor_multiplier = { 1.4, 1.8, 2.2 }
   self.values.player.level_4_dodge_addend = { 0.05, 0.1, 0.15 }
+
+  -- Trigger Happy
+  self.values.pistol.stacking_hit_damage_multiplier = {
+    { damage_bonus = 2, max_stacks = 1, max_time = 1 },
+    { damage_bonus = 2, max_stacks = 1, max_time = 3 },
+  }
+
+  -- Coup De Grace
+  self.values.weapon.coup_de_grace_mult = { 3 }
+  self.definitions.weapon_coup_de_grace = {
+    category = "feature",
+    upgrade = {
+      category = "weapon",
+      upgrade = "coup_de_grace_mult",
+      value = 1
+    }
+  }
 
   -- Lock n' Load
   self.values.player.automatic_faster_reload = {
@@ -101,30 +126,12 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   local Level1, Level2 = 0.1, 0.25
   self.values.shotgun.consume_no_ammo_chance = { Level1, Level2 }
 
-  self.values.pistol.consume_no_ammo_chance = { Level1, Level2 }
-  self.definitions.pistol_consume_no_ammo_chance_1 = deep_clone(self.definitions.shotgun_consume_no_ammo_chance_1)
-  self.definitions.pistol_consume_no_ammo_chance_1.upgrade.category = "pistol"
-
-  self.values.assault_rifle.consume_no_ammo_chance = { Level1, Level2 }
-  self.definitions.assault_rifle_consume_no_ammo_chance_1 = deep_clone(self.definitions.shotgun_consume_no_ammo_chance_1)
-  self.definitions.assault_rifle_consume_no_ammo_chance_1.upgrade.category = "assault_rifle"
-
-  self.values.snp.consume_no_ammo_chance = { Level1, Level2 }
-  self.definitions.snp_consume_no_ammo_chance_1 = deep_clone(self.definitions.shotgun_consume_no_ammo_chance_1)
-  self.definitions.snp_consume_no_ammo_chance_1.upgrade.category = "snp"
-
-  self.values.smg.consume_no_ammo_chance = { Level1, Level2 }
-  self.definitions.smg_consume_no_ammo_chance_1 = deep_clone(self.definitions.shotgun_consume_no_ammo_chance_1)
-  self.definitions.smg_consume_no_ammo_chance_1.upgrade.category = "smg"
-
-  self.values.lmg.consume_no_ammo_chance = { Level1, Level2 }
-  self.definitions.lmg_consume_no_ammo_chance_1 = deep_clone(self.definitions.shotgun_consume_no_ammo_chance_1)
-  self.definitions.lmg_consume_no_ammo_chance_1.upgrade.category = "lmg"
-
-  self.values.minigun.consume_no_ammo_chance = { Level1, Level2 }
-  self.definitions.minigun_consume_no_ammo_chance_1 = deep_clone(self.definitions.shotgun_consume_no_ammo_chance_1)
-  self.definitions.minigun_consume_no_ammo_chance_1.upgrade.category = "minigun"
-
+  local WeaponClasses = { "pistol", "assault_rifle", "snp", "smg", "lmg", "minigun" }
+  for _, class in ipairs(WeaponClasses) do
+    self.values[class].consume_no_ammo_chance = { Level1, Level2 }
+    self.definitions[class .. "_consume_no_ammo_chance_1"] = deep_clone(self.definitions.shotgun_consume_no_ammo_chance_1)
+    self.definitions[class .. "_consume_no_ammo_chance_1"].upgrade.category = class
+  end
 
   -- Trip mine radius
   self.values.trip_mine.explosion_size_multiplier_1 = { 1.5 }
@@ -156,6 +163,18 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   self.values.player.health_decrease = { 2.5, 5, 7.5 }
   self.values.player.armor_increase = { 2, 4, 6 }
 
+  --[[ Anarchist
+  self.values.player.armor_grinding = {
+    { 2.5, 1.5 }, -- Suit
+    { 5, 2.5 }, -- LBV
+    { 6.25, 4.5 }, -- Vest
+    { 7.5, 6.5 }, -- H.Vest
+    { 10, 9 }, -- Flak
+    { 12.5, 12 }, -- CTV
+    { 15, 15 } -- ICTV
+  } ]]
+  -- these values are not used; the values are instead derived from current max armour and base armour regen time.
+
   -- Hysteria stacks
   self.cocaine_stacks_dmg_absorption_value = 0.05
   self.cocaine_stacks_tick_rounding = 2
@@ -182,11 +201,8 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   self.loose_ammo_give_team_ratio = 1
 
   -- Infiltrator/Sociopath
-  self.values.melee.stacking_hit_damage_multiplier = { 0.1, 0.5, 1 }
-  self.definitions.melee_stacking_hit_damage_multiplier_3 = deep_clone(self.definitions.melee_stacking_hit_damage_multiplier_2)
-  self.definitions.melee_stacking_hit_damage_multiplier_3.upgrade.value = 3
-
-  self.values.melee.stacking_hit_expire_t = { 3, 1 }
+  self.values.melee.stacking_hit_damage_multiplier = { 0.5, 1 }
+  self.values.melee.stacking_hit_expire_t = { 3 }
 
   -- Tag Team
   self.values.player.tag_team_base[1].kill_health_gain = 0.2
@@ -213,9 +229,9 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   -- Health mult to flat
   self.values.player.health_multiplier = { 1 }
   self.values.team.health.passive_multiplier = { 1 }
-  self.values.player.passive_health_multiplier = { 1, 2, 4, 8, 10 }
+  self.values.player.passive_health_multiplier = { 2, 4, 6, 8, 10 } -- Muscle
   self.values.player.mrwi_health_multiplier = { 2, 4, 6, 8 }
-  self.values.player.minion_master_health_multiplier = { 3 }
+  self.values.player.minion_master_health_multiplier = { 5 }
 
   -- Health regen
   self.values.player.passive_health_regen = { 0.1 }
@@ -259,7 +275,8 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   self.definitions.shape_charge_quantity_increase_3.upgrade.value = 3
 
   self.ecm_jammer_base_range = 10000
-  self.ecm_feedback_min_duration = 20
+  self.ecm_feedback_min_duration = 15
+  self.ecm_feedback_max_duration = 15
 
   -- New upgrade definitions
   NewUpgrades = {
@@ -268,7 +285,7 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
     weapon_passive_headshot_damage_multiplier = 2, weapon_passive_damage_multiplier = 2, player_regain_throwable_from_ammo = 2,
     player_weapon_accuracy_increase = 2, weapon_fire_rate_multiplier = 2, pistol_consume_no_ammo_chance = 2,
     assault_rifle_consume_no_ammo_chance = 2, snp_consume_no_ammo_chance = 2, smg_consume_no_ammo_chance = 2,
-    lmg_consume_no_ammo_chance = 2, minigun_consume_no_ammo_chance = 2,
+    lmg_consume_no_ammo_chance = 2, minigun_consume_no_ammo_chance = 2, player_melee_damage_dampener = 2, player_max_health_reduction = 2,
 
     player_health_decrease = 3, player_melee_sharp_damage_multiplier = 3, player_assets_cost_multiplier = 3,
     doctor_bag_amount_increase = 3, ammo_bag_ammo_increase = 3, weapon_passive_reload_speed_multiplier = 3,

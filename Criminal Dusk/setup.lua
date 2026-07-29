@@ -254,7 +254,7 @@ function Global.CrimDusk:Init()
   self.StealthableHeists = { -- Alarm doesn't go off immediately on these heists
     kosugi = true, fish = true, dark = true, tag = true, cage = true,
     pal = true, man = true, nmh = true, dah = true, gallery = true, framing_frame_3 = true,
-    election_day_2 = true, short_1_1 = true, short_2_1 = true, welcome_to_the_jungle_2 = true,
+    election_day_2 = true, short_1_1 = true, short_1_2 = true, welcome_to_the_jungle_2 = true,
     firestarter_2 = true, alex_2 = true, crojob1 = true, kenaz = true, chca = true, family = true
   }
   self.LoudHeists = { -- Alarm goes off immediately, PDTH style

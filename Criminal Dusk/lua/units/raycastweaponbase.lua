@@ -1,3 +1,10 @@
+Hooks:OverrideFunction(RaycastWeaponBase, "_get_current_damage", function(self, dmg_mul)
+  local damage = self._damage * (dmg_mul or 1)
+  damage = damage * managers.player:temporary_upgrade_value("temporary", "combat_medic_damage_multiplier", 1)
+  if self:clip_empty() then damage * managers.player:upgrade_value("weapon", "coup_de_grace_mult", 1) end
+  return damage
+end)
+
 Hooks:OverrideFunction(RaycastWeaponBase, "add_ammo", function(self, ratio, add_amount_override)
   local mul_1 = managers.player:upgrade_value("player", "pick_up_ammo_multiplier", 1) - 1
   local mul_2 = managers.player:upgrade_value("player", "pick_up_ammo_multiplier_2", 1) - 1

@@ -7,7 +7,7 @@ Hooks:PostHook(BlackMarketTweakData, "_init_melee_weapons", "CrimDusk_InitMeleeT
     "branding_iron", "croupier_rake", "brick", "model24", "funder_strike", "sap", "bonk", "bonk2", "micstand", "taser", "hammer", "shillelagh", "stick",
     "piggy_hammer", "whiskey", "tenderizer"
   }
-  local LargeObject = { "meter", "alien_maul", "briefcase", "spoon", "spoon_gold", "shovel", "cutters", "baseballbat", "slot_lever", "hockey", "buck", "dingdong" }
+  local LargeObject = { "meter", "alien_maul", "briefcase", "spoon", "spoon_gold", "shovel", "cutters", "baseballbat", "slot_lever", "hockey", "buck", "dingdong", "road" }
 
   for _, weapon in ipairs(Punch) do
     self.melee_weapons[weapon].stats.weapon_type = "blunt"
@@ -50,8 +50,8 @@ Hooks:PostHook(BlackMarketTweakData, "_init_melee_weapons", "CrimDusk_InitMeleeT
     "kabar", "toothbrush", "clean", "kabartanto", "nin", "fork", "shawn", "boxcutter", "bayonet", "sword", "fear", "hauteur", "ballistic", "pugio", "kampfmesser",
     "wing", "ostry", "switchblade", "grip", "push", "twins", "bowie", "chef", "x46", "tiger", "catch", "scoutknife", "gerber", "fairbair", "poker", "cqc", "rambo"
   }
-  local SmallBlades = { "cs", "pitchfork", "sandsteel", "gator", "oxide", "agave", "bullseye", "scalper", "meat_cleaver", "cleaver", "tomahawk", "machete", "becker", "barbedwire", "iceaxe" }
-  local LargeBlades = { "beardy", "mining_pick", "morning", "great", "freedom", "fireaxe" }
+  local SmallBlades = { "cs", "pitchfork", "sandsteel", "gator", "oxide", "agave", "bullseye", "scalper", "meat_cleaver", "cleaver", "tomahawk", "machete", "becker", "iceaxe" }
+  local LargeBlades = { "beardy", "mining_pick", "morning", "great", "freedom", "fireaxe", "barbedwire" }
 
   for _, weapon in ipairs(Knives) do
     self.melee_weapons[weapon].stats.weapon_type = "sharp"
