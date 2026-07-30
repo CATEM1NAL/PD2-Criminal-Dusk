@@ -59,10 +59,14 @@ Hooks:Add("MenuManagerBuildCustomMenus", "CrimDusk_MenuTweaks", function(menu_ma
       managers.localization:add_localized_strings({
         ["crimdusk_continue_run_desc"] = managers.localization:text("crimdusk_play_next_desc", {
           HEIST = managers.localization:text("heist_" .. Global.CrimDusk.campaign[Global.CrimDusk.data.heists_won + 1])
+        }),
+        ["menu_choose_new_contract"] = managers.localization:text("crimdusk_campaign_active", {
+          HEIST = managers.localization:text("heist_" .. Global.CrimDusk.campaign[Global.CrimDusk.data.heists_won + 1])
         })
       })
     else managers.localization:add_localized_strings({
-        ["crimdusk_continue_run_desc"] = managers.localization:text("crimdusk_play_next_random")
+        ["crimdusk_continue_run_desc"] = managers.localization:text("crimdusk_play_next_random"),
+        ["menu_choose_new_contract"] = managers.localization:text("crimdusk_campaign_inactive")
       })
     end
 

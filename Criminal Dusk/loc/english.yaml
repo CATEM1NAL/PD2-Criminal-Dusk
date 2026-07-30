@@ -1,8 +1,8 @@
 ### MENUS ###
 ## MOD SETTINGS
-crimdusk_settings_name : "Criminal Dusk"
-crimdusk_settings_desc : "Tweak the gameplay to your liking."
-crimdusk_mutator_desc : "When enabled, random mutators will be picked at the start of each heist.\nDifficulty specific mutators will still be enabled even if this is disabled!"
+crimdusk_settings_name: "Criminal Dusk"
+crimdusk_settings_desc: "Tweak the gameplay to your liking."
+crimdusk_mutator_desc: "When enabled, random mutators will be picked at the start of each heist.\nDifficulty specific mutators will still be enabled even if this is disabled!"
 crimdusk_permadeath_name: "Professional Mode"
 crimdusk_permadeath_desc: "Failing a heist resets your campaign progress.\nYou go back one heist when disabled."
 crimdusk_forceloud_name: "Classic Mode"
@@ -11,12 +11,15 @@ crimdusk_reset_campaign_name: "Reset Campaign"
 crimdusk_reset_campaign_desc: "Wipe your current campaign progress and restart from the beginning."
 
 ## LOBBY
-crimdusk_create_lobby_title : "Create Lobby"
-crimdusk_create_lobby_desc : "Begin playing Criminal Dusk."
+crimdusk_create_lobby_title: "Create Lobby"
+crimdusk_create_lobby_desc: "Begin playing Criminal Dusk."
 
-crimdusk_play_next_title : "Play Next Heist [$HEIST_NUM]"
-crimdusk_play_next_desc : "Next heist is $HEIST!"
-crimdusk_play_next_random : "Next heist will be random!"
+crimdusk_play_next_title: "Play Next Heist [$HEIST_NUM]"
+crimdusk_play_next_desc: "Campaign incomplete: next heist is $HEIST!"
+crimdusk_play_next_random: "Campaign completed!\nNext heist will be selected randomly."
+
+crimdusk_campaign_active: "The next heist is $HEIST."
+crimdusk_campaign_inactive: "The next heist will be random."
 
 ### STRING OVERRIDES ###
 # Menu
@@ -29,7 +32,7 @@ dialog_blackmarket_slot_item_sell: "You will not be refunded!"
 bm_w_lemming_desc: "Weapon penetrates enemies and body armor."
 bm_w_maxim9_desc: "Weapon is integrally suppressed."
 bm_wp_upg_a_grenade_launcher_hornet_desc: "Fire a burst of armor penetrating rounds."
-bm_menu_weapon_movement_penalty_info: "Movement speed reduced by $penalty while equipped."
+bm_menu_weapon_movement_penalty_info: "Reduces movement speed by $penalty."
 
 # Deployables
 bm_equipment_ammo_bag_desc: "Contains enough ammo to fully refill one weapon and half of another weapon. Can be upgraded with Enforcer skills."
@@ -43,15 +46,15 @@ bm_equipment_trip_mine_desc: "Single use trap that can be placed anywhere. Deton
 bm_equipment_spy_camera_desc: "Remote camera that continuously marks enemies within its line of sight. Can be picked back up after placement." 
 
 # Locked Items
-bm_global_value_gage_pack_jobs_unlock : "Buy the Gage Mod Courier DLC to unlock!"
+bm_global_value_gage_pack_jobs_unlock: "Buy the Gage Mod Courier DLC to unlock!"
 bm_menu_skill_locked_tag_team: "Buy the h3h3 Character Pack to unlock!"
 bm_menu_skill_locked_damage_control: "Requires the 'Virtue' skill! (Specialist)"
 
 # Upgrade Requirements
 
 # Perk Effects
-bm_menu_armor_max_health_store : "Break: can store up to $amount health."
-bm_menu_disables_damage_to_hot : "Dopamine is disabled while wearing this armor!"
+bm_menu_armor_max_health_store: "Break: can store up to $amount health."
+bm_menu_disables_damage_to_hot: "Dopamine is disabled while wearing this armor!"
 
 # Perk Consumables
 bm_ability_chico_injector_desc: "Press the throwable key to activate. While active, 25% of all damage taken is converted into healing. This effect lasts 6 seconds."
@@ -62,11 +65,11 @@ bm_grenade_copr_ability_desc: "Press the throwable key to activate for 6 seconds
 bm_grenade_damage_control_desc: "Press the throwable key to negate stacked damage."
 
 # Black Market
-bm_menu_stamina : "Recovery Time"
-menu_bm_total_cost : ""
+bm_menu_stamina: "Recovery Time"
+menu_bm_total_cost: ""
 
 # Infamy
-menu_infamy_go_infamous_error_money : "You need $200,000,000 in offshore."
+menu_infamy_go_infamous_error_money: "You need $200,000,000 in offshore."
 
 ### CUSTOM HEISTS ###
 heist_cd_28stores_name: "Twenty Four Plus Four Stores"
@@ -202,7 +205,6 @@ menu_stun_resistance: "Stun Resistance"
 menu_stun_resistance_desc: "$lv1;Recover from flashbangs slightly faster.\n\n$lv2;Recover from flashbangs significantly faster."
 
 menu_bulletproof_name: "Bulletproof"
-menu_bulletproof_desc: "$lv1;Armor is increased by ##50%##."
 
 menu_juggernaut_beta_desc: "$lv1;Unlocks the ##Advanced Tactical Vest##."
 
@@ -546,7 +548,7 @@ menu_blanks: "Warning Shot"
 menu_blanks_desc: "$lv1;The first time you shoot a civilian they won't die."
 
 menu_loud_and_proud: "Loud And Proud"
-menu_loud_and_proud_desc: "$lv1;Deal an additional ##3%## damage for each ##7## points of detection risk above ##40##, up to ##15%## extra damage.\n\n$lv2;Damage is increased to ##5%## per ##7## points, for a total of ##25%## extra damage."
+menu_loud_and_proud_desc: "$lv1;Deal an additional ##5%## damage for each ##7## points of detection risk above ##40##, up to ##25%## extra damage.\n\n$lv2;Damage is increased to ##10%## per ##7## points, for a total of ##50%## extra damage."
 
 menu_beast_of_burden: "Beast of Burden"
 menu_beast_of_burden_desc: "$lv1;The bag movement penalty does not affect you."
@@ -588,8 +590,7 @@ menu_infamy_name_xp: "EXP Boost"  # Infamy XP Bonus
 # LOBBY
 savefile_saving: "Saving"
 hud_offshore_account: "Offshore"
-menu_waiting_is_ready: "[X]"  # Ready
-menu_waiting_is_not_ready: "[  ]" # Not Ready
+menu_waiting_is_not_ready: "" # Not Ready
 menu_lobby_player_slot_available: ""
 menu_description: "Briefing" # finally fixed this, no clue why they did it this way
 menu_description_bain: "Briefing" # they could've used a macro instead of separate strings, like "$handler's Plan"
@@ -620,10 +621,6 @@ menu_jukebox_your_choice: "Custom"
 menu_choose_contract: "Select Heist" # not sure what this is
 menu_leave_lobby: "Leave"
 menu_start_the_game: "Start"
-cn_menu_decline_contract: "Back"
-cn_menu_accept_contract: "Play"
-menu_end_crime_spree: "End Spree"
-menu_choose_new_contract: "Pick a heist to start the game."
 
 menu_l_lootscreen: "Card Drop"
 menu_l_choose_card_local: ""
@@ -675,10 +672,6 @@ create_empty_lobby_title: "Empty Lobby"
 create_empty_lobby_desc: "Create a lobby without selecting a heist."
 
 menu_or_press_any_xbox_button: "or controller button"
-menu_crimenet_help: "Play online with other players."  # CRIME.NET Description
-menu_crimenet_offline_help: "Play offline with bots."  # CRIME.NET Offline Description
-menu_quickplay_settings_mutators: "Mutators"
-menu_quickplay_option_default: "Default Settings"
 
 menu_debug: ""  # If you have the Fast.net mod or the (old) freecam mod this hides the debug button
 debug_start_the_game: ""  # If you have the Fast.net mod or the (old) freecam mod this hides the debug button
@@ -715,42 +708,6 @@ dialog_mutators_active_text: "Mutators are enabled. Do you want to play with mut
 
 menu_challenge_safehouse_daily_reward: "6 Coins."
 menu_challenge_daily_reward: "Money and a weapon mod."
-daily_discord_objective: "Finish 3 heists with a converted cop."
-# This daily job has a typo. It says "3 heist" instead of "3 heists".
-
-menu_filter_time: "Heist Length"
-menu_filter_favourite: "Favorites"
-
-menu_cs_enter_safehouse: "Enter"
-menu_cs_map: "Map"
-menu_cs_change_floor: "Floor"
-menu_cs_top_floor: "Upstairs"
-menu_cs_ground_floor: "Downstairs"
-menu_trophy_display_all: "Display All"
-menu_trophy_displayed: "Displayed"
-menu_trophy_hide_all: "Hide All"
-menu_trophy_not_displayed: "Hidden"
-menu_cs_cant_afford: "Not enough Continental Coins."
-menu_cs_rooms_help_hover_no_upgrade: "Room fully upgraded"
-menu_cs_rooms_help_hover: "Room is upgradeable"
-menu_cs_total_upgrades: "Upgrades"
-
-menu_story_missions: "Missions"
-menu_sm_claim_rewards_goto_next: "Claim Rewards" # why is the default text so long
-
-menu_cn_filters_sidebar: "Lobby Filters"
-
-# Crime.net Filters
-menu_lobby_filters: "Lobby Filters"
-menu_toggle_server_state_lobby: "Lobbies Only"
-menu_toggle_mutated_lobby: "Allow Mutators"
-menu_toggle_one_down_lobbies: "Allow One Down"
-menu_max_lobbies_filter: "Max Servers"
-menu_diff_filter: "Difficulty"
-menu_job_id_filter: "Heist Filter"
-menu_kicking_allowed_filter: "Kick / Restart"
-dialog_reset_filters: "Reset"
-menu_apply_settings: "Apply"
 
 # Lobby Settings
 menu_cn_game_settings: "Settings" # if removed then the "Mods" tab also vanishes when looking at lobbies
@@ -772,11 +729,6 @@ menu_kicking_allowed_option: "Kick / Restart"
 menu_kick_server: "Host"
 menu_kick_vote: "Vote"
 menu_kick_disabled: "Kick Disabled"
-
-menu_contact_info_title: "Character Profiles"
-
-menu_cs_upgrade_max: "This room is fully upgraded."
-menu_unlock_condition: "Requirement:"
 
 menu_back: "BACK"
 
@@ -1098,15 +1050,15 @@ hud_int_press_interaction_close: "$BTN_INTERACT Open/Close" # This is open/close
 hud_int_escape_taser: "$BTN_INTERACT Break Free"
 hud_int_pick_up_item: "$BTN_INTERACT Take Anniversary Item"
 debug_interact_cutter_jammed: "$BTN_INTERACT Restart Cutter"
-hud_int_press_cancel : "$BTN_INTERACT Cancel"
-hud_int_release_cancel : "Release $BTN_INTERACT to Cancel"
-hud_int_press_cancel_alarm : "$BTN_INTERACT Trigger Alarm"
-hud_int_hold_xm20_mask : "$BTN_INTERACT Take Mask"
+hud_int_press_cancel: "$BTN_INTERACT Cancel"
+hud_int_release_cancel: "Release $BTN_INTERACT to Cancel"
+hud_int_press_cancel_alarm: "$BTN_INTERACT Trigger Alarm"
+hud_int_hold_xm20_mask: "$BTN_INTERACT Take Mask"
 
 # Deployables
 debug_interact_doctor_bag_heal: "$BTN_INTERACT Heal"
 debug_interact_ammo_bag_take_ammo: "$BTN_INTERACT Take Ammo"
-debug_interact_trip_mine : "$BTN_INTERACT Toggle Mine"
+debug_interact_trip_mine: "$BTN_INTERACT Toggle Mine"
 hud_int_equipment_normal_mode_trip_mine: "$BTN_INTERACT Switch to Explosive"
 hud_int_equipment_sensor_mode_trip_mine: "$BTN_INTERACT Switch to Sensor"
 hud_int_equipment_ecm_feedback: "$BTN_INTERACT ECM Feedback"
@@ -1722,7 +1674,7 @@ hud_int_ignite_flare: "$BTN_INTERACT Light Flare"
 debug_interact_elevator_door: "$BTN_INTERACT Call Elevator"
 debug_interact_crowbar_breach: "$BTN_INTERACT Breach"
 hud_int_pku_force_open_vent: "$BTN_INTERACT Open Vent"
-hud_int_press_signal_operator : "$BTN_INTERACT Signal"
+hud_int_press_signal_operator: "$BTN_INTERACT Signal"
 hint_no_notepad: ""
 hud_int_hold_start_fire_alarm: "$BTN_INTERACT Trigger Alarm"
 hud_int_hold_repair_cable: "$BTN_INTERACT Fix Cable"
@@ -1982,7 +1934,7 @@ hud_hint_cop_body_bag: "Alert: Guard detected a body bag." # unused? seems like 
 hud_hint_cop_vault: "Alert: Guard detected an open vault."
 hud_hint_cop_saw: "Alert: Guard detected a saw."
 
-hud_hint_alarm_civ : "Alert: Panic button pressed."
+hud_hint_alarm_civ: "Alert: Panic button pressed."
 hud_hint_blame_missing: "Alert: Someone saw suspicious activity."
 hud_hint_blame_csgo_gunfire: "Alert: Neighbors called police."
 hud_hint_mot_criminal: "Alert: Lasers tripped."

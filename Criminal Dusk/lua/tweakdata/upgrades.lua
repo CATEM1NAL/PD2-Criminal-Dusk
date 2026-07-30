@@ -36,7 +36,6 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   self.values.player.suppression_multiplier = { 1.25 } -- Oppressor
   self.values.temporary.overkill_damage_multiplier = { { 1.5, 5 } } -- Overkill
   self.values.player.pick_up_ammo_multiplier = { 1.25, 1.5 } -- Fully Loaded
-  self.values.player.armor_multiplier = { 1.5 } -- Bulletproof
   self.values.player.melee_kill_snatch_pager_chance = { 0.25, 0.5, 0.75, 1 } -- Pager Snatch
   self.values.player.melee_sharp_damage_multiplier = { 2, 3, 4 } -- Vicious Warrior
   self.values.player.critical_hit_chance = { 0.1, 0.2 } -- Hypocritical
@@ -154,8 +153,8 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
 
   -- Loud And Proud
   self.values.player.detection_risk_damage_multiplier = {
-    { 0.03, 7, "above", 40 },
-    { 0.05, 7, "above", 40 }
+    { 0.05, 7, "above", 40 },
+    { 0.1, 7, "above", 40 }
   }
 
   -- From The Hip
@@ -243,7 +242,7 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   self.values.player.hostage_health_regen_addend = { 0.2, 0.5 }
 
   -- Armour
-  self.values.player.body_armor.movement = { 1.05, 1.05, 1, 0.95, 0.85, 0.75, 0.575 }
+  self.values.player.body_armor.movement = { 1.1, 1.05, 1, 0.95, 0.85, 0.75, 0.6 }
   self.values.player.body_armor.concealment = { 30, 30, 26, 21, 18, 12, 1 }
   self.values.player.body_armor.armor = { 0, 0, 2, 4, 6, 8, 10 }
   self.values.player.body_armor.dodge = { 0.25, 0, -0.10, -0.15, -0.25, -0.5, -1 }
