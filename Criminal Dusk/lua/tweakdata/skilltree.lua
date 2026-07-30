@@ -25,6 +25,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       "temporary_first_aid_damage_reduction",
       "temporary_passive_revive_damage_reduction_2",
       "akimbo_recoil_index_addend_1",
+      "body_armor1",
       "cable_tie",
       "doctor_bag",
       "ammo_bag",
@@ -614,12 +615,8 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       { upgrades = { "akimbo_recoil_index_addend_4" }, cost = self.costs.default },
       name_id = "menu_deck5_3", desc_id = "menu_akimbo_skill_beta_desc", icon_xy = { 3, 11 }
     }
-    self.skills.expert_handling = {
-      { upgrades = { "pistol_stacked_accuracy_bonus_1" }, cost = self.costs.default },
-      name_id = "menu_expert_handling", desc_id = "menu_expert_handling_desc", icon_xy = { 11, 1 }
-    }
     self.skills.coup_de_grace = {
-      { upgrades = { "pistol_stacked_accuracy_bonus_1" }, cost = self.costs.default },
+      { upgrades = { "weapon_coup_de_grace" }, cost = self.costs.default },
       name_id = "menu_coup_de_grace", desc_id = "menu_coup_de_grace_desc", icon_xy = { 11, 2 }
     }
     self.skills.trigger_happy.icon_xy = { 7, 11 }

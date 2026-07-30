@@ -23,7 +23,6 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   end
 
   -- Remove LBV from level rewards
-  table.insert(self.level_tree[0].upgrades, "body_armor1")
   for index, upgrade in ipairs(self.level_tree[7].upgrades) do
     if upgrade == "body_armor1" then table.remove(self.level_tree[7].upgrades, index) end
   end
