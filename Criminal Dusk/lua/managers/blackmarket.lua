@@ -11,6 +11,11 @@ Hooks:PostHook(BlackMarketManager, "get_item_amount", "CrimDusk_BMInfiniteItems"
   if not BlockedCategories[category] then return 2 end
 end)
 
+-- Replace suit with LBV
+Hooks:PreHook(BlackMarketManager, "_setup_armors", "CrimDusk_BMSetupArmorsPre", function(self)
+  self._defaults.armor = "level_2"
+end)
+
 -- Assign random van skin
 Hooks:OverrideFunction(BlackMarketManager, "equipped_van_skin", function()
   local skins = { "default", "brown", "green", "grey", "red", "white", "yellow", "icecream", "spooky" }

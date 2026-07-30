@@ -22,6 +22,12 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
     end
   end
 
+  -- Remove LBV from level rewards
+  table.insert(self.level_tree[0].upgrades, "body_armor1")
+  for index, upgrade in ipairs(self.level_tree[7].upgrades) do
+    if upgrade == "body_armor1" then table.remove(self.level_tree[7].upgrades, index) end
+  end
+
   -- Skills
   self.values.player.additional_lives = { 1, 2 } -- Nine Lives
   self.values.weapon.passive_swap_speed_multiplier = { 1.8, 2.6 } -- Swap Speed
@@ -238,7 +244,9 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   self.values.player.hostage_health_regen_addend = { 0.2, 0.5 }
 
   -- Armour
-  self.values.player.body_armor.armor = { 0, 2, 3, 4, 6, 8, 10 }
+  self.values.player.body_armor.movement = { 1.05, 1.05, 1, 0.95, 0.85, 0.75, 0.575 }
+  self.values.player.body_armor.concealment = { 30, 30, 26, 21, 18, 12, 1 }
+  self.values.player.body_armor.armor = { 0, 0, 2, 4, 6, 8, 10 }
   self.values.player.body_armor.dodge = { 0.25, 0, -0.10, -0.15, -0.25, -0.5, -1 }
 
   -- Weapon speed penalties

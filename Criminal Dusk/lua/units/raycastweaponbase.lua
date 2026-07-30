@@ -1,7 +1,7 @@
 Hooks:OverrideFunction(RaycastWeaponBase, "_get_current_damage", function(self, dmg_mul)
   local damage = self._damage * (dmg_mul or 1)
   damage = damage * managers.player:temporary_upgrade_value("temporary", "combat_medic_damage_multiplier", 1)
-  if self:clip_empty() then damage = damage * managers.player:upgrade_value("weapon", "coup_de_grace_mult", 1) end
+  if self:clip_empty() then damage = damage * managers.player:upgrade_value("weapon", "coup_de_grace_mult", 1) log("MAGAZINE EMPTIED!") end
   return damage
 end)
 

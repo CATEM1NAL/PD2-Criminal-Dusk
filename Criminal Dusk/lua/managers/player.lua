@@ -19,6 +19,11 @@ Hooks:OverrideFunction(PlayerManager, "fixed_health_regen", function(self)
   return health_regen
 end)
 
+Hooks:OverrideFunction(PlayerManager, "body_armor_value", function(self, category, override_value, default)
+  local armor_data = tweak_data.blackmarket.armors[managers.blackmarket:equipped_armor()]
+  return self:upgrade_value_by_level("player", "body_armor", category, {})[override_value or armor_data.upgrade_level] or default or 0
+end)
+
 Hooks:OverrideFunction(PlayerManager, "_dodge_replenish_armor", function(self)
   self:player_unit():character_damage():restore_health(0.1, true)
 end)
