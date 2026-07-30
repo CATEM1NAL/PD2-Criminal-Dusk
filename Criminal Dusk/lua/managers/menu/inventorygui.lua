@@ -1,5 +1,7 @@
-Hooks:OverrideFunction(PlayerInventoryGui, "open_specialization_menu", function()
-  managers.menu:open_node("skilltree_new", {})
+-- Remove perk decks
+Hooks:OverrideFunction(PlayerInventoryGui, "open_specialization_menu", function() managers.menu:open_node("skilltree_new", {}) end)
+Hooks:PreHook(PlayerInventoryGui, "sort_boxes_by_matrix", "CrimDusk_DeletePerksInventoryGUI", function(self)
+  self:remove_box(self._boxes_by_name.specialization)
 end)
 
 local function format_round(num, round_value)
@@ -8,25 +10,27 @@ end
 
 -- The original function does a bunch of unneccessary shit, so I got annoyed and replaced it.
 Hooks:OverrideFunction(PlayerInventoryGui, "_update_player_stats", function(self)
-	local base_stats, _, skill_stats = self:_get_armor_stats(managers.blackmarket:equipped_item("armors"))
+  local base_stats, _, skill_stats = self:_get_armor_stats(managers.blackmarket:equipped_item("armors"))
 
-	for _, stat in ipairs(self._player_stats_shown) do
-		local value = math.max(base_stats[stat.name].value + skill_stats[stat.name].value, 0)
-		local base = base_stats[stat.name].value
+  for _, stat in ipairs(self._player_stats_shown) do
+    local value = math.max(base_stats[stat.name].value + skill_stats[stat.name].value, 0)
+    local base = base_stats[stat.name].value
 
-		self._player_stats_texts[stat.name].total:set_alpha(1)
-		self._player_stats_texts[stat.name].total:set_text(format_round(value, stat.round_value))
-		self._player_stats_texts[stat.name].base:set_text(format_round(base, stat.round_value))
-		self._player_stats_texts[stat.name].skill:set_text(skill_stats[stat.name].skill_in_effect and (skill_stats[stat.name].value > 0 and "+" or "") .. format_round(skill_stats[stat.name].value, stat.round_value) or "")
+    self._player_stats_texts[stat.name].total:set_alpha(1)
+    self._player_stats_texts[stat.name].total:set_text(format_round(value, stat.round_value))
+    self._player_stats_texts[stat.name].base:set_text(format_round(base, stat.round_value))
+    self._player_stats_texts[stat.name].skill:set_text(skill_stats[stat.name].skill_in_effect and (skill_stats[stat.name].value > 0 and "+" or "") .. format_round(skill_stats[stat.name].value, stat.round_value) or "")
 
-		if value ~= 0 and base < value then
-		  local colour = stat.name ~= "stamina" and tweak_data.screen_colors.stats_positive or tweak_data.screen_colors.stats_negative
-			self._player_stats_texts[stat.name].total:set_color(colour)
-		elseif value ~= 0 and value < base then
-		  local colour = stat.name ~= "stamina" and tweak_data.screen_colors.stats_negative or tweak_data.screen_colors.stats_positive
-			self._player_stats_texts[stat.name].total:set_color(colour)
-		else self._player_stats_texts[stat.name].total:set_color(tweak_data.screen_colors.text) end
-	end
+    if value ~= 0 and base < value then
+      local colour = stat.name ~= "stamina" and tweak_data.screen_colors.stats_positive or tweak_data.screen_colors.stats_negative
+      self._player_stats_texts[stat.name].total:set_color(colour)
+
+    elseif value ~= 0 and value < base then
+      local colour = stat.name ~= "stamina" and tweak_data.screen_colors.stats_negative or tweak_data.screen_colors.stats_positive
+      self._player_stats_texts[stat.name].total:set_color(colour)
+
+    else self._player_stats_texts[stat.name].total:set_color(tweak_data.screen_colors.text) end
+  end
 end)
 
 Hooks:OverrideFunction(PlayerInventoryGui, "_get_armor_stats", function(self, name)
@@ -46,8 +50,7 @@ Hooks:OverrideFunction(PlayerInventoryGui, "_get_armor_stats", function(self, na
 			local mod = managers.player:body_armor_value("armor", upgrade_level)
 			base_stats[stat.name] = { value = (base + mod) * tweak_data.gui.stats_present_multiplier }
 			skill_stats[stat.name] = {
-			  value = (base_stats[stat.name].value + managers.player:body_armor_skill_addend(name) * tweak_data.gui.stats_present_multiplier) *
-			           managers.player:body_armor_skill_multiplier(name) - base_stats[stat.name].value
+			  value = (base_stats[stat.name].value + managers.player:body_armor_skill_addend(name) * tweak_data.gui.stats_present_multiplier) * managers.player:body_armor_skill_multiplier(name) - base_stats[stat.name].value
 			}
 
 		elseif stat.name == "health" then

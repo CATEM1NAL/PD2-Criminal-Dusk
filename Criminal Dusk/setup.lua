@@ -205,7 +205,7 @@ if Global.CrimDusk then SetTweakData() end
 -- THIS SECTION ONLY RUNS ONCE ON GAME LAUNCH --
 if Global.CrimDusk then return end
 Global.CrimDusk = {
-  regen_time = { 0.5, 0.5, 1, 2, 3.5, 5, 6.5 },
+  regen_time = { 0.5, 0.5, 1, 2, 4, 5.5, 7 },
 
   archicolours = {
     green = Color(255, 117, 194, 117) / 255,

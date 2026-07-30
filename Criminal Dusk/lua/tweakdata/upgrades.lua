@@ -86,8 +86,8 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
 
   -- Trigger Happy
   self.values.pistol.stacking_hit_damage_multiplier = {
-    { damage_bonus = 2, max_stacks = 1, max_time = 1 },
-    { damage_bonus = 2, max_stacks = 1, max_time = 3 },
+    { damage_bonus = 2, max_stacks = 1, max_time = 2 },
+    { damage_bonus = 2, max_stacks = 1, max_time = 5 },
   }
 
   -- Coup De Grace

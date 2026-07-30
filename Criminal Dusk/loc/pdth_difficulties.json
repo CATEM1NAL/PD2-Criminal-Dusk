@@ -1,6 +1,10 @@
 {
   "menu_difficulty_normal" : "Easy",
+  "menu_asset_risklevel_0" : "Easy",
   "menu_difficulty_hard" : "Normal",
+  "menu_asset_risklevel_1" : "Normal",
   "menu_difficulty_very_hard" : "Hard",
-  "menu_difficulty_easy_wish" : "OVERKILL 145+"
+  "menu_asset_risklevel_2" : "Hard",
+  "menu_difficulty_easy_wish" : "OVERKILL 145+",
+  "menu_asset_risklevel_4" : "OVERKILL 145+"
 }
