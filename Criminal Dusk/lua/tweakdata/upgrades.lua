@@ -1,14 +1,14 @@
 Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", function(self)
   -- Consumables unlock every 10 levels
-  table.insert(self.level_tree[10].upgrades, "pocket_ecm_jammer") -- Pocket ECM
-  table.insert(self.level_tree[20].upgrades, "smoke_screen_grenade") -- Smoke Grenade
-  table.insert(self.level_tree[30].upgrades, "tag_team") -- Gas Dispenser
-  table.insert(self.level_tree[50].upgrades, "copr_ability") -- Leech Ampule
+  table.insert(self.level_tree[20].upgrades, "pocket_ecm_jammer") -- Pocket ECM
+  table.insert(self.level_tree[60].upgrades, "chico_injector") -- Smoke Grenade
+  table.insert(self.level_tree[80].upgrades, "tag_team") -- Gas Dispenser
+  table.insert(self.level_tree[100].upgrades, "copr_ability") -- Leech Ampule
 
   -- Event items unlock at 40
   self.level_tree[40] = {
     name_id = "weapons",
-    upgrades = { "bessy", "money", "xmas_snowball", "piggy_hammer", "chico_injector" }
+    upgrades = { "bessy", "money", "xmas_snowball", "piggy_hammer", "smoke_screen_grenade" }
   }
 
   -- Remove skill points at 10th levels

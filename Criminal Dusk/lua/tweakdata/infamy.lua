@@ -92,8 +92,9 @@ Hooks:PostHook(InfamyTweakData, "init", "CrimDusk_InfamyTweakInit", function(sel
   }
 
   for reward, target in pairs(CombinedRewards) do
-    for i, _ in ipairs(self.items[reward].upgrades) do
-      table.insert(self.items[target].upgrades, self.items[reward].upgrades[i])
+    for i, upgrade in pairs(self.items[reward].upgrades) do
+      self.items[target].upgrades[i] = upgrade
     end
   end
+
 end)

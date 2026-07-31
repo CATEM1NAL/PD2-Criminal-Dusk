@@ -32,8 +32,10 @@ function CrimDusk:Init()
   end -- Yes, this WILL crash without a FileIdent or SaveReason. This is intentional.
 
   function self.GoLoud()
-    local LoudDelay = 3
-    if Global.game_settings.level_id == "friend" then LoudDelay = 5 end
+    CrimDusk.Log(FileIdent, "Level ID: " .. Global.game_settings.level_id)
+    local LoudDelay = Global.CrimDusk.LoudTimers[Global.game_settings.level_id]
+    if not LoudDelay then LoudDelay = 3 end
+
     DelayedCalls:Add("CrimDusk_GoLoudDelay", LoudDelay, function() managers.groupai:state():on_police_called("empty") end)
   end
 
@@ -261,6 +263,9 @@ function Global.CrimDusk:Init()
     "red2", "flat", "man", "four_stores", "nmh", "mallcrasher", "branchbank", "ukrainian_job", "nightclub", "welcome_to_the_jungle_2",
     "firestarter_1", "arm_for", "roberts", "big", "mus", "hox_3", "arena", "friend", "sah", "mex", "chas", "bex", "sand", "pex", "chca",
     "fex", "pent", "bph", "ranc", "trai", "corp", "deep", "vit"
+  }
+  self.LoudTimers = {
+    friend = 5
   }
 
   SetTweakData()

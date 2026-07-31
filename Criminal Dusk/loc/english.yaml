@@ -458,22 +458,22 @@ menu_mag_throw_desc: "$lv1;Picking up ammo triggers an ammo pickup for the rest 
 
 menu_gambler_heal: "$lv1;Picking up ammo can heal you for up to ##2## health. The crew heals for up to ##1## health.\n\n$lv2;Ammo can heal you for up to ##4## health, and the crew for ##2## health.\n\n$lv3;Ammo can heal you for up to ##6## health, and the crew for ##3## health."
 
-menu_kingpin_priority: "INJECTOR UNLOCKS AT LEVEL 40!\n\n$lv1;Your target rate is increased by ##1000%## while the ##Injector## is active."
-menu_kingpin_cooldown: "INJECTOR UNLOCKS AT LEVEL 40!\n\n$lv1;Cooldown of the ##Injector## is reduced by ##1## second for every ##50## health restored while at max health."
-menu_kingpin_healing: "INJECTOR UNLOCKS AT LEVEL 40!\n\n$lv1;While the ##Injector## is active and you are below half health, healing is increased by ##25%##."
-menu_kingpin_base: "INJECTOR UNLOCKS AT LEVEL 40!\n\n$lv1;Base healing of the ##Injector## increased to ##50%##.\n\n$lv2;Healing is further increased to ##75%##."
+menu_kingpin_priority: "INJECTOR UNLOCKS AT LEVEL 60!\n\n$lv1;Your target rate is increased by ##1000%## while the ##Injector## is active."
+menu_kingpin_cooldown: "INJECTOR UNLOCKS AT LEVEL 60!\n\n$lv1;Cooldown of the ##Injector## is reduced by ##1## second for every ##50## health restored while at max health."
+menu_kingpin_healing: "INJECTOR UNLOCKS AT LEVEL 60!\n\n$lv1;While the ##Injector## is active and you are below half health, healing is increased by ##25%##."
+menu_kingpin_base: "INJECTOR UNLOCKS AT LEVEL 60!\n\n$lv1;Base healing of the ##Injector## increased to ##50%##.\n\n$lv2;Healing is further increased to ##75%##."
 
 menu_stoic_skill: "$lv1;Unlocks the ##Stoic's Hip Flask##. All damage taken is now applied quickly over ##6## seconds. Using the flask negates any remaining damage with a ##10## second cooldown.\n\n$lv2;Cooldown is reduced by ##1## second per kill when health is below ##100%##."
 menu_stoic_negation: "$lv1;Remaining damage from ##Virtue## is negated after not taking damage for ##1.5## seconds."
 menu_stoic_regen: "$lv1;Your armor is converted into health.\n\n$lv2;##50%## of negated damage from ##Virtue## is turned into healing."
 
-menu_h3h3_cooldown: "GAS DISPENSER UNLOCKS AT LEVEL 30!\n\n$lv1;Kills from you or your ##Gas Dispenser## target decrease the cooldown by ##1## second."
-menu_h3h3_absorb: "GAS DISPENSER UNLOCKS AT LEVEL 30!\n\n$lv1;Kills from you or your ##Gas Dispenser## target grant ##0.4## absorption (max ##12##) while the Gas Dispenser is active. Absorption is reset when the cooldown expires."
+menu_h3h3_cooldown: "GAS DISPENSER UNLOCKS AT LEVEL 80!\n\n$lv1;Kills from you or your ##Gas Dispenser## target decrease the cooldown by ##1## second."
+menu_h3h3_absorb: "GAS DISPENSER UNLOCKS AT LEVEL 80!\n\n$lv1;Kills from you or your ##Gas Dispenser## target grant ##0.4## absorption (max ##12##) while the Gas Dispenser is active. Absorption is reset when the cooldown expires."
 
-menu_leech_swan: "LEECH AMPULE UNLOCKS AT LEVEL 50!\n\n$lv1;Running out of health while the ##Leech Ampule## is active allows you to keep fighting with ##80%## reduced movement speed.\n\n$lv2;The ##Leech Ampule## can be used while down to get back up temporarily. Using a ##doctor bag## or reviving a crewmate allows you to stay up if you have health when the effect ends."
-menu_leech_duration: "LEECH AMPULE UNLOCKS AT LEVEL 50!\n\n$lv1;Cooldown of the ##Leech Ampule## is reduced by ##1## second per kill.\n\n$lv2;Effect of the ##Leech Ampule## now lasts ##10## seconds."
-menu_leech_healing: "LEECH AMPULE UNLOCKS AT LEVEL 50!\n\n$lv1;Crewmates recover ##10## health when you take damage while the ##Leech Ampule## is active.\n\n$lv2;You recover ##40%## of your health when activating the ##Leech Ampule##."
-menu_leech_segments: "LEECH AMPULE UNLOCKS AT LEVEL 50!\n\n$lv1;Activating the ##Leech Ampule## divides your health into ##10## segments, instead of ##5##."
+menu_leech_swan: "LEECH AMPULE UNLOCKS AT LEVEL 100!\n\n$lv1;Running out of health while the ##Leech Ampule## is active allows you to keep fighting with ##80%## reduced movement speed.\n\n$lv2;The ##Leech Ampule## can be used while down to get back up temporarily. Using a ##doctor bag## or reviving a crewmate allows you to stay up if you have health when the effect ends."
+menu_leech_duration: "LEECH AMPULE UNLOCKS AT LEVEL 100!\n\n$lv1;Cooldown of the ##Leech Ampule## is reduced by ##1## second per kill.\n\n$lv2;Effect of the ##Leech Ampule## now lasts ##10## seconds."
+menu_leech_healing: "LEECH AMPULE UNLOCKS AT LEVEL 100!\n\n$lv1;Crewmates recover ##10## health when you take damage while the ##Leech Ampule## is active.\n\n$lv2;You recover ##40%## of your health when activating the ##Leech Ampule##."
+menu_leech_segments: "LEECH AMPULE UNLOCKS AT LEVEL 100!\n\n$lv1;Activating the ##Leech Ampule## divides your health into ##10## segments, instead of ##5##."
 
 menu_tac_reload: "Tactical Reload"
 menu_tac_reload_desc: "$lv1;Your unequipped weapon is reloaded after ##10## kills.\n\n$lv2;Weapon switch speed is increased by ##480%## for ##3## seconds after reload is triggered."

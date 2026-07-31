@@ -14,7 +14,7 @@ end
 
 function MenuCallbackHandler:CrimDusk_ResetCampaign()
   Global.CrimDusk.data.heists_won = 0
-  Global.CrimDusk.data.lives = 5
+  Global.CrimDusk.data.lives = 4
   CrimDusk:WriteSave(FileIdent, "campaign reset")
 end
 
@@ -176,10 +176,11 @@ Hooks:PreHook(MenuCallbackHandler, "start_the_game", "CrimDusk_PreStartGame", fu
         if #Global.CrimDusk.data.heist_chain == #Global.CrimDusk.campaign then Global.CrimDusk.data.heist_chain = {} end
         for _, heist in ipairs(Global.CrimDusk.data.heist_chain) do
           for i = #ValidHeists, 1, -1 do
-            if ValidHeists[i] == heist then table.remove(ValidHeists, i) end
+            if ValidHeists[i] == heist then table.remove(ValidHeists, i) break end
           end
         end
       end
+      CrimDusk.Log(FileIdent, "Heists left in cycle: " .. #ValidHeists)
 
       NextJob = ValidHeists[math.random(#ValidHeists)]
       if not Global.CrimDusk.data.heist_chain then Global.CrimDusk.data.heist_chain = {} end

@@ -1,6 +1,6 @@
 <mod name="Criminal Dusk" global_key="Crim_Dusk" author="~/cat/em1/nal/" color="Color(0.734375,0.4921875,0.73828125)" image="dawn">
   <!-- Auto update from latest GitHub release -->
-  <AssetUpdates version="0.4.4" id="CATEM1NAL/PD2-Criminal-Dusk" provider="github" release="true"/>
+  <AssetUpdates version="0.4.5" id="CATEM1NAL/PD2-Criminal-Dusk" provider="github" release="true"/>
 
   <AddFiles directory="assets">
     <png path="logo/dawn"/>
@@ -19,6 +19,7 @@
     <hook source_file="lib/setups/setup" file="setup.lua"/>
 
     <hooks directory="lua"> <!-- Criminal Dusk/lua/ -->
+      <hook source_file="lib/setups/gamesetup" file="gamesetup.lua"/>
       <hook source_file="lib/network/base/basenetworksession" file="peer_sync.lua"/>
       <hook source_file="lib/network/base/networkpeer" file="no_cheater_tag.lua"/>
       <hook source_file="lib/player_actions/skills/playeractionshockandawe" file="lock_n_load.lua"/>

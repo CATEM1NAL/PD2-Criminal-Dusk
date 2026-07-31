@@ -264,7 +264,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     }
     self.skills.crew_recovery = {
       { upgrades = { "team_armor_regen_time_multiplier" }, cost = self.costs.default },
-      name_id = "menu_team_armor_regen", desc_id = "menu_team_armor_regen_desc", icon_xy = { 8, 10 }
+      name_id = "menu_team_armor_regen", desc_id = "menu_team_armor_regen_desc", icon_xy = { 2, 12 }
     }
     self.skills.shock_awe = {
       { upgrades = { "player_shield_knock" }, cost = self.costs.default },
@@ -274,10 +274,6 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       { upgrades = { "player_interacting_damage_multiplier" }, cost = self.costs.default },
       name_id = "menu_nerves_of_steel_name", desc_id = "menu_nerves_of_steel_desc", icon_xy = { 8, 9 }
     }
-    self.skills.thick_skin = {
-      { upgrades = { "player_level_2_armor_addend", "player_level_3_armor_addend", "player_level_4_armor_addend" }, cost = self.costs.default },
-      name_id = "menu_thick_skin", desc_id = "menu_show_of_force_beta_desc", icon_xy = { 2, 12 }
-    }
     self.skills.transporter = {
       { upgrades = { "carry_throw_distance_multiplier" }, cost = self.costs.default },
       name_id = "menu_pack_mule_beta", desc_id = "menu_pack_mule_beta_desc", icon_xy = { 8, 8 }
@@ -285,10 +281,6 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     self.skills.armor_bag_reduction = {
       { upgrades = { "player_armor_carry_bonus_1" }, cost = self.costs.default },
       name_id = "menu_armor_bag_reduction", desc_id = "menu_armor_bag_reduction_desc", icon_xy = { 6, 0 }
-    }
-    self.skills.enforcer_recovery = {
-      { upgrades = { "player_armor_regen_time_mul_1" }, cost = self.costs.default },
-      name_id = "menu_oppressor_beta", desc_id = "menu_oppressor_beta_desc", icon_xy = { 2, 12 }
     }
     self.skills.stun_resistance = {
       { upgrades = { "player_flashbang_multiplier_1" }, cost = self.costs.default },
@@ -298,10 +290,6 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     self.skills.juggernaut = {
       { upgrades = { "body_armor6" }, cost = self.costs.default },
       name_id = "menu_juggernaut_beta", desc_id = "menu_juggernaut_beta_desc", icon_xy = { 3, 1 }
-    }
-    self.skills.bulletproof = {
-      { upgrades = { "player_armor_multiplier" }, cost = self.costs.default },
-      name_id = "menu_bulletproof_name", desc_id = "menu_bulletproof_desc", icon_xy = { 6, 4 }
     }
     self.skills.extra_ammo_box = {
       { upgrades = { "player_double_drop_1" }, cost = self.costs.default },
@@ -360,9 +348,9 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     }
     self.trees[5].tiers = {
       { "transporter", "stun_resistance", "high_value_target" },
-      { "armor_bag_reduction", "juggernaut", "enforcer_recovery" },
-      { "thick_skin", "nerves_of_steel" },
-      { "shock_awe", "crew_recovery" }
+      { "armor_bag_reduction", "juggernaut" },
+      { "shock_awe", "nerves_of_steel" },
+      { "crew_recovery" }
     }
     self.trees[6].tiers = {
       { "scavenger", "extra_ammo_box", "portable_saw" },
