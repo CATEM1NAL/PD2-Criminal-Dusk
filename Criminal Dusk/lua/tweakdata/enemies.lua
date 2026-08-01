@@ -59,6 +59,7 @@ local function SetStats(self, diff)
   self.drug_lord_boss_stealth.DAMAGE_CLAMP_BULLET = nil
   self.drug_lord_boss_stealth.DAMAGE_CLAMP_EXPLOSION = nil
 
+  self.phalanx_vip.FINAL_LOWER_HEALTH_PERCENTAGE_LIMIT = nil
   self.phalanx_vip.DAMAGE_CLAMP_BULLET = 10
   self.phalanx_vip.DAMAGE_CLAMP_EXPLOSION = self.phalanx_vip.DAMAGE_CLAMP_BULLET
 

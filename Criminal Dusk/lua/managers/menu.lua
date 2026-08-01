@@ -15,6 +15,7 @@ end
 function MenuCallbackHandler:CrimDusk_ResetCampaign()
   Global.CrimDusk.data.heists_won = 0
   Global.CrimDusk.data.lives = 4
+  Global.CrimDusk.data.winters_dead = false
   CrimDusk:WriteSave(FileIdent, "campaign reset")
 end
 
@@ -173,7 +174,10 @@ Hooks:PreHook(MenuCallbackHandler, "start_the_game", "CrimDusk_PreStartGame", fu
       local ValidHeists = deep_clone(Global.CrimDusk.campaign)
 
       if Global.CrimDusk.data.heist_chain then
-        if #Global.CrimDusk.data.heist_chain == #Global.CrimDusk.campaign then Global.CrimDusk.data.heist_chain = {} end
+        if #Global.CrimDusk.data.heist_chain == #Global.CrimDusk.campaign then
+          Global.CrimDusk.data.heist_chain = {}
+          Global.CrimDusk.data.winters_dead = false
+        end
         for _, heist in ipairs(Global.CrimDusk.data.heist_chain) do
           for i = #ValidHeists, 1, -1 do
             if ValidHeists[i] == heist then table.remove(ValidHeists, i) break end

@@ -5,6 +5,8 @@ Hooks:OverrideFunction(GroupAIStateBesiege, "set_phalanx_damage_reduction_buff",
 Hooks:PreHook(GroupAIStateBesiege, "_spawn_phalanx", "CrimDusk_GroupAISpawnPhalanx", function(self) self._phalanx_spawn_timer = false end)
 
 Hooks:OverrideFunction(GroupAIStateBesiege, "_check_spawn_phalanx", function(self)
+  if Global.CrimDusk.data.winters_dead then return end
+
   local AssaultBegun = self._task_data and self._task_data.assault.active and self._task_data.assault.phase == "build"
   local IsPhalanxValid = self._phalanx_center_pos and not self._phalanx_spawn_group and not self._phalanx_despawn_time and not self._phalanx_spawn_attempted
   local WintersCanSpawn = AssaultBegun and IsPhalanxValid
@@ -100,7 +102,7 @@ Hooks:OverrideFunction(GroupAIStateBesiege, "_begin_assault_task", function(self
   assault_task.use_spawn_event = true
   assault_task.force_spawned = 0
 
-  if self._hostage_headcount > 0 then
+  if self._hostage_headcount > 0 then -- Each hostage increases assault delay (up to 30 seconds max)
     local hostage_delay = math.min(self:_get_difficulty_dependent_value(self._tweak_data.assault.hostage_hesitation_delay) * self._hostage_headcount, 30)
 
     anticipation_duration = anticipation_duration + hostage_delay
@@ -124,6 +126,8 @@ Hooks:OverrideFunction(GroupAIStateBesiege, "_begin_assault_task", function(self
 end)
 
 Hooks:PreHook(GroupAIStateBesiege, "_end_regroup_task", "CrimDusk_GroupAIAssaultEnd", function(self)
+  if Global.CrimDusk.data.winters_dead then return end
+
   -- Increase Winters spawn chance on assault end
   if not self._phalanx_center_pos or self._phalanx_despawn_time or self._phalanx_current_spawn_chance == 1 then return end
 
