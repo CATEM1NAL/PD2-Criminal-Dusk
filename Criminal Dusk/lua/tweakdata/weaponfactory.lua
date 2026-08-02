@@ -1,6 +1,41 @@
 Hooks:PostHook(WeaponFactoryTweakData, "init", "CrimDusk_InitModTweakData", function(self)
   for _, data in pairs(self.parts) do data.is_a_unlockable = true end -- All weapon mods are infinite
 
+  -- Magazine capacities
+  local Quadstack = { MagChange = 30, ReloadSpeed = -2 }
+  local LowCapacity = { MagChange = -10, ReloadSpeed = 10 }
+  local QuickPull = { ReloadSpeed = 4 }
+
+  local MagTweaks = {
+    wpn_fps_sho_basset_m_extended = { MagChange = 5, ReloadSpeed = -4 },
+    wpn_fps_sho_aa12_mag_drum = { MagChange = 12, ReloadSpeed = -4 },
+    wpn_fps_m4_uupg_m_std = { MagChange = 10, ReloadSpeed = -1 },
+  
+    -- Quadstacks
+    wpn_fps_upg_m4_m_quad = Quadstack,
+    wpn_fps_upg_ak_m_quad = Quadstack,
+
+    -- Speedpulls
+    wpn_fps_smg_p90_m_strap = QuickPull,
+    wpn_fps_ass_aug_m_quick = QuickPull,
+    wpn_fps_m4_upg_m_quick = QuickPull,
+    wpn_fps_upg_ak_m_quick = QuickPull,
+    wpn_fps_ass_g36_m_quick = QuickPull,
+    wpn_fps_smg_mac10_m_quick = QuickPull,
+    wpn_fps_smg_sr2_m_quick = QuickPull,
+
+    -- Small mags
+    wpn_fps_upg_m4_m_straight = LowCapacity,
+  }
+  for magazine, data in pairs(MagTweaks) do
+    for stat, value in pairs(data) do
+      if stat == "MagChange" then self.parts[magazine].stats.extra_ammo = value end
+      if stat == "ReloadSpeed" then self.parts[magazine].stats.reload = value end
+    end
+  end
+
+  self.wpn_fps_sho_x_basset.override.wpn_fps_sho_basset_m_extended.stats.extra_ammo = 10 -- Grimm/Izhma extended mag
+
   -- Sting grenades
   local HighDamage = -133
   local LowDamage = -126
@@ -25,7 +60,7 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "CrimDusk_InitModTweakData", func
   -- Slugs
   self.parts.wpn_fps_upg_a_slug.stats.damage = 75
   self.parts.wpn_fps_upg_a_slug.stats.spread = 8
-  self.parts.wpn_fps_upg_a_slug.stats.spread_moving = 4
+  self.parts.wpn_fps_upg_a_slug.stats.spread_moving = self.parts.wpn_fps_upg_a_slug.stats.spread * 0.5
 
   -- HE
   self.parts.wpn_fps_upg_a_explosive.stats.damage = 50
@@ -38,13 +73,13 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "CrimDusk_InitModTweakData", func
   self.parts.wpn_fps_upg_a_rip.custom_stats.rays = 1
   self.parts.wpn_fps_upg_a_rip.stats.damage = 25
   self.parts.wpn_fps_upg_a_rip.stats.spread = 6
-  self.parts.wpn_fps_upg_a_rip.stats.spread_moving = 3
+  self.parts.wpn_fps_upg_a_rip.stats.spread_moving = self.parts.wpn_fps_upg_a_rip.stats.spread * 0.5
 
   -- Flechette
   self.parts.wpn_fps_upg_a_piercing.custom_stats.rays = 12
   self.parts.wpn_fps_upg_a_piercing.stats.damage = -5
   self.parts.wpn_fps_upg_a_piercing.stats.spread = 4
-  self.parts.wpn_fps_upg_a_piercing.stats.spread_moving = 2
+  self.parts.wpn_fps_upg_a_piercing.stats.spread_moving = self.parts.wpn_fps_upg_a_piercing.stats.spread * 0.5
 
   -- Remove DLC buckshot
   local shotguns = { "wpn_fps_shot_saiga", "wpn_fps_shot_r870", "wpn_fps_shot_huntsman", "wpn_fps_shot_serbu", "wpn_fps_sho_ben", "wpn_fps_sho_striker",

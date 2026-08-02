@@ -39,7 +39,6 @@ end)
 Hooks:OverrideFunction(RaycastWeaponBase, "on_reload", function(self, amount)
   local ammo_base = self._reload_ammo_base or self:ammo_base()
   local weapon_id = ammo_base:_weapon_tweak_data_id()
-  local akimbo = ammo_base:is_category("akimbo")
   --CrimDusk.Log(FileIdent, "Weapon ID: " .. weapon_id)
 
   amount = amount or ammo_base:get_ammo_max_per_clip()
@@ -68,10 +67,12 @@ end)
 Hooks:OverrideFunction(RaycastWeaponBase, "_get_current_damage", function(self, dmg_mul)
   local damage = self._damage * (dmg_mul or 1)
   damage = damage * managers.player:temporary_upgrade_value("temporary", "combat_medic_damage_multiplier", 1)
-  if self:clip_empty() then
+
+  if self:clip_empty() then -- Finisher
     local FinisherMult = managers.player:upgrade_value("weapon", "coup_de_grace_mult", 1)
     damage = damage * FinisherMult
   end
+
   return damage
 end)
 
@@ -123,6 +124,7 @@ Hooks:OverrideFunction(RaycastWeaponBase, "add_ammo", function(self, ratio, add_
     if stored_pickup_ammo then add_amount = math.floor(add_amount - stored_pickup_ammo)
     else add_amount = rounded_amount end
 
+    -- Scrounger
     local grenade_tweak = tweak_data.blackmarket.projectiles[managers.blackmarket:equipped_grenade()]
     local may_find_grenade = grenade_tweak.is_a_grenade and managers.player:has_category_upgrade("player", "regain_throwable_from_ammo")
 
@@ -159,11 +161,11 @@ Hooks:OverrideFunction(RaycastWeaponBase, "add_ammo", function(self, ratio, add_
   return picked_up, add_amount
 end)
 
+-- Mag Plus
 Hooks:OverrideFunction(NewRaycastWeaponBase, "calculate_ammo_max_per_clip", function(self)
   local ammo = tweak_data.weapon[self._name_id].CLIP_AMMO_MAX
   ammo = ammo + (self._extra_ammo or 0)
   ammo = ammo * (1 + managers.player:upgrade_value("weapon", "clip_ammo_increase", 0))
-
   return math.floor(ammo)
 end)
 

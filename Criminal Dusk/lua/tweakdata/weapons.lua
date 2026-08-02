@@ -147,6 +147,7 @@ local CrewNameConversion = {
 
 local NoPickup = { 0, 0 }
 local Flamethrower = { 18, 22 }
+
 local ForcedAmmoPickup = {
   rpg7 = NoPickup, ray = NoPickup, -- rocket launchers
   hunter = NoPickup, ecp = NoPickup, arblast = NoPickup, frankish = NoPickup, -- crossbows
@@ -155,6 +156,7 @@ local ForcedAmmoPickup = {
 }
 
 Hooks:PostHook(WeaponTweakData, "init", "CrimDusk_WeaponTweakInit", function(self)
+  -- Update weapon damage
   for ClassName, ClassData in pairs(WeaponClasses) do
     for NewDamage, weapons in pairs(ClassData) do
       for _, WeaponName in ipairs(weapons) do
@@ -182,6 +184,20 @@ Hooks:PostHook(WeaponTweakData, "init", "CrimDusk_WeaponTweakInit", function(sel
 
         if self["x_" .. WeaponName] then self["x_" .. WeaponName].AMMO_PICKUP = { LeastShotsToKill, MostShotsToKill } end
       end
+    end
+  end
+
+  -- Update stat indexes
+  self.stats.reload = {}
+  for i = -5, 20 do table.insert(self.stats.reload, i / 10) end
+
+  self.stats.extra_ammo = {}
+  for i = -100, 100 do table.insert(self.stats.extra_ammo, i) end
+
+  for weapon, data in pairs(self) do
+    if data.stats then
+      if data.stats.extra_ammo then data.stats.extra_ammo = data.stats.extra_ammo + 50 end
+      if data.stats.reload then data.stats.reload = data.stats.reload + 5 end
     end
   end
 
@@ -213,12 +229,24 @@ Hooks:PostHook(WeaponTweakData, "init", "CrimDusk_WeaponTweakInit", function(sel
   self.m95.stats_modifiers.damage = 100
 
   -- Magazine size tweaks
-  local MagSize = { asval = 20, scar = 20, g3 = 20 }
-  for weapon, mag in pairs(MagSize) do
-    self[weapon].CLIP_AMMO_MAX = mag
-    self[weapon].NR_CLIPS_MAX = 5
-    self[weapon].AMMO_MAX = self[weapon].CLIP_AMMO_MAX * self[weapon].NR_CLIPS_MAX
+  local MagSize = {
+    [4] = { asval = 20, scar = 20, g3 = 20, m16 = 20, olympic = 20 },
+    [6] = { saiga = 5 },
+  }
+  for NumMags, weapons in pairs(MagSize) do
+    for weapon, mag in pairs(weapons) do
+      self[weapon .. "_crew"].CLIP_AMMO_MAX = mag
+      self[weapon].CLIP_AMMO_MAX = mag
+      self[weapon].NR_CLIPS_MAX = NumMags
+      self[weapon].AMMO_MAX = self[weapon].CLIP_AMMO_MAX * self[weapon].NR_CLIPS_MAX
+    end
   end
+
+  -- Reload tweaks
+  self.aa12.stats.reload = 20
+  self.m16.stats.reload = 20
+  self.olympic.stats.reload = 20
+  self.saiga.stats.reload = 20
 
   -- Attribute tweaks
   self.hailstorm.categories = { "assault_rifle" }
