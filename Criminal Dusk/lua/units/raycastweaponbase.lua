@@ -1,3 +1,70 @@
+local FileIdent = "RaycastWeaponBase"
+
+local NoChamberBullet = {
+  -- Vanilla weapons
+  flamethrower_mk2 = true, system = true, money = true, -- Flamethrowers
+  hunter = true, ecp = true, arblast = true, frankish = true, long = true, elastic = true, plainsrider = true, hunter = true, dart = true,  -- Bows
+  ray = true, rpg7 = true, -- Rocket launchers
+  shuno = true, m134 = true, -- Miniguns
+  china = true, ms3gl = true, gre_m79 = true, slap = true, m32 = true, flun = true, -- Grenade launchers
+  b682 = true, huntsman = true, coach = true, -- Double barrels
+  rota = true, judge = true, striker = true, -- Shotguns
+  peacemaker = true, model3 = true, rsh12 = true, mateba = true, korth = true, chinchilla = true, new_raging_bull = true, -- Revolvers
+  saw = true, saw_secondary = true, -- Saws
+  ching = true, hailstorm = true, -- Assault rifles
+  m60 = true, kacchainsaw = true, mg42 = true, m249 = true, par = true, -- LMGs
+  bessy = true, contender = true, -- Sniper rifles
+  m45 = true, mac10 = true, cobray = true, m1928 = true, erma = true, sterling = true, uzi = true, -- SMGs
+
+  -- Akimbos
+  x_2006m = true, x_rage = true, x_model3 = true, x_chinchilla = true, x_korth = true, -- Revolvers
+  x_judge = true, x_rota = true, -- Shotguns
+  x_m45 = true, x_mac10 = true, x_cobray = true, x_m1928 = true, x_erma = true, x_sterling = true, x_uzi = true -- SMGs
+}
+
+local NoMagDump = {
+  -- Vanilla weapons
+  coach = true, b682 = true
+}
+
+Hooks:OverrideFunction(RaycastWeaponBase, "get_ammo_max_per_clip", function(self)
+  local chamber = 0
+  if not NoChamberBullet[self:ammo_base():_weapon_tweak_data_id()] and (self:ammo_base():get_ammo_remaining_in_clip() or 0) > 0 then
+    chamber = self:ammo_base():is_category("akimbo") and 2 or 1
+  end
+
+  return self._ammo_max_per_clip + chamber
+end)
+
+Hooks:OverrideFunction(RaycastWeaponBase, "on_reload", function(self, amount)
+  local ammo_base = self._reload_ammo_base or self:ammo_base()
+  local weapon_id = ammo_base:_weapon_tweak_data_id()
+  local akimbo = ammo_base:is_category("akimbo")
+  --CrimDusk.Log(FileIdent, "Weapon ID: " .. weapon_id)
+
+  amount = amount or ammo_base:get_ammo_max_per_clip()
+
+  -- Ammo not used is wasted
+  local MagDump
+  if not NoMagDump[weapon_id] then
+    MagDump = ammo_base:get_ammo_remaining_in_clip()
+    if MagDump ~= 0 then
+      if not NoChamberBullet[weapon_id] then MagDump = MagDump - 1 end
+      ammo_base:set_ammo_total(ammo_base._ammo_total - MagDump)
+    end
+  end
+
+  if self._setup.expend_ammo then ammo_base:set_ammo_remaining_in_clip(math.min(ammo_base:get_ammo_total(), amount))
+  else ammo_base:set_ammo_remaining_in_clip(amount)
+    ammo_base:set_ammo_total(amount)
+  end
+
+  managers.job:set_memory("kill_count_no_reload_" .. tostring(self._name_id), nil, true)
+
+  self._reload_ammo_base = nil
+  self._next_fire_allowed = self._unit:timer():time()
+end)
+
 Hooks:OverrideFunction(RaycastWeaponBase, "_get_current_damage", function(self, dmg_mul)
   local damage = self._damage * (dmg_mul or 1)
   damage = damage * managers.player:temporary_upgrade_value("temporary", "combat_medic_damage_multiplier", 1)

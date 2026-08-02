@@ -67,6 +67,8 @@ if NetworkHelper:IsHost() and Global.CrimDusk and (Global.CrimDusk.data.heists_w
   end)
 end
 
+if NetworkHelper:IsClient() then NetworkHelper:SendToPeer(1, "CrimDusk_RequestHeistCount", true) end
+
 local function SetTweakData()
   -- Player colours
   local player1 = Global.CrimDusk.archicolours.blue
@@ -208,6 +210,7 @@ if Global.CrimDusk then SetTweakData() end
 if Global.CrimDusk then return end
 Global.CrimDusk = {
   regen_time = { 0.5, 0.5, 1.5, 2.5, 4.5, 6, 7.5 },
+  friendly_fire = { 0.5, 0.75, 1, 1.25, 1.5, 2, 3 },
 
   archicolours = {
     green = Color(255, 117, 194, 117) / 255,

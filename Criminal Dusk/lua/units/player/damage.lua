@@ -276,7 +276,7 @@ Hooks:OverrideFunction(PlayerDamage, "damage_bullet", function(self, attack_data
 
   elseif self._invulnerable or self._mission_damage_blockers.invulnerable then self:_call_listeners(damage_info) return
   elseif self:incapacitated() then return
-  elseif self:is_friendly_fire(attack_data.attacker_unit) then return
+  --elseif self:is_friendly_fire(attack_data.attacker_unit) then return -- doesn't do anything?
   elseif pm:player_timer():time() < self._armor_break_t then return
   elseif self._unit:movement():current_state().immortal then return
   elseif self._revive_miss and math.random() < self._revive_miss then self:play_whizby(attack_data.col_ray.position) return
@@ -287,9 +287,11 @@ Hooks:OverrideFunction(PlayerDamage, "damage_bullet", function(self, attack_data
   local skill_dodge_chance = pm:skill_dodge_chance(self._unit:movement():running(), self._unit:movement():crouching(), self._unit:movement():zipline_unit())
   skill_dodge_chance = skill_dodge_chance + pm:body_armor_value("dodge")
   dodge_value = dodge_value + skill_dodge_chance - (skill_dodge_chance * self._entropy * self._entropy_mult)
-  --log("current dodge: " .. dodge_value + skill_dodge_chance)
-  --log("entropy: " .. (skill_dodge_chance) * self._entropy * self._entropy_mult)
-  --log("final dodge: " .. dodge_value)
+  --[[
+  log("current dodge: " .. dodge_value + skill_dodge_chance)
+  log("entropy: " .. (skill_dodge_chance) * self._entropy * self._entropy_mult)
+  log("final dodge: " .. dodge_value)
+  ]]
 
   if self._temporary_dodge_t and TimerManager:game():time() < self._temporary_dodge_t then
     dodge_value = dodge_value + self._temporary_dodge

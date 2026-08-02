@@ -116,30 +116,34 @@ local WeaponClasses = {
     [75] = { "wa2000", "siltstone", "qbu88", "tti", "victor", "msr", "winchester1874", "scout", "r700" }
   },
   pistols = {
-    [16] = { "glock_17", "ppk", "b92fs", "legacy", "g22c", "shrew", "g26", "glock_18c", "beer", "czech", "holt", "maxim9", "pl14", "packrat", "welrod" },
-    [24] = { "p226", "colt_1911", "m1911", "c96", "type54", "breech", "hs2000", "stech", "pmm", "usp", "sparrow" },
-    [32] = { "lemming" },
-    [50] = { "peacemaker" },
-    [65] = { "model3" },
+    [16] = { "glock_18c", "b92fs", "czech", "beer" }, -- Auto-pistols
+    [32] = { "glock_17", "ppk", "legacy", "g22c", "shrew", "g26", "holt", "maxim9", "pl14", "packrat", "welrod" }, -- Low damage pistols
+    [46] = { "p226", "colt_1911", "m1911", "c96", "type54", "breech", "hs2000", "stech", "pmm", "usp", "sparrow" }, -- Medium damage pistols
+    [50] = { "peacemaker" }, -- .45 Colt
+    [65] = { "lemming", "model3" }, -- High damage pistols
     [75] = { "rsh12" },
-    [80] = { "deagle", "mateba", "korth" },
-    [120] = { "new_raging_bull", "chinchilla" }
+    [80] = { "deagle", "mateba", "korth" }, -- .357
+    [120] = { "new_raging_bull", "chinchilla" } -- .44
   },
   smgs = {
-    [16] = { "cobray", "pm9", "fmg9", "baka", "polymer", "mac10", "mp7", "mp9", "p90", "tec9", "scorpion" },
-    [24] = { "akmsu", "hajk", "vityaz", "new_mp5", "m1928", "shepheard", "sr2", "uzi" },
-    [32] = { "m45", "schakal", "olympic", "erma", "coal" },
-    [46] = { "speen", "sterling" }
+    [16] = { "cobray", "pm9", "fmg9", "baka", "polymer", "mac10", "mp7", "mp9", "p90", "tec9", "scorpion" }, -- Very low damage SMGs
+    [24] = { "akmsu", "hajk", "vityaz", "new_mp5", "m1928", "shepheard", "sr2", "uzi" }, -- Low damage SMGs
+    [32] = { "m45", "schakal", "olympic", "erma", "coal" }, -- Medium damage SMGs
+    [46] = { "speen", "sterling" } -- High damage SMGs
   },
   akimbo = {
-    [16] = { "jowi", "x_g17" },
-    [24] = { "x_1911", "x_mp5" },
+    [32] = { "jowi", "x_g17" },
+    [24] = { "x_mp5" },
+    [46] = { "x_1911" },
     [80] = { "x_2006m" },
     [120] = { "x_rage" }
   }
 }
 
-local CrewNameConversion = { new_mp5 = "mp5_crew", new_m4 = "m4_crew", new_m14 = "m14_crew", new_raging_bull = "raging_bull_crew", glock_17 = "g17_crew", b92fs = "beretta92_crew", glock_18c = "glock_18_crew", colt_1911 = "c45_crew" }
+local CrewNameConversion = {
+  new_mp5 = "mp5_crew", new_m4 = "m4_crew", new_m14 = "m14_crew", new_raging_bull = "raging_bull_crew",
+  glock_17 = "g17_crew", b92fs = "beretta92_crew", glock_18c = "glock_18_crew", colt_1911 = "c45_crew"
+}
 
 local NoPickup = { 0, 0 }
 local Flamethrower = { 18, 22 }
