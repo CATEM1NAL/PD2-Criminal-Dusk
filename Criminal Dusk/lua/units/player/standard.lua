@@ -9,6 +9,9 @@ Hooks:OverrideFunction(PlayerStandard, "_find_pickups", function(self, t)
   end
 end)
 
+Hooks:PostHook(PlayerStandard, "init", "CrimDusk_InitPlayerStandard", function(self)
+  self._slotmask_bullet_impact_targets = managers.slot:get_mask("bullet_impact_targets") + 3
+end)
 
 -- Movement tweaks
 Hooks:OverrideFunction(PlayerStandard, "_start_action_melee", function(self, t, input, instant)

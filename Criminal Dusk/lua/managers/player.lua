@@ -7,10 +7,6 @@ Hooks:OverrideFunction(PlayerManager, "health_skill_multiplier", function() retu
 Hooks:OverrideFunction(PlayerManager, "carry_blocked_by_cooldown", function() return false end)
 Hooks:OverrideFunction(PlayerManager, "health_regen", function() return 0 end)
 
-Hooks:PostHook(PlayerStandard, "init", "CrimDusk_InitPlayerStandard", function(self)
-  self._slotmask_bullet_impact_targets = managers.slot:get_mask("bullet_impact_targets") + 3
-end)
-
 Hooks:OverrideFunction(PlayerManager, "fixed_health_regen", function(self)
   local health_regen = 0
 
