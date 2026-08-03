@@ -5,6 +5,5 @@ Hooks:OverrideFunction(GenericDLCManager, "is_weapon_mod_achievement_locked", fu
 Hooks:OverrideFunction(GenericDLCManager, "is_weapon_mod_achievement_milestone_locked", function() return false end)
 
 Hooks:PostHook(GenericDLCManager, "has_dlc", "CrimDusk_GiveCommunityItems", function(self, dlc)
-  if Global.CrimDusk.DLC then return false end
   if dlc == "pd2_clan" then return true end
 end)

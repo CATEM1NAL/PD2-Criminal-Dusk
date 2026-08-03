@@ -414,6 +414,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     }
     self.skills.trip_mine_damage = {
       { upgrades = { "trip_mine_damage_multiplier_1" }, cost = self.costs.default },
+      { upgrades = { "trip_mine_damage_multiplier_2" }, cost = self.costs.default },
       name_id = "menu_trip_mine_damage", desc_id = "menu_trip_mine_damage_desc", icon_xy = { 7, 4 }
     }
     self.skills.trip_mine_radius = {

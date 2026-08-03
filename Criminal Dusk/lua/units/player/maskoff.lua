@@ -31,3 +31,13 @@ Hooks:OverrideFunction(PlayerMaskOff, "_check_action_interact", function(self, t
   if released then self:_interupt_action_interact() end
   return new_action
 end)
+
+Hooks:PostHook(PlayerMaskOff, "_start_action_interact", "CrimDusk_MaskOffInteract", function(self)
+  self._unit:base():set_suspicion_multiplier("interacting", 5)
+  self._unit:base():set_detection_multiplier("interacting", 5)
+end)
+
+Hooks:PostHook(PlayerMaskOff, "_interupt_action_interact", "CrimDusk_MaskOffInteract", function(self)
+  self._unit:base():set_suspicion_multiplier("interacting", 1)
+  self._unit:base():set_detection_multiplier("interacting", 1)
+end)

@@ -37,12 +37,16 @@ local function SetStats(self, diff)
   }
   local LightEnemies = { "swat", "zeal_swat", "fbi_swat", "city_swat", "marshal_marksman", "shield" }
   local HeavyEnemies = { "medic", "taser", "heavy_swat", "zeal_heavy_swat", "heavy_swat_sniper", "fbi_heavy_swat", "marshal_shield", "marshal_shield_break" }
-  local Bosses = { "hector_boss", "mobster_boss", "biker_boss", "drug_lord_boss", "phalanx_vip", "triad_boss", "deep_boss", "chavez_boss" }
+  local ResistantEnemies = { "phalanx_minion", "spooc" }
+  local MiniBosses = { "hector_boss", "mobster_boss", "biker_boss", "drug_lord_boss", "triad_boss", "chavez_boss", "phalanx_vip" }
+  local Bosses = { "tank", "tank_medic", "tank_mini", "deep_boss" }
 
   for _, enemy in ipairs(WeakEnemies) do self[enemy].HEALTH_INIT = 5 end
   for _, enemy in ipairs(LightEnemies) do self[enemy].HEALTH_INIT = 10 end
   for _, enemy in ipairs(HeavyEnemies) do self[enemy].HEALTH_INIT = 20 end
-  for _, enemy in ipairs(Bosses) do self[enemy].HEALTH_INIT = 100 end
+  for _, enemy in ipairs(ResistantEnemies) do self[enemy].HEALTH_INIT = 20 end
+  for _, enemy in ipairs(MiniBosses) do self[enemy].HEALTH_INIT = 100 end
+  for _, enemy in ipairs(Bosses) do self[enemy].HEALTH_INIT = 300 end
 
   -- Boss damage clamps
   self.hector_boss.DAMAGE_CLAMP_BULLET = nil
@@ -64,7 +68,6 @@ local function SetStats(self, diff)
   self.phalanx_vip.DAMAGE_CLAMP_EXPLOSION = self.phalanx_vip.DAMAGE_CLAMP_BULLET
 
   -- Winters shield
-  self.phalanx_minion.HEALTH_INIT = 30
   self.phalanx_minion.headshot_dmg_mul = 2
   self.phalanx_minion.damage.explosion_damage_mul = 0.8
   self.phalanx_minion.damage.shield_knocked = true
@@ -93,7 +96,6 @@ local function SetStats(self, diff)
   self.tank_mini.headshot_dmg_mul = self.tank.headshot_dmg_mul
 
   -- Cloakers
-  self.spooc.HEALTH_INIT = 30
   self.spooc.headshot_dmg_mul = 6
   self.spooc.spooc_attack_timeout = cloaker_cooldown[diff]
   self.spooc.spooc_attack_beating_time[1] = cloaker_cooldown[diff][1]

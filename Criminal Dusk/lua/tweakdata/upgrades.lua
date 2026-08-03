@@ -70,6 +70,7 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   self.values.player.melee_damage_dampener = { 0.5, 0 } -- Because Of Training
   self.values.player.melee_damage_stacking = { { melee_multiplier = 1, max_multiplier = 10 } } -- Bloodthirst
   self.values.player.melee_kill_increase_reload_speed = { { 2, 3 } } -- Mag Steal
+  self.values.trip_mine.damage_multiplier = { 2, 3 } -- Trip Mine damage
 
   -- Frenzy
   self.values.player.health_damage_reduction = { 0.75, 0.5 }
@@ -244,8 +245,8 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   -- Armour
   self.values.player.body_armor.movement = { 1.1, 1.05, 1, 0.95, 0.85, 0.75, 0.6 }
   self.values.player.body_armor.concealment = { 30, 30, 26, 21, 18, 12, 1 }
-  self.values.player.body_armor.armor = { 0, 0, 2, 4, 6, 8, 10 }
-  self.values.player.body_armor.dodge = { 0.25, 0, -0.10, -0.15, -0.25, -0.5, -1 }
+  self.values.player.body_armor.armor = { -2, 0, 2, 4, 6, 8, 10 }
+  self.values.player.body_armor.dodge = { 0.25, 0, -0.10, -0.20, -0.35, -0.5, -1 }
 
   -- Weapon speed penalties
   self.weapon_movement_penalty.pistol = 0.95
@@ -292,6 +293,7 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
     player_weapon_accuracy_increase = 2, weapon_fire_rate_multiplier = 2, pistol_consume_no_ammo_chance = 2,
     assault_rifle_consume_no_ammo_chance = 2, snp_consume_no_ammo_chance = 2, smg_consume_no_ammo_chance = 2,
     lmg_consume_no_ammo_chance = 2, minigun_consume_no_ammo_chance = 2, player_melee_damage_dampener = 2, player_max_health_reduction = 2,
+    trip_mine_damage_multiplier = 2,
 
     player_health_decrease = 3, player_melee_sharp_damage_multiplier = 3, player_assets_cost_multiplier = 3,
     doctor_bag_amount_increase = 3, ammo_bag_ammo_increase = 3, weapon_passive_reload_speed_multiplier = 3,

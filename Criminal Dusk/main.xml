@@ -19,7 +19,6 @@
     <hook source_file="lib/setups/setup" file="setup.lua"/>
 
     <hooks directory="lua"> <!-- Criminal Dusk/lua/ -->
-      <hook source_file="lib/setups/gamesetup" file="gamesetup.lua"/>
       <hook source_file="lib/network/base/basenetworksession" file="peer_sync.lua"/>
       <hook source_file="lib/network/base/networkpeer" file="no_cheater_tag.lua"/>
       <hook source_file="lib/player_actions/skills/playeractionshockandawe" file="lock_n_load.lua"/>
@@ -75,6 +74,7 @@
 
         <hooks directory="elements"> <!-- Criminal Dusk/lua/managers/elements/ -->
           <hook source_file="lib/managers/mission/elementspawndeployable" file="spawndeployable.lua"/>
+          <hook source_file="lib/managers/mission/elementplayerspawner" file="spawnplayer.lua"/>
         </hooks>
 
         <hooks directory="group_ai"> <!-- Criminal Dusk/lua/managers/group_ai/ -->
@@ -106,6 +106,7 @@
           <hook source_file="lib/units/equipment/doctor_bag/doctorbagbase" file="doctorbag.lua"/>
           <hook source_file="lib/units/equipment/ammo_bag/ammobagbase" file="ammobag.lua"/>
           <hook source_file="lib/units/equipment/sentry_gun/sentrygunbase" file="sentrygun.lua"/>
+          <hook source_file="lib/units/weapons/trip_mine/tripminebase" file="tripmine.lua"/>
         </hooks>
       </hooks>
 

@@ -247,7 +247,7 @@ function Global.CrimDusk:Init()
   self.campaign = {
     "red2", "flat", "pal", "man", "nmh", -- PDTH Prologue
     "cd_tut1", "cd_tut2", "cd_tut3", "four_stores", "mallcrasher", "branchbank_prof", "ukrainian_job_prof", "nightclub", -- Early Vlad
-    "cd_watchdogs1_wrapper", "cd_watchdogs2_wrapper", "cd_frame3", "cd_bigoil", "cd_firestarter1", "cd_firestarter2", "alex", -- Hector/Elephant
+    "cd_watchdogs1_wrapper", "cd_watchdogs2_wrapper", "cd_frame3", "cd_bigoil", "cd_firestarter1", "cd_firestarter2", "cd_rats", -- Hector/Elephant
     "family", "arm_wrapper", "arm_for", "roberts", "cd_erection_wrapper", "kosugi", -- Post Launch
     "big", "cd_miami1", "cd_miami2", "gallery", "cd_hox1", "cd_hox2", "pines", "mus", -- Dentist
     "cd_bomb", "cage", "hox_3", "shoutout_raid", "arena", "kenaz", "jolly", "dinner", "pbr", "pbr2", "cane", -- 2015
@@ -257,18 +257,18 @@ function Global.CrimDusk:Init()
     "deep", "vit" -- Conclusion
   }
   self.StealthableHeists = { -- Alarm doesn't go off immediately on these heists
-    kosugi = true, fish = true, dark = true, tag = true, cage = true,
+    kosugi = true, fish = true, dark = true, tag = true, cage = true, sand = true,
     pal = true, man = true, nmh = true, dah = true, gallery = true, framing_frame_3 = true,
     election_day_2 = true, short_1_stage1 = true, short_1_stage2 = true, welcome_to_the_jungle_2 = true,
-    firestarter_2 = true, alex_2 = true, crojob1 = true, kenaz = true, chca = true, family = true
+    firestarter_2 = true, alex_2 = true, crojob2 = true, kenaz = true, chca = true, family = true
   }
   self.LoudHeists = { -- Alarm goes off immediately, PDTH style
     "red2", "flat", "man", "four_stores", "nmh", "mallcrasher", "branchbank", "ukrainian_job", "nightclub", "welcome_to_the_jungle_2",
-    "firestarter_1", "arm_for", "roberts", "big", "mus", "hox_3", "arena", "friend", "sah", "mex", "chas", "bex", "sand", "pex", "chca",
+    "firestarter_1", "arm_for", "roberts", "big", "mus", "hox_3", "arena", "friend", "sah", "mex", "chas", "bex", "pex", "chca",
     "fex", "pent", "bph", "ranc", "trai", "corp", "deep", "vit"
   }
-  self.UnmaskedHeists = { fex = true, pex = true, dah = true, fish = true, ranc = true, mex = true, trai = true, arm_for = true, mus = true }
-  self.LoudTimers = { friend = 5 }
+  self.UnmaskedHeists = { fex = true, pex = true, dah = true, fish = true, ranc = true, mex = true, trai = true, arm_for = true, mus = true, crojob2 = true }
+  self.LoudTimers = { friend = 5, deep = 30 }
 
   SetTweakData()
 end

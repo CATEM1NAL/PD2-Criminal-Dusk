@@ -249,10 +249,10 @@ menu_drill_restart_desc: "$lv1;Drills have a ##50%## chance to be capable of aut
 menu_drill_expert_beta_desc: "$lv1;Drills and saws finish ##15%## faster.\n\n$lv2;Drills and saws finish ##30%## faster."
 
 menu_trip_mine_damage: "Fragmentation"
-menu_trip_mine_damage_desc: "$lv1;Trip mines deal ##50%## more damage."
+menu_trip_mine_damage_desc: "$lv1;Your trip mines deal enough damage to kill ##heavies## and ##cloakers##.\n\n$lv2;Your trip mines deal enough damage to kill ##Winters shields##."
 
 menu_trip_mine_radius: "Demolition Man"
-menu_trip_mine_radius_desc: "$lv1;Trip mine explosions are ##50%## bigger.\n\n$lv2;Trip mine explosions are ##100%## bigger."
+menu_trip_mine_radius_desc: "$lv1;Your trip mine explosions are ##50%## bigger.\n\n$lv2;Trip mine explosions are ##100%## bigger."
 
 menu_trip_mine_quantity: "McCallister"
 menu_trip_mine_quantity_desc: "$lv1;You can hold ##7## trip mines.\n\n$lv2;You can hold ##14## trip mines."
@@ -260,7 +260,7 @@ menu_trip_mine_quantity_desc: "$lv1;You can hold ##7## trip mines.\n\n$lv2;You c
 menu_kick_starter_beta_desc: "$lv1;Meleeing a broken drill or saw will restart it."
 
 menu_sensor_mines: "Sensor Mines"
-menu_sensor_mines_desc: "$lv1;Trip mines can be toggled to mark specials in loud or guards in stealth."
+menu_sensor_mines_desc: "$lv1;You can interact with trip mines to switch them to sensor mode, allowing them to automatically mark anyone that walks through them."
 
 menu_shaped_charge: "Shaped Charge"
 menu_shaped_charge_desc: "$lv1;In addition to trip mines, you gain ##4## shaped charges which can be used to open safes or doors.\n\n$lv2;You now have ##8## shaped charges.\n\n$lv3;You now have ##12## shaped charges."

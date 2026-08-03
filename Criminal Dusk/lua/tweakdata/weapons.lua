@@ -157,6 +157,7 @@ local ForcedAmmoPickup = {
 
 Hooks:PostHook(WeaponTweakData, "init", "CrimDusk_WeaponTweakInit", function(self)
   -- Update weapon damage
+  self.trip_mines.damage = 15
   for ClassName, ClassData in pairs(WeaponClasses) do
     for NewDamage, weapons in pairs(ClassData) do
       for _, WeaponName in ipairs(weapons) do

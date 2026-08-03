@@ -5,6 +5,6 @@ Hooks:OverrideFunction(CrewManagementGui, "populate_skill", function(self, param
 end)
 
 Hooks:OverrideFunction(CrewManagementGui, "populate_ability", function(self, henchman_index, data, gui)
-  local crew_abilities = { "crew_interact", "crew_ai_flashbang", "crew_ai_counter_strike", "crew_ai_counter_tase" }
+  local crew_abilities = { "crew_ai_cable_ties", "crew_ai_flashbang", "crew_ai_counter_strike", "crew_ai_counter_tase" }
   self:populate_custom("ability", henchman_index, tweak_data.upgrades.crew_ability_definitions, crew_abilities, data, gui)
 end)

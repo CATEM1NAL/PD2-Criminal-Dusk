@@ -16,6 +16,11 @@ Hooks:PreHook(BlackMarketManager, "_setup_armors", "CrimDusk_BMSetupArmorsPre", 
   self._defaults.armor = "level_2"
 end)
 
+-- No default crew unlocks
+Hooks:OverrideFunction(BlackMarketManager, "_setup_unlocked_crew_items", function(self)
+  self._global._unlocked_crew_items = self._global._unlocked_crew_items or {}
+end)
+
 -- Don't include suit when sorting armours
 Hooks:OverrideFunction(BlackMarketManager, "get_sorted_armors", function(self, hide_locked)
   local sort_data = {}
