@@ -276,7 +276,7 @@ Hooks:OverrideFunction(PlayerDamage, "damage_bullet", function(self, attack_data
 
   elseif self._invulnerable or self._mission_damage_blockers.invulnerable then self:_call_listeners(damage_info) return
   elseif self:incapacitated() then return
-  --elseif self:is_friendly_fire(attack_data.attacker_unit) then return -- doesn't do anything?
+  elseif self:is_friendly_fire(attack_data.attacker_unit) then return -- doesn't do anything?
   elseif pm:player_timer():time() < self._armor_break_t then return
   elseif self._unit:movement():current_state().immortal then return
   elseif self._revive_miss and math.random() < self._revive_miss then self:play_whizby(attack_data.col_ray.position) return
