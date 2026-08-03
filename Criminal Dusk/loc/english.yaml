@@ -22,6 +22,13 @@ crimdusk_campaign_active: "The next heist is $HEIST."
 crimdusk_campaign_inactive: "The next heist will be random."
 
 ### STRING OVERRIDES ###
+# PDTH difficulties
+crimdusk_pdth_normal: "Easy"
+crimdusk_pdth_hard: "Normal"
+crimdusk_pdth_very_hard: "Hard"
+crimdusk_pdth_mayhem: "OVERKILL 145+"
+crimdusk_pdth_death_wish: "OVERKILL 193"
+
 # Menu
 menu_one_down: "Professional"
 menu_pro_warning: "Quitting and restarting have been disabled!"
@@ -914,7 +921,9 @@ menu_asset_buy_all_button: "Buy All"
 menu_asset_buy_all_desc: "Total cost: $price"
 
 # HUD
-hud_instruct_mask_on: "$BTN_INTERACT Mask Up"  # Prompt telling you how to mask up. Pointless after playing one heist.
+hud_instruct_mask_on: ""  # Prompt telling you how to mask up. Pointless after playing one heist.
+crimdusk_mask_on_loud: "Mask up to go loud"
+crimdusk_mask_on_stealth: "Mask up when ready"
 hud_suspicion_detected: "- ALERT -"  # Someone has detected you
 hud_instruct_throw_bag: "" # "PRESS G TO THROW BAG" text. Pointless once you've played one heist.
 hud_custody_in: "BLEEDOUT" # didn't need changing but it looks nicer
@@ -1848,7 +1857,7 @@ hud_int_press_enter: "ENTER"
 # HINTS
 hint_been_tasered: "Being tased!"
 hud_hint_clean_block_interact: "Find your equipment."
-hud_hint_mask_off_block_interact: "Can't sprint or crouch while unmasked."
+hud_hint_mask_off_block_interact: "Can't jump or crouch while unmasked."
 hud_hint_tape_loop_limit_reached: "Camera already looped."
 hud_hint_convert_enemy_failed: "Convert failed."
 hint_been_electrocuted: "Being electrocuted!"
@@ -1959,7 +1968,7 @@ hud_carry_lance_bag: "Thermal Drill"
 hud_carry_person: "Body"
 hud_carry_cloaker_cocaine: "Cloakaine"
 hud_carry_box: "Coffer"
-hud_carry_???: "Coffer" # credit to Phantom
+hud_carry_???: "Coffer"
 hud_carry_giant_toothbrush: "Giant Toothbrush"
 hud_carry_yayo: "Cocaine"
 hud_carry_vr_headset: "VR Headset"

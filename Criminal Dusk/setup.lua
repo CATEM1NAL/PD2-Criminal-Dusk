@@ -63,7 +63,16 @@ CrimDusk:Init()
 
 if NetworkHelper:IsHost() and Global.CrimDusk and (Global.CrimDusk.data.heists_won or 0) < 5 then
   Hooks:Add("LocalizationManagerPostInit", "CrimDusk_PDTHNames", function(loc)
-    loc:load_localization_file(CrimDusk.ModPath .. "loc/pdth_difficulties.json")
+    loc:add_localized_strings({
+      ["menu_difficulty_normal"] = loc:text("crimdusk_pdth_normal"),
+      ["menu_asset_risklevel_0"] = loc:text("crimdusk_pdth_normal"),
+      ["menu_difficulty_hard"] = loc:text("crimdusk_pdth_hard"),
+      ["menu_asset_risklevel_1"] = loc:text("crimdusk_pdth_hard"),
+      ["menu_difficulty_very_hard"] = loc:text("crimdusk_pdth_very_hard"),
+      ["menu_asset_risklevel_2"] = loc:text("crimdusk_pdth_very_hard"),
+      ["menu_difficulty_easy_wish"] = loc:text("crimdusk_pdth_mayhem"),
+      ["menu_asset_risklevel_4"] = loc:text("crimdusk_pdth_mayhem")
+    })
   end)
 end
 

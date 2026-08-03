@@ -7,6 +7,7 @@ Hooks:OverrideFunction(TripMineBase, "_sensor", function(self, t)
     if not self._sensor_units_detected[ray.unit:key()] then
       self._sensor_units_detected[ray.unit:key()] = true
 
+      -- Sensor now highlights ALL npcs, even in loud
       if managers.player:has_category_upgrade("trip_mine", "sensor_highlight") then
         managers.game_play_central:auto_highlight_enemy(ray.unit, true)
         self:_emit_sensor_sound_and_effect()

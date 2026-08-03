@@ -1,5 +1,6 @@
 Hooks:OverrideFunction(PlayerMaskOff, "_check_action_run", function() return end)
 
+-- Allow interactions
 Hooks:OverrideFunction(PlayerMaskOff, "_check_action_interact", function(self, t, input)
   local pressed, released, holding
   if self._interact_expire_t and not self._start_standard_expire_t then pressed, released, holding = self:_check_tap_to_interact_inputs(t, input.btn_interact_press, input.btn_interact_release, input.btn_interact_state)
@@ -32,6 +33,7 @@ Hooks:OverrideFunction(PlayerMaskOff, "_check_action_interact", function(self, t
   return new_action
 end)
 
+-- Interacting increases detection
 Hooks:PostHook(PlayerMaskOff, "_start_action_interact", "CrimDusk_MaskOffInteract", function(self)
   self._unit:base():set_suspicion_multiplier("interacting", 5)
   self._unit:base():set_detection_multiplier("interacting", 5)
