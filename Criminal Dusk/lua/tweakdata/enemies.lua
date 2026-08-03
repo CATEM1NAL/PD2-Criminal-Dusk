@@ -44,7 +44,7 @@ local function SetStats(self, diff)
   for _, enemy in ipairs(WeakEnemies) do self[enemy].HEALTH_INIT = 5 end
   for _, enemy in ipairs(LightEnemies) do self[enemy].HEALTH_INIT = 10 end
   for _, enemy in ipairs(HeavyEnemies) do self[enemy].HEALTH_INIT = 20 end
-  for _, enemy in ipairs(ResistantEnemies) do self[enemy].HEALTH_INIT = 20 end
+  for _, enemy in ipairs(ResistantEnemies) do self[enemy].HEALTH_INIT = 30 end
   for _, enemy in ipairs(MiniBosses) do self[enemy].HEALTH_INIT = 100 end
   for _, enemy in ipairs(Bosses) do self[enemy].HEALTH_INIT = 300 end
 

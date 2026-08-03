@@ -72,7 +72,7 @@ Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "CrimDusk_InitGroupAIT
     self.unit_categories.FBI_tank.unit_types = unit_types
   end
 
-  if difficulty <= 7 then -- Death Wish
+  if difficulty >= 7 then -- Death Wish
     -- Winters Shields replace shields
     local WintersShield = deep_clone(self.unit_categories.Phalanx_minion)
     WintersShield.is_captain = nil

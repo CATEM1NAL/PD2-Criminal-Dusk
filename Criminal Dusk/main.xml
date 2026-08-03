@@ -89,8 +89,6 @@
       </hooks>
 
       <hooks directory="units"> <!-- Criminal Dusk/lua/units/ -->
-        <hook source_file="lib/units/weapons/newraycastweaponbase" file="raycastweaponbase.lua"/>
-        <hook source_file="lib/units/weapons/shotgun/shotgunbase" file="shotgunbase.lua"/>
         <hook source_file="lib/units/props/drill" file="drill.lua"/>
         <hook source_file="lib/units/props/timergui" file="timergui.lua"/>
 
@@ -108,6 +106,13 @@
           <hook source_file="lib/units/equipment/sentry_gun/sentrygunbase" file="sentrygun.lua"/>
           <hook source_file="lib/units/weapons/trip_mine/tripminebase" file="tripmine.lua"/>
         </hooks>
+
+        <hooks directory="weapons"> <!-- Criminal Dusk/lua/units/equipment/ -->
+          <hook source_file="lib/units/weapons/newraycastweaponbase" file="raycastweaponbase.lua"/>
+          <hook source_file="lib/units/weapons/shotgun/shotgunbase" file="shotgunbase.lua"/>
+          <hook source_file="lib/units/weapons/projectiles/projectilebase" file="projectilebase.lua"/>
+        </hooks>
+
       </hooks>
 
     </hooks>
