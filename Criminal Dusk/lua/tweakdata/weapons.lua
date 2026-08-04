@@ -102,7 +102,7 @@ local WeaponClasses = {
     [92] = { "amcar", "akm", "akm_gold", "shak12", "ching" }
   },
   shotguns = {
-    [25] = { "striker", "basset", "rota", "sko12", "saiga", "aa12", "serbu", "ultima", "judge", "spas12", "r870", "benelli", "ksg", "m1897", "supernova", "m37", "m590", "boot", "b682", "huntsman", "coach" },
+    [20] = { "striker", "basset", "rota", "sko12", "saiga", "aa12", "serbu", "ultima", "judge", "spas12", "r870", "benelli", "ksg", "m1897", "supernova", "m37", "m590", "boot", "b682", "huntsman", "coach" },
   },
   lmgs = {
     [32] = { "mg42", "kacchainsaw", "m249", "par" },

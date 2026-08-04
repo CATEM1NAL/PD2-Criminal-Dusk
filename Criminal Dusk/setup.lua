@@ -277,7 +277,7 @@ function Global.CrimDusk:Init()
     "fex", "pent", "bph", "ranc", "trai", "corp", "deep", "vit"
   }
   self.UnmaskedHeists = { fex = true, pex = true, dah = true, fish = true, ranc = true, mex = true, trai = true, arm_for = true, mus = true, crojob2 = true }
-  self.LoudTimers = { friend = 5, deep = 30, firestarter_1 = 1 }
+  self.LoudTimers = { friend = 5, deep = 30, firestarter_1 = 5 }
 
   SetTweakData()
 end
