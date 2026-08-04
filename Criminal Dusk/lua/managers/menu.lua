@@ -92,9 +92,7 @@ Hooks:Add("MenuManagerBuildCustomMenus", "CrimDusk_MenuTweaks", function(menu_ma
 
     -- Hides all the unnecessary menu buttons
     local HiddenButtons = {
-      crimenet = true, crimenet_offline = true, story_missions = true,
-      fbi_files = true, gamehub = true, movie_theater = true,
-      achievements = true
+      crimenet = true, crimenet_offline = true, story_missions = true
     }
 
     for i, item in pairs(mainmenu._items) do
@@ -122,8 +120,9 @@ Hooks:Add("MenuManagerBuildCustomMenus", "CrimDusk_MenuTweaks", function(menu_ma
     end
 
     -- Hides all the unnecessary menu buttons
-    local HiddenButtons = { story_missions = true, achievements = true, side_jobs = true,
-                            crimdawn_createlobby_btn = true, crimenet_nj = true, crimenet_j = true  }
+    local HiddenButtons = {
+      story_missions = true, crimdawn_createlobby_btn = true, crimenet_nj = true, crimenet_j = true
+    }
 
     for i, item in pairs(lobbymenu._items) do
       if HiddenButtons[item._parameters.name] then item:set_visible(false) end
@@ -157,48 +156,48 @@ end)
 -- MENU CHANGES END HERE --
 
 Hooks:PreHook(MenuCallbackHandler, "start_the_game", "CrimDusk_PreStartGame", function(self)
-  if Utils:IsInGameState() or CrimDusk.state.heist_started then return end
+  if Utils:IsInGameState() or NetworkHelper:IsClient() then return end
 
-  if NetworkHelper:IsHost() then -- Pick heist
+  -- Select next heist in campaign...
+  local NextJob = Global.CrimDusk.campaign[Global.CrimDusk.data.heists_won + 1]
+
+  -- ...or random heist if campaign is completed!
+  if not NextJob then
     math.randomseed(os.time() + (os.clock() * 1000))
+    local ValidHeists = deep_clone(Global.CrimDusk.campaign)
 
-    local NextJob
-    -- Select next heist in campaign...
-    if Global.CrimDusk.campaign[Global.CrimDusk.data.heists_won + 1] then NextJob = Global.CrimDusk.campaign[Global.CrimDusk.data.heists_won + 1]
+    -- Ensure duplicate heists don't happen until we've played every heist once
+    if Global.CrimDusk.data.heist_chain then
 
-    -- ...or random heist if campaign is completed!
-    else -- Ensure duplicate heists don't happen until we've played every heist once
-      local ValidHeists = deep_clone(Global.CrimDusk.campaign)
+      -- If all heists have been played, start a new cycle
+      if #Global.CrimDusk.data.heist_chain == #Global.CrimDusk.campaign then
+        Global.CrimDusk.data.heist_chain = {}
+        Global.CrimDusk.data.winters_dead = false
+      end
 
-      if Global.CrimDusk.data.heist_chain then
-        if #Global.CrimDusk.data.heist_chain == #Global.CrimDusk.campaign then
-          Global.CrimDusk.data.heist_chain = {}
-          Global.CrimDusk.data.winters_dead = false
-        end
-        for _, heist in ipairs(Global.CrimDusk.data.heist_chain) do
-          for i = #ValidHeists, 1, -1 do
-            if ValidHeists[i] == heist then table.remove(ValidHeists, i) break end
-          end
+      -- Remove already played heists
+      for _, heist in ipairs(Global.CrimDusk.data.heist_chain) do
+        for i = #ValidHeists, 1, -1 do
+          if ValidHeists[i] == heist then table.remove(ValidHeists, i) break end
         end
       end
-      CrimDusk.Log(FileIdent, "Heists left in cycle: " .. #ValidHeists)
 
-      NextJob = ValidHeists[math.random(#ValidHeists)]
-      if not Global.CrimDusk.data.heist_chain then Global.CrimDusk.data.heist_chain = {} end
-      table.insert(Global.CrimDusk.data.heist_chain, NextJob)
-      CrimDusk:WriteSave(FileIdent, "heist added to chain")
     end
 
-    self:start_job({
-      difficulty = tweak_data.difficulties[CrimDusk.DiffScale()],
-      one_down = CrimDusk.SettingsData.permadeath,
-      job_id = NextJob
-    })
+    CrimDusk.Log(FileIdent, "Heists left in cycle: " .. #ValidHeists)
 
-    CrimDusk.Log(FileIdent, "Loading " .. managers.localization:text("heist_" .. NextJob) .. " on " ..
-    tweak_data.difficulties[CrimDusk.DiffScale()])
+    NextJob = ValidHeists[math.random(#ValidHeists)]
+    Global.CrimDusk.data.heist_chain = Global.CrimDusk.data.heist_chain or {}
+    table.insert(Global.CrimDusk.data.heist_chain, NextJob)
+
+    CrimDusk:WriteSave(FileIdent, "heist added to chain")
   end
 
-  -- Prevent from running again, otherwise peer mutators become desynced
-  CrimDusk.state.heist_started = true
+  self:start_job({
+    difficulty = tweak_data.difficulties[CrimDusk.DiffScale()],
+    one_down = CrimDusk.SettingsData.permadeath,
+    job_id = NextJob
+  })
+
+  CrimDusk.Log(FileIdent, "Loading " .. managers.localization:text("heist_" .. NextJob) .. " on " .. tweak_data.difficulties[CrimDusk.DiffScale()])
 end)

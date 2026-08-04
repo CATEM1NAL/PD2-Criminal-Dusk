@@ -10,11 +10,6 @@
     <loc file="english.yaml" language="english"/>
   </localization>
 
-  <Dependencies>
-    <Dependency name="Mutator Helper" id="25412" provider="modworkshop"/>
-    <Dependency name="Crime Spree Loud Modifiers as Mutators" id="25429" provider="modworkshop"/>
-  </Dependencies>
-
   <Hooks> <!-- Criminal Dusk/ -->
     <hook source_file="lib/setups/setup" file="setup.lua"/>
 
@@ -52,13 +47,11 @@
         <hook source_file="lib/managers/menumanager" file="menu.lua"/>
         <hook source_file="lib/managers/skilltreemanager" file="skilltree.lua"/>
         <hook source_file="lib/managers/blackmarketmanager" file="blackmarket.lua"/>
-        <hook source_file="lib/managers/mutatorsmanager" file="mutators.lua"/>
         <hook source_file="lib/managers/jobmanager" file="jobs.lua"/>
         <hook source_file="lib/managers/experiencemanager" file="experience.lua"/>
         <hook source_file="lib/managers/dlcmanager" file="dlc.lua"/>
         <hook source_file="lib/managers/mutatorsmanager" file="mutators.lua"/>
         <hook source_file="lib/managers/playermanager" file="player.lua"/>
-        <hook source_file="lib/managers/sidejobeventmanager" file="sidejobevents.lua"/>
         <hook source_file="lib/managers/perpetualeventmanager" file="perpetualevents.lua"/>
         <hook source_file="lib/managers/preplanningmanager" file="preplanning.lua"/>
 
