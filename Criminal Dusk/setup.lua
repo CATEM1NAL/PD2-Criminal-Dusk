@@ -131,7 +131,7 @@ local function SetTweakData()
 
   -- XP tweaks
   tweak_data.experience_manager.prestige_xp_max = 5000000
-  tweak_data.experience_manager.difficulty_multiplier = { 1.5, 2, 2.5, 3, 3.5, 4 }
+  tweak_data.experience_manager.difficulty_multiplier = { 1, 1.5, 2, 2.5, 3, 3.5, 4 }
   tweak_data.experience_manager.level_limit.pc_difference_multipliers = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }
   tweak_data.experience_manager.level_limit.low_cap_multiplier = 1
 
@@ -219,7 +219,7 @@ if Global.CrimDusk then SetTweakData() end
 if Global.CrimDusk then return end
 Global.CrimDusk = {
   regen_time = { 0.5, 0.5, 1.5, 2.5, 4.5, 6, 7.5 },
-  friendly_fire = { 0.5, 0.75, 1, 1.25, 1.5, 2, 3 },
+  friendly_fire = { 0.1, 0.2, 0.3, 0.4, 0.5, 0.75, 1 },
 
   archicolours = {
     green = Color(255, 117, 194, 117) / 255,

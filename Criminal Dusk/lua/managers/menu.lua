@@ -162,9 +162,6 @@ Hooks:PreHook(MenuCallbackHandler, "start_the_game", "CrimDusk_PreStartGame", fu
   if NetworkHelper:IsHost() then -- Pick heist
     math.randomseed(os.time() + (os.clock() * 1000))
 
-    -- Activate mutators
-    dofile(CrimDusk.ModPath .. "lua/mutators.lua")
-
     local NextJob
     -- Select next heist in campaign...
     if Global.CrimDusk.campaign[Global.CrimDusk.data.heists_won + 1] then NextJob = Global.CrimDusk.campaign[Global.CrimDusk.data.heists_won + 1]
