@@ -188,20 +188,6 @@ Hooks:PostHook(WeaponTweakData, "init", "CrimDusk_WeaponTweakInit", function(sel
     end
   end
 
-  -- Update stat indexes
-  self.stats.reload = {}
-  for i = -5, 20 do table.insert(self.stats.reload, i / 10) end
-
-  self.stats.extra_ammo = {}
-  for i = -100, 100 do table.insert(self.stats.extra_ammo, i) end
-
-  for weapon, data in pairs(self) do
-    if data.stats then
-      if data.stats.extra_ammo then data.stats.extra_ammo = data.stats.extra_ammo + 50 end
-      if data.stats.reload then data.stats.reload = data.stats.reload + 5 end
-    end
-  end
-
   -- Shotgun base accuracy
   local ShotgunAcc = {
     x_basset = 1, x_sko12 = 1,
@@ -214,7 +200,6 @@ Hooks:PostHook(WeaponTweakData, "init", "CrimDusk_WeaponTweakInit", function(sel
 
   for weapon, acc in pairs(ShotgunAcc) do
     self[weapon].stats.spread = acc
-    self[weapon].stats.spread_moving = math.floor(acc / 2)
   end
 
   -- Damage modifier tweaks
@@ -240,6 +225,41 @@ Hooks:PostHook(WeaponTweakData, "init", "CrimDusk_WeaponTweakInit", function(sel
       self[weapon].CLIP_AMMO_MAX = mag
       self[weapon].NR_CLIPS_MAX = NumMags
       self[weapon].AMMO_MAX = self[weapon].CLIP_AMMO_MAX * self[weapon].NR_CLIPS_MAX
+    end
+  end
+
+  -- Update stat indexes
+  self.stats.reload = {}
+  for i = -5, 20 do table.insert(self.stats.reload, i / 10) end
+
+  self.stats.extra_ammo = {}
+  for i = -100, 100 do table.insert(self.stats.extra_ammo, i) end
+
+  self.stats.spread = {}
+  for i = 0, 25 do table.insert(self.stats.spread, 3 - (i * 0.1)) end
+
+  self.stats.spread_moving = {}
+  for i = 0, 25 do table.insert(self.stats.spread_moving, 5 - (i * 0.1)) end
+
+  -- Accuracy multipliers for special weapons
+  local SpreadStats = {}
+
+  -- Apply global stat changes
+  for weapon, data in pairs(self) do
+    if data.stats then
+      if data.stats.extra_ammo then data.stats.extra_ammo = data.stats.extra_ammo + 50 end
+      if data.stats.reload then data.stats.reload = data.stats.reload + 5 end
+      if data.stats.spread and data.stats.spread_moving then data.stats.spread_moving = data.stats.spread end
+
+      if data.spread then -- Update accuracy multipliers
+        if not SpreadStats[weapon] then
+        data.spread = {
+          standing = 2, crouching = 1, steelsight = 0.5,
+          moving_standing = 4, moving_crouching = 2, moving_steelsight = 0.75
+        }
+        else data.spread = SpreadStats[weapon] end
+      end
+
     end
   end
 

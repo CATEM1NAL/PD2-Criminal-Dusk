@@ -58,7 +58,7 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "CrimDusk_InitModTweakData", func
   self.parts.wpn_fps_upg_a_custom_free.custom_stats.rays = 6 -- 000 Buckshot
 
   -- Slugs
-  self.parts.wpn_fps_upg_a_slug.stats.damage = 75
+  self.parts.wpn_fps_upg_a_slug.stats.damage = 80
   self.parts.wpn_fps_upg_a_slug.stats.spread = 8
   self.parts.wpn_fps_upg_a_slug.stats.spread_moving = self.parts.wpn_fps_upg_a_slug.stats.spread * 0.5
 
@@ -71,7 +71,7 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "CrimDusk_InitModTweakData", func
 
   -- Tombstone
   self.parts.wpn_fps_upg_a_rip.custom_stats.rays = 1
-  self.parts.wpn_fps_upg_a_rip.stats.damage = 25
+  self.parts.wpn_fps_upg_a_rip.stats.damage = 30
   self.parts.wpn_fps_upg_a_rip.stats.spread = 6
   self.parts.wpn_fps_upg_a_rip.stats.spread_moving = self.parts.wpn_fps_upg_a_rip.stats.spread * 0.5
 
