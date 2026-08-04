@@ -1,24 +1,14 @@
 Hooks:PostHook(BlackMarketTweakData, "_init_melee_weapons", "CrimDusk_InitMeleeTweakData", function(self)
   -- Blunt
   local Punch = { "fists", "fight", "moneybundle" }
-  local Gloves = { "brass_knuckles", "boxing_gloves" }
   local SmallObject = {
     "swagger", "aziz", "spatula", "microphone", "selfie", "zeus", "baton", "chac", "shock", "oldbaton", "detector",
     "branding_iron", "croupier_rake", "brick", "model24", "funder_strike", "sap", "bonk", "bonk2", "micstand", "taser", "hammer", "shillelagh", "stick",
-    "piggy_hammer", "whiskey", "tenderizer"
+    "piggy_hammer", "whiskey", "tenderizer", "brass_knuckles", "boxing_gloves"
   }
   local LargeObject = { "meter", "alien_maul", "briefcase", "spoon", "spoon_gold", "shovel", "cutters", "baseballbat", "slot_lever", "hockey", "buck", "dingdong", "road" }
 
   for _, weapon in ipairs(Punch) do
-    self.melee_weapons[weapon].stats.weapon_type = "blunt"
-    self.melee_weapons[weapon].stats.min_damage = 1
-    self.melee_weapons[weapon].stats.max_damage = 2
-    self.melee_weapons[weapon].stats.min_damage_effect = 2
-    self.melee_weapons[weapon].stats.max_damage_effect = 2
-    self.melee_weapons[weapon].stats.charge_time = 1
-  end
-
-  for _, weapon in ipairs(Gloves) do
     self.melee_weapons[weapon].stats.weapon_type = "blunt"
     self.melee_weapons[weapon].stats.min_damage = 2
     self.melee_weapons[weapon].stats.max_damage = 4
@@ -88,15 +78,20 @@ Hooks:PostHook(BlackMarketTweakData, "_init_melee_weapons", "CrimDusk_InitMeleeT
   local KnifeMacheteAnims = { "kabar", "bowie", "machete", "gator", "oxide", "x46", "kampfmesser" }
   local Knife2Anims = { "rambo", "gerber", "bayonet" }
   local BaseballAnims = { "barbedwire", "dingdong", "alien_maul", "piggy_hammer", "stick", "bonk", "bonk2", "spoon", "spoon_gold", "hockey" }
-  local FistAnims = { "fists", "brass_knuckles", "tiger", "zeus", "push",  }
+  local FistAnims = { "fists", "brass_knuckles", "tiger", "zeus", "push" }
 
   for _, weapon in ipairs(AxeAnims) do self.melee_weapons[weapon].repeat_expire_t = 0.35 end
   for _, weapon in ipairs(BaseballAnims) do self.melee_weapons[weapon].repeat_expire_t = 0.8 end
   for _, weapon in ipairs(KnifeMacheteAnims) do self.melee_weapons[weapon].repeat_expire_t = 0.6 end
   for _, weapon in ipairs(Knife2Anims) do self.melee_weapons[weapon].repeat_expire_t = 0.4 end
 
-  self.melee_weapons.hockey.anim_global_param = "melee_baseballbat"
-
+  self.melee_weapons.wing.repeat_expire_t = 0.5
   self.melee_weapons.cs.repeat_expire_t = 0.75
   self.melee_weapons.fireaxe.repeat_expire_t = 1.4
+  self.melee_weapons.road.repeat_expire_t = 0.65
+  self.melee_weapons.brick.repeat_expire_t = 0.4
+  self.melee_weapons.happy.repeat_expire_t = 0.4
+
+  -- Animation swaps
+  self.melee_weapons.hockey.anim_global_param = "melee_baseballbat"
 end)

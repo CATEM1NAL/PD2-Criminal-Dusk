@@ -1,4 +1,4 @@
-<mod name="Criminal Dusk" global_key="Crim_Dusk" author="~/cat/em1/nal/" color="Color(0.734375,0.4921875,0.73828125)" image="dawn">
+<mod name="Criminal Dusk" global_key="evenfall" author="~/cat/em1/nal/" color="Color(0.734375,0.4921875,0.73828125)" image="logo/dawn">
   <!-- Auto update from latest GitHub release -->
   <AssetUpdates version="0.5.0" id="CATEM1NAL/PD2-Criminal-Dusk" provider="github" release="true"/>
 
@@ -10,15 +10,15 @@
     <loc file="english.yaml" language="english"/>
   </localization>
 
-  <Hooks> <!-- Criminal Dusk/ -->
+  <Hooks> <!-- root/ -->
     <hook source_file="lib/setups/setup" file="setup.lua"/>
 
-    <hooks directory="lua"> <!-- Criminal Dusk/lua/ -->
+    <hooks directory="lua"> <!-- root/lua/ -->
       <hook source_file="lib/network/base/basenetworksession" file="peer_sync.lua"/>
       <hook source_file="lib/network/base/networkpeer" file="no_cheater_tag.lua"/>
       <hook source_file="lib/player_actions/skills/playeractionshockandawe" file="lock_n_load.lua"/>
 
-      <hooks directory="tweakdata"> <!-- Criminal Dusk/lua/tweakdata/ -->
+      <hooks directory="tweakdata"> <!-- root/lua/tweakdata/ -->
         <hook source_file="lib/tweak_data/upgradestweakdata" file="upgrades.lua"/>
         <hook source_file="lib/tweak_data/skilltreetweakdata" file="skilltree.lua"/>
         <hook source_file="lib/tweak_data/infamynewtweakdata" file="infamy.lua"/>
@@ -41,7 +41,7 @@
         <hook source_file="lib/tweak_data/interactiontweakdata" file="interactions.lua"/>
       </hooks>
 
-      <hooks directory="managers"> <!-- Criminal Dusk/lua/managers/ -->
+      <hooks directory="managers"> <!-- root/lua/managers/ -->
         <hook source_file="lib/managers/savefilemanager" file="savefile.lua"/>
         <hook source_file="lib/network/base/networkmanager" file="network.lua"/>
         <hook source_file="lib/managers/menumanager" file="menu.lua"/>
@@ -55,7 +55,7 @@
         <hook source_file="lib/managers/perpetualeventmanager" file="perpetualevents.lua"/>
         <hook source_file="lib/managers/preplanningmanager" file="preplanning.lua"/>
 
-        <hooks directory="menu"> <!-- Criminal Dusk/lua/managers/menu/ -->
+        <hooks directory="menu"> <!-- root/lua/managers/menu/ -->
           <hook source_file="lib/managers/menu/menuscenemanager" file="menuscene.lua"/>
           <hook source_file="lib/managers/menu/playerinventorygui" file="inventorygui.lua"/>
           <hook source_file="lib/managers/menu/blackmarketgui" file="blackmarketgui.lua"/>
@@ -65,27 +65,27 @@
           <hook source_file="lib/managers/hud/hudstageendscreen" file="stageendscreen.lua"/>
         </hooks>
 
-        <hooks directory="elements"> <!-- Criminal Dusk/lua/managers/elements/ -->
+        <hooks directory="elements"> <!-- root/lua/managers/elements/ -->
           <hook source_file="lib/managers/mission/elementspawndeployable" file="spawndeployable.lua"/>
           <hook source_file="lib/managers/mission/elementplayerspawner" file="spawnplayer.lua"/>
         </hooks>
 
-        <hooks directory="group_ai"> <!-- Criminal Dusk/lua/managers/group_ai/ -->
+        <hooks directory="group_ai"> <!-- root/lua/managers/group_ai/ -->
           <hook source_file="lib/managers/group_ai_states/groupaistatebesiege" file="besiege.lua"/>
         </hooks>
       </hooks>
 
-      <hooks directory="states"> <!-- Criminal Dusk/lua/states/ -->
+      <hooks directory="states"> <!-- root/lua/states/ -->
         <hook source_file="lib/states/ingamestandard" file="ingamestandard.lua"/>
         <hook source_file="lib/states/victorystate" file="victory.lua"/>
         <hook source_file="lib/states/gameoverstate" file="gameover.lua"/>
       </hooks>
 
-      <hooks directory="units"> <!-- Criminal Dusk/lua/units/ -->
+      <hooks directory="units"> <!-- root/lua/units/ -->
         <hook source_file="lib/units/props/drill" file="drill.lua"/>
         <hook source_file="lib/units/props/timergui" file="timergui.lua"/>
 
-        <hooks directory="player"> <!-- Criminal Dusk/lua/units/player/ -->
+        <hooks directory="player"> <!-- root/lua/units/player/ -->
           <hook source_file="lib/units/beings/player/states/playerstandard" file="standard.lua"/>
           <hook source_file="lib/units/beings/player/states/playermaskoff" file="maskoff.lua"/>
           <hook source_file="lib/units/beings/player/playerdamage" file="damage.lua"/>
@@ -94,20 +94,20 @@
           <hook source_file="lib/units/beings/player/huskplayerdamage" file="huskdamage.lua"/>
         </hooks>
 
-        <hooks directory="equipment"> <!-- Criminal Dusk/lua/units/equipment/ -->
+        <hooks directory="equipment"> <!-- root/lua/units/equipment/ -->
           <hook source_file="lib/units/equipment/doctor_bag/doctorbagbase" file="doctorbag.lua"/>
           <hook source_file="lib/units/equipment/ammo_bag/ammobagbase" file="ammobag.lua"/>
           <hook source_file="lib/units/equipment/sentry_gun/sentrygunbase" file="sentrygun.lua"/>
           <hook source_file="lib/units/weapons/trip_mine/tripminebase" file="tripmine.lua"/>
         </hooks>
 
-        <hooks directory="weapons"> <!-- Criminal Dusk/lua/units/weapons/ -->
+        <hooks directory="weapons"> <!-- root/lua/units/weapons/ -->
           <hook source_file="lib/units/weapons/newraycastweaponbase" file="raycastweaponbase.lua"/>
           <hook source_file="lib/units/weapons/shotgun/shotgunbase" file="shotgunbase.lua"/>
           <hook source_file="lib/units/weapons/projectiles/projectilebase" file="projectilebase.lua"/>
         </hooks>
 
-        <hooks directory="enemies"> <!-- Criminal Dusk/lua/units/enemies/ -->
+        <hooks directory="enemies"> <!-- root/lua/units/enemies/ -->
           <hook source_file="lib/units/enemies/spooc/actions/lower_body/actionspooc" file="actionspooc.lua"/>
         </hooks>
       </hooks>
