@@ -3,19 +3,27 @@ local FileIdent = "MenuManager"
 function MenuCallbackHandler:CrimDusk_CreateLobby() self:create_lobby() end
 
 function MenuCallbackHandler:CrimDusk_SaveToggleSettings(item)
+  if Utils:IsInGameState() then CrimDusk.Log(FileIdent, "Can't change settings in-game!") return end
   CrimDusk.SettingsData[item:name():sub(10)] = item:value() == "on"
+
+  CrimDusk.PlayButtonLoc()
   io.save_as_json(CrimDusk.SettingsData, CrimDusk.SettingsFile)
 end
 
+-- Currently unused
 function MenuCallbackHandler:CrimDusk_SaveChoiceSettings(item)
+  if Utils:IsInGameState() then CrimDusk.Log(FileIdent, "Can't change settings in-game!") return end
   CrimDusk.SettingsData[item:name():sub(10)] = item:value()
   io.save_as_json(CrimDusk.SettingsData, CrimDusk.SettingsFile)
 end
 
 function MenuCallbackHandler:CrimDusk_ResetCampaign()
+  if Utils:IsInGameState() then CrimDusk.Log(FileIdent, "Can't change settings in-game!") return end
   Global.CrimDusk.data.heists_won = 0
   Global.CrimDusk.data.lives = 4
   Global.CrimDusk.data.winters_dead = false
+
+  CrimDusk.PlayButtonLoc()
   CrimDusk:WriteSave(FileIdent, "campaign reset")
 end
 
@@ -27,8 +35,8 @@ local function InjectCrimDuskButtons(node)
 
   local params = {
     name = "crimdusk_createlobby_btn",
-    text_id = "crimdusk_enter_lobby_title",
-    help_id = "crimdusk_enter_lobby_desc",
+    text_id = "crimdusk_create_lobby_title",
+    help_id = "crimdusk_create_lobby_desc",
     callback = "CrimDusk_CreateLobby",
     font_size = 35,
     font = tweak_data.menu.pd2_large_font
@@ -45,7 +53,6 @@ local function InjectCrimDuskButtons(node)
   table.insert(node._items, position, new_item)
 end
 
-
 -- MENU CHANGES START HERE --
 Hooks:Add("MenuManagerBuildCustomMenus", "CrimDusk_MenuTweaks", function(menu_manager, nodes)
   local mainmenu = nodes.main
@@ -55,39 +62,7 @@ Hooks:Add("MenuManagerBuildCustomMenus", "CrimDusk_MenuTweaks", function(menu_ma
   -- Main Menu
   if mainmenu ~= nil then
 
-    -- Play button
-    if Global.CrimDusk.campaign[Global.CrimDusk.data.heists_won + 1] then
-      managers.localization:add_localized_strings({
-        ["crimdusk_continue_run_desc"] = managers.localization:text("crimdusk_play_next_desc", {
-          HEIST = managers.localization:text("heist_" .. Global.CrimDusk.campaign[Global.CrimDusk.data.heists_won + 1])
-        }),
-        ["menu_choose_new_contract"] = managers.localization:text("crimdusk_campaign_active", {
-          HEIST = managers.localization:text("heist_" .. Global.CrimDusk.campaign[Global.CrimDusk.data.heists_won + 1])
-        })
-      })
-    else managers.localization:add_localized_strings({
-        ["crimdusk_continue_run_desc"] = managers.localization:text("crimdusk_play_next_random"),
-        ["menu_choose_new_contract"] = managers.localization:text("crimdusk_campaign_inactive")
-      })
-    end
-
-    local HeistNumText = ""
-    local IsEndless = Global.CrimDusk.data.heists_won >= #Global.CrimDusk.campaign
-    if IsEndless then HeistNumText = (Global.CrimDusk.data.heists_won + 1)
-    else HeistNumText = Global.CrimDusk.data.heists_won + 1 .. "/" .. #Global.CrimDusk.campaign end
-
-    managers.localization:add_localized_strings({
-      ["crimdusk_continue_run_title"] = managers.localization:text("crimdusk_play_next_title", {
-        HEIST_NUM = HeistNumText
-      })
-    })
-
-    -- Create Lobby
-    managers.localization:add_localized_strings({
-      ["crimdusk_enter_lobby_title"] = managers.localization:text("crimdusk_create_lobby_title"),
-      ["crimdusk_enter_lobby_desc"] = managers.localization:text("crimdusk_create_lobby_desc")
-    })
-
+    CrimDusk.PlayButtonLoc()
     InjectCrimDuskButtons(mainmenu)
 
     -- Hides all the unnecessary menu buttons
@@ -159,7 +134,8 @@ Hooks:PreHook(MenuCallbackHandler, "start_the_game", "CrimDusk_PreStartGame", fu
   if Utils:IsInGameState() or NetworkHelper:IsClient() then return end
 
   -- Select next heist in campaign...
-  local NextJob = Global.CrimDusk.campaign[Global.CrimDusk.data.heists_won + 1]
+  local campaign = CrimDusk.SettingsData.permadeath and "heists_won_perma" or "heists_won"
+  local NextJob = Global.CrimDusk.campaign[Global.CrimDusk.data[campaign] + 1]
 
   -- ...or random heist if campaign is completed!
   if not NextJob then
@@ -167,16 +143,17 @@ Hooks:PreHook(MenuCallbackHandler, "start_the_game", "CrimDusk_PreStartGame", fu
     local ValidHeists = deep_clone(Global.CrimDusk.campaign)
 
     -- Ensure duplicate heists don't happen until we've played every heist once
-    if Global.CrimDusk.data.heist_chain then
+    campaign = CrimDusk.SettingsData.permadeath and "heist_chain_perma" or "heist_chain"
+    if Global.CrimDusk.data[campaign] then
 
       -- If all heists have been played, start a new cycle
-      if #Global.CrimDusk.data.heist_chain == #Global.CrimDusk.campaign then
-        Global.CrimDusk.data.heist_chain = {}
+      if #Global.CrimDusk.data[campaign] == #Global.CrimDusk.campaign then
+        Global.CrimDusk.data[campaign] = {}
         Global.CrimDusk.data.winters_dead = false
       end
 
       -- Remove already played heists
-      for _, heist in ipairs(Global.CrimDusk.data.heist_chain) do
+      for _, heist in ipairs(Global.CrimDusk.data[campaign]) do
         for i = #ValidHeists, 1, -1 do
           if ValidHeists[i] == heist then table.remove(ValidHeists, i) break end
         end
@@ -187,8 +164,8 @@ Hooks:PreHook(MenuCallbackHandler, "start_the_game", "CrimDusk_PreStartGame", fu
     CrimDusk.Log(FileIdent, "Heists left in cycle: " .. #ValidHeists)
 
     NextJob = ValidHeists[math.random(#ValidHeists)]
-    Global.CrimDusk.data.heist_chain = Global.CrimDusk.data.heist_chain or {}
-    table.insert(Global.CrimDusk.data.heist_chain, NextJob)
+    Global.CrimDusk.data[campaign] = Global.CrimDusk.data[campaign] or {}
+    table.insert(Global.CrimDusk.data[campaign], NextJob)
 
     CrimDusk:WriteSave(FileIdent, "heist added to chain")
   end

@@ -71,6 +71,8 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   self.values.player.melee_damage_stacking = { { melee_multiplier = 1, max_multiplier = 10 } } -- Bloodthirst
   self.values.player.melee_kill_increase_reload_speed = { { 2, 3 } } -- Mag Steal
   self.values.trip_mine.damage_multiplier = { 2, 3 } -- Trip Mine damage
+  self.values.player.marked_enemy_damage_mul = { 1.25 } -- High Value Target
+  
 
   -- Frenzy
   self.values.player.health_damage_reduction = { 0.75, 0.5 }

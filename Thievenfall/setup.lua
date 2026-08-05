@@ -55,13 +55,41 @@ function CrimDusk:Init()
     DelayedCalls:Add("CrimDusk_GoLoudDelay", LoudDelay, function() managers.groupai:state():on_police_called("empty") end)
   end
 
-  -- Difficulty scaling
-  function self.DiffScale(ignore_cap)
-    if (Global.CrimDusk.data.heists_won or 0) < 5 then
-      return Global.CrimDusk.data.heists_won + 2
+  -- Play button text
+  function self.PlayButtonLoc()
+    local campaign = CrimDusk.SettingsData.permadeath and "heists_won_perma" or "heists_won"
+    if Global.CrimDusk.campaign[Global.CrimDusk.data[campaign] + 1] then
+      managers.localization:add_localized_strings({
+        ["crimdusk_continue_run_desc"] = managers.localization:text("crimdusk_play_next_desc", {
+          HEIST = managers.localization:text("heist_" .. Global.CrimDusk.campaign[Global.CrimDusk.data[campaign] + 1])
+        }),
+        ["menu_choose_new_contract"] = managers.localization:text("crimdusk_campaign_active", {
+          HEIST = managers.localization:text("heist_" .. Global.CrimDusk.campaign[Global.CrimDusk.data[campaign] + 1])
+        })
+      })
+    else managers.localization:add_localized_strings({
+        ["crimdusk_continue_run_desc"] = managers.localization:text("crimdusk_play_next_random"),
+        ["menu_choose_new_contract"] = managers.localization:text("crimdusk_campaign_inactive")
+      })
     end
 
-    local HeistsWon = Global.CrimDusk.data.heists_won - 5
+    local HeistNumText = ""
+    local IsEndless = Global.CrimDusk.data[campaign] >= #Global.CrimDusk.campaign
+    if IsEndless then HeistNumText = (Global.CrimDusk.data[campaign] + 1)
+    else HeistNumText = Global.CrimDusk.data[campaign] + 1 .. "/" .. #Global.CrimDusk.campaign end
+    managers.localization:add_localized_strings({
+      ["crimdusk_continue_run_title"] = managers.localization:text("crimdusk_play_next_title", {
+        HEIST_NUM = HeistNumText
+      })
+    })
+  end
+
+  -- Difficulty scaling
+  function self.DiffScale(ignore_cap)
+    local campaign = CrimDusk.SettingsData.permadeath and "heists_won_perma" or "heists_won"
+    if (Global.CrimDusk.data[campaign] or 0) < 5 then return Global.CrimDusk.data[campaign] + 2 end
+
+    local HeistsWon = Global.CrimDusk.data[campaign] - 5
     local RawDiff = HeistsWon / (#Global.CrimDusk.campaign - 5) * 7 + 2
     local RoundedDiff = math.floor(RawDiff + 0.5)
 
@@ -71,13 +99,18 @@ function CrimDusk:Init()
 
   -- Reset campaign state
   function self:Reset()
-    Global.CrimDusk.data = { heists_won = 0, lives = 4, winters_dead = false }
+    Global.CrimDusk.data = {
+      heists_won = 0, heist_chain = {},
+      heists_won_perma = 0, heist_chain_perma = {},
+      lives = 4, winters_dead = false
+    }
   end
 end
 
 CrimDusk:Init()
 
-if NetworkHelper:IsHost() and Global.CrimDusk and (Global.CrimDusk.data.heists_won or 0) < 5 then
+local campaign = CrimDusk.SettingsData.permadeath and "heists_won_perma" or "heists_won"
+if NetworkHelper:IsHost() and Global.CrimDusk and (Global.CrimDusk.data[campaign] or 0) < 5 then
   Hooks:Add("LocalizationManagerPostInit", "CrimDusk_PDTHNames", function(loc)
     loc:add_localized_strings({
       ["menu_difficulty_normal"] = loc:text("crimdusk_pdth_normal"),
@@ -269,6 +302,13 @@ function Global.CrimDusk:Init()
     CrimDusk:WriteSave(FileIdent, "save created")
   end
 
+  -- Data validation
+  self.data.heists_won = self.data.heists_won or 0
+  self.data.heist_chain = self.data.heist_chain or {}
+  self.data.heists_won_perma = self.data.heists_won_perma or 0
+  self.data.heist_chain_perma = self.data.heist_chain_perma or {}
+  self.data.lives = self.data.lives or 4
+
   self.campaign = {
     "red2", "flat", "pal", "man", "nmh", -- PDTH Prologue
     "cd_tut1", "cd_tut2", "cd_tut3", "four_stores", "mallcrasher", "branchbank_prof", "ukrainian_job_prof", "nightclub", -- Early Vlad
@@ -287,10 +327,10 @@ function Global.CrimDusk:Init()
     election_day_2 = true, short1_stage1 = true, short1_stage2 = true, welcome_to_the_jungle_2 = true,
     firestarter_2 = true, alex_2 = true, crojob2 = true, kenaz = true, chca = true, family = true
   }
-  self.LoudHeists = { -- Alarm goes off immediately, PDTH style
-    "red2", "flat", "man", "four_stores", "nmh", "mallcrasher", "branchbank", "ukrainian_job", "nightclub", "welcome_to_the_jungle_2",
-    "firestarter_1", "arm_for", "roberts", "big", "mus", "hox_3", "arena", "friend", "sah", "mex", "chas", "bex", "pex", "chca",
-    "fex", "pent", "bph", "ranc", "trai", "corp", "deep", "vit"
+  self.LoudHeists = { -- Heists that cannot be stealthed
+    "red2", "flat", "man", "mallcrasher", "branchbank", "ukrainian_job", "nightclub", "firestarter_1", "arm_for",
+    "roberts", "big", "mus", "hox_3", "arena", "friend", "sah", "mex", "chas", "bex", "pex", "chca", "fex", "pent",
+    "bph", "ranc", "trai", "corp", "deep", "vit"
   }
   self.UnmaskedHeists = { fex = true, pex = true, dah = true, fish = true, ranc = true, mex = true, trai = true, arm_for = true, mus = true, crojob2 = true }
   self.LoudTimers = { friend = 5, deep = 30, firestarter_1 = 5 }

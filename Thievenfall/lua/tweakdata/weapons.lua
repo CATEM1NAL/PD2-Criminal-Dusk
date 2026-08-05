@@ -236,7 +236,7 @@ Hooks:PostHook(WeaponTweakData, "init", "CrimDusk_WeaponTweakInit", function(sel
   for i = -100, 100 do table.insert(self.stats.extra_ammo, i) end
 
   self.stats.spread = {}
-  for i = 0, 25 do table.insert(self.stats.spread, 3 - (i * 0.1)) end
+  for i = 0, 25 do table.insert(self.stats.spread, 2.5 - (i * 0.1)) end
 
   self.stats.spread_moving = {}
   for i = 0, 25 do table.insert(self.stats.spread_moving, 5 - (i * 0.1)) end

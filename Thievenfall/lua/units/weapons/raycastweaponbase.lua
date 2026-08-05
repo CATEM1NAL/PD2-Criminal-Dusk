@@ -39,7 +39,7 @@ end)
 
 Hooks:OverrideFunction(RaycastWeaponBase, "on_reload", function(self, amount)
   local ammo_base = self._reload_ammo_base or self:ammo_base()
-  local weapon_id = ammo_base:_weapon_tweak_data_id()
+  local weapon_id = self:_weapon_tweak_data_id()
   --CrimDusk.Log(FileIdent, "Weapon ID: " .. weapon_id)
 
   amount = amount or ammo_base:get_ammo_max_per_clip()
