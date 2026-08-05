@@ -1,1 +1,0 @@
-Drill.on_hit_autorepair_chance = 1
