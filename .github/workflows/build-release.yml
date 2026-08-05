@@ -28,7 +28,7 @@ jobs:
         uses: TheDoctor0/zip-release@0.7.6
         with:
           type: 'zip'
-          filename: 'Criminal_Dusk.zip'
+          filename: 'Thievenfall.zip'
           exclusions: '*.git* meta.json README.md LICENSE'
       - uses: ncipollo/release-action@v1
         with:
