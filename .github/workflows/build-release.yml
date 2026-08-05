@@ -32,5 +32,5 @@ jobs:
           exclusions: '*.git* meta.json README.md LICENSE'
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: 'Criminal_Dusk.zip'
+          artifacts: 'Thievenfall.zip'
           allowUpdates: true
