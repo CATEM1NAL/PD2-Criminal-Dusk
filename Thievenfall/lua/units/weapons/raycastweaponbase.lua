@@ -167,6 +167,12 @@ Hooks:OverrideFunction(RaycastWeaponBase, "add_ammo", function(self, ratio, add_
   return picked_up, add_amount
 end)
 
+
+Hooks:PostHook(NewRaycastWeaponBase, "_get_spread", "CrimDusk_NewRaycastGetSpread", function(self)
+  local spread_x, spread_y = Hooks:GetReturn()
+  CrimDusk.Log(FileIdent, "Spread: " .. spread_x .. " " .. spread_y)
+end)
+
 -- Mag Plus
 Hooks:OverrideFunction(NewRaycastWeaponBase, "calculate_ammo_max_per_clip", function(self)
   local ammo = tweak_data.weapon[self._name_id].CLIP_AMMO_MAX
@@ -175,6 +181,7 @@ Hooks:OverrideFunction(NewRaycastWeaponBase, "calculate_ammo_max_per_clip", func
   return math.floor(ammo)
 end)
 
+-- Body Expertise
 Hooks:OverrideFunction(NewRaycastWeaponBase, "get_add_head_shot_mul", function(self)
   return managers.player:upgrade_value("weapon", "automatic_head_shot_add", nil)
 end)
