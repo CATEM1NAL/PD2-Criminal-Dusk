@@ -11,7 +11,7 @@
   </localization>
 
   <Hooks> <!-- root/ -->
-    <hook source_file="lib/setups/setup" file="setup.lua"/>
+    <hook type="pre" source_file="lib/setups/setup" file="setup.lua"/>
 
     <hooks directory="lua"> <!-- root/lua/ -->
       <hook source_file="lib/network/base/basenetworksession" file="peer_sync.lua"/>
@@ -19,6 +19,7 @@
       <hook source_file="lib/player_actions/skills/playeractionshockandawe" file="lock_n_load.lua"/>
 
       <hooks directory="tweakdata"> <!-- root/lua/tweakdata/ -->
+        <hook source_file="lib/setups/setup" file="tweakdata.lua"/>
         <hook source_file="lib/tweak_data/upgradestweakdata" file="upgrades.lua"/>
         <hook source_file="lib/tweak_data/skilltreetweakdata" file="skilltree.lua"/>
         <hook source_file="lib/tweak_data/infamynewtweakdata" file="infamy.lua"/>
@@ -50,7 +51,6 @@
         <hook source_file="lib/managers/jobmanager" file="jobs.lua"/>
         <hook source_file="lib/managers/experiencemanager" file="experience.lua"/>
         <hook source_file="lib/managers/dlcmanager" file="dlc.lua"/>
-        <hook source_file="lib/managers/mutatorsmanager" file="mutators.lua"/>
         <hook source_file="lib/managers/playermanager" file="player.lua"/>
         <hook source_file="lib/managers/perpetualeventmanager" file="perpetualevents.lua"/>
         <hook source_file="lib/managers/preplanningmanager" file="preplanning.lua"/>

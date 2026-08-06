@@ -142,6 +142,14 @@ Hooks:PreHook(MenuCallbackHandler, "start_the_game", "CrimDusk_PreStartGame", fu
     math.randomseed(os.time() + (os.clock() * 1000))
     local ValidHeists = deep_clone(Global.CrimDusk.campaign)
 
+    -- Add bonus heists unused in main campaign
+    for _, heist in ipairs(Global.CrimDusk.extra_heists) do table.insert(ValidHeists, heist) end
+
+    -- Remove Rats day 1 (replaced by Cook Off)
+    for i, heist in ipairs(ValidHeists) do
+      if heist == "cd_rats" then table.remove(ValidHeists, i) break end
+    end
+
     -- Ensure duplicate heists don't happen until we've played every heist once
     campaign = CrimDusk.SettingsData.permadeath and "heist_chain_perma" or "heist_chain"
     if Global.CrimDusk.data[campaign] then

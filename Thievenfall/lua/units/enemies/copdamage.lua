@@ -25,7 +25,7 @@ Hooks:OverrideFunction(CopDamage, "_check_special_death_conditions", function(se
     if weapon_unit:base():is_npc() then factory_id = utf8.sub(factory_id, 1, -5) end
 
     local weapon_id = managers.weapon_factory:get_weapon_id_by_factory_id(factory_id)
-    if body_data.weapon_id == weapon_id then
+    if 100 <= (tweak_data.weapon[weapon_id].stats.damage * (tweak_data.weapon[weapon_id].stats_modifiers.damage or 1)) then
       if self._unit:damage():has_sequence(body_data.sequence) then self._unit:damage():run_sequence_simple(body_data.sequence) end
       if body_data.special_comment then return body_data.special_comment end
     end
