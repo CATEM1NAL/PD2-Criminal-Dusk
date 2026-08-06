@@ -1,61 +1,31 @@
 local FileIdent = "RaycastWeaponBase"
 
-local NoChamberBullet = {
-  -- Vanilla weapons
-  flamethrower_mk2 = true, system = true, money = true, -- Flamethrowers
-  hunter = true, ecp = true, arblast = true, frankish = true, long = true, elastic = true, plainsrider = true, hunter = true, dart = true,  -- Bows
-  ray = true, rpg7 = true, -- Rocket launchers
-  shuno = true, m134 = true, -- Miniguns
-  china = true, ms3gl = true, gre_m79 = true, slap = true, m32 = true, flun = true, -- Grenade launchers
-  b682 = true, huntsman = true, coach = true, -- Double barrels
-  rota = true, judge = true, striker = true, -- Shotguns
-  peacemaker = true, model3 = true, rsh12 = true, mateba = true, korth = true, chinchilla = true, new_raging_bull = true, -- Revolvers
-  saw = true, saw_secondary = true, -- Saws
-  ching = true, hailstorm = true, -- Assault rifles
-  m60 = true, kacchainsaw = true, mg42 = true, m249 = true, par = true, -- LMGs
-  bessy = true, contender = true, -- Sniper rifles
-  m45 = true, mac10 = true, cobray = true, m1928 = true, erma = true, sterling = true, uzi = true, -- SMGs
-
-  -- Akimbos
-  x_2006m = true, x_rage = true, x_model3 = true, x_chinchilla = true, x_korth = true, -- Revolvers
-  x_judge = true, x_rota = true, -- Shotguns
-  x_m45 = true, x_mac10 = true, x_cobray = true, x_m1928 = true, x_erma = true, x_sterling = true, x_uzi = true -- SMGs
-}
-
-local NoMagDump = {
-  -- Vanilla weapons
-  coach = true, b682 = true
-}
-
 -- One in chamber
 Hooks:OverrideFunction(RaycastWeaponBase, "get_ammo_max_per_clip", function(self)
-  local chamber = 0
-  if not NoChamberBullet[self:ammo_base():_weapon_tweak_data_id()] and (self:ammo_base():get_ammo_remaining_in_clip() or 0) > 0 then
-    chamber = self:ammo_base():is_category("akimbo") and 2 or 1
-  end
-
+  local chamber = self:ammo_base():weapon_tweak_data().ChamberRounds or 1
+  if self:ammo_base():clip_empty() or chamber == 0 then return self._ammo_max_per_clip end
   return self._ammo_max_per_clip + chamber
 end)
 
-Hooks:OverrideFunction(RaycastWeaponBase, "on_reload", function(self, amount)
+Hooks:OverrideFunction(RaycastWeaponBase, "on_reload", function(self)
   local ammo_base = self._reload_ammo_base or self:ammo_base()
-  local weapon_id = self:_weapon_tweak_data_id()
-  --CrimDusk.Log(FileIdent, "Weapon ID: " .. weapon_id)
-
-  amount = amount or ammo_base:get_ammo_max_per_clip()
+  local amount = ammo_base:get_ammo_max_per_clip()
+  local WeaponTweak = self:weapon_tweak_data()
 
   -- Ammo not used is wasted
-  local MagDump
-  if not NoMagDump[weapon_id] then
-    MagDump = ammo_base:get_ammo_remaining_in_clip()
+  if WeaponTweak.MagDump then
+    local MagDump = ammo_base:get_ammo_remaining_in_clip()
     if MagDump ~= 0 then
-      if not NoChamberBullet[weapon_id] then MagDump = MagDump - 1 end
+      local chamber = WeaponTweak.ChamberRounds
+      if chamber > 0 then MagDump = MagDump - chamber end
       ammo_base:set_ammo_total(ammo_base._ammo_total - MagDump)
     end
   end
 
   if self._setup.expend_ammo then ammo_base:set_ammo_remaining_in_clip(math.min(ammo_base:get_ammo_total(), amount))
-  else ammo_base:set_ammo_remaining_in_clip(amount)
+
+  else
+    ammo_base:set_ammo_remaining_in_clip(amount)
     ammo_base:set_ammo_total(amount)
   end
 

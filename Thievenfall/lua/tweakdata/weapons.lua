@@ -144,7 +144,7 @@ local AmmoPickup = {
 -- Assign weapon stats
 local WeaponClasses = {
   rifles = {
-    hailstorm = { dmg = 12 },
+    hailstorm = { dmg = 12, chamber = 0 },
 
     famas = { dmg = "low" },
     asval = { dmg = "low", mag = 20 },
@@ -153,7 +153,7 @@ local WeaponClasses = {
     galil = { dmg = "low" },
     komodo = { dmg = "low" },
     m16 = { dmg = "low", mag = 20, reload = 20 },
-    tkb = { dmg = "low" },
+    tkb = { dmg = "low", chamber = 3 },
 
     s552 = { dmg = "med" },
     aug = { dmg = "med" },
@@ -177,19 +177,19 @@ local WeaponClasses = {
     akm = { dmg = "vhigh" },
     akm_gold = { dmg = "vhigh" },
     shak12 = { dmg = "vhigh" },
-    ching = { dmg = "vhigh" },
+    ching = { dmg = "vhigh", chamber = 0 },
   },
 
   shotguns = {
-    striker = { dmg = "base", acc = 5 },
+    striker = { dmg = "base", acc = 5, chamber = 0 },
     basset = { dmg = "base", acc = 3 },
-    rota = { dmg = "base", acc = 5 },
+    rota = { dmg = "base", acc = 5, chamber = 0 },
     sko12 = { dmg = "base", acc = 3 },
     saiga = { dmg = "base", acc = 3, mag = 5, reload = 20 },
     aa12 = { dmg = "base", acc = 3, reload = 20 },
     serbu = { dmg = "base", acc = 5 },
     ultima = { dmg = "base", acc = 5 },
-    judge = { dmg = "base", acc = 5 },
+    judge = { dmg = "base", acc = 5, chamber = 0 },
     spas12 = { dmg = "base", acc = 5 },
     r870 = { dmg = "base", acc = 9 },
     benelli = { dmg = "base", acc = 5 },
@@ -199,28 +199,28 @@ local WeaponClasses = {
     m37 = { dmg = "base", acc = 9 },
     m590 = { dmg = "base", acc = 5 },
     boot = { dmg = "base", acc = 17 },
-    b682 = { dmg = "base", acc = 17 },
-    huntsman = { dmg = "base", acc = 17 },
-    coach = { dmg = "base", acc = 17 }
+    b682 = { dmg = "base", acc = 17, magdump = false, chamber = 0 },
+    huntsman = { dmg = "base", acc = 17, chamber = 0 },
+    coach = { dmg = "base", acc = 17, magdump = false, chamber = 0 }
   },
 
   lmgs = {
-    mg42 = { dmg = "low" },
-    kacchainsaw = { dmg = "low" },
-    m249 = { dmg = "low" },
-    par = { dmg = "low" },
+    mg42 = { dmg = "low", chamber = 0 },
+    kacchainsaw = { dmg = "low", chamber = 0 },
+    m249 = { dmg = "low", chamber = 0 },
+    par = { dmg = "low", chamber = 0 },
 
     rpk = { dmg = "med" },
     hk21 = { dmg = "med" },
     hk51b = { dmg = "med" },
 
     hcar = { dmg = "high" },
-    m60 = { dmg = "high" }
+    m60 = { dmg = "high", chamber = 0 }
   },
 
   snipers = {
-    bessy = { dmg = 60 },
-    m95 = { dmg = 15, dmgmult = 100 },
+    bessy = { dmg = 60, chamber = 0 },
+    m95 = { dmgmult = 100, dmg = 15 },
 
     wa2000 = { dmg = "low" },
     siltstone = { dmg = "low" },
@@ -236,7 +236,7 @@ local WeaponClasses = {
     model70 = { dmg = "high" },
     desertfox = { dmg = "high" },
     mosin = { dmg = "high" },
-    contender = { dmg = "high" },
+    contender = { dmg = "high", chamber = 0 },
     awp = { dmg = "high" },
     sbl = { dmg = "high" }
   },
@@ -263,6 +263,7 @@ local WeaponClasses = {
 
     p226 = { dmg = "med" },
     colt_1911 = { dmg = "med" },
+    x_1911 = { dmg = "med" },
     m1911 = { dmg = "med" },
     c96 = { dmg = "med" },
     type54 = { dmg = "med" },
@@ -272,34 +273,33 @@ local WeaponClasses = {
     pmm = { dmg = "med" },
     usp = { dmg = "med" },
     sparrow = { dmg = "med" },
-    x_1911 = { dmg = "low" },
 
     lemming = { dmg = "high" },
-    model3 = { dmg = "high" }
+    model3 = { dmg = "high", chamber = 0 }
   },
 
   revolvers = {
     deagle = { dmg = "low" },
-    mateba = { dmg = "low" },
-    korth = { dmg = "low" },
-    x_2006m = { dmg = "low" },
+    mateba = { dmg = "low", chamber = 0 },
+    x_2006m = { dmg = "low", chamber = 0 },
+    korth = { dmg = "low", chamber = 0 },
 
-    peacemaker = { dmg = 100, dmgmult = 1 },
+    peacemaker = { dmgmult = 1, dmg = 100, chamber = 0 },
 
-    new_raging_bull = { dmg = "high" },
-    chinchilla = { dmg = "high" },
-    x_rage = { dmg = "high" },
+    new_raging_bull = { dmg = "high", chamber = 0 },
+    x_rage = { dmg = "high", chamber = 0 },
+    chinchilla = { dmg = "high", chamber = 0 },
 
-    rsh12 = { dmg = 75, rof = 0.5 }
+    rsh12 = { dmg = 75, rof = 0.5, chamber = 0 }
   },
 
   smgs = {
-    cobray = { dmg = "vlow" },
+    cobray = { dmg = "vlow", chamber = 0 },
     pm9 = { dmg = "vlow" },
     fmg9 = { dmg = "vlow" },
     baka = { dmg = "vlow" },
     polymer = { dmg = "vlow" },
-    mac10 = { dmg = "vlow" },
+    mac10 = { dmg = "vlow", chamber = 0 },
     mp7 = { dmg = "vlow" },
     mp9 = { dmg = "vlow" },
     p90 = { dmg = "vlow" },
@@ -310,48 +310,51 @@ local WeaponClasses = {
     hajk = { dmg = "low" },
     vityaz = { dmg = "low" },
     new_mp5 = { dmg = "low" },
-    m1928 = { dmg = "low" },
+    x_mp5 = { dmg = "low" },
+    m1928 = { dmg = "low", chamber = 0 },
     shepheard = { dmg = "low" },
     sr2 = { dmg = "low" },
-    uzi = { dmg = "low" },
-    x_mp5 = { dmg = "low" },
+    uzi = { dmg = "low", chamber = 0 },
 
-    m45 = { dmg = "med" },
+    m45 = { dmg = "med", chamber = 0 },
     schakal = { dmg = "med" },
     olympic = { dmg = "med", reload = 20 },
-    erma = { dmg = "med" },
+    erma = { dmg = "med", chamber = 0 },
     coal = { dmg = "med" },
 
     speen = { dmg = "high" },
-    sterling = { dmg = "high" }
+    sterling = { dmg = "high", chamber = 0 }
   },
 
   special = {
-    flamethrower_mk2 = { dmg = "flame", pickup = "flame" },
-    system = { dmg = "flame", pickup = "flame" },
-    money = { dmg = "flame", pickup = "flame" },
+    flamethrower_mk2 = { dmg = "flame", pickup = "flame", chamber = 0 },
+    system = { dmg = "flame", pickup = "flame", chamber = 0 },
+    money = { dmg = "flame", pickup = "flame", chamber = 0 },
 
-    hunter = { dmg = "xlow", pickup = "none" },
-    ecp = { dmg = "xlow", pickup = "none" },
-    arblast = { dmg = "xhigh", pickup = "none" },
-    frankish = { dmg = "xhigh", pickup = "none" },
+    hunter = { dmg = "xlow", pickup = "none", chamber = 0 },
+    ecp = { dmg = "xlow", pickup = "none", chamber = 0 },
+    arblast = { dmg = "xhigh", pickup = "none", chamber = 0 },
+    frankish = { dmg = "xhigh", pickup = "none", chamber = 0 },
 
-    plainsrider = { dmg = "rpg", pickup = "none" },
-    long = { dmg = "bow", dmgmult = 10, pickup = "none" },
-    elastic = { dmg = "bow", dmgmult = 10, pickup = "none" },
+    plainsrider = { dmg = "rpg", pickup = "none", chamber = 0 },
+    long = { dmgmult = 10, dmg = "bow", pickup = "none", chamber = 0 },
+    elastic = { dmgmult = 10, dmg = "bow", pickup = "none", chamber = 0 },
 
-    rpg7 = { dmg = "rpg", pickup = "none" },
-    ray = { dmg = "rpg", dmgmult = 25, pickup = "none" },
+    rpg7 = { dmg = "rpg", pickup = "none", chamber = 0 },
+    ray = { dmgmult = 25, dmg = "rpg", pickup = "none", chamber = 0 },
 
-    shuno = { dmg = "mini" },
-    m134 = { dmg = "mini" },
+    shuno = { dmg = "mini", chamber = 0 },
+    m134 = { dmg = "mini", chamber = 0 },
 
-    china = { dmg = "gl", dmgmult = 1 },
-    ms3gl = { dmg = "gl", dmgmult = 1 },
-    arbiter = { dmg = "gl", dmgmult = 1 },
-    gre_m79 = { dmg = "gl", dmgmult = 2 },
-    slap = { dmg = "gl", dmgmult = 2 },
-    m32 = { dmg = "gl", dmgmult = 2 }
+    china = { dmgmult = 1, dmg = "gl", chamber = 0 },
+    ms3gl = { dmgmult = 1, dmg = "gl", chamber = 0 },
+    arbiter = { dmgmult = 1, dmg = "gl", chamber = 0 },
+    gre_m79 = { dmgmult = 2, dmg = "gl", chamber = 0 },
+    slap = { dmgmult = 2, dmg = "gl", chamber = 0 },
+    m32 = { dmgmult = 2, dmg = "gl", chamber = 0 },
+
+    saw = { chamber = 0 },
+    saw_secondary = { chamber = 0 }
   }
 }
 
@@ -372,7 +375,14 @@ local function ModifyStats(self, WeaponClassName, WeaponClassData)
     self[Weapon].stats.reload = self[Weapon].stats.reload + 5
     if self["x_" .. Weapon] then self["x_" .. Weapon].stats.reload = self["x_" .. Weapon].stats.reload + 5 end
 
-    for Stat, Value in pairs(Data) do
+    -- Custom stat initialisation
+    self[Weapon].MagDump = true
+    if self["x_" .. Weapon] then self["x_" .. Weapon].MagDump = true end
+
+    self[Weapon].ChamberRounds = 1
+    if self["x_" .. Weapon] then self["x_" .. Weapon].ChamberRounds = 2 end
+
+    for Stat, Value in pairs(Data) do -- Apply custom stat overrides
 
       if Stat == "dmgmult" then -- Damage multiplier
         self[Weapon].stats_modifiers.damage = Value
@@ -409,7 +419,7 @@ local function ModifyStats(self, WeaponClassName, WeaponClassData)
           self[Weapon].stats.spread_moving = self[Weapon].stats.spread
         end
 
-      elseif Stat == "pickup" then -- Ammo pickup override
+      elseif Stat == "pickup" then -- Ammo pickup
         if type(Value) == "string" then Value = AmmoPickup[Value] end
         self[Weapon].AMMO_PICKUP = Value
 
@@ -419,6 +429,14 @@ local function ModifyStats(self, WeaponClassName, WeaponClassData)
 
         self[Weapon].CLIP_AMMO_MAX = Value
         if self["x_" .. Weapon] then self["x_" .. Weapon].CLIP_AMMO_MAX = Value end
+
+      elseif Stat == "chamber" then -- Rounds in chamber
+        self[Weapon].ChamberRounds = Value
+        if self["x_" .. Weapon] then self["x_" .. Weapon].ChamberRounds = Value * 2 end
+
+      elseif Stat == "magdump" then -- Mag dumping
+        self[Weapon].MagDump = Value
+        if self["x_" .. Weapon] then self["x_" .. Weapon].MagDump = Value end
 
       elseif Stat == "reload" then -- Reload speed
         self[Weapon].stats.reload = Value

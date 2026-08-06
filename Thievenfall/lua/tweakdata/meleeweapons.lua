@@ -1,97 +1,179 @@
+local MeleeStats = {
+  -- Blunt melees
+  Unarmed = {
+    weapon_type = "blunt", charge_time = 1,
+    min_damage = 2, max_damage = 4,
+    min_damage_effect = 2, max_damage_effect = 2
+  },
+  SmallObjects = {
+    weapon_type = "blunt", charge_time = 2,
+    min_damage = 4, max_damage = 6,
+    min_damage_effect = 2, max_damage_effect = 2
+  },
+  LargeObjects = {
+    weapon_type = "blunt", charge_time = 3,
+    min_damage = 6, max_damage = 8,
+    min_damage_effect = 2, max_damage_effect = 2
+  },
+
+  -- Sharp melees
+  Knives = {
+    weapon_type = "sharp", charge_time = 1,
+    min_damage = 2, max_damage = 5,
+    min_damage_effect = 0.5, max_damage_effect = 0.5
+  },
+  SmallBlades = {
+    weapon_type = "sharp", charge_time = 2,
+    min_damage = 5, max_damage = 8,
+    min_damage_effect = 0.5, max_damage_effect = 0.5
+  },
+  LargeBlades = {
+    weapon_type = "sharp", charge_time = 3,
+    min_damage = 8, max_damage = 11,
+    min_damage_effect = 0.5, max_damage_effect = 0.5
+  }
+}
+
+local ResetTimers = { melee_axe = 0.35, melee_baseball = 0.8, melee_machete = 0.6, melee_knife2 = 0.4 }
+
+local MeleeClasses = {
+  Unarmed = {
+    fists = {},
+    fight = {},
+    moneybundle = {}
+  },
+
+  SmallObjects = {
+    swagger = {},
+    aziz = {},
+    spatula = {},
+    microphone = {},
+    selfie = {},
+    zeus = {},
+    baton = {},
+    chac = {},
+    shock = {},
+    oldbaton = {},
+    detector = {},
+    branding_iron = {},
+    croupier_rake = {},
+    brick = { rep = 0.4 },
+    model24 = {},
+    funder_strike = {},
+    sap = {},
+    bonk = {},
+    bonk2 = {},
+    micstand = {},
+    taser = {},
+    hammer = {},
+    shillelagh = {},
+    stick = {},
+    piggy_hammer = {},
+    whiskey = {},
+    tenderizer = {},
+    brass_knuckles = {},
+    boxing_gloves = {},
+    happy = { rep = 0.4 }
+  },
+
+  LargeObjects = {
+    meter = {},
+    alien_maul = {},
+    briefcase = {},
+    spoon = {},
+    spoon_gold = {},
+    shovel = {},
+    cutters = {},
+    baseballbat = {},
+    slot_lever = {},
+    hockey = { anim = "melee_baseballbat" },
+    buck = {},
+    dingdong = {},
+    road = {}
+  },
+
+  Knives = {
+    kabar = {},
+    toothbrush = {},
+    clean = {},
+    kabartanto = {},
+    nin = {},
+    fork = {},
+    shawn = {},
+    boxcutter = {},
+    bayonet = {},
+    sword = {},
+    fear = {},
+    hauteur = {},
+    ballistic = {},
+    pugio = {},
+    kampfmesser = {},
+    wing = { rep = 0.5 },
+    ostry = {},
+    switchblade = {},
+    grip = {},
+    push = {},
+    twins = {},
+    bowie = {},
+    chef = {},
+    x46 = {},
+    tiger = {},
+    catch = {},
+    scoutknife = {},
+    gerber = {},
+    fairbair = {},
+    poker = {},
+    cqc = {},
+    rambo = {}
+  },
+
+  SmallBlades = {
+    cs = { rep = 0.75, dismember = true },
+    pitchfork = {},
+    sandsteel = { dismember = true },
+    gator = { dismember = true },
+    oxide = { dismember = true },
+    agave = { dismember = true },
+    bullseye = { dismember = true },
+    scalper = { dismember = true },
+    meat_cleaver = { dismember = true },
+    cleaver = { dismember = true },
+    tomahawk = { dismember = true },
+    machete = { dismember = true },
+    becker = { dismember = true },
+    iceaxe = {}
+  },
+
+  LargeBlades = {
+    beardy = { dismember = true },
+    mining_pick = {},
+    morning = {},
+    great = { dismember = true },
+    freedom = {},
+    fireaxe = { rep = 1.4, dismember = true  },
+    barbedwire = {}
+  }
+}
+
 Hooks:PostHook(BlackMarketTweakData, "_init_melee_weapons", "CrimDusk_InitMeleeTweakData", function(self)
-  -- Blunt
-  local Punch = { "fists", "fight", "moneybundle" }
-  local SmallObject = {
-    "swagger", "aziz", "spatula", "microphone", "selfie", "zeus", "baton", "chac", "shock", "oldbaton", "detector",
-    "branding_iron", "croupier_rake", "brick", "model24", "funder_strike", "sap", "bonk", "bonk2", "micstand", "taser", "hammer", "shillelagh", "stick",
-    "piggy_hammer", "whiskey", "tenderizer", "brass_knuckles", "boxing_gloves"
-  }
-  local LargeObject = { "meter", "alien_maul", "briefcase", "spoon", "spoon_gold", "shovel", "cutters", "baseballbat", "slot_lever", "hockey", "buck", "dingdong", "road" }
+  for MeleeClass, MeleeClassData in pairs(MeleeClasses) do
+    for MeleeWeapon, MeleeData in pairs(MeleeClassData) do
+      local Range = self.melee_weapons[MeleeWeapon].stats.range
+      local Conceal = self.melee_weapons[MeleeWeapon].stats.concealment
 
-  for _, weapon in ipairs(Punch) do
-    self.melee_weapons[weapon].stats.weapon_type = "blunt"
-    self.melee_weapons[weapon].stats.min_damage = 2
-    self.melee_weapons[weapon].stats.max_damage = 4
-    self.melee_weapons[weapon].stats.min_damage_effect = 2
-    self.melee_weapons[weapon].stats.max_damage_effect = 2
-    self.melee_weapons[weapon].stats.charge_time = 1
+      self.melee_weapons[MeleeWeapon].stats = MeleeStats[MeleeClass]
+      self.melee_weapons[MeleeWeapon].stats.range = Range
+      self.melee_weapons[MeleeWeapon].stats.concealment = Conceal
+      self.melee_weapons[MeleeWeapon].stats.remove_weapon_movement_penalty = true
+
+      for Stat, Value in pairs(MeleeData) do
+        if Stat == "rep" then self.melee_weapons[MeleeWeapon].repeat_expire_t = Value 
+        elseif Stat == "anim" then self.melee_weapons[MeleeWeapon].anim_global_param = Value
+        elseif Stat == "dismember" then self.melee_weapons[MeleeWeapon].dismember = Value end
+      end
+
+      local AnimSet = self.melee_weapons[MeleeWeapon].anim_global_param
+      if ResetTimers[AnimSet] then self.melee_weapons[MeleeWeapon].repeat_expire_t = ResetTimers[AnimSet] end
+    end
   end
-
-  for _, weapon in ipairs(SmallObject) do
-    self.melee_weapons[weapon].stats.weapon_type = "blunt"
-    self.melee_weapons[weapon].stats.min_damage = 4
-    self.melee_weapons[weapon].stats.max_damage = 6
-    self.melee_weapons[weapon].stats.min_damage_effect = 2
-    self.melee_weapons[weapon].stats.max_damage_effect = 2
-    self.melee_weapons[weapon].stats.charge_time = 2
-  end
-
-  for _, weapon in ipairs(LargeObject) do
-    self.melee_weapons[weapon].stats.weapon_type = "blunt"
-    self.melee_weapons[weapon].stats.min_damage = 6
-    self.melee_weapons[weapon].stats.max_damage = 8
-    self.melee_weapons[weapon].stats.min_damage_effect = 2
-    self.melee_weapons[weapon].stats.max_damage_effect = 2
-    self.melee_weapons[weapon].stats.charge_time = 3
-  end
-
-  -- Sharp
-  local Knives = {
-    "kabar", "toothbrush", "clean", "kabartanto", "nin", "fork", "shawn", "boxcutter", "bayonet", "sword", "fear", "hauteur", "ballistic", "pugio", "kampfmesser",
-    "wing", "ostry", "switchblade", "grip", "push", "twins", "bowie", "chef", "x46", "tiger", "catch", "scoutknife", "gerber", "fairbair", "poker", "cqc", "rambo"
-  }
-  local SmallBlades = { "cs", "pitchfork", "sandsteel", "gator", "oxide", "agave", "bullseye", "scalper", "meat_cleaver", "cleaver", "tomahawk", "machete", "becker", "iceaxe" }
-  local LargeBlades = { "beardy", "mining_pick", "morning", "great", "freedom", "fireaxe", "barbedwire" }
-
-  for _, weapon in ipairs(Knives) do
-    self.melee_weapons[weapon].stats.weapon_type = "sharp"
-    self.melee_weapons[weapon].stats.min_damage = 2
-    self.melee_weapons[weapon].stats.max_damage = 5
-    self.melee_weapons[weapon].stats.min_damage_effect = 0.5
-    self.melee_weapons[weapon].stats.max_damage_effect =  0.5
-    self.melee_weapons[weapon].stats.charge_time = 1
-  end
-
-  for _, weapon in ipairs(SmallBlades) do
-    self.melee_weapons[weapon].stats.weapon_type = "sharp"
-    self.melee_weapons[weapon].stats.min_damage = 5
-    self.melee_weapons[weapon].stats.max_damage = 8
-    self.melee_weapons[weapon].stats.min_damage_effect = 0.5
-    self.melee_weapons[weapon].stats.max_damage_effect = 0.5
-    self.melee_weapons[weapon].stats.charge_time = 2
-  end
-
-  for _, weapon in ipairs(LargeBlades) do
-    self.melee_weapons[weapon].stats.weapon_type = "sharp"
-    self.melee_weapons[weapon].stats.min_damage = 8
-    self.melee_weapons[weapon].stats.max_damage = 11
-    self.melee_weapons[weapon].stats.min_damage_effect = 0.5
-    self.melee_weapons[weapon].stats.max_damage_effect = 0.5
-    self.melee_weapons[weapon].stats.charge_time = 3
-  end
-
-  -- Repeat reset time
-  local AxeAnims = {
-    "tomahawk", "moneybundle", "bullseye", "model24", "swagger", "shillelagh", "meat_cleaver", "hammer", "whiskey", "spatula", "scalper", "tenderizer", "branding_iron",
-    "microphone", "detector", "micstand", "oldbaton", "slot_lever", "croupier_rake", "morning", "shock", "funder_strike", "agave"
-  }
-  local KnifeMacheteAnims = { "kabar", "bowie", "machete", "gator", "oxide", "x46", "kampfmesser" }
-  local Knife2Anims = { "rambo", "gerber", "bayonet" }
-  local BaseballAnims = { "barbedwire", "dingdong", "alien_maul", "piggy_hammer", "stick", "bonk", "bonk2", "spoon", "spoon_gold", "hockey" }
-  local FistAnims = { "fists", "brass_knuckles", "tiger", "zeus", "push" }
-
-  for _, weapon in ipairs(AxeAnims) do self.melee_weapons[weapon].repeat_expire_t = 0.35 end
-  for _, weapon in ipairs(BaseballAnims) do self.melee_weapons[weapon].repeat_expire_t = 0.8 end
-  for _, weapon in ipairs(KnifeMacheteAnims) do self.melee_weapons[weapon].repeat_expire_t = 0.6 end
-  for _, weapon in ipairs(Knife2Anims) do self.melee_weapons[weapon].repeat_expire_t = 0.4 end
-
-  self.melee_weapons.wing.repeat_expire_t = 0.5
-  self.melee_weapons.cs.repeat_expire_t = 0.75
-  self.melee_weapons.fireaxe.repeat_expire_t = 1.4
-  self.melee_weapons.road.repeat_expire_t = 0.65
-  self.melee_weapons.brick.repeat_expire_t = 0.4
-  self.melee_weapons.happy.repeat_expire_t = 0.4
-
-  -- Animation swaps
-  self.melee_weapons.hockey.anim_global_param = "melee_baseballbat"
 end)

@@ -1,6 +1,6 @@
 <mod name="Thievenfall" global_key="thievenfall" author="~/cat/em1/nal/" color="Color(0.734375,0.4921875,0.73828125)" image="logo/dawn">
   <!-- Auto update from latest GitHub release -->
-  <AssetUpdates version="0.5.3" id="CATEM1NAL/PD2-Thievenfall" provider="github" release="true"/>
+  <AssetUpdates version="0.5.4" id="CATEM1NAL/PD2-Thievenfall" provider="github" release="true"/>
 
   <AddFiles directory="assets">
     <png path="logo/dawn"/>
@@ -108,6 +108,7 @@
         </hooks>
 
         <hooks directory="enemies"> <!-- root/lua/units/enemies/ -->
+          <hook source_file="lib/units/enemies/cop/copdamage" file="copdamage.lua"/>
           <hook source_file="lib/units/enemies/spooc/actions/lower_body/actionspooc" file="actionspooc.lua"/>
         </hooks>
       </hooks>
