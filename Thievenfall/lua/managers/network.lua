@@ -7,7 +7,7 @@ NetworkMatchMakingEPIC._BUILD_SEARCH_INTEREST_KEY = "Criminal Dusk v" .. Global.
 if NetworkHelper:IsClient() then
   -- Receive heist count from host
   NetworkHelper:AddReceiveHook("CrimDusk_HeistCount", "CrimDusk_CheckRunWon", function(data, sender)
-    local HeistsWon = tonumber(data)
+    local HeistsWon = tonumber(data) or 0
 
     if HeistsWon < 5 then
       Hooks:Add("LocalizationManagerPostInit", "CrimDusk_PDTHNames", function(loc)
