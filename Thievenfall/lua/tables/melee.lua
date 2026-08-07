@@ -97,7 +97,7 @@ Global.CrimDusk.melee.classes = {
     sandsteel = { dismember = true },
     gator = { dismember = true },
     oxide = { dismember = true },
-    agave = { dismember = true },
+    agave = { rep = 0.35, dismember = true },
     bullseye = { dismember = true },
     scalper = { dismember = true },
     meat_cleaver = { dismember = true },
@@ -155,4 +155,4 @@ Global.CrimDusk.melee.stats = {
   }
 }
 
-Global.CrimDusk.melee.reset = { melee_axe = 0.35, melee_baseball = 0.8, melee_machete = 0.6, melee_knife2 = 0.4 }
+Global.CrimDusk.melee.reset = { melee_axe = 0.35, melee_baseball = 0.8, melee_machete = 0.6, melee_knife = 0.6, melee_knife2 = 0.4 }

@@ -49,9 +49,7 @@ function CrimDusk:Init()
 
   function self.GoLoud()
     CrimDusk.Log(FileIdent, "Level ID: " .. Global.game_settings.level_id)
-    local LoudDelay = Global.CrimDusk.LoudTimers[Global.game_settings.level_id]
-    if not LoudDelay then LoudDelay = 3 end
-
+    local LoudDelay = Global.CrimDusk.heists[Global.game_settings.level_id].delay or 3
     DelayedCalls:Add("CrimDusk_GoLoudDelay", LoudDelay, function() managers.groupai:state():on_police_called("empty") end)
   end
 
@@ -168,6 +166,7 @@ function Global.CrimDusk:Init()
   -- tweakdata modification tables
   dofile(CrimDusk.ModPath .. "lua/tables/melee.lua" )
   dofile(CrimDusk.ModPath .. "lua/tables/weapons.lua" )
+  dofile(CrimDusk.ModPath .. "lua/tables/heists.lua" )
 
   -- Data validation
   self.data.heists_won = self.data.heists_won or 0
@@ -191,41 +190,6 @@ function Global.CrimDusk:Init()
   self.extra_heists = {
     "hvh", "help", "rat", "nail", "haunted"
   }
-
-  self.StealthableHeists = { -- Alarm doesn't go off immediately on these heists
-    kosugi = true, fish = true, dark = true, tag = true, cage = true, sand = true,
-    pal = true, man = true, nmh = true, dah = true, gallery = true, framing_frame_3 = true,
-    election_day_2 = true, short1_stage1 = true, short1_stage2 = true, welcome_to_the_jungle_2 = true,
-    firestarter_2 = true, alex_2 = true, crojob2 = true, kenaz = true, chca = true, family = true
-  }
-  self.LoudHeists = { -- Heists that cannot be stealthed
-    "red2", "flat", "man", "mallcrasher", "branchbank", "ukrainian_job", "nightclub", "firestarter_1", "arm_for",
-    "roberts", "big", "mus", "hox_3", "arena", "friend", "sah", "mex", "chas", "bex", "pex", "chca", "fex", "pent",
-    "bph", "ranc", "trai", "corp", "deep", "vit"
-  }
-  self.UnmaskedHeists = { fex = true, pex = true, dah = true, fish = true, ranc = true, mex = true, trai = true, arm_for = true, mus = true, crojob2 = true }
-
-  self.suits = {
-    loud = {
-      "watchdogs_1", "watchdogs_1_night", "watchdogs_2", "watchdogs_2_day", "man", "welcome_to_the_jungle_2", "firestarter_1",
-      "arm_cro", "arm_hcm", "arm_par", "arm_fac", "arm_for", "mia_2", "hox_1", "hox_2", "crojob3", "hox_3", "shoutout_raid",
-      "jolly", "pbr", "pbr2", "chew", "friend", "spa", "des", "deep", "rat"
-    },
-    stealth = {
-      "framing_frame_3", "short1_stage1", "short1_stage2", "firestarter_2", "election_day_2", "kosugi", "gallery", "dark", "tag", "sand"
-    },
-    suit = {
-      "red2", "flat", "nmh", "four_stores", "mallcrasher", "branchbank", "ukrainian_job", "nightclub", "alex_1",
-      "family", "roberts", "election_day_3", "big", "mia_1", "cage", "kenaz", "peta", "peta2", "born", "run", "dah", "rvd2",
-      "chas", "bex", "pex", "fex", "pent", "corp", "haunted"
-    },
-    custom = {
-      mad = "winter_suit", pines = "rusbear", cane = "elfsuit", arm_und = "jumpsuit", mus = "cable_guy", crojob2 = "cable_guy",
-      arena = "leatherfluff", moon = "lonorwa", fish = "tux", brb = "rusbear", mex = "bikervest", chca = "tux", ranc = "bullranch",
-      trai = "raincoat", hvh = "haunted", nail = "moneysuit", help = "classyske"
-    }
-  }
-  self.LoudTimers = { friend = 5, deep = 30, firestarter_1 = 5 }
 end
 
 -- Logo replacements

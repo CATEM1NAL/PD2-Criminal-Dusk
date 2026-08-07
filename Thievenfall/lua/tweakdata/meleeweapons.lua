@@ -13,14 +13,17 @@ Hooks:PostHook(BlackMarketTweakData, "_init_melee_weapons", "CrimDusk_InitMeleeT
       self.melee_weapons[MeleeWeapon].stats.concealment = Conceal
       self.melee_weapons[MeleeWeapon].stats.remove_weapon_movement_penalty = true
 
+      local RepTimeChanged
       for Stat, Value in pairs(MeleeData) do
-        if Stat == "rep" then self.melee_weapons[MeleeWeapon].repeat_expire_t = Value 
+        if Stat == "rep" then
+          self.melee_weapons[MeleeWeapon].repeat_expire_t = Value
+          RepTimeChanged = true
         elseif Stat == "anim" then self.melee_weapons[MeleeWeapon].anim_global_param = Value
         elseif Stat == "dismember" then self.melee_weapons[MeleeWeapon].dismember = Value end
       end
 
       local AnimSet = self.melee_weapons[MeleeWeapon].anim_global_param
-      if ResetTimers[AnimSet] then self.melee_weapons[MeleeWeapon].repeat_expire_t = ResetTimers[AnimSet] end
+      if not RepTimeChanged and ResetTimers[AnimSet] then self.melee_weapons[MeleeWeapon].repeat_expire_t = ResetTimers[AnimSet] end
     end
   end
 end)

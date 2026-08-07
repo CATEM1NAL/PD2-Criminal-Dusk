@@ -55,8 +55,9 @@ bm_menu_skill_locked_tag_team: "Buy the h3h3 Character Pack and reach level 80 t
 bm_menu_skill_locked_damage_control: "Requires the 'Virtue' skill! (Specialist)"
 
 # Upgrade Requirements
-menu_asset_lock_buy_bodybags_asset: "Requires the 'Inside Man' skill (Ghost)!"
-menu_asset_lock_buy_spotter_asset: "Requires the 'Inside Man' skill (Ghost)!"
+menu_asset_lock_buy_bodybags_asset: "Requires the 'Inside Man' skill!"
+menu_asset_lock_buy_spotter_asset: "Requires the 'Inside Man' skill!"
+menu_asset_lock_additional_assets: "Requires the 'Inside Man' skill!"
 bm_menu_not_enough_cash: "Not enough cash."
 
 # Perk Effects

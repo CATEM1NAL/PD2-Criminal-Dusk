@@ -43,6 +43,6 @@ end)
 
 -- Force maskup
 NetworkHelper:AddReceiveHook("CrimDusk_MaskedUp", "CrimDusk_ForceLoudNetwork", function()
-  if Global.CrimDusk.StealthableHeists[Global.game_settings.level_id] or managers.groupai:state():is_police_called() then return end
+  if Global.CrimDusk.heists[Global.game_settings.level_id].stealthable or managers.groupai:state():is_police_called() then return end
   CrimDusk.GoLoud()
 end)
