@@ -84,15 +84,17 @@ heist_cd_28stores_brief: "This is it... the big one. Or, big twenty eight.\n\nI 
 
 ### SKILLS ###
 # Description Changes
-st_menu_perks: "Specialist"
-st_menu_perks_tree1: "Agent"
-st_menu_perks_tree2: "Mercenary"
-st_menu_perks_tree3: "Substance Abuser"
+st_menu_hoxton_pack: "Convict"
 
-st_menu_bonus: "Outcast"
-st_menu_bonus_tree1: "Veteran"
-st_menu_bonus_tree2: "Gunsmith"
-st_menu_bonus_tree3: "Rejected"
+# Subtree names
+st_menu_mastermind_single_shot: "Marksman"
+st_menu_enforce_shotgun: "Mercenary"
+st_menu_enforcer_armor: "Muscle"
+st_menu_technician_auto: "Gunsmith"
+st_menu_ghost_stealth: "Infiltrator"
+st_menu_ghost_concealed: "Agent"
+st_menu_ghost_silencer: "Hitman"
+st_menu_fugitive_pistol_akimbo: "Substance Abuser"
 
 ## Mastermind
 menu_tea_time_beta_desc: "$lv1;Place doctor bags and first aid kits ##50%## faster."
@@ -134,7 +136,7 @@ menu_triathlete_beta_desc: "$lv1;The crew gains ##0.5## damage absorption per ho
 menu_deep_throat: "Deep Throat"
 menu_deep_throat_desc: "$lv1;Your shout range is increased by ##50%##.\n\n$lv2;Your shout range is increased by ##100%##."
 
-menu_joker_beta_desc: "THIS SKILL REQUIRES ##DOMINATOR## (OUTCAST)!\n\n$lv1;You can convert a dominated cop to fight for you.\n\n$lv2;Your conversion speed is ##50%## faster and you can now have ##2## converted cops fighting for you at once."
+menu_joker_beta_desc: "$lv1;You can convert a dominated cop to fight for you.\n\n$lv2;Your conversion speed is ##50%## faster and you can now have ##2## converted cops fighting for you at once."
 
 menu_joker_damage: "Punisher"
 menu_joker_damage_desc: "THIS SKILL REQUIRES ##JOKER##!\n\n$lv1;Your converts deal ##50%## more damage.\n\n$lv2;Your converts deal ##100%## more damage."
@@ -188,7 +190,7 @@ menu_shotgun_accuracy_desc: "$lv1;Shotgun accuracy is increased by ##40%## while
 
 menu_far_away_beta_desc: "$lv1;Shotgun effective range is increased by ##50%## while aiming down sights."
 
-menu_overkill_beta_desc: "$lv1;Kills with a shotgun or OVE9000 saw grant a ##50%## damage bonus for ##5## seconds.\n\n$lv2;Damage bonus now applies to any ranged weapon, but still requires a shotgun or saw kill to activate."
+menu_overkill_beta_desc: "$lv1;Kills with shotguns or the OVE9000 saw grant a ##50%## damage bonus for ##5## seconds."
 
 menu_team_armor_regen: "Herd Mentality"
 menu_team_armor_regen_desc: "$lv1;Armor recovery speed for the crew is increased by ##25%##. This does not stack."
@@ -203,8 +205,8 @@ menu_show_of_force_beta_desc: "$lv1;Armor of the three ballistic vests is increa
 menu_pack_mule_beta: "Catapult"
 menu_pack_mule_beta_desc: "$lv1;Bag throwing distance is increased by ##50%##."
 
-menu_armor_bag_reduction: "Pack Mule"
-menu_armor_bag_reduction_desc: "$lv1;Bag movement penalty is reduced by ##1%## for every ##10## points of armor."
+menu_armor_bag_reduction: "Beast of Burden"
+menu_armor_bag_reduction_desc: "$lv1;Bag movement penalty is reduced by ##1%## for every ##10## points of armor.\n\n$lv2;The bag movement penalty does not affect you."
 
 menu_oppressor_beta_desc: "$lv1;Your armor recovers ##15%## faster."
 
@@ -320,7 +322,7 @@ menu_sprinter: "Sprinter"
 menu_sprinter_desc: "$lv1;Sprint speed increased by ##25%##.\n\n$lv2;Dodge is increased by ##10## while sprinting."
 
 menu_move_speed: "Endurance"
-menu_move_speed_desc: "$lv1;Movement speed increased by ##10%##."
+menu_move_speed_desc: "$lv1;Movement speed increased by ##10%##.\n\n$lv2;Sprint speed increased by ##25%##. Dodge increased by ##10## while sprinting.\n\n$lv3;Move ##25%## faster while walking and ##10%## faster while crouching."
 
 menu_sprint_loaded: "Sprint Loaded"
 menu_sprint_loaded_desc: "$lv1;You can reload while sprinting."
@@ -509,7 +511,7 @@ menu_crouch_dodge: "Duck and Cover"
 menu_crouch_dodge_desc: "$lv1;Gain ##5## dodge while crouching.\n\n$lv2;Gain ##15## dodge while crouching."
 
 menu_dominator: "Dominator"
-menu_dominator_desc: "$lv1;You can shout at cops to intimidate them, turning them into a hostage.\n\n$lv2;Your intimidation is ##50%## more effective."
+menu_dominator_desc: "$lv1;Your intimidation against cops is ##100%## more effective.\n\n$lv2;You can intimidate cops during assaults."
 
 menu_oppressor_name: "Oppressor"
 menu_oppressor_desc: "$lv1;Threat is increased by ##10%##.\n\n$lv2;Threat is increased by ##20%##.\n\n$lv3;Threat is increased by ##50%##."
@@ -556,9 +558,6 @@ menu_blanks_desc: "$lv1;The first time you shoot a civilian they won't die."
 
 menu_loud_and_proud: "Loud And Proud"
 menu_loud_and_proud_desc: "$lv1;Deal an additional ##5%## damage for each ##7## points of detection risk above ##40##, up to ##25%## extra damage.\n\n$lv2;Damage is increased to ##10%## per ##7## points, for a total of ##50%## extra damage."
-
-menu_beast_of_burden: "Beast of Burden"
-menu_beast_of_burden_desc: "$lv1;The bag movement penalty does not affect you."
 
 menu_pager_snatch: "Pager Snatch"
 menu_pager_snatch_desc: "$lv1;Killing a guard with melee has a ##25%## chance to not set off their pager.\n\n$lv2;Melee kills now have a ##50%## chance of ignoring pagers.\n\n$lv3;Melee kills now have a ##75%## chance of ignoring pagers.\n\n$lv4;Melee kills will never trigger pagers."
@@ -676,7 +675,7 @@ loading_gameplay_35: "Don't be afraid to leave bags alone - cops don't tamper wi
 loading_gameplay_37: "Making effective use of both your weapons is necessary to survive. Don't forget to switch weapons if needed!"
 loading_gameplay_42: "Headshots deal double damage."
 loading_gameplay_46: "Snipers hurt - they can take out all your armor in a single shot, or if your armor is broken, instantly down you."
-loading_gameplay_53: "Enemies aren't easily afraid. Taking cops as hostages now requires the 'Dominator' skill (Outcast)."
+loading_gameplay_53: "Enemies aren't easily afraid. You can only take cops as hostages between assaults, unless you have the 'Dominator' skill (Outcast)."
 loading_gameplay_55: "Doctor bags will restore one down per charge. First aid kits will restore your health, but can restore downs with the 'Amphetamine' skill (Mastermind)."
 loading_gameplay_57: "If you are taken into custody you will remain in custody at the start of the next heist."
 loading_gameplay_58: "First aid kits are better than doctor bags if you haven't been down yet or just need a quick pick-me-up."

@@ -72,7 +72,19 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   self.values.player.melee_kill_increase_reload_speed = { { 2, 3 } } -- Mag Steal
   self.values.trip_mine.damage_multiplier = { 2, 3 } -- Trip Mine damage
   self.values.player.marked_enemy_damage_mul = { 1.25 } -- High Value Target
-  
+  self.values.player.intimidation_multiplier = { 2 } -- Dominator
+  self.values.player.bleed_out_health_multiplier = { 1.2, 1.4, 1.6, 1.8, 2 } -- Bleedout health
+
+  -- Assault Dominator
+  self.values.player.assault_intimidate = { true } -- Assault Dominator
+  self.definitions.player_assault_intimidate = {
+    category = "feature",
+    upgrade = {
+      category = "player",
+      upgrade = "assault_intimidate",
+      value = 1
+    }
+  }
 
   -- Frenzy
   self.values.player.health_damage_reduction = { 0.75, 0.5 }
@@ -301,7 +313,9 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
     doctor_bag_amount_increase = 3, ammo_bag_ammo_increase = 3, weapon_passive_reload_speed_multiplier = 3,
     temporary_chico_injector = 3,
 
-    player_melee_kill_snatch_pager_chance = 4, player_bleedout_timer = 4
+    player_melee_kill_snatch_pager_chance = 4, player_bleedout_timer = 4,
+
+    player_bleed_out_health_multiplier = 5
   }
 
   for upgrade, count in pairs(NewUpgrades) do
