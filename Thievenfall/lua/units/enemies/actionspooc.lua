@@ -105,7 +105,8 @@ local function RandomCloakerEffect(unit)
   if options == 0 then return
   else options = options * 2 end
 
-  CloakerEffects[math.random(options)](unit)
+  local random = math.clamp(unit:id() % options + 1, 1, options)
+  CloakerEffects[math.random(random)](unit)
 end
 
 -- Replace mutator calls with RandomCloakerEffect
