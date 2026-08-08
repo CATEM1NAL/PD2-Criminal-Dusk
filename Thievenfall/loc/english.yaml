@@ -323,7 +323,7 @@ menu_sprinter: "Sprinter"
 menu_sprinter_desc: "$lv1;Sprint speed increased by ##25%##.\n\n$lv2;Dodge is increased by ##10## while sprinting."
 
 menu_move_speed: "Endurance"
-menu_move_speed_desc: "$lv1;Movement speed increased by ##10%##.\n\n$lv2;Sprint speed increased by ##25%##. Dodge increased by ##10## while sprinting.\n\n$lv3;Move ##25%## faster while walking and ##10%## faster while crouching."
+menu_move_speed_desc: "$lv1;Move ##25%## faster while walking and ##10%## faster while crouching.\n\n$lv2;Sprint speed increased by ##25%##. Dodge increased by ##10## while sprinting.\n\n$lv3;Movement speed increased by ##10%##."
 
 menu_sprint_loaded: "Sprint Loaded"
 menu_sprint_loaded_desc: "$lv1;You can reload while sprinting."
