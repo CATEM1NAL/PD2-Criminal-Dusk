@@ -535,9 +535,9 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       name_id = "menu_ecm_quantity", desc_id = "menu_ecm_quantity_desc", icon_xy = { 3, 4 }
     }
     self.skills.move_speed = {
-      { upgrades = { "player_movement_speed_multiplier" }, cost = self.costs.default },
-      { upgrades = { "player_run_speed_multiplier", "player_run_dodge_chance" }, cost = self.costs.default },
       { upgrades = { "player_walk_speed_multiplier", "player_crouch_speed_multiplier" }, cost = self.costs.default },
+      { upgrades = { "player_run_speed_multiplier", "player_run_dodge_chance" }, cost = self.costs.default },
+      { upgrades = { "player_movement_speed_multiplier" }, cost = self.costs.default },
       name_id = "menu_move_speed", desc_id = "menu_move_speed_desc", icon_xy = { 1, 8 }
     }
     self.skills.moving_target = {

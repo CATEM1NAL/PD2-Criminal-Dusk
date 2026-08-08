@@ -102,7 +102,7 @@ Global.CrimDusk.heists = {
   pbr = { grading = "color_xxxgen", suit = "slaughterhouse" },
   pbr2 = { grading = "color_bhd", suit = "slaughterhouse" },
   wwh = { grading = "color_bhd" },
-  brb = { grading = "color_xxxgen", suit = "rusbear" },
+  brb = { grading = "color_bhd", suit = "rusbear" },
   tag = { stealthable = true, bonus = "big", grading = "color_bhd", suit = "sneak_suit" },
   des = { grading = "color_xxxgen", suit = "slaughterhouse" },
   sah = { grading = "color_bhd" },
