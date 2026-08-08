@@ -170,9 +170,9 @@ local function ModifyStats(self, WeaponClassName, WeaponClassData)
         self[Weapon].stats.reload = Value
 
       elseif Stat == "rof" then -- Fire rate
-        self[Weapon].fire_mode_data.fire_rate = Value
-        if self[Weapon].single then self[Weapon].single.fire_rate = Value end
-        if self[Weapon].auto then self[Weapon].auto.fire_rate = Value end
+        self[Weapon].fire_mode_data.fire_rate = 60 / Value
+        if self[Weapon].single then self[Weapon].single.fire_rate = 60 / Value end
+        if self[Weapon].auto then self[Weapon].auto.fire_rate = 60 / Value end
       end
     end
 

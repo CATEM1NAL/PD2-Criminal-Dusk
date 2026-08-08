@@ -8,12 +8,12 @@ Example heist entries:
   loud_heist_id = { delay = 5, grading = "color_y", suit = "suit_y" },
   ...
 
-unmasked: whether you spawn unmasked on this heist. uses default spawn state if not set.
-stealthable: whether this heist can be stealthed. if this isn't set, the heist will go loud upon masking up.
-bonus: stealth bonus assigned to this heist. value is a string that references the stealth bonuses table.
-delay: how many seconds it takes to go loud after masking up if heist is unstealthable. default is 3.
-grading: default colour grading to apply to this heist. the irony isn't lost on me, I promise.
-suit: suit worn when no custom suit is used.
+**unmasked**: whether you spawn unmasked on this heist. uses default spawn state if not set.
+**stealthable**: whether this heist can be stealthed. if this isn't set, the heist will go loud upon masking up.
+**bonus**: stealth bonus assigned to this heist. value is a string that references the stealth bonuses table.
+**delay**: how many seconds it takes to go loud after masking up if heist is unstealthable. default is 3.
+**grading**: default colour grading to apply to this heist. the irony isn't lost on me, I promise.
+**suit**: suit worn when no custom suit is used.
 ]]
 
 Global.CrimDusk.stealth_bonuses = { rng = 0.05, small = 0.1, big = 0.25, unmasked = 0.5 }
@@ -30,7 +30,7 @@ Global.CrimDusk.heists = {
   dah = { unmasked = true, stealthable = true, bonus = "small", grading = "color_xxxgen", suit = "suit" },
 
   -- Tutorials
-  short1_stage1 = { stealthable = true, bonus = "small", grading = "color_heat", suit = "sneak_suit" },
+  short1_stage1 = { stealthable = true, bonus = "small", grading = "color_bhd", suit = "sneak_suit" },
   short1_stage2 = { stealthable = true, bonus = "small", grading = "color_heat", suit = "sneak_suit" },
   short2_stage1 = { grading = "color_nice", suit = "suit" },
 

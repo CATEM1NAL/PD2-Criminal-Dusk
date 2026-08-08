@@ -1,5 +1,24 @@
 Global.CrimDusk.weapons = {}
 
+--[[
+Weapons fall into classes. Each class has subclasses.
+Classes and subclasses dictate the core weapon stats.
+Low damage rifles will all deal the same damage, etc.
+
+The following values exist:
+**dmg**: can be a direct damage value, but should be a lookup string to find the correct damage subclass.
+**dmgmult**: allows overriding the damage multiplier that exists for some weapons (snipers, etc).
+
+**mag:** overrides base magazine capacity.
+**acc**: overrides base spread index.
+**reload**: overrides base reload speed.
+**rof**: overrides fire rate. value assigned as rpm, converted to correct format later.
+**pickup**: overrides ammo pickup if needed. can assign table directly, recommended to use lookup string.
+
+**chamber**: number of rounds this weapon can chamber. defaults to 1 if not assigned.
+**magdump**: whether this weapon should lose unfired & unchambered rounds on reload. no effect on hand-loaded weapons.
+]]
+
 Global.CrimDusk.weapons.classes = {
   rifles = {
     hailstorm = { dmg = 12, chamber = 0 },
@@ -148,7 +167,7 @@ Global.CrimDusk.weapons.classes = {
     x_rage = { dmg = "high", chamber = 0 },
     chinchilla = { dmg = "high", chamber = 0 },
 
-    rsh12 = { dmg = 75, rof = 0.5, chamber = 0 }
+    rsh12 = { dmg = 75, rof = 120, chamber = 0 }
   },
 
   smgs = {
