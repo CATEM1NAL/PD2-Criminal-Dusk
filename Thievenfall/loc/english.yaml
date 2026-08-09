@@ -13,7 +13,7 @@ crimdusk_create_lobby_desc: "Begin playing Thievenfall."
 
 crimdusk_play_next_title: "Play Next Heist [$HEIST_NUM]"
 crimdusk_play_next_desc: "Campaign incomplete: next heist is $HEIST!"
-crimdusk_play_next_random: "Campaign completed!\nNext heist will be selected randomly."
+crimdusk_play_next_random: "Post-game: next heist will be randomly selected.\nYou are $NUMHEISTS heists into this campaign."
 
 crimdusk_campaign_active: "The next heist is $HEIST."
 crimdusk_campaign_inactive: "The next heist will be random."
@@ -608,6 +608,8 @@ menu_team_loadout: "Crew"
 menu_jukebox: "Music"
 hud_skip_blackscreen: "$BTN_ACCEPT"
 menu_lobby_menu_state_lobby: "" # removes the "READY" text while in the main menu
+menu_lobby_menu_state_crimenet: "Viewing side jobs"
+menu_lobby_menu_state_skilltree: "Selecting skills"
 menu_edit_game_settings: "Lobby Settings"
 menu_reputation_permission: "Level Limit"
 menu_toggle_drop_in: "Drop-in"

@@ -93,19 +93,19 @@ Global.CrimDusk.melee.classes = {
 
   SmallBlades = {
     cs = { rep = 0.75, dismember = true },
-    pitchfork = {},
+    pitchfork = {  },
     sandsteel = { dismember = true },
     gator = { dismember = true },
     oxide = { dismember = true },
     agave = { rep = 0.35, dismember = true },
-    bullseye = { dismember = true },
+    bullseye = {  },
     scalper = { dismember = true },
     meat_cleaver = { dismember = true },
     cleaver = { dismember = true },
     tomahawk = { dismember = true },
     machete = { dismember = true },
     becker = { dismember = true },
-    iceaxe = {}
+    iceaxe = {  }
   },
 
   LargeBlades = {
@@ -114,7 +114,7 @@ Global.CrimDusk.melee.classes = {
     morning = {},
     great = { dismember = true },
     freedom = {},
-    fireaxe = { rep = 1.4, dismember = true  },
+    fireaxe = { dismember = true, anim = "melee_baseballbat" },
     barbedwire = {}
   }
 }
@@ -155,4 +155,6 @@ Global.CrimDusk.melee.stats = {
   }
 }
 
-Global.CrimDusk.melee.reset = { melee_axe = 0.35, melee_baseball = 0.8, melee_machete = 0.6, melee_knife = 0.6, melee_knife2 = 0.4 }
+Global.CrimDusk.melee.reset = { melee_axe = 0.35, melee_baseballbat = 0.8, melee_machete = 0.4, melee_knife = 0.6, melee_knife2 = 0.4 }
+Global.CrimDusk.melee.expire = { melee_baseballbat = 1.2 }
+Global.CrimDusk.melee.damage_delay = { melee_baseballbat = 0.2 }

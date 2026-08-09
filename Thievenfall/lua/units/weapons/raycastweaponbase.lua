@@ -10,20 +10,20 @@ end)
 Hooks:OverrideFunction(RaycastWeaponBase, "on_reload", function(self)
   local ammo_base = self._reload_ammo_base or self:ammo_base()
   local amount = ammo_base:get_ammo_max_per_clip()
+  local CurrentMag = ammo_base:get_ammo_remaining_in_clip()
+
   local WeaponTweak = self:weapon_tweak_data()
+  local chamber = WeaponTweak.ChamberRounds or 1
+  local MagDump = CurrentMag - chamber
+
+  if CurrentMag > 0 and CurrentMag < chamber then amount = amount + MagDump end
 
   -- Ammo not used is wasted
-  if WeaponTweak.MagDump then
-    local MagDump = ammo_base:get_ammo_remaining_in_clip()
-    if MagDump ~= 0 then
-      local chamber = WeaponTweak.ChamberRounds
-      if chamber > 0 then MagDump = MagDump - chamber end
-      ammo_base:set_ammo_total(ammo_base._ammo_total - MagDump)
-    end
+  if WeaponTweak.MagDump and CurrentMag > chamber then
+    ammo_base:set_ammo_total(ammo_base._ammo_total - MagDump)
   end
 
   if self._setup.expend_ammo then ammo_base:set_ammo_remaining_in_clip(math.min(ammo_base:get_ammo_total(), amount))
-
   else
     ammo_base:set_ammo_remaining_in_clip(amount)
     ammo_base:set_ammo_total(amount)
@@ -137,11 +137,13 @@ Hooks:OverrideFunction(RaycastWeaponBase, "add_ammo", function(self, ratio, add_
   return picked_up, add_amount
 end)
 
-
+--[[
+-- uncomment to see spread values, used for testing
 Hooks:PostHook(NewRaycastWeaponBase, "_get_spread", "CrimDusk_NewRaycastGetSpread", function(self)
   local spread_x, spread_y = Hooks:GetReturn()
   CrimDusk.Log(FileIdent, "Spread: " .. spread_x .. " " .. spread_y)
 end)
+]]
 
 -- Mag Plus
 Hooks:OverrideFunction(NewRaycastWeaponBase, "calculate_ammo_max_per_clip", function(self)

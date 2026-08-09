@@ -3,20 +3,32 @@ local FileIdent = "Victory"
 
 Hooks:PostHook(VictoryState, "at_enter", "CrimDusk_HeistWon", function(self)
   -- Heist completion
-  local campaign = CrimDusk.SettingsData.permadeath and "heists_won_perma" or "heists_won"
+  local heists_won = "heists_won" .. CrimDusk.IsPermadeath()
   if managers.job:on_last_stage() then
-    Global.CrimDusk.data[campaign] = Global.CrimDusk.data[campaign] + 1
-    CrimDusk.Log(FileIdent, "Heists won: " .. Global.CrimDusk.data[campaign])
-    CrimDusk:WriteSave(FileIdent, "heist completed")
+    Global.CrimDusk.data[heists_won] = Global.CrimDusk.data[heists_won] + 1
+    CrimDusk.Log(FileIdent, "Heists won: " .. Global.CrimDusk.data[heists_won])
 
-    if Global.CrimDusk.data[campaign] == #Global.CrimDusk.campaign then
+    if Global.CrimDusk.data[heists_won] == #Global.CrimDusk.campaign then
+      NetworkHelper:SendToPeers("CrimDusk_CampaignWon", true)
       CrimDusk.ChatNotify(managers.localization:text("crimdawn_chat_victory"))
       DelayedCalls:Add("CrimDusk_VictoryTease", 3, function()
         CrimDusk.ChatNotify(managers.localization:text("crimdawn_chat_victory2"))
       end)
+
+    -- Set up flags for post-game campaign
+    elseif Global.CrimDusk.data[heists_won] > #Global.CrimDusk.campaign then
+      local Permadeath = CrimDusk.IsPermadeath()
+      local CurrentHeist = Global.CrimDusk.data["heist_chain" .. Permadeath][#Global.CrimDusk.data["heist_chain" .. Permadeath]]
+
+      for Campaign, _ in pairs(Global.CrimDusk.mini_campaigns) do
+        if Global.CrimDusk.mini_campaigns[Campaign][CurrentHeist] then
+          Global.CrimDusk.data[Campaign .. Permadeath] = Global.CrimDusk.data[Campaign .. Permadeath] + 1
+        end
+      end
+
+      if CurrentHeist == "bph" then self.data.bain_freed = true end
     end
 
+    CrimDusk:WriteSave(FileIdent, "heist completed")
   end
-
-  NetworkHelper:SendToPeers("CrimDusk_HeistCount", Global.CrimDusk.data[campaign])
 end)

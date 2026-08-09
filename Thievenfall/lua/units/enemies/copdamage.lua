@@ -1,3 +1,18 @@
+local FileIdent = "CopDamage"
+
+Hooks:PreHook(CopDamage, "die", "CrimDusk_PreCopDie", function(self)
+  local enemy = self._unit:base()._tweak_table
+
+  if enemy == "phalanx_vip" then
+    Global.CrimDusk.data["winters_dead" .. CrimDusk.IsPermadeath()] = true
+    CrimDusk:WriteSave(FileIdent, "Winters killed")
+
+  elseif enemy == "hector_boss" or enemy == "hector_boss_no_armor" then
+    Global.CrimDusk.data["hector_dead" .. CrimDusk.IsPermadeath()] = true
+    CrimDusk:WriteSave(FileIdent, "Hector killed")
+  end
+end)
+
 Hooks:OverrideFunction(CopDamage, "_dismember_condition", function(self, attack_data)
   local dismember_victim = false
   local target_is_spook = false
@@ -8,6 +23,18 @@ Hooks:OverrideFunction(CopDamage, "_dismember_condition", function(self, attack_
 
   local ValidMelee = tweak_data.blackmarket.melee_weapons[managers.blackmarket:equipped_melee_weapon()].dismember
   if target_is_spook and ValidMelee then dismember_victim = true end
+  return dismember_victim
+end)
+
+Hooks:OverrideFunction(CopDamage, "_sync_dismember", function(self, attacker_unit)
+  local dismember_victim = false
+  if not attacker_unit then return dismember_victim end
+
+  local peer_id = managers.network:session():peer_by_unit(attacker_unit):id()
+  local peer = managers.network:session():peer(peer_id)
+  local ValidMelee = tweak_data.blackmarket.melee_weapons[peer:melee_id()].dismember
+
+  if ValidMelee then dismember_victim = true end
   return dismember_victim
 end)
 

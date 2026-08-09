@@ -200,7 +200,7 @@ Global.CrimDusk.weapons.classes = {
     coal = { dmg = "med" },
 
     speen = { dmg = "high" },
-    sterling = { dmg = "high", chamber = 0 }
+    sterling = { dmg = "high", mag = 32, chamber = 0 }
   },
 
   special = {

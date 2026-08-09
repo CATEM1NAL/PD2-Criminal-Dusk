@@ -53,28 +53,34 @@ function CrimDusk:Init()
     DelayedCalls:Add("CrimDusk_GoLoudDelay", LoudDelay, function() managers.groupai:state():on_police_called("empty") end)
   end
 
+  function self.IsPermadeath()
+    return CrimDusk.SettingsData.permadeath and "_perma" or ""
+  end
+
   -- Play button text
   function self.PlayButtonLoc()
-    local campaign = CrimDusk.SettingsData.permadeath and "heists_won_perma" or "heists_won"
-    if Global.CrimDusk.campaign[Global.CrimDusk.data[campaign] + 1] then
+    local heists_won = "heists_won" .. CrimDusk.IsPermadeath()
+    if Global.CrimDusk.campaign[Global.CrimDusk.data[heists_won] + 1] then
       managers.localization:add_localized_strings({
         ["crimdusk_continue_run_desc"] = managers.localization:text("crimdusk_play_next_desc", {
-          HEIST = managers.localization:text("heist_" .. Global.CrimDusk.campaign[Global.CrimDusk.data[campaign] + 1])
+          HEIST = managers.localization:text("heist_" .. Global.CrimDusk.campaign[Global.CrimDusk.data[heists_won] + 1])
         }),
         ["menu_choose_new_contract"] = managers.localization:text("crimdusk_campaign_active", {
-          HEIST = managers.localization:text("heist_" .. Global.CrimDusk.campaign[Global.CrimDusk.data[campaign] + 1])
+          HEIST = managers.localization:text("heist_" .. Global.CrimDusk.campaign[Global.CrimDusk.data[heists_won] + 1])
         })
       })
     else managers.localization:add_localized_strings({
-        ["crimdusk_continue_run_desc"] = managers.localization:text("crimdusk_play_next_random"),
+        ["crimdusk_continue_run_desc"] = managers.localization:text("crimdusk_play_next_random", {
+          NUMHEISTS = #Global.CrimDusk.data["heist_chain" .. CrimDusk.IsPermadeath()]
+        }),
         ["menu_choose_new_contract"] = managers.localization:text("crimdusk_campaign_inactive")
       })
     end
 
     local HeistNumText = ""
-    local IsEndless = Global.CrimDusk.data[campaign] >= #Global.CrimDusk.campaign
-    if IsEndless then HeistNumText = (Global.CrimDusk.data[campaign] + 1)
-    else HeistNumText = Global.CrimDusk.data[campaign] + 1 .. "/" .. #Global.CrimDusk.campaign end
+    local IsEndless = Global.CrimDusk.data[heists_won] >= #Global.CrimDusk.campaign
+    if IsEndless then HeistNumText = (Global.CrimDusk.data[heists_won] + 1)
+    else HeistNumText = Global.CrimDusk.data[heists_won] + 1 .. "/" .. #Global.CrimDusk.campaign end
     managers.localization:add_localized_strings({
       ["crimdusk_continue_run_title"] = managers.localization:text("crimdusk_play_next_title", {
         HEIST_NUM = HeistNumText
@@ -84,10 +90,10 @@ function CrimDusk:Init()
 
   -- Difficulty scaling
   function self.DiffScale(ignore_cap)
-    local campaign = CrimDusk.SettingsData.permadeath and "heists_won_perma" or "heists_won"
-    if (Global.CrimDusk.data[campaign] or 0) < 5 then return Global.CrimDusk.data[campaign] + 2 end
+    local permadeath = CrimDusk.IsPermadeath()
+    if (Global.CrimDusk.data["heists_won" .. permadeath] or 0) < 5 then return Global.CrimDusk.data["heists_won" .. permadeath] + 2 end
 
-    local HeistsWon = Global.CrimDusk.data[campaign] - 5
+    local HeistsWon = Global.CrimDusk.data["heists_won" .. permadeath] - 5
     local RawDiff = HeistsWon / (#Global.CrimDusk.campaign - 5) * 7 + 2
     local RoundedDiff = math.floor(RawDiff + 0.5)
 
@@ -97,18 +103,26 @@ function CrimDusk:Init()
 
   -- Reset campaign state
   function self:Reset()
-    Global.CrimDusk.data = {
-      heists_won = 0, heist_chain = {},
-      heists_won_perma = 0, heist_chain_perma = {},
-      lives = 4, winters_dead = false
-    }
+    if CrimDusk.IsPermadeath() == "_perma" then
+      Global.CrimDusk.data = {
+        heists_won_perma = 0, heist_chain_perma = {}, lives_perma = 4,
+        hoxton_perma = 1, silk_road_perma = 1, city_of_gold_perma = 1, texas_heat_perma = 1,
+        winters_dead_perma = false, hector_dead_perma = false, bain_freed_perma = false
+      }
+
+    else
+      Global.CrimDusk.data = {
+        heists_won = 0, heist_chain = {}, lives = 4,
+        hoxton = 1, silk_road = 1, city_of_gold = 1, texas_heat = 1,
+        winters_dead = false, hector_dead = false, bain_freed = false
+      }
+    end
   end
 end
 
 CrimDusk:Init()
 
-local campaign = CrimDusk.SettingsData.permadeath and "heists_won_perma" or "heists_won"
-if NetworkHelper:IsHost() and Global.CrimDusk and (Global.CrimDusk.data[campaign] or 0) < 5 then
+if NetworkHelper:IsHost() and Global.CrimDusk and (Global.CrimDusk.data["heists_won" .. CrimDusk.IsPermadeath()] or 0) < 5 then
   Hooks:Add("LocalizationManagerPostInit", "CrimDusk_PDTHNames", function(loc)
     loc:add_localized_strings({
       ["menu_difficulty_normal"] = loc:text("crimdusk_pdth_normal"),
@@ -170,12 +184,26 @@ function Global.CrimDusk:Init()
 
   -- Data validation
   self.data.heists_won = self.data.heists_won or 0
-  self.data.heist_chain = self.data.heist_chain or {}
   self.data.heists_won_perma = self.data.heists_won_perma or 0
+  self.data.heist_chain = self.data.heist_chain or {}
   self.data.heist_chain_perma = self.data.heist_chain_perma or {}
   self.data.lives = self.data.lives or 4
+  self.data.lives_perma = self.data.lives or 4
+  self.data.bain_freed = self.data.bain_freed or false
+  self.data.bain_freed_perma = self.data.bain_freed_perma or false
 
-  self.campaign = {
+  self.mini_campaigns = {
+    hoxton = { cd_miami1 = true, cd_miami2 = true, cd_hox1 = true, cd_hox2 = true, hox_3 = true },
+    silk_road = { mex = true, bex = true, pex = true, fex = true },
+    city_of_gold = { chas = true, sand = true, chca = true, pent = true },
+    texas_heat = { ranc = true, trai = true, corp = true, deep = true }
+  }
+  for campaign, _ in pairs(self.mini_campaigns) do
+    self.data[campaign] = self.data[campaign] or 1
+    self.data[campaign .. "_perma"] = self.data[campaign .. "_perma"] or 1
+  end
+
+  self.campaign = { -- Main campaign
     "red2", "flat", "pal", "man", "nmh", -- PDTH Prologue
     "cd_tut1", "cd_tut2", "cd_tut3", "four_stores", "mallcrasher", "branchbank_prof", "ukrainian_job_prof", "nightclub", -- Early Vlad
     "cd_watchdogs1_wrapper", "cd_watchdogs2_wrapper", "cd_frame3", "cd_bigoil", "cd_firestarter1", "cd_firestarter2", "cd_rats", -- Hector/Elephant
@@ -187,8 +215,23 @@ function Global.CrimDusk:Init()
     "mex", "chas", "bex", "sand", "pex", "chca", "fex", "pent", "bph", "ranc", "trai", "corp", -- Bopocalypse
     "deep", "vit" -- Conclusion
   }
-  self.extra_heists = {
+  self.extra_heists = { -- Post-game bonus heists
     "hvh", "help", "rat", "nail", "haunted"
+  }
+
+  -- Heists to remove if Hector is dead
+  self.hector_heists = { cd_watchdogs1_wrapper = true, cd_watchdogs2_wrapper = true, cd_firestarter1 = true, cd_firestarter2 = true, cd_rats = true }
+
+  -- Used to lookup next heist in mini-campaign
+  self.lookup = {}
+  self.lookup.silk_road = { "mex", "bex", "pex", "fex" }
+  self.lookup.city_of_gold = { "chas", "sand", "chca", "pent" }
+  self.lookup.texas_heat = { "ranc", "trai", "corp", "deep" }
+  self.lookup.hoxton = { "cd_miami1", "cd_miami2", "cd_hox1", "cd_hox2", "hox_3" }
+
+  self.locke_heists = { -- Heists to keep if Bain is captured
+    brb = true, tag = true, des = true, sah = true, bph = true, nmh = true,
+    hvh = true, help = true, nail = true, haunted = true
   }
 end
 

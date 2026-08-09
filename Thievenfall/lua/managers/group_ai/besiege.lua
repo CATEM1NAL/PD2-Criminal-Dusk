@@ -126,7 +126,7 @@ Hooks:OverrideFunction(GroupAIStateBesiege, "_begin_assault_task", function(self
 end)
 
 Hooks:PreHook(GroupAIStateBesiege, "_end_regroup_task", "CrimDusk_GroupAIAssaultEnd", function(self)
-  if Global.CrimDusk.data.winters_dead then return end
+  if Global.CrimDusk.data["winters_dead" .. CrimDusk.IsPermadeath()] then return end
 
   -- Increase Winters spawn chance on assault end
   if not self._phalanx_center_pos or self._phalanx_despawn_time or self._phalanx_current_spawn_chance == 1 then return end

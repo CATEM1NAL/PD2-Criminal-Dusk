@@ -18,7 +18,12 @@ Hooks:PostHook(BlackMarketTweakData, "_init_melee_weapons", "CrimDusk_InitMeleeT
         if Stat == "rep" then
           self.melee_weapons[MeleeWeapon].repeat_expire_t = Value
           RepTimeChanged = true
-        elseif Stat == "anim" then self.melee_weapons[MeleeWeapon].anim_global_param = Value
+
+        elseif Stat == "anim" then
+          self.melee_weapons[MeleeWeapon].anim_global_param = Value
+          self.melee_weapons[MeleeWeapon].expire_t = Global.CrimDusk.melee.expire[Value]
+          self.melee_weapons[MeleeWeapon].melee_damage_delay = Global.CrimDusk.melee.damage_delay[Value]
+
         elseif Stat == "dismember" then self.melee_weapons[MeleeWeapon].dismember = Value end
       end
 
@@ -26,4 +31,10 @@ Hooks:PostHook(BlackMarketTweakData, "_init_melee_weapons", "CrimDusk_InitMeleeT
       if not RepTimeChanged and ResetTimers[AnimSet] then self.melee_weapons[MeleeWeapon].repeat_expire_t = ResetTimers[AnimSet] end
     end
   end
+
+  -- Animation tweaks
+  self.melee_weapons.cs.anim_attack_vars = { "var1", "var2", "var3" }
+  self.melee_weapons.beardy.anim_attack_vars = { "var1" }
+  self.melee_weapons.great.anim_attack_vars = { "var1", "var2" }
+  self.melee_weapons.fireaxe.anim_attack_vars = { "var4" }
 end)
