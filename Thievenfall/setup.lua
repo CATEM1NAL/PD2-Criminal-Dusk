@@ -102,20 +102,36 @@ function CrimDusk:Init()
   end
 
   -- Reset campaign state
-  function self:Reset()
-    if CrimDusk.IsPermadeath() == "_perma" then
-      Global.CrimDusk.data = {
-        heists_won_perma = 0, heist_chain_perma = {}, lives_perma = 4,
-        hoxton_perma = 1, silk_road_perma = 1, city_of_gold_perma = 1, texas_heat_perma = 1,
-        winters_dead_perma = false, hector_dead_perma = false, bain_freed_perma = false
-      }
+  function self:SoftReset()
+    local permadeath = CrimDusk.IsPermadeath()
+    Global.CrimDusk.data["heist_chain" .. permadeath] = {}
+    Global.CrimDusk.data["lives" .. permadeath] = 4
+    Global.CrimDusk.data["winters_dead" .. permadeath] = false
+    Global.CrimDusk.data["hector_dead" .. permadeath] = false
+    Global.CrimDusk.data["bain_freed" .. permadeath] = false
+    Global.CrimDusk.data["vlad_freed" .. permadeath] = false
+    Global.CrimDusk.data["almir_freed" .. permadeath] = false
+    Global.CrimDusk.data["rust_recruited" .. permadeath] = false
+    for campaign, _ in pairs(Global.CrimDusk.mini_campaigns) do Global.CrimDusk.data[campaign .. permadeath] = 1 end
+  end
 
-    else
-      Global.CrimDusk.data = {
-        heists_won = 0, heist_chain = {}, lives = 4,
-        hoxton = 1, silk_road = 1, city_of_gold = 1, texas_heat = 1,
-        winters_dead = false, hector_dead = false, bain_freed = false
-      }
+  function self:Reset()
+    Global.CrimDusk.data = {
+      heists_won = 0, heist_chain = {}, lives = 4,
+      heists_won_perma = 0, heist_chain_perma = {}, lives_perma = 4,
+
+      winters_dead = false, hector_dead = false,
+      winters_dead_perma = false, hector_dead_perma = false,
+
+      bain_freed = false, vlad_freed = false, almir_freed = false,
+      bain_freed_perma = false, vlad_freed_perma = false, almir_freed_perma = false,
+
+      rust_recruited = false,
+      rust_recruited_perma = false
+    }
+    for campaign, _ in pairs(Global.CrimDusk.mini_campaigns) do
+      Global.CrimDusk.data[campaign] = 1
+      Global.CrimDusk.data[campaign .. "_perma"] = 1
     end
   end
 end
@@ -178,9 +194,10 @@ function Global.CrimDusk:Init()
   end
 
   -- tweakdata modification tables
-  dofile(CrimDusk.ModPath .. "lua/tables/melee.lua" )
-  dofile(CrimDusk.ModPath .. "lua/tables/weapons.lua" )
+  dofile(CrimDusk.ModPath .. "lua/tables/campaign.lua" )
   dofile(CrimDusk.ModPath .. "lua/tables/heists.lua" )
+  dofile(CrimDusk.ModPath .. "lua/tables/weapons.lua" )
+  dofile(CrimDusk.ModPath .. "lua/tables/melee.lua" )
 
   -- Data validation
   self.data.heists_won = self.data.heists_won or 0
@@ -189,50 +206,21 @@ function Global.CrimDusk:Init()
   self.data.heist_chain_perma = self.data.heist_chain_perma or {}
   self.data.lives = self.data.lives or 4
   self.data.lives_perma = self.data.lives or 4
+
+  -- Flags for post-game campaign
   self.data.bain_freed = self.data.bain_freed or false
   self.data.bain_freed_perma = self.data.bain_freed_perma or false
-
-  self.mini_campaigns = {
-    hoxton = { cd_miami1 = true, cd_miami2 = true, cd_hox1 = true, cd_hox2 = true, hox_3 = true },
-    silk_road = { mex = true, bex = true, pex = true, fex = true },
-    city_of_gold = { chas = true, sand = true, chca = true, pent = true },
-    texas_heat = { ranc = true, trai = true, corp = true, deep = true }
-  }
+  self.data.vlad_freed = self.data.vlad_freed or false
+  self.data.vlad_freed_perma = self.data.vlad_freed_perma or false
+  self.data.almir_freed = self.data.almir_freed or false
+  self.data.almir_freed_perma = self.data.almir_freed_perma or false
   for campaign, _ in pairs(self.mini_campaigns) do
     self.data[campaign] = self.data[campaign] or 1
     self.data[campaign .. "_perma"] = self.data[campaign .. "_perma"] or 1
   end
 
-  self.campaign = { -- Main campaign
-    "red2", "flat", "pal", "man", "nmh", -- PDTH Prologue
-    "cd_tut1", "cd_tut2", "cd_tut3", "four_stores", "mallcrasher", "branchbank_prof", "ukrainian_job_prof", "nightclub", -- Early Vlad
-    "cd_watchdogs1_wrapper", "cd_watchdogs2_wrapper", "cd_frame3", "cd_bigoil", "cd_firestarter1", "cd_firestarter2", "cd_rats", -- Hector/Elephant
-    "family", "arm_wrapper", "arm_for", "roberts", "cd_erection_wrapper", "kosugi", -- Post Launch
-    "big", "cd_miami1", "cd_miami2", "gallery", "cd_hox1", "cd_hox2", "pines", "mus", -- Dentist
-    "cd_bomb", "cage", "hox_3", "shoutout_raid", "arena", "kenaz", "jolly", "dinner", "pbr", "pbr2", "cane", -- 2015
-    "cd_goat1", "cd_goat2", "dark", "mad", "cd_biker1", "cd_biker2", "moon", "friend", -- 2016
-    "spa", "fish", "run", "glace", "wwh", "dah", "cd_reservoir", "brb", "tag", "des", "sah", -- Final Arc
-    "mex", "chas", "bex", "sand", "pex", "chca", "fex", "pent", "bph", "ranc", "trai", "corp", -- Bopocalypse
-    "deep", "vit" -- Conclusion
-  }
-  self.extra_heists = { -- Post-game bonus heists
-    "hvh", "help", "rat", "nail", "haunted"
-  }
-
-  -- Heists to remove if Hector is dead
-  self.hector_heists = { cd_watchdogs1_wrapper = true, cd_watchdogs2_wrapper = true, cd_firestarter1 = true, cd_firestarter2 = true, cd_rats = true }
-
-  -- Used to lookup next heist in mini-campaign
-  self.lookup = {}
-  self.lookup.silk_road = { "mex", "bex", "pex", "fex" }
-  self.lookup.city_of_gold = { "chas", "sand", "chca", "pent" }
-  self.lookup.texas_heat = { "ranc", "trai", "corp", "deep" }
-  self.lookup.hoxton = { "cd_miami1", "cd_miami2", "cd_hox1", "cd_hox2", "hox_3" }
-
-  self.locke_heists = { -- Heists to keep if Bain is captured
-    brb = true, tag = true, des = true, sah = true, bph = true, nmh = true,
-    hvh = true, help = true, nail = true, haunted = true
-  }
+  self.data.rust_recruited = self.data.rust_recruited or false
+  self.data.rust_recruited_perma = self.data.rust_recruited_perma or false
 end
 
 -- Logo replacements

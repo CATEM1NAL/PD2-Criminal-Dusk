@@ -19,9 +19,7 @@ end
 
 function MenuCallbackHandler:CrimDusk_ResetCampaign()
   if Utils:IsInGameState() then CrimDusk.Log(FileIdent, "Can't change settings in-game!") return end
-  Global.CrimDusk.data.heists_won = 0
-  Global.CrimDusk.data.lives = 4
-  Global.CrimDusk.data.winters_dead = false
+  CrimDusk.Reset()
 
   CrimDusk.PlayButtonLoc()
   CrimDusk:WriteSave(FileIdent, "campaign reset")
@@ -139,14 +137,24 @@ Hooks:PreHook(MenuCallbackHandler, "start_the_game", "CrimDusk_PreStartGame", fu
 
   -- ...or random heist if campaign is completed!
   if not NextJob then
-    math.randomseed(os.time() + (os.clock() * 1000))
-    local ValidHeists = deep_clone(Global.CrimDusk.campaign)
 
-    -- Add bonus heists unused in main campaign
-    for _, heist in ipairs(Global.CrimDusk.extra_heists) do table.insert(ValidHeists, heist) end
+    -- If all heists have been played, start a new cycle
+    local heist_chain = "heist_chain" .. permadeath
     local HeistsPlayed = #Global.CrimDusk.data["heist_chain" .. permadeath]
+    if Global.CrimDusk.data[heist_chain][HeistsPlayed] == "vit" then CrimDusk.SoftReset() end
 
-    -- Is Bain captured?
+    math.randomseed(os.time() + (os.clock() * 1000))
+    local ValidHeists = deep_clone(Global.CrimDusk.custom_campaign_base)
+
+    -- Add mini-campaigns into pool
+    for campaign, _ in pairs(Global.CrimDusk.mini_campaigns) do
+      table.insert(ValidHeists, Global.CrimDusk.mini_campaigns[campaign][Global.CrimDusk.data[campaign .. permadeath]])
+    end
+
+    -- Add Cook Off if Hector dead
+    if Global.CrimDusk.data["hector_dead" .. permadeath] then table.insert(ValidHeists, "rat") end
+
+    -- Are friends captured?
     local BainCaptured = false
     if not Global.CrimDusk.data["bain_freed" .. permadeath] then
       for _, heist in ipairs(Global.CrimDusk.data["heist_chain" .. permadeath]) do
@@ -154,73 +162,74 @@ Hooks:PreHook(MenuCallbackHandler, "start_the_game", "CrimDusk_PreStartGame", fu
       end
     end
 
+    local VladCaptured = false
+    if not Global.CrimDusk.data["vlad_freed" .. permadeath] then
+      for _, heist in ipairs(Global.CrimDusk.data["heist_chain" .. permadeath]) do
+        if heist == "chas" then VladCaptured = true end
+      end
+    end
+
+    local AlmirCaptured = false
+    if not Global.CrimDusk.data["almir_freed" .. permadeath] then
+      for _, heist in ipairs(Global.CrimDusk.data["heist_chain" .. permadeath]) do
+        if heist == "bex" then AlmirCaptured = true end
+      end
+    end
+
     -- Set up heist list
-    local Tutorials = { cd_tut1 = true, cd_tut2 = true, cd_tut3 = true }
+    local CampaignData = Global.CrimDusk.mini_campaign_data
     for i = #ValidHeists, 1, -1 do
       local heist = ValidHeists[i]
 
-      -- Remove tutorials
-      if Tutorials[heist] then table.remove(ValidHeists, i)
-
       -- Remove Hector heists if he's dead
-      elseif Global.CrimDusk.data["hector_dead" .. permadeath] then
-        if Global.CrimDusk.hector_heists[heist] then table.remove(ValidHeists, i) end
+      if Global.CrimDusk.data["hector_dead" .. permadeath] then
+        if CampaignData.hector_dead[heist] then table.remove(ValidHeists, i) end
 
-      -- Remove Cook Off if Hector is alive
-      elseif heist == "rat" then table.remove(ValidHeists, i)
-
-      -- Remove mini-campaign heists
-      elseif Global.CrimDusk.mini_campaigns.hoxton[heist] then table.remove(ValidHeists, i)
-      elseif Global.CrimDusk.mini_campaigns.silk_road[heist] then table.remove(ValidHeists, i)
-      elseif Global.CrimDusk.mini_campaigns.city_of_gold[heist] then table.remove(ValidHeists, i)
-      elseif Global.CrimDusk.mini_campaigns.texas_heat[heist] then table.remove(ValidHeists, i)
-
-     -- Disable Bain heists if Bain is captured
-      elseif BainCaptured and not Global.CrimDusk.locke_heists[heist] then
+     -- Remove friend heists if captured
+      elseif BainCaptured and not CampaignData.bain_captured[heist] then
         table.remove(ValidHeists, i)
 
-      elseif heist == "vit" then table.remove(ValidHeists, i) end
+      elseif VladCaptured and CampaignData.vlad_captured[heist] then
+        table.remove(ValidHeists, i)
+
+      elseif AlmirCaptured and CampaignData.almir_captured[heist] then
+        table.remove(ValidHeists, i)
+
+      -- Remove Border Crossing if Bain hasn't been freed yet
+      elseif heist == "mex" and not Global.CrimDusk.data["bain_freed" .. permadeath] then
+        table.remove(ValidHeists, i)
+
+      -- Remove Dentist heists if Bain freed
+      elseif CampaignData.no_dentist[heist] and Global.CrimDusk.data["bain_freed" .. permadeath] then
+        table.remove(ValidHeists, i)
+
+      -- Remove Point Break & Alaskan Deal if Bain has been freed
+      elseif (heist == "pbr" or heist == "pbr2" or heist == "wwh") and Global.CrimDusk.data["bain_freed" .. permadeath] then
+        table.remove(ValidHeists, i)
+
+      -- Remove San Martin if no Rust
+      elseif heist == "bex" and not Global.CrimDusk.data.rust_recruited then
+        table.remove(ValidHeists, i)
+      end
     end
 
-    -- Add mini-campaigns to heist pool
-    if not BainCaptured then
-      for i = 1, math.min(Global.CrimDusk.data["hoxton" .. permadeath], #Global.CrimDusk.lookup.hoxton) do table.insert(ValidHeists, Global.CrimDusk.lookup.hoxton[i]) end
+    -- Add event heists
+    table.insert(ValidHeists, "haunted")
+    table.insert(ValidHeists, "nail")
+    table.insert(ValidHeists, "help")
+    table.insert(ValidHeists, "hvh")
+
+    -- Remove already played heists
+    for _, heist in ipairs(Global.CrimDusk.data[heist_chain]) do
+      for i = #ValidHeists, 1, -1 do
+        if ValidHeists[i] == heist then table.remove(ValidHeists, i) break end
+      end
     end
-  
-    for i = 1, math.min(Global.CrimDusk.data["silk_road" .. permadeath], #Global.CrimDusk.lookup.silk_road) do table.insert(ValidHeists, Global.CrimDusk.lookup.silk_road[i]) end
-    for i = 1, math.min(Global.CrimDusk.data["city_of_gold" .. permadeath], #Global.CrimDusk.lookup.city_of_gold) do table.insert(ValidHeists, Global.CrimDusk.lookup.city_of_gold[i]) end
-    for i = 1, math.min(Global.CrimDusk.data["texas_heat" .. permadeath], #Global.CrimDusk.lookup.texas_heat) do table.insert(ValidHeists, Global.CrimDusk.lookup.texas_heat[i]) end
 
     -- White House is always last
-    if HeistsPlayed >= #ValidHeists then table.insert(ValidHeists, "vit") end
+    if not next(ValidHeists) then table.insert(ValidHeists, "vit") end
 
-    -- Ensure duplicate heists don't happen until we've played every heist once
-    local heist_chain = "heist_chain" .. permadeath
-    if Global.CrimDusk.data[heist_chain] then
-
-      -- If all heists have been played, start a new cycle
-      if Global.CrimDusk.data[heist_chain][HeistsPlayed] == "vit" then
-        Global.CrimDusk.data[heist_chain] = {}
-
-        Global.CrimDusk.data["winters_dead" .. permadeath] = false
-        Global.CrimDusk.data["hector_dead" .. permadeath] = false
-
-        Global.CrimDusk.data["hoxton" .. permadeath] = 1
-        Global.CrimDusk.data["silk_road" .. permadeath] = 1
-        Global.CrimDusk.data["city_of_gold" .. permadeath] = 1
-        Global.CrimDusk.data["texas_heat" .. permadeath] = 1
-      end
-
-      -- Remove already played heists
-      for _, heist in ipairs(Global.CrimDusk.data[heist_chain]) do
-        for i = #ValidHeists, 1, -1 do
-          if ValidHeists[i] == heist then table.remove(ValidHeists, i) break end
-        end
-      end
-
-    end
-
-    CrimDusk.Log(FileIdent, "Heists left in cycle: " .. #ValidHeists)
+    CrimDusk.Log(FileIdent, "Heists left: " .. #ValidHeists)
     Utils.PrintTable(ValidHeists)
 
     NextJob = ValidHeists[math.random(#ValidHeists)]

@@ -52,7 +52,9 @@ bm_equipment_spy_camera_desc: "Remote camera that continuously marks enemies wit
 # Locked Items
 bm_global_value_gage_pack_jobs_unlock: "Buy the Gage Mod Courier DLC to unlock!"
 bm_menu_skill_locked_tag_team: "Buy the h3h3 Character Pack and reach level 80 to unlock!"
-bm_menu_skill_locked_damage_control: "Requires the 'Virtue' skill! (Specialist)"
+bm_menu_skill_locked_damage_control: "Requires the 'Virtue' skill!"
+bm_global_value_wild_char_unlock: "Complete 'Lion's Den' heist to unlock!"
+bm_global_value_hoxton_unlock: "Complete 'The Breakout' heist to unlock!"
 
 # Upgrade Requirements
 menu_asset_lock_buy_bodybags_asset: "Requires the 'Inside Man' skill!"

@@ -27,6 +27,9 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
     if upgrade == "body_armor1" then table.remove(self.level_tree[7].upgrades, index) end
   end
 
+  -- Fix visual bug with Nova Shank
+  self.definitions.toothbrush.dlc = "freed_old_hoxton"
+
   -- Skills
   self.values.player.additional_lives = { 1, 2 } -- Nine Lives
   self.values.weapon.passive_swap_speed_multiplier = { 1.8, 2.6 } -- Swap Speed

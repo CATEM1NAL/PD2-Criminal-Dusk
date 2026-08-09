@@ -1,7 +1,10 @@
 local FileIdent = "Gameover"
 
 Hooks:PostHook(GameOverState, "at_enter", "CrimDawn_HeistFailed", function(self)
-  if NetworkHelper:IsHost() and CrimDusk.SettingsData.permadeath then CrimDusk:Reset() return end
+  if NetworkHelper:IsHost() and CrimDusk.SettingsData.permadeath then
+    CrimDusk:SoftReset()
+    Global.CrimDusk.data.heists_won_perma = 0
+  return end
 
   Global.CrimDusk.data.lives = 4
   if NetworkHelper:IsClient() or (Global.CrimDusk.data.heists_won >= 78) then return end
