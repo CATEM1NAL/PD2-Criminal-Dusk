@@ -136,6 +136,7 @@ function CrimDusk:Init()
   end
 end
 
+Global.load_crime_net = false
 CrimDusk:Init()
 
 if NetworkHelper:IsHost() and Global.CrimDusk and (Global.CrimDusk.data["heists_won" .. CrimDusk.IsPermadeath()] or 0) < 5 then

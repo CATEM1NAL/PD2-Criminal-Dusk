@@ -1,17 +1,19 @@
 local FileIdent = "CopDamage"
 
-Hooks:PreHook(CopDamage, "die", "CrimDusk_PreCopDie", function(self)
-  local enemy = self._unit:base()._tweak_table
+if NetworkHelper:IsHost() then -- Special characters stay dead for rest of campaign
+  Hooks:PreHook(CopDamage, "die", "CrimDusk_PreCopDie", function(self)
+    local enemy = self._unit:base()._tweak_table
 
-  if enemy == "phalanx_vip" then
-    Global.CrimDusk.data["winters_dead" .. CrimDusk.IsPermadeath()] = true
-    CrimDusk:WriteSave(FileIdent, "Winters killed")
+    if enemy == "phalanx_vip" then
+      Global.CrimDusk.data["winters_dead" .. CrimDusk.IsPermadeath()] = true
+      CrimDusk:WriteSave(FileIdent, "Winters killed")
 
-  elseif enemy == "hector_boss" or enemy == "hector_boss_no_armor" then
-    Global.CrimDusk.data["hector_dead" .. CrimDusk.IsPermadeath()] = true
-    CrimDusk:WriteSave(FileIdent, "Hector killed")
-  end
-end)
+    elseif enemy == "hector_boss" or enemy == "hector_boss_no_armor" then
+      Global.CrimDusk.data["hector_dead" .. CrimDusk.IsPermadeath()] = true
+      CrimDusk:WriteSave(FileIdent, "Hector killed")
+    end
+  end)
+end
 
 Hooks:OverrideFunction(CopDamage, "_dismember_condition", function(self, attack_data)
   local dismember_victim = false

@@ -10,6 +10,7 @@ The following values exist:
 **dmgmult**: allows overriding the damage multiplier that exists for some weapons (snipers, etc).
 
 **mag:** overrides base magazine capacity.
+**nummags**: overrides max number of magazines.
 **acc**: overrides base spread index.
 **reload**: overrides base reload speed.
 **rof**: overrides fire rate. value assigned as rpm, converted to correct format later.
@@ -208,16 +209,16 @@ Global.CrimDusk.weapons.classes = {
     system = { dmg = "flame", pickup = "flame", chamber = 0 },
     money = { dmg = "flame", pickup = "flame", chamber = 0 },
 
-    hunter = { dmg = "xlow", pickup = "none", chamber = 0 },
-    ecp = { dmg = "xlow", pickup = "none", chamber = 0 },
-    arblast = { dmg = "xhigh", pickup = "none", chamber = 0 },
-    frankish = { dmg = "xhigh", pickup = "none", chamber = 0 },
+    hunter = { dmg = "xlow", pickup = "none", nummags = 15, chamber = 0 },
+    ecp = { dmg = "xlow", pickup = "none", magdump = false, chamber = 0 },
+    arblast = { dmg = "xhigh", pickup = "none", nummags = 5, chamber = 0 },
+    frankish = { dmg = "xhigh", pickup = "none", nummags = 10, chamber = 0 },
 
-    plainsrider = { dmg = "rpg", pickup = "none", chamber = 0 },
-    long = { dmgmult = 10, dmg = "bow", pickup = "none", chamber = 0 },
-    elastic = { dmgmult = 10, dmg = "bow", pickup = "none", chamber = 0 },
+    plainsrider = { dmg = "rpg", pickup = "none", nummags = 15, chamber = 0 },
+    long = { dmgmult = 10, dmg = "bow", pickup = "none", nummags = 10, chamber = 0 },
+    elastic = { dmgmult = 10, dmg = "bow", pickup = "none", nummags = 10, chamber = 0 },
 
-    rpg7 = { dmg = "rpg", pickup = "none", chamber = 0 },
+    rpg7 = { dmg = "rpg", pickup = "none", nummags = 3, chamber = 0 },
     ray = { dmgmult = 25, dmg = "rpg", pickup = "none", chamber = 0 },
 
     shuno = { dmg = "mini", chamber = 0 },

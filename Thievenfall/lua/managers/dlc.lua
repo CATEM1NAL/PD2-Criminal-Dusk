@@ -6,8 +6,6 @@ Hooks:PostHook(GenericDLCManager, "has_dlc", "CrimDusk_GiveCommunityItems", func
 end)
 
 -- Unlocked characters
-Hooks:OverrideFunction(GenericDLCManager, "has_freed_old_hoxton", function() return Global.CrimDusk.data.free_hoxton > 3 end)
+Hooks:OverrideFunction(GenericDLCManager, "has_freed_old_hoxton", function() return Global.CrimDusk.data["heists_won" .. CrimDusk.IsPermadeath()] > 4 or Global.CrimDusk.data.free_hoxton > 3 end)
 
-function GenericDLCManager:has_recruited_rust()
-  return Global.CrimDusk.data["rust_recruited" .. CrimDusk.IsPermadeath()]
-end
+function GenericDLCManager:has_wild_char() return Global.CrimDusk.data["rust_recruited" .. CrimDusk.IsPermadeath()] end

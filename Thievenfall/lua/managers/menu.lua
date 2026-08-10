@@ -1,6 +1,7 @@
 local FileIdent = "MenuManager"
 
 function MenuCallbackHandler:CrimDusk_CreateLobby() self:create_lobby() end
+function MenuCallbackHandler:CrimDusk_Safehouse() managers.menu:open_node("custom_safehouse") end
 
 function MenuCallbackHandler:CrimDusk_SaveToggleSettings(item)
   if Utils:IsInGameState() then CrimDusk.Log(FileIdent, "Can't change settings in-game!") return end
@@ -49,6 +50,29 @@ local function InjectCrimDuskButtons(node)
 
   local position = 2
   table.insert(node._items, position, new_item)
+
+  -- Add the safehouse button
+  local data = {
+    type = "CoreMenuItem.Item",
+  }
+  local params = {
+    name = "crimdusk_safehouse",
+    text_id = "menu_cn_chill",
+    help_id = "crimdusk_safehouse_desc",
+    callback = "CrimDusk_Safehouse",
+    font_size = 35,
+    font = tweak_data.menu.pd2_large_font
+  }
+
+  local new_item = node:create_item(data, params)
+
+  new_item.dirty_callback = callback(node, node, "item_dirty")
+  if node.callback_handler then
+    new_item:set_callback_handler(node.callback_handler)
+  end
+
+  local position = 3
+  table.insert(node._items, position, new_item)
 end
 
 -- MENU CHANGES START HERE --
@@ -65,7 +89,7 @@ Hooks:Add("MenuManagerBuildCustomMenus", "CrimDusk_MenuTweaks", function(menu_ma
 
     -- Hides all the unnecessary menu buttons
     local HiddenButtons = {
-      crimenet = true, crimenet_offline = true, story_missions = true
+      crimenet = true, crimenet_offline = true, story_missions = true, crimdusk_safehouse = true
     }
 
     for i, item in pairs(mainmenu._items) do
@@ -81,6 +105,8 @@ Hooks:Add("MenuManagerBuildCustomMenus", "CrimDusk_MenuTweaks", function(menu_ma
 
   -- Lobby
   if lobbymenu ~= nil then
+    InjectCrimDuskButtons(lobbymenu)
+
     -- Make start game button always visible
     for i, item in pairs(lobbymenu._items) do
       if item._parameters.name == "start_the_game" then
@@ -94,7 +120,7 @@ Hooks:Add("MenuManagerBuildCustomMenus", "CrimDusk_MenuTweaks", function(menu_ma
 
     -- Hides all the unnecessary menu buttons
     local HiddenButtons = {
-      story_missions = true, crimdawn_createlobby_btn = true, crimenet_nj = true, crimenet_j = true
+      story_missions = true, crimdusk_createlobby_btn = true, crimenet_nj = true, crimenet_j = true
     }
 
     for i, item in pairs(lobbymenu._items) do
@@ -128,8 +154,9 @@ Hooks:Add("MenuManagerBuildCustomMenus", "CrimDusk_MenuTweaks", function(menu_ma
 end)
 -- MENU CHANGES END HERE --
 
+
 Hooks:PreHook(MenuCallbackHandler, "start_the_game", "CrimDusk_PreStartGame", function(self)
-  if Utils:IsInGameState() or NetworkHelper:IsClient() then return end
+  if NetworkHelper:IsClient() or Global.job_manager.current_job then return end
 
   -- Select next heist in campaign...
   local permadeath = CrimDusk.IsPermadeath()

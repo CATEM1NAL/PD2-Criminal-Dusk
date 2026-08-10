@@ -177,8 +177,9 @@ local function ModifyStats(self, WeaponClassName, WeaponClassData)
     end
 
     -- Stats derived from weapon class
-    self[Weapon].AMMO_MAX = self[Weapon].CLIP_AMMO_MAX * MaxMagazines[WeaponClassName]
-    if Akimbo then Akimbo.AMMO_MAX = Akimbo.CLIP_AMMO_MAX * MaxMagazines[WeaponClassName] end
+    local NumMagazines = Data.nummags or MaxMagazines[WeaponClassName]
+    self[Weapon].AMMO_MAX = self[Weapon].CLIP_AMMO_MAX * NumMagazines
+    if Akimbo then Akimbo.AMMO_MAX = Akimbo.CLIP_AMMO_MAX * NumMagazines end
     self[Weapon].spread = SpreadMults[WeaponClassName]
   end
 end

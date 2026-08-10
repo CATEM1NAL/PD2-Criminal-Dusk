@@ -1,6 +1,6 @@
 <mod name="Thievenfall" global_key="thievenfall" author="~/cat/em1/nal/" color="Color(0.734375,0.4921875,0.73828125)" image="logo/dawn">
   <!-- Auto update from latest GitHub release -->
-  <AssetUpdates version="0.7.1" id="CATEM1NAL/PD2-Thievenfall" provider="github" release="true"/>
+  <AssetUpdates version="0.7.2" id="CATEM1NAL/PD2-Thievenfall" provider="github" release="true"/>
 
   <AddFiles directory="assets">
     <png path="logo/dawn"/>
@@ -42,6 +42,7 @@
         <hook source_file="lib/tweak_data/interactiontweakdata" file="interactions.lua"/>
         <hook source_file="lib/tweak_data/dlctweakdata" file="dlc.lua"/>
         <hook source_file="lib/tweak_data/lootdroptweakdata" file="lootdrop.lua"/>
+        <hook source_file="lib/tweak_data/customsafehousetweakdata" file="safehouse.lua"/>
       </hooks>
 
       <hooks directory="managers"> <!-- root/lua/managers/ -->
@@ -70,6 +71,7 @@
         <hooks directory="elements"> <!-- root/lua/managers/elements/ -->
           <hook source_file="lib/managers/mission/elementspawndeployable" file="spawndeployable.lua"/>
           <hook source_file="lib/managers/mission/elementplayerspawner" file="spawnplayer.lua"/>
+          <hook source_file="lib/managers/mission/elementspawncivilian" file="spawncivilian.lua"/>
         </hooks>
 
         <hooks directory="group_ai"> <!-- root/lua/managers/group_ai/ -->

@@ -29,7 +29,7 @@ Hooks:PostHook(VictoryState, "at_enter", "CrimDusk_HeistWon", function(self)
       if CurrentHeist == "bph" then self.data["bain_freed" .. Permadeath] = true
       elseif CurrentHeist == "sand" then self.data["vlad_freed" .. Permadeath] = true
       elseif CurrentHeist == "pex" then self.data["almir_freed" .. Permadeath] = true
-      elseif CurrentHeist == "born" then self.data["rust_recruited" .. Permadeath] = true end
+      elseif CurrentHeist == "cd_biker1" then self.data["rust_recruited" .. Permadeath] = true end
     end
 
     CrimDusk:WriteSave(FileIdent, "heist completed")

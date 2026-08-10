@@ -1,6 +1,6 @@
 Hooks:PostHook(DLCTweakData, "init", "CrimDusk_InitDLCTweakData", function(self)
   self.wild_char = deep_clone(self.wild)
-  self.wild_char.dlc = "has_recruited_rust"
+  self.wild_char.dlc = "has_wild_char"
   self.wild_char.content.loot_global_value = "wild_char"
   self.wild_char.content.loot_drops = nil
 

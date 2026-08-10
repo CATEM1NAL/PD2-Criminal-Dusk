@@ -95,6 +95,7 @@ Global.CrimDusk.melee.classes = {
     cs = { rep = 0.75, dismember = true },
     pitchfork = {  },
     sandsteel = { dismember = true },
+    machete = { dismember = true },
     gator = { dismember = true },
     oxide = { dismember = true },
     agave = { rep = 0.35, dismember = true },
@@ -103,7 +104,6 @@ Global.CrimDusk.melee.classes = {
     meat_cleaver = { dismember = true },
     cleaver = { dismember = true },
     tomahawk = { dismember = true },
-    machete = { dismember = true },
     becker = { dismember = true },
     iceaxe = {  }
   },
