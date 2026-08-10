@@ -9,6 +9,7 @@ Hooks:PostHook(VictoryState, "at_enter", "CrimDusk_HeistWon", function(self)
     CrimDusk.Log(FileIdent, "Heists won: " .. Global.CrimDusk.data[heists_won])
 
     if Global.CrimDusk.data[heists_won] == #Global.CrimDusk.campaign then
+      CrimDusk.SoftReset()
       NetworkHelper:SendToPeers("CrimDusk_CampaignWon", true)
       CrimDusk.ChatNotify(managers.localization:text("crimdawn_chat_victory"))
       DelayedCalls:Add("CrimDusk_VictoryTease", 3, function()

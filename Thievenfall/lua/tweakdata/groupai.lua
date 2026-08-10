@@ -155,13 +155,9 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "CrimDusk_InitGroupAITaskDat
 
   -- Re-add HRT to assault breaks
   self.besiege.recon.groups = {
-    fbi_hrt = { 0.1, 0.1, 0.1 }
+    fbi_hrt = { 0, 0.5, 1 },
+    single_spooc = { 0, 0, 0 },
+    Phalanx = { 0, 0, 0 },
+    marshal_squad = { 0, 0, 0 }
   }
-
-  self.besiege.recon.groups.single_spooc = { 0, 0, 0 }
-  self.besiege.recon.groups.Phalanx = { 0, 0, 0 }
-  self.besiege.recon.groups.marshal_squad = { 0, 0, 0 }
-  self.besiege.recon.groups.snowman_boss = { 0, 0, 0 }
-  self.besiege.recon.groups.piggydozer = { 0, 0, 0 }
-  self.besiege.recon.groups.custom = { 0, 0, 0 }
 end)
