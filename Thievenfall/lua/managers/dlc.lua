@@ -7,5 +7,4 @@ end)
 
 -- Unlocked characters
 Hooks:OverrideFunction(GenericDLCManager, "has_freed_old_hoxton", function() return Global.CrimDusk.data["heists_won" .. CrimDusk.IsPermadeath()] < 5 or Global.CrimDusk.data.free_hoxton > 3 end)
-
 function GenericDLCManager:has_wild_char() return Global.CrimDusk.data["rust_recruited" .. CrimDusk.IsPermadeath()] end

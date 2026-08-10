@@ -170,4 +170,5 @@ Hooks:PostHook(NarrativeTweakData, "init", "CrimDusk_NarrativeTweakInit", functi
   table.insert(self._jobs_index, "cd_erection1")
   table.insert(self._jobs_index, "cd_erection2")
   table.insert(self._jobs_index, "cd_bomb")
+  table.insert(self._jobs_index, "cd_rats")
 end)

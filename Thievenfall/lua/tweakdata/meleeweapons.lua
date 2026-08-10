@@ -37,11 +37,11 @@ Hooks:PostHook(BlackMarketTweakData, "_init_melee_weapons", "CrimDusk_InitMeleeT
   self.melee_weapons.beardy.anim_attack_vars = { "var1" }
   self.melee_weapons.great.anim_attack_vars = { "var1", "var2" }
   self.melee_weapons.fireaxe.anim_attack_vars = { "var1", "var4" }
-  self.melee_weapons.cleaver.anim_attack_vars = { "var1" }
+  self.melee_weapons.cleaver.anim_attack_vars = { "var1", "var2", "var4" }
 
   local MacheteAnims = { "machete", "gator", "oxide" }
   for _, weapon in ipairs(MacheteAnims) do self.melee_weapons[weapon].anim_attack_vars = { "var1", "var3" } end
 
   local AxeAnims = { "scalper", "tomahawk", "meat_cleaver", "becker" }
-  for _, weapon in ipairs(AxeAnims) do self.melee_weapons[weapon].anim_attack_vars = { "var3" } end
+  for _, weapon in ipairs(AxeAnims) do self.melee_weapons[weapon].anim_attack_vars = { "var2", "var3" } end
 end)
