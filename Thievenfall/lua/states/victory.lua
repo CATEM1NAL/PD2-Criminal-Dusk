@@ -1,4 +1,4 @@
-if NetworkHelper:IsClient() then return end
+if NetworkHelper:IsClient() or (Global.game_settings and Global.game_settings.level_id == "chill_combat") then return end
 local FileIdent = "Victory"
 
 Hooks:PostHook(VictoryState, "at_enter", "CrimDusk_HeistWon", function(self)

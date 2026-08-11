@@ -163,10 +163,12 @@ local function SetStats(self, diff)
     medic = true, sniper = true, marshal_marksman = true, taser = true, 
     swat = true, heavy_swat = true,
     zeal_swat = true, zeal_heavy_swat = true, heavy_swat_sniper = true,
-    fbi_swat = true, fbi_heavy_swat = true, }
+    fbi_swat = true, fbi_heavy_swat = true
+  }
+
   for _, npc in pairs(self) do
     if type(npc) == "table" then
-      if npc.steal_loot then npc.steal_loot = nil end -- Enemies can't move bags
+      if npc.steal_loot and Global.game_settings.level_id ~= "chill_combat" then npc.steal_loot = nil end -- Enemies can't move bags
       if CanCuff[npc] then npc.no_arrest = nil end -- All enemies can cuff
     end
   end

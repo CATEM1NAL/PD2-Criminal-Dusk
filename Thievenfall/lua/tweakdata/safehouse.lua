@@ -22,7 +22,7 @@ Hooks:PostHook(CustomSafehouseTweakData, "_init_trophies", "CrimDusk_InitTrophie
     elseif trophy.id == "trophy_brb_1" then trophy.objectives = { self:_achievement("brb_7") }
     elseif trophy.id == "trophy_box_1" then trophy.objectives = { self:_achievement("ggez_46"), self:_achievement("des_7") }
     elseif trophy.id == "trophy_box_2" then trophy.objectives = { self:_achievement("tag_7") }
-    elseif trophy.id == "trophy_computer" then trophy.objectives = { self:_achievement("ggez_25") }
+    elseif trophy.id == "trophy_computer" then trophy.objectives = { self:_achievement("gage2_1") }
     elseif trophy.id == "trophy_smwish" then trophy.objectives = { self:_achievement("vit_7") }
 
     elseif trophy.id == "trophy_pacifier" then

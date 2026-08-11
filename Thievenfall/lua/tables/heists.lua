@@ -20,6 +20,7 @@ Global.CrimDusk.stealth_bonuses = { rng = 0.05, small = 0.1, big = 0.25, unmaske
 Global.CrimDusk.heists = {
   -- Safehouse
   chill = { unmasked = true, stealthable = true, suit = "suit" },
+  chill_combat = { stealthable = true, suit = "slaughterhouse" },
 
   -- PDTH
   red2 = { grading = "color_bhd", suit = "suit" },
