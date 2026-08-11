@@ -38,8 +38,8 @@ local function SetStats(self, diff)
   local LightEnemies = { "swat", "zeal_swat", "fbi_swat", "city_swat", "marshal_marksman", "shield" }
   local HeavyEnemies = { "medic", "taser", "heavy_swat", "zeal_heavy_swat", "heavy_swat_sniper", "fbi_heavy_swat", "marshal_shield", "marshal_shield_break" }
   local ResistantEnemies = { "phalanx_minion", "spooc" }
-  local MiniBosses = { "hector_boss", "mobster_boss", "biker_boss", "drug_lord_boss", "triad_boss", "chavez_boss", "phalanx_vip" }
-  local Bosses = { "tank", "tank_medic", "tank_mini", "deep_boss" }
+  local MiniBosses = { "hector_boss", "mobster_boss", "biker_boss", "drug_lord_boss", "triad_boss", "chavez_boss" }
+  local Bosses = { "phalanx_vip", "tank", "tank_medic", "tank_mini", "deep_boss" }
 
   for _, enemy in ipairs(WeakEnemies) do self[enemy].HEALTH_INIT = 5 end
   for _, enemy in ipairs(LightEnemies) do self[enemy].HEALTH_INIT = 10 end
@@ -86,13 +86,8 @@ local function SetStats(self, diff)
   self.marshal_shield_break.tmp_invulnerable_on_tweak_change = nil
 
   -- Dozers
-  self.tank.HEALTH_INIT = 300
   self.tank.headshot_dmg_mul = 15
-
-  self.tank_medic.HEALTH_INIT = self.tank.HEALTH_INIT
   self.tank_medic.headshot_dmg_mul = self.tank.headshot_dmg_mul
-
-  self.tank_mini.HEALTH_INIT = self.tank.HEALTH_INIT
   self.tank_mini.headshot_dmg_mul = self.tank.headshot_dmg_mul
 
   -- Cloakers

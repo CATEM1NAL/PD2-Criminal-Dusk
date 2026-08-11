@@ -37,7 +37,9 @@ if not NetworkHelper:IsHost() then return end
 
 -- Heist count requested from client
 NetworkHelper:AddReceiveHook("CrimDusk_RequestHeistCount", "CrimDusk_HostHeistCountRequest", function(_, sender)
-  NetworkHelper:SendToPeer(sender, "CrimDusk_HeistCount", Global.CrimDusk.data["heists_won" .. CrimDusk.IsPermadeath()] or 0)
+  local heists = Global.CrimDusk.data.heists_won or 0
+  if CrimDusk.SettingsData.permadeath then heists = #Global.CrimDusk.campaign + 1 end
+  NetworkHelper:SendToPeer(sender, "CrimDusk_HeistCount", heists)
 end)
 
 -- Force maskup

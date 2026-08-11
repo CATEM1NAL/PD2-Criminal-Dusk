@@ -1,6 +1,6 @@
 <mod name="Thievenfall" global_key="thievenfall" author="~/cat/em1/nal/" color="Color(0.734375,0.4921875,0.73828125)" image="logo/dawn">
   <!-- Auto update from latest GitHub release -->
-  <AssetUpdates version="0.7.6" id="CATEM1NAL/PD2-Thievenfall" provider="github" release="true"/>
+  <AssetUpdates version="0.7.7" id="CATEM1NAL/PD2-Thievenfall" provider="github" release="true"/>
 
   <AddFiles directory="assets">
     <png path="logo/dawn"/>
@@ -20,30 +20,40 @@
 
       <hooks directory="tweakdata"> <!-- root/lua/tweakdata/ -->
         <hook source_file="lib/setups/setup" file="tweakdata.lua"/>
-        <hook source_file="lib/tweak_data/upgradestweakdata" file="upgrades.lua"/>
-        <hook source_file="lib/tweak_data/skilltreetweakdata" file="skilltree.lua"/>
-        <hook source_file="lib/tweak_data/infamynewtweakdata" file="infamy.lua"/>
         <hook source_file="lib/tweak_data/charactertweakdata" file="enemies.lua"/>
         <hook source_file="lib/tweak_data/groupaitweakdata" file="groupai.lua"/>
-        <hook source_file="lib/tweak_data/playertweakdata" file="player.lua"/>
         <hook source_file="lib/tweak_data/blackmarkettweakdata" file="blackmarket.lua"/>
-        <hook source_file="lib/tweak_data/weapontweakdata" file="weapons.lua"/>
-        <hook source_file="lib/tweak_data/weaponfallofftweakdata" file="weaponfalloff.lua"/>
-        <hook source_file="lib/tweak_data/weaponfactorytweakdata" file="weaponfactory.lua"/>
-        <hook source_file="lib/tweak_data/firetweakdata" file="fire.lua"/>
-        <hook source_file="lib/tweak_data/blackmarket/projectilestweakdata" file="projectiles.lua"/>
-        <hook source_file="lib/tweak_data/blackmarket/meleeweaponstweakdata" file="meleeweapons.lua"/>
-        <hook source_file="lib/tweak_data/equipmentstweakdata" file="equipment.lua"/>
-        <hook source_file="lib/tweak_data/levelstweakdata" file="levels.lua"/>
-        <hook source_file="lib/tweak_data/narrativetweakdata" file="narrative.lua"/>
-        <hook source_file="lib/tweak_data/assetstweakdata" file="assets.lua"/>
-        <hook source_file="lib/tweak_data/preplanningtweakdata" file="preplanning.lua"/>
         <hook source_file="lib/tweak_data/moneytweakdata" file="money.lua"/>
-        <hook source_file="lib/tweak_data/interactiontweakdata" file="interactions.lua"/>
         <hook source_file="lib/tweak_data/dlctweakdata" file="dlc.lua"/>
         <hook source_file="lib/tweak_data/lootdroptweakdata" file="lootdrop.lua"/>
         <hook source_file="lib/tweak_data/customsafehousetweakdata" file="safehouse.lua"/>
         <hook source_file="lib/tweak_data/achievementstweakdata" file="achievements.lua"/>
+        <hook source_file="lib/tweak_data/gageassignmentmanager" file="gagepackage.lua"/>
+
+        <hooks directory="player"> <!-- root/lua/tweakdata/player -->
+          <hook source_file="lib/tweak_data/playertweakdata" file="player.lua"/>
+          <hook source_file="lib/tweak_data/interactiontweakdata" file="interactions.lua"/>
+          <hook source_file="lib/tweak_data/upgradestweakdata" file="upgrades.lua"/>
+          <hook source_file="lib/tweak_data/skilltreetweakdata" file="skilltree.lua"/>
+          <hook source_file="lib/tweak_data/equipmentstweakdata" file="equipment.lua"/>
+          <hook source_file="lib/tweak_data/infamynewtweakdata" file="infamy.lua"/>
+        </hooks>
+
+        <hooks directory="weapons"> <!-- root/lua/tweakdata/weapons -->
+          <hook source_file="lib/tweak_data/weapontweakdata" file="weapons.lua"/>
+          <hook source_file="lib/tweak_data/weaponfallofftweakdata" file="weaponfalloff.lua"/>
+          <hook source_file="lib/tweak_data/weaponfactorytweakdata" file="weaponfactory.lua"/>
+          <hook source_file="lib/tweak_data/blackmarket/meleeweaponstweakdata" file="meleeweapons.lua"/>
+          <hook source_file="lib/tweak_data/blackmarket/projectilestweakdata" file="projectiles.lua"/>
+          <hook source_file="lib/tweak_data/firetweakdata" file="fire.lua"/>
+        </hooks>
+
+        <hooks directory="heists"> <!-- root/lua/tweakdata/weapons -->
+          <hook source_file="lib/tweak_data/levelstweakdata" file="levels.lua"/>
+          <hook source_file="lib/tweak_data/narrativetweakdata" file="narrative.lua"/>
+          <hook source_file="lib/tweak_data/assetstweakdata" file="assets.lua"/>
+          <hook source_file="lib/tweak_data/preplanningtweakdata" file="preplanning.lua"/>
+        </hooks>
       </hooks>
 
       <hooks directory="managers"> <!-- root/lua/managers/ -->
@@ -58,6 +68,7 @@
         <hook source_file="lib/managers/playermanager" file="player.lua"/>
         <hook source_file="lib/managers/perpetualeventmanager" file="perpetualevents.lua"/>
         <hook source_file="lib/managers/preplanningmanager" file="preplanning.lua"/>
+        <hook source_file="lib/managers/gageassignmentmanager" file="gagepackage.lua"/>
 
         <hooks directory="menu"> <!-- root/lua/managers/menu/ -->
           <hook source_file="lib/managers/menu/menuscenemanager" file="menuscene.lua"/>

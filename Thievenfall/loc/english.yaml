@@ -63,7 +63,7 @@ trophy_box_2_completion_objective: "Complete 'Breakin' Feds' on Death Sentence."
 trophy_defender_objective: "Successfully defend your safe house on Death Sentence."
 trophy_falcogini_objective: "Complete 'Car Shop' on Death Sentence."
 trophy_computer_objective: "Complete 'Engine Problem' on Death Sentence while securing the correct engine last."
-trophy_piggy_bank_objective: "Complete 'Big Bank' on Death Sentence in under 8 minutes with all crew members wearing the Lightweight Ballistic Vest and using no skills."
+trophy_piggy_bank_objective: "Complete 'Big Bank' on Death Sentence in under 8 minutes with all crew members using no skills."
 trophy_framing_frame_objective: "Complete 'Framing' on Death Sentence without the alarm going off."
 trophy_stealth_objective: "Complete all stealthable heists on Death Sentence without the alarm going off."
 trophy_courtesy_objective: "Complete 'Beneath the Mountain' on Death Sentence without killing any medics."
@@ -71,7 +71,7 @@ trophy_bank_heists_objective: "Complete 'Bank Heist: Random' on Death Sentence."
 trophy_smwish_objective: "Complete 'White House' on Death Sentence."
 trophy_evolution_objective: "Complete 'Lab Rats' on Death Sentence without anyone in the crew getting any kills."
 trophy_longfellow_objective: "Complete 'Meltdown' on Death Sentence in under 7 minutes."
-trophy_fbi_objective: "Complete 'FBI Server' on Death Sentence without the alarm going off."
+trophy_fbi_objective: "On Death Sentence complete 'FBI Server' without the alarm going off, complete 'The Search' in under 15 minutes, and complete 'Breakin' Feds' without killing anyone."
 trophy_jfk_objective: "Complete 'Undercover' on Death Sentence with all crew members having one skill level each, only using sniper rifles, and wearing the Lightweight Ballistic Vest."
 trophy_discoball_objective: "Complete 'Nightclub' on Death Sentence in under 10 minutes."
 trophy_friendly_car_objective: "Complete 'Scarface Mansion' on Death Sentence with all crew members having one skill level each."
@@ -466,21 +466,21 @@ menu_frenzy_desc: "$lv1;Gain ##25%## damage reduction, but your health and heali
 menu_perk_dmg: "$lv1;Weapon damage increased by ##10%##.\n\n$lv2;Weapon damage increased by ##25%##."
 menu_perk_headshot: "$lv1;Headshot damage increased by ##50%##.\n\n$lv2;Headshot damage increased by ##100%##."
 
-menu_deck2_1_skill: "$lv1;Max health increased by ##20##.\n\n$lv2;Max health increased by ##40##.\n\n$lv3;Max health increased by ##60##.\n\n$lv4;Max health increased by ##80##.\n\n$lv5;Max health increased by ##100##.\n\n$lv6;Restore ##1## health every ##5## seconds."
+menu_deck2_1_skill: "$lv1;Max health increased by ##25##.\n\n$lv2;Max health increased by ##50##.\n\n$lv3;Max health increased by ##75##.\n\n$lv4;Max health increased by ##100##.\nRestore ##1## health every ##5## seconds."
 
 menu_deck2_7_skill: "$lv1;Suppressed enemies can panic. Your target rate is increased by ##15%##.\n\n$lv2;Kills within ##10m## have a ##50%## chance to cause panic."
 
 menu_armorer_skill: "Impact Plate"
-menu_armorer_skill_desc: "$lv1;Armor increased by ##25%##.\n\n$lv2;Armor increased by ##50%##.\n\n$lv3;Armor increased by ##75%##.\n\n$lv4;Armor increased by ##100%##.\n\n$lv5;Armor increased by ##125%##.\n\n$lv6;Armor increased by ##150%##. Armor recovery is ##50%## less effective and locked at ##50%## slower, but occurs even while in combat."
+menu_armorer_skill_desc: "$lv1;Armor increased by ##25%##.\n\n$lv2;Armor increased by ##50%##.\n\n$lv3;Armor increased by ##75%##.\n\n$lv4;Armor increased by ##100%##. Armor recovery is ##50%## less effective and locked at ##50%## slower, but occurs even while in combat."
 
 menu_yakuza_speed: "Adrenaline"
 menu_yakuza_speed_desc: "$lv1;While below ##50%## health your armor recovery speed scales with health lost, to a maximum of ##60%##.\n\n$lv2;Movement speed also increases by up to ##20%## with health lost."
 
-menu_deck4_5_skill: "$lv1;Dodge increased by ##10##.\n\n$lv2;Dodge increased by ##25##.\n\n$lv3;Dodge increased by ##40##.\n\n$lv4;Dodge increased by ##55##.\n\n$lv5;Dodge increased by ##75##.\n\n$lv6;Dodging a bullet damages the enemy that fired it."
+menu_deck4_5_skill: "$lv1;Dodge increased by ##25##.\n\n$lv2;Dodge increased by ##50##.\n\n$lv3;Dodge increased by ##75##.\n\n$lv4;Dodging a bullet damages the enemy that fired it."
 
 menu_rogue_switch: "$lv1;Weapon switch speed is increased by ##80%##.\n\n$lv2;Weapon switch speed is increased by ##160%##.\n\n$lv3;Weapon switch speed is increased by ##320%##."
 
-menu_hitman_skill_desc: "$lv1;Armor recovers ##10%## faster.\n\n$lv2;Armor recovers ##20%## faster.\n\n$lv3;Armor recovers ##30%## faster.\n\n$lv4;Armor recovers ##40%## faster.\n\n$lv5;Armor recovers ##50%## faster.\n\n$lv6;Your armor will always recover after a maximum of ##3## seconds, even while taking damage.\n"
+menu_hitman_skill_desc: "$lv1;Armor recovers ##15%## faster.\n\n$lv2;Armor recovers ##30%## faster.\n\n$lv3;Armor recovers ##45%## faster.\n\n$lv4;Your armor will always recover after a maximum of ##3## seconds, even while taking damage.\n"
 
 menu_break_skill: "$lv1;While you have armor, store ##4## health per crew kill that is consumed on armor recovery.\n\n$lv2;Store ##8## health per crew kill.\n\n$lv3;Store ##12## health per crew kill."
 
@@ -665,6 +665,10 @@ menu_jukebox_your_choice: "Custom"
 menu_choose_contract: "Select Heist" # not sure what this is
 menu_leave_lobby: "Leave"
 menu_start_the_game: "Start"
+menu_es_coins_progress: "C-Stacks"
+menu_es_safehouse_reward_coins: "$amount C-Stacks"
+menu_cs_continental_coin_cost: "$cost C-Stacks."
+bm_cs_continental_coin_cost: "$cost C-Stacks."
 
 menu_l_lootscreen: "Card Drop"
 menu_l_choose_card_local: ""
@@ -831,10 +835,9 @@ menu_steam_inventory_help: "View your collection of skins and accept new ones."
 menu_movie_theater: "Movies"
 menu_movie_theater_help: "Watch cinematics related to the PAYDAY 2 story."
 
-menu_reset_account: "Delete Save Data"  # Reset Progress
-menu_reset_account_help: "Deletes your save data. Only do this if you're 100% sure this is what you want to do."  # Reset Progress
+menu_reset_account: "Delete Save Data"
+menu_reset_account_help: "Deletes your save data. Only do this if you're 100% sure this is what you want to do."
 dialog_are_you_sure_you_want_to_clear_progress: "This process is irreversible.\n\nYour loadout will be wiped and you will be reset to infamy 0, level 0.\n\nAre you 100% certain you want to do this?"
-# They added new strings for this? Why? It used to be menu_clear_progress. Why did they add new strings instead of rewriting the old ones? But the dialog string is the old one. What?
 
 # PAUSE SCREEN
 menu_resume_game: "Resume"
@@ -848,7 +851,7 @@ dialog_abort_mission_text: "Are you sure you want to exit the current heist?\n\n
 # CRIME.NET SIDEBAR
 dialog_mutators_active_text: "Mutators are enabled. Do you want to play with mutators?"
 
-menu_challenge_safehouse_daily_reward: "6 Coins."
+menu_challenge_safehouse_daily_reward: "6 C-Stacks."
 menu_challenge_daily_reward: "Money and a weapon mod."
 
 menu_cs_enter_safehouse: "Enter"
@@ -860,10 +863,12 @@ menu_trophy_display_all: "Display All"
 menu_trophy_displayed: "Displayed"
 menu_trophy_hide_all: "Hide All"
 menu_trophy_not_displayed: "Hidden"
-menu_cs_cant_afford: "Not enough Continental Coins."
+menu_cs_cant_afford: "Not enough C-Stacks."
 menu_cs_rooms_help_hover_no_upgrade: "Room fully upgraded"
 menu_cs_rooms_help_hover: "Room is upgradeable"
 menu_cs_total_upgrades: "Upgrades"
+menu_cs_coins: "C-Stacks"
+dialog_upgrade_safehouse: "Upgrading $character;'s room will cost $cost C-Stacks."
 
 menu_cn_chill_combat_defend: "Defend"
 menu_cn_chill_combat_ignore_defend: "Ignore"
@@ -908,6 +913,7 @@ victory_group_total_downed: "Total Downs"
 victory_group_hit_accuracy: "Crew Accuracy"
 victory_criminals_finished: "Surviving Players"
 victory_most_damage: "Most Damage"
+
 # Personal Stats
 victory_total_downed: "Downs"
 victory_hit_accuracy: "Accuracy"
@@ -917,14 +923,17 @@ victory_total_head_shots: "Headshot Kills"
 victory_favourite_weapon: "Favorite Weapon"
 victory_civilians_killed_penalty: "Civilians Killed"
 victory_session_damage: "Total Damage"
+
 # Coins
-menu_es_safehouse_summary: "Coins"
-menu_es_safehouse_total_coins: "You have $amount coins."
+menu_es_safehouse_summary: "C-Stacks"
+menu_es_safehouse_total_coins: "You have $amount C-Stacks."
 menu_es_safehouse_upgrade_available: ""
+
 # Popups
 menu_es_ghost_bonus_day: "##$BTN_GHOST ##Day successfully ##stealthed##."
 menu_es_ghost_bonus_job: "##$BTN_GHOST Stealth bonus## earned:\n+$bonus% EXP on the next heist."
 menu_es_gage_assignment_package_complete: "Completed a Courier assignment."
+
 # Payout Summary
 victory_stage_cash_summary_name: ""
 victory_stage_cash_summary_name_job: "Heist payout: $job_cash."
@@ -2227,7 +2236,9 @@ bm_menu_buy_mask_title: "Mask Collection"
 bm_menu_buy_weapon_title: "Gage's Armory"
 bm_menu_btn_craft_mod: "Equip Mod"
 bm_menu_btn_remove_mod: "Remove Mod"
-bm_menu_btn_buy_mod: "Buy With Coins"
+bm_menu_btn_buy_mod: "Unlock"
+dialog_bm_purchase_mod: "You are about to unlock $item."
+dialog_bm_purchase_coins: "This will cost $money C-Stacks!"
 bm_menu_btn_preview_with_mod: "Preview Mod"
 bm_menu_btn_preview_no_mod: "Preview Without Mod"
 bm_menu_btn_clear_mod_preview: "Reset Preview"

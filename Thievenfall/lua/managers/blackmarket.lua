@@ -1,11 +1,12 @@
 -- Automatically unlock side job weapons so they are available for use
 Hooks:OverrideFunction(BlackMarketManager, "has_unlocked_arbiter", function() return true end)
 
--- Force game to register 2 of every item
+--[[ Force game to register 2 of every item
 local BlockedCategories = { weapon_skins = true, masks = true }
 Hooks:PostHook(BlackMarketManager, "get_item_amount", "CrimDusk_BMInfiniteItems", function(self, _, category)
   if not BlockedCategories[category] then return 2 end
 end)
+]]
 
 -- Replace suit with LBV
 Hooks:PreHook(BlackMarketManager, "_setup_armors", "CrimDusk_BMSetupArmorsPre", function(self)

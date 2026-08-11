@@ -1,3 +1,5 @@
+if Global.game_settings and Global.game_settings.level_id == "chill" then return end
+
 local FileIdent = "PlayerDamage"
 local lives = "lives" .. CrimDusk.IsPermadeath()
 if NetworkHelper:IsClient() then lives = "lives" end

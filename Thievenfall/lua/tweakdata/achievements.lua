@@ -82,4 +82,21 @@ Hooks:PostHook(AchievementsTweakData, "init", "CrimDusk_ModifyTrophyRequirements
     trophy_stat = "trophy_evolution", job = "nail", equipped_team = { deployable = "sentry_gun", reverse_deployable = true },
     everyone_killed_by_weapons = 0, everyone_killed_by_grenade = 0, everyone_killed_by_melee = 0
   }
+
+  -- I Just Had To
+  complete.trophy_fbi.job = "cd_firestarter2"
+  complete.trophy_fbi.difficulty = postgame
+  complete.trophy_fbi.levels = nil
+
+  complete.trophy_fbi_hox = deep_clone(complete.trophy_fbi)
+  complete.trophy_fbi_hox.job = "cd_hox2"
+  complete.trophy_fbi_hox.trophy_stat = "trophy_fbi_hox"
+  complete.trophy_fbi_hox.timer = 900
+
+  complete.trophy_fbi_tag = deep_clone(complete.trophy_fbi)
+  complete.trophy_fbi_tag.job = "tag"
+  complete.trophy_fbi_hox.trophy_stat = "trophy_fbi_tag"
+  complete.trophy_fbi_hox.everyone_killed_by_weapons = 0
+  complete.trophy_fbi_hox.everyone_killed_by_grenade = 0
+  complete.trophy_fbi_hox.everyone_killed_by_melee = 0
 end)

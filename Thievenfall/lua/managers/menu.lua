@@ -163,7 +163,7 @@ Hooks:PreHook(MenuCallbackHandler, "start_the_game", "CrimDusk_PreStartGame", fu
   local NextJob = Global.CrimDusk.campaign[Global.CrimDusk.data["heists_won" .. permadeath] + 1]
 
   -- ...or random heist if campaign is completed!
-  if not NextJob then
+  if not NextJob or permadeath == "_perma" then
 
     -- If all heists have been played, start a new cycle
     local heist_chain = "heist_chain" .. permadeath

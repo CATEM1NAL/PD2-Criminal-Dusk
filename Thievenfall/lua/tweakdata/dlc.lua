@@ -6,4 +6,12 @@ Hooks:PostHook(DLCTweakData, "init", "CrimDusk_InitDLCTweakData", function(self)
 
   self.freed_old_hoxton.content.loot_global_value = "freed_old_hoxton"
   self.freed_old_hoxton.achievement_id = nil
+
+  for dlc, _ in pairs(self) do
+    if self[dlc].content and self[dlc].content.loot_drops then
+      for i = #self[dlc].content.loot_drops, 1, -1 do
+        if self[dlc].content.loot_drops[i].type_items == "weapon_mods" then table.remove(self[dlc].content.loot_drops, i) end
+      end
+    end
+  end
 end)

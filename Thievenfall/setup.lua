@@ -91,6 +91,7 @@ function CrimDusk:Init()
   -- Difficulty scaling
   function self.DiffScale(ignore_cap)
     local permadeath = CrimDusk.IsPermadeath()
+    if permadeath == "_perma" then return 8 end
     if (Global.CrimDusk.data["heists_won" .. permadeath] or 0) < 5 then return Global.CrimDusk.data["heists_won" .. permadeath] + 2 end
 
     local HeistsWon = Global.CrimDusk.data["heists_won" .. permadeath] - 5
@@ -139,7 +140,7 @@ end
 Global.load_crime_net = false
 CrimDusk:Init()
 
-if NetworkHelper:IsHost() and Global.CrimDusk and (Global.CrimDusk.data["heists_won" .. CrimDusk.IsPermadeath()] or 0) < 5 then
+if NetworkHelper:IsHost() and not CrimDusk.SettingsData.permadeath and (Global.CrimDusk and (Global.CrimDusk.data["heists_won"] or 0) < 5) then
   Hooks:Add("LocalizationManagerPostInit", "CrimDusk_PDTHNames", function(loc)
     loc:add_localized_strings({
       ["menu_difficulty_normal"] = loc:text("crimdusk_pdth_normal"),
