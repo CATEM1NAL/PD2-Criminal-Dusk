@@ -28,7 +28,7 @@
         <hook source_file="lib/tweak_data/lootdroptweakdata" file="lootdrop.lua"/>
         <hook source_file="lib/tweak_data/customsafehousetweakdata" file="safehouse.lua"/>
         <hook source_file="lib/tweak_data/achievementstweakdata" file="achievements.lua"/>
-        <hook source_file="lib/tweak_data/gageassignmentmanager" file="gagepackage.lua"/>
+        <hook source_file="lib/tweak_data/gageassignmenttweakdata" file="gagepackage.lua"/>
 
         <hooks directory="player"> <!-- root/lua/tweakdata/player -->
           <hook source_file="lib/tweak_data/playertweakdata" file="player.lua"/>

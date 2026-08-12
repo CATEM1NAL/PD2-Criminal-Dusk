@@ -89,17 +89,14 @@ function CrimDusk:Init()
   end
 
   -- Difficulty scaling
-  function self.DiffScale(ignore_cap)
+  function self.DiffScale()
     local permadeath = CrimDusk.IsPermadeath()
-    if permadeath == "_perma" then return 8 end
-    if (Global.CrimDusk.data["heists_won" .. permadeath] or 0) < 5 then return Global.CrimDusk.data["heists_won" .. permadeath] + 2 end
+    if permadeath == "_perma" or Global.CrimDusk.data.heists_won >= #Global.CrimDusk.campaign then return 8 end
+    if (Global.CrimDusk.data.heists_won or 0) < 5 then return Global.CrimDusk.data.heists_won + 2 end
 
     local HeistsWon = Global.CrimDusk.data["heists_won" .. permadeath] - 5
-    local RawDiff = HeistsWon / (#Global.CrimDusk.campaign - 5) * 7 + 2
-    local RoundedDiff = math.floor(RawDiff + 0.5)
-
-    if ignore_cap then return RoundedDiff end
-    return math.min(RoundedDiff, 8)
+    local RawDiff = HeistsWon / (#Global.CrimDusk.campaign - 5) * 5 + 2
+    return math.floor(RawDiff + 0.5)
   end
 
   -- Reset campaign state
