@@ -131,7 +131,6 @@ Hooks:OverrideFunction(BlackMarketGui, "_get_armor_stats", function(self, name)
 	return base_stats, mods_stats, skill_stats
 end)
 
-
 Hooks:OverrideFunction(BlackMarketGui, "populate_mods", function(self, data)
   local new_data = {}
   local default_mod = data.on_create_data.default_mod

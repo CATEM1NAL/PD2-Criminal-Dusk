@@ -65,12 +65,18 @@ function CrimDusk:Init()
         ["crimdusk_continue_run_desc"] = managers.localization:text("crimdusk_play_next_desc", {
           HEIST = managers.localization:text("heist_" .. Global.CrimDusk.campaign[Global.CrimDusk.data[heists_won] + 1])
         }),
+        ["crimdusk_play_offline_desc"] = managers.localization:text("crimdusk_play_next_desc", {
+          HEIST = managers.localization:text("heist_" .. Global.CrimDusk.campaign[Global.CrimDusk.data[heists_won] + 1])
+        }),
         ["menu_choose_new_contract"] = managers.localization:text("crimdusk_campaign_active", {
           HEIST = managers.localization:text("heist_" .. Global.CrimDusk.campaign[Global.CrimDusk.data[heists_won] + 1])
         })
       })
     else managers.localization:add_localized_strings({
         ["crimdusk_continue_run_desc"] = managers.localization:text("crimdusk_play_next_random", {
+          NUMHEISTS = #Global.CrimDusk.data["heist_chain" .. CrimDusk.IsPermadeath()]
+        }),
+        ["crimdusk_play_offline_desc"] = managers.localization:text("crimdusk_play_next_random", {
           NUMHEISTS = #Global.CrimDusk.data["heist_chain" .. CrimDusk.IsPermadeath()]
         }),
         ["menu_choose_new_contract"] = managers.localization:text("crimdusk_campaign_inactive")
@@ -82,10 +88,10 @@ function CrimDusk:Init()
     if IsEndless then HeistNumText = (Global.CrimDusk.data[heists_won] + 1)
     else HeistNumText = Global.CrimDusk.data[heists_won] + 1 .. "/" .. #Global.CrimDusk.campaign end
     managers.localization:add_localized_strings({
-      ["crimdusk_continue_run_title"] = managers.localization:text("crimdusk_play_next_title", {
-        HEIST_NUM = HeistNumText
-      })
+      ["crimdusk_continue_run_title"] = managers.localization:text("crimdusk_play_next_title", { HEIST_NUM = HeistNumText }),
+      ["crimdusk_play_offline"] = managers.localization:text("crimdusk_play_offline_title", { HEIST_NUM = HeistNumText })
     })
+  
   end
 
   -- Difficulty scaling

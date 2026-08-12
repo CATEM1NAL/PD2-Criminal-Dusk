@@ -2,7 +2,6 @@ if NetworkHelper:IsClient() or (Global.game_settings and Global.game_settings.le
 local FileIdent = "Victory"
 
 Hooks:PostHook(VictoryState, "at_enter", "CrimDusk_HeistWon", function(self)
-  -- Heist completion
   local heists_won = "heists_won" .. CrimDusk.IsPermadeath()
   if managers.job:on_last_stage() then
     Global.CrimDusk.data[heists_won] = Global.CrimDusk.data[heists_won] + 1
@@ -11,13 +10,13 @@ Hooks:PostHook(VictoryState, "at_enter", "CrimDusk_HeistWon", function(self)
     if Global.CrimDusk.data[heists_won] == #Global.CrimDusk.campaign then
       CrimDusk.SoftReset()
       NetworkHelper:SendToPeers("CrimDusk_CampaignWon", true)
-      CrimDusk.ChatNotify(managers.localization:text("crimdawn_chat_victory"))
+      CrimDusk.ChatNotify(managers.localization:text("crimdusk_chat_victory"))
       DelayedCalls:Add("CrimDusk_VictoryTease", 3, function()
-        CrimDusk.ChatNotify(managers.localization:text("crimdawn_chat_victory2"))
+        CrimDusk.ChatNotify(managers.localization:text("crimdusk_chat_victory2"))
       end)
 
-    -- Set up flags for post-game campaign
-    elseif Global.CrimDusk.data[heists_won] > #Global.CrimDusk.campaign then
+    -- Post-game campaign
+    elseif (Global.CrimDusk.data[heists_won] > #Global.CrimDusk.campaign) or CrimDusk.IsPermadeath() == "_perma" then
       local Permadeath = CrimDusk.IsPermadeath()
       local CurrentHeist = Global.CrimDusk.data["heist_chain" .. Permadeath][#Global.CrimDusk.data["heist_chain" .. Permadeath]]
 
@@ -27,10 +26,10 @@ Hooks:PostHook(VictoryState, "at_enter", "CrimDusk_HeistWon", function(self)
         end
       end
 
-      if CurrentHeist == "bph" then self.data["bain_freed" .. Permadeath] = true
-      elseif CurrentHeist == "sand" then self.data["vlad_freed" .. Permadeath] = true
-      elseif CurrentHeist == "pex" then self.data["almir_freed" .. Permadeath] = true
-      elseif CurrentHeist == "cd_biker1" then self.data["rust_recruited" .. Permadeath] = true end
+      if CurrentHeist == "bph" then Global.CrimDusk.data["bain_freed" .. Permadeath] = true
+      elseif CurrentHeist == "sand" then Global.CrimDusk.data["vlad_freed" .. Permadeath] = true
+      elseif CurrentHeist == "pex" then Global.CrimDusk.data["almir_freed" .. Permadeath] = true
+      elseif CurrentHeist == "cd_biker1" then Global.CrimDusk.data["rust_recruited" .. Permadeath] = true end
     end
 
     CrimDusk:WriteSave(FileIdent, "heist completed")

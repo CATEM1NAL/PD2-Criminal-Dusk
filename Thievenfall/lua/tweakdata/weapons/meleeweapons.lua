@@ -1,4 +1,9 @@
 Hooks:PostHook(BlackMarketTweakData, "_init_melee_weapons", "CrimDusk_InitMeleeTweakData", function(self)
+  -- Hide weapon butt
+  self.melee_weapons.weapon.dlc = "crimdusk_hidden_item"
+  self.melee_weapons.weapon.repeat_expire_t = 0.5
+
+  -- Main tweakdata changes
   local MeleeClasses = Global.CrimDusk.melee.classes
   local MeleeStats = Global.CrimDusk.melee.stats
   local ResetTimers = Global.CrimDusk.melee.reset

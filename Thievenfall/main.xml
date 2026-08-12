@@ -1,6 +1,6 @@
 <mod name="Thievenfall" global_key="thievenfall" author="~/cat/em1/nal/" color="Color(0.734375,0.4921875,0.73828125)" image="logo/dawn">
   <!-- Auto update from latest GitHub release -->
-  <AssetUpdates version="0.7.7" id="CATEM1NAL/PD2-Thievenfall" provider="github" release="true"/>
+  <AssetUpdates version="0.8.0" id="CATEM1NAL/PD2-Thievenfall" provider="github" release="true"/>
 
   <AddFiles directory="assets">
     <png path="logo/dawn"/>
@@ -29,6 +29,7 @@
         <hook source_file="lib/tweak_data/customsafehousetweakdata" file="safehouse.lua"/>
         <hook source_file="lib/tweak_data/achievementstweakdata" file="achievements.lua"/>
         <hook source_file="lib/tweak_data/gageassignmenttweakdata" file="gagepackage.lua"/>
+        <hook source_file="lib/tweak_data/economytweakdata" file="skins.lua"/>
 
         <hooks directory="player"> <!-- root/lua/tweakdata/player -->
           <hook source_file="lib/tweak_data/playertweakdata" file="player.lua"/>
@@ -132,4 +133,6 @@
 
     </hooks>
   </Hooks>
+
+  <Keybind keybind_id="CrimDusk_InstantMelee" name="crimdusk_instantmelee_title" description="crimdusk_instantmelee_desc" localized="true" run_in_menu="false" script_path="lua/weapon_butt.lua"/>
 </mod>

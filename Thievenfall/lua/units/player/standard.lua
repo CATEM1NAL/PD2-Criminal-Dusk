@@ -13,6 +13,60 @@ Hooks:PostHook(PlayerStandard, "init", "CrimDusk_InitPlayerStandard", function(s
   self._slotmask_bullet_impact_targets = managers.slot:get_mask("bullet_impact_targets") + 3
 end)
 
+-- Melee is treated as its own weapon slot
+Hooks:OverrideFunction(PlayerStandard, "_check_action_melee", function(self, t, input)
+  local CanMelee = not self._state_data.melee_attack_allowed_t and not self._state_data.melee_repeat_expire_t
+
+  -- Attack buffering
+  if self._state_data.melee_attack_wanted and CanMelee then
+    self._state_data.melee_attack_wanted = nil
+    self:_do_action_melee(t, input)
+  return end
+
+  -- Unequip buffering
+  if self._state_data.buffer_melee_unequip and CanMelee then
+    self._state_data.buffer_melee_unequip = nil
+    self._state_data.melee_active = nil
+    if self._state_data.meleeing then self:_interupt_action_melee(t) end
+    if self._change_weapon_data then self:_start_action_equip_weapon(t) end
+  return end
+
+  local action_wanted = self._state_data.melee_active or input.btn_melee_press
+  if not action_wanted then return end
+
+  -- Put melee away on button press
+  if input.btn_melee_press and self._state_data.melee_active then
+    if self._state_data.buffer_melee_unequip then
+      self._change_weapon_data = nil
+      self._state_data.buffer_melee_unequip = nil
+
+    else
+      self._change_weapon_data = { selection_wanted = (Utils:IsCurrentWeaponPrimary() and 2 or 1) }
+      self._state_data.buffer_melee_unequip = true
+    end
+  return
+
+  -- Click (or hold) to attack
+  elseif input.btn_primary_attack_state and not self._state_data.melee_attack_wanted then
+    if self._state_data.melee_attack_allowed_t then self._state_data.melee_attack_wanted = true
+    elseif not self._state_data.melee_repeat_expire_t then self:_do_action_melee(t, input) end
+  return end
+
+  local action_forbidden = not self:_melee_repeat_allowed() or self._use_item_expire_t or self:_changing_weapon() or self:_interacting() or self:_is_throwing_projectile() or self:_is_using_bipod() or self:is_shooting_count()
+  if action_forbidden then return end
+
+  if not self._state_data.melee_active then self._state_data.melee_active = true end
+  self:_start_action_melee(t, input)
+  return true
+end)
+
+Hooks:PreHook(PlayerStandard, "_check_action_equip", "CrimDusk_PreCheckEquipStandard", function(self, t, input)
+  if input.btn_primary_choice and self._state_data.melee_active then
+    self._change_weapon_data = { selection_wanted = input.btn_primary_choice }
+    self._state_data.buffer_melee_unequip = true
+  return false end
+end)
+
 -- Movement tweaks
 Hooks:OverrideFunction(PlayerStandard, "_start_action_melee", function(self, t, input, instant)
   self._equipped_unit:base():tweak_data_anim_stop("fire")
@@ -24,19 +78,11 @@ Hooks:OverrideFunction(PlayerStandard, "_start_action_melee", function(self, t, 
   self._state_data.meleeing = true
   self._state_data.melee_start_t = nil
 
-  local melee_entry = managers.blackmarket:equipped_melee_weapon()
-  local bayonet_melee = false
-  local primary = managers.blackmarket:equipped_primary()
-  local primary_id = primary.weapon_id
-  local bayonet_id = managers.blackmarket:equipped_bayonet(primary_id)
-
-  if bayonet_id and melee_entry == "weapon" and self._equipped_unit:base():selection_index() == 2 then bayonet_melee = true end
-  if instant then self:_do_action_melee(t, input) return end
-
   self:_stance_entered()
 
   if self._state_data.melee_global_value then self._camera_unit:anim_state_machine():set_global(self._state_data.melee_global_value, 0) end
 
+  local melee_entry = managers.blackmarket:equipped_melee_weapon()
   self._state_data.melee_global_value = tweak_data.blackmarket.melee_weapons[melee_entry].anim_global_param
   self._camera_unit:anim_state_machine():set_global(self._state_data.melee_global_value, 1)
 
@@ -44,8 +90,7 @@ Hooks:OverrideFunction(PlayerStandard, "_start_action_melee", function(self, t, 
   local attack_allowed_expire_t = tweak_data.blackmarket.melee_weapons[melee_entry].attack_allowed_expire_t or 0.15
   self._state_data.melee_attack_allowed_t = t + (current_state_name ~= self:get_animation("melee_attack_state") and attack_allowed_expire_t or 0)
 
-  local instant_hit = tweak_data.blackmarket.melee_weapons[melee_entry].instant
-  if not instant_hit then self._ext_network:send("sync_melee_start", 0) end
+  self._ext_network:send("sync_melee_start", 0)
 
   if current_state_name == self:get_animation("melee_attack_state") then
     self._ext_camera:play_redirect(self:get_animation("melee_charge"))

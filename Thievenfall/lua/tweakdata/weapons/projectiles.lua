@@ -1,5 +1,6 @@
 Hooks:PostHook(BlackMarketTweakData, "_init_projectiles", "CrimDusk_ProjectileTweakInit", function(self, tweak_data)
   self.projectiles.wpn_prj_ace.max_amount = 1
+  self.projectiles.chico_injector.dlc = nil
 
   local throwables = {
     [12] = { xmas_snowball = 2 },

@@ -1,6 +1,4 @@
-Hooks:PostHook(WeaponFactoryTweakData, "create_bonuses", "CrimDusk_CreateBonusModTweakData", function(self)
-  for _, data in pairs(self.parts) do data.is_a_unlockable = true end -- All weapon mods are infinite
-end)
+Hooks:OverrideFunction(WeaponFactoryTweakData, "create_bonuses", function() end)
 
 Hooks:PostHook(WeaponFactoryTweakData, "init", "CrimDusk_InitModTweakData", function(self)
   for _, data in pairs(self.parts) do data.is_a_unlockable = true end -- All weapon mods are infinite
@@ -95,4 +93,12 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "CrimDusk_InitModTweakData", func
       if ammo == "wpn_fps_upg_a_custom" then table.remove(self[weapon].uses_parts, index) break end
     end
   end
+
+  -- Bayonet buff
+  self.parts.wpn_fps_snp_mosin_ns_bayonet.stats = {
+    concealment = -2, weapon_type = "sharp",
+    min_damage = 5, max_damage = 5,
+    min_damage_effect = 0.5, max_damage_effect = 0.5,
+    value = 1
+  }
 end)

@@ -13,6 +13,17 @@ Hooks:PreHook(BlackMarketManager, "_setup_armors", "CrimDusk_BMSetupArmorsPre", 
   self._defaults.armor = "level_2"
 end)
 
+-- Replace weapon butt with fists
+Hooks:PreHook(BlackMarketManager, "_setup_melee_weapons", "CrimDusk_BMSetupArmorsPre", function(self)
+  self._defaults.melee_weapon = "fists"
+end)
+
+-- Apply previous changes past first boot
+Hooks:PostHook(BlackMarketManager, "_setup", "CrimDusk_BMSetupPost", function(self)
+  self._defaults.armor = "level_2"
+  self._defaults.melee_weapon = "fists"
+end)
+
 -- No default crew unlocks
 Hooks:OverrideFunction(BlackMarketManager, "_setup_unlocked_crew_items", function(self)
   self._global._unlocked_crew_items = self._global._unlocked_crew_items or {}

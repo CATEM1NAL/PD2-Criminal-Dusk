@@ -95,8 +95,8 @@ Hooks:PostHook(AchievementsTweakData, "init", "CrimDusk_ModifyTrophyRequirements
 
   complete.trophy_fbi_tag = deep_clone(complete.trophy_fbi)
   complete.trophy_fbi_tag.job = "tag"
-  complete.trophy_fbi_hox.trophy_stat = "trophy_fbi_tag"
-  complete.trophy_fbi_hox.everyone_killed_by_weapons = 0
-  complete.trophy_fbi_hox.everyone_killed_by_grenade = 0
-  complete.trophy_fbi_hox.everyone_killed_by_melee = 0
+  complete.trophy_fbi_tag.trophy_stat = "trophy_fbi_tag"
+  complete.trophy_fbi_tag.everyone_killed_by_weapons = 0
+  complete.trophy_fbi_tag.everyone_killed_by_grenade = 0
+  complete.trophy_fbi_tag.everyone_killed_by_melee = 0
 end)
