@@ -87,6 +87,8 @@ Hooks:PostHook(AchievementsTweakData, "init", "CrimDusk_ModifyTrophyRequirements
   complete.trophy_fbi.job = "cd_firestarter2"
   complete.trophy_fbi.difficulty = postgame
   complete.trophy_fbi.levels = nil
+  complete.trophy_fbi.stealth = nil
+  complete.trophy_fbi.equipped_team = { num_skills = 0 }
 
   complete.trophy_fbi_hox = deep_clone(complete.trophy_fbi)
   complete.trophy_fbi_hox.job = "cd_hox2"
@@ -96,7 +98,17 @@ Hooks:PostHook(AchievementsTweakData, "init", "CrimDusk_ModifyTrophyRequirements
   complete.trophy_fbi_tag = deep_clone(complete.trophy_fbi)
   complete.trophy_fbi_tag.job = "tag"
   complete.trophy_fbi_tag.trophy_stat = "trophy_fbi_tag"
-  complete.trophy_fbi_tag.everyone_killed_by_weapons = 0
-  complete.trophy_fbi_tag.everyone_killed_by_grenade = 0
-  complete.trophy_fbi_tag.everyone_killed_by_melee = 0
+  complete.trophy_fbi.equipped_team = { num_skills = 0 }
+
+  -- Who's There?
+  local StealthHeists = {
+    "four_stores", "cd_frame3", "cd_firestarter2", "family", "cd_erection1", "kosugi",
+    "gallery", "crojob1", "cage", "kenaz", "dark", "fish", "dah", "tag", "chca", "nmh"
+  }
+  for _, heist in ipairs(StealthHeists) do
+    complete["trophy_stealth_" .. heist] = { stealth = true, difficulty = postgame, trophy_stat = "trophy_stealth_" .. heist, job = heist }
+  end
+
+  -- The First Line
+  self.enemy_melee_hit_achievements.trophy_hockeykill = { trophy_stat = "trophy_hockeykill", is_not_civilian = true, melee_id = "hockey", result = "death", }
 end)

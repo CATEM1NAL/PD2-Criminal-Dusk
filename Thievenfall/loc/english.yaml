@@ -59,7 +59,7 @@ trophy_tiara_objective: "Complete 'Ukrainian Job' on Death Sentence."
 trophy_train_bomb_objective: "Complete 'Bomb: Forest' on Death Sentence."
 trophy_tfturret_objective: "Complete 'Transport: Train Heist' on Death Sentence."
 trophy_box_3_completion_objective: "Complete 'Henry's Rock' on Death Sentence."
-trophy_transports_objective: "Complete all 'Transport' heists on Death Sentence."
+trophy_transports_objective: "Complete all Armored Transport heists on Death Sentence."
 trophy_black_plate_completion_objective: "Complete 'Shacklethorne Auction' on Death Sentence."
 trophy_brb_1_completion_objective: "Complete 'Brooklyn Bank' on Death Sentence."
 trophy_box_1_completion_objective: "Complete 'Golden Grin Casino' and 'Henry's Rock' on Death Sentence."
@@ -75,20 +75,28 @@ trophy_bank_heists_objective: "Complete 'Bank Heist: Random' on Death Sentence."
 trophy_smwish_objective: "Complete 'White House' on Death Sentence."
 trophy_evolution_objective: "Complete 'Lab Rats' on Death Sentence without anyone in the crew getting any kills."
 trophy_longfellow_objective: "Complete 'Meltdown' on Death Sentence in under 7 minutes."
-trophy_fbi_objective: "On Death Sentence complete 'FBI Server' without the alarm going off, complete 'The Search' in under 15 minutes, and complete 'Breakin' Feds' without killing anyone."
+trophy_fbi_objective: "On Death Sentence:\nComplete 'Breakin' Feds' and 'FBI Server' with all crew members having no skills.\nComplete 'The Search' in under 15 minutes."
 trophy_jfk_objective: "Complete 'Undercover' on Death Sentence with all crew members having one skill level each, only using sniper rifles, and wearing the Lightweight Ballistic Vest."
 trophy_discoball_objective: "Complete 'Nightclub' on Death Sentence in under 10 minutes."
 trophy_friendly_car_objective: "Complete 'Scarface Mansion' on Death Sentence with all crew members having one skill level each."
+trophy_ace_desc: "Is THIS your card?"
 trophy_ace_objective: "Get a single kill with the 'Ace of Spades'."
 trophy_flawless_objective: "Complete any heist with at least one other player present without any friendly fire damage being dealt."
 trophy_meth_cookbook_objective: "Complete 'Cook Off' after cooking 25 bags of meth."
 trophy_diamonds_objective: "Complete 'Diamond Store' after destroying the SWAT turret and securing all loot."
 trophy_planmaker_objective: "On 'Shadow Raid', steal the samurai armor before bagging any other loot."
 trophy_pacifier_objective: "Complete the tutorials."
+trophy_hockey_team_objective: "Kill 100 enemies with the hockey stick."
+trophy_hockeykill_progress: "Melee Kills"
+trophy_boxing_gloves: "Little Mac"
 
 # Locked Items
 bm_global_value_gage_pack_jobs_unlock: "Buy the Gage Mod Courier DLC to unlock!"
-bm_menu_skill_locked_tag_team: "Buy the h3h3 Character Pack and reach level 80 to unlock!"
+bm_menu_skill_locked_chico_injector: "Reach level 60 to unlock!"
+bm_menu_skill_locked_pocket_ecm_jammer: "Reach level 20 to unlock!"
+bm_menu_skill_locked_smoke_screen_grenade: "Reach level 40 to unlock!"
+bm_menu_skill_locked_tag_team: "Reach level 80 to unlock!"
+bm_menu_skill_locked_copr_ability: "Reach level 100 to unlock!"
 bm_menu_skill_locked_damage_control: "Requires the 'Virtue' skill!"
 bm_global_value_wild_char_unlock: "Complete 'Lion's Den' heist to unlock!"
 bm_global_value_hoxton_unlock: "Complete 'The Breakout' heist to unlock!"
@@ -102,6 +110,19 @@ bm_menu_not_enough_cash: "Not enough cash."
 # Perk Effects
 bm_menu_armor_max_health_store: "Break: can store up to $amount health."
 bm_menu_disables_damage_to_hot: "Dopamine is disabled while wearing this armor!"
+
+# Throwables
+bm_wpn_prj_ace_desc: "When they said to always have an ace up your sleeve, I don't think this is what they meant..."
+bm_grenade_fir_com_desc: "Every historical case of spontaneous combustion can be chalked up to a time travelling heister hitting someone with one of these."
+bm_grenade_frag_desc: "For when you really need to clear a room, and fast."
+bm_grenade_frag_com_desc: "Lower power but bigger boom."
+bm_concussion_desc: "Stuns all enemies in range for several seconds.\n\nBREACH AND CLEAR!"
+bm_grenade_poison_gas_grenade_desc: "Emits a poisonous cloud that dissipates after 15 seconds.\n\nThere is no context in which using this thing could be justified..."
+bm_grenade_molotov_desc: "Creates a flaming pool at the point of impact that burns for 15 seconds.\n\nCheap and effective, just don't drink from the wrong bottle."
+bm_dynamite_desc: "Did you know that dynamite is remarkably stable? It won't detonate upon being shot, but it will still remove your legs all the same."
+bm_grenade_sticky_grenade_desc: "Sticks to surfaces, but takes longer to detonate.\n\nI heard this was first used by some black ops guys who went above and beyond the call of duty."
+bm_grenade_electric: "Pig Tickler"
+bm_grenade_electric_desc: "Stuns all enemies in range for several seconds.\n\nJiu Feng said this was a prototype and he'd like to take it to mass market. There's no way these will catch on, right?"
 
 # Perk Consumables
 bm_ability_chico_injector_desc: "Press the throwable key to activate. While active, 25% of all damage taken is converted into healing. This effect lasts 6 seconds."
@@ -117,10 +138,6 @@ menu_bm_total_cost: ""
 
 # Infamy
 menu_infamy_go_infamous_error_money: "You need $200,000,000 in offshore."
-
-### CUSTOM HEISTS ###
-heist_cd_28stores_name: "Twenty Four Plus Four Stores"
-heist_cd_28stores_brief: "This is it... the big one. Or, big twenty eight.\n\nI believe in you guys. Make Vlad proud."
 
 ### SKILLS ###
 # Description Changes
@@ -673,6 +690,7 @@ menu_es_coins_progress: "C-Stacks"
 menu_es_safehouse_reward_coins: "$amount C-Stacks"
 menu_cs_continental_coin_cost: "$cost C-Stacks."
 bm_cs_continental_coin_cost: "$cost C-Stacks."
+menu_cs_upgrade_cost: "Upgrading this room costs $cost C-Stacks."
 
 menu_l_lootscreen: "Card Drop"
 menu_l_choose_card_local: ""
@@ -811,6 +829,7 @@ menu_victory_retry_stage: "Retry"
 menu_es_calculating_experience: "Calculating..." # can't be removed or it bugs out
 victory_client_waiting_for_server: "Waiting For Host"
 debug_mission_end_continue: "Continue"
+menu_es_safehouse_earned_income: "You have earned $amount C-Stacks."
 
 # MENU BUTTONS
 fast_net_title: "Server List"  # FAST.NET
@@ -2235,6 +2254,7 @@ bm_menu_deployables: "Deployable"
 bm_menu_characters: "Characters"
 menu_preferred_character: "Character"
 menu_crew_management: "AI Loadout"
+menu_data_crew_item_unlock_cost: "Costs $cost C-Stacks to unlock."
 bm_menu_ability: "Ability"
 bm_menu_skill: "Boost"
 bm_menu_btn_unequip_weapon: "Unequip"

@@ -1,4 +1,7 @@
 Hooks:PostHook(MoneyTweakData, "init", "CrimDusk_MoneyTweakInit", function(self, tweak_data)
+  local difficulty = Global.game_settings and Global.game_settings.difficulty or "normal"
+  local DiffIndex = tweak_data:difficulty_to_index(difficulty)
+
   self.sell_weapon_multiplier = 0
   self.sell_mask_multiplier = 0
 
@@ -92,4 +95,31 @@ Hooks:PostHook(MoneyTweakData, "init", "CrimDusk_MoneyTweakInit", function(self,
   self.preplanning_asset_cost_kenaz_celebrity_visit = 50000
   self.preplanning_asset_cost_kenaz_vault_gate_key = 50000
   self.preplanning_asset_cost_chas_tram = 100000
+
+  local LooseCash = {
+    money_bundle = 2000, ring_band = 500, 
+  }
+
+  if DiffIndex <= 2 then -- Normal
+    
+
+  elseif DiffIndex == 3 then -- Hard
+    
+
+  elseif DiffIndex == 4 then -- Very Hard
+    
+
+  elseif DiffIndex == 5 then -- OVERKILL
+    
+
+  elseif DiffIndex == 6 then -- Mayhem
+    
+
+  elseif DiffIndex == 7 then -- Death Wish
+    
+
+  elseif DiffIndex == 8 then -- Death Sentence
+    
+
+  end
 end)

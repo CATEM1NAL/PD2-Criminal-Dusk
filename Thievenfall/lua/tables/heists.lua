@@ -19,8 +19,8 @@ Example heist entries:
 Global.CrimDusk.stealth_bonuses = { rng = 0.05, small = 0.1, big = 0.25, unmasked = 0.5 }
 Global.CrimDusk.heists = {
   -- Safehouse
-  chill = { unmasked = true, stealthable = true, suit = "suit" },
-  chill_combat = { stealthable = true, suit = "slaughterhouse" },
+  chill = { unmasked = true, stealthable = true, grading = "color_xgen", suit = "suit" },
+  chill_combat = { stealthable = true, grading = "color_xgen", suit = "slaughterhouse" },
 
   -- PDTH
   red2 = { grading = "color_bhd", suit = "suit" },

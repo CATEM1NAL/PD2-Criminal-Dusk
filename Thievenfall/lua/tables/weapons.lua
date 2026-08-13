@@ -25,7 +25,7 @@ Global.CrimDusk.weapons.classes = {
     hailstorm = { dmg = 12, chamber = 0 },
 
     famas = { dmg = "low", acc = 19 },
-    asval = { dmg = "low", mag = 19 },
+    asval = { dmg = "low", mag = 20 },
     corgi = { dmg = "low" },
     vhs = { dmg = "low" },
     galil = { dmg = "low", acc = 19 },
@@ -49,7 +49,7 @@ Global.CrimDusk.weapons.classes = {
     flint = { dmg = "high" },
     tecci = { dmg = "high", nummags = 2, acc = 11 },
     contraband = { dmg = "high" },
-    g3 = { dmg = "high", mag = 19 },
+    g3 = { dmg = "high", mag = 20 },
 
     amcar = { dmg = "vhigh", acc = 16 },
     akm = { dmg = "vhigh" },
