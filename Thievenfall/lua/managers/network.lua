@@ -1,7 +1,5 @@
 local FileIdent = "NetworkManager"
-
 NetworkMatchMakingSTEAM._BUILD_SEARCH_INTEREST_KEY = "Criminal Dusk v" .. Global.CrimDusk.ModVersion
-NetworkMatchMakingEPIC._BUILD_SEARCH_INTEREST_KEY = "Criminal Dusk v" .. Global.CrimDusk.ModVersion
 
 -- Client hooks
 if NetworkHelper:IsClient() then
