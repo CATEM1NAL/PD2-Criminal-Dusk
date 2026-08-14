@@ -370,8 +370,8 @@ Hooks:PreHook(PlayerDamage, "pre_destroy", "CrimDusk_DamageCustody", function(se
 end)
 
 -- Update stored down time
-Hooks:OverrideFunction(PlayerDamage, "_send_set_revives", function(self, is_max)
+Hooks:OverrideFunction(PlayerDamage, "_send_set_revives", function(self)
   local revives = self._down_time + 1
   managers.hud:set_teammate_revives(HUDManager.PLAYER_PANEL, revives)
-  if self._unit:network() then self._unit:network():send("set_revives", revives) end
+  if self._unit:network() then self._unit:network():send("set_revives", revives, true) end
 end)
