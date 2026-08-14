@@ -4,7 +4,7 @@ end
 
 Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", function(self)
     self.tier_unlocks = { digest(0), digest(0), digest(0), digest(0) }
-    self.tier_cost = { { 1, 1, 1, 1, 1, 1 }, { 2, 2, 2, 2, 2, 2 }, { 3, 3, 3, 3, 3, 3 }, { 4, 4, 4, 4, 4, 4 } }
+    self.tier_cost = { { 1, 1, 1, 1 }, { 2, 2, 2, 2 }, { 3, 3, 3, 3 }, { 4, 4, 4, 4 } }
 
     -- Default upgrades
     self.default_upgrades = {

@@ -30,11 +30,12 @@ function CrimDusk:Init()
 
   MenuHelper:LoadFromJsonFile(self.ModPath .. "menus/settings.json", self, self.SettingsData)
 
-  self.state = { heist_started = false }
-
   -- Helper functions
-  function self.Log(FileIdent, LogMessage)
-    log("[THIEVENFALL>" .. FileIdent .. "] " .. LogMessage)
+  function self.Log(FileIdent, LogMessage, DevMode)
+    local DevLog = ""
+    if DevMode and Global.CrimDusk and not Global.CrimDusk.Developer then return
+    elseif DevMode and Global.CrimDusk and Global.CrimDusk.Developer then DevLog = "_DEV" end
+    log("[THIEVENFALL" .. DevLog .. ">" .. FileIdent .. "] " .. LogMessage)
   end -- Yes, this WILL crash without a FileIdent. This is intentional.
 
   function self.ChatNotify(message)
@@ -48,7 +49,9 @@ function CrimDusk:Init()
   end -- Yes, this WILL crash without a FileIdent or SaveReason. This is intentional.
 
   function self.GoLoud()
-    CrimDusk.Log(FileIdent, "Level ID: " .. Global.game_settings.level_id)
+    if DelayedCalls._calls.CrimDusk_GoLoudDelay then CrimDusk.Log(FileIdent, "GoLoud is already running!", true) return end
+    CrimDusk.Log(FileIdent, "Level ID: " .. Global.game_settings.level_id, true)
+
     local LoudDelay = Global.CrimDusk.heists[Global.game_settings.level_id].delay or 3
     DelayedCalls:Add("CrimDusk_GoLoudDelay", LoudDelay, function() managers.groupai:state():on_police_called("empty") end)
   end
@@ -108,6 +111,7 @@ function CrimDusk:Init()
   -- Reset campaign state
   function self:SoftReset()
     local permadeath = CrimDusk.IsPermadeath()
+    CrimDusk.Log(FileIdent, "Performing soft reset!", true)
     Global.CrimDusk.data["heist_chain" .. permadeath] = {}
     Global.CrimDusk.data["lives" .. permadeath] = 4
     Global.CrimDusk.data["winters_dead" .. permadeath] = false
@@ -120,6 +124,7 @@ function CrimDusk:Init()
   end
 
   function self:Reset()
+    CrimDusk.Log(FileIdent, "Performing full reset!", true)
     Global.CrimDusk.data = {
       heists_won = 0, heist_chain = {}, lives = 4,
       heists_won_perma = 0, heist_chain_perma = {}, lives_perma = 4,
@@ -138,6 +143,8 @@ function CrimDusk:Init()
       Global.CrimDusk.data[campaign .. "_perma"] = 1
     end
   end
+
+  self.Log(FileIdent, "Initialisation completed!", true)
 end
 
 Global.load_crime_net = false
@@ -189,7 +196,9 @@ Global.CrimDusk = {
 
 function Global.CrimDusk:Init()
   self.ModVersion = BeardLib.Utils:FindMod("Thievenfall").AssetUpdates.version
+  self.Developer = BeardLib.Utils:FindMod("Thievenfall"):GetSetting("DevelopMode")
   CrimDusk.Log(FileIdent, "Playing Thievenfall v" .. self.ModVersion)
+  CrimDusk.Log(FileIdent, "DevMode active!", true)
   CrimDusk.Log(FileIdent, "Attempting to load save file...")
   self.data = io.load_as_json(CrimDusk.SaveFile)
 
@@ -199,10 +208,10 @@ function Global.CrimDusk:Init()
   end
 
   -- tweakdata modification tables
-  dofile(CrimDusk.ModPath .. "lua/tables/campaign.lua" )
-  dofile(CrimDusk.ModPath .. "lua/tables/heists.lua" )
-  dofile(CrimDusk.ModPath .. "lua/tables/weapons.lua" )
-  dofile(CrimDusk.ModPath .. "lua/tables/melee.lua" )
+  dofile(CrimDusk.ModPath .. "lua/tables/campaign.lua")
+  dofile(CrimDusk.ModPath .. "lua/tables/heists.lua")
+  dofile(CrimDusk.ModPath .. "lua/tables/weapons.lua")
+  dofile(CrimDusk.ModPath .. "lua/tables/melee.lua")
 
   -- Data validation
   self.data.heists_won = self.data.heists_won or 0
@@ -226,6 +235,8 @@ function Global.CrimDusk:Init()
 
   self.data.rust_recruited = self.data.rust_recruited or false
   self.data.rust_recruited_perma = self.data.rust_recruited_perma or false
+
+  CrimDusk.Log(FileIdent, "Global initialisation completed!", true)
 end
 
 -- Logo replacements

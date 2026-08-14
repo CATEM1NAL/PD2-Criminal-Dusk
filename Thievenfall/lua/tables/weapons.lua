@@ -296,3 +296,85 @@ Global.CrimDusk.weapons.crew = {
   new_mp5 = "mp5_crew", new_m4 = "m4_crew", new_m14 = "m14_crew", new_raging_bull = "raging_bull_crew",
   glock_17 = "g17_crew", b92fs = "beretta92_crew", glock_18c = "glock_18_crew", colt_1911 = "c45_crew"
 }
+
+-- Projectile damage
+local Grenade = 40
+
+local HighLauncher = 30
+local LowLauncher = 15
+local ShockLauncher = 1
+
+local Bow = 15
+local BowPoison = Bow * 0.75
+local BowExp = Bow * 1.5
+
+local Crossbow = Bow * 0.8
+local CrossbowPoison = Crossbow * 0.75
+local CrossbowExp = Crossbow * 1.5
+
+Global.CrimDusk.weapons.projectile_damage = {
+
+  -- frags
+  frag = Grenade, dynamite = Grenade, dada_com = Grenade, frag_com = Grenade * 0.5, sticky_grenade = Grenade,
+  -- special grenades
+  wpn_gre_electric = ShockLauncher * 2.5, poison_gas_grenade = 0, molotov = 0, fir_com = 0,
+  -- thrown
+  wpn_prj_four = 7.5, wpn_prj_ace = 0.1, wpn_prj_jav = 50, wpn_prj_hur = 15, wpn_prj_target = 15, xmas_snowball = 10,
+
+  -- frag launchers
+  launcher_frag = HighLauncher, launcher_frag_slap = HighLauncher,
+  launcher_frag_m32 = HighLauncher, launcher_frag_china = LowLauncher, launcher_frag_arbiter = LowLauncher, launcher_frag_ms3gl = LowLauncher,
+  -- incendiary launchers
+  launcher_incendiary = 0, launcher_incendiary_slap = 0,
+  launcher_incendiary_m32 = 0, launcher_incendiary_china = 0, launcher_incendiary_arbiter = 0, launcher_incendiary_ms3gl = 0,
+  -- shock launchers
+  launcher_electric = ShockLauncher, launcher_electric_slap = ShockLauncher,
+  launcher_electric_m32 = ShockLauncher, launcher_electric_china = ShockLauncher, launcher_electric_arbiter = ShockLauncher, launcher_electric_ms3gl = ShockLauncher,
+  -- poison launchers
+  launcher_poison = 0, launcher_poison_gre_m79 = 0, launcher_poison_slap = 0,
+  launcher_poison_m32 = 0, launcher_poison_china = 0, launcher_poison_arbiter = 0, launcher_poison_ms3gl_conversion = 0,
+
+  -- frag underbarrels
+  launcher_m203 = HighLauncher, underbarrel_m203_groza = HighLauncher,
+  -- shock underbarrels
+  underbarrel_electric = ShockLauncher, underbarrel_electric_groza = ShockLauncher,
+  -- poison underbarrels
+  launcher_poison_contraband = 0, launcher_poison_groza = 0,
+
+  -- standard bows
+  west_arrow = Bow, long_arrow = Bow * 2, elastic_arrow = Bow * 2,
+  -- explosive bows
+  west_arrow_exp = BowExp, long_arrow_exp = BowExp * 2, elastic_arrow_exp = BowExp * 2,
+  -- poison bows
+  bow_poison_arrow = BowPoison, long_poison_arrow = BowPoison * 2, elastic_arrow_poison = BowPoison * 2,
+
+  -- standard crossbows
+  crossbow_arrow = Crossbow, frankish_arrow = Grenade, arblast_arrow = 200, ecp_arrow = Crossbow,
+  -- explosive crossbows
+  crossbow_arrow_exp = CrossbowExp, frankish_arrow_exp = Grenade * 1.5, arblast_arrow_exp = 300, ecp_arrow_exp = CrossbowExp,
+  -- poison crossbows
+  crossbow_poison_arrow = CrossbowPoison, frankish_poison_arrow = Grenade * 0.75, arblast_poison_arrow = 100, ecp_arrow_poison = CrossbowPoison,
+
+  -- other
+  launcher_rocket = 150, rocket_ray_frag = 37.5
+}
+
+-- Throwable stats; cooldown = { throwable = quantity }
+Global.CrimDusk.weapons.throwables = {
+  [12] = { xmas_snowball = 2 },
+  [30] = { laser_watch = 8, wpn_gre_electric = 1, concussion = 2, fir_com = 2, chico_injector = 1, frag_com = 2 },
+  [45] = { frag = 1, dada_com = 1, copr_ability = 1 },
+  [60] = { sticky_grenade = 1, dynamite = 1, tag_team = 1 },
+  [75] = { molotov = 1, poison_gas_grenade = 1, smoke_screen_grenade = 1 },
+  [120] = { pocket_ecm_jammer = 2 }
+}
+
+-- Fire DOT
+Global.CrimDusk.weapons.fire_damage = {
+  weapon_kacchainsaw_flamethrower = 0.5, weapon_money = 0.5, ammo_dragons_breath = 1, melee_spoon_gold = 0.2,
+  ammo_system_low = 0.25, weapon_system = 0.5, ammo_system_high = 0.75,
+  ammo_flamethrower_mk2_rare = 0.25, weapon_flamethrower_mk2 = 0.5, ammo_flamethrower_mk2_welldone = 0.75,
+  proj_molotov = 1, proj_launcher_incendiary = 0.9, proj_launcher_incendiary_arbiter = 1.7, proj_fire_com = 1.2,
+  proj_molotov_groundfire = 1, proj_launcher_incendiary_groundfire = 1, proj_launcher_incendiary_arbiter_groundfire = 1,
+  equipment_tripmine_groundfire = 1, enemy_triad_boss_groundfire = 1, enemy_mutator_cloaker_groundfire = 1
+}

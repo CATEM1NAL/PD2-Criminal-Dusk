@@ -31,7 +31,7 @@ Hooks:OverrideFunction(PlayerStandard, "_check_action_melee", function(self, t, 
     if self._change_weapon_data then self:_start_action_equip_weapon(t) end
   return end
 
-  local action_wanted = self._state_data.melee_active or input.btn_melee_press
+  local action_wanted = not self:_interacting() and (self._state_data.melee_active or input.btn_melee_press)
   if not action_wanted then return end
 
   -- Put melee away on button press

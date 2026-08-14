@@ -11,7 +11,7 @@ Hooks:PreHook(SkillTreeManager, "_setup", "CrimDusk_SkillTreeManagerSetup", func
 
   -- Player gains extra skill points for infamy
   self.InfamiesPerPoint = 52 / self.MaxInfamyPoints
-  self.InfamyPoints = math.floor(managers.experience:current_rank() / self.InfamiesPerPoint)
+  self.InfamyPoints = math.min(math.floor(managers.experience:current_rank() / self.InfamiesPerPoint), self.MaxInfamyPoints)
 
   self.StartingPoints = self.StartingPoints + self.InfamyPoints
   self.MaxSkillPoints = math.min(self.MaxSkillPoints + self.InfamyPoints, 100 + self.StartingPoints)

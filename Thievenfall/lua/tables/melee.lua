@@ -81,7 +81,6 @@ Global.CrimDusk.melee.classes = {
     bowie = {},
     chef = {},
     x46 = {},
-    tiger = {},
     catch = {},
     scoutknife = {},
     gerber = {},
@@ -92,6 +91,7 @@ Global.CrimDusk.melee.classes = {
   },
 
   SmallBlades = {
+    tiger = {},
     cs = { rep = 0.75, dismember = true },
     pitchfork = {  },
     sandsteel = { dismember = true },

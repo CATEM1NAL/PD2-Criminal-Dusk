@@ -82,6 +82,10 @@
           <hook source_file="lib/managers/hud/hudstageendscreen" file="stageendscreen.lua"/>
         </hooks>
 
+        <hooks directory="hud"> <!-- root/lua/managers/hud/ -->
+          <hook source_file="lib/managers/hud/hudteammate" file="teammate.lua"/>
+        </hooks>
+
         <hooks directory="elements"> <!-- root/lua/managers/elements/ -->
           <hook source_file="lib/managers/mission/elementspawndeployable" file="spawndeployable.lua"/>
           <hook source_file="lib/managers/mission/elementplayerspawner" file="spawnplayer.lua"/>

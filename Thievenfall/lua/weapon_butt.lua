@@ -1,7 +1,7 @@
-if not managers.player:player_unit() or not managers.player:player_unit():movement() or not managers.player:player_unit():movement():current_state() then return end
-local ValidState = { standard = true, carry = true }
-log(managers.player:current_state())
+if not managers.player:player_unit() or not managers.player:player_unit():movement() or managers.player:player_unit():_interacting() or not managers.player:player_unit():movement():current_state() then return end
+CrimDusk.Log("QuickMelee", managers.player:current_state(), true)
 
+local ValidState = { standard = true, carry = true }
 if ValidState[managers.player:current_state()] and managers.player:player_unit():movement():current_state():_melee_repeat_allowed() then
   local CurrentMelee = managers.blackmarket:equipped_melee_weapon()
 

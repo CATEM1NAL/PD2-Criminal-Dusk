@@ -79,11 +79,7 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   self.values.player.assault_intimidate = { true } -- Assault Dominator
   self.definitions.player_assault_intimidate = {
     category = "feature",
-    upgrade = {
-      category = "player",
-      upgrade = "assault_intimidate",
-      value = 1
-    }
+    upgrade = { category = "player", upgrade = "assault_intimidate", value = 1 }
   }
 
   -- Frenzy
@@ -130,11 +126,7 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   self.values.player.down_time_bonus = { 5, 10, 15, 20 } -- More Blood to Bleed
   self.definitions.player_bleedout_timer_1 = {
     category = "feature",
-    upgrade = {
-      category = "player",
-      upgrade = "down_time_bonus",
-      value = 1
-    }
+    upgrade = { category = "player", upgrade = "down_time_bonus", value = 1 }
   }
 
   -- Repair System
@@ -142,12 +134,12 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   self.values.player.drill_autorepair_2 = { 0.5 }
 
   -- Shell Dimension
-  local Level1, Level2 = 0.1, 0.25
-  self.values.shotgun.consume_no_ammo_chance = { Level1, Level2 }
+  local SkillChance = { 0.1, 0.25 }
+  self.values.shotgun.consume_no_ammo_chance = SkillChance
 
   local WeaponClasses = { "pistol", "assault_rifle", "snp", "smg", "lmg", "minigun" }
   for _, class in ipairs(WeaponClasses) do
-    self.values[class].consume_no_ammo_chance = { Level1, Level2 }
+    self.values[class].consume_no_ammo_chance = SkillChance
     self.definitions[class .. "_consume_no_ammo_chance_1"] = deep_clone(self.definitions.shotgun_consume_no_ammo_chance_1)
     self.definitions[class .. "_consume_no_ammo_chance_1"].upgrade.category = class
   end
@@ -294,7 +286,7 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   self.ecm_feedback_max_duration = 15
 
   -- New upgrade definitions
-  NewUpgrades = {
+  local NewUpgrades = {
     doctor_bag_quantity = 2, ammo_bag_quantity = 2, first_aid_kit_downs_restore_chance = 2, melee_stacking_hit_expire_t = 2,
     player_detection_risk_damage_multiplier = 2, player_intimidate_range_mul = 2, player_revive_health_boost = 2,
     weapon_passive_headshot_damage_multiplier = 2, weapon_passive_damage_multiplier = 2, player_regain_throwable_from_ammo = 2,

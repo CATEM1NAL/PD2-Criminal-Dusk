@@ -41,11 +41,12 @@ local function SelectNextHeist()
       "Bain Captured: " .. tostring(BainCaptured) ..
       "\nVlad Captured: " .. tostring(VladCaptured) ..
       "\nAlmir Captured: " .. tostring(AlmirCaptured) ..
-      "\nLocke Betrayed: " .. tostring(LockeBetrayed)
+      "\nLocke Betrayed: " .. tostring(LockeBetrayed),
+      true
     )
 
     if BainCaptured then
-      CrimDusk.Log(FileIdent, "Adding end-game Locke heists...")
+      CrimDusk.Log(FileIdent, "Adding end-game Locke heists...", true)
       for heist, _ in pairs(CampaignData.bain_captured) do table.insert(ValidHeists, heist) end
     end
 
@@ -56,45 +57,45 @@ local function SelectNextHeist()
 
       -- Remove Hector heists if he's dead
       if Global.CrimDusk.data["hector_dead" .. permadeath] and CampaignData.hector_dead[heist] then
-        CrimDusk.Log(FileIdent, "Hector is dead; removing " .. heist)
+        CrimDusk.Log(FileIdent, "Hector is dead; removing " .. heist, true)
         table.remove(ValidHeists, i)
 
       -- Remove friend heists if captured
       elseif BainCaptured and not CampaignData.bain_captured[heist] and not LockeHeist then
-        CrimDusk.Log(FileIdent, "Bain is captured; removing " .. heist)
+        CrimDusk.Log(FileIdent, "Bain is captured; removing " .. heist, true)
         table.remove(ValidHeists, i)
 
       elseif VladCaptured and CampaignData.vlad_captured[heist] then
-        CrimDusk.Log(FileIdent, "Vlad is captured; removing " .. heist)
+        CrimDusk.Log(FileIdent, "Vlad is captured; removing " .. heist, true)
         table.remove(ValidHeists, i)
 
       elseif AlmirCaptured and CampaignData.almir_captured[heist] then
-        CrimDusk.Log(FileIdent, "Almir is captured; removing " .. heist)
+        CrimDusk.Log(FileIdent, "Almir is captured; removing " .. heist, true)
         table.remove(ValidHeists, i)
 
       -- Remove early Locke heists if he has betrayed us
       elseif LockeBetrayed == true and (heist == "pbr" or heist == "pbr2" or heist == "run") then
-        CrimDusk.Log(FileIdent, "Locke has betrayed us; removing " .. heist)
+        CrimDusk.Log(FileIdent, "Locke has betrayed us; removing " .. heist, true)
         table.remove(ValidHeists, i)
 
       -- Remove Border Crossing if Bain hasn't been freed yet
       elseif heist == "mex" and not Global.CrimDusk.data["bain_freed" .. permadeath] then
-        CrimDusk.Log(FileIdent, "Bain hasn't been captured; removing " .. heist)
+        CrimDusk.Log(FileIdent, "Bain hasn't been captured; removing " .. heist, true)
         table.remove(ValidHeists, i)
 
       -- Remove Dentist heists if Bain freed
       elseif CampaignData.no_dentist[heist] and Global.CrimDusk.data["bain_freed" .. permadeath] then
-        CrimDusk.Log(FileIdent, "Bain has been freed; removing " .. heist)
+        CrimDusk.Log(FileIdent, "Bain has been freed; removing " .. heist, true)
         table.remove(ValidHeists, i)
 
       -- Remove out of place Locke heists if Bain has been freed
       elseif (heist == "pbr" or heist == "pbr2" or heist == "wwh" or heist == "des") and Global.CrimDusk.data["bain_freed" .. permadeath] then
-        CrimDusk.Log(FileIdent, "Bain has been freed; removing " .. heist)
+        CrimDusk.Log(FileIdent, "Bain has been freed; removing " .. heist, true)
         table.remove(ValidHeists, i)
 
       -- Remove San Martin if no Rust
       elseif heist == "bex" and not Global.CrimDusk.data.rust_recruited then
-        CrimDusk.Log(FileIdent, "Rust hasn't been recruited; removing " .. heist)
+        CrimDusk.Log(FileIdent, "Rust hasn't been recruited; removing " .. heist, true)
         table.remove(ValidHeists, i)
       end
     end
@@ -115,8 +116,8 @@ local function SelectNextHeist()
     -- White House is always last
     if not next(ValidHeists) then table.insert(ValidHeists, "vit") end
 
-    CrimDusk.Log(FileIdent, "Heists left: " .. #ValidHeists)
-    Utils.PrintTable(ValidHeists)
+    CrimDusk.Log(FileIdent, "Heists left: " .. #ValidHeists, true)
+    if Global.CrimDusk.Developer then Utils.PrintTable(ValidHeists) end
 
     NextJob = ValidHeists[math.random(#ValidHeists)]
     Global.CrimDusk.data[heist_chain] = Global.CrimDusk.data[heist_chain] or {}

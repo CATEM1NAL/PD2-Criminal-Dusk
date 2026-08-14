@@ -1,4 +1,4 @@
-local FileIdent = "GroupAIBesiege"
+local FileIdent = "GroupAIBesiegeManager"
 
 Hooks:OverrideFunction(GroupAIStateBesiege, "_check_phalanx_damage_reduction_increase", function() return end)
 Hooks:OverrideFunction(GroupAIStateBesiege, "set_phalanx_damage_reduction_buff", function() return end)
@@ -20,11 +20,11 @@ Hooks:OverrideFunction(GroupAIStateBesiege, "_check_spawn_phalanx", function(sel
     if self._phalanx_current_spawn_chance <= 0 then return end
 
     self._phalanx_spawn_attempted = true
-    CrimDusk.Log(FileIdent, "Winters spawn chance: " .. self._phalanx_current_spawn_chance * 100 .. "%")
+    CrimDusk.Log(FileIdent, "Winters spawn chance: " .. self._phalanx_current_spawn_chance * 100 .. "%", true)
 
     if math.random() > self._phalanx_current_spawn_chance then return end
 
-    CrimDusk.Log(FileIdent, "Winters is spawning!")
+    CrimDusk.Log(FileIdent, "Winters is spawning!", true)
     local BuildDuration = tweak_data.group_ai.besiege.assault.build_duration
     local LowerBound = math.max(BuildDuration - 15, 0)
     self._phalanx_spawn_timer = TimerManager:game():time() + math.random(LowerBound, BuildDuration)
@@ -55,6 +55,8 @@ Hooks:OverrideFunction(GroupAIStateBesiege, "phalanx_damage_reduction_enable", f
 
   -- Enemy cap increased
   self._task_data.assault.force = self._task_data.assault.force * 8
+
+  CrimDusk.Log(FileIdent, "Winters in position; spawns increased!", true)
 end)
 
 Hooks:OverrideFunction(GroupAIStateBesiege, "phalanx_damage_reduction_disable", function(self)
@@ -81,6 +83,8 @@ Hooks:OverrideFunction(GroupAIStateBesiege, "phalanx_damage_reduction_disable", 
 
   -- Revert enemy cap
   self._task_data.assault.force = self._task_data.assault.force * 0.125
+
+  CrimDusk.Log(FileIdent, "Winters is gone; spawns reverted!", true)
 end)
 
 Hooks:OverrideFunction(GroupAIStateBesiege, "_begin_assault_task", function(self, assault_areas)
@@ -104,6 +108,7 @@ Hooks:OverrideFunction(GroupAIStateBesiege, "_begin_assault_task", function(self
 
   if self._hostage_headcount > 0 then -- Each hostage increases assault delay (up to 30 seconds max)
     local hostage_delay = math.min(self:_get_difficulty_dependent_value(self._tweak_data.assault.hostage_hesitation_delay) * self._hostage_headcount, 30)
+    CrimDusk.Log(FileIdent, "Hostage delay: " .. hostage_delay, true)
 
     anticipation_duration = anticipation_duration + hostage_delay
     assault_task.phase_end_t = assault_task.phase_end_t + hostage_delay
@@ -137,5 +142,5 @@ Hooks:PreHook(GroupAIStateBesiege, "_end_regroup_task", "CrimDusk_GroupAIAssault
 
   self._phalanx_current_spawn_chance = math.min((self._phalanx_current_spawn_chance or WintersChance) + WintersChanceIncrease, WintersChanceMax)
   self._phalanx_spawn_attempted = false -- Reset to attempt spawn on next assault
-  CrimDusk.Log(FileIdent, "Increasing Winters spawn chance! Now " .. self._phalanx_current_spawn_chance * 100 .. "%")
+  CrimDusk.Log(FileIdent, "Increasing Winters spawn chance! Now " .. self._phalanx_current_spawn_chance * 100 .. "%", true)
 end)

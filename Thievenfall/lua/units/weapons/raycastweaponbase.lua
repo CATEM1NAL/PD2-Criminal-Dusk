@@ -21,6 +21,7 @@ Hooks:OverrideFunction(RaycastWeaponBase, "on_reload", function(self)
   -- Ammo not used is wasted
   if WeaponTweak.MagDump and CurrentMag > chamber then
     ammo_base:set_ammo_total(ammo_base._ammo_total - MagDump)
+    CrimDusk.Log(FileIdent, "Dumping " .. MagDump .. " rounds", true)
   end
 
   if self._setup.expend_ammo then ammo_base:set_ammo_remaining_in_clip(math.min(ammo_base:get_ammo_total(), amount))

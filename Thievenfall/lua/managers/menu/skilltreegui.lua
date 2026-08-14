@@ -11,9 +11,7 @@ Hooks:OverrideFunction(NewSkillTreeGui, "_update_description", function(self, it
 	  lv1 = self._skilltree:get_skill_points(skill_id, 1) or 0,
 	  lv2 = self._skilltree:get_skill_points(skill_id, 2) or 0,
 	  lv3 = self._skilltree:get_skill_points(skill_id, 3) or 0,
-	  lv4 = self._skilltree:get_skill_points(skill_id, 4) or 0,
-	  lv5 = self._skilltree:get_skill_points(skill_id, 5) or 0,
-	  lv6 = self._skilltree:get_skill_points(skill_id, 6) or 0
+	  lv4 = self._skilltree:get_skill_points(skill_id, 4) or 0
 	}
 	local talent = tweak_data.skilltree.skills[skill_id]
 	local unlocked = self._skilltree:skill_unlocked(nil, skill_id)
@@ -23,7 +21,7 @@ Hooks:OverrideFunction(NewSkillTreeGui, "_update_description", function(self, it
 	local basic_color_index = 1
 	local pro_color_index = 2 + (skill_descs[1] or 0)
 
-  local HighestLevel = 6
+  local HighestLevel = 4
   for i = 1, HighestLevel do
     if step > i then
       costs["lv" .. i] = "LEVEL " .. i .. ": ##" .. utf8.to_upper(managers.localization:text("st_menu_skill_owned")) .. "##\n"
@@ -31,17 +29,10 @@ Hooks:OverrideFunction(NewSkillTreeGui, "_update_description", function(self, it
     else
       costs["lv" .. i] = "LEVEL " .. i .. ": ##" .. managers.localization:text(costs["lv" .. i] == 1 and "st_menu_point"
                           or "st_menu_point_plural", { points = costs["lv" .. i] }) .. "##\n"
-		end
-	end
+    end
+  end
 
-	local macroes = {
-		lv1 = costs.lv1,
-		lv2 = costs.lv2,
-		lv3 = costs.lv3,
-		lv4 = costs.lv4,
-		lv5 = costs.lv5,
-		lv6 = costs.lv6
-	}
+  local macroes = { lv1 = costs.lv1, lv2 = costs.lv2, lv3 = costs.lv3, lv4 = costs.lv4 }
 
 	local skill_string = managers.localization:to_upper_text(tweak_data_skill.name_id)
 	local desc_string = managers.localization:text(tweak_data.skilltree.skills[skill_id].desc_id, macroes)
