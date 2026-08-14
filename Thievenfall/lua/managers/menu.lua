@@ -16,6 +16,7 @@ local function SelectNextHeist()
     local ValidHeists = deep_clone(Global.CrimDusk.custom_campaign_base)
 
     -- Add mini-campaigns into pool
+    local CampaignData = Global.CrimDusk.mini_campaign_data
     for campaign, _ in pairs(Global.CrimDusk.mini_campaigns) do
       table.insert(ValidHeists, Global.CrimDusk.mini_campaigns[campaign][Global.CrimDusk.data[campaign .. permadeath]])
     end
@@ -25,59 +26,75 @@ local function SelectNextHeist()
 
     -- Are friends captured?
     local BainCaptured = false
-    if not Global.CrimDusk.data["bain_freed" .. permadeath] then
-      for _, heist in ipairs(Global.CrimDusk.data["heist_chain" .. permadeath]) do
-        if heist == "cd_reservoir" then BainCaptured = true end
-      end
-    end
-
     local VladCaptured = false
-    if not Global.CrimDusk.data["vlad_freed" .. permadeath] then
-      for _, heist in ipairs(Global.CrimDusk.data["heist_chain" .. permadeath]) do
-        if heist == "chas" then VladCaptured = true end
-      end
+    local AlmirCaptured = false
+    local LockeBetrayed = false
+
+    for _, heist in ipairs(Global.CrimDusk.data["heist_chain" .. permadeath]) do
+      if heist == "cd_reservoir" and not Global.CrimDusk.data["bain_freed" .. permadeath] then BainCaptured = true
+      elseif heist == "chas" and not Global.CrimDusk.data["vlad_freed" .. permadeath] then VladCaptured = true
+      elseif heist == "bex" and not Global.CrimDusk.data["almir_freed" .. permadeath] then AlmirCaptured = true
+      elseif heist == "wwh" then LockeBetrayed = true end
     end
 
-    local AlmirCaptured = false
-    if not Global.CrimDusk.data["almir_freed" .. permadeath] then
-      for _, heist in ipairs(Global.CrimDusk.data["heist_chain" .. permadeath]) do
-        if heist == "bex" then AlmirCaptured = true end
-      end
+    CrimDusk.Log(FileIdent,
+      "Bain Captured: " .. tostring(BainCaptured) ..
+      "\nVlad Captured: " .. tostring(VladCaptured) ..
+      "\nAlmir Captured: " .. tostring(AlmirCaptured) ..
+      "\nLocke Betrayed: " .. tostring(LockeBetrayed)
+    )
+
+    if BainCaptured then
+      CrimDusk.Log(FileIdent, "Adding end-game Locke heists...")
+      for heist, _ in pairs(CampaignData.bain_captured) do table.insert(ValidHeists, heist) end
     end
 
     -- Set up heist list
-    local CampaignData = Global.CrimDusk.mini_campaign_data
     for i = #ValidHeists, 1, -1 do
       local heist = ValidHeists[i]
+      local LockeHeist = CampaignData.silk_road[heist] or CampaignData.city_of_gold[heist] or CampaignData.texas_heat[heist]
 
       -- Remove Hector heists if he's dead
-      if Global.CrimDusk.data["hector_dead" .. permadeath] then
-        if CampaignData.hector_dead[heist] then table.remove(ValidHeists, i) end
+      if Global.CrimDusk.data["hector_dead" .. permadeath] and CampaignData.hector_dead[heist] then
+        CrimDusk.Log(FileIdent, "Hector is dead; removing " .. heist)
+        table.remove(ValidHeists, i)
 
-     -- Remove friend heists if captured
-      elseif BainCaptured and not CampaignData.bain_captured[heist] then
+      -- Remove friend heists if captured
+      elseif BainCaptured and not CampaignData.bain_captured[heist] and not LockeHeist then
+        CrimDusk.Log(FileIdent, "Bain is captured; removing " .. heist)
         table.remove(ValidHeists, i)
 
       elseif VladCaptured and CampaignData.vlad_captured[heist] then
+        CrimDusk.Log(FileIdent, "Vlad is captured; removing " .. heist)
         table.remove(ValidHeists, i)
 
       elseif AlmirCaptured and CampaignData.almir_captured[heist] then
+        CrimDusk.Log(FileIdent, "Almir is captured; removing " .. heist)
+        table.remove(ValidHeists, i)
+
+      -- Remove early Locke heists if he has betrayed us
+      elseif LockeBetrayed == true and (heist == "pbr" or heist == "pbr2" or heist == "run") then
+        CrimDusk.Log(FileIdent, "Locke has betrayed us; removing " .. heist)
         table.remove(ValidHeists, i)
 
       -- Remove Border Crossing if Bain hasn't been freed yet
       elseif heist == "mex" and not Global.CrimDusk.data["bain_freed" .. permadeath] then
+        CrimDusk.Log(FileIdent, "Bain hasn't been captured; removing " .. heist)
         table.remove(ValidHeists, i)
 
       -- Remove Dentist heists if Bain freed
       elseif CampaignData.no_dentist[heist] and Global.CrimDusk.data["bain_freed" .. permadeath] then
+        CrimDusk.Log(FileIdent, "Bain has been freed; removing " .. heist)
         table.remove(ValidHeists, i)
 
-      -- Remove Point Break & Alaskan Deal if Bain has been freed
-      elseif (heist == "pbr" or heist == "pbr2" or heist == "wwh") and Global.CrimDusk.data["bain_freed" .. permadeath] then
+      -- Remove out of place Locke heists if Bain has been freed
+      elseif (heist == "pbr" or heist == "pbr2" or heist == "wwh" or heist == "des") and Global.CrimDusk.data["bain_freed" .. permadeath] then
+        CrimDusk.Log(FileIdent, "Bain has been freed; removing " .. heist)
         table.remove(ValidHeists, i)
 
       -- Remove San Martin if no Rust
       elseif heist == "bex" and not Global.CrimDusk.data.rust_recruited then
+        CrimDusk.Log(FileIdent, "Rust hasn't been recruited; removing " .. heist)
         table.remove(ValidHeists, i)
       end
     end

@@ -27,12 +27,12 @@ Global.CrimDusk.mini_campaign_data = {
   -- Campaign events
   hector_dead = { cd_watchdogs1_wrapper = true, cd_watchdogs2_wrapper = true, cd_firestarter1 = true, cd_firestarter2 = true, cd_rats = true },
   bain_captured = { brb = true, tag = true, des = true, sah = true, bph = true, nmh = true },
+  almir_captured = { pines = true, moon = true, cd_goat2 = true },
+  no_dentist = { cd_miami1 = true, cd_miami2 = true, cd_hox1 = true, big = true, mus = true, kenaz = true },
   vlad_captured = {
     four_stores = true, mallcrasher = true, ukrainian_job_prof = true, nightclub = true, pines = true, cane = true,
     moon = true, jolly = true, shoutout_raid = true, cd_goat1 = true, cd_goat2 = true, bex = true, pex = true, fex = true
   },
-  almir_captured = { pines = true, moon = true, cd_goat2 = true },
-  no_dentist = { cd_miami1 = true, cd_miami2 = true, cd_hox1 = true, big = true, mus = true, kenaz = true },
 
   -- Heist chains
   hardcore_henry = { dark = 1, mad = 2 },

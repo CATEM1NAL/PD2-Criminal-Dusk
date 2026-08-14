@@ -97,29 +97,21 @@ Hooks:PostHook(MoneyTweakData, "init", "CrimDusk_MoneyTweakInit", function(self,
   self.preplanning_asset_cost_chas_tram = 100000
 
   local LooseCash = {
-    money_bundle = 2000, ring_band = 500, 
+    -- Generic
+    money_bundle = 500, gen_atm = 12500, slot_machine_payout = 12500,
+    vault_loot_gold = 1250, vault_loot_cash = 7500, vault_loot_coins = 500,
+    vault_loot_ring = 250, vault_loot_jewels = 250,
+
+    diamondheist_vault_bust = 125, -- Necklaces
+    diamondheist_vault_diamond = 125, -- Jewelry
+    diamondheist_big_diamond = 250, -- Tiara?
+
+    ring_band = 125, -- One Ring
+
+    -- Big Bank
+    vault_loot_chest = 125, vault_loot_diamond_chest = 250, vault_loot_banknotes = 125,
+    vault_loot_silver = 125, vault_loot_diamond_collection = 375, vault_loot_trophy = 25,
+    spawn_bucket_of_money = 12500
   }
-
-  if DiffIndex <= 2 then -- Normal
-    
-
-  elseif DiffIndex == 3 then -- Hard
-    
-
-  elseif DiffIndex == 4 then -- Very Hard
-    
-
-  elseif DiffIndex == 5 then -- OVERKILL
-    
-
-  elseif DiffIndex == 6 then -- Mayhem
-    
-
-  elseif DiffIndex == 7 then -- Death Wish
-    
-
-  elseif DiffIndex == 8 then -- Death Sentence
-    
-
-  end
+  for loot, value in pairs(LooseCash) do self.small_loot[loot] = math.floor(value * (DiffIndex * 0.5)) end
 end)

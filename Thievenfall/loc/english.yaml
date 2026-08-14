@@ -690,7 +690,7 @@ menu_es_coins_progress: "C-Stacks"
 menu_es_safehouse_reward_coins: "$amount C-Stacks"
 menu_cs_continental_coin_cost: "$cost C-Stacks."
 bm_cs_continental_coin_cost: "$cost C-Stacks."
-menu_cs_upgrade_cost: "Upgrading this room costs $cost C-Stacks."
+menu_cs_upgrade_cost: "Upgrading this room costs ##$cost## C-Stacks and increases loot value by ##2.5%##."
 
 menu_l_lootscreen: "Card Drop"
 menu_l_choose_card_local: ""
