@@ -6,7 +6,7 @@ Hooks:PostHook(GameOverState, "at_enter", "CrimDawn_HeistFailed", function(self)
     Global.CrimDusk.data.heists_won_perma = 0
   return end
 
-  Global.CrimDusk.data.lives = 4
+  Global.CrimDusk.data.lives = 30 + managers.player:upgrade_value("player", "additional_lives", 0)
   if NetworkHelper:IsClient() or (Global.CrimDusk.data.heists_won >= 78) then return end
   if Global.CrimDusk.data.heists_won < 5 then Global.CrimDusk.data.heists_won = 5 return end
 

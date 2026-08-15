@@ -126,8 +126,8 @@ function CrimDusk:Init()
   function self:Reset()
     CrimDusk.Log(FileIdent, "Performing full reset!", true)
     Global.CrimDusk.data = {
-      heists_won = 0, heist_chain = {}, lives = 4,
-      heists_won_perma = 0, heist_chain_perma = {}, lives_perma = 4,
+      heists_won = 0, heist_chain = {}, lives = 30,
+      heists_won_perma = 0, heist_chain_perma = {}, lives_perma = 30,
 
       winters_dead = false, hector_dead = false,
       winters_dead_perma = false, hector_dead_perma = false,
@@ -169,72 +169,57 @@ if NetworkHelper:IsClient() then NetworkHelper:SendToPeer(1, "CrimDusk_RequestHe
 
 -- THIS SECTION ONLY RUNS ONCE ON GAME LAUNCH --
 if Global.CrimDusk then return end
-Global.CrimDusk = {
-  regen_time = { 0.5, 0.5, 1.5, 2.5, 4.5, 6, 7.5 },
-  friendly_fire = { 0.1, 0.2, 0.3, 0.4, 0.5, 0.75, 1 },
 
-  archicolours = {
-    green = Color(255, 117, 194, 117) / 255,
-    green_alt = Color(255, 43, 194, 43) / 255,
-
-    blue = Color(255, 118, 126, 189) / 255,
-    blue_alt = Color(255, 66, 83, 189) / 255,
-
-    pink = Color(255, 202, 148, 194) / 255,
-    pink_alt = Color(255, 202, 89, 194) / 255,
-
-    red = Color(255, 201, 118, 130) / 255,
-    red_alt = Color(255, 201, 41, 66) / 255,
-
-    orange = Color(255, 217, 160, 125) / 255,
-    orange_alt = Color(255, 217, 160, 56) / 255,
-
-    yellow = Color(255, 238, 227, 145) / 255,
-    yellow_alt = Color(255, 238, 227, 50) / 255
-  }
-}
-
+Global.CrimDusk = {}
 function Global.CrimDusk:Init()
   self.ModVersion = BeardLib.Utils:FindMod("Thievenfall").AssetUpdates.version
-  self.Developer = BeardLib.Utils:FindMod("Thievenfall"):GetSetting("DevelopMode")
   CrimDusk.Log(FileIdent, "Playing Thievenfall v" .. self.ModVersion)
+  self.Developer = BeardLib.Utils:FindMod("Thievenfall"):GetSetting("DevelopMode")
   CrimDusk.Log(FileIdent, "DevMode active!", true)
-  CrimDusk.Log(FileIdent, "Attempting to load save file...")
-  self.data = io.load_as_json(CrimDusk.SaveFile)
-
-  if not self.data then
-    CrimDusk:Reset()
-    CrimDusk:WriteSave(FileIdent, "save created")
-  end
 
   -- tweakdata modification tables
   dofile(CrimDusk.ModPath .. "lua/tables/campaign.lua")
   dofile(CrimDusk.ModPath .. "lua/tables/heists.lua")
+  dofile(CrimDusk.ModPath .. "lua/tables/gameplay.lua")
+  dofile(CrimDusk.ModPath .. "lua/tables/heists.lua")
   dofile(CrimDusk.ModPath .. "lua/tables/weapons.lua")
   dofile(CrimDusk.ModPath .. "lua/tables/melee.lua")
+  dofile(CrimDusk.ModPath .. "lua/tables/colours.lua")
 
-  -- Data validation
-  self.data.heists_won = self.data.heists_won or 0
-  self.data.heists_won_perma = self.data.heists_won_perma or 0
-  self.data.heist_chain = self.data.heist_chain or {}
-  self.data.heist_chain_perma = self.data.heist_chain_perma or {}
-  self.data.lives = self.data.lives or 4
-  self.data.lives_perma = self.data.lives or 4
+  -- Load save
+  CrimDusk.Log(FileIdent, "Attempting to load save file...")
+  self.data = io.load_as_json(CrimDusk.SaveFile)
+  if self.data then
+    CrimDusk.Log(FileIdent, "Load successful!")
 
-  -- Flags for post-game campaign
-  self.data.bain_freed = self.data.bain_freed or false
-  self.data.bain_freed_perma = self.data.bain_freed_perma or false
-  self.data.vlad_freed = self.data.vlad_freed or false
-  self.data.vlad_freed_perma = self.data.vlad_freed_perma or false
-  self.data.almir_freed = self.data.almir_freed or false
-  self.data.almir_freed_perma = self.data.almir_freed_perma or false
-  for campaign, _ in pairs(self.mini_campaigns) do
-    self.data[campaign] = self.data[campaign] or 1
-    self.data[campaign .. "_perma"] = self.data[campaign .. "_perma"] or 1
+    -- Data validation
+    self.data.heists_won = self.data.heists_won or 0
+    self.data.heists_won_perma = self.data.heists_won_perma or 0
+    self.data.heist_chain = self.data.heist_chain or {}
+    self.data.heist_chain_perma = self.data.heist_chain_perma or {}
+    self.data.lives = self.data.lives or 30
+    self.data.lives_perma = self.data.lives_perma or 30
+
+    -- Flags for post-game campaign
+    self.data.bain_freed = self.data.bain_freed or false
+    self.data.bain_freed_perma = self.data.bain_freed_perma or false
+    self.data.vlad_freed = self.data.vlad_freed or false
+    self.data.vlad_freed_perma = self.data.vlad_freed_perma or false
+    self.data.almir_freed = self.data.almir_freed or false
+    self.data.almir_freed_perma = self.data.almir_freed_perma or false
+    for campaign, _ in pairs(self.mini_campaigns) do
+      self.data[campaign] = self.data[campaign] or 1
+      self.data[campaign .. "_perma"] = self.data[campaign .. "_perma"] or 1
+    end
+
+    self.data.rust_recruited = self.data.rust_recruited or false
+    self.data.rust_recruited_perma = self.data.rust_recruited_perma or false
+
+  else
+    CrimDusk:Reset()
+    CrimDusk:WriteSave(FileIdent, "save created")
   end
 
-  self.data.rust_recruited = self.data.rust_recruited or false
-  self.data.rust_recruited_perma = self.data.rust_recruited_perma or false
 
   CrimDusk.Log(FileIdent, "Global initialisation completed!", true)
 end

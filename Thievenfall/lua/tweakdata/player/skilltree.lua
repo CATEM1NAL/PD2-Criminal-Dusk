@@ -156,7 +156,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       { "stoic_negation", "h3h3_absorb", "kingpin_base", "leech_swan" }
     }
     self.trees[14].tiers = {
-      { "muscle_health", "bleedout_timer", "revive_swap_speed" },
+      { "muscle_health", "revive_swap_speed" },
       { "four_lives", "revive_move_speed" },
       { "swan_song", "messiah" },
       { "vengeful_swan", "feign_death" }
@@ -602,7 +602,8 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     self.skills.four_lives = {
       { upgrades = { "player_additional_lives_1" }, cost = self.costs.default },
       { upgrades = { "player_additional_lives_2" }, cost = self.costs.default },
-      name_id = "menu_four_lives", desc_id = "menu_four_lives_desc", icon_xy = { 5, 2 }
+      { upgrades = { "player_additional_lives_3" }, cost = self.costs.default },
+      name_id = "menu_bleedout_timer_skill", desc_id = "menu_bleedout_timer_skill_desc", icon_xy = { 5, 2 }
     }
     self.skills.bleedout_health = {
       { upgrades = { "player_bleed_out_health_multiplier" }, cost = self.costs.default },

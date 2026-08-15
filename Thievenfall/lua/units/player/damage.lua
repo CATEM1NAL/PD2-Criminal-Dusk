@@ -13,6 +13,7 @@ Hooks:PreHook(PlayerDamage, "init", "CrimDusk_InitPlayerDamage", function(self)
   self._entropy_mult = 0.1
   self._armor_broken = false
   self._armor_break_t = managers.player:player_timer():time() + 3
+  self._max_lives = 30 + managers.player:upgrade_value("player", "additional_lives", 0) + 1
 end)
 
 -- Regen time varies with armour
@@ -70,6 +71,11 @@ Hooks:PostHook(PlayerDamage, "_regenerate_armor", "CrimDusk_PlayerRegenerateArmo
   self._armor_broken = false
   self._regen_on_the_side = false
   self._regen_on_the_side_timer = 0
+end)
+
+-- Feign Death
+Hooks:PostHook(PlayerDamage, "_chk_cheat_death", "CrimDusk_CheckFeignDeath", function(self)
+  if self._auto_revive_timer then self._down_time = self._down_time - 10 end
 end)
 
 -- Stoic damage tick
@@ -140,29 +146,33 @@ Hooks:OverrideFunction(PlayerDamage, "_regenerated", function(self, no_messiah)
   self:_set_health_effect()
   self._said_hurt = false
 
-  if not no_messiah then self._messiah_charges = managers.player:upgrade_value("player", "pistol_revive_from_bleed_out", 0) end
+  if not no_messiah then
+    self._messiah_charges = managers.player:upgrade_value("player", "pistol_revive_from_bleed_out", 0)
+  end
 
   -- Initial lives (start of heist)
-  if not self._down_time and Global.CrimDusk.data[lives] >= 0 then self._down_time = Global.CrimDusk.data[lives]
+  if Application:digest_value(self._revives, false) == 0 and Global.CrimDusk.data[lives] >= 0 then
+    self._revives = Application:digest_value(math.min(Global.CrimDusk.data[lives] + 1, self._max_lives), true)
 
-  elseif not self._down_time and Global.CrimDusk.data[lives] == -1 then
+  elseif Application:digest_value(self._revives, false) == 0 and Global.CrimDusk.data[lives] == -1 then
     self:set_health(0)
-    self._down_time = -1
+    self._revives = Application:digest_value(1, true)
+    self:_send_set_revives()
     self:_send_set_health()
     DelayedCalls:Add("CrimDusk_ForceIntoCustody", 1, function() self:_check_bleed_out(nil, true) end)
 
   -- Traded from custody
-  elseif self._down_time == -1 then self._down_time = 0
+  elseif Global.CrimDusk.data[lives] == -1 then
+    self._revives = Application:digest_value(1, true)
 
   -- Doctor bag
-  else local MaxDownTime = 30 + managers.player:upgrade_value("player", "down_time_bonus", 0)
-    self._down_time = math.min(self._down_time + 10, MaxDownTime)
+  else local NewDowns = Application:digest_value(self._revives, false) + 10
+    self._revives = Application:digest_value(math.min(NewDowns, self._max_lives), true)
   end
 
-  self._revives = Application:digest_value(self._down_time + 1, true)
+  self._down_time = Application:digest_value(self._revives, false) - 1
   self:_send_set_revives()
 
-  -- Calculate revive health
   local ReviveHealth = tweak_data.player.damage.REVIVE_HEALTH_STEPS
   local ReviveHealthRatio = self._down_time / 60
   self._revive_health_i = math.lerp(ReviveHealth[1], ReviveHealth[2], ReviveHealthRatio)
@@ -173,7 +183,7 @@ end)
 
 -- On revive
 Hooks:OverrideFunction(PlayerDamage, "revive", function(self, silent)
-  local arrested = self:arrested()
+  if Application:digest_value(self._revives, false) == 0 then self._revive_health_multiplier = nil return end
 
   managers.player:set_player_state("standard")
   managers.player:remove_copr_risen_cooldown()
@@ -183,28 +193,35 @@ Hooks:OverrideFunction(PlayerDamage, "revive", function(self, silent)
   self._bleed_out = false
   self._incapacitated = nil
 
-  local DownTimer = self._downed_timer
+  local DownTime = math.ceil(self._downed_timer)
   self._downed_timer = nil
   self._downed_start_time = nil
 
-  if not arrested then
+  if not self:arrested() then
     self:set_armor(self:_max_armor())
 
     if self:get_real_health() <= 0 then
       self:set_health(self:_max_health() * self._revive_health_i * (self._revive_health_multiplier or 1) * managers.player:upgrade_value("player", "revived_health_regain", 1))
     end
 
-    self._down_time = math.max(math.ceil(DownTimer - 10), 0)
-    Global.CrimDusk.data[lives] = self._down_time
+    self._down_time = DownTime
     self._revives = Application:digest_value(self._down_time + 1, true)
     self:_send_set_revives()
+    Global.CrimDusk.data[lives] = self._down_time
+
+    local ReviveHealth = tweak_data.player.damage.REVIVE_HEALTH_STEPS
+    local ReviveHealthRatio = self._down_time / 60
+    self._revive_health_i = math.lerp(ReviveHealth[1], ReviveHealth[2], ReviveHealthRatio)
+
+    if self._down_time <= 1 then managers.environment_controller:set_last_life(true)
+    else managers.environment_controller:set_last_life(false) end
 
     self._revive_miss = self._dmg_interval
   end
 
   self:_regenerate_armor()
 
-  managers.hud:set_player_health({ current = self:get_real_health(), total = self:_max_health(), revives = self._down_time })
+  managers.hud:set_player_health({ current = self:get_real_health(), total = self:_max_health(), revives = Application:digest_value(self._revives, false) })
   self:_send_set_health()
   self:_set_health_effect()
   managers.hud:pd_stop_progress()
@@ -273,6 +290,7 @@ Hooks:OverrideFunction(PlayerDamage, "damage_bullet", function(self, attack_data
 
   elseif self._invulnerable or self._mission_damage_blockers.invulnerable then self:_call_listeners(damage_info) return
   elseif self:incapacitated() then return
+  --elseif self:is_friendly_fire(attack_data.attacker_unit) then return -- doesn't do anything?
   elseif pm:player_timer():time() < self._armor_break_t then return
   elseif self._unit:movement():current_state().immortal then return
   elseif self._revive_miss and math.random() < self._revive_miss then self:play_whizby(attack_data.col_ray.position) return
@@ -363,15 +381,14 @@ end)
 -- Custody
 Hooks:PreHook(PlayerDamage, "pre_destroy", "CrimDusk_DamageCustody", function(self)
   if Utils:IsInCustody() then
-    self._down_time = -1
     Global.CrimDusk.data[lives] = -1
     CrimDusk.Log(FileIdent, "Taken into custody!", true)
   end
 end)
 
--- Update stored down time
+-- Update down time
 Hooks:OverrideFunction(PlayerDamage, "_send_set_revives", function(self)
   local revives = self._down_time + 1
   managers.hud:set_teammate_revives(HUDManager.PLAYER_PANEL, revives)
-  if self._unit:network() then self._unit:network():send("set_revives", revives, true) end
+  NetworkHelper:SendToPeers("CrimDusk_HUDUpdateDownCounter", revives)
 end)

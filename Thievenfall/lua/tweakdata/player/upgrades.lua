@@ -28,7 +28,7 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   end
 
   -- Skills
-  self.values.player.additional_lives = { 1, 2 } -- Nine Lives
+  self.values.player.additional_lives = { 10, 20, 30 } -- Nine Lives
   self.values.weapon.passive_swap_speed_multiplier = { 1.8, 2.6 } -- Swap Speed
   self.values.weapon.swap_speed_multiplier = { 1.615 } -- Swap Speed 3
   self.values.weapon.clip_ammo_increase = { 0.5, 1 } -- Mag Plus
@@ -120,13 +120,6 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
       min_bullets = 5,
       penalty = 0.04
     }
-  }
-
-  -- More Blood to Bleed
-  self.values.player.down_time_bonus = { 5, 10, 15, 20 } -- More Blood to Bleed
-  self.definitions.player_bleedout_timer_1 = {
-    category = "feature",
-    upgrade = { category = "player", upgrade = "down_time_bonus", value = 1 }
   }
 
   -- Repair System
@@ -297,9 +290,9 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
 
     player_health_decrease = 3, player_melee_sharp_damage_multiplier = 3, player_assets_cost_multiplier = 3,
     doctor_bag_amount_increase = 3, ammo_bag_ammo_increase = 3, weapon_passive_reload_speed_multiplier = 3,
-    temporary_chico_injector = 3,
+    temporary_chico_injector = 3, player_additional_lives = 3,
 
-    player_melee_kill_snatch_pager_chance = 4, player_bleedout_timer = 4,
+    player_melee_kill_snatch_pager_chance = 4,
 
     player_bleed_out_health_multiplier = 4
   }

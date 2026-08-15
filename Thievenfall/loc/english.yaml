@@ -436,14 +436,8 @@ menu_akimbo_skill_beta_desc: "$lv1;Akimbo stability penalty reduced by ##8##.\n\
 
 menu_expert_handling_desc: "$lv1;Successful pistol hits grant a stacking ##10%## accuracy bonus (##50%## max) for ##3## seconds."
 
-menu_four_lives: "Life Insurance"
-menu_four_lives_desc: "$lv1;Your max downs are increased by ##1##.\n\n$lv2;Your max downs are increased by ##2##."
-
-menu_bleedout_health: "Sticks And Stones"
-menu_bleedout_health_desc: "$lv1;Bleedout health increased by ##25##."
-
 menu_bleedout_timer_skill: "More Blood To Bleed"
-menu_bleedout_timer_skill_desc: "$lv1;Bleedout timer is extended by ##5## seconds.\n\n$lv2;Bleedout timer is extended by ##10## seconds.\n\n$lv3;Bleedout timer is extended by ##15## seconds.\n\n$lv4;Bleedout timer is extended by ##20## seconds."
+menu_bleedout_timer_skill_desc: "$lv1;Max bleedout time increased by ##10## seconds.\n\n$lv2;Max bleedout time increased by ##20## seconds.\n\n$lv3;Max bleedout time increased by ##30## seconds."
 
 menu_revive_swap_speed: "Revive Swap Speed"
 menu_revive_swap_speed_desc: "$lv1;Switch weapons ##100%## faster for ##10## seconds after being revived.\n\n$lv2;Reload ##100%## faster for 10 seconds after being revived."
@@ -455,7 +449,7 @@ menu_perseverance_beta_desc: "$lv1;You keep standing for ##3## seconds after goi
 menu_vengeful_swan: "Vengeful Swan"
 menu_vengeful_swan_desc: "THIS SKILL REQUIRES ##SWAN SONG##!\n\n$lv1;You have infinite ammo while ##Swan Song## is active."
 
-menu_feign_death_desc: "$lv1;You have a ##50%## chance to self-revive.\n\n$lv2;Chance is increased to ##100%##."
+menu_feign_death_desc: "$lv1;You have a ##50%## chance to self-revive. Self-reviving decreases your down timer by ##10## seconds.\n\n$lv2;Chance is increased to ##100%##."
 
 menu_pistol_beta_messiah_desc: "$lv1;You can self-revive after getting a kill while down. This can only happen once.\n\n$lv2;You can self-revive again after using a doctor bag."
 
