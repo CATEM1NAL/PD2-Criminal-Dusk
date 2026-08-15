@@ -141,6 +141,17 @@ end)
 
 -- Gaining lives and health
 Hooks:OverrideFunction(PlayerDamage, "_regenerated", function(self, no_messiah)
+  if DelayedCalls._calls.CrimDusk_ForceIntoCustody then CrimDusk.Log(FileIdent, "ForceIntoCustody is already running!", true) return end
+
+  -- Custody carries over from previous heist
+  if Application:digest_value(self._revives, false) == 0 and Global.CrimDusk.data[lives] == -1 then
+    self:set_health(0)
+    self._revives = Application:digest_value(1, true)
+    self:_send_set_revives()
+    self:_send_set_health()
+    DelayedCalls:Add("CrimDusk_ForceIntoCustody", 1, function() self:_check_bleed_out(nil, true) end)
+  return end
+
   self:set_health(self:_max_health())
   self:_send_set_health()
   self:_set_health_effect()
@@ -153,13 +164,6 @@ Hooks:OverrideFunction(PlayerDamage, "_regenerated", function(self, no_messiah)
   -- Initial lives (start of heist)
   if Application:digest_value(self._revives, false) == 0 and Global.CrimDusk.data[lives] >= 0 then
     self._revives = Application:digest_value(math.min(Global.CrimDusk.data[lives] + 1, self._max_lives), true)
-
-  elseif Application:digest_value(self._revives, false) == 0 and Global.CrimDusk.data[lives] == -1 then
-    self:set_health(0)
-    self._revives = Application:digest_value(1, true)
-    self:_send_set_revives()
-    self:_send_set_health()
-    DelayedCalls:Add("CrimDusk_ForceIntoCustody", 1, function() self:_check_bleed_out(nil, true) end)
 
   -- Traded from custody
   elseif Global.CrimDusk.data[lives] == -1 then
@@ -184,6 +188,7 @@ end)
 -- On revive
 Hooks:OverrideFunction(PlayerDamage, "revive", function(self, silent)
   if Application:digest_value(self._revives, false) == 0 then self._revive_health_multiplier = nil return end
+  local arrested = self:arrested()
 
   managers.player:set_player_state("standard")
   managers.player:remove_copr_risen_cooldown()
@@ -197,7 +202,7 @@ Hooks:OverrideFunction(PlayerDamage, "revive", function(self, silent)
   self._downed_timer = nil
   self._downed_start_time = nil
 
-  if not self:arrested() then
+  if not arrested then
     self:set_armor(self:_max_armor())
 
     if self:get_real_health() <= 0 then
@@ -206,6 +211,7 @@ Hooks:OverrideFunction(PlayerDamage, "revive", function(self, silent)
 
     self._down_time = DownTime
     self._revives = Application:digest_value(self._down_time + 1, true)
+    CrimDusk.Log(FileIdent, "Down time: " .. Application:digest_value(self._revives, false) - 1, true)
     self:_send_set_revives()
     Global.CrimDusk.data[lives] = self._down_time
 
@@ -290,7 +296,6 @@ Hooks:OverrideFunction(PlayerDamage, "damage_bullet", function(self, attack_data
 
   elseif self._invulnerable or self._mission_damage_blockers.invulnerable then self:_call_listeners(damage_info) return
   elseif self:incapacitated() then return
-  --elseif self:is_friendly_fire(attack_data.attacker_unit) then return -- doesn't do anything?
   elseif pm:player_timer():time() < self._armor_break_t then return
   elseif self._unit:movement():current_state().immortal then return
   elseif self._revive_miss and math.random() < self._revive_miss then self:play_whizby(attack_data.col_ray.position) return
