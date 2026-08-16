@@ -113,7 +113,7 @@ function CrimDusk:Init()
     local permadeath = CrimDusk.IsPermadeath()
     CrimDusk.Log(FileIdent, "Performing soft reset!", true)
     Global.CrimDusk.data["heist_chain" .. permadeath] = {}
-    Global.CrimDusk.data["lives" .. permadeath] = 4
+    Global.CrimDusk.data["lives" .. permadeath] = 30 + managers.player:upgrade_value("player", "additional_lives", 0)
     Global.CrimDusk.data["winters_dead" .. permadeath] = false
     Global.CrimDusk.data["hector_dead" .. permadeath] = false
     Global.CrimDusk.data["bain_freed" .. permadeath] = false

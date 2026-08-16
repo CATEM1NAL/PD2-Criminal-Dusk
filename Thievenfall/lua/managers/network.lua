@@ -27,19 +27,29 @@ if NetworkHelper:IsClient() then
           ["menu_asset_risklevel_4"] = loc:text("crimdusk_pdth_mayhem")
         })
       end)
-
-    elseif HeistsWon == #Global.CrimDusk.campaign then
-      CrimDusk.ChatNotify(managers.localization:text("crimdawn_chat_victory"))
-      DelayedCalls:Add("CrimDusk_VictoryTease", 3, function()
-        CrimDusk.ChatNotify(managers.localization:text("crimdawn_chat_victory2"))
-      end)
     end
   end)
-end
+
+  -- Sync campaign victory
+  NetworkHelper:AddReceiveHook("CrimDusk_CampaignWon", "CrimDusk_SyncCampaignVictory", function(data, sender)
+    Global.CrimDusk.data.lives = 30 + managers.player:upgrade_value("player", "additional_lives", 0)
+    CrimDusk.ChatNotify(managers.localization:text("crimdusk_chat_victory"))
+    DelayedCalls:Add("CrimDusk_VictoryTease", 3, function()
+      CrimDusk.ChatNotify(managers.localization:text("crimdusk_chat_victory2"))
+    end)
+  end)
+
+  -- Sync campaign victory
+  NetworkHelper:AddReceiveHook("CrimDusk_CampaignFailed", "CrimDusk_SyncCampaignFailure", function(data, sender)
+    Global.CrimDusk.data.lives = 30 + managers.player:upgrade_value("player", "additional_lives", 0)
+    CrimDusk.ChatNotify(managers.localization:text("crimdusk_chat_failure"))
+    DelayedCalls:Add("CrimDusk_FailureTease", 3, function()
+      CrimDusk.ChatNotify(managers.localization:text("crimdusk_chat_failure2"))
+    end)
+  end)
+return end
 
 -- Host hooks
-if not NetworkHelper:IsHost() then return end
-
 -- Heist count requested from client
 NetworkHelper:AddReceiveHook("CrimDusk_RequestHeistCount", "CrimDusk_HostHeistCountRequest", function(_, sender)
   local heists = Global.CrimDusk.data.heists_won or 0

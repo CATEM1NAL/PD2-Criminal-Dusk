@@ -35,7 +35,15 @@ Hooks:PostHook(VictoryState, "at_enter", "CrimDusk_HeistWon", function(self)
       if CurrentHeist == "bph" then Global.CrimDusk.data["bain_freed" .. Permadeath] = true
       elseif CurrentHeist == "sand" then Global.CrimDusk.data["vlad_freed" .. Permadeath] = true
       elseif CurrentHeist == "pex" then Global.CrimDusk.data["almir_freed" .. Permadeath] = true
-      elseif CurrentHeist == "cd_biker1" then Global.CrimDusk.data["rust_recruited" .. Permadeath] = true end
+      elseif CurrentHeist == "cd_biker1" then Global.CrimDusk.data["rust_recruited" .. Permadeath] = true
+      elseif CurrentHeist == "vit" then
+        CrimDusk.SoftReset()
+        NetworkHelper:SendToPeers("CrimDusk_CampaignWon", true)
+        CrimDusk.ChatNotify(managers.localization:text("crimdusk_chat_victory"))
+        DelayedCalls:Add("CrimDusk_VictoryTease", 3, function()
+          CrimDusk.ChatNotify(managers.localization:text("crimdusk_chat_victory2"))
+        end)
+      end
     end
 
     CrimDusk:WriteSave(FileIdent, "heist completed")

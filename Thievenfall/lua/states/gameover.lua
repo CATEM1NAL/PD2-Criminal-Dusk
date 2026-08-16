@@ -10,6 +10,14 @@ Hooks:PostHook(GameOverState, "at_enter", "CrimDawn_HeistFailed", function(self)
   Global.CrimDusk.data.lives = 30 + managers.player:upgrade_value("player", "additional_lives", 0)
 
   if NetworkHelper:IsClient() then CrimDusk:WriteSave(FileIdent, "heist failed") return
+  elseif managers.job:current_job_id() == "vit" then 
+    CrimDusk.SoftReset()
+    NetworkHelper:SendToPeers("CrimDusk_CampaignFailed", true)
+    CrimDusk.ChatNotify(managers.localization:text("crimdusk_chat_failure"))
+    DelayedCalls:Add("CrimDusk_FailureTease", 3, function()
+      CrimDusk.ChatNotify(managers.localization:text("crimdusk_chat_failure2"))
+    end)
+
   elseif Global.CrimDusk.data.heists_won < 5 then Global.CrimDusk.data.heists_won = 5
 
   elseif Global.CrimDusk.data.heists_won >= 78 then
