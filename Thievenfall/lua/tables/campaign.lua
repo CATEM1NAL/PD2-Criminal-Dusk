@@ -60,3 +60,10 @@ for campaign, data in pairs(Global.CrimDusk.mini_campaign_data) do
 
   if not next(Global.CrimDusk.mini_campaigns[campaign]) then Global.CrimDusk.mini_campaigns[campaign] = nil end
 end
+
+Global.CrimDusk.job_to_wrapper = {
+  cd_watchdogs1_d = "cd_watchdogs1_wrapper", cd_watchdogs1_n = "cd_watchdogs1_wrapper",
+  cd_watchdogs2_n = "cd_watchdogs2_wrapper", cd_watchdogs2_d = "cd_watchdogs2_wrapper",
+  crojob1 = "cd_bomb", crojob_wrapper = "cd_bomb", cd_erection1 = "cd_erection_wrapper", cd_erection2 = "cd_erection_wrapper",
+  arm_cro = "arm_wrapper", arm_und = "arm_wrapper", arm_hcm = "arm_wrapper", arm_par = "arm_wrapper", arm_fac = "arm_wrapper"
+}

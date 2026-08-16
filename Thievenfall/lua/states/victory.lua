@@ -1,5 +1,7 @@
-if NetworkHelper:IsClient() or (Global.game_settings and Global.game_settings.level_id == "chill_combat") then return end
 local FileIdent = "Victory"
+
+if Global.game_settings and Global.game_settings.level_id == "chill_combat" then return
+elseif NetworkHelper:IsClient() then CrimDusk:WriteSave(FileIdent, "heist completed") return end
 
 Hooks:PostHook(VictoryState, "at_enter", "CrimDusk_HeistWon", function(self)
   local heists_won = "heists_won" .. CrimDusk.IsPermadeath()
@@ -19,6 +21,8 @@ Hooks:PostHook(VictoryState, "at_enter", "CrimDusk_HeistWon", function(self)
     elseif (Global.CrimDusk.data[heists_won] > #Global.CrimDusk.campaign) or CrimDusk.IsPermadeath() == "_perma" then
       local Permadeath = CrimDusk.IsPermadeath()
       local CurrentHeist = managers.job:current_job_id()
+      CurrentHeist = Global.CrimDusk.job_to_wrapper[CurrentHeist] or CurrentHeist
+
       Global.CrimDusk.data["heist_chain" .. Permadeath] = Global.CrimDusk.data["heist_chain" .. Permadeath] or {}
       table.insert(Global.CrimDusk.data["heist_chain" .. Permadeath], CurrentHeist)
 

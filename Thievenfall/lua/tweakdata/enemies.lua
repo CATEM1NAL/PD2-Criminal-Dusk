@@ -33,7 +33,7 @@ local function SetStats(self, diff)
     "security", "security_undominatable", "mute_security_undominatable", "security_mex", "security_mex_no_pager", "sniper",
     "fbi", "fbi_female", "gensec", "cop", "cop_scared", "cop_female", "gangster", "biker", "biker_female", "triad", "biker_escape",
     "captain", "captain_female", "biker_escape", "mobster", "hector_boss_no_armor", "bolivian_indoors_mex", "bolivian", "ranchmanager",
-    "drug_lord_boss_stealth", "triad_boss_no_armor"
+    "drug_lord_boss_stealth", "triad_boss_no_armor", "shadow_spooc"
   }
   local LightEnemies = { "swat", "zeal_swat", "fbi_swat", "city_swat", "marshal_marksman", "shield" }
   local HeavyEnemies = { "medic", "taser", "heavy_swat", "zeal_heavy_swat", "heavy_swat_sniper", "fbi_heavy_swat", "marshal_shield", "marshal_shield_break" }
