@@ -24,7 +24,7 @@ Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "CrimDusk_InitGroupAIT
     }
   }
 
-  -- Russian M4/MP5 HRT so uses AK/VAL instead of VAL/VAL
+  -- Russian M4/MP5 HRT uses AK/VAL instead of VAL/VAL
   self.unit_categories.FBI_suit_M4_MP5.unit_types.russia = {
     Idstring("units/pd2_dlc_mad/characters/ene_akan_cs_cop_ak47_ass/ene_akan_cs_cop_ak47_ass"),
     Idstring("units/pd2_dlc_mad/characters/ene_akan_cs_cop_asval_smg/ene_akan_cs_cop_asval_smg")

@@ -31,7 +31,8 @@ Hooks:OverrideFunction(PlayerStandard, "_check_action_melee", function(self, t, 
     if self._change_weapon_data then self:_start_action_equip_weapon(t) end
   return end
 
-  local action_wanted = not self:_interacting() and (self._state_data.melee_active or input.btn_melee_press)
+  local InvalidState = self:_interacting() or self:is_deploying()
+  local action_wanted = not InvalidState and (self._state_data.melee_active or input.btn_melee_press)
   if not action_wanted then return end
 
   -- Put melee away on button press
@@ -65,6 +66,27 @@ Hooks:PreHook(PlayerStandard, "_check_action_equip", "CrimDusk_PreCheckEquipStan
     self._change_weapon_data = { selection_wanted = input.btn_primary_choice }
     self._state_data.buffer_melee_unequip = true
   return false end
+end)
+
+-- Place deployables while meleeing
+Hooks:OverrideFunction(PlayerStandard, "_check_use_item", function(self, t, input)
+  local pressed, released, holding
+
+  if self._use_item_expire_t and not self._interact_expire_t then
+    pressed, released, holding = self:_check_tap_to_interact_inputs(t, input.btn_use_item_press, input.btn_use_item_release, input.btn_use_item_state)
+  else pressed, released, holding = input.btn_use_item_press, input.btn_use_item_release, input.btn_use_item_state end
+
+  local new_action
+  if pressed then
+    local action_forbidden = self._use_item_expire_t or self._equipping_mask or self:_interacting() or self:_is_throwing_projectile()
+    if not action_forbidden and managers.player:can_use_selected_equipment(self._unit) then
+      self:_start_action_use_item(t)
+      new_action = true
+    end
+  end
+
+  if released then self:_interupt_action_use_item() end
+  return new_action
 end)
 
 -- Movement tweaks
