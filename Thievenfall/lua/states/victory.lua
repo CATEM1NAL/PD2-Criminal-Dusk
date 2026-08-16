@@ -18,12 +18,14 @@ Hooks:PostHook(VictoryState, "at_enter", "CrimDusk_HeistWon", function(self)
     -- Post-game campaign
     elseif (Global.CrimDusk.data[heists_won] > #Global.CrimDusk.campaign) or CrimDusk.IsPermadeath() == "_perma" then
       local Permadeath = CrimDusk.IsPermadeath()
-      local CurrentHeist = Global.CrimDusk.data["heist_chain" .. Permadeath][#Global.CrimDusk.data["heist_chain" .. Permadeath]]
+      local CurrentHeist = managers.job:current_job_id()
+      Global.CrimDusk.data["heist_chain" .. Permadeath] = Global.CrimDusk.data["heist_chain" .. Permadeath] or {}
+      table.insert(Global.CrimDusk.data["heist_chain" .. Permadeath], CurrentHeist)
 
       for Campaign, _ in pairs(Global.CrimDusk.mini_campaign_data) do
         if type(Global.CrimDusk.mini_campaign_data[Campaign][CurrentHeist]) == "number" then
           Global.CrimDusk.data[Campaign .. Permadeath] = Global.CrimDusk.data[Campaign .. Permadeath] + 1
-        end
+        break end
       end
 
       if CurrentHeist == "bph" then Global.CrimDusk.data["bain_freed" .. Permadeath] = true

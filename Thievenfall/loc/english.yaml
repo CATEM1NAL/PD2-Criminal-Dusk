@@ -353,7 +353,7 @@ menu_sentry_shield_desc: "$lv1;Sentries gain a frontal shield, protecting them f
 menu_eco_sentry_beta_desc: "$lv1;Sentries have ##150%## more health."
 
 menu_sentry_ammo: "Ammo Reserve"
-menu_sentry_ammo_desc: "$lv1;Sentries have ##50%## more ammo."
+menu_sentry_ammo_desc: "$lv1;Sentries have ##100%## more ammo.\n\n$lv2;Sentries have ##200%## more ammo."
 
 menu_sentry_accuracy: "Precision Engineering"
 menu_sentry_accuracy_desc: "$lv1;Sentries are ##100%## more accurate."

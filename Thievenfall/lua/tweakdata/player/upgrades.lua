@@ -74,6 +74,7 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   self.values.player.marked_enemy_damage_mul = 1.25 -- High Value Target
   self.values.player.intimidation_multiplier = { 2 } -- Dominator
   self.values.player.bleed_out_health_multiplier = { 1.25, 1.5, 1.75, 2 } -- Bleedout health
+  self.values.sentry_gun.extra_ammo_multiplier = { 2, 3 } -- Sentry Ammo
 
   -- Assault Dominator
   self.values.player.assault_intimidate = { true } -- Assault Dominator
@@ -286,7 +287,7 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
     player_weapon_accuracy_increase = 2, weapon_fire_rate_multiplier = 2, pistol_consume_no_ammo_chance = 2,
     assault_rifle_consume_no_ammo_chance = 2, snp_consume_no_ammo_chance = 2, smg_consume_no_ammo_chance = 2,
     lmg_consume_no_ammo_chance = 2, minigun_consume_no_ammo_chance = 2, player_melee_damage_dampener = 2, player_max_health_reduction = 2,
-    trip_mine_damage_multiplier = 2,
+    trip_mine_damage_multiplier = 2, sentry_gun_extra_ammo_multiplier = 2,
 
     player_health_decrease = 3, player_melee_sharp_damage_multiplier = 3, player_assets_cost_multiplier = 3,
     doctor_bag_amount_increase = 3, ammo_bag_ammo_increase = 3, weapon_passive_reload_speed_multiplier = 3,

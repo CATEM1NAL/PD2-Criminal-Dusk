@@ -420,6 +420,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     }
     self.skills.sentry_ammo = {
       { upgrades = { "sentry_gun_extra_ammo_multiplier_1" }, cost = self.costs.default },
+      { upgrades = { "sentry_gun_extra_ammo_multiplier_2" }, cost = self.costs.default },
       name_id = "menu_sentry_ammo", desc_id = "menu_sentry_ammo_desc", icon_xy = { 5, 6 }
     }
     self.skills.sentry_accuracy = {

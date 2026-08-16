@@ -120,10 +120,6 @@ local function SelectNextHeist()
     if Global.CrimDusk.Developer then Utils.PrintTable(ValidHeists) end
 
     NextJob = ValidHeists[math.random(#ValidHeists)]
-    Global.CrimDusk.data[heist_chain] = Global.CrimDusk.data[heist_chain] or {}
-    table.insert(Global.CrimDusk.data[heist_chain], NextJob)
-
-    CrimDusk:WriteSave(FileIdent, "heist added to chain")
     CrimDusk.Log(FileIdent, "Loading " .. managers.localization:text("heist_" .. NextJob) .. " on " .. tweak_data.difficulties[CrimDusk.DiffScale()])
   end
 
