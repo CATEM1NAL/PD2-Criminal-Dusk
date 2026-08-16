@@ -1,14 +1,15 @@
 local FileIdent = "SafehouseTweakData"
 
 Hooks:PostHook(CustomSafehouseTweakData, "_init_map", "CrimDusk_InitSafehouseMap", function(self)
+  local perma = CrimDusk.IsPermadeath()
   for floor, _ in ipairs(self.map.floors) do
     for i = #self.map.floors[floor].rooms, 1, -1 do
 
-      if self.map.floors[floor].rooms[i] == "old_hoxton" and (Global.CrimDusk.data["heists_won" .. CrimDusk.IsPermadeath()] > 4 and Global.CrimDusk.data.free_hoxton < 4) then
+      if self.map.floors[floor].rooms[i] == "old_hoxton" and (Global.CrimDusk.data["heists_won" .. perma] > 4 and Global.CrimDusk.data["free_hoxton" .. perma] < 4) then
         CrimDusk.Log(FileIdent, "Locking Hoxton's room...", true)
         table.remove(self.map.floors[floor].rooms, i)
 
-      elseif self.map.floors[floor].rooms[i] == "wild" and not Global.CrimDusk.data["rust_recruited" .. CrimDusk.IsPermadeath()] then
+      elseif self.map.floors[floor].rooms[i] == "wild" and not Global.CrimDusk.data["rust_recruited" .. perma] then
         CrimDusk.Log(FileIdent, "Locking Rust's room...", true)
         table.remove(self.map.floors[floor].rooms, i)
       end

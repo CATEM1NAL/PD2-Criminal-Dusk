@@ -11,11 +11,7 @@ Hooks:PostHook(VictoryState, "at_enter", "CrimDusk_HeistWon", function(self)
 
     if Global.CrimDusk.data[heists_won] == #Global.CrimDusk.campaign then
       CrimDusk.SoftReset()
-      NetworkHelper:SendToPeers("CrimDusk_CampaignWon", true)
-      CrimDusk.ChatNotify(managers.localization:text("crimdusk_chat_victory"))
-      DelayedCalls:Add("CrimDusk_VictoryTease", 3, function()
-        CrimDusk.ChatNotify(managers.localization:text("crimdusk_chat_victory2"))
-      end)
+      CrimDusk.EndingText(true)
 
     -- Post-game campaign
     elseif (Global.CrimDusk.data[heists_won] > #Global.CrimDusk.campaign) or CrimDusk.IsPermadeath() == "_perma" then
@@ -38,11 +34,7 @@ Hooks:PostHook(VictoryState, "at_enter", "CrimDusk_HeistWon", function(self)
       elseif CurrentHeist == "cd_biker1" then Global.CrimDusk.data["rust_recruited" .. Permadeath] = true
       elseif CurrentHeist == "vit" then
         CrimDusk.SoftReset()
-        NetworkHelper:SendToPeers("CrimDusk_CampaignWon", true)
-        CrimDusk.ChatNotify(managers.localization:text("crimdusk_chat_victory"))
-        DelayedCalls:Add("CrimDusk_VictoryTease", 3, function()
-          CrimDusk.ChatNotify(managers.localization:text("crimdusk_chat_victory2"))
-        end)
+        CrimDusk.EndingText(true)
       end
     end
 

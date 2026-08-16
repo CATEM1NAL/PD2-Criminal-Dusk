@@ -31,21 +31,9 @@ if NetworkHelper:IsClient() then
   end)
 
   -- Sync campaign victory
-  NetworkHelper:AddReceiveHook("CrimDusk_CampaignWon", "CrimDusk_SyncCampaignVictory", function(data, sender)
+  NetworkHelper:AddReceiveHook("CrimDusk_CampaignEnded", "CrimDusk_SyncCampaignEnding", function(data, sender)
     Global.CrimDusk.data.lives = 30 + managers.player:upgrade_value("player", "additional_lives", 0)
-    CrimDusk.ChatNotify(managers.localization:text("crimdusk_chat_victory"))
-    DelayedCalls:Add("CrimDusk_VictoryTease", 3, function()
-      CrimDusk.ChatNotify(managers.localization:text("crimdusk_chat_victory2"))
-    end)
-  end)
-
-  -- Sync campaign victory
-  NetworkHelper:AddReceiveHook("CrimDusk_CampaignFailed", "CrimDusk_SyncCampaignFailure", function(data, sender)
-    Global.CrimDusk.data.lives = 30 + managers.player:upgrade_value("player", "additional_lives", 0)
-    CrimDusk.ChatNotify(managers.localization:text("crimdusk_chat_failure"))
-    DelayedCalls:Add("CrimDusk_FailureTease", 3, function()
-      CrimDusk.ChatNotify(managers.localization:text("crimdusk_chat_failure2"))
-    end)
+    CrimDusk.ChatNotify(tostring(data))
   end)
 return end
 
@@ -59,6 +47,5 @@ end)
 
 -- Force maskup
 NetworkHelper:AddReceiveHook("CrimDusk_MaskedUp", "CrimDusk_ForceLoudNetwork", function()
-  if Global.CrimDusk.heists[Global.game_settings.level_id].stealthable or managers.groupai:state():is_police_called() then return end
   CrimDusk.GoLoud()
 end)

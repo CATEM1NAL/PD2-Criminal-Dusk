@@ -9,6 +9,31 @@ crimdusk_reset_campaign_desc: "This will wipe all campaign progress for your cur
 crimdusk_instantmelee_title: "Quick Melee"
 crimdusk_instantmelee_desc: "Press this key to use weapon butt."
 
+## CAMPAIGN
+crimdusk_chat_campaign_short: "It might feel like you were just getting started,"
+crimdusk_chat_campaign_long: "It's been a long road,"
+
+crimdusk_chat_success: "but your trail of chaos is at an end."
+crimdusk_chat_failure: "but unfortunately you have failed."
+
+crimdusk_chat_bain_alive: "Bain is alive and well,"
+crimdusk_chat_bain_dead: "Bain never made it out of Hell's Island,"
+
+crimdusk_chat_vlad_alive: "Vlad has returned to his bakery,"
+crimdusk_chat_vlad_dead: "Vlad is missing,"
+
+crimdusk_chat_almir_alive: "and his brother-in-law is back in the air."
+crimdusk_chat_almir_dead: "and his brother-in-law is still stuck in Mexico."
+
+crimdusk_chat_hoxton_free: "We managed to get Hoxton out of prison"
+crimdusk_chat_hoxton_prison: "Hoxton is still rotting behind bars"
+
+crimdusk_chat_hector_alive_free: "but we never figured out who sent him there."
+crimdusk_chat_hector_alive_prison: "and we never figured out why."
+crimdusk_chat_hector_dead: "and we managed to kill the rat."
+
+crimdusk_chat_campaign_conclusion: "$LENGTH $SUCCESS\n$BAIN $VLAD $ALMIR\n$HOXTON $HECTOR\nThis campaign lasted $HEISTS heists!"
+
 ## LOBBY
 crimdusk_create_lobby_title: "Create Lobby"
 crimdusk_create_lobby_desc: "Play with your friends!"

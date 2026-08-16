@@ -43,17 +43,64 @@ function CrimDusk:Init()
     managers.chat:_receive_message(ChatManager.GAME, "THIEVENFALL", message, Global.CrimDusk.archicolours.orange)
   end
 
+  function self.EndingText(won)
+    local loc = managers.localization
+    local CampaignLength, CampaignWon, BainState, VladState, AlmirState, HoxtonState, HectorState, HeistsPlayed
+
+    local perma = CrimDusk.IsPermadeath()
+    local CampaignData = Global.CrimDusk.data
+
+    if next(CampaignData["heist_chain" .. perma]) then
+      HeistsPlayed = #CampaignData["heist_chain" .. perma]
+      CampaignLength = HeistsPlayed >= 25 and loc:text("crimdusk_chat_campaign_long") or loc:text("crimdusk_chat_campaign_short")
+
+    else CampaignLength = loc:text("crimdusk_chat_campaign_long")
+      HeistsPlayed = #Global.CrimDusk.campaign
+    end
+
+    CampaignWon = won and loc:text("crimdusk_chat_success") or loc:text("crimdusk_chat_failure")
+
+    BainState = CampaignData["bain_freed" .. perma] and loc:text("crimdusk_chat_bain_alive") or loc:text("crimdusk_chat_bain_dead")
+    VladState = CampaignData["vlad_freed" .. perma] and loc:text("crimdusk_chat_vlad_alive") or loc:text("crimdusk_chat_vlad_dead")
+    AlmirState = CampaignData["almir_freed" .. perma] and loc:text("crimdusk_chat_almir_alive") or loc:text("crimdusk_chat_almir_dead")
+
+    if CampaignData["free_hoxton" .. perma] >= 4 then
+      HoxtonState = loc:text("crimdusk_chat_hoxton_free")
+      HectorState = CampaignData["hector_dead" .. perma] and loc:text("crimdusk_chat_hector_dead") or loc:text("crimdusk_chat_hector_alive_free")
+
+    else HoxtonState = loc:text("crimdusk_chat_hoxton_prison")
+      HectorState = loc:text("crimdusk_chat_hector_alive_prison")
+    end
+
+    DelayedCalls:Add("CrimDusk_CampaignConclusion", 2, function()
+      local ending = loc:text("crimdusk_chat_campaign_conclusion", {
+        LENGTH = CampaignLength, SUCCESS = CampaignWon,
+        BAIN = BainState, VLAD = VladState, ALMIR = AlmirState,
+        HOXTON = HoxtonState, HECTOR = HectorState,
+        HEISTS = HeistsPlayed
+      })
+      NetworkHelper:SendToPeers("CrimDusk_CampaignEnded", ending)
+      CrimDusk.ChatNotify(ending)
+    end)
+  end
+
   function self:WriteSave(FileIdent, SaveReason)
     io.save_as_json(Global.CrimDusk.data, self.SaveFile)
     self.Log(FileIdent, "Saved " .. self.SaveFile .. " (" .. SaveReason .. ")")
   end -- Yes, this WILL crash without a FileIdent or SaveReason. This is intentional.
 
   function self.GoLoud()
-    if DelayedCalls._calls.CrimDusk_GoLoudDelay then CrimDusk.Log(FileIdent, "GoLoud is already running!", true) return end
-    CrimDusk.Log(FileIdent, "Level ID: " .. Global.game_settings.level_id, true)
+    NetworkHelper:RemoveReceiveHook("CrimDusk_ForceLoudNetwork")
+    Hooks:RemovePostHook("CrimDusk_HostForceLoud")
 
-    local LoudDelay = Global.CrimDusk.heists[Global.game_settings.level_id].delay or 3
-    DelayedCalls:Add("CrimDusk_GoLoudDelay", LoudDelay, function() managers.groupai:state():on_police_called("empty") end)
+    local LevelID = Global.game_settings.level_id
+    local heist = Global.CrimDusk.heists[LevelID]
+    if heist and heist.stealthable then return end
+
+    CrimDusk.Log(FileIdent, "Level ID: " .. LevelID, true)
+    DelayedCalls:Add("CrimDusk_GoLoudDelay", (heist and heist.delay) or 3, function()
+      if not managers.groupai:state():is_police_called() then managers.groupai:state():on_police_called("empty") end
+    end)
   end
 
   function self.IsPermadeath()
