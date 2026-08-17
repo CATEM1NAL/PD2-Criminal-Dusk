@@ -64,6 +64,21 @@ Hooks:OverrideFunction(ExperienceManager, "add_points", function(self, points, p
   return self:add_points(points - points_left, present_xp)
 end)
 
+-- Infamy every 13th, not 13+1 (why the fuck is it like that)
+Hooks:OverrideFunction(ExperienceManager, "rank_icon", function(self, rank)
+  if rank and rank > 0 then
+    local index = math.min(math.floor(rank / tweak_data.infamy.icon_rank_step) + 1, #tweak_data.infamy.infamy_icons)
+    return (tweak_data.infamy.infamy_icons[index] or tweak_data.infamy.infamy_icons[1]).hud_icon
+  end
+end)
+
+Hooks:OverrideFunction(ExperienceManager, "rank_icon_color", function(self, rank)
+  if rank and rank > 0 then
+    local index = math.min(math.floor(rank / tweak_data.infamy.icon_rank_step) + 1, #tweak_data.infamy.infamy_icons)
+    return (tweak_data.infamy.infamy_icons[index] or tweak_data.infamy.infamy_icons[1]).color
+  end
+end)
+
 Hooks:OverrideFunction(ExperienceManager, "load", function(self, data)
   local state = data.ExperienceManager
 
