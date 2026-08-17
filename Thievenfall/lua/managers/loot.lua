@@ -1,8 +1,1 @@
 local FileIdent = "LootManager"
-
-Hooks:PostHook(LootManager, "get_real_total_postponed_small_loot_value", "CrimDusk_PostLooseCashMult", function(self)
-  CrimDusk.Log(FileIdent, "Running loose cash multiplier!", true)
-  local value = Hooks:GetReturn()
-  local SafehouseMult = 1 + (2.5 * managers.custom_safehouse:total_room_unlocks_purchased() * 0.01)
-  return math.floor(value * SafehouseMult)
-end)

@@ -1,6 +1,8 @@
 Hooks:PostHook(MoneyTweakData, "init", "CrimDusk_MoneyTweakInit", function(self, tweak_data)
   local difficulty = Global.game_settings and Global.game_settings.difficulty or "normal"
   local DiffIndex = tweak_data:difficulty_to_index(difficulty)
+  local SafehouseMult = 1
+  if Utils:IsInGameState() then SafehouseMult = 1 + (2.5 * managers.custom_safehouse:total_room_unlocks_purchased() * 0.01) end
 
   self.sell_weapon_multiplier = 0
   self.sell_mask_multiplier = 0
@@ -113,5 +115,6 @@ Hooks:PostHook(MoneyTweakData, "init", "CrimDusk_MoneyTweakInit", function(self,
     vault_loot_silver = 125, vault_loot_diamond_collection = 375, vault_loot_trophy = 25,
     spawn_bucket_of_money = 12500
   }
-  for loot, value in pairs(LooseCash) do self.small_loot[loot] = math.floor(value * (DiffIndex * 0.5)) end
+  for loot, value in pairs(LooseCash) do self.small_loot[loot] = math.floor(value * DiffIndex * 0.5 * SafehouseMult) end
+  for loot, value in pairs(self.bag_values) do self.bag_values[loot] = self.bag_values[loot] * SafehouseMult end
 end)

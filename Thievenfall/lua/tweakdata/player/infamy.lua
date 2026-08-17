@@ -4,7 +4,7 @@ Hooks:PostHook(InfamyTweakData, "init", "CrimDusk_InfamyTweakInit", function(sel
   -- 52 infamies, every infamy costs $200m offshore
   self.ranks = 52
   self.offshore_cost = { cost_old, cost_old, cost_old, cost_old, cost_old, cost_old }
-  self.icon_rank_step = 13
+  self.icon_rank_step = 12
 
   -- New infamy reward structure
   self.tree = {

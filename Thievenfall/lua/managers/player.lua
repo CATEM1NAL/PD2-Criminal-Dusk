@@ -102,9 +102,3 @@ Hooks:OverrideFunction(PlayerManager, "_on_enter_shock_and_awe_event", function(
     end
   end
 end)
-
-Hooks:PostHook(PlayerManager, "get_skill_money_multiplier", "CrimDusk_PostSkillMoneyMult", function(self)
-  local PayoutMult, BagMult = Hooks:GetReturn()
-  local SafehouseMult = 1 + (2.5 * managers.custom_safehouse:total_room_unlocks_purchased() * 0.01)
-  return math.floor(PayoutMult * SafehouseMult), math.floor(BagMult * SafehouseMult)
-end)
