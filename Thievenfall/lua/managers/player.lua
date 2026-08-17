@@ -19,6 +19,14 @@ Hooks:OverrideFunction(PlayerManager, "fixed_health_regen", function(self)
   return health_regen
 end)
 
+Hooks:PreHook(PlayerManager, "on_enter_custody", "CrimDusk_PlayerOnEnterCustody", function(self, player)
+  if player == self:player_unit() then
+    local lives = NetworkHelper:IsClient() and "lives" or "lives" .. CrimDusk.IsPermadeath()
+    Global.CrimDusk.data[lives] = -1
+    CrimDusk.Log(FileIdent, "Taken into custody!", true)
+  end
+end)
+
 Hooks:OverrideFunction(PlayerManager, "body_armor_value", function(self, category, override_value, default)
   local armor_data = tweak_data.blackmarket.armors[managers.blackmarket:equipped_armor()]
   return self:upgrade_value_by_level("player", "body_armor", category, {})[override_value or armor_data.upgrade_level] or default or 0

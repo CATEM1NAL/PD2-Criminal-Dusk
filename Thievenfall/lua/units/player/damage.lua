@@ -1,8 +1,7 @@
 if Global.game_settings and Global.game_settings.level_id == "chill" then return end
 
 local FileIdent = "PlayerDamage"
-local lives = "lives" .. CrimDusk.IsPermadeath()
-if NetworkHelper:IsClient() then lives = "lives" end
+local lives = NetworkHelper:IsClient() and "lives" or "lives" .. CrimDusk.IsPermadeath()
 
 PlayerDamage._UPPERS_COOLDOWN = 1
 
@@ -13,7 +12,7 @@ Hooks:PreHook(PlayerDamage, "init", "CrimDusk_InitPlayerDamage", function(self)
   self._entropy_mult = 0.1
   self._armor_broken = false
   self._armor_break_t = managers.player:player_timer():time() + 3
-  self._max_lives = 30 + managers.player:upgrade_value("player", "additional_lives", 0) + 1
+  self._max_lives = 1 + 30 + managers.player:upgrade_value("player", "additional_lives", 0)
 end)
 
 -- Regen time varies with armour
@@ -157,9 +156,7 @@ Hooks:OverrideFunction(PlayerDamage, "_regenerated", function(self, no_messiah)
   self:_set_health_effect()
   self._said_hurt = false
 
-  if not no_messiah then
-    self._messiah_charges = managers.player:upgrade_value("player", "pistol_revive_from_bleed_out", 0)
-  end
+  if not no_messiah then self._messiah_charges = managers.player:upgrade_value("player", "pistol_revive_from_bleed_out", 0) end
 
   -- Initial lives (start of heist)
   if Application:digest_value(self._revives, false) == 0 and Global.CrimDusk.data[lives] >= 0 then
@@ -167,7 +164,7 @@ Hooks:OverrideFunction(PlayerDamage, "_regenerated", function(self, no_messiah)
 
   -- Traded from custody
   elseif Global.CrimDusk.data[lives] == -1 then
-    self._revives = Application:digest_value(1, true)
+    self._revives = Application:digest_value(2, true)
 
   -- Doctor bag
   else local NewDowns = Application:digest_value(self._revives, false) + 10
@@ -179,7 +176,7 @@ Hooks:OverrideFunction(PlayerDamage, "_regenerated", function(self, no_messiah)
 
   local ReviveHealth = tweak_data.player.damage.REVIVE_HEALTH_STEPS
   local ReviveHealthRatio = self._down_time / 60
-  self._revive_health_i = math.lerp(ReviveHealth[1], ReviveHealth[2], ReviveHealthRatio)
+  self._revive_health_i = math.lerp(ReviveHealth[2], ReviveHealth[1], ReviveHealthRatio)
 
   if self._down_time <= 1 then managers.environment_controller:set_last_life(true)
   else managers.environment_controller:set_last_life(false) end
@@ -211,13 +208,12 @@ Hooks:OverrideFunction(PlayerDamage, "revive", function(self, silent)
 
     self._down_time = DownTime
     self._revives = Application:digest_value(self._down_time + 1, true)
-    CrimDusk.Log(FileIdent, "Down time: " .. Application:digest_value(self._revives, false) - 1, true)
     self:_send_set_revives()
     Global.CrimDusk.data[lives] = self._down_time
 
     local ReviveHealth = tweak_data.player.damage.REVIVE_HEALTH_STEPS
     local ReviveHealthRatio = self._down_time / 60
-    self._revive_health_i = math.lerp(ReviveHealth[1], ReviveHealth[2], ReviveHealthRatio)
+    self._revive_health_i = math.lerp(ReviveHealth[2], ReviveHealth[1], ReviveHealthRatio)
 
     if self._down_time <= 1 then managers.environment_controller:set_last_life(true)
     else managers.environment_controller:set_last_life(false) end
@@ -381,14 +377,6 @@ Hooks:OverrideFunction(PlayerDamage, "damage_bullet", function(self, attack_data
 
 	pm:send_message(Message.OnPlayerDamage, nil, attack_data)
 	self:_call_listeners(damage_info)
-end)
-
--- Custody
-Hooks:PreHook(PlayerDamage, "pre_destroy", "CrimDusk_DamageCustody", function(self)
-  if Utils:IsInCustody() then
-    Global.CrimDusk.data[lives] = -1
-    CrimDusk.Log(FileIdent, "Taken into custody!", true)
-  end
 end)
 
 -- Update down time
