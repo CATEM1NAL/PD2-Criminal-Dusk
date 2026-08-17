@@ -63,6 +63,15 @@ end
 
 tweak_data.projectiles.poison_gas_grenade.poison_gas_duration = 15
 
+-- Projectile speed
+tweak_data.projectiles.frag.launch_speed = 300
+tweak_data.projectiles.concussion.launch_speed = 300
+tweak_data.projectiles.fir_com.launch_speed = 300
+tweak_data.projectiles.smoke_screen_grenade.launch_speed = 300
+tweak_data.projectiles.poison_gas_grenade.launch_speed = 300
+tweak_data.projectiles.sticky_grenade.launch_speed = 300
+tweak_data.projectiles.frag_com.launch_speed = 400
+
 tweak_data.team_ai.stop_action.distance = 10000 -- Crew AI will only start following you after you go 100m away (vanilla is 30m)
 
 -- Medic rework; medics have no cooldown but have half range
