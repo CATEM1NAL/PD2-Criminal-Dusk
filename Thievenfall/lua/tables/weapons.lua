@@ -363,10 +363,9 @@ Global.CrimDusk.weapons.projectile_damage = {
 Global.CrimDusk.weapons.throwables = {
   [12] = { xmas_snowball = 2 },
   [30] = { laser_watch = 8, wpn_gre_electric = 1, concussion = 2, fir_com = 2, chico_injector = 1, frag_com = 2 },
-  [45] = { frag = 1, dada_com = 1, copr_ability = 1 },
+  [45] = { frag = 1, dada_com = 1, copr_ability = 1, pocket_ecm_jammer = 1 },
   [60] = { sticky_grenade = 1, dynamite = 1, tag_team = 1 },
-  [75] = { molotov = 1, poison_gas_grenade = 1, smoke_screen_grenade = 1 },
-  [120] = { pocket_ecm_jammer = 2 }
+  [75] = { molotov = 1, poison_gas_grenade = 1, smoke_screen_grenade = 1 }
 }
 
 -- Fire DOT

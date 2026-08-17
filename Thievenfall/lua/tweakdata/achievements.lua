@@ -109,6 +109,16 @@ Hooks:PostHook(AchievementsTweakData, "init", "CrimDusk_ModifyTrophyRequirements
     complete["trophy_stealth_" .. heist] = { stealth = true, difficulty = postgame, trophy_stat = "trophy_stealth_" .. heist, job = heist }
   end
 
+  -- Staying Alive
+  complete.trophy_dance = {
+    job = "nightclub", trophy_stat = "trophy_dance",
+    everyone_killed_by_weapons = 0, everyone_killed_by_grenade = 0,
+    equipped_team = { deployable = "trip_mine" }
+  }
+
+  -- Mother of Mothers
+  complete.trophy_host.job = "vit"
+
   -- The First Line
   self.enemy_melee_hit_achievements.trophy_hockeykill = { trophy_stat = "trophy_hockeykill", is_not_civilian = true, melee_id = "hockey", result = "death", }
 end)

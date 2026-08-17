@@ -26,7 +26,17 @@ Hooks:PostHook(CustomSafehouseTweakData, "_init_trophies", "CrimDusk_InitTrophie
     elseif trophy.id == "trophy_brb_1" then trophy.objectives = { self:_achievement("brb_7") }
     elseif trophy.id == "trophy_box_2" then trophy.objectives = { self:_achievement("tag_7") }
     elseif trophy.id == "trophy_computer" then trophy.objectives = { self:_achievement("gage2_1") }
-    elseif trophy.id == "trophy_smwish" then trophy.objectives = { self:_achievement("vit_7") }
+    elseif trophy.id == "trophy_smwish" then trophy.objectives = { self:_achievement("vit_8") }
+    elseif trophy.id == "trophy_dozer_helmet" then trophy.objectives = { self:_progress("trophy_special_kills", 1000, { name_id = "trophy_dozer_helmet_progress" }) }
+    elseif trophy.id == "trophy_dartboard" then trophy.objectives = { self:_progress("trophy_headshots", 10000, { name_id = "trophy_dartboard_progress" }) }
+    elseif trophy.id == "trophy_host" then
+      trophy.show_progress = nil
+      objectives = { self:_progress("trophy_host", 1) }
+
+    elseif trophy.id == "trophy_goat" then
+      trophy.show_progress = nil
+      trophy.objectives = { self:_achievement("ggez_45") }
+
     elseif trophy.id == "trophy_hockey_team" then
       trophy.show_progress = true
       trophy.objectives = { self:_progress("trophy_hockeykill", 100, { name_id = "trophy_hockeykill_progress" }) }

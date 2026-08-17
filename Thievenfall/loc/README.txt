@@ -7,7 +7,4 @@ To get the translation working in-game, open "main.xml" in the main folder and f
 <loc file="english.yaml" language="english"/> near the top.
 Copy this line and replace the language with your own language.
 
-The name of each language can be found here:
-https://deepwiki.com/simon-wh/PAYDAY-2-BeardLib/8-localization#supported-languages
-
 Once the translation is done and everything is working, you can open a pull request on GitHub.

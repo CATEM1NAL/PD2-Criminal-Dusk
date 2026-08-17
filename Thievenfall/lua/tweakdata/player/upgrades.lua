@@ -76,6 +76,15 @@ Hooks:PostHook(UpgradesTweakData, "init", "CrimDusk_InitUpgradeTweakData", funct
   self.values.player.bleed_out_health_multiplier = { 1.25, 1.5, 1.75, 2 } -- Bleedout health
   self.values.sentry_gun.extra_ammo_multiplier = { 2, 3 } -- Sentry Ammo
 
+  -- Pocket ECM
+  self.values.player.pocket_ecm_jammer_base = {
+    {
+      affects_cameras = true, affects_pagers = true,
+      cooldown_drain = 0, duration = 6,
+      feedback_interval = 1, feedback_range = 1000
+    }
+  }
+
   -- Assault Dominator
   self.values.player.assault_intimidate = { true } -- Assault Dominator
   self.definitions.player_assault_intimidate = {

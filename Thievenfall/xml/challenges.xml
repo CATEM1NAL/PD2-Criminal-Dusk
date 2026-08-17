@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<tweak version="2" name="gamedata/challenges" extension="timeline">
+
+  <search>
+    <challenges/>
+    <challenge/>
+    <rewards/>
+  </search>
+
+  <target mode="replace">
+    <reward amount="1" item_entry="xp100" type_items="xp"/>
+  </target>
+
+</tweak>

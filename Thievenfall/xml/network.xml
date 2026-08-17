@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<tweaks>
+
+  <tweak version="2" name="settings/network" extension="network_settings">
+
+    <search>
+      <network/>
+      <rpc/>
+      <message name="request_join_steam"/>
+      <param type="int" min="0" max="100"/>
+    </search>
+
+    <target mode="attributes">
+      <attr name="max" value="4294967295"/>
+    </target>
+
+  </tweak>
+
+  <tweak version="2" name="settings/network" extension="network_settings">
+
+    <search>
+      <network/>
+      <rpc/>
+      <message name="request_join_epic"/>
+      <param type="int" min="0" max="100"/>
+    </search>
+
+    <target mode="attributes">
+      <attr name="max" value="4294967295"/>
+    </target>
+
+  </tweak>
+
+  <tweak version="2" name="settings/network" extension="network_settings">
+
+    <search>
+      <network/>
+      <rpc/>
+      <message name="lobby_info" delivery="ordered" receiver="connection"/>
+      <param type="int" min="0" max="100"/>
+    </search>
+
+    <target mode="attributes">
+      <attr name="max" value="4294967295"/>
+    </target>
+
+  </tweak>
+
+  <tweak version="2" name="settings/network" extension="network_settings">
+
+    <search>
+      <network/>
+      <rpc/>
+      <message name="sync_profile" delivery="ordered" receiver="connection"/>
+      <param type="int" min="0" max="100"/>
+    </search>
+
+    <target mode="attributes">
+      <attr name="max" value="4294967295"/>
+    </target>
+
+  </tweak>
+
+  <tweak version="2" name="settings/network" extension="network_settings">
+
+    <search>
+      <network/>
+      <rpc/>
+      <message name="sync_level_up" delivery="reliable" receiver="unit"/>
+      <param type="int" min="0" max="100"/>
+    </search>
+
+    <target mode="attributes">
+      <attr name="max" value="4294967295"/>
+    </target>
+
+  </tweak>
+
+</tweaks>
