@@ -54,7 +54,6 @@ Hooks:OverrideFunction(PlayerManager, "health_skill_addend", function(self)
 
   -- Max health can't go below 1
   if PlayerDamage._HEALTH_INIT + addend <= 0 then addend = -PlayerDamage._HEALTH_INIT + 0.1 end
-
   return addend
 end)
 

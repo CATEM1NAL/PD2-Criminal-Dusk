@@ -144,10 +144,10 @@ Hooks:OverrideFunction(PlayerDamage, "_regenerated", function(self, no_messiah)
 
   -- Custody carries over from previous heist
   if Application:digest_value(self._revives, false) == 0 and Global.CrimDusk.data[lives] == -1 then
+    CrimDusk.Log(FileIdent, "Started in custody!", true)
     self:set_health(0)
+    self._down_time = 0
     self._revives = Application:digest_value(1, true)
-    self:_send_set_revives()
-    self:_send_set_health()
     DelayedCalls:Add("CrimDusk_ForceIntoCustody", 1, function() self:_check_bleed_out(nil, true) end)
   return end
 
@@ -160,14 +160,17 @@ Hooks:OverrideFunction(PlayerDamage, "_regenerated", function(self, no_messiah)
 
   -- Initial lives (start of heist)
   if Application:digest_value(self._revives, false) == 0 and Global.CrimDusk.data[lives] >= 0 then
+    CrimDusk.Log(FileIdent, "Setting initial down time", true)
     self._revives = Application:digest_value(math.min(Global.CrimDusk.data[lives] + 1, self._max_lives), true)
 
   -- Traded from custody
   elseif Global.CrimDusk.data[lives] == -1 then
+    CrimDusk.Log(FileIdent, "Traded from custody", true)
     self._revives = Application:digest_value(2, true)
 
   -- Doctor bag
   else local NewDowns = Application:digest_value(self._revives, false) + 10
+    CrimDusk.Log(FileIdent, "Used doctor bag", true)
     self._revives = Application:digest_value(math.min(NewDowns, self._max_lives), true)
   end
 
