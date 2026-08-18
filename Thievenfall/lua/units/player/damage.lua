@@ -140,16 +140,7 @@ end)
 
 -- Gaining lives and health
 Hooks:OverrideFunction(PlayerDamage, "_regenerated", function(self, no_messiah)
-  if DelayedCalls._calls.CrimDusk_ForceIntoCustody then CrimDusk.Log(FileIdent, "ForceIntoCustody is already running!", true) return end
-
-  -- Custody carries over from previous heist
-  if Application:digest_value(self._revives, false) == 0 and Global.CrimDusk.data[lives] == -1 then
-    CrimDusk.Log(FileIdent, "Started in custody!", true)
-    self:set_health(0)
-    self._down_time = 0
-    self._revives = Application:digest_value(1, true)
-    DelayedCalls:Add("CrimDusk_ForceIntoCustody", 1, function() self:_check_bleed_out(nil, true) end)
-  return end
+  if DelayedCalls._calls.CrimDusk_ForceIntoCustody then CrimDusk.Log(FileIdent, "ForceIntoCustody is running!", true) return end
 
   self:set_health(self:_max_health())
   self:_send_set_health()
@@ -157,16 +148,26 @@ Hooks:OverrideFunction(PlayerDamage, "_regenerated", function(self, no_messiah)
   self._said_hurt = false
 
   if not no_messiah then self._messiah_charges = managers.player:upgrade_value("player", "pistol_revive_from_bleed_out", 0) end
+  CrimDusk.Log(FileIdent, "Revives pre-modified: " .. Application:digest_value(self._revives, false), true)
 
   -- Initial lives (start of heist)
-  if Application:digest_value(self._revives, false) == 0 and Global.CrimDusk.data[lives] >= 0 then
+  if not self._down_time and Global.CrimDusk.data[lives] >= 0 then
     CrimDusk.Log(FileIdent, "Setting initial down time", true)
     self._revives = Application:digest_value(math.min(Global.CrimDusk.data[lives] + 1, self._max_lives), true)
+
+  elseif Global.CrimDusk.data[lives] == -2 then
+    CrimDusk.Log(FileIdent, "Started in custody!", true)
+    self:set_health(0)
+    self._down_time = 0
+    self._revives = Application:digest_value(1, true)
+    DelayedCalls:Add("CrimDusk_ForceIntoCustody", 1, function() managers.player:on_enter_custody(managers.player:player_unit()) end)
+  return
 
   -- Traded from custody
   elseif Global.CrimDusk.data[lives] == -1 then
     CrimDusk.Log(FileIdent, "Traded from custody", true)
     self._revives = Application:digest_value(2, true)
+    Global.CrimDusk.data[lives] = 1
 
   -- Doctor bag
   else local NewDowns = Application:digest_value(self._revives, false) + 10

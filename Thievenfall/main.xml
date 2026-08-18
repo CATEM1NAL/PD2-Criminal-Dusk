@@ -1,6 +1,6 @@
 <mod name="Thievenfall" global_key="thievenfall" author="~/cat/em1/nal/" color="Color(0.734375,0.4921875,0.73828125)" image="logo/dawn">
   <!-- Auto update from latest GitHub release -->
-  <AssetUpdates version="0.8.12" id="CATEM1NAL/PD2-Thievenfall" provider="github" release="true"/>
+  <AssetUpdates version="0.8.13" id="CATEM1NAL/PD2-Thievenfall" provider="github" release="true"/>
 
   <AddFiles directory="assets">
     <png path="logo/dawn"/>
@@ -70,7 +70,7 @@
         <hook source_file="lib/managers/perpetualeventmanager" file="perpetualevents.lua"/>
         <hook source_file="lib/managers/preplanningmanager" file="preplanning.lua"/>
         <hook source_file="lib/managers/gageassignmentmanager" file="gagepackage.lua"/>
-        <hook source_file="lib/managers/lootmanager" file="loot.lua"/>
+        <hook source_file="lib/managers/customsafehousemanager" file="safehouse.lua"/>
 
         <hooks directory="menu"> <!-- root/lua/managers/menu/ -->
           <hook source_file="lib/managers/menu/menuscenemanager" file="menuscene.lua"/>

@@ -19,7 +19,7 @@ Hooks:OverrideFunction(PlayerManager, "fixed_health_regen", function(self)
   return health_regen
 end)
 
-Hooks:PreHook(PlayerManager, "on_enter_custody", "CrimDusk_PlayerOnEnterCustody", function(self, player)
+Hooks:PreHook(PlayerManager, "on_enter_custody", "CrimDusk_PlayerOnEnterCustody", function(self, player, _, heist_start)
   if player == self:player_unit() then
     local lives = NetworkHelper:IsClient() and "lives" or "lives" .. CrimDusk.IsPermadeath()
     Global.CrimDusk.data[lives] = -1

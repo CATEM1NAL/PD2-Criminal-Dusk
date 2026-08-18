@@ -1,8 +1,7 @@
 Hooks:PostHook(MoneyTweakData, "init", "CrimDusk_MoneyTweakInit", function(self, tweak_data)
   local difficulty = Global.game_settings and Global.game_settings.difficulty or "normal"
   local DiffIndex = tweak_data:difficulty_to_index(difficulty)
-  local SafehouseMult = 1
-  if Utils:IsInGameState() then SafehouseMult = 1 + (2.5 * managers.custom_safehouse:total_room_unlocks_purchased() * 0.01) end
+  local SafehouseMult = Global.CrimDusk.money_multiplier or 1
 
   self.sell_weapon_multiplier = 0
   self.sell_mask_multiplier = 0
