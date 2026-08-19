@@ -158,7 +158,6 @@ Hooks:OverrideFunction(PlayerDamage, "_regenerated", function(self, no_messiah)
   elseif Global.CrimDusk.data[lives] == -2 then
     CrimDusk.Log(FileIdent, "Started in custody!", true)
     self:set_health(0)
-    self._down_time = 0
     self._revives = Application:digest_value(1, true)
     DelayedCalls:Add("CrimDusk_ForceIntoCustody", 1, function() managers.player:on_enter_custody(managers.player:player_unit()) end)
   return

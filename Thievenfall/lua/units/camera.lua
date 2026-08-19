@@ -4,6 +4,7 @@ Hooks:PostHook(SecurityCamera, "set_detection_enabled", "CrimDusk_SetInitialCamY
   if settings then
     self:apply_rotations(0, settings.pitch)
     self.rotate_speed = math.random(-1, 1) + math.random()
+    self._rotation_allowed_t = 0
   end
 end)
 

@@ -3,7 +3,7 @@ local FileIdent = "Victory"
 local lives = NetworkHelper:IsClient() and "lives" or "lives" .. CrimDusk.IsPermadeath()
 if Global.CrimDusk.data[lives] == -1 then Global.CrimDusk.data[lives] = -2 end
 
-if Global.game_settings and Global.game_settings.level_id == "chill_combat" then return
+if Global.game_settings and Global.game_settings.level_id == "chill_combat" then CrimDusk:WriteSave(FileIdent, "heist completed") return
 elseif NetworkHelper:IsClient() then CrimDusk:WriteSave(FileIdent, "heist completed") return end
 
 Hooks:PostHook(VictoryState, "at_enter", "CrimDusk_HeistWon", function(self)
