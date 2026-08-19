@@ -1,7 +1,3 @@
-Hooks:PostHook(HuskPlayerDamage, "init", "CrimDusk_InitHuskPlayerDamage", function(self)
-  self._revives_max = 60
-end)
-
 Hooks:OverrideFunction(HuskPlayerDamage, "damage_bullet", function(self, attack_data)
   self:_send_damage_to_owner(attack_data)
 end)

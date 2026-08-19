@@ -76,4 +76,19 @@
 
   </tweak>
 
+  <tweak version="2" name="settings/network" extension="network_settings">
+
+    <search>
+      <network/>
+      <rpc/>
+      <message name="set_revives" delivery="ordered" receiver="unit"/>
+      <param type="int" min="0" max="6"/>
+    </search>
+
+    <target mode="attributes">
+      <attr name="max" value="61"/>
+    </target>
+
+  </tweak>
+
 </tweaks>

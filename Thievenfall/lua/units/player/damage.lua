@@ -382,10 +382,3 @@ Hooks:OverrideFunction(PlayerDamage, "damage_bullet", function(self, attack_data
 	pm:send_message(Message.OnPlayerDamage, nil, attack_data)
 	self:_call_listeners(damage_info)
 end)
-
--- Update down time
-Hooks:OverrideFunction(PlayerDamage, "_send_set_revives", function(self)
-  local revives = self._down_time + 1
-  managers.hud:set_teammate_revives(HUDManager.PLAYER_PANEL, revives)
-  NetworkHelper:SendToPeers("CrimDusk_HUDUpdateDownCounter", revives)
-end)

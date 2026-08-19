@@ -1,13 +1,6 @@
 local FileIdent = "NetworkManager"
 NetworkMatchMakingSTEAM._BUILD_SEARCH_INTEREST_KEY = "thievenfall_v" .. Global.CrimDusk.ModVersion
 
--- General hooks
-NetworkHelper:AddReceiveHook("CrimDusk_HUDUpdateDownCounter", "CrimDusk_ReceiveDownCounterUpdate", function(revives, sender)
-  if not tonumber(revives) or not Utils:IsInGameState() then return end
-  local character_data = managers.criminals:character_data_by_peer_id(sender)
-  if character_data and character_data.panel_id then managers.hud:set_teammate_revives(character_data.panel_id, tonumber(revives)) end
-end)
-
 -- Client hooks
 if NetworkHelper:IsClient() then
   -- Receive heist count from host

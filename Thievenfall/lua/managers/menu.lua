@@ -188,9 +188,7 @@ local function InjectCrimDuskButtons(node)
   table.insert(node._items, position, new_item)
 
   -- Add the safehouse button
-  local data = {
-    type = "CoreMenuItem.Item",
-  }
+  local data = { type = "CoreMenuItem.Item" }
   local params = {
     name = "crimdusk_safehouse",
     text_id = "menu_cn_chill",
@@ -209,9 +207,7 @@ local function InjectCrimDuskButtons(node)
   table.insert(node._items, position, new_item)
 
   -- Add play offline button
-  local data = {
-    type = "CoreMenuItem.Item",
-  }
+  local data = { type = "CoreMenuItem.Item" }
   local params = {
     name = "crimdusk_play_offline",
     text_id = "crimdusk_play_offline",
