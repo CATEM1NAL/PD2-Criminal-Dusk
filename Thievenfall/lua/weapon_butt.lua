@@ -1,7 +1,6 @@
 local player = managers.player:player_unit()
 local PlayerState = player and player:movement() and player:movement():current_state()
 if not PlayerState or PlayerState:_interacting() or PlayerState:is_deploying() then return end
-CrimDusk.Log("QuickMelee", managers.player:current_state(), true)
 
 local ValidState = { standard = true, carry = true }
 if ValidState[managers.player:current_state()] and PlayerState:_melee_repeat_allowed() then

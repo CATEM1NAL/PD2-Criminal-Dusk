@@ -23,6 +23,7 @@ Hooks:PostHook(BlackMarketTweakData, "_init_melee_weapons", "CrimDusk_InitMeleeT
         if Stat == "rep" then
           self.melee_weapons[MeleeWeapon].repeat_expire_t = Value
           self.melee_weapons[MeleeWeapon].expire_t = Value
+          self.melee_weapons[MeleeWeapon].attack_allowed_expire_t = Value
           RepTimeChanged = true
 
         elseif Stat == "anim" then
@@ -37,6 +38,11 @@ Hooks:PostHook(BlackMarketTweakData, "_init_melee_weapons", "CrimDusk_InitMeleeT
       if not RepTimeChanged and ResetTimers[AnimSet] then
         self.melee_weapons[MeleeWeapon].repeat_expire_t = ResetTimers[AnimSet]
         self.melee_weapons[MeleeWeapon].expire_t = ResetTimers[AnimSet]
+        self.melee_weapons[MeleeWeapon].attack_allowed_expire_t = ResetTimers[AnimSet]
+
+      elseif not RepTimeChanged then
+        self.melee_weapons[MeleeWeapon].expire_t = self.melee_weapons[MeleeWeapon].repeat_expire_t
+        self.melee_weapons[MeleeWeapon].attack_allowed_expire_t = self.melee_weapons[MeleeWeapon].repeat_expire_t
       end
     end
   end

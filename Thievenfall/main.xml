@@ -1,9 +1,18 @@
-<mod name="Thievenfall" global_key="thievenfall" author="~/cat/em1/nal/" color="Color(0.734375,0.4921875,0.73828125)" image="logo/dawn">
+<mod name="Thievenfall" global_key="thievenfall" author="~/cat/em1/nal/" color="Color(0.734375,0.4921875,0.73828125)" image="dawn">
   <!-- Auto update from latest GitHub release -->
-  <AssetUpdates version="0.8.15" id="CATEM1NAL/PD2-Thievenfall" provider="github" release="true"/>
+  <AssetUpdates version="0.8.16" id="CATEM1NAL/PD2-Thievenfall" provider="github" release="true"/>
 
   <AddFiles directory="assets">
-    <png path="logo/dawn"/>
+    <png path="dawn"/> <!-- mod icon -->
+
+    <!-- logo replacement -->
+    <texture path="units/menu/menu_scene/menu_cylinder_logo"/>
+    <texture path="guis/textures/menu_title_screen"/>
+    <texture path="guis/textures/game_small_logo"/>
+
+    <!-- texture swaps -->
+    <texture path="guis/textures/pd2/menu_backdrop/bd_baselayer"/> <!-- briefing overlay -->
+    <texture path="guis/textures/drill_screen_background"/> <!-- drill screen -->
   </AddFiles>
 
   <localization directory="loc" default_language="english">

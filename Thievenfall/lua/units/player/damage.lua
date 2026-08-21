@@ -165,8 +165,8 @@ Hooks:OverrideFunction(PlayerDamage, "_regenerated", function(self, no_messiah)
   -- Traded from custody
   elseif Global.CrimDusk.data[lives] == -1 then
     CrimDusk.Log(FileIdent, "Traded from custody", true)
-    self._revives = Application:digest_value(2, true)
-    Global.CrimDusk.data[lives] = 1
+    self._revives = Application:digest_value(11, true)
+    Global.CrimDusk.data[lives] = 10
 
   -- Doctor bag
   else local NewDowns = Application:digest_value(self._revives, false) + 10
@@ -181,7 +181,7 @@ Hooks:OverrideFunction(PlayerDamage, "_regenerated", function(self, no_messiah)
   local ReviveHealthRatio = self._down_time / 60
   self._revive_health_i = math.lerp(ReviveHealth[2], ReviveHealth[1], ReviveHealthRatio)
 
-  if self._down_time <= 1 then managers.environment_controller:set_last_life(true)
+  if self._down_time <= 10 then managers.environment_controller:set_last_life(true)
   else managers.environment_controller:set_last_life(false) end
 end)
 
@@ -218,7 +218,7 @@ Hooks:OverrideFunction(PlayerDamage, "revive", function(self, silent)
     local ReviveHealthRatio = self._down_time / 60
     self._revive_health_i = math.lerp(ReviveHealth[2], ReviveHealth[1], ReviveHealthRatio)
 
-    if self._down_time <= 1 then managers.environment_controller:set_last_life(true)
+    if self._down_time <= 10 then managers.environment_controller:set_last_life(true)
     else managers.environment_controller:set_last_life(false) end
 
     self._revive_miss = self._dmg_interval

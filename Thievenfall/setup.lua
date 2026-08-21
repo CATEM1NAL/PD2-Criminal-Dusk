@@ -267,19 +267,7 @@ function Global.CrimDusk:Init()
     CrimDusk:WriteSave(FileIdent, "save created")
   end
 
-
   CrimDusk.Log(FileIdent, "Global initialisation completed!", true)
 end
-
--- Logo replacements
-DB:create_entry(Idstring("texture"), Idstring("guis/textures/menu_title_screen"), CrimDusk.ModPath .. "assets/logo/title.texture")
-DB:create_entry(Idstring("texture"), Idstring("guis/textures/game_small_logo"), CrimDusk.ModPath .. "assets/logo/small.texture")
-DB:create_entry(Idstring("texture"), Idstring("units/menu/menu_scene/menu_cylinder_logo"), CrimDusk.ModPath .. "assets/logo/menu.texture")
-
--- Background replacements
-DB:create_entry(Idstring("texture"), Idstring("guis/textures/pd2/menu_backdrop/bd_baselayer"), CrimDusk.ModPath .. "assets/bg/briefing.texture")
-
--- Drill
-DB:create_entry(Idstring("texture"), Idstring("guis/textures/drill_screen_background"), CrimDusk.ModPath .. "assets/drill_screen_background.texture")
 
 Global.CrimDusk:Init()

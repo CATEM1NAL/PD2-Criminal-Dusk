@@ -81,7 +81,7 @@ Global.CrimDusk.melee.classes = {
     bowie = {},
     chef = {},
     x46 = {},
-    catch = {},
+    catch = { rep = 0.255 },
     scoutknife = {},
     gerber = {},
     fairbair = {},

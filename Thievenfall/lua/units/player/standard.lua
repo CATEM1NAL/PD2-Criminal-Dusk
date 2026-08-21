@@ -27,7 +27,8 @@ Hooks:OverrideFunction(PlayerStandard, "_check_action_melee", function(self, t, 
   if self._state_data.buffer_melee_unequip and CanMelee then
     self._state_data.buffer_melee_unequip = nil
     self._state_data.melee_active = nil
-    if self._state_data.meleeing then self:_interupt_action_melee(t) end
+    if not self:in_melee() then self:_start_action_melee(t, input) end -- hacky solution to fix anim bugs
+    self:_interupt_action_melee(t)
     if self._change_weapon_data then self:_start_action_equip_weapon(t) end
   return end
 
@@ -36,11 +37,10 @@ Hooks:OverrideFunction(PlayerStandard, "_check_action_melee", function(self, t, 
   if not action_wanted then return end
 
   -- Put melee away on button press
-  if input.btn_melee_press and self._state_data.melee_active then
+  if self._state_data.melee_active and input.btn_melee_press then
     if self._state_data.buffer_melee_unequip then
       self._change_weapon_data = nil
       self._state_data.buffer_melee_unequip = nil
-
     else
       self._change_weapon_data = { selection_wanted = (Utils:IsCurrentWeaponPrimary() and 2 or 1) }
       self._state_data.buffer_melee_unequip = true
@@ -48,7 +48,7 @@ Hooks:OverrideFunction(PlayerStandard, "_check_action_melee", function(self, t, 
   return
 
   -- Click (or hold) to attack
-  elseif input.btn_primary_attack_state and not self._state_data.melee_attack_wanted then
+  elseif self._state_data.melee_active and input.btn_primary_attack_state and not self._state_data.melee_attack_wanted then
     if self._state_data.melee_attack_allowed_t then self._state_data.melee_attack_wanted = true
     elseif not self._state_data.melee_repeat_expire_t then self:_do_action_melee(t, input) end
   return end
