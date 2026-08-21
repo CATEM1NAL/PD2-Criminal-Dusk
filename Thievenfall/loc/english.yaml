@@ -32,7 +32,7 @@ crimdusk_chat_hector_alive_free: "but we never figured out who sent him there."
 crimdusk_chat_hector_alive_prison: "and we never figured out why."
 crimdusk_chat_hector_dead: "and we managed to kill the rat."
 
-crimdusk_chat_campaign_conclusion: "$LENGTH $SUCCESS\n$BAIN $VLAD $ALMIR\n$HOXTON $HECTOR\nThis campaign lasted $HEISTS heists!"
+crimdusk_chat_campaign_conclusion: "$LENGTH $SUCCESS\n$BAIN $VLAD $ALMIR $HOXTON $HECTOR\nThis campaign lasted $HEISTS heists!"
 
 ## LOBBY
 crimdusk_create_lobby_title: "Create Lobby"
@@ -217,9 +217,7 @@ menu_fak_lives: "Amphetamine"
 menu_fak_lives_desc: "$lv1;You have a ##50%## chance to restore ##1## down when using a first aid kit.\n\n$lv2;You always restore ##1## down when using a first aid kit."
 
 menu_cable_guy: "Cable Guy"
-menu_cable_guy_desc: "$lv1;You start heists with ##4## more cable ties.\n\n$lv2;You gain an additional ##4## cable ties."
-
-menu_triathlete_beta_desc: "$lv1;The crew gains ##0.5## damage absorption per hostage, up to ##8## hostages. This does not stack."
+menu_cable_guy_desc: "$lv1;You tie up civilians ##75%## faster.\n\n$lv2;The crew gains ##0.5## damage absorption per hostage, up to ##8## hostages. This does not stack."
 
 menu_deep_throat: "Deep Throat"
 menu_deep_throat_desc: "$lv1;Your shout range is increased by ##50%##.\n\n$lv2;Your shout range is increased by ##100%##."

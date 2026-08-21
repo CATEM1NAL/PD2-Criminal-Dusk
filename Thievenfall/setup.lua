@@ -45,10 +45,11 @@ function CrimDusk:Init()
 
   function self.EndingText(won)
     local loc = managers.localization
-    local CampaignLength, CampaignWon, BainState, VladState, AlmirState, HoxtonState, HectorState, HeistsPlayed
+    local CampaignLength, CampaignWon, BainState, VladState, AlmirState, HoxtonState, HectorState, HeistsPlayed, EndingBits
 
     local perma = CrimDusk.IsPermadeath()
     local CampaignData = Global.CrimDusk.data
+    Utils.PrintTable(CampaignData)
 
     if next(CampaignData["heist_chain" .. perma]) then
       HeistsPlayed = #CampaignData["heist_chain" .. perma]
@@ -59,14 +60,20 @@ function CrimDusk:Init()
     end
 
     CampaignWon = won and loc:text("crimdusk_chat_success") or loc:text("crimdusk_chat_failure")
+    EndingBits = EndingBits + (won and 1 or 0)
 
     BainState = CampaignData["bain_freed" .. perma] and loc:text("crimdusk_chat_bain_alive") or loc:text("crimdusk_chat_bain_dead")
     VladState = CampaignData["vlad_freed" .. perma] and loc:text("crimdusk_chat_vlad_alive") or loc:text("crimdusk_chat_vlad_dead")
     AlmirState = CampaignData["almir_freed" .. perma] and loc:text("crimdusk_chat_almir_alive") or loc:text("crimdusk_chat_almir_dead")
 
+    EndingBits = EndingBits + (CampaignData["bain_freed" .. perma] and 2 or 0)
+    EndingBits = EndingBits + (CampaignData["vlad_freed" .. perma] and 4 or 0)
+    EndingBits = EndingBits + (CampaignData["almir_freed" .. perma] and 8 or 0)
+
     if CampaignData["free_hoxton" .. perma] >= 4 then
       HoxtonState = loc:text("crimdusk_chat_hoxton_free")
       HectorState = CampaignData["hector_dead" .. perma] and loc:text("crimdusk_chat_hector_dead") or loc:text("crimdusk_chat_hector_alive_free")
+      EndingBits = EndingBits + 16 + (CampaignData["hector_dead" .. perma] and 32 or 0)
 
     else HoxtonState = loc:text("crimdusk_chat_hoxton_prison")
       HectorState = loc:text("crimdusk_chat_hector_alive_prison")
@@ -79,8 +86,8 @@ function CrimDusk:Init()
         HOXTON = HoxtonState, HECTOR = HectorState,
         HEISTS = HeistsPlayed
       })
-      NetworkHelper:SendToPeers("CrimDusk_CampaignEnded", ending)
       CrimDusk.ChatNotify(ending)
+      NetworkHelper:SendToPeers("CrimDusk_CampaignEnded", EndingBits .. ";" .. HeistsPlayed)
     end)
   end
 

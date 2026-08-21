@@ -36,8 +36,8 @@ Hooks:PostHook(VictoryState, "at_enter", "CrimDusk_HeistWon", function(self)
       elseif CurrentHeist == "pex" then Global.CrimDusk.data["almir_freed" .. Permadeath] = true
       elseif CurrentHeist == "cd_biker1" then Global.CrimDusk.data["rust_recruited" .. Permadeath] = true
       elseif CurrentHeist == "vit" then
-        CrimDusk.SoftReset()
         CrimDusk.EndingText(true)
+        CrimDusk.SoftReset()
       end
     end
 

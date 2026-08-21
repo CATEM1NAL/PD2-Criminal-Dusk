@@ -6,22 +6,7 @@
     <search>
       <network/>
       <rpc/>
-      <message name="request_join_steam"/>
-      <param type="int" min="0" max="100"/>
-    </search>
-
-    <target mode="attributes">
-      <attr name="max" value="4294967295"/>
-    </target>
-
-  </tweak>
-
-  <tweak version="2" name="settings/network" extension="network_settings">
-
-    <search>
-      <network/>
-      <rpc/>
-      <message name="request_join_epic"/>
+      <message name="request_join"/>
       <param type="int" min="0" max="100"/>
     </search>
 

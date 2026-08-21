@@ -13,6 +13,7 @@ Hooks:PreHook(PlayerDamage, "init", "CrimDusk_InitPlayerDamage", function(self)
   self._armor_broken = false
   self._armor_break_t = managers.player:player_timer():time() + 3
   self._max_lives = 1 + 30 + managers.player:upgrade_value("player", "additional_lives", 0)
+  managers.environment_controller:set_last_life()
 end)
 
 -- Regen time varies with armour
@@ -144,7 +145,6 @@ Hooks:OverrideFunction(PlayerDamage, "_regenerated", function(self, no_messiah)
 
   self:set_health(self:_max_health())
   self:_send_set_health()
-  self:_set_health_effect()
   self._said_hurt = false
 
   if not no_messiah then self._messiah_charges = managers.player:upgrade_value("player", "pistol_revive_from_bleed_out", 0) end
@@ -175,14 +175,12 @@ Hooks:OverrideFunction(PlayerDamage, "_regenerated", function(self, no_messiah)
   end
 
   self._down_time = Application:digest_value(self._revives, false) - 1
+  self:_set_health_effect()
   self:_send_set_revives()
 
   local ReviveHealth = tweak_data.player.damage.REVIVE_HEALTH_STEPS
   local ReviveHealthRatio = self._down_time / 60
   self._revive_health_i = math.lerp(ReviveHealth[2], ReviveHealth[1], ReviveHealthRatio)
-
-  if self._down_time <= 10 then managers.environment_controller:set_last_life(true)
-  else managers.environment_controller:set_last_life(false) end
 end)
 
 -- On revive
@@ -218,9 +216,6 @@ Hooks:OverrideFunction(PlayerDamage, "revive", function(self, silent)
     local ReviveHealthRatio = self._down_time / 60
     self._revive_health_i = math.lerp(ReviveHealth[2], ReviveHealth[1], ReviveHealthRatio)
 
-    if self._down_time <= 10 then managers.environment_controller:set_last_life(true)
-    else managers.environment_controller:set_last_life(false) end
-
     self._revive_miss = self._dmg_interval
   end
 
@@ -250,6 +245,13 @@ Hooks:OverrideFunction(PlayerDamage, "revive", function(self, silent)
   if managers.player:has_inactivate_temporary_upgrade("temporary", "reload_weapon_faster") then
     managers.player:activate_temporary_upgrade("temporary", "reload_weapon_faster")
   end
+end)
+
+-- Grey screen effect scales with down time, not health
+Hooks:OverrideFunction(PlayerDamage, "_set_health_effect", function(self)
+  local ReviveHealthRatio = self._downed_timer and self._downed_timer / 30 or (self._down_time or Global.CrimDusk.data[lives]) / 30
+  ReviveHealthRatio = math.min(ReviveHealthRatio, 1)
+  managers.environment_controller:set_health_effect_value(ReviveHealthRatio)
 end)
 
 -- This bad boy can fit so many changes

@@ -27,7 +27,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       "temporary_passive_revive_damage_reduction_2",
       "akimbo_recoil_index_addend_1",
       "body_armor1",
-      "cable_tie",
+      "cable_tie_quantity_unlimited",
       "doctor_bag",
       "ammo_bag",
       "trip_mine",
@@ -76,36 +76,36 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       { "uppers", "inspire", "fak_lives" }
     }
     self.trees[2].tiers = {
-      { "cable_guy", "blanks", "deep_throat" },
-      { "oldholm_syndrome", "hostage_absorption", "crowd_control", "custody_timer" },
-      { "stockholm_syndrome", "joker", "dominator" },
-      { "joker_dr", "joker_player_stats", "joker_damage" }
-    }
-    self.trees[3].tiers = {
       { "stable_shot" },
       { "target_acquisition", "spotter_teamwork" },
       { "trigger_happy", "speedy_reload", "long_shot" },
       { "helmet_popping", "coup_de_grace", "single_shot_ammo_return" }
     }
+    self.trees[3].tiers = {
+      { "cable_guy", "blanks", "deep_throat" },
+      { "oldholm_syndrome", "crowd_control", "custody_timer" },
+      { "stockholm_syndrome", "joker", "dominator" },
+      { "joker_dr", "joker_player_stats", "joker_damage" }
+    }
 
     -- Enforcer
     self.trees[4].tiers = {
+      { "scavenger", "max_ammo_increase", "extra_ammo_box", "portable_saw" },
+      { "ammobag_capacity", "gambler_heal", "carbon_blade" },
+      { "ammobag_quantity", "ammo_reservoir" },
+      { "fully_loaded", "gambler_mag_throw", "scrounger" }
+    }
+    self.trees[5].tiers = {
       { "heavy_impact", "mobile", "threat_inc", "downed_ads" },
       { "perk_dmg", "fire_control", "shotgun_accuracy", "loud_and_proud" },
       { "lock_load", "shotgun_range", "muscle_panic", "shell_dimension" },
       { "body_expertise", "sprint_shoot", "overkill" }
     }
-    self.trees[5].tiers = {
+    self.trees[6].tiers = {
       { "transporter", "armorer_perk", "stun_resistance" },
       { "armor_bag_reduction", "juggernaut" },
       { "shock_awe", "nerves_of_steel" },
       { "crew_recovery", "maniac_base" }
-    }
-    self.trees[6].tiers = {
-      { "scavenger", "max_ammo_increase", "extra_ammo_box", "portable_saw" },
-      { "ammobag_capacity", "gambler_heal", "carbon_blade" },
-      { "ammobag_quantity", "ammo_reservoir" },
-      { "fully_loaded", "gambler_mag_throw", "scrounger" }
     }
 
     -- Technician
@@ -116,16 +116,16 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       { "jack_of_all_trades", "sentry_shield" }
     }
     self.trees[8].tiers = {
-      { "toolkit", "silent_drilling", "trip_mine_radius" },
-      { "drill_expert", "trip_mine_damage", "trip_mine_quantity" },
-      { "kick_starter", "fire_trap", "sensor_mines" },
-      { "drill_restart", "shaped_charge" }
-    }
-    self.trees[9].tiers = {
       { "stability_increase" },
       { "accuracy_increase", "tinkerer" },
       { "reload_speed", "hollow_point" },
       { "illegal_parts", "mag_plus" }
+    }
+    self.trees[9].tiers = {
+      { "toolkit", "silent_drilling", "trip_mine_radius" },
+      { "drill_expert", "trip_mine_damage", "trip_mine_quantity" },
+      { "kick_starter", "fire_trap", "sensor_mines" },
+      { "drill_restart", "shaped_charge" }
     }
 
     -- Ghost
@@ -136,16 +136,16 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       { "ecm_quantity" }
     }
     self.trees[11].tiers = {
-      { "rogue_dodge", "moving_target", "daredevil", "move_speed" },
-      { "crook_skill", "crouch_dodge", "shockproof", "jail_diet" },
-      { "ex_pres", "optical_illusion", "second_wind" },
-      { "anarch_rise", "sprint_loaded" }
-    }
-    self.trees[12].tiers = {
       { "quick_draw", "hidden_blade", "vest_conceal", "high_value_target" },
       { "akimbo", "silence_conceal", "silence_expert", "copycat_reload" },
       { "drop_cloth", "dire_need", "backstab" },
       { "pager_snatch", "hypocritical", "silencer_statboost" }
+    }
+    self.trees[12].tiers = {
+      { "rogue_dodge", "moving_target", "daredevil", "move_speed" },
+      { "crook_skill", "crouch_dodge", "shockproof", "jail_diet" },
+      { "ex_pres", "optical_illusion", "second_wind" },
+      { "anarch_rise", "sprint_loaded" }
     }
 
     -- Convict
@@ -156,16 +156,16 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       { "stoic_negation", "h3h3_absorb", "kingpin_base", "leech_swan" }
     }
     self.trees[14].tiers = {
-      { "muscle_health", "revive_swap_speed" },
-      { "four_lives", "revive_move_speed" },
-      { "swan_song", "messiah" },
-      { "vengeful_swan", "feign_death" }
-    }
-    self.trees[15].tiers = {
       { "hitman_perk", "steroids", "because_of_training" },
       { "bloodthirst", "infil_melee", "melee_reload_speed" },
       { "sharp_damage", "drop_soap", "infil_heal", "berserker" },
       { "yakuza_speed", "frenzy", "gunserker" }
+    }
+    self.trees[15].tiers = {
+      { "muscle_health", "revive_swap_speed" },
+      { "four_lives", "revive_move_speed" },
+      { "swan_song", "messiah" },
+      { "vengeful_swan", "feign_death" }
     }
 
     -- Skill definitions
@@ -229,13 +229,9 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       name_id = "menu_fak_lives", desc_id = "menu_fak_lives_desc", icon_xy = { 3, 10 }
     }
     self.skills.cable_guy = {
-      { upgrades = { "cable_tie_quantity" }, cost = self.costs.default },
-      { upgrades = { "cable_tie_quantity_2" }, cost = self.costs.default },
-      name_id = "menu_cable_guy", desc_id = "menu_cable_guy_desc", icon_xy = { 4, 7 }
-    }
-    self.skills.hostage_absorption = {
+      { upgrades = { "cable_tie_interact_speed_multiplier" }, cost = self.costs.default },
       { upgrades = { "team_damage_hostage_absorption" }, cost = self.costs.default },
-      name_id = "menu_triathlete_beta", desc_id = "menu_triathlete_beta_desc", icon_xy = { 4, 7 }
+      name_id = "menu_cable_guy", desc_id = "menu_cable_guy_desc", icon_xy = { 4, 7 }
     }
     self.skills.deep_throat = {
       { upgrades = { "player_intimidate_range_mul" }, cost = self.costs.default },

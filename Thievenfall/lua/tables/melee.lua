@@ -75,7 +75,7 @@ Global.CrimDusk.melee.classes = {
     wing = { rep = 0.5 },
     ostry = {},
     switchblade = {},
-    grip = {},
+    grip = { rep = 0.3 },
     push = {},
     twins = {},
     bowie = {},
@@ -98,7 +98,7 @@ Global.CrimDusk.melee.classes = {
     machete = { dismember = true },
     gator = { dismember = true },
     oxide = { dismember = true },
-    agave = { rep = 0.35, dismember = true },
+    agave = { rep = 0.3, dismember = true },
     bullseye = {  },
     scalper = { dismember = true },
     meat_cleaver = { dismember = true },
@@ -156,5 +156,4 @@ Global.CrimDusk.melee.stats = {
 }
 
 Global.CrimDusk.melee.reset = { melee_axe = 0.35, melee_baseballbat = 0.8, melee_machete = 0.4, melee_knife = 0.6, melee_knife2 = 0.4 }
-Global.CrimDusk.melee.expire = { melee_baseballbat = 1.2 }
 Global.CrimDusk.melee.damage_delay = { melee_baseballbat = 0.2 }

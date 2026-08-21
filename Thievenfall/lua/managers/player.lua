@@ -6,6 +6,7 @@ Hooks:OverrideFunction(PlayerManager, "verify_equipment", function() return true
 Hooks:OverrideFunction(PlayerManager, "health_skill_multiplier", function() return 1 end)
 Hooks:OverrideFunction(PlayerManager, "carry_blocked_by_cooldown", function() return false end)
 Hooks:OverrideFunction(PlayerManager, "health_regen", function() return 0 end)
+Hooks:OverrideFunction(PlayerManager, "add_cable_ties", function() end)
 
 Hooks:OverrideFunction(PlayerManager, "fixed_health_regen", function(self)
   local health_regen = 0
