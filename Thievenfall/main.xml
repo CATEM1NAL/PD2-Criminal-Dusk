@@ -6,13 +6,16 @@
     <png path="dawn"/> <!-- mod icon -->
 
     <!-- logo replacement -->
-    <texture path="units/menu/menu_scene/menu_cylinder_logo"/>
-    <texture path="guis/textures/menu_title_screen"/>
-    <texture path="guis/textures/game_small_logo"/>
+    <texture path="units/menu/menu_scene/menu_cylinder_logo"/> <!-- main menu background -->
+    <texture path="guis/textures/menu_title_screen"/> <!-- press any key -->
+    <texture path="guis/textures/game_small_logo"/> <!-- loading screen -->
 
     <!-- texture swaps -->
     <texture path="guis/textures/pd2/menu_backdrop/bd_baselayer"/> <!-- briefing overlay -->
     <texture path="guis/textures/drill_screen_background"/> <!-- drill screen -->
+
+    <!-- audio -->
+    <stream path="soundbanks/streamed/job_l_vit_stage1/938261088"/> <!-- hall & oates -->
   </AddFiles>
 
   <localization directory="loc" default_language="english">

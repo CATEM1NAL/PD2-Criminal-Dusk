@@ -333,15 +333,15 @@ menu_spotter_teamwork_beta_desc: "$lv1;Special enemies that you aim at are marke
 
 ## Technician
 menu_toolkit: "Toolkit"
-menu_toolkit_desc: "$lv1;Repair broken drills and saws ##25%## faster."
+menu_toolkit_desc: "$lv1;You repair broken drills and saws ##25%## faster."
 
 menu_silent_drilling: "Silent Drilling"
-menu_silent_drilling_desc: "$lv1;Guards will only move to investigate drills within ##4.5m##.\n\n$lv2;Guards will not move to investigate drills."
+menu_silent_drilling_desc: "$lv1;Guards will only move to investigate drills or saws that you placed or upgraded within ##9m##.\n\n$lv2;Guards will not move to investigate drills or saws that you placed or upgraded."
 
 menu_drill_restart: "Repair System"
-menu_drill_restart_desc: "$lv1;Drills have a ##50%## chance to be capable of auto-restarting.\n\n$lv2;Drills will always be capable of auto-restarting."
+menu_drill_restart_desc: "$lv1;Drills or saws that you placed or upgraded have a ##50%## chance to automatically restart ##5## to ##15## seconds after breaking.\n\n$lv2;Drills or saws that you placed or upgraded will always restart ##5## to ##15## seconds after breaking."
 
-menu_drill_expert_beta_desc: "$lv1;Drills and saws finish ##15%## faster.\n\n$lv2;Drills and saws finish ##30%## faster."
+menu_drill_expert_beta_desc: "$lv1;Drills or saws that you placed or upgraded finish ##15%## faster.\n\n$lv2;Drills or saws that you placed or upgraded finish ##30%## faster."
 
 menu_trip_mine_damage: "Fragmentation"
 menu_trip_mine_damage_desc: "$lv1;Your trip mines deal enough damage to kill ##heavies## and ##cloakers##.\n\n$lv2;Your trip mines deal enough damage to kill ##Winters shields##."
