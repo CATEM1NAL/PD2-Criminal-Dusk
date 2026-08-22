@@ -1,3 +1,4 @@
+if Global.game_settings and (Global.game_settings.level_id == "chill_combat" or Global.CrimDusk.holdouts[Global.game_settings.level_id]) then return end
 local FileIdent = "Gameover"
 
 Hooks:PostHook(GameOverState, "at_enter", "CrimDawn_HeistFailed", function(self)

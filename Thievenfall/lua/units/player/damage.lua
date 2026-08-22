@@ -2,6 +2,7 @@ if Global.game_settings and Global.game_settings.level_id == "chill" then return
 
 local FileIdent = "PlayerDamage"
 local lives = NetworkHelper:IsClient() and "lives" or "lives" .. CrimDusk.IsPermadeath()
+if Global.game_settings and (Global.game_settings.level_id == "chill_combat" or Global.CrimDusk.holdouts[Global.game_settings.level_id]) then lives = "lives_standalone" end
 
 PlayerDamage._UPPERS_COOLDOWN = 1
 
@@ -12,7 +13,7 @@ Hooks:PreHook(PlayerDamage, "init", "CrimDusk_InitPlayerDamage", function(self)
   self._entropy_mult = 0.1
   self._armor_broken = false
   self._armor_break_t = managers.player:player_timer():time() + 3
-  self._max_lives = 1 + 30 + managers.player:upgrade_value("player", "additional_lives", 0)
+  self._max_lives = 31 + managers.player:upgrade_value("player", "additional_lives", 0)
   managers.environment_controller:set_last_life()
 end)
 
@@ -151,7 +152,9 @@ Hooks:OverrideFunction(PlayerDamage, "_regenerated", function(self, no_messiah)
   CrimDusk.Log(FileIdent, "Revives pre-modified: " .. Application:digest_value(self._revives, false), true)
 
   -- Initial lives (start of heist)
-  if not self._down_time and Global.CrimDusk.data[lives] >= 0 then
+  if not self._down_time and lives == "lives_standalone" then self._revives = Application:digest_value(31 + managers.player:upgrade_value("player", "additional_lives", 0))
+
+  elseif not self._down_time and Global.CrimDusk.data[lives] >= 0 then
     CrimDusk.Log(FileIdent, "Setting initial down time", true)
     self._revives = Application:digest_value(math.min(Global.CrimDusk.data[lives] + 1, self._max_lives), true)
 

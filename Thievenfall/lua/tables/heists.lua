@@ -101,7 +101,7 @@ Global.CrimDusk.heists = {
   crojob3 = { stealthable = true, grading = "color_bhd", suit = "slaughterhouse" },
   crojob3_night = { stealthable = true, grading = "color_xxxgen", suit = "slaughterhouse" },
   friend = { delay = 8, grading = "color_xxxgen", suit = "slaughterhouse" },
-  
+
   -- Locke
   pbr = { stealthable = true, grading = "color_xxxgen", suit = "slaughterhouse" },
   pbr2 = { grading = "color_bhd", suit = "slaughterhouse" },
@@ -137,4 +137,9 @@ Global.CrimDusk.heists = {
   nail = { stealthable = true, grading = "color_matrix_classic", suit = "moneysuit" },
   haunted = { stealthable = true, grading = "color_matrix_classic", suit = "moneysuit" },
   rat = { stealthable = true, grading = "color_xxxgen", suit = "slaughterhouse" }
+}
+
+Global.CrimDusk.holdouts = {
+  skm_mus = true, skm_red2 = true, skm_run = true, skm_watchdogs_stage2 = true, skm_bex = true,
+  skm_cas = true, skm_big2 = true, skm_mallcrasher = true, skm_arena = true
 }
