@@ -75,12 +75,14 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       { "revive_reduction", "code_blue", "docbag_quantity" },
       { "uppers", "inspire", "fak_lives" }
     }
+    self.trees[2].name_id = "st_menu_mastermind_single_shot"
     self.trees[2].tiers = {
       { "stable_shot" },
       { "target_acquisition", "spotter_teamwork" },
       { "trigger_happy", "speedy_reload", "long_shot" },
       { "helmet_popping", "coup_de_grace", "single_shot_ammo_return" }
     }
+    self.trees[3].name_id = "st_menu_mastermind_dominate"
     self.trees[3].tiers = {
       { "cable_guy", "blanks", "deep_throat" },
       { "oldholm_syndrome", "crowd_control", "custody_timer" },
@@ -89,18 +91,21 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
     }
 
     -- Enforcer
+    self.trees[4].name_id = "st_menu_enforcer_ammo"
     self.trees[4].tiers = {
       { "scavenger", "max_ammo_increase", "extra_ammo_box", "portable_saw" },
       { "ammobag_capacity", "gambler_heal", "carbon_blade" },
       { "ammobag_quantity", "ammo_reservoir" },
       { "fully_loaded", "gambler_mag_throw", "scrounger" }
     }
+    self.trees[5].name_id = "st_menu_enforce_shotgun"
     self.trees[5].tiers = {
       { "heavy_impact", "mobile", "threat_inc", "downed_ads" },
       { "perk_dmg", "fire_control", "shotgun_accuracy", "loud_and_proud" },
       { "lock_load", "shotgun_range", "muscle_panic", "shell_dimension" },
       { "body_expertise", "sprint_shoot", "overkill" }
     }
+    self.trees[6].name_id = "st_menu_enforcer_armor"
     self.trees[6].tiers = {
       { "transporter", "armorer_perk", "stun_resistance" },
       { "armor_bag_reduction", "juggernaut" },
@@ -115,12 +120,14 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       { "sentry_ap", "tower_defense" },
       { "jack_of_all_trades", "sentry_shield" }
     }
+    self.trees[8].name_id = "st_menu_technician_auto"
     self.trees[8].tiers = {
       { "stability_increase" },
       { "accuracy_increase", "tinkerer" },
       { "reload_speed", "hollow_point" },
       { "illegal_parts", "mag_plus" }
     }
+    self.trees[9].name_id = "st_menu_technician_breaching"
     self.trees[9].tiers = {
       { "toolkit", "silent_drilling", "trip_mine_radius" },
       { "drill_expert", "trip_mine_damage", "trip_mine_quantity" },
@@ -135,12 +142,14 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       { "lockpick_speed", "ecm_feedback" },
       { "ecm_quantity" }
     }
+    self.trees[11].name_id = "st_menu_ghost_silencer"
     self.trees[11].tiers = {
       { "quick_draw", "hidden_blade", "vest_conceal", "high_value_target" },
       { "akimbo", "silence_conceal", "silence_expert", "copycat_reload" },
       { "drop_cloth", "dire_need", "backstab" },
       { "pager_snatch", "hypocritical", "silencer_statboost" }
     }
+    self.trees[12].name_id = "st_menu_ghost_concealed"
     self.trees[12].tiers = {
       { "rogue_dodge", "moving_target", "daredevil", "move_speed" },
       { "crook_skill", "crouch_dodge", "shockproof", "jail_diet" },
@@ -155,12 +164,14 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
       { "stoic_regen", "kingpin_healing", "leech_segments" },
       { "stoic_negation", "h3h3_absorb", "kingpin_base", "leech_swan" }
     }
+    self.trees[14].name_id = "st_menu_fugitive_berserker"
     self.trees[14].tiers = {
       { "hitman_perk", "steroids", "because_of_training" },
       { "bloodthirst", "infil_melee", "melee_reload_speed" },
       { "sharp_damage", "drop_soap", "infil_heal", "berserker" },
       { "yakuza_speed", "frenzy", "gunserker" }
     }
+    self.trees[15].name_id = "st_menu_fugitive_undead"
     self.trees[15].tiers = {
       { "muscle_health", "revive_swap_speed" },
       { "four_lives", "revive_move_speed" },
