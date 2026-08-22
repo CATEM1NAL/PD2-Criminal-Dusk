@@ -1,6 +1,6 @@
 <mod name="Thievenfall" global_key="thievenfall" author="~/cat/em1/nal/" color="Color(0.734375,0.4921875,0.73828125)" image="dawn">
   <!-- Auto update from latest GitHub release -->
-  <AssetUpdates version="0.8.17" id="CATEM1NAL/PD2-Thievenfall" provider="github" release="true"/>
+  <AssetUpdates version="0.8.18" id="CATEM1NAL/PD2-Thievenfall" provider="github" release="true"/>
 
   <AddFiles directory="assets">
     <png path="dawn"/> <!-- mod icon -->
@@ -83,6 +83,7 @@
         <hook source_file="lib/managers/preplanningmanager" file="preplanning.lua"/>
         <hook source_file="lib/managers/gageassignmentmanager" file="gagepackage.lua"/>
         <hook source_file="lib/managers/customsafehousemanager" file="safehouse.lua"/>
+        <hook source_file="lib/managers/skirmishmanager" file="holdout.lua"/>
 
         <hooks directory="core"> <!-- root/lua/managers/core/ -->
           <hook source_file="core/lib/managers/coreenvironmentcontrollermanager" file="environmentcontroller.lua"/>

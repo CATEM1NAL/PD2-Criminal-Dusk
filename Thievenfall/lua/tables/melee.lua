@@ -53,13 +53,13 @@ Global.CrimDusk.melee.classes = {
     hockey = { anim = "melee_baseballbat" },
     buck = {},
     dingdong = {},
-    road = {}
+    road = { rep = 0.55 }
   },
 
   Knives = {
     kabar = {},
     toothbrush = {},
-    clean = {},
+    clean = { rep = 0.2 },
     kabartanto = {},
     nin = {},
     fork = {},

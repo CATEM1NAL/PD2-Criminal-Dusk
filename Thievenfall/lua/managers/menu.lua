@@ -137,7 +137,19 @@ function MenuCallbackHandler:CrimDusk_PlayGame()
     one_down = CrimDusk.SettingsData.permadeath,
     job_id = SelectNextHeist()
   })
-  MenuCallbackHandler:start_the_game()
+  self:start_the_game()
+end
+
+-- Weekly Holdout
+function MenuCallbackHandler:CrimDusk_Holdout()
+  if NetworkHelper:IsClient() then self:create_lobby() end
+  local weekly_skirmish = managers.skirmish:active_weekly()
+  local job_data = {
+    difficulty = "overkill_145",
+    weekly_skirmish = true,
+    job_id = weekly_skirmish.id
+  }
+  self:start_job(job_data)
 end
 
 -- Mod options
@@ -184,12 +196,12 @@ local function InjectCrimDuskButtons(node)
   new_item.dirty_callback = callback(node, node, "item_dirty")
   if node.callback_handler then new_item:set_callback_handler(node.callback_handler) end
 
-  local position = 2
+  local position = 1
   table.insert(node._items, position, new_item)
 
   -- Add the safehouse button
-  local data = { type = "CoreMenuItem.Item" }
-  local params = {
+  data = { type = "CoreMenuItem.Item" }
+  params = {
     name = "crimdusk_safehouse",
     text_id = "menu_cn_chill",
     help_id = "crimdusk_safehouse_desc",
@@ -198,17 +210,17 @@ local function InjectCrimDuskButtons(node)
     font = tweak_data.menu.pd2_large_font
   }
 
-  local new_item = node:create_item(data, params)
+  new_item = node:create_item(data, params)
 
   new_item.dirty_callback = callback(node, node, "item_dirty")
   if node.callback_handler then new_item:set_callback_handler(node.callback_handler) end
 
-  local position = 3
+  position = 1
   table.insert(node._items, position, new_item)
 
   -- Add play offline button
-  local data = { type = "CoreMenuItem.Item" }
-  local params = {
+  data = { type = "CoreMenuItem.Item" }
+  params = {
     name = "crimdusk_play_offline",
     text_id = "crimdusk_play_offline",
     help_id = "crimdusk_play_offline_desc",
@@ -217,12 +229,31 @@ local function InjectCrimDuskButtons(node)
     font = tweak_data.menu.pd2_large_font
   }
 
-  local new_item = node:create_item(data, params)
+  new_item = node:create_item(data, params)
 
   new_item.dirty_callback = callback(node, node, "item_dirty")
   if node.callback_handler then new_item:set_callback_handler(node.callback_handler) end
 
-  local position = 3
+  position = 3
+  table.insert(node._items, position, new_item)
+
+  -- Weekly Holdout
+  data = { type = "CoreMenuItem.Item" }
+  params = {
+    name = "crimdusk_play_holdout",
+    text_id = "crimdusk_play_holdout",
+    help_id = "crimdusk_play_holdout_desc",
+    callback = "CrimDusk_Holdout",
+    font_size = 25,
+    font = tweak_data.menu.pd2_large_font
+  }
+
+  new_item = node:create_item(data, params)
+
+  new_item.dirty_callback = callback(node, node, "item_dirty")
+  if node.callback_handler then new_item:set_callback_handler(node.callback_handler) end
+
+  position = 2
   table.insert(node._items, position, new_item)
 end
 
@@ -240,7 +271,8 @@ Hooks:Add("MenuManagerBuildCustomMenus", "CrimDusk_MenuTweaks", function(menu_ma
 
     -- Hides all the unnecessary menu buttons
     local HiddenButtons = {
-      crimenet = true, crimenet_offline = true, story_missions = true, crimdusk_safehouse = true
+      crimenet = true, crimenet_offline = true, story_missions = true,
+      crimdusk_safehouse = true, crimdusk_play_holdout = true
     }
 
     for i, item in pairs(mainmenu._items) do
@@ -271,7 +303,8 @@ Hooks:Add("MenuManagerBuildCustomMenus", "CrimDusk_MenuTweaks", function(menu_ma
 
     -- Hides all the unnecessary menu buttons
     local HiddenButtons = {
-      story_missions = true, crimdusk_createlobby_btn = true, crimdusk_play_offline = true, crimenet_nj = true, crimenet_j = true
+      story_missions = true, crimenet_nj = true, crimenet_j = true,
+      crimdusk_createlobby_btn = true, crimdusk_play_offline = true
     }
 
     for i, item in pairs(lobbymenu._items) do

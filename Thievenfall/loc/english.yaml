@@ -47,6 +47,11 @@ crimdusk_play_next_random: "Post-game: next heist will be randomly selected.\nYo
 crimdusk_campaign_active: "The next heist is $HEIST."
 crimdusk_campaign_inactive: "The next heist will be random."
 
+crimdusk_play_holdout: "Weekly Holdout"
+crimdusk_holdout_desc: "Survive for nine increasingly difficult waves.\nHeist changes in $DAYS days!"
+
+crimdusk_safehouse_desc: "Upgrade your safe house, view trophies, or simply take a break."
+
 ### STRING OVERRIDES ###
 # PDTH difficulties
 crimdusk_pdth_normal: "Easy"
