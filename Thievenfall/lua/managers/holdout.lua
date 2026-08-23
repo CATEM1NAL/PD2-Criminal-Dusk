@@ -19,3 +19,13 @@ Hooks:OverrideFunction(SkirmishManager, "on_start_assault", function(self)
 
   self:update_matchmake_attributes()
 end)
+
+Hooks:OverrideFunction(SkirmishManager, "sync_start_assault", function(self, wave)
+  if not self:is_skirmish() then return end
+
+  Global.game_settings.difficulty = Global.CrimDusk.holdout_difficulty[wave]
+  tweak_data:set_difficulty()
+  CrimDusk.Log(FileIdent, "Difficulty changed to: " .. Global.CrimDusk.holdout_difficulty[wave], true)
+
+  self._synced_wave_number = wave
+end)
