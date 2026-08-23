@@ -172,14 +172,6 @@ function CrimDusk:Init()
     return math.floor(RawDiff + 0.5)
   end
 
-  function self.ResetDifficulty()
-    if CrimDusk.DiffScale() ~= tweak_data:difficulty_to_index(Global.game_settings.difficulty) then
-      Global.game_settings.difficulty = tweak_data:index_to_difficulty(CrimDusk.DiffScale())
-      tweak_data:set_difficulty()
-      NetworkHelper:SendToPeers("CrimDusk_ChangeDifficulty", Global.game_settings.difficulty)
-    end
-  end
-
   -- Reset campaign state
   function self:SoftReset()
     local permadeath = CrimDusk.IsPermadeath()
