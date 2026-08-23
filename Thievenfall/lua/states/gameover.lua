@@ -2,7 +2,7 @@ if Global.game_settings and (Global.game_settings.level_id == "chill_combat" or 
 local FileIdent = "Gameover"
 
 Hooks:PostHook(GameOverState, "at_enter", "CrimDusk_HeistFailed", function(self)
-  CrimDusk.ResetDifficulty()
+  if NetworkHelper:IsHost() then CrimDusk.ResetDifficulty() end
 
   if NetworkHelper:IsHost() and CrimDusk.SettingsData.permadeath then
     CrimDusk:SoftReset()

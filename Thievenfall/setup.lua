@@ -161,7 +161,7 @@ function CrimDusk:Init()
 
   -- Difficulty scaling
   function self.DiffScale()
-    if CrimDusk.StartingDiff then log("StartingDiff: " .. CrimDusk.StartingDiff) return CrimDusk.StartingDiff end
+    if CrimDusk.StartingDiff then return CrimDusk.StartingDiff end
 
     local permadeath = CrimDusk.IsPermadeath()
     if permadeath == "_perma" or Global.CrimDusk.data.heists_won >= #Global.CrimDusk.campaign then return 8 end
@@ -173,10 +173,10 @@ function CrimDusk:Init()
   end
 
   function self.ResetDifficulty()
-    log(tweak_data:difficulty_to_index(Global.game_settings.difficulty))
     if CrimDusk.DiffScale() ~= tweak_data:difficulty_to_index(Global.game_settings.difficulty) then
       Global.game_settings.difficulty = tweak_data:index_to_difficulty(CrimDusk.DiffScale())
       tweak_data:set_difficulty()
+      NetworkHelper:SendToPeers("CrimDusk_ChangeDifficulty", Global.game_settings.difficulty)
     end
   end
 

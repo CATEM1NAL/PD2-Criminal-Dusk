@@ -88,12 +88,14 @@ Hooks:OverrideFunction(GroupAIStateBesiege, "phalanx_damage_reduction_disable", 
 end)
 
 Hooks:OverrideFunction(GroupAIStateBesiege, "_begin_assault_task", function(self, assault_areas)
-  if Global.game_settings.difficulty < 7 then
+  local assault_task = self._task_data.assault
+
+  if tweak_data:difficulty_to_index(Global.game_settings.difficulty) < 7 and not assault_task.is_first then
     local DiffIndex = tweak_data:difficulty_to_index(Global.game_settings.difficulty)
     Global.game_settings.difficulty = tweak_data:index_to_difficulty(DiffIndex + 1)
+    tweak_data:set_difficulty()
+    NetworkHelper:SendToPeers("CrimDusk_ChangeDifficulty", Global.game_settings.difficulty)
   end
-
-  local assault_task = self._task_data.assault
 
   assault_task.active = true
   assault_task.next_dispatch_t = nil

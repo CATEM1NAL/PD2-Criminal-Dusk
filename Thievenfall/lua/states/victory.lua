@@ -6,7 +6,7 @@ if Global.CrimDusk.data[lives] == -1 then Global.CrimDusk.data[lives] = -2 end
 if NetworkHelper:IsClient() then CrimDusk:WriteSave(FileIdent, "heist completed") return end
 
 Hooks:PostHook(VictoryState, "at_enter", "CrimDusk_HeistWon", function(self)
-  CrimDusk.ResetDifficulty()
+  if NetworkHelper:IsHost() then CrimDusk.ResetDifficulty() end
   local heists_won = "heists_won" .. CrimDusk.IsPermadeath()
   if managers.job:on_last_stage() then
     Global.CrimDusk.data[heists_won] = Global.CrimDusk.data[heists_won] + 1

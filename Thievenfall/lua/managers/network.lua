@@ -23,6 +23,12 @@ if NetworkHelper:IsClient() then
     end
   end)
 
+  -- Change difficulty
+  NetworkHelper:AddReceiveHook("CrimDusk_ChangeDifficulty", "CrimDusk_ReceiveDifficultyIncrease", function(data, sender)
+    Global.game_settings.difficulty = data
+    tweak_data:set_difficulty()
+  end)
+
   -- Sync campaign victory
   NetworkHelper:AddReceiveHook("CrimDusk_CampaignEnded", "CrimDusk_SyncCampaignEnding", function(data, sender)
     Global.CrimDusk.data.lives = 30 + managers.player:upgrade_value("player", "additional_lives", 0)
