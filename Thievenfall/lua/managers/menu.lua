@@ -145,7 +145,7 @@ function MenuCallbackHandler:CrimDusk_Holdout()
   if NetworkHelper:IsClient() then self:create_lobby() end
   local weekly_skirmish = managers.skirmish:active_weekly()
   local job_data = {
-    difficulty = "overkill_145",
+    difficulty = "normal",
     weekly_skirmish = true,
     job_id = weekly_skirmish.id
   }

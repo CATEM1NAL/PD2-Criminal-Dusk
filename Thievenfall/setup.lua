@@ -148,7 +148,13 @@ function CrimDusk:Init()
       ["crimdusk_continue_run_title"] = managers.localization:text("crimdusk_play_next_title", { HEIST_NUM = HeistNumText }),
       ["crimdusk_play_offline"] = managers.localization:text("crimdusk_play_offline_title", { HEIST_NUM = HeistNumText })
     })
-  
+
+    if Global.skirmish_manager and Global.skirmish_manager.active_weekly then
+      local days = math.floor(math.max(Global.skirmish_manager.active_weekly.end_timestamp - os.time(), 0) / 86400)
+      managers.localization:add_localized_strings({
+        ["crimdusk_play_holdout_desc"] = managers.localization:text("crimdusk_holdout_desc", { DAYS = days })
+      })
+    end
   end
 
   -- Difficulty scaling
@@ -236,6 +242,7 @@ function Global.CrimDusk:Init()
   dofile(CrimDusk.ModPath .. "lua/tables/heists.lua")
   dofile(CrimDusk.ModPath .. "lua/tables/gameplay.lua")
   dofile(CrimDusk.ModPath .. "lua/tables/heists.lua")
+  dofile(CrimDusk.ModPath .. "lua/tables/holdout.lua")
   dofile(CrimDusk.ModPath .. "lua/tables/weapons.lua")
   dofile(CrimDusk.ModPath .. "lua/tables/melee.lua")
   dofile(CrimDusk.ModPath .. "lua/tables/colours.lua")

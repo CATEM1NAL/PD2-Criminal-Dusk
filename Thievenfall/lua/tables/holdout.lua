@@ -1,0 +1,1 @@
+Global.CrimDusk.holdout_difficulty = { "normal", "hard", "overkill", "overkill_145", "easy_wish", "easy_wish", "overkill_290", "overkill_290", "sm_wish" }

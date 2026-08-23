@@ -42,6 +42,7 @@
         <hook source_file="lib/tweak_data/achievementstweakdata" file="achievements.lua"/>
         <hook source_file="lib/tweak_data/gageassignmenttweakdata" file="gagepackage.lua"/>
         <hook source_file="lib/tweak_data/economytweakdata" file="skins.lua"/>
+        <hook source_file="lib/tweak_data/skirmishtweakdata" file="holdout.lua"/>
 
         <hooks directory="player"> <!-- root/lua/tweakdata/player -->
           <hook source_file="lib/tweak_data/playertweakdata" file="player.lua"/>
