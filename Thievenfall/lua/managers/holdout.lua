@@ -17,6 +17,5 @@ Hooks:OverrideFunction(SkirmishManager, "on_start_assault", function(self)
   tweak_data:set_difficulty()
   CrimDusk.Log(FileIdent, "Difficulty changed to: " .. Global.CrimDusk.holdout_difficulty[wave_number], true)
 
-  self:_apply_modifiers_for_wave(wave_number)
   self:update_matchmake_attributes()
 end)
