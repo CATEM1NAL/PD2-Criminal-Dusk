@@ -88,6 +88,11 @@ Hooks:OverrideFunction(GroupAIStateBesiege, "phalanx_damage_reduction_disable", 
 end)
 
 Hooks:OverrideFunction(GroupAIStateBesiege, "_begin_assault_task", function(self, assault_areas)
+  if Global.game_settings.difficulty < 7 then
+    local DiffIndex = tweak_data:difficulty_to_index(Global.game_settings.difficulty)
+    Global.game_settings.difficulty = tweak_data:index_to_difficulty(DiffIndex + 1)
+  end
+
   local assault_task = self._task_data.assault
 
   assault_task.active = true

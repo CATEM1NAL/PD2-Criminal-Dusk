@@ -21,7 +21,7 @@ Hooks:OverrideFunction(SkirmishManager, "on_start_assault", function(self)
 end)
 
 Hooks:OverrideFunction(SkirmishManager, "sync_start_assault", function(self, wave)
-  if not self:is_skirmish() then return end
+  if not self:is_skirmish() or not Global.CrimDusk.holdout_difficulty[wave] then return end
 
   Global.game_settings.difficulty = Global.CrimDusk.holdout_difficulty[wave]
   tweak_data:set_difficulty()

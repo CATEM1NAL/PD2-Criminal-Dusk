@@ -1,3 +1,7 @@
+Hooks:PreHook(MoneyTweakData, "init", "CrimDusk_PreMoneyTweakInit", function(self, tweak_data)
+  if Global.game_settings and Global.game_settings.difficulty and CrimDusk.DiffScale() ~= tweak_data:difficulty_to_index(Global.game_settings.difficulty) then return end
+end)
+
 Hooks:PostHook(MoneyTweakData, "init", "CrimDusk_MoneyTweakInit", function(self, tweak_data)
   local difficulty = Global.game_settings and Global.game_settings.difficulty or "normal"
   local DiffIndex = tweak_data:difficulty_to_index(difficulty)

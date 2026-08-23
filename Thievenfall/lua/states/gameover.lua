@@ -1,7 +1,9 @@
 if Global.game_settings and (Global.game_settings.level_id == "chill_combat" or Global.CrimDusk.holdouts[Global.game_settings.level_id]) then return end
 local FileIdent = "Gameover"
 
-Hooks:PostHook(GameOverState, "at_enter", "CrimDawn_HeistFailed", function(self)
+Hooks:PostHook(GameOverState, "at_enter", "CrimDusk_HeistFailed", function(self)
+  CrimDusk.ResetDifficulty()
+
   if NetworkHelper:IsHost() and CrimDusk.SettingsData.permadeath then
     CrimDusk:SoftReset()
     Global.CrimDusk.data.heists_won_perma = 0

@@ -28,6 +28,8 @@ function CrimDusk:Init()
   self.SettingsData = io.load_as_json(CrimDusk.SettingsFile) or {}
   if not self.SettingsData then self.SettingsData = {} end
 
+  if Global.game_settings and Global.game_settings.difficulty then self.StartingDiff = Global.game_settings.difficulty end
+
   MenuHelper:LoadFromJsonFile(self.ModPath .. "menus/settings.json", self, self.SettingsData)
 
   -- Helper functions
@@ -159,6 +161,8 @@ function CrimDusk:Init()
 
   -- Difficulty scaling
   function self.DiffScale()
+    if CrimDusk.StartingDiff then log("StartingDiff: " .. CrimDusk.StartingDiff) return CrimDusk.StartingDiff end
+
     local permadeath = CrimDusk.IsPermadeath()
     if permadeath == "_perma" or Global.CrimDusk.data.heists_won >= #Global.CrimDusk.campaign then return 8 end
     if (Global.CrimDusk.data.heists_won or 0) < 5 then return Global.CrimDusk.data.heists_won + 2 end
@@ -166,6 +170,14 @@ function CrimDusk:Init()
     local HeistsWon = Global.CrimDusk.data["heists_won" .. permadeath] - 5
     local RawDiff = HeistsWon / (#Global.CrimDusk.campaign - 5) * 5 + 2
     return math.floor(RawDiff + 0.5)
+  end
+
+  function self.ResetDifficulty()
+    log(tweak_data:difficulty_to_index(Global.game_settings.difficulty))
+    if CrimDusk.DiffScale() ~= tweak_data:difficulty_to_index(Global.game_settings.difficulty) then
+      Global.game_settings.difficulty = tweak_data:index_to_difficulty(CrimDusk.DiffScale())
+      tweak_data:set_difficulty()
+    end
   end
 
   -- Reset campaign state
@@ -208,6 +220,10 @@ function CrimDusk:Init()
 end
 
 Global.load_crime_net = false
+if Global.game_settings and Global.game_settings.difficulty then
+  Global.game_settings.difficulty = Global.job_manager.current_job and Global.game_settings.difficulty or nil
+end
+
 CrimDusk:Init()
 
 if NetworkHelper:IsHost() and not CrimDusk.SettingsData.permadeath and (Global.CrimDusk and (Global.CrimDusk.data["heists_won"] or 0) < 5) then
