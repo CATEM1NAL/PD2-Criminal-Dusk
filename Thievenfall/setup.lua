@@ -93,6 +93,16 @@ function CrimDusk:Init()
     end)
   end
 
+  function self.NewWeeklyHoldout()
+    local LastWeekly = Global.CrimDusk.data.weekly_holdout
+    if (LastWeekly.end_timestamp or 0) > os.time() then return false
+    elseif not Global.skirmish_manager then return false
+    else for key, value in pairs(Global.skirmish_manager.active_weekly) do
+        if LastWeekly[key] ~= value then return true end
+      end
+    end
+  return false end
+
   function self:WriteSave(FileIdent, SaveReason)
     io.save_as_json(Global.CrimDusk.data, self.SaveFile)
     self.Log(FileIdent, "Saved " .. self.SaveFile .. " (" .. SaveReason .. ")")
@@ -273,6 +283,7 @@ function Global.CrimDusk:Init()
     self.data.heist_chain_perma = self.data.heist_chain_perma or {}
     self.data.lives = self.data.lives or 30
     self.data.lives_perma = self.data.lives_perma or 30
+    self.data.weekly_holdout = {}
 
     -- Flags for post-game campaign
     self.data.bain_freed = self.data.bain_freed or false

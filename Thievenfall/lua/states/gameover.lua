@@ -1,7 +1,12 @@
-if Global.game_settings and (Global.game_settings.level_id == "chill_combat" or Global.CrimDusk.holdouts[Global.game_settings.level_id]) then return end
+if Global.game_settings and Global.game_settings.level_id == "chill_combat" then return end
 local FileIdent = "Gameover"
 
 Hooks:PostHook(GameOverState, "at_enter", "CrimDusk_HeistFailed", function(self)
+  if managers.skirmish:is_skirmish() then -- Weekly Holdout
+    Global.CrimDusk.data.weekly_holdout = Global.skirmish_manager.active_weekly
+    CrimDusk:WriteSave(FileIdent, "holdout failed")
+  return end
+
   if NetworkHelper:IsHost() and CrimDusk.SettingsData.permadeath then
     CrimDusk:SoftReset()
     Global.CrimDusk.data.heists_won_perma = 0

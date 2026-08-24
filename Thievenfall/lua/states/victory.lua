@@ -1,11 +1,17 @@
-if Global.game_settings and (Global.game_settings.level_id == "chill_combat" or Global.CrimDusk.holdouts[Global.game_settings.level_id]) then return end
+if Global.game_settings and Global.game_settings.level_id == "chill_combat" then return end
 local FileIdent = "Victory"
 
 local lives = NetworkHelper:IsClient() and "lives" or "lives" .. CrimDusk.IsPermadeath()
-if Global.CrimDusk.data[lives] == -1 then Global.CrimDusk.data[lives] = -2 end
-if NetworkHelper:IsClient() then CrimDusk:WriteSave(FileIdent, "heist completed") return end
 
 Hooks:PostHook(VictoryState, "at_enter", "CrimDusk_HeistWon", function(self)
+  if managers.skirmish:is_skirmish() then -- Weekly Holdout
+    Global.CrimDusk.data.weekly_holdout = Global.skirmish_manager.active_weekly
+    CrimDusk:WriteSave(FileIdent, "holdout completed")
+  return end
+
+  if Global.CrimDusk.data[lives] == -1 then Global.CrimDusk.data[lives] = -2 end
+  if NetworkHelper:IsClient() then CrimDusk:WriteSave(FileIdent, "heist completed") return end
+
   local heists_won = "heists_won" .. CrimDusk.IsPermadeath()
   if managers.job:on_last_stage() then
     Global.CrimDusk.data[heists_won] = Global.CrimDusk.data[heists_won] + 1
