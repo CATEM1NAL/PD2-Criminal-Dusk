@@ -21,6 +21,9 @@ local function SelectNextHeist()
       table.insert(ValidHeists, Global.CrimDusk.mini_campaigns[campaign][Global.CrimDusk.data[campaign .. permadeath]])
     end
 
+    -- Add Golden Grin if all other Dentist heists completed
+    if Global.CrimDusk.data["dentist_heists" .. permadeath] == 5 then table.insert(ValidHeists, "kenaz")
+
     -- Add Cook Off if Hector dead
     if Global.CrimDusk.data["hector_dead" .. permadeath] then table.insert(ValidHeists, "rat") end
 
@@ -29,11 +32,13 @@ local function SelectNextHeist()
     local VladCaptured = false
     local AlmirCaptured = false
     local LockeBetrayed = false
+    local DentistHeists = 0
 
     for _, heist in ipairs(Global.CrimDusk.data["heist_chain" .. permadeath]) do
       if heist == "cd_reservoir" and not Global.CrimDusk.data["bain_freed" .. permadeath] then BainCaptured = true
       elseif heist == "chas" and not Global.CrimDusk.data["vlad_freed" .. permadeath] then VladCaptured = true
       elseif heist == "bex" and not Global.CrimDusk.data["almir_freed" .. permadeath] then AlmirCaptured = true
+      elseif Global.CrimDusk.mini_campaign_data.dentist[heist] then DentistHeists = DentistHeists + 1
       elseif heist == "wwh" then LockeBetrayed = true end
     end
 
@@ -83,9 +88,9 @@ local function SelectNextHeist()
         CrimDusk.Log(FileIdent, "Bain hasn't been captured; removing " .. heist, true)
         table.remove(ValidHeists, i)
 
-      -- Remove Dentist heists if Bain freed
-      elseif CampaignData.no_dentist[heist] and Global.CrimDusk.data["bain_freed" .. permadeath] then
-        CrimDusk.Log(FileIdent, "Bain has been freed; removing " .. heist, true)
+      -- Remove Dentist heists if Bain freed or you failed one
+      elseif CampaignData.dentist[heist] and (Global.CrimDusk.data["bain_freed" .. permadeath] or Global.CrimDusk.data["dentist_heists" .. permadeath] ~= DentistHeists) then
+        CrimDusk.Log(FileIdent, "Dentist heists inaccessible; removing " .. heist, true)
         table.remove(ValidHeists, i)
 
       -- Remove out of place Locke heists if Bain has been freed
