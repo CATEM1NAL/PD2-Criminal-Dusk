@@ -3,7 +3,7 @@ local tmp_rot1 = Rotation()
 Hooks:PostHook(SecurityCamera, "set_detection_enabled", "CrimDusk_SetInitialCamYaw", function(self, _, settings)
   if settings then
     self:apply_rotations(0, settings.pitch)
-    self.rotate_speed = math.random(-1, 1) + math.random()
+    self.rotate_speed = (math.random(0, 1) * 2 - 1) * math.random()
     self._rotation_allowed_t = 0
   end
 end)
@@ -24,6 +24,7 @@ Hooks:OverrideFunction(SecurityCamera, "_upd_detection", function(self, t)
     end
 
     --[[ Enable debug camera radius
+    --ORIGINAL INTENT WAS TO USE FOR CAMERA VISUALISATION LIKE PAYDAY 3
     --SHOULDN'T BE USED FOR NOW, CONES CLIP THROUGH WALLS AND LOOK ASS
     local ConeColour = next(self._detected_attention_objects) and Color(0.05, 1, 0, 0) or Color(0.05, 0, 1, 0)
     self._brush = self._brush or Draw:brush(ConeColour, self._detection_interval)

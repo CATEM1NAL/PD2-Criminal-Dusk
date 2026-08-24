@@ -127,8 +127,9 @@
         <hook source_file="lib/units/props/securitycamera" file="camera.lua"/>
 
         <hooks directory="player"> <!-- root/lua/units/player/ -->
-          <hook source_file="lib/units/beings/player/states/playerstandard" file="standard.lua"/>
           <hook source_file="lib/units/beings/player/states/playermaskoff" file="maskoff.lua"/>
+          <hook source_file="lib/units/beings/player/states/playerstandard" file="standard.lua"/>
+          <hook source_file="lib/units/beings/player/states/playercarry" file="carry.lua"/>
           <hook source_file="lib/units/beings/player/playerdamage" file="damage.lua"/>
           <hook source_file="lib/units/beings/player/playermovement" file="movement.lua"/>
           <hook source_file="lib/units/beings/player/playerinventory" file="inventory.lua"/>
