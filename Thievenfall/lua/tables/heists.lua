@@ -138,8 +138,3 @@ Global.CrimDusk.heists = {
   haunted = { stealthable = true, grading = "color_matrix_classic", suit = "moneysuit" },
   rat = { stealthable = true, grading = "color_xxxgen", suit = "slaughterhouse" }
 }
-
-Global.CrimDusk.holdouts = {
-  skm_mus = true, skm_red2 = true, skm_run = true, skm_watchdogs_stage2 = true, skm_bex = true,
-  skm_cas = true, skm_big2 = true, skm_mallcrasher = true, skm_arena = true
-}
