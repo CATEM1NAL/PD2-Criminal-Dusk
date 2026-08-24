@@ -131,7 +131,12 @@ local function SelectNextHeist()
   return NextJob
 end
 
-function MenuCallbackHandler:CrimDusk_CreateLobby() self:create_lobby() end
+function MenuCallbackHandler:CrimDusk_CreateLobby()
+  Global.game_settings.difficulty = "normal"
+  -- wasn't needed but game now sometimes crashes after opening lobby settings because ????
+  self:create_lobby()
+end
+
 function MenuCallbackHandler:CrimDusk_Safehouse() managers.menu:open_node("custom_safehouse") end
 
 -- Playing offline

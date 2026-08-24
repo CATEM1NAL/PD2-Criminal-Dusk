@@ -3,7 +3,7 @@ if Global.game_settings and Global.game_settings.level_id == "chill" then return
 local FileIdent = "PlayerDamage"
 
 local lives
-if Global.game_settings and (Global.game_settings.level_id == "chill_combat" or Global.CrimDusk.holdouts[Global.game_settings.level_id]) then
+if Global.game_settings and (Global.game_settings.level_id == "chill_combat" or tweak_data.levels[Global.game_settings.level_id].group_ai_state == "skirmish") then
   lives = "lives_oneoff"
   Global.CrimDusk.data[lives] = "max"
 else lives = NetworkHelper:IsClient() and "lives" or "lives" .. CrimDusk.IsPermadeath() end
