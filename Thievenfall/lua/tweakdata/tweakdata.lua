@@ -42,6 +42,7 @@ tweak_data.screen_colors.risk = Global.CrimDusk.archicolours.yellow
 tweak_data.screen_colors.ghost_color = Global.CrimDusk.archicolours.red
 
 -- XP curve
+tweak_data.experience_manager.levels = {}
 local xp = 1000
 for i = 1, 100 do
   tweak_data.experience_manager.levels[i] = { points = xp }

@@ -15,7 +15,7 @@
     <texture path="guis/textures/drill_screen_background"/> <!-- drill screen -->
 
     <!-- audio -->
-    <stream path="soundbanks/streamed/job_l_vit_stage1/938261088"/> <!-- hall & oates -->
+    <stream path="soundbanks/streamed/job_l_vit_stage1/938261088"/> <!-- locke singing -->
   </AddFiles>
 
   <localization directory="loc" default_language="english">
@@ -101,6 +101,7 @@
 
         <hooks directory="hud"> <!-- root/lua/managers/hud/ -->
           <hook source_file="lib/managers/hud/hudteammate" file="teammate.lua"/>
+          <hook source_file="lib/managers/hud/hudstageendscreen" file="stageend.lua"/>
         </hooks>
 
         <hooks directory="elements"> <!-- root/lua/managers/elements/ -->

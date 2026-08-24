@@ -1,21 +1,16 @@
 Hooks:OverrideFunction(ExperienceManager, "_set_next_level_data", function(self, level)
   local LevelIndex = level
+
   if level > 100 then LevelIndex = 100 end
-  local level_data = tweak_data.experience_manager.levels[LevelIndex]
+  local LevelDelta = level - LevelIndex
+  local LevelData = tweak_data.experience_manager.levels[LevelIndex]
 
   self._global.next_level_data = {}
 
-  self:_set_next_level_data_points(level_data.points)
+  self:_set_next_level_data_points(LevelData.points)
   self:_set_next_level_data_current_points(0)
 
-  local LevelDelta = level - LevelIndex
-  if self._experience_progress_data then
-    table.insert(self._experience_progress_data, {
-      current = 0,
-      level = level,
-      total = tweak_data:get_value("experience_manager", "levels", LevelIndex, "points") + (100000 * LevelDelta)
-    })
-  end
+  if self._experience_progress_data then table.insert(self._experience_progress_data, { level = level, current = 0, total = self:next_level_data_points() }) end
 end)
 
 Hooks:OverrideFunction(ExperienceManager, "_level_up", function(self)
@@ -79,6 +74,11 @@ Hooks:OverrideFunction(ExperienceManager, "rank_icon_color", function(self, rank
   end
 end)
 
+-- Grant infamy skill points
+Hooks:PostHook(ExperienceManager, "set_current_rank", "CrimDusk_PostSetInfamy", function(self, rank)
+  if rank % managers.skilltree.InfamiesPerPoint == 0 then managers.skilltree:_aquire_points(1) end
+end)
+
 Hooks:OverrideFunction(ExperienceManager, "load", function(self, data)
   local state = data.ExperienceManager
 
@@ -91,13 +91,7 @@ Hooks:OverrideFunction(ExperienceManager, "load", function(self, data)
     self._global.prestige_xp_gained = state.prestige_xp_gained or Application:digest_value(0, true)
 
     for level = 0, self:current_level() do managers.upgrades:aquire_from_level_tree(level, true) end
-
-    local LevelIndex = self:current_level()
-    if self:current_level() >= 100 then LevelIndex = 99 end
-
-    if not self._global.next_level_data or not tweak_data.experience_manager.levels[LevelIndex + 1] or self:next_level_data_points() ~= tweak_data:get_value("experience_manager", "levels", LevelIndex + 1, "points") then
-      self:_set_next_level_data(LevelIndex + 1)
-    end
+    if not self._global.next_level_data then self:_set_next_level_data(self:current_level() + 1) end
   end
 
   managers.network.account:experience_loaded()

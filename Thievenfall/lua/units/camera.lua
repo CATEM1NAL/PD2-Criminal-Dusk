@@ -1,27 +1,45 @@
 local tmp_rot1 = Rotation()
 
+local function LocalCamRotation(self, yaw)
+  local yaw_obj = self._yaw_obj or self._unit:get_object(Idstring("CameraYaw"))
+  local original_yaw_rot = yaw_obj:local_rotation()
+  local new_yaw_rot = Rotation(180 + yaw, original_yaw_rot:pitch(), original_yaw_rot:roll())
+  yaw_obj:set_local_rotation(new_yaw_rot)
+
+  self._look_fwd = nil
+  self._unit:set_moving()
+
+  self._yaw = yaw
+  if not self._queue_send_rot then self._queue_send_rot = true end
+end
+
 Hooks:PostHook(SecurityCamera, "set_detection_enabled", "CrimDusk_SetInitialCamYaw", function(self, _, settings)
   if settings then
     self:apply_rotations(0, settings.pitch)
-    self.rotate_speed = (math.random(0, 1) * 2 - 1) * math.random()
-    self._rotation_allowed_t = 0
+    self._max_rot_yaw = 50
+    self._rotate_speed = (math.random(0, 1) * 2 - 1) * math.random() * self._max_rot_yaw
+    self._last_rotate_t = self._last_rotate_t or TimerManager:game():time()
   end
 end)
 
 Hooks:OverrideFunction(SecurityCamera, "_upd_detection", function(self, t)
-  local dt = t - self._last_detect_t
+  -- Cam rotation
+  if NetworkHelper:IsHost() and t > self._last_rotate_t then
+    local dt = t - self._last_rotate_t
+    local NewYaw = self._yaw + (self._rotate_speed * dt)
+    if NewYaw >= self._max_rot_yaw or NewYaw <= -self._max_rot_yaw then
+      self._rotate_speed = -self._rotate_speed
+      self._last_rotate_t = t + 5
 
+    else self._last_rotate_t = t
+      LocalCamRotation(self, NewYaw)
+    end
+  end
+
+  -- Detection
+  local dt = t - self._last_detect_t
   if dt > self._detection_interval then
     self._last_detect_t = t
-
-    if NetworkHelper:IsHost() and t > self._rotation_allowed_t then
-      if self._yaw + self.rotate_speed >= 50 or self._yaw + self.rotate_speed <= -50 then
-        self.rotate_speed = -self.rotate_speed
-        self._rotation_allowed_t = t + 5
-      end
-
-      self:apply_rotations(self._yaw + self.rotate_speed, self._pitch)
-    end
 
     --[[ Enable debug camera radius
     --ORIGINAL INTENT WAS TO USE FOR CAMERA VISUALISATION LIKE PAYDAY 3
@@ -40,6 +58,13 @@ Hooks:OverrideFunction(SecurityCamera, "_upd_detection", function(self, t)
       self._look_obj:m_rotation(tmp_rot1)
       self._look_fwd = Vector3()
       mrotation.y(tmp_rot1, self._look_fwd)
+    end
+
+    -- Send rotation on detection ticks to avoid network spam
+    -- Ideally camrot speed should be synced with clients so we don't need to send this at all
+    if self._queue_send_rot then
+      managers.network:session():send_to_peers_synched("camera_yaw_pitch", self._unit, self._yaw, self._pitch)
+      self._queue_send_rot = nil
     end
 
     self:_upd_acquire_new_attention_objects(t)

@@ -137,10 +137,10 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CrimDusk_SkillTreeTweakInit", functi
 
     -- Ghost
     self.trees[10].tiers = {
-      { "cleaner", "burglar_stealth", "inside_man", "ecm_duration" },
+      { "cleaner", "burglar_stealth", "ecm_duration" },
       { "chameleon", "cam_loop", "ecm_overdrive" },
       { "lockpick_speed", "ecm_feedback" },
-      { "ecm_quantity" }
+      { "inside_man", "ecm_quantity" }
     }
     self.trees[11].name_id = "st_menu_ghost_silencer"
     self.trees[11].tiers = {

@@ -65,6 +65,7 @@ menu_one_down: "Professional"
 menu_pro_warning: "Quitting and restarting have been disabled!"
 cn_menu_pro_job: ""
 dialog_blackmarket_slot_item_sell: "You will not be refunded!"
+dialog_skilltree_reseted: "The skill trees have changed. Your skill sets have been reset."
 
 # Weapons
 bm_w_lemming_desc: "Weapon penetrates enemies and body armor."
@@ -138,9 +139,9 @@ bm_global_value_wild_char_unlock: "Complete 'Lion's Den' heist to unlock!"
 bm_global_value_hoxton_unlock: "Complete 'The Breakout' heist to unlock!"
 
 # Upgrade Requirements
-menu_asset_lock_buy_bodybags_asset: "Requires the 'Inside Man' skill!"
-menu_asset_lock_buy_spotter_asset: "Requires the 'Inside Man' skill!"
-menu_asset_lock_additional_assets: "Requires the 'Inside Man' skill!"
+menu_asset_lock_buy_bodybags_asset: "Requires 'Inside Man' level 2!"
+menu_asset_lock_additional_assets: "Requires 'Inside Man' level 1!"
+menu_asset_lock_buy_spotter_asset: "Requires 'Inside Man' level 1!"
 bm_menu_not_enough_cash: "Not enough cash."
 
 # Perk Effects
@@ -438,7 +439,7 @@ menu_silence_conceal_desc: "$lv1;Silencers gain ##1## concealment and their conc
 menu_backstab_beta_desc: "$lv1;Gain ##3%## crit chance (up to ##30%##) for each ##3## points of detection risk below ##35##.\n\n$lv2;Crit chance is now granted for each point of detection risk below ##35##."
 
 menu_inside_man: "Inside Man"
-menu_inside_man_desc: "$lv1;You can buy additional loud assets.\n\n$lv2;You can buy additional stealth assets."
+menu_inside_man_desc: "$lv1;You can buy additional assets.\n\n$lv2;You can buy all assets."
 
 menu_chameleon_beta_desc: "$lv1;In stealth, standing still for ##3.5s## will automatically mark everyone within ##10m##."
 
