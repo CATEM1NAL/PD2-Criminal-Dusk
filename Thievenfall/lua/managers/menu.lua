@@ -22,7 +22,7 @@ local function SelectNextHeist()
     end
 
     -- Add Golden Grin if all other Dentist heists completed
-    if Global.CrimDusk.data["dentist_heists" .. permadeath] == 5 then table.insert(ValidHeists, "kenaz")
+    if Global.CrimDusk.data["dentist_heists" .. permadeath] == 5 then table.insert(ValidHeists, "kenaz") end
 
     -- Add Cook Off if Hector dead
     if Global.CrimDusk.data["hector_dead" .. permadeath] then table.insert(ValidHeists, "rat") end

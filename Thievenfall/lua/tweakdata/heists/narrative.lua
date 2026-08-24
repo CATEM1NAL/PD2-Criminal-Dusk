@@ -143,6 +143,17 @@ Hooks:PostHook(NarrativeTweakData, "init", "CrimDusk_NarrativeTweakInit", functi
   self.jobs.cd_watchdogs2_wrapper.briefing_id = "heist_watchdogs_2_briefing"
   self.jobs.cd_watchdogs2_wrapper.job_wrapper = { "cd_watchdogs2_d", "cd_watchdogs2_n" }
 
+  -- Payout adjustments
+  local HeistChain = Global.CrimDusk.data["heist_chain" .. CrimDusk.IsPermadeath()]
+  local HeistsPlayed = next(HeistChain) and #HeistChain or Global.CrimDusk.data["heists_won" .. CrimDusk.IsPermadeath()]
+  self.jobs.vit.payout[1] = 40000 * HeistsPlayed
+
+  self.jobs.fex.payout[1] = 500000
+  self.jobs.pent.payout[1] = 500000
+  self.jobs.deep.payout[1] = 500000
+  self.jobs.cd_hox1.payout[1] = 0
+  self.jobs.cd_hox2.payout[1] = 0
+
   -- Job index
   table.insert(self._jobs_index, "cd_tut1")
   table.insert(self._jobs_index, "cd_tut2")

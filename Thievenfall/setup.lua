@@ -184,6 +184,7 @@ function CrimDusk:Init()
     Global.CrimDusk.data["vlad_freed" .. permadeath] = false
     Global.CrimDusk.data["almir_freed" .. permadeath] = false
     Global.CrimDusk.data["rust_recruited" .. permadeath] = false
+    Global.CrimDusk.data["dentist_heists" .. permadeath] = 0
     for campaign, _ in pairs(Global.CrimDusk.mini_campaigns) do Global.CrimDusk.data[campaign .. permadeath] = 1 end
   end
 
@@ -200,7 +201,10 @@ function CrimDusk:Init()
       bain_freed_perma = false, vlad_freed_perma = false, almir_freed_perma = false,
 
       rust_recruited = false,
-      rust_recruited_perma = false
+      rust_recruited_perma = false,
+
+      dentist_heists = 0,
+      dentist_heists_perma = 0
     }
     for campaign, _ in pairs(Global.CrimDusk.mini_campaigns) do
       Global.CrimDusk.data[campaign] = 1
@@ -218,7 +222,7 @@ end
 
 CrimDusk:Init()
 
-if NetworkHelper:IsHost() and not CrimDusk.SettingsData.permadeath and (Global.CrimDusk and (Global.CrimDusk.data["heists_won"] or 0) < 5) then
+if NetworkHelper:IsHost() and not CrimDusk.SettingsData.permadeath and (Global.CrimDusk and (Global.CrimDusk.data.heists_won or 0) < 5) then
   Hooks:Add("LocalizationManagerPostInit", "CrimDusk_PDTHNames", function(loc)
     loc:add_localized_strings({
       ["menu_difficulty_normal"] = loc:text("crimdusk_pdth_normal"),
@@ -228,12 +232,12 @@ if NetworkHelper:IsHost() and not CrimDusk.SettingsData.permadeath and (Global.C
       ["menu_difficulty_very_hard"] = loc:text("crimdusk_pdth_very_hard"),
       ["menu_asset_risklevel_2"] = loc:text("crimdusk_pdth_very_hard"),
       ["menu_difficulty_easy_wish"] = loc:text("crimdusk_pdth_mayhem"),
-      ["menu_asset_risklevel_4"] = loc:text("crimdusk_pdth_mayhem")
+      ["menu_asset_risklevel_4"] = loc:text("crimdusk_pdth_mayhem"),
+      ["menu_difficulty_apocalypse"] = loc:text("crimdusk_pdth_death_wish"),
+      ["menu_asset_risklevel_5"] = loc:text("crimdusk_pdth_death_wish")
     })
   end)
 end
-
-if NetworkHelper:IsClient() then NetworkHelper:SendToPeer(1, "CrimDusk_RequestHeistCount", true) end
 
 -- THIS SECTION ONLY RUNS ONCE ON GAME LAUNCH --
 if Global.CrimDusk then return end
@@ -277,6 +281,9 @@ function Global.CrimDusk:Init()
     self.data.vlad_freed_perma = self.data.vlad_freed_perma or false
     self.data.almir_freed = self.data.almir_freed or false
     self.data.almir_freed_perma = self.data.almir_freed_perma or false
+    self.data.dentist_heists = self.data.dentist_heists or 0
+    self.data.dentist_heists_perma = self.data.dentist_heists_perma or 0
+
     for campaign, _ in pairs(self.mini_campaigns) do
       self.data[campaign] = self.data[campaign] or 1
       self.data[campaign .. "_perma"] = self.data[campaign .. "_perma"] or 1

@@ -3,30 +3,32 @@ NetworkMatchMakingSTEAM._BUILD_SEARCH_INTEREST_KEY = "thievenfall_v" .. Global.C
 
 -- Client hooks
 if NetworkHelper:IsClient() then
-  -- Receive heist count from host
-  NetworkHelper:AddReceiveHook("CrimDusk_HeistCount", "CrimDusk_CheckRunWon", function(data, sender)
-    local HeistsWon = tonumber(data) or 0
-
-    if HeistsWon < 5 then
-      Hooks:Add("LocalizationManagerPostInit", "CrimDusk_PDTHNames", function(loc)
-        loc:add_localized_strings({
-          ["menu_difficulty_normal"] = loc:text("crimdusk_pdth_normal"),
-          ["menu_asset_risklevel_0"] = loc:text("crimdusk_pdth_normal"),
-          ["menu_difficulty_hard"] = loc:text("crimdusk_pdth_hard"),
-          ["menu_asset_risklevel_1"] = loc:text("crimdusk_pdth_hard"),
-          ["menu_difficulty_very_hard"] = loc:text("crimdusk_pdth_very_hard"),
-          ["menu_asset_risklevel_2"] = loc:text("crimdusk_pdth_very_hard"),
-          ["menu_difficulty_easy_wish"] = loc:text("crimdusk_pdth_mayhem"),
-          ["menu_asset_risklevel_4"] = loc:text("crimdusk_pdth_mayhem")
-        })
-      end)
-    end
+  NetworkHelper:AddReceiveHook("CrimDusk_Prologue", "CrimDusk_SetPrologueDiffs", function(data, sender)
+    Hooks:Add("LocalizationManagerPostInit", "CrimDusk_PDTHNames", function(loc)
+      loc:add_localized_strings({
+        ["menu_difficulty_normal"] = loc:text("crimdusk_pdth_normal"),
+        ["menu_asset_risklevel_0"] = loc:text("crimdusk_pdth_normal"),
+        ["menu_difficulty_hard"] = loc:text("crimdusk_pdth_hard"),
+        ["menu_asset_risklevel_1"] = loc:text("crimdusk_pdth_hard"),
+        ["menu_difficulty_very_hard"] = loc:text("crimdusk_pdth_very_hard"),
+        ["menu_asset_risklevel_2"] = loc:text("crimdusk_pdth_very_hard"),
+        ["menu_difficulty_easy_wish"] = loc:text("crimdusk_pdth_mayhem"),
+        ["menu_asset_risklevel_4"] = loc:text("crimdusk_pdth_mayhem"),
+        ["menu_difficulty_apocalypse"] = loc:text("crimdusk_pdth_death_wish"),
+        ["menu_asset_risklevel_5"] = loc:text("crimdusk_pdth_death_wish")
+      })
+    end)
   end)
 
   -- Change difficulty
   NetworkHelper:AddReceiveHook("CrimDusk_ChangeDifficulty", "CrimDusk_ReceiveDifficultyIncrease", function(data, sender)
     Global.game_settings.difficulty = data
     tweak_data:set_difficulty()
+  end)
+
+  -- Set host's White House payout
+  NetworkHelper:AddReceiveHook("CrimDusk_WhiteHousePayout", "CrimDusk_ReceiveCampaignPayout", function(data, sender)
+    tweak_data.narrative.jobs.vit.payout[1] = tonumber(data)
   end)
 
   -- Sync campaign victory
@@ -65,13 +67,6 @@ if NetworkHelper:IsClient() then
 return end
 
 -- Host hooks
--- Heist count requested from client
-NetworkHelper:AddReceiveHook("CrimDusk_RequestHeistCount", "CrimDusk_HostHeistCountRequest", function(_, sender)
-  local heists = Global.CrimDusk.data.heists_won or 0
-  if CrimDusk.SettingsData.permadeath then heists = #Global.CrimDusk.campaign + 1 end
-  NetworkHelper:SendToPeer(sender, "CrimDusk_HeistCount", heists)
-end)
-
 -- Force maskup
 NetworkHelper:AddReceiveHook("CrimDusk_MaskedUp", "CrimDusk_ForceLoudNetwork", function()
   CrimDusk.GoLoud()

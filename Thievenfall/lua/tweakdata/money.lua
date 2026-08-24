@@ -13,7 +13,7 @@ Hooks:PostHook(MoneyTweakData, "init", "CrimDusk_MoneyTweakInit", function(self,
   self.level_limit.low_cap_multiplier = 1
   self.level_limit.pc_difference_multipliers = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }
 
-  self.difficulty_multiplier_payout = { 10, 10.5, 11, 11.5, 12, 12.5, 13 }
+  self.difficulty_multiplier_payout = { 10, 10.5, 11, 11.5, 12, 12.5, 15 }
 
   self.mission_asset_cost_small = self._create_value_table(100000, 250000, 10, true, 1)
   self.mission_asset_cost_medium = self._create_value_table(200000, 750000, 10, true, 1)

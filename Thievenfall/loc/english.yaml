@@ -514,7 +514,7 @@ menu_frenzy_desc: "$lv1;Gain ##25%## damage reduction, but your health and heali
 
 ## Perk Decks
 menu_perk_dmg: "$lv1;Weapon damage increased by ##10%##.\n\n$lv2;Weapon damage increased by ##25%##."
-menu_perk_headshot: "$lv1;Headshot damage increased by ##50%##.\n\n$lv2;Headshot damage increased by ##100%##."
+menu_perk_headshot: "$lv1;Headshot damage multiplier increased by ##50%##.\n\n$lv2;Headshot damage multiplier increased by ##100%##."
 
 menu_deck2_1_skill: "$lv1;Max health increased by ##25##.\n\n$lv2;Max health increased by ##50##.\n\n$lv3;Max health increased by ##75##.\n\n$lv4;Max health increased by ##100##.\nRestore ##1## health every ##5## seconds."
 
@@ -736,7 +736,7 @@ menu_asset_gage_assignment: "Gage Packages"
 
 # Difficulties
 menu_asset_risklevel_6: "Death Sentence"
-menu_risk_sm_wish: "4x reward multiplier."
+menu_risk_sm_wish: "5x reward multiplier."
 menu_asset_risklevel_5: "Death Wish"
 menu_risk_elite: "3.5x reward multiplier."
 menu_asset_risklevel_4: "Mayhem"
