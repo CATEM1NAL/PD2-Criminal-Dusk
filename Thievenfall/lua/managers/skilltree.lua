@@ -58,15 +58,15 @@ Hooks:OverrideFunction(SkillTreeManager, "_setup_skill_switches", function(self)
 end)
 
 Hooks:OverrideFunction(SkillTreeManager, "_verify_loaded_data", function(self)
-  local SkillPoints = self.StartingPoints + math.floor(managers.experience:current_level() / self.LevelsPerPoint)
-  SkillPoints = math.min(SkillPoints, self.MaxSkillPoints)
-
-  local InfamyPoints = math.floor(managers.experience:current_rank() / self.InfamiesPerPoint)
-  InfamyPoints = math.min(InfamyPoints, self.MaxInfamyPoints)
-
-  local TotalPoints = SkillPoints + InfamyPoints
-
   for i, switch_data in ipairs(self._global.skill_switches) do
+    local SkillPoints = self.StartingPoints + math.floor(managers.experience:current_level() / self.LevelsPerPoint)
+    SkillPoints = math.min(SkillPoints, self.MaxSkillPoints)
+
+    local InfamyPoints = math.floor(managers.experience:current_rank() / self.InfamiesPerPoint)
+    InfamyPoints = math.min(InfamyPoints, self.MaxInfamyPoints)
+
+    local TotalPoints = SkillPoints + InfamyPoints
+
     for skill_id, data in pairs(clone(switch_data.skills)) do
       if not tweak_data.skilltree.skills[skill_id] then switch_data.skills[skill_id] = nil end
     end
