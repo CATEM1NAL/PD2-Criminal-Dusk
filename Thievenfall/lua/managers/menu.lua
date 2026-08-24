@@ -243,9 +243,6 @@ local function InjectCrimDuskButtons(node)
   table.insert(node._items, position, new_item)
 
   -- Weekly Holdout
-  local ActiveWeekly = Global.skirmish_manager and Global.skirmish_manager.active_weekly
-  local LastWeekly = Global.CrimDusk.data.weekly_holdout
-  for key, value in pairs(ActiveWeekly
   if not CrimDusk.NewWeeklyHoldout() then return end
 
   data = { type = "CoreMenuItem.Item" }
