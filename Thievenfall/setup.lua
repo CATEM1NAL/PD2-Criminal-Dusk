@@ -201,7 +201,7 @@ function CrimDusk:Init()
   function self:Reset()
     CrimDusk.Log(FileIdent, "Performing full reset!", true)
     Global.CrimDusk.data = {
-      heists_won = 0, heist_chain = {}, lives = 30,
+      heists_won = 0, heist_chain = {}, lives = 30, weekly_holdout = {},
       heists_won_perma = 0, heist_chain_perma = {}, lives_perma = 30,
 
       winters_dead = false, hector_dead = false,
