@@ -1,3 +1,126 @@
+local FileIdent = "NarrativeTweakData"
+
+local function ValidHeistTable()
+  local permadeath = CrimDusk.IsPermadeath()
+
+  local heist_chain = "heist_chain" .. permadeath
+  local HeistsPlayed = #Global.CrimDusk.data["heist_chain" .. permadeath]
+  if Global.CrimDusk.data[heist_chain][HeistsPlayed] == "vit" then CrimDusk.SoftReset() end
+
+  local ValidHeists = {}
+  for _, heist in ipairs(Global.CrimDusk.custom_campaign_base) do ValidHeists[heist] = true end
+
+  -- Add mini-campaigns into pool
+  local CampaignData = Global.CrimDusk.mini_campaign_data
+  for campaign, _ in pairs(Global.CrimDusk.mini_campaigns) do
+    local heist = Global.CrimDusk.mini_campaigns[campaign][Global.CrimDusk.data[campaign .. permadeath]]
+    if heist then ValidHeists[heist] = true end
+  end
+
+  -- Add Golden Grin if all other Dentist heists completed
+  if Global.CrimDusk.data["dentist_heists" .. permadeath] == 5 then ValidHeists.kenaz = true end
+
+  -- Add Cook Off if Hector dead
+  if Global.CrimDusk.data["hector_dead" .. permadeath] then ValidHeists.rat = true end
+
+  -- Are friends captured?
+  local BainCaptured = false
+  local VladCaptured = false
+  local AlmirCaptured = false
+  local LockeBetrayed = false
+  local DentistHeists = 0
+
+  for _, heist in ipairs(Global.CrimDusk.data["heist_chain" .. permadeath]) do
+    if heist == "cd_reservoir" and not Global.CrimDusk.data["bain_freed" .. permadeath] then BainCaptured = true
+    elseif heist == "chas" and not Global.CrimDusk.data["vlad_freed" .. permadeath] then VladCaptured = true
+    elseif heist == "bex" and not Global.CrimDusk.data["almir_freed" .. permadeath] then AlmirCaptured = true
+    elseif Global.CrimDusk.mini_campaign_data.dentist[heist] then DentistHeists = DentistHeists + 1
+    elseif heist == "wwh" then LockeBetrayed = true end
+  end
+
+  CrimDusk.Log(FileIdent,
+    "Bain Captured: " .. tostring(BainCaptured) ..
+    "\nVlad Captured: " .. tostring(VladCaptured) ..
+    "\nAlmir Captured: " .. tostring(AlmirCaptured) ..
+    "\nLocke Betrayed: " .. tostring(LockeBetrayed),
+    true
+  )
+
+  if BainCaptured then
+    CrimDusk.Log(FileIdent, "Adding end-game Locke heists...", true)
+    for heist, _ in pairs(CampaignData.bain_captured) do ValidHeists[heist] = true end
+  end
+
+  -- Set up heist list
+  for heist, _ in pairs(ValidHeists) do
+    local LockeHeist = CampaignData.silk_road[heist] or CampaignData.city_of_gold[heist] or CampaignData.texas_heat[heist]
+
+    -- Remove Hector heists if he's dead
+    if Global.CrimDusk.data["hector_dead" .. permadeath] and CampaignData.hector_dead[heist] then
+      CrimDusk.Log(FileIdent, "Hector is dead; removing " .. heist, true)
+      ValidHeists[heist] = nil
+
+    -- Remove friend heists if captured
+    elseif BainCaptured and not CampaignData.bain_captured[heist] and not LockeHeist then
+      CrimDusk.Log(FileIdent, "Bain is captured; removing " .. heist, true)
+      ValidHeists[heist] = nil
+
+    elseif VladCaptured and CampaignData.vlad_captured[heist] then
+      CrimDusk.Log(FileIdent, "Vlad is captured; removing " .. heist, true)
+      ValidHeists[heist] = nil
+
+    elseif AlmirCaptured and CampaignData.almir_captured[heist] then
+      CrimDusk.Log(FileIdent, "Almir is captured; removing " .. heist, true)
+      ValidHeists[heist] = nil
+
+    -- Remove early Locke heists if he has betrayed us
+    elseif LockeBetrayed == true and (heist == "pbr" or heist == "pbr2" or heist == "run") then
+      CrimDusk.Log(FileIdent, "Locke has betrayed us; removing " .. heist, true)
+      ValidHeists[heist] = nil
+
+    -- Remove Border Crossing if Bain hasn't been freed yet
+    elseif heist == "mex" and not Global.CrimDusk.data["bain_freed" .. permadeath] then
+      CrimDusk.Log(FileIdent, "Bain hasn't been captured; removing " .. heist, true)
+      ValidHeists[heist] = nil
+
+    -- Remove Dentist heists if Bain freed or you failed one
+    elseif CampaignData.dentist[heist] and (Global.CrimDusk.data["bain_freed" .. permadeath] or Global.CrimDusk.data["dentist_heists" .. permadeath] ~= DentistHeists) then
+      CrimDusk.Log(FileIdent, "Dentist heists inaccessible; removing " .. heist, true)
+      ValidHeists[heist] = nil
+
+    -- Remove out of place Locke heists if Bain has been freed
+    elseif (heist == "pbr" or heist == "pbr2" or heist == "wwh" or heist == "des") and Global.CrimDusk.data["bain_freed" .. permadeath] then
+      CrimDusk.Log(FileIdent, "Bain has been freed; removing " .. heist, true)
+      ValidHeists[heist] = nil
+
+    -- Remove San Martin if no Rust
+    elseif heist == "bex" and not Global.CrimDusk.data.rust_recruited then
+      CrimDusk.Log(FileIdent, "Rust hasn't been recruited; removing " .. heist, true)
+      ValidHeists[heist] = nil
+    end
+  end
+
+  -- Add event heists
+  ValidHeists.haunted = true
+  ValidHeists.nail = true
+  ValidHeists.help = true
+  ValidHeists.hvh = true
+
+  -- Remove already played heists
+  for _, heist in ipairs(Global.CrimDusk.data[heist_chain]) do ValidHeists[heist] = nil end
+
+  -- White House is always last
+  if not next(ValidHeists) then ValidHeists.vit = true end
+
+  return ValidHeists
+end
+
+Hooks:OverrideFunction(NarrativeTweakData, "is_job_locked", function(self, job)
+  if Global.CrimDusk.data.heists_won < 78 and job == Global.CrimDusk.campaign[Global.CrimDusk.data.heists_won + 1] then return false
+  elseif Global.CrimDusk.data.heists_won >= 78 and ValidHeistTable()[job] then return false end
+  return true
+end)
+
 Hooks:PostHook(NarrativeTweakData, "init", "CrimDusk_NarrativeTweakInit", function(self, tweak_data)
   -- Tutorials
   self.jobs.cd_tut1 = deep_clone(self.jobs.short1)

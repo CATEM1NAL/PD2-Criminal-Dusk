@@ -5,7 +5,7 @@ crimdusk_settings_desc: "Tweak the gameplay to your liking."
 crimdusk_permadeath_name: "Professional Mode"
 crimdusk_permadeath_desc: "Randomised campaigns where failure is not an option.\nThis mode stores campaign progress separately!"
 crimdusk_reset_campaign_name: "Reset Campaign"
-crimdusk_reset_campaign_desc: "This will wipe all campaign progress for your currently selected game-mode (Standard or Professional)!"
+crimdusk_reset_campaign_desc: "Wipes all campaign progress (Standard & Professional Mode)."
 crimdusk_instantmelee_title: "Quick Melee"
 crimdusk_instantmelee_desc: "Press this key to use weapon butt."
 
@@ -48,7 +48,7 @@ crimdusk_campaign_active: "The next heist is $HEIST."
 crimdusk_campaign_inactive: "The next heist will be random."
 
 crimdusk_play_holdout: "Weekly Holdout"
-crimdusk_holdout_desc: "Survive for nine increasingly difficult waves.\nHeist changes in $DAYS days!"
+crimdusk_holdout_desc: "Survive for nine increasingly difficult waves.\nNew holdout in $DAYS days!"
 
 crimdusk_safehouse_desc: "Upgrade your safe house, view trophies, or simply take a break."
 

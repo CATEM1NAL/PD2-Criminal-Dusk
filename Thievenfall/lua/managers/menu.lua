@@ -209,25 +209,6 @@ local function InjectCrimDuskButtons(node)
   local position = 1
   table.insert(node._items, position, new_item)
 
-  -- Add the safehouse button
-  data = { type = "CoreMenuItem.Item" }
-  params = {
-    name = "crimdusk_safehouse",
-    text_id = "menu_cn_chill",
-    help_id = "crimdusk_safehouse_desc",
-    callback = "CrimDusk_Safehouse",
-    font_size = 30,
-    font = tweak_data.menu.pd2_large_font
-  }
-
-  new_item = node:create_item(data, params)
-
-  new_item.dirty_callback = callback(node, node, "item_dirty")
-  if node.callback_handler then new_item:set_callback_handler(node.callback_handler) end
-
-  position = 1
-  table.insert(node._items, position, new_item)
-
   -- Add play offline button
   data = { type = "CoreMenuItem.Item" }
   params = {
@@ -284,7 +265,7 @@ Hooks:Add("MenuManagerBuildCustomMenus", "CrimDusk_MenuTweaks", function(menu_ma
     -- Hides all the unnecessary menu buttons
     local HiddenButtons = {
       crimenet = true, crimenet_offline = true, story_missions = true,
-      crimdusk_safehouse = true, crimdusk_play_holdout = true
+      crimdusk_play_holdout = true
     }
 
     for i, item in pairs(mainmenu._items) do
@@ -314,10 +295,7 @@ Hooks:Add("MenuManagerBuildCustomMenus", "CrimDusk_MenuTweaks", function(menu_ma
     end
 
     -- Hides all the unnecessary menu buttons
-    local HiddenButtons = {
-      story_missions = true, crimenet_nj = true, crimenet_j = true,
-      crimdusk_createlobby_btn = true, crimdusk_play_offline = true
-    }
+    local HiddenButtons = { story_missions = true, crimdusk_createlobby_btn = true, crimdusk_play_offline = true }
 
     for i, item in pairs(lobbymenu._items) do
       if HiddenButtons[item._parameters.name] then item:set_visible(false) end
