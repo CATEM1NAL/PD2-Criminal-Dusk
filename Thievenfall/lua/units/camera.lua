@@ -68,7 +68,8 @@ Hooks:OverrideFunction(SecurityCamera, "_upd_detection", function(self, t)
     -- Send rotation on detection ticks to avoid network spam
     -- Ideally camrot speed should be synced with clients so we don't need to send this at all
     if self._queue_send_rot then
-      managers.network:session():send_to_peers_synched("camera_yaw_pitch", self._unit, self._yaw, self._pitch)
+      
+      managers.network:session():send_to_peers_synched("camera_yaw_pitch", self._unit, 255 * (self._yaw + 180) / 360, 255 * (self._pitch + 90) / 180)
       self._queue_send_rot = nil
     end
 

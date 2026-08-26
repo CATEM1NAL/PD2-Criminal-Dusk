@@ -56,16 +56,24 @@ Hooks:OverrideFunction(PlayerStandard, "_check_action_melee", function(self, t, 
   local action_forbidden = not self:_melee_repeat_allowed() or self._use_item_expire_t or self:_changing_weapon() or self:_interacting() or self:_is_throwing_projectile() or self:_is_using_bipod() or self:is_shooting_count()
   if action_forbidden then return end
 
-  if not self._state_data.melee_active then self._state_data.melee_active = true end
+  if not self._state_data.melee_active then
+    DelayedCalls:Remove("CrimDusk_MeleeToSprintAnim")
+    self._state_data.melee_active = true
+  end
+
   self:_start_action_melee(t, input)
   return true
 end)
 
 Hooks:PostHook(PlayerStandard, "_start_action_equip_weapon", "CrimDusk_PostEquipWeapon", function(self)
-  -- Could do with cleaning up a bit so it doesn't interrupt the equip animation. will fix later
-  if self:running() and not self._equipped_unit:base():run_and_shoot_allowed() then
-    self._ext_camera:play_redirect(self:get_animation("start_running"))
-  end
+  -- Could do with cleaning up a bit
+  local tweak = self._equipped_unit:base():weapon_tweak_data()
+  DelayedCalls:Add("CrimDusk_MeleeToSprintAnim", tweak.timers.equip or 0.7, function()
+    local PlayerState = managers.player:player_unit():movement():current_state()
+    if PlayerState:running() and not PlayerState._equipped_unit:base():run_and_shoot_allowed() then
+      PlayerState._ext_camera:play_redirect(PlayerState:get_animation("start_running"))
+    end
+  end)
 end)
 
 Hooks:PreHook(PlayerStandard, "_check_action_equip", "CrimDusk_PreCheckEquipStandard", function(self, t, input)
