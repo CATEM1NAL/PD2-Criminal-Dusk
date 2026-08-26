@@ -61,6 +61,13 @@ Hooks:OverrideFunction(PlayerStandard, "_check_action_melee", function(self, t, 
   return true
 end)
 
+Hooks:PostHook(PlayerStandard, "_start_action_equip_weapon", "CrimDusk_PostEquipWeapon", function(self)
+  -- Could do with cleaning up a bit so it doesn't interrupt the equip animation. will fix later
+  if self:running() and not self._equipped_unit:base():run_and_shoot_allowed() then
+    self._ext_camera:play_redirect(self:get_animation("start_running"))
+  end
+end)
+
 Hooks:PreHook(PlayerStandard, "_check_action_equip", "CrimDusk_PreCheckEquipStandard", function(self, t, input)
   if input.btn_primary_choice and self._state_data.melee_active then
     self._change_weapon_data = { selection_wanted = input.btn_primary_choice }
@@ -182,7 +189,6 @@ Hooks:OverrideFunction(PlayerStandard, "_interupt_action_running", function(self
   if self._running and not self._end_running_expire_t then self:_end_action_running(t) end
 end)
 
-
 -- Increased gravity (981 to 1800)
 Hooks:PostHook(PlayerStandard, "_enter", "CrimDawn_PlayerStandardEnter", function(self)
   if self._state_data.on_ladder then self._unit:mover():set_gravity(Vector3(0, 0, 0))
@@ -218,17 +224,38 @@ Hooks:OverrideFunction(PlayerStandard, "_action_interact_forbidden", function(se
   return action_forbidden
 end)
 
+-- Allow interacting while melee is out
+Hooks:OverrideFunction(PlayerStandard, "_start_action_interact", function(self, t, input, timer, interact_object)
+  self:_interupt_action_reload(t)
+  self:_interupt_action_steelsight(t)
+  self:_interupt_action_running(t)
 
--- Allow melee charge during interaction
+  local final_timer = timer
+  final_timer = managers.modifiers:modify_value("PlayerStandard:OnStartInteraction", final_timer, interact_object)
+  self._interact_expire_t = final_timer
+
+  local start_timer = 0
+
+  self._interact_params = { object = interact_object, timer = final_timer, tweak_data = interact_object:interaction().tweak_data }
+
+  if not self._state_data.melee_active then self:_play_unequip_animation()
+  else self._change_weapon_data = { selection_wanted = (Utils:IsCurrentWeaponPrimary() and 2 or 1) }
+    if not self:in_melee() then self:_start_action_melee(t, input) end -- hacky solution to fix anim bugs
+    self:_interupt_action_melee(t)
+    self:_play_unequip_animation()
+  end
+
+  managers.hud:show_interaction_bar(start_timer, final_timer)
+  managers.network:session():send_to_peers_synched("sync_teammate_progress", 1, true, self._interact_params.tweak_data, final_timer, false)
+  self._unit:network():send("sync_interaction_anim", true, self._interact_params.tweak_data)
+end)
+
 Hooks:OverrideFunction(PlayerStandard, "_interupt_action_interact", function(self, t, input, complete)
   if self._interact_expire_t then
     self:_clear_tap_to_interact()
-
     self._interact_expire_t = nil
 
-    if alive(self._interact_params.object) then
-      self._interact_params.object:interaction():interact_interupt(self._unit, complete)
-    end
+    if alive(self._interact_params.object) then self._interact_params.object:interaction():interact_interupt(self._unit, complete) end
 
     self._ext_camera:camera_unit():base():remove_limits()
     self._interaction:interupt_action_interact(self._unit)
@@ -236,13 +263,11 @@ Hooks:OverrideFunction(PlayerStandard, "_interupt_action_interact", function(sel
 
     self._interact_params = nil
 
-    if not self:_is_meleeing() then self:_play_equip_animation()
-    else self._ext_camera:play_redirect(self:get_animation("melee_enter"), nil, 0) end
+    if not self._state_data.melee_active then self:_play_equip_animation() end
     managers.hud:hide_interaction_bar(complete)
     self._unit:network():send("sync_interaction_anim", false, "")
   end
 end)
-
 
 -- Melee damage
 Hooks:OverrideFunction(PlayerStandard, "_do_melee_damage", function(self, t, bayonet_melee, melee_hit_ray, melee_entry, hand_id)

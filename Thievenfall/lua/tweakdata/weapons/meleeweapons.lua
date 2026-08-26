@@ -7,6 +7,7 @@ Hooks:PostHook(BlackMarketTweakData, "_init_melee_weapons", "CrimDusk_InitMeleeT
   local MeleeClasses = Global.CrimDusk.melee.classes
   local MeleeStats = Global.CrimDusk.melee.stats
   local ResetTimers = Global.CrimDusk.melee.reset
+  local EquipTimers = Global.CrimDusk.melee.equip
 
   for MeleeClass, MeleeClassData in pairs(MeleeClasses) do
     for MeleeWeapon, MeleeData in pairs(MeleeClassData) do
@@ -18,13 +19,16 @@ Hooks:PostHook(BlackMarketTweakData, "_init_melee_weapons", "CrimDusk_InitMeleeT
       self.melee_weapons[MeleeWeapon].stats.concealment = Conceal
       self.melee_weapons[MeleeWeapon].stats.remove_weapon_movement_penalty = true
 
-      local RepTimeChanged
+      local RepTimeChanged, EquipTimeChanged
       for Stat, Value in pairs(MeleeData) do
         if Stat == "rep" then
           self.melee_weapons[MeleeWeapon].repeat_expire_t = Value
           self.melee_weapons[MeleeWeapon].expire_t = Value
-          self.melee_weapons[MeleeWeapon].attack_allowed_expire_t = Value
           RepTimeChanged = true
+
+        elseif Stat == "equip" then
+          self.melee_weapons[MeleeWeapon].attack_allowed_expire_t = Value
+          EquipTimeChanged = true
 
         elseif Stat == "anim" then
           self.melee_weapons[MeleeWeapon].anim_global_param = Value
@@ -35,13 +39,16 @@ Hooks:PostHook(BlackMarketTweakData, "_init_melee_weapons", "CrimDusk_InitMeleeT
       end
 
       local AnimSet = self.melee_weapons[MeleeWeapon].anim_global_param
+
       if not RepTimeChanged and ResetTimers[AnimSet] then
         self.melee_weapons[MeleeWeapon].repeat_expire_t = ResetTimers[AnimSet]
         self.melee_weapons[MeleeWeapon].expire_t = ResetTimers[AnimSet]
-        self.melee_weapons[MeleeWeapon].attack_allowed_expire_t = ResetTimers[AnimSet]
+      end
 
-      elseif not RepTimeChanged then
-        self.melee_weapons[MeleeWeapon].expire_t = self.melee_weapons[MeleeWeapon].repeat_expire_t
+      if not EquipTimeChanged and EquipTimers[AnimSet] then
+        self.melee_weapons[MeleeWeapon].attack_allowed_expire_t = EquipTimers[AnimSet]
+      
+      elseif not EquipTimeChanged then
         self.melee_weapons[MeleeWeapon].attack_allowed_expire_t = self.melee_weapons[MeleeWeapon].repeat_expire_t
       end
     end

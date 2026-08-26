@@ -155,5 +155,6 @@ Global.CrimDusk.melee.stats = {
   }
 }
 
-Global.CrimDusk.melee.reset = { melee_axe = 0.35, melee_baseballbat = 0.8, melee_machete = 0.4, melee_knife = 0.6, melee_knife2 = 0.4 }
+Global.CrimDusk.melee.equip = { melee_axe = 1, melee_baseballbat = 0.8, melee_machete = 1, melee_knife = 0.6, melee_knife2 = 0.25 }
+Global.CrimDusk.melee.reset = { melee_axe = 0.35, melee_baseballbat = 0.8, melee_machete = 0.35, melee_knife = 0.6, melee_knife2 = 0.35 }
 Global.CrimDusk.melee.damage_delay = { melee_baseballbat = 0.2 }

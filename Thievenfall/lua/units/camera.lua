@@ -13,11 +13,16 @@ local function LocalCamRotation(self, yaw)
   if not self._queue_send_rot then self._queue_send_rot = true end
 end
 
-Hooks:PostHook(SecurityCamera, "set_detection_enabled", "CrimDusk_SetInitialCamYaw", function(self, _, settings)
+Hooks:PostHook(SecurityCamera, "set_detection_enabled", "CrimDusk_SetInitialCamYaw", function(self, state, settings)
   if settings then
-    self:apply_rotations(0, settings.pitch)
-    self._max_rot_yaw = 50
+    self:apply_rotations(0, settings.pitch) -- force cam to face forwards so rotation applies correctly
+    self._max_rot_yaw = 50 -- how many degrees l/r cam can rotate
     self._rotate_speed = (math.random(0, 1) * 2 - 1) * math.random() * self._max_rot_yaw
+    --[[ rotation speed is a random float between -1 to 1, multiplied by max rotate distance.
+    rotation for host updates every frame so it's *buttery smooth* and uses dt for fps independence.
+    because rotation uses dt, rotate speed is effectively how many degrees the cam rotates per second.
+    current settings mean at max speed it can complete a rotation in one second, on avg it'll take two. ]]
+
     self._last_rotate_t = self._last_rotate_t or TimerManager:game():time()
   end
 end)
@@ -42,8 +47,8 @@ Hooks:OverrideFunction(SecurityCamera, "_upd_detection", function(self, t)
     self._last_detect_t = t
 
     --[[ Enable debug camera radius
-    --ORIGINAL INTENT WAS TO USE FOR CAMERA VISUALISATION LIKE PAYDAY 3
-    --SHOULDN'T BE USED FOR NOW, CONES CLIP THROUGH WALLS AND LOOK ASS
+    -- ORIGINAL INTENT WAS TO USE FOR CAMERA VISUALISATION LIKE PAYDAY 3
+    -- SHOULDN'T BE USED, CONES CLIP THROUGH WALLS AND LOOK ASS
     local ConeColour = next(self._detected_attention_objects) and Color(0.05, 1, 0, 0) or Color(0.05, 0, 1, 0)
     self._brush = self._brush or Draw:brush(ConeColour, self._detection_interval)
     self._look_obj:m_position(self._tmp_vec1)

@@ -3,6 +3,7 @@ if Global.game_settings and Global.game_settings.level_id == "chill" then return
 local FileIdent = "PlayerDamage"
 
 local lives
+-- Safehouse Raid and Holdout shouldn't use campaign down time. Clients shouldn't use permadeath down time to avoid fucking their own campaigns.
 if Global.game_settings and (Global.game_settings.level_id == "chill_combat" or tweak_data.levels[Global.game_settings.level_id].group_ai_state == "skirmish") then
   lives = "lives_oneoff"
   Global.CrimDusk.data[lives] = "max"
@@ -136,7 +137,7 @@ Hooks:OverrideFunction(PlayerDamage, "on_copr_killshot", function(self)
   self._armor_break_t = managers.player:player_timer():time() + 1
 end)
 
--- Tooth & Claw regens at twice the speed, instead of fixed 1.5s
+-- Tooth & Claw regens after 3s, not 1.5s (vanilla timer is stupid).
 Hooks:OverrideFunction(PlayerDamage, "_start_regen_on_the_side", function(self, time)
   if self._regen_on_the_side_timer <= 0 and time > 0 then
     self._regen_on_the_side_timer = 3
@@ -149,19 +150,19 @@ Hooks:OverrideFunction(PlayerDamage, "_regenerated", function(self, no_messiah)
   if DelayedCalls._calls.CrimDusk_ForceIntoCustody then CrimDusk.Log(FileIdent, "ForceIntoCustody is running!", true) return end
 
   if not no_messiah then self._messiah_charges = managers.player:upgrade_value("player", "pistol_revive_from_bleed_out", 0) end
-  CrimDusk.Log(FileIdent, "Revives pre-modified: " .. Application:digest_value(self._revives, false), true)
 
   -- Initial lives (start of heist)
-  if Global.CrimDusk.data[lives] == "max" then
+  if Global.CrimDusk.data[lives] == "max" then -- Safehouse Raid & Holdout
     CrimDusk.Log(FileIdent, "Maxing out down time", true)
     Global.CrimDusk.data[lives] = 30 + managers.player:upgrade_value("player", "additional_lives", 0)
     self._revives = Application:digest_value(Global.CrimDusk.data[lives] + 1, true)
 
+  -- Regular heists
   elseif not self._down_time and Global.CrimDusk.data[lives] >= 0 and lives ~= "lives_oneoff" then
     CrimDusk.Log(FileIdent, "Setting initial down time", true)
     self._revives = Application:digest_value(math.min(Global.CrimDusk.data[lives] + 1, self._max_lives), true)
 
-  elseif Global.CrimDusk.data[lives] == -2 then
+  elseif Global.CrimDusk.data[lives] == -2 then -- Custody carry over
     CrimDusk.Log(FileIdent, "Started in custody!", true)
     self:set_health(0)
     self._revives = Application:digest_value(1, true)
@@ -180,6 +181,7 @@ Hooks:OverrideFunction(PlayerDamage, "_regenerated", function(self, no_messiah)
     self._revives = Application:digest_value(math.min(NewDowns, self._max_lives), true)
   end
 
+  -- Set down related values
   self._down_time = Application:digest_value(self._revives, false) - 1
 
   self:set_health(self:_max_health())
@@ -213,20 +215,23 @@ Hooks:OverrideFunction(PlayerDamage, "revive", function(self, silent)
   if not arrested then
     self:set_armor(self:_max_armor())
 
-    if self:get_real_health() <= 0 then
+    if self:get_real_health() <= 0 then -- Being tased doesn't reset your health
       self:set_health(self:_max_health() * self._revive_health_i * (self._revive_health_multiplier or 1) * managers.player:upgrade_value("player", "revived_health_regain", 1))
+      -- Revive health scales with down time remaining. More down time, more health.
     end
 
+    -- Set down time related values
     self._down_time = DownTime
     self._revives = Application:digest_value(self._down_time + 1, true)
     self:_send_set_revives()
     Global.CrimDusk.data[lives] = self._down_time
 
+    -- Set revive health
     local ReviveHealth = tweak_data.player.damage.REVIVE_HEALTH_STEPS
     local ReviveHealthRatio = self._down_time / 60
     self._revive_health_i = math.lerp(ReviveHealth[2], ReviveHealth[1], ReviveHealthRatio)
 
-    self._revive_miss = self._dmg_interval
+    self._revive_miss = self._dmg_interval -- Revive dodge matches grace period
   end
 
   self:_regenerate_armor()
@@ -327,10 +332,12 @@ Hooks:OverrideFunction(PlayerDamage, "damage_bullet", function(self, attack_data
     dodge_value = dodge_value + self._temporary_dodge
   end
 
+  dodge_value = math.max(dodge_value, 0)
+
   local smoke_dodge = 0
   for _, smoke_screen in ipairs(managers.player._smoke_screen_effects or {}) do
     if smoke_screen:is_in_smoke(self._unit) then
-      dodge_value = math.max(dodge_value, 0) + tweak_data.projectiles.smoke_screen_grenade.dodge_chance
+      dodge_value = dodge_value + tweak_data.projectiles.smoke_screen_grenade.dodge_chance
     break end
   end
 
@@ -347,7 +354,7 @@ Hooks:OverrideFunction(PlayerDamage, "damage_bullet", function(self, attack_data
     pm:send_message(Message.OnPlayerDodge, nil, attack_data)
   return end
 
-  self._dodge_stack = dodge_value
+  if self._dodge_stack ~= dodge_value then self._dodge_stack = dodge_value end
   self._entropy = 0
   --log(dodge_value .. " dodge failed :(")
 

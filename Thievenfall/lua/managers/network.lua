@@ -3,7 +3,8 @@ NetworkMatchMakingSTEAM._BUILD_SEARCH_INTEREST_KEY = "thievenfall_v" .. Global.C
 
 -- Client hooks
 if NetworkHelper:IsClient() then
-  NetworkHelper:AddReceiveHook("CrimDusk_Prologue", "CrimDusk_SetPrologueDiffs", function(data, sender)
+  --[[
+  NetworkHelper:AddReceiveHook("CrimDusk_Prologue", "CrimDusk_SetPrologueDiffs", function()
     Hooks:Add("LocalizationManagerPostInit", "CrimDusk_PDTHNames", function(loc)
       loc:add_localized_strings({
         ["menu_difficulty_normal"] = loc:text("crimdusk_pdth_normal"),
@@ -19,20 +20,21 @@ if NetworkHelper:IsClient() then
       })
     end)
   end)
+  ]]
 
   -- Change difficulty
-  NetworkHelper:AddReceiveHook("CrimDusk_ChangeDifficulty", "CrimDusk_ReceiveDifficultyIncrease", function(data, sender)
+  NetworkHelper:AddReceiveHook("CrimDusk_ChangeDifficulty", "CrimDusk_ReceiveDifficultyIncrease", function(data)
     Global.game_settings.difficulty = data
     tweak_data:set_difficulty()
   end)
 
   -- Set host's White House payout
-  NetworkHelper:AddReceiveHook("CrimDusk_WhiteHousePayout", "CrimDusk_ReceiveCampaignPayout", function(data, sender)
+  NetworkHelper:AddReceiveHook("CrimDusk_WhiteHousePayout", "CrimDusk_ReceiveCampaignPayout", function(data)
     tweak_data.narrative.jobs.vit.payout[1] = tonumber(data)
   end)
 
   -- Sync campaign victory
-  NetworkHelper:AddReceiveHook("CrimDusk_CampaignEnded", "CrimDusk_SyncCampaignEnding", function(data, sender)
+  NetworkHelper:AddReceiveHook("CrimDusk_CampaignEnded", "CrimDusk_SyncCampaignEnding", function(data)
     Global.CrimDusk.data.lives = 30 + managers.player:upgrade_value("player", "additional_lives", 0)
     local EndingValue, HeistsPlayed = data:match("([^;]+);(.*)")
 
