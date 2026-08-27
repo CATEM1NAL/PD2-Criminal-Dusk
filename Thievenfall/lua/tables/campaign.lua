@@ -67,3 +67,12 @@ Global.CrimDusk.job_to_wrapper = {
   crojob1 = "cd_bomb", crojob_wrapper = "cd_bomb", cd_erection1 = "cd_erection_wrapper", cd_erection2 = "cd_erection_wrapper",
   arm_cro = "arm_wrapper", arm_und = "arm_wrapper", arm_hcm = "arm_wrapper", arm_par = "arm_wrapper", arm_fac = "arm_wrapper"
 }
+
+-- Which heists require which DLCs. Used to prevent random campaigns from softlocking; owning all heists is highly recommended!
+Global.CrimDusk.heist_dlc = {
+  arm_wrapper = "armored_transport", arm_for = "armored_transport", big = "big_bank", cd_miami1 = "hl_miami", cd_miami2 = "hl_miami",
+  mus = "hope_diamond", cd_bomb = "the_bomb", arena = "arena", kenaz = "kenaz", pbr = "berry", pbr2 = "berry", cd_goat1 = "peta",
+  cd_goat2 = "peta", pal = "pal", man = "pal", cd_biker1 = "born", cd_biker2 = "born", friend = "friend", spa = "spa", fish = "spa",
+  mex = "mex", bex = "bex", pex = "pex", fex = "fex", chas = "chas", sand = "sand", chca = "chca", pent = "pent", ranc = "ranc",
+  trai = "trai", corp = "corp", deep = "deep"
+}

@@ -12,6 +12,7 @@ Hooks:PostHook(GuiTweakData, "init", "CrimDusk_InitGuiTweak", function(self)
     { item_class = "CrimeNetSidebarSeparator" },
 
     { id = "safehouse", name_id = "menu_cn_chill", icon = "sidebar_safehouse", callback = "clbk_safehouse", item_class = "CrimeNetSidebarSafehouseItem" },
+    { id = "skirmish", name_id = "menu_weekly_skirmish", icon = "sidebar_skirmish", callback = "clbk_setup_weekly_holdout", item_class = "CrimeNetSidebarSkirmishItem", visible_callback = "clbk_new_weekly_holdout" },
 
     { item_class = "CrimeNetSidebarSeparator" },
 
@@ -20,8 +21,7 @@ Hooks:PostHook(GuiTweakData, "init", "CrimDusk_InitGuiTweak", function(self)
     { name_id = "menu_cn_casino", icon = "sidebar_casino", callback = "clbk_offshore_payday" },
     { name_id = "menu_cn_contact_info", icon = "sidebar_codex", callback = "clbk_contact_database" },
 
-    --{ item_class = "CrimeNetSidebarSeparator" },
-
+    --{ item_class = "CrimeNetSidebarSeparator", visible_callback = "clbk_new_weekly_holdout" },
     --{ id = "crime_spree", name_id = "cn_crime_spree", icon = "sidebar_crimespree", callback = "clbk_crime_spree", item_class = "CrimeNetSidebarCrimeSpreeItem", visible_callback = "clbk_visible_crime_spree" },
     -- No plans to implement crime spree right now, because, like, what the fuck would it even be???
 

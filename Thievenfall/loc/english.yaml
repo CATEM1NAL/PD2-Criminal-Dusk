@@ -42,15 +42,12 @@ crimdusk_play_offline_title: "Play Offline [Heist $HEIST_NUM]"
 
 crimdusk_play_next_title: "Play Next Heist [$HEIST_NUM]"
 crimdusk_play_next_desc: "Campaign incomplete: next heist is $HEIST!"
-crimdusk_play_next_random: "Post-game: next heist will be randomly selected.\nYou are $NUMHEISTS heists into this campaign."
+crimdusk_play_next_random: "Choose from up to three randomly selected heists.\nYou are $NUMHEISTS heists into this campaign."
 
 crimdusk_campaign_active: "The next heist is $HEIST."
-crimdusk_campaign_inactive: "The next heist will be random."
+crimdusk_campaign_inactive: "Select the next heist on Crime.net."
 
-crimdusk_play_holdout: "Weekly Holdout"
 crimdusk_holdout_desc: "Survive for nine increasingly difficult waves.\nNew holdout in $DAYS days!"
-
-crimdusk_safehouse_desc: "Upgrade your safe house, view trophies, or simply take a break."
 
 ### STRING OVERRIDES ###
 # PDTH difficulties
@@ -66,6 +63,7 @@ menu_pro_warning: "Quitting and restarting have been disabled!"
 cn_menu_pro_job: ""
 dialog_blackmarket_slot_item_sell: "You will not be refunded!"
 dialog_skilltree_reseted: "The skill trees have changed. Your skill sets have been reset."
+menu_skirmish_weekly_reward_end_screen: ""
 
 # Weapons
 bm_w_lemming_desc: "Weapon penetrates enemies and body armor."
@@ -83,6 +81,51 @@ bm_equipment_sentry_gun_desc: "Automated weapon that fires at enemies within ran
 bm_equipment_trip_mine: "Trip Mine"
 bm_equipment_trip_mine_desc: "Single use trap that can be placed anywhere. Detonates upon taking damage or the laser being broken. Can be upgraded with Technician skills."
 bm_equipment_spy_camera_desc: "Remote camera that continuously marks enemies within its line of sight. Can be picked back up after placement." 
+
+# Side Jobs
+menu_tango_key: "Find the key"
+menu_tango_case: "Find the weapon case"
+menu_tango_key_1: "Find the key (Airport)"
+menu_tango_key_2: "Find the key (FBI Server)"
+menu_tango_1_key_1_desc: "Find the key in 'Cook Off' (Hector)."
+menu_tango_2_case_desc: "Find the weapon case in 'Engine Problem'."
+menu_tango_3_case_desc: "Find the weapon case in 'Framing'."
+menu_tango_4_key_1_desc: "Find the keys in 'Airport' and 'FBI Server'."
+menu_jfr_job_1_case_desc: "Finish 'Airport' after taking the briefcase."
+menu_jfr_job_3_wine_desc: "Escape after stealing the wine in 'Framing' without the alarm going off."
+menu_pda8_2_prog_obj_desc: "Collect three different anniversary statues."
+menu_pda8_2_prog_obj: "Statues Found"
+menu_pda8_3_prog_obj_desc: "Collect five different anniversary statues."
+menu_pda8_3_prog_obj: "Statues Found"
+menu_pda8_item_1_desc: "Collect all seven anniversary statues."
+menu_pda8_item_2: "Almir Figurine (Airport & FBI Server)"
+menu_pda8_item_3: "SWAT Van (Four Stores)"
+menu_pda8_item_4: "Toothbrush (Nightclub)"
+menu_pda8_item_5: "Medallion (Watchdogs)"
+menu_pda8_item_6: "Cocktail (Hector: Cook Off)"
+menu_pda8_item_7: "DEAD GAME T-Shirt (Bank Heist: Random)"
+menu_pda8_item_8: "Mariachi Figurine (Mallcrasher)"
+menu_pda9_item_n1_desc: "Secure 9 bags of gold in 'Slaughterhouse'."
+menu_pda9_item_n2_desc: "Perform 99 double kills with any penetrating weapon."
+menu_pda9_item_n3_desc: "Steal 9999 pieces of loose cash."
+menu_pda9_item_n4_desc: "Kill 99 enemies with the money bundle."
+menu_pda9_item_n4: "Money Bundle Kills"
+menu_pda9_item_n5_desc: "Secure Almir's Toast nine times."
+menu_pda9_item_n5: "Toast Secured"
+menu_cg22_post_objective_1_desc: "Kill 50 enemies with snowballs or kill 500 enemies with sniper rifles."
+menu_cg22_post_objective_2_desc: "Kill 5000 enemies with any weapon or kill 50 cloakers with the North Star."
+menu_cg22_post_objective_3_desc: "Using the North Star, kill 500 special enemies or perform 1000 double kills."
+menu_cg22_post_objective_4_desc: "Secure 100 loot bags."
+menu_cg22_post_objective_5_desc: "Kill 100 bulldozers."
+menu_cg22_post_objective_6_desc: "Secure 250 loot bags."
+menu_cg22_post_objective_8_desc: "Kill 500 bulldozers."
+menu_cg22_post_objective_9_desc: "Secure 500 loot bags."
+menu_pda10_post_objective_3_desc: "Complete 50 heists."
+menu_pda10_post_objective_5_desc: "Perform 50 double kills with the musket or kill 1000 enemies with sniper rifles."
+menu_pda10_post_objective_2_desc: "Secure 50 loot bags."
+menu_pda10_post_objective_6_desc: "Kill 100 enemies with the HAM-mer or kill 500 enemies with any melee weapon."
+menu_pda10_post_objective_1_desc: "Kill 250 bulldozers."
+menu_pda10_post_objective_4_desc: "Collect 500 Gage packages."
 
 # Trophies
 trophy_bains_book_completion_objective: "Complete 'No Mercy' on Death Sentence."
@@ -712,7 +755,8 @@ menu_jukebox_playlist_all: "Random"
 menu_jukebox_random_heist_playlist: "Random From Playlist"
 menu_jukebox_playlist_heist: "Heist Track"
 menu_jukebox_your_choice: "Custom"
-menu_choose_contract: "Select Heist" # not sure what this is
+menu_lby_crimenet: "Crime.net"
+menu_lby_job_crimenet: "Crime.net"
 menu_leave_lobby: "Leave"
 menu_start_the_game: "Start"
 menu_es_coins_progress: "C-Stacks"
@@ -972,7 +1016,7 @@ menu_reset_account_help: "Deletes your save data. Only do this if you're 100% su
 dialog_are_you_sure_you_want_to_clear_progress: "This process is irreversible.\n\nYour loadout will be wiped and you will be reset to infamy 0, level 0.\n\nAre you 100% certain you want to do this?"
 
 # Side Jobs
-menu_challenge_monthly_reward: "XP."
+menu_challenge_monthly_reward: "Replacement for stat boosts hasn't been implemented yet!"
 
 # PAUSE SCREEN
 menu_resume_game: "Resume"

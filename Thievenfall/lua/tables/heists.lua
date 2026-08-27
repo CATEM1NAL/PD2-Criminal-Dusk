@@ -136,5 +136,16 @@ Global.CrimDusk.heists = {
   help = { stealthable = true, grading = "color_matrix_classic", suit = "classyske" },
   nail = { stealthable = true, grading = "color_matrix_classic", suit = "moneysuit" },
   haunted = { stealthable = true, grading = "color_matrix_classic", suit = "moneysuit" },
-  rat = { stealthable = true, grading = "color_xxxgen", suit = "slaughterhouse" }
+  rat = { stealthable = true, grading = "color_xxxgen", suit = "slaughterhouse" },
+
+  -- Holdout
+  skm_mus = { stealthable = true, grading = "color_xxxgen", suit = "cable_guy" },
+  skm_red2 = { stealthable = true, grading = "color_bhd", suit = "suit" },
+  skm_run = { stealthable = true, grading = "color_bhd", suit = "suit" },
+  skm_watchdogs_stage2 = { stealthable = true, grading = "color_xxxgen", suit = "slaughterhouse" },
+  skm_bex = { stealthable = true, grading = "color_bhd", suit = "suit" },
+  skm_cas = { stealthable = true, grading = "color_xgen", suit = "suit" },
+  skm_big2 = { stealthable = true, suit = "suit" },
+  skm_mallcrasher = { stealthable = true, grading = "color_heat", suit = "suit" },
+  skm_arena = { stealthable = true, grading = "color_bhd", suit = "leatherfluff" }
 }

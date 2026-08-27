@@ -93,16 +93,6 @@ function CrimDusk:Init()
     end)
   end
 
-  function self.NewWeeklyHoldout()
-    local LastWeekly = Global.CrimDusk.data.weekly_holdout
-    if (LastWeekly.end_timestamp or 0) > os.time() then return false
-    elseif not Global.skirmish_manager then return false
-    else for key, value in pairs(Global.skirmish_manager.active_weekly) do
-        if LastWeekly[key] ~= value then return true end
-      end
-    end
-  return false end
-
   function self:WriteSave(FileIdent, SaveReason)
     io.save_as_json(Global.CrimDusk.data, self.SaveFile)
     self.Log(FileIdent, "Saved " .. self.SaveFile .. " (" .. SaveReason .. ")")
@@ -134,7 +124,7 @@ function CrimDusk:Init()
         ["crimdusk_continue_run_desc"] = managers.localization:text("crimdusk_play_next_desc", {
           HEIST = managers.localization:text("heist_" .. Global.CrimDusk.campaign[Global.CrimDusk.data[heists_won] + 1])
         }),
-        ["crimdusk_play_offline_desc"] = managers.localization:text("crimdusk_play_next_desc", {
+        ["menu_crimenet_offline_help"] = managers.localization:text("crimdusk_play_next_desc", {
           HEIST = managers.localization:text("heist_" .. Global.CrimDusk.campaign[Global.CrimDusk.data[heists_won] + 1])
         }),
         ["menu_choose_new_contract"] = managers.localization:text("crimdusk_campaign_active", {
@@ -145,7 +135,7 @@ function CrimDusk:Init()
         ["crimdusk_continue_run_desc"] = managers.localization:text("crimdusk_play_next_random", {
           NUMHEISTS = #Global.CrimDusk.data["heist_chain" .. CrimDusk.IsPermadeath()]
         }),
-        ["crimdusk_play_offline_desc"] = managers.localization:text("crimdusk_play_next_random", {
+        ["menu_crimenet_offline_help"] = managers.localization:text("crimdusk_play_next_random", {
           NUMHEISTS = #Global.CrimDusk.data["heist_chain" .. CrimDusk.IsPermadeath()]
         }),
         ["menu_choose_new_contract"] = managers.localization:text("crimdusk_campaign_inactive")

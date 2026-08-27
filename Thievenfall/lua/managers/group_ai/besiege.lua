@@ -94,7 +94,7 @@ Hooks:OverrideFunction(GroupAIStateBesiege, "_begin_assault_task", function(self
     local DiffIndex = tweak_data:difficulty_to_index(Global.game_settings.difficulty)
     Global.game_settings.difficulty = tweak_data:index_to_difficulty(DiffIndex + 1)
     tweak_data:set_difficulty()
-    NetworkHelper:SendToPeers("CrimDusk_ChangeDifficulty", Global.game_settings.difficulty)
+    if not managers.skirmish:is_skirmish() then NetworkHelper:SendToPeers("CrimDusk_ChangeDifficulty", Global.game_settings.difficulty) end
   end
 
   assault_task.active = true

@@ -43,6 +43,8 @@
         <hook source_file="lib/tweak_data/gageassignmenttweakdata" file="gagepackage.lua"/>
         <hook source_file="lib/tweak_data/economytweakdata" file="skins.lua"/>
         <hook source_file="lib/tweak_data/guitweakdata" file="gui.lua"/>
+        <hook source_file="lib/tweak_data/tangotweakdata" file="specops.lua"/>
+        <hook source_file="lib/tweak_data/eventjobstweakdata" file="eventsidejobs.lua"/>
 
         <hooks directory="player"> <!-- root/lua/tweakdata/player -->
           <hook source_file="lib/tweak_data/playertweakdata" file="player.lua"/>

@@ -4,7 +4,7 @@
 local any = { "normal", "hard", "overkill", "overkill_145", "easy_wish", "overkill_290", "sm_wish" }
 local postgame = { "sm_wish" }
 
-Hooks:PostHook(AchievementsTweakData, "init", "CrimDusk_ModifyTrophyRequirements", function(self)
+Hooks:PostHook(AchievementsTweakData, "init", "CrimDusk_AchievementTweakRequirements", function(self)
   local complete = self.complete_heist_achievements
   -- Scrap Metal
   complete.trophy_friendly_car.num_players = nil
@@ -120,5 +120,12 @@ Hooks:PostHook(AchievementsTweakData, "init", "CrimDusk_ModifyTrophyRequirements
   complete.trophy_host.job = "vit"
 
   -- The First Line
-  self.enemy_melee_hit_achievements.trophy_hockeykill = { trophy_stat = "trophy_hockeykill", is_not_civilian = true, melee_id = "hockey", result = "death", }
+  self.enemy_melee_hit_achievements.trophy_hockeykill = { trophy_stat = "trophy_hockeykill", is_not_civilian = true, melee_id = "hockey", result = "death" }
+
+  -- Side Jobs
+  self.grenade_achievements.cg22_personal_1.mutators = nil
+  self.enemy_kill_achievements.cg22_personal_2.mutators = nil
+  self.enemy_kill_achievements.cg22_personal_2.weapons = nil
+  self.enemy_kill_achievements.cg22_personal_3.mutators = nil
+  self.enemy_kill_achievements.cg22_personal_3.difficulty = nil
 end)

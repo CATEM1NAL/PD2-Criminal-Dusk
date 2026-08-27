@@ -109,6 +109,14 @@ local function ValidHeistTable()
   -- Remove already played heists
   for _, heist in ipairs(Global.CrimDusk.data[heist_chain]) do ValidHeists[heist] = nil end
 
+  -- Check DLC ownership
+  for heist, dlc in pairs(Global.CrimDusk.heist_dlc) do
+    if not managers.dlc:is_dlc_unlocked(dlc) then
+      CrimDusk.Log(FileIdent, heist .. " DLC not owned!", true)
+      ValidHeists[heist] = nil
+    end
+  end -- Having all heist DLCs is highly recommended, otherwise campaigns will be a bit lacking!!
+
   -- White House is always last
   if not next(ValidHeists) then ValidHeists.vit = true end
 
@@ -116,12 +124,16 @@ local function ValidHeistTable()
 end
 
 Hooks:OverrideFunction(NarrativeTweakData, "is_job_locked", function(self, job)
-  if Global.CrimDusk.data.heists_won < 78 and job == Global.CrimDusk.campaign[Global.CrimDusk.data.heists_won + 1] then return false
+  if CrimDusk.IsPermadeath() ~= "_perma" and Global.CrimDusk.data.heists_won < 78 and job == Global.CrimDusk.campaign[Global.CrimDusk.data.heists_won + 1] then return false
   elseif Global.CrimDusk.data.heists_won >= 78 and ValidHeistTable()[job] then return false end
   return true
 end)
 
 Hooks:PostHook(NarrativeTweakData, "init", "CrimDusk_NarrativeTweakInit", function(self, tweak_data)
+  -- Licensed heists are always accessible, because it's not the player's fault for buying the game after 2024.
+  self.jobs.dark.dlc = nil
+  self.jobs.mad.dlc = nil
+
   -- Tutorials
   self.jobs.cd_tut1 = deep_clone(self.jobs.short1)
   self.jobs.cd_tut1.name_id = "heist_short1_stage1_hl"
@@ -187,6 +199,7 @@ Hooks:PostHook(NarrativeTweakData, "init", "CrimDusk_NarrativeTweakInit", functi
   self.jobs.cd_reservoir.name_id = "heist_rvd2_hl"
   self.jobs.cd_reservoir.briefing_id = "heist_rvd2_briefing"
   self.jobs.cd_reservoir.chain = { self.stages.rvd_2 }
+  self.jobs.cd_reservoir.dlc = nil
 
   self.jobs.cd_miami1 = deep_clone(self.jobs.mia)
   self.jobs.cd_miami1.name_id = "heist_mia_1_hl"
@@ -271,9 +284,12 @@ Hooks:PostHook(NarrativeTweakData, "init", "CrimDusk_NarrativeTweakInit", functi
   local HeistsPlayed = next(HeistChain) and #HeistChain or Global.CrimDusk.data["heists_won" .. CrimDusk.IsPermadeath()]
   self.jobs.vit.payout[1] = 40000 * HeistsPlayed
 
+  -- Mini-campaign finales
   self.jobs.fex.payout[1] = 500000
   self.jobs.pent.payout[1] = 500000
   self.jobs.deep.payout[1] = 500000
+
+  -- Breakout
   self.jobs.cd_hox1.payout[1] = 0
   self.jobs.cd_hox2.payout[1] = 0
 
