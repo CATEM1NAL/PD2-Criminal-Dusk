@@ -29,19 +29,17 @@ Hooks:OverrideFunction(ExperienceManager, "_level_up", function(self)
   managers.mission:call_global_event(Message.OnLevelUp)
 end)
 
-Hooks:OverrideFunction(ExperienceManager, "add_points", function(self, points, present_xp)
+Hooks:OverrideFunction(ExperienceManager, "add_points", function(self, points, present_xp, NoPool)
   if points <= 0 then return end
 
-  if self:current_level() >= self:level_cap() then
-    self:_set_total(self:total() + points)
-    managers.statistics:aquired_money(points)
+  if not NoPool and self:current_level() >= self:level_cap() then
     self:set_current_prestige_xp(self:get_current_prestige_xp() + points)
   end
 
   if present_xp then self:_present_xp(points) end
 
-  local points_left = self:next_level_data_points() - self:next_level_data_current_points()
-  if points < points_left then
+  local PointsToNext = self:next_level_data_points() - self:next_level_data_current_points()
+  if points < PointsToNext then
     self:_set_total(self:total() + points)
     self:_set_xp_gained(self:total())
     self:_set_next_level_data_current_points(self:next_level_data_current_points() + points)
@@ -49,14 +47,14 @@ Hooks:OverrideFunction(ExperienceManager, "add_points", function(self, points, p
     managers.statistics:aquired_money(points)
   return end
 
-  self:_set_total(self:total() + points_left)
+  self:_set_total(self:total() + PointsToNext)
   self:_set_xp_gained(self:total())
-  self:_set_next_level_data_current_points(self:next_level_data_current_points() + points_left)
+  self:_set_next_level_data_current_points(self:next_level_data_current_points() + PointsToNext)
   self:present()
   self:_level_up()
-  managers.statistics:aquired_money(points_left)
+  managers.statistics:aquired_money(PointsToNext)
 
-  return self:add_points(points - points_left, present_xp)
+  return self:add_points(points - PointsToNext, present_xp, true)
 end)
 
 -- Infamy every 13th, not 13+1 (why the fuck is it like that)
