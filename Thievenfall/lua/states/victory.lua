@@ -34,11 +34,18 @@ Hooks:PostHook(VictoryState, "at_enter", "CrimDusk_HeistWon", function(self)
     -- Post-game campaign
     elseif (Global.CrimDusk.data[heists_won] > #Global.CrimDusk.campaign) or CrimDusk.IsPermadeath() == "_perma" then
       local Permadeath = CrimDusk.IsPermadeath()
-      local CurrentHeist = managers.job:current_job_id()
-      CurrentHeist = Global.CrimDusk.job_to_wrapper[CurrentHeist] or CurrentHeist
 
       Global.CrimDusk.data["heist_chain" .. Permadeath] = Global.CrimDusk.data["heist_chain" .. Permadeath] or {}
-      table.insert(Global.CrimDusk.data["heist_chain" .. Permadeath], CurrentHeist)
+      Global.CrimDusk.data["heists_skipped" .. Permadeath] = Global.CrimDusk.data["heists_skipped" .. Permadeath] or {}
+
+      local CurrentHeists = Global.CrimDusk.data["next_heists" .. Permadeath]
+      for i = 1, #CurrentHeists do
+        if CurrentHeists[i] == Global.CrimDusk.job_to_wrapper[managers.job:current_job_id()] or managers.job:current_job_id() then
+          table.insert(Global.CrimDusk.data["heist_chain" .. Permadeath], (Global.CrimDusk.job_to_wrapper[CurrentHeists[i]] or CurrentHeists[i]))
+
+        else table.insert(Global.CrimDusk.data["heists_skipped" .. Permadeath], (Global.CrimDusk.job_to_wrapper[CurrentHeists[i]] or CurrentHeists[i])) end
+      end
+      Global.CrimDusk.data["next_heists" .. CrimDusk.IsPermadeath()] = {}
 
       for Campaign, _ in pairs(Global.CrimDusk.mini_campaign_data) do
         if type(Global.CrimDusk.mini_campaign_data[Campaign][CurrentHeist]) == "number" then

@@ -5,7 +5,8 @@ Hooks:PostHook(CustomSafehouseTweakData, "_init_map", "CrimDusk_InitSafehouseMap
   for floor, _ in ipairs(self.map.floors) do
     for i = #self.map.floors[floor].rooms, 1, -1 do
 
-      if self.map.floors[floor].rooms[i] == "old_hoxton" and (Global.CrimDusk.data["heists_won" .. perma] > 4 and Global.CrimDusk.data["free_hoxton" .. perma] < 4) then
+      local HoxtonArrested = perma == "_perma" or Global.CrimDusk.data.heists_won > 4
+      if self.map.floors[floor].rooms[i] == "old_hoxton" and (HoxtonArrested and Global.CrimDusk.data["free_hoxton" .. perma] < 4) then
         CrimDusk.Log(FileIdent, "Locking Hoxton's room...", true)
         table.remove(self.map.floors[floor].rooms, i)
 

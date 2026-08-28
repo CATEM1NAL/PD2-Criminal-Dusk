@@ -51,27 +51,39 @@ function CrimDusk:Init()
 
     local perma = CrimDusk.IsPermadeath()
     local CampaignData = Global.CrimDusk.data
-    Utils.PrintTable(CampaignData)
 
-    if next(CampaignData["heist_chain" .. perma]) then
+    -- Random campaign completed
+    if CampaignData.heists_won > #Global.CrimDusk.campaign or perma == "_perma" then
       HeistsPlayed = #CampaignData["heist_chain" .. perma]
       CampaignLength = HeistsPlayed >= 25 and loc:text("crimdusk_chat_campaign_long") or loc:text("crimdusk_chat_campaign_short")
 
-    else CampaignLength = loc:text("crimdusk_chat_campaign_long")
-      HeistsPlayed = #Global.CrimDusk.campaign
+    -- Base campaign completed
+    else HeistsPlayed = #Global.CrimDusk.campaign
+      CampaignLength = loc:text("crimdusk_chat_campaign_long")
     end
 
     CampaignWon = won and loc:text("crimdusk_chat_success") or loc:text("crimdusk_chat_failure")
-    EndingBits = EndingBits + (won and 1 or 0)
+    EndingBits = won and 1 or 0
+
+    -- Are friends alive?
+    local VladCaptured, AlmirCaptured
+    for _, heist in ipairs(Global.CrimDusk.data["heist_chain" .. perma]) do
+      if heist == "chas" and not Global.CrimDusk.data["vlad_freed" .. perma] then VladCaptured = true
+      elseif heist == "bex" and not Global.CrimDusk.data["almir_freed" .. perma] then AlmirCaptured = true end
+    end
+
+    local VladAlive = not VladCaptured or (VladCaptured and CampaignData["vlad_freed" .. perma])
+    local AlmirAlive = not AlmirCaptured or (AlmirCaptured and CampaignData["almir_freed" .. perma])
 
     BainState = CampaignData["bain_freed" .. perma] and loc:text("crimdusk_chat_bain_alive") or loc:text("crimdusk_chat_bain_dead")
-    VladState = CampaignData["vlad_freed" .. perma] and loc:text("crimdusk_chat_vlad_alive") or loc:text("crimdusk_chat_vlad_dead")
-    AlmirState = CampaignData["almir_freed" .. perma] and loc:text("crimdusk_chat_almir_alive") or loc:text("crimdusk_chat_almir_dead")
+    VladState = VladAlive and loc:text("crimdusk_chat_vlad_alive") or loc:text("crimdusk_chat_vlad_dead")
+    AlmirState = AlmirAlive and loc:text("crimdusk_chat_almir_alive") or loc:text("crimdusk_chat_almir_dead")
 
     EndingBits = EndingBits + (CampaignData["bain_freed" .. perma] and 2 or 0)
-    EndingBits = EndingBits + (CampaignData["vlad_freed" .. perma] and 4 or 0)
-    EndingBits = EndingBits + (CampaignData["almir_freed" .. perma] and 8 or 0)
+    EndingBits = EndingBits + (VladAlive and 4 or 0)
+    EndingBits = EndingBits + (AlmirAlive and 8 or 0)
 
+    -- Was Hoxton freed and was Hector killed?
     if CampaignData["free_hoxton" .. perma] >= 4 then
       HoxtonState = loc:text("crimdusk_chat_hoxton_free")
       HectorState = CampaignData["hector_dead" .. perma] and loc:text("crimdusk_chat_hector_dead") or loc:text("crimdusk_chat_hector_alive_free")
@@ -81,6 +93,7 @@ function CrimDusk:Init()
       HectorState = loc:text("crimdusk_chat_hector_alive_prison")
     end
 
+    -- Set up chat message
     DelayedCalls:Add("CrimDusk_CampaignConclusion", 2, function()
       local ending = loc:text("crimdusk_chat_campaign_conclusion", {
         LENGTH = CampaignLength, SUCCESS = CampaignWon,
@@ -119,7 +132,7 @@ function CrimDusk:Init()
   -- Play button text
   function self.PlayButtonLoc()
     local heists_won = "heists_won" .. CrimDusk.IsPermadeath()
-    if Global.CrimDusk.campaign[Global.CrimDusk.data[heists_won] + 1] then
+    if Global.CrimDusk.campaign[Global.CrimDusk.data[heists_won] + 1] and CrimDusk.IsPermadeath() ~= "_perma" then
       managers.localization:add_localized_strings({
         ["crimdusk_continue_run_desc"] = managers.localization:text("crimdusk_play_next_desc", {
           HEIST = managers.localization:text("heist_" .. Global.CrimDusk.campaign[Global.CrimDusk.data[heists_won] + 1])
@@ -177,6 +190,8 @@ function CrimDusk:Init()
     local permadeath = CrimDusk.IsPermadeath()
     CrimDusk.Log(FileIdent, "Performing soft reset!", true)
     Global.CrimDusk.data["heist_chain" .. permadeath] = {}
+    Global.CrimDusk.data["next_heists" .. permadeath] = {}
+    Global.CrimDusk.data["heists_skipped" .. permadeath] = {}
     Global.CrimDusk.data["lives" .. permadeath] = 30 + managers.player:upgrade_value("player", "additional_lives", 0)
     Global.CrimDusk.data["winters_dead" .. permadeath] = false
     Global.CrimDusk.data["hector_dead" .. permadeath] = false
@@ -191,8 +206,8 @@ function CrimDusk:Init()
   function self:Reset()
     CrimDusk.Log(FileIdent, "Performing full reset!", true)
     Global.CrimDusk.data = {
-      heists_won = 0, heist_chain = {}, lives = 30, weekly_holdout = {},
-      heists_won_perma = 0, heist_chain_perma = {}, lives_perma = 30,
+      heists_won = 0, heist_chain = {}, next_heists = {}, heists_skipped = {}, lives = 30, weekly_holdout = {},
+      heists_won_perma = 0, heist_chain_perma = {}, next_heists_perma = {}, heists_skipped_perma = {}, lives_perma = 30,
 
       winters_dead = false, hector_dead = false,
       winters_dead_perma = false, hector_dead_perma = false,
@@ -271,6 +286,10 @@ function Global.CrimDusk:Init()
     self.data.heists_won_perma = self.data.heists_won_perma or 0
     self.data.heist_chain = self.data.heist_chain or {}
     self.data.heist_chain_perma = self.data.heist_chain_perma or {}
+    self.data.next_heists = self.data.next_heists or {}
+    self.data.next_heists_perma = self.data.next_heists_perma or {}
+    self.data.heists_skipped = self.data.heists_skipped or {}
+    self.data.heists_skipped_perma = self.data.heists_skipped_perma or {}
     self.data.lives = self.data.lives or 30
     self.data.lives_perma = self.data.lives_perma or 30
     self.data.weekly_holdout = {}

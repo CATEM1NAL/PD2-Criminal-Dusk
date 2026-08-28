@@ -23,9 +23,18 @@ Hooks:PostHook(GameOverState, "at_enter", "CrimDusk_HeistFailed", function(self)
 
   elseif Global.CrimDusk.data.heists_won < 5 then Global.CrimDusk.data.heists_won = 5
 
-  elseif Global.CrimDusk.data.heists_won >= 78 then
+  elseif Global.CrimDusk.data.heists_won >= #Global.CrimDusk.campaign then
     Global.CrimDusk.data.heist_chain = Global.CrimDusk.data.heist_chain or {}
-    table.insert(Global.CrimDusk.data.heist_chain, (Global.CrimDusk.job_to_wrapper[managers.job:current_job_id()] or managers.job:current_job_id()))
+    Global.CrimDusk.data.heists_skipped = Global.CrimDusk.data.heists_skipped or {}
+
+    local CurrentHeists = Global.CrimDusk.data.next_heists
+    for i = 1, #CurrentHeists do
+      if CurrentHeists[i] == Global.CrimDusk.job_to_wrapper[managers.job:current_job_id()] or managers.job:current_job_id() then
+        table.insert(Global.CrimDusk.data.heist_chain, (Global.CrimDusk.job_to_wrapper[CurrentHeists[i]] or CurrentHeists[i]))
+
+      else table.insert(Global.CrimDusk.data.heists_skipped, (Global.CrimDusk.job_to_wrapper[CurrentHeists[i]] or CurrentHeists[i])) end
+    end
+    Global.CrimDusk.data.next_heists = {}
 
   elseif not checkpoints[Global.CrimDusk.data.heists_won] then
     Global.CrimDusk.data.heists_won = Global.CrimDusk.data.heists_won - 1

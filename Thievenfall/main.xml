@@ -100,7 +100,6 @@
           <hook source_file="lib/managers/menu/skilltreeguinew" file="skilltreegui.lua"/>
           <hook source_file="lib/managers/menu/crewmanagementgui" file="crewmanagementgui.lua"/>
           <hook source_file="lib/managers/menu/infamytreeguinew" file="infamytreegui.lua"/>
-          <hook source_file="lib/managers/hud/hudstageendscreen" file="stageendscreen.lua"/>
         </hooks>
 
         <hooks directory="hud"> <!-- root/lua/managers/hud/ -->

@@ -1,7 +1,5 @@
 Hooks:PostHook(GuiTweakData, "init", "CrimDusk_InitGuiTweak", function(self)
-  if not CrimDusk.SettingsData.permadeath then
-    self.crime_net.job_vars.max_active_jobs = Global.CrimDusk.data.heists_won < 78 and 1 or 3
-  else self.crime_net.job_vars.max_active_jobs = 3 end
+  self.crime_net.job_vars.max_active_jobs = 1
   self.crime_net.job_vars.active_job_time = 86400
 
   self.crime_net.sidebar = {

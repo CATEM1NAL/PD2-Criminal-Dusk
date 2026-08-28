@@ -35,7 +35,8 @@ local function ValidHeistTable()
     elseif heist == "chas" and not Global.CrimDusk.data["vlad_freed" .. permadeath] then VladCaptured = true
     elseif heist == "bex" and not Global.CrimDusk.data["almir_freed" .. permadeath] then AlmirCaptured = true
     elseif Global.CrimDusk.mini_campaign_data.dentist[heist] then DentistHeists = DentistHeists + 1
-    elseif heist == "wwh" then LockeBetrayed = true end
+    elseif heist == "wwh" then LockeBetrayed = true
+    end
   end
 
   CrimDusk.Log(FileIdent,
@@ -108,6 +109,7 @@ local function ValidHeistTable()
 
   -- Remove already played heists
   for _, heist in ipairs(Global.CrimDusk.data[heist_chain]) do ValidHeists[heist] = nil end
+  for _, heist in ipairs(Global.CrimDusk.data["heists_skipped" .. permadeath]) do ValidHeists[heist] = nil end
 
   -- Check DLC ownership
   for heist, dlc in pairs(Global.CrimDusk.heist_dlc) do
@@ -124,8 +126,8 @@ local function ValidHeistTable()
 end
 
 Hooks:OverrideFunction(NarrativeTweakData, "is_job_locked", function(self, job)
-  if CrimDusk.IsPermadeath() ~= "_perma" and Global.CrimDusk.data.heists_won < 78 and job == Global.CrimDusk.campaign[Global.CrimDusk.data.heists_won + 1] then return false
-  elseif Global.CrimDusk.data.heists_won >= 78 and ValidHeistTable()[job] then return false end
+  if CrimDusk.IsPermadeath() ~= "_perma" and Global.CrimDusk.data.heists_won < #Global.CrimDusk.campaign and job == Global.CrimDusk.campaign[Global.CrimDusk.data.heists_won + 1] then return false
+  elseif (CrimDusk.IsPermadeath() == "_perma" or Global.CrimDusk.data.heists_won >= #Global.CrimDusk.campaign) and ValidHeistTable()[job] then return false end
   return true
 end)
 
@@ -242,14 +244,16 @@ Hooks:PostHook(NarrativeTweakData, "init", "CrimDusk_NarrativeTweakInit", functi
   self.jobs.cd_erection_wrapper.briefing_id = "heist_election_day_crimenet"
   self.jobs.cd_erection_wrapper.contact = "the_elephant"
   self.jobs.cd_erection_wrapper.job_wrapper = { "cd_erection1", "cd_erection2" }
-  self.jobs.cd_erection_wrapper.jc = 40
+  self.jobs.cd_erection_wrapper.crimenet_videos = { "cn_elcday1", "cn_elcday2", "cn_elcday3" }
+  self.jobs.cd_erection_wrapper.crimenet_callouts = { "elp_election_cmc_01" }
 
   self.jobs.cd_bomb = deep_clone(self.jobs.arm_wrapper)
   self.jobs.cd_bomb.name_id = "heist_bomb"
   self.jobs.cd_bomb.briefing_id = "heist_bomb_crimenet"
   self.jobs.cd_bomb.contact = "the_butcher"
   self.jobs.cd_bomb.job_wrapper = { "crojob1", "crojob_wrapper" }
-  self.jobs.cd_bomb.jc = 60
+  self.jobs.cd_bomb.crimenet_videos = { "cn_cro1", "cn_cro2", "cn_cro3" }
+  self.jobs.cd_bomb.crimenet_callouts = { "butcher_cr1_cnc_01" }
 
   self.jobs.cd_watchdogs1_d = deep_clone(self.jobs.watchdogs)
   self.jobs.cd_watchdogs1_d.name_id = "heist_watchdogs_1_hl"
@@ -289,11 +293,16 @@ Hooks:PostHook(NarrativeTweakData, "init", "CrimDusk_NarrativeTweakInit", functi
   self.jobs.pent.payout[1] = 500000
   self.jobs.deep.payout[1] = 500000
 
-  -- Breakout
+  -- No payout
   self.jobs.cd_hox1.payout[1] = 0
   self.jobs.cd_hox2.payout[1] = 0
+  self.jobs.cd_biker1.payout[1] = 0
+  self.jobs.bph.payout[1] = 0
+  self.jobs.cd_rats.payout[1] = 0
+  self.jobs.cd_goat1.payout[1] = 0
 
   -- Job index
+  table.insert(self._jobs_index, "arm_wrapper")
   table.insert(self._jobs_index, "cd_tut1")
   table.insert(self._jobs_index, "cd_tut2")
   table.insert(self._jobs_index, "cd_tut3")

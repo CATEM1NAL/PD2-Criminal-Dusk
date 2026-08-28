@@ -14,16 +14,16 @@ crimdusk_chat_campaign_short: "It might feel like you were just getting started,
 crimdusk_chat_campaign_long: "It's been a long road,"
 
 crimdusk_chat_success: "but your trail of chaos is at an end."
-crimdusk_chat_failure: "but unfortunately you have failed."
+crimdusk_chat_failure: "but you have failed."
 
-crimdusk_chat_bain_alive: "Bain is alive and well,"
+crimdusk_chat_bain_alive: "Bain has made a full recovery,"
 crimdusk_chat_bain_dead: "Bain never made it out of Hell's Island,"
 
-crimdusk_chat_vlad_alive: "Vlad has returned to his bakery,"
+crimdusk_chat_vlad_alive: "Vlad retired to Cuba,"
 crimdusk_chat_vlad_dead: "Vlad is missing,"
 
-crimdusk_chat_almir_alive: "and his brother-in-law is back in the air."
-crimdusk_chat_almir_dead: "and his brother-in-law is still stuck in Mexico."
+crimdusk_chat_almir_alive: "and his brother-in-law is still in the air."
+crimdusk_chat_almir_dead: "and his brother-in-law is stuck in Mexico."
 
 crimdusk_chat_hoxton_free: "We managed to get Hoxton out of prison"
 crimdusk_chat_hoxton_prison: "Hoxton is still rotting behind bars"
@@ -42,12 +42,18 @@ crimdusk_play_offline_title: "Play Offline [Heist $HEIST_NUM]"
 
 crimdusk_play_next_title: "Play Next Heist [$HEIST_NUM]"
 crimdusk_play_next_desc: "Campaign incomplete: next heist is $HEIST!"
-crimdusk_play_next_random: "Choose from up to three randomly selected heists.\nYou are $NUMHEISTS heists into this campaign."
+crimdusk_play_next_random: "Choose from up to three randomly selected heists.\nYou are $NUMHEISTS heists into this campaign!"
 
 crimdusk_campaign_active: "The next heist is $HEIST."
 crimdusk_campaign_inactive: "Select the next heist on Crime.net."
 
 crimdusk_holdout_desc: "Survive for nine increasingly difficult waves.\nNew holdout in $DAYS days!"
+
+# Heists
+heist_arm_temp: "Armored Transport"
+heist_arm_crimenet: "I managed to dig up some info on a few GenSec truck routes. If we act fast enough we'll be gone before they have time to process what happened.\n\n» Break into the immobilized trucks\n» Crack open the strongboxes\n» Get the loot to the getaway vehicle"
+heist_bomb: "The Bomb"
+heist_bomb_crimenet: "Our girl's no stranger to weapons, and she's got her eyes on something very special. A high yield explosive is currently being transported through D.C. and the Butcher wants to get her hands on it before it's decommissioned. Our best bet is to either hit it while it's docked, or intercept it in transit - we'll let you know which when we're ready.\n\n» Locate and steal the bomb"
 
 ### STRING OVERRIDES ###
 # PDTH difficulties
@@ -64,6 +70,9 @@ cn_menu_pro_job: ""
 dialog_blackmarket_slot_item_sell: "You will not be refunded!"
 dialog_skilltree_reseted: "The skill trees have changed. Your skill sets have been reset."
 menu_skirmish_weekly_reward_end_screen: ""
+
+# Crew AI
+menu_crew_motivated_desc: "Armor speed penalty reduced by 50%."
 
 # Weapons
 bm_w_lemming_desc: "Weapon penetrates enemies and body armor."
