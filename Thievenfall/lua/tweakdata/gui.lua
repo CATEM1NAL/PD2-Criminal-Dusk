@@ -24,9 +24,5 @@ Hooks:PostHook(GuiTweakData, "init", "CrimDusk_InitGuiTweak", function(self)
     --{ item_class = "CrimeNetSidebarSeparator", visible_callback = "clbk_new_weekly_holdout" },
     --{ id = "crime_spree", name_id = "cn_crime_spree", icon = "sidebar_crimespree", callback = "clbk_crime_spree", item_class = "CrimeNetSidebarCrimeSpreeItem", visible_callback = "clbk_visible_crime_spree" },
     -- No plans to implement crime spree right now, because, like, what the fuck would it even be???
-
-    { name_id = "menu_cn_leakedrecording_separator", item_class = "CrimeNetSidebarSeparator" },
-
-    { id = "leakedrecording", name_id = "menu_cn_leakedrecording", icon = "sidebar_leakedrecording", callback = "clbk_leakedrecording", item_class = "CrimeNetSidebarLeakedRecordingItem", visible_callback = "clbk_visible_leakedrecording" }
   }
 end)
