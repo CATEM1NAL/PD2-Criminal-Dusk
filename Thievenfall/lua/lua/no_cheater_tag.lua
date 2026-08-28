@@ -1,1 +1,0 @@
-Hooks:OverrideFunction(NetworkPeer, "mark_cheater", function() end)

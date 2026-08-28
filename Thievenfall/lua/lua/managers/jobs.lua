@@ -1,2 +1,0 @@
-Hooks:OverrideFunction(JobManager, "is_current_job_professional", function() return true end)
-Hooks:OverrideFunction(JobManager, "set_next_interupt_stage", function(self) self._global.next_interupt_stage = nil end)
