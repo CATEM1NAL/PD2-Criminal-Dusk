@@ -90,7 +90,6 @@ Hooks:OverrideFunction(CrimeNetManager, "activate_job", function(self)
     end
   return end
 
-
   math.randomseed(os.time())
   math.random() -- required for random number of heists to work, else always 3
 
@@ -120,7 +119,7 @@ end)
 
 function CrimeNetSidebarGui:clbk_new_weekly_holdout()
   if Global.game_settings.single_player then return false end
-  local LastWeekly = Global.CrimDusk.data.weekly_holdout
+  local LastWeekly = Global.CrimDusk.holdout_data
   if (LastWeekly.end_timestamp or 0) > os.time() then return false
   elseif not Global.skirmish_manager then return false
   else for key, value in pairs(Global.skirmish_manager.active_weekly) do

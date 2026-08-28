@@ -24,6 +24,7 @@ function CrimDusk:Init()
 
   self.SaveFile = self.SavePath .. "thievenfall_save.txt"
   self.SettingsFile = self.SavePath .. "thievenfall_settings.txt"
+  self.HoldoutData = self.SavePath .. "thievenfall_holdout.txt"
 
   self.SettingsData = io.load_as_json(CrimDusk.SettingsFile) or {}
   if not self.SettingsData then self.SettingsData = {} end
@@ -206,7 +207,7 @@ function CrimDusk:Init()
   function self:Reset()
     CrimDusk.Log(FileIdent, "Performing full reset!", true)
     Global.CrimDusk.data = {
-      heists_won = 0, heist_chain = {}, next_heists = {}, heists_skipped = {}, lives = 30, weekly_holdout = {},
+      heists_won = 0, heist_chain = {}, next_heists = {}, heists_skipped = {}, lives = 30,
       heists_won_perma = 0, heist_chain_perma = {}, next_heists_perma = {}, heists_skipped_perma = {}, lives_perma = 30,
 
       winters_dead = false, hector_dead = false,
@@ -292,7 +293,6 @@ function Global.CrimDusk:Init()
     self.data.heists_skipped_perma = self.data.heists_skipped_perma or {}
     self.data.lives = self.data.lives or 30
     self.data.lives_perma = self.data.lives_perma or 30
-    self.data.weekly_holdout = {}
 
     -- Flags for post-game campaign
     self.data.bain_freed = self.data.bain_freed or false
@@ -314,8 +314,12 @@ function Global.CrimDusk:Init()
 
   else
     CrimDusk:Reset()
+    self.data.weekly_holdout = {}
     CrimDusk:WriteSave(FileIdent, "save created")
   end
+
+  self.holdout_data = io.load_as_json(CrimDusk.HoldoutData)
+  if not self.holdout_data then self.holdout_data = {} end
 
   CrimDusk.Log(FileIdent, "Global initialisation completed!", true)
 end

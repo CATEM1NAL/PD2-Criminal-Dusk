@@ -3,8 +3,9 @@ local FileIdent = "Gameover"
 
 Hooks:PostHook(GameOverState, "at_enter", "CrimDusk_HeistFailed", function(self)
   if managers.skirmish:is_skirmish() then -- Weekly Holdout
-    Global.CrimDusk.data.weekly_holdout = Global.skirmish_manager.active_weekly
-    CrimDusk:WriteSave(FileIdent, "holdout failed")
+    Global.CrimDusk.holdout_data = Global.skirmish_manager.active_weekly
+    io.save_as_json(Global.CrimDusk.holdout_data, CrimDusk.HoldoutData)
+    CrimDusk.Log(FileIdent, "Holdout failed")
   return end
 
   if NetworkHelper:IsHost() and CrimDusk.SettingsData.permadeath then
