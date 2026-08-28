@@ -1,0 +1,166 @@
+<mod name="Thievenfall" global_key="thievenfall" author="~/cat/em1/nal/" color="Color(0.734375,0.4921875,0.73828125)" image="dawn">
+  <!-- Auto update from latest GitHub release -->
+  <AssetUpdates version="0.10.0" id="CATEM1NAL/PD2-Thievenfall" provider="github" release="true"/>
+
+  <AddFiles directory="assets">
+    <png path="dawn"/> <!-- mod icon -->
+
+    <!-- logo replacement -->
+    <texture path="units/menu/menu_scene/menu_cylinder_logo"/> <!-- main menu background -->
+    <texture path="guis/textures/menu_title_screen"/> <!-- press any key -->
+    <texture path="guis/textures/game_small_logo"/> <!-- loading screen -->
+
+    <!-- texture swaps -->
+    <texture path="guis/textures/pd2/menu_backdrop/bd_baselayer"/> <!-- briefing overlay -->
+    <texture path="guis/textures/drill_screen_background"/> <!-- drill screen -->
+
+    <!-- audio -->
+    <stream path="soundbanks/streamed/job_l_vit_stage1/938261088"/> <!-- locke singing -->
+  </AddFiles>
+
+  <localization directory="loc" default_language="english">
+    <loc file="english.yaml" language="english"/>
+  </localization>
+
+  <Hooks> <!-- root/ -->
+    <hook type="pre" source_file="lib/setups/setup" file="setup.lua"/>
+
+    <hooks directory="lua"> <!-- root/lua/ -->
+      <hook source_file="lib/network/base/basenetworksession" file="peer_sync.lua"/>
+      <hook source_file="lib/network/base/networkpeer" file="no_cheater_tag.lua"/>
+      <hook source_file="lib/player_actions/skills/playeractionshockandawe" file="lock_n_load.lua"/>
+
+      <hooks directory="tweakdata"> <!-- root/lua/tweakdata/ -->
+        <hook source_file="lib/setups/setup" file="tweakdata.lua"/>
+        <hook source_file="lib/tweak_data/charactertweakdata" file="enemies.lua"/>
+        <hook source_file="lib/tweak_data/groupaitweakdata" file="groupai.lua"/>
+        <hook source_file="lib/tweak_data/blackmarkettweakdata" file="blackmarket.lua"/>
+        <hook source_file="lib/tweak_data/moneytweakdata" file="money.lua"/>
+        <hook source_file="lib/tweak_data/dlctweakdata" file="dlc.lua"/>
+        <hook source_file="lib/tweak_data/lootdroptweakdata" file="lootdrop.lua"/>
+        <hook source_file="lib/tweak_data/customsafehousetweakdata" file="safehouse.lua"/>
+        <hook source_file="lib/tweak_data/achievementstweakdata" file="achievements.lua"/>
+        <hook source_file="lib/tweak_data/gageassignmenttweakdata" file="gagepackage.lua"/>
+        <hook source_file="lib/tweak_data/economytweakdata" file="skins.lua"/>
+        <hook source_file="lib/tweak_data/guitweakdata" file="gui.lua"/>
+        <hook source_file="lib/tweak_data/tangotweakdata" file="specops.lua"/>
+        <hook source_file="lib/tweak_data/eventjobstweakdata" file="eventsidejobs.lua"/>
+
+        <hooks directory="player"> <!-- root/lua/tweakdata/player -->
+          <hook source_file="lib/tweak_data/playertweakdata" file="player.lua"/>
+          <hook source_file="lib/tweak_data/interactiontweakdata" file="interactions.lua"/>
+          <hook source_file="lib/tweak_data/upgradestweakdata" file="upgrades.lua"/>
+          <hook source_file="lib/tweak_data/skilltreetweakdata" file="skilltree.lua"/>
+          <hook source_file="lib/tweak_data/equipmentstweakdata" file="equipment.lua"/>
+          <hook source_file="lib/tweak_data/infamynewtweakdata" file="infamy.lua"/>
+        </hooks>
+
+        <hooks directory="weapons"> <!-- root/lua/tweakdata/weapons -->
+          <hook source_file="lib/tweak_data/weapontweakdata" file="weapons.lua"/>
+          <hook source_file="lib/tweak_data/weaponfallofftweakdata" file="weaponfalloff.lua"/>
+          <hook source_file="lib/tweak_data/weaponfactorytweakdata" file="weaponfactory.lua"/>
+          <hook source_file="lib/tweak_data/blackmarket/meleeweaponstweakdata" file="meleeweapons.lua"/>
+          <hook source_file="lib/tweak_data/blackmarket/projectilestweakdata" file="projectiles.lua"/>
+          <hook source_file="lib/tweak_data/firetweakdata" file="fire.lua"/>
+        </hooks>
+
+        <hooks directory="heists"> <!-- root/lua/tweakdata/weapons -->
+          <hook source_file="lib/tweak_data/levelstweakdata" file="levels.lua"/>
+          <hook source_file="lib/tweak_data/narrativetweakdata" file="narrative.lua"/>
+          <hook source_file="lib/tweak_data/assetstweakdata" file="assets.lua"/>
+          <hook source_file="lib/tweak_data/preplanningtweakdata" file="preplanning.lua"/>
+        </hooks>
+      </hooks>
+
+      <hooks directory="managers"> <!-- root/lua/managers/ -->
+        <hook source_file="lib/managers/savefilemanager" file="savefile.lua"/>
+        <hook source_file="lib/network/base/networkmanager" file="network.lua"/>
+        <hook source_file="lib/managers/menumanager" file="menu.lua"/>
+        <hook source_file="lib/managers/skilltreemanager" file="skilltree.lua"/>
+        <hook source_file="lib/managers/blackmarketmanager" file="blackmarket.lua"/>
+        <hook source_file="lib/managers/jobmanager" file="jobs.lua"/>
+        <hook source_file="lib/managers/experiencemanager" file="experience.lua"/>
+        <hook source_file="lib/managers/dlcmanager" file="dlc.lua"/>
+        <hook source_file="lib/managers/playermanager" file="player.lua"/>
+        <hook source_file="lib/managers/perpetualeventmanager" file="perpetualevents.lua"/>
+        <hook source_file="lib/managers/preplanningmanager" file="preplanning.lua"/>
+        <hook source_file="lib/managers/gageassignmentmanager" file="gagepackage.lua"/>
+        <hook source_file="lib/managers/customsafehousemanager" file="safehouse.lua"/>
+        <hook source_file="lib/managers/skirmishmanager" file="holdout.lua"/>
+        <hook source_file="lib/managers/crimenetmanager" file="crimenet.lua"/>
+
+        <hooks directory="core"> <!-- root/lua/managers/core/ -->
+          <hook source_file="core/lib/managers/coreenvironmentcontrollermanager" file="environmentcontroller.lua"/>
+        </hooks>
+
+        <hooks directory="menu"> <!-- root/lua/managers/menu/ -->
+          <hook source_file="lib/managers/menu/menuscenemanager" file="menuscene.lua"/>
+          <hook source_file="lib/managers/menu/playerinventorygui" file="inventorygui.lua"/>
+          <hook source_file="lib/managers/menu/blackmarketgui" file="blackmarketgui.lua"/>
+          <hook source_file="lib/managers/menu/skilltreeguinew" file="skilltreegui.lua"/>
+          <hook source_file="lib/managers/menu/crewmanagementgui" file="crewmanagementgui.lua"/>
+          <hook source_file="lib/managers/menu/infamytreeguinew" file="infamytreegui.lua"/>
+        </hooks>
+
+        <hooks directory="hud"> <!-- root/lua/managers/hud/ -->
+          <hook source_file="lib/managers/hud/hudteammate" file="teammate.lua"/>
+          <hook source_file="lib/managers/hud/hudstageendscreen" file="stageend.lua"/>
+        </hooks>
+
+        <hooks directory="elements"> <!-- root/lua/managers/elements/ -->
+          <hook source_file="lib/managers/mission/elementspawndeployable" file="spawndeployable.lua"/>
+          <hook source_file="lib/managers/mission/elementplayerspawner" file="spawnplayer.lua"/>
+          <hook source_file="lib/managers/mission/elementspawncivilian" file="spawncivilian.lua"/>
+        </hooks>
+
+        <hooks directory="group_ai"> <!-- root/lua/managers/group_ai/ -->
+          <hook source_file="lib/managers/group_ai_states/groupaistatebase" file="base.lua"/>
+          <hook source_file="lib/managers/group_ai_states/groupaistatebesiege" file="besiege.lua"/>
+        </hooks>
+      </hooks>
+
+      <hooks directory="states"> <!-- root/lua/states/ -->
+        <hook source_file="lib/states/ingamestandard" file="ingamestandard.lua"/>
+        <hook source_file="lib/states/victorystate" file="victory.lua"/>
+        <hook source_file="lib/states/gameoverstate" file="gameover.lua"/>
+      </hooks>
+
+      <hooks directory="units"> <!-- root/lua/units/ -->
+        <hook source_file="lib/units/props/drill" file="drill.lua"/>
+        <hook source_file="lib/units/props/timergui" file="timergui.lua"/>
+        <hook source_file="lib/units/props/securitycamera" file="camera.lua"/>
+
+        <hooks directory="player"> <!-- root/lua/units/player/ -->
+          <hook source_file="lib/units/beings/player/states/playermaskoff" file="maskoff.lua"/>
+          <hook source_file="lib/units/beings/player/states/playerstandard" file="standard.lua"/>
+          <hook source_file="lib/units/beings/player/states/playercarry" file="carry.lua"/>
+          <hook source_file="lib/units/beings/player/playerdamage" file="damage.lua"/>
+          <hook source_file="lib/units/beings/player/playermovement" file="movement.lua"/>
+          <hook source_file="lib/units/beings/player/playerinventory" file="inventory.lua"/>
+          <hook source_file="lib/units/beings/player/huskplayerdamage" file="huskdamage.lua"/>
+        </hooks>
+
+        <hooks directory="equipment"> <!-- root/lua/units/equipment/ -->
+          <hook source_file="lib/units/equipment/doctor_bag/doctorbagbase" file="doctorbag.lua"/>
+          <hook source_file="lib/units/equipment/ammo_bag/ammobagbase" file="ammobag.lua"/>
+          <hook source_file="lib/units/equipment/sentry_gun/sentrygunbase" file="sentrygun.lua"/>
+          <hook source_file="lib/units/weapons/trip_mine/tripminebase" file="tripmine.lua"/>
+        </hooks>
+
+        <hooks directory="weapons"> <!-- root/lua/units/weapons/ -->
+          <hook source_file="lib/units/weapons/newraycastweaponbase" file="raycastweaponbase.lua"/>
+          <hook source_file="lib/units/weapons/shotgun/shotgunbase" file="shotgunbase.lua"/>
+          <hook source_file="lib/units/weapons/projectiles/projectilebase" file="projectilebase.lua"/>
+        </hooks>
+
+        <hooks directory="enemies"> <!-- root/lua/units/enemies/ -->
+          <hook source_file="lib/units/enemies/cop/copdamage" file="copdamage.lua"/>
+          <hook source_file="lib/units/enemies/spooc/actions/lower_body/actionspooc" file="actionspooc.lua"/>
+        </hooks>
+      </hooks>
+
+    </hooks>
+  </Hooks>
+
+  <Keybind keybind_id="CrimDusk_InstantMelee" name="crimdusk_instantmelee_title" description="crimdusk_instantmelee_desc" localized="true" run_in_menu="false" script_path="lua/weapon_butt.lua"/>
+</mod>

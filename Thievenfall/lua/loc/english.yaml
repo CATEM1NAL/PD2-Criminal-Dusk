@@ -1,0 +1,2589 @@
+### MENUS ###
+## MOD SETTINGS
+crimdusk_settings_name: "Thievenfall"
+crimdusk_settings_desc: "Tweak the gameplay to your liking."
+crimdusk_permadeath_name: "Professional Mode"
+crimdusk_permadeath_desc: "Randomised campaigns where failure is not an option.\nThis mode stores campaign progress separately!"
+crimdusk_reset_campaign_name: "Reset Campaign"
+crimdusk_reset_campaign_desc: "Wipes all campaign progress (Standard & Professional Mode)."
+crimdusk_instantmelee_title: "Quick Melee"
+crimdusk_instantmelee_desc: "Press this key to use weapon butt."
+
+## CAMPAIGN
+crimdusk_chat_campaign_short: "It might feel like you were just getting started,"
+crimdusk_chat_campaign_long: "It's been a long road,"
+
+crimdusk_chat_success: "but your trail of chaos is at an end."
+crimdusk_chat_failure: "but unfortunately you have failed."
+
+crimdusk_chat_bain_alive: "Bain is alive and well,"
+crimdusk_chat_bain_dead: "Bain never made it out of Hell's Island,"
+
+crimdusk_chat_vlad_alive: "Vlad has returned to his bakery,"
+crimdusk_chat_vlad_dead: "Vlad is missing,"
+
+crimdusk_chat_almir_alive: "and his brother-in-law is back in the air."
+crimdusk_chat_almir_dead: "and his brother-in-law is still stuck in Mexico."
+
+crimdusk_chat_hoxton_free: "We managed to get Hoxton out of prison"
+crimdusk_chat_hoxton_prison: "Hoxton is still rotting behind bars"
+
+crimdusk_chat_hector_alive_free: "but we never figured out who sent him there."
+crimdusk_chat_hector_alive_prison: "and we never figured out why."
+crimdusk_chat_hector_dead: "and we managed to kill the rat."
+
+crimdusk_chat_campaign_conclusion: "$LENGTH $SUCCESS\n$BAIN $VLAD $ALMIR $HOXTON $HECTOR\nThis campaign lasted $HEISTS heists!"
+
+## LOBBY
+crimdusk_create_lobby_title: "Create Lobby"
+crimdusk_create_lobby_desc: "Play with your friends!"
+
+crimdusk_play_offline_title: "Play Offline [Heist $HEIST_NUM]"
+
+crimdusk_play_next_title: "Play Next Heist [$HEIST_NUM]"
+crimdusk_play_next_desc: "Campaign incomplete: next heist is $HEIST!"
+crimdusk_play_next_random: "Choose from up to three randomly selected heists.\nYou are $NUMHEISTS heists into this campaign."
+
+crimdusk_campaign_active: "The next heist is $HEIST."
+crimdusk_campaign_inactive: "Select the next heist on Crime.net."
+
+crimdusk_holdout_desc: "Survive for nine increasingly difficult waves.\nNew holdout in $DAYS days!"
+
+### STRING OVERRIDES ###
+# PDTH difficulties
+crimdusk_pdth_normal: "Easy"
+crimdusk_pdth_hard: "Normal"
+crimdusk_pdth_very_hard: "Hard"
+crimdusk_pdth_mayhem: "OVERKILL 145+"
+crimdusk_pdth_death_wish: "OVERKILL 193"
+
+# Menu
+menu_one_down: "Professional"
+menu_pro_warning: "Quitting and restarting have been disabled!"
+cn_menu_pro_job: ""
+dialog_blackmarket_slot_item_sell: "You will not be refunded!"
+dialog_skilltree_reseted: "The skill trees have changed. Your skill sets have been reset."
+menu_skirmish_weekly_reward_end_screen: ""
+
+# Weapons
+bm_w_lemming_desc: "Weapon penetrates enemies and body armor."
+bm_w_maxim9_desc: "Weapon is integrally suppressed."
+bm_wp_upg_a_grenade_launcher_hornet_desc: "Fire a burst of armor penetrating rounds."
+bm_menu_weapon_movement_penalty_info: "Reduces movement speed by $penalty."
+
+# Deployables
+bm_equipment_ammo_bag_desc: "Contains enough ammo to fully refill one weapon and half of another weapon. Can be upgraded with Enforcer skills."
+bm_equipment_bodybags_bag_desc: "Holds three extra body bags. Can bring an additional case with the 'Cleaner' skill."
+bm_equipment_doctor_bag_desc: "Holds one charge which fully restores health and replenishes one down. Can be upgraded with Mastermind skills."
+bm_equipment_ecm_jammer_desc: "Activates upon being placed, jamming all active phone calls for 20 seconds. Can be upgraded with Ghost skills."
+bm_equipment_first_aid_kit_desc: "Single use full heal. Can be upgraded with Mastermind skills."
+bm_equipment_sentry_gun_desc: "Automated weapon that fires at enemies within range. After firing 100 bullets it needs to be picked up to fire again. If the sentry takes too much damage you cannot pick it up. Can be upgraded with Technician skills."
+bm_equipment_trip_mine: "Trip Mine"
+bm_equipment_trip_mine_desc: "Single use trap that can be placed anywhere. Detonates upon taking damage or the laser being broken. Can be upgraded with Technician skills."
+bm_equipment_spy_camera_desc: "Remote camera that continuously marks enemies within its line of sight. Can be picked back up after placement." 
+
+# Side Jobs
+menu_tango_key: "Find the key"
+menu_tango_case: "Find the weapon case"
+menu_tango_key_1: "Find the key (Airport)"
+menu_tango_key_2: "Find the key (FBI Server)"
+menu_tango_1_key_1_desc: "Find the key in 'Cook Off' (Hector)."
+menu_tango_2_case_desc: "Find the weapon case in 'Engine Problem'."
+menu_tango_3_case_desc: "Find the weapon case in 'Framing'."
+menu_tango_4_key_1_desc: "Find the keys in 'Airport' and 'FBI Server'."
+menu_aru_job_1_reward: "A new weapon, C-Stacks, and a safe house trophy."
+menu_aru_job_2_reward: "A new weapon, C-Stacks, and a safe house trophy."
+menu_aru_job_3_reward: "A new weapon, C-Stacks, and a safe house trophy."
+menu_aru_job_4_reward: "C-Stacks and a safe house trophy."
+menu_jfr_job_1_case_desc: "Finish 'Airport' after taking the briefcase."
+menu_jfr_job_3_wine_desc: "Escape after stealing the wine in 'Framing' without the alarm going off."
+menu_pda8_2_prog_obj_desc: "Collect three different anniversary statues."
+menu_pda8_2_prog_obj: "Statues Found"
+menu_pda8_3_prog_obj_desc: "Collect five different anniversary statues."
+menu_pda8_3_prog_obj: "Statues Found"
+menu_pda8_item_1_desc: "Collect all seven anniversary statues."
+menu_pda8_item_2: "Almir Figurine (Airport & FBI Server)"
+menu_pda8_item_3: "SWAT Van (Four Stores)"
+menu_pda8_item_4: "Toothbrush (Nightclub)"
+menu_pda8_item_5: "Medallion (Watchdogs)"
+menu_pda8_item_6: "Cocktail (Hector: Cook Off)"
+menu_pda8_item_7: "DEAD GAME T-Shirt (Bank Heist: Random)"
+menu_pda8_item_8: "Mariachi Figurine (Mallcrasher)"
+menu_pda9_item_n1_desc: "Secure 9 bags of gold in 'Slaughterhouse'."
+menu_pda9_item_n2_desc: "Perform 99 double kills with any penetrating weapon."
+menu_pda9_item_n3_desc: "Steal 9999 pieces of loose cash."
+menu_pda9_item_n4_desc: "Kill 99 enemies with the money bundle."
+menu_pda9_item_n4: "Money Bundle Kills"
+menu_pda9_item_n5_desc: "Secure Almir's Toast nine times."
+menu_pda9_item_n5: "Toast Secured"
+menu_cg22_post_objective_1_desc: "Kill 50 enemies with snowballs or kill 500 enemies with sniper rifles."
+menu_cg22_post_objective_2_desc: "Kill 5000 enemies with any weapon or kill 50 cloakers with the North Star."
+menu_cg22_post_objective_3_desc: "Using the North Star, kill 500 special enemies or perform 1000 double kills."
+menu_cg22_post_objective_4_desc: "Secure 100 loot bags."
+menu_cg22_post_objective_5_desc: "Kill 100 bulldozers."
+menu_cg22_post_objective_6_desc: "Secure 250 loot bags."
+menu_cg22_post_objective_8_desc: "Kill 500 bulldozers."
+menu_cg22_post_objective_9_desc: "Secure 500 loot bags."
+menu_pda10_post_objective_3_desc: "Complete 50 heists."
+menu_pda10_post_objective_5_desc: "Perform 50 double kills with the musket or kill 1000 enemies with sniper rifles."
+menu_pda10_post_objective_2_desc: "Secure 50 loot bags."
+menu_pda10_post_objective_6_desc: "Kill 100 enemies with the HAM-mer or kill 500 enemies with any melee weapon."
+menu_pda10_post_objective_1_desc: "Kill 250 bulldozers."
+menu_pda10_post_objective_4_desc: "Collect 500 Gage packages."
+
+# Trophies
+trophy_bains_book_completion_objective: "Complete 'No Mercy' on Death Sentence."
+trophy_tiara_objective: "Complete 'Ukrainian Job' on Death Sentence."
+trophy_train_bomb_objective: "Complete 'The Bomb: Forest' on Death Sentence."
+trophy_tfturret_objective: "Complete 'Transport: Train Heist' on Death Sentence."
+trophy_box_3_completion_objective: "Complete 'Henry's Rock' on Death Sentence."
+trophy_transports_objective: "Complete all Armored Transport heists on Death Sentence."
+trophy_black_plate_completion_objective: "Complete 'Shacklethorne Auction' on Death Sentence."
+trophy_brb_1_completion_objective: "Complete 'Brooklyn Bank' on Death Sentence."
+trophy_box_1_completion_objective: "Complete 'Golden Grin Casino' and 'Henry's Rock' on Death Sentence."
+trophy_box_2_completion_objective: "Complete 'Breakin' Feds' on Death Sentence."
+trophy_defender_objective: "Successfully defend your safe house on Death Sentence."
+trophy_goat_objective: "Complete 'Dirty Work' on Death Sentence."
+trophy_falcogini_objective: "Complete 'Car Shop' on Death Sentence."
+trophy_computer_desc: "Wait, you're NOT supposed to randomly guess?"
+trophy_computer_objective: "Complete 'Engine Problem' while securing the correct engine last."
+trophy_piggy_bank_objective: "Complete 'Big Bank' on Death Sentence in under 8 minutes with all crew members using no skills."
+trophy_framing_frame_objective: "Complete 'Framing' on Death Sentence without the power being cut during the data upload."
+trophy_stealth_objective: "Complete all stealthable heists on Death Sentence without the alarm going off."
+trophy_courtesy_objective: "Complete 'Beneath the Mountain' on Death Sentence without killing any medics."
+trophy_bank_heists_objective: "Complete 'Bank Heist: Random' on Death Sentence."
+trophy_smwish_objective: "Complete 'White House' in Professional Mode."
+trophy_evolution_objective: "Complete 'Lab Rats' on Death Sentence without anyone in the crew getting any kills."
+trophy_longfellow_objective: "Complete 'Meltdown' on Death Sentence in under 7 minutes."
+trophy_dance_objective: "Complete 'Nightclub' on Death Sentence with all crew members only using trip mines and melee."
+trophy_fbi_objective: "On Death Sentence:\nComplete 'Breakin' Feds' and 'FBI Server' with all crew members having no skills.\nComplete 'The Search' in under 15 minutes."
+trophy_jfk_objective: "Complete 'Undercover' on Death Sentence with all crew members having one skill level each, only using sniper rifles, and wearing the Lightweight Ballistic Vest."
+trophy_discoball_objective: "Complete 'Nightclub' on Death Sentence in under 10 minutes."
+trophy_friendly_car_objective: "Complete 'Scarface Mansion' on Death Sentence with all crew members having one skill level each."
+trophy_ace_desc: "Is THIS your card?"
+trophy_ace_objective: "Get a single kill with the 'Ace of Spades'."
+trophy_host_objective: "Complete the campaign as a host."
+trophy_flawless_objective: "Complete any heist with at least one other player present without any friendly fire damage being dealt."
+trophy_meth_cookbook_objective: "Complete 'Cook Off' after cooking 25 bags of meth."
+trophy_diamonds_objective: "Complete 'Diamond Store' after destroying the SWAT turret and securing all loot."
+trophy_planmaker_objective: "On 'Shadow Raid', steal the samurai armor before bagging any other loot."
+trophy_pacifier_objective: "Complete the tutorials."
+trophy_hockey_team_objective: "Kill 100 enemies with the hockey stick."
+trophy_dartboard_objective: "Kill 10000 enemies with headshots."
+trophy_dozer_helmet_objective: "Kill 1000 special enemies."
+trophy_hockeykill_progress: "Melee Kills"
+trophy_boxing_gloves: "Little Mac"
+
+# Locked Items
+bm_global_value_gage_pack_jobs_unlock: "Buy the Gage Mod Courier DLC to unlock!"
+bm_menu_skill_locked_chico_injector: "Reach level 60 to unlock!"
+bm_menu_skill_locked_pocket_ecm_jammer: "Reach level 20 to unlock!"
+bm_menu_skill_locked_smoke_screen_grenade: "Reach level 40 to unlock!"
+bm_menu_skill_locked_tag_team: "Reach level 80 to unlock!"
+bm_menu_skill_locked_copr_ability: "Reach level 100 to unlock!"
+bm_menu_skill_locked_damage_control: "Requires the 'Virtue' skill!"
+bm_global_value_wild_char_unlock: "Complete 'Lion's Den' heist to unlock!"
+bm_global_value_hoxton_unlock: "Complete 'The Breakout' heist to unlock!"
+
+# Upgrade Requirements
+menu_asset_lock_buy_bodybags_asset: "Requires 'Inside Man' level 2!"
+menu_asset_lock_additional_assets: "Requires 'Inside Man' level 1!"
+menu_asset_lock_buy_spotter_asset: "Requires 'Inside Man' level 1!"
+bm_menu_not_enough_cash: "Not enough cash."
+
+# Perk Effects
+bm_menu_armor_max_health_store: "Break: can store up to $amount health."
+bm_menu_disables_damage_to_hot: "Dopamine is disabled while wearing this armor!"
+
+# Throwables
+bm_wpn_prj_ace_desc: "When they said to always have an ace up your sleeve, I don't think this is what they meant..."
+bm_grenade_fir_com_desc: "Every historical case of spontaneous combustion can be chalked up to a time travelling heister hitting someone with one of these."
+bm_grenade_frag_desc: "For when you really need to clear a room, and fast."
+bm_grenade_frag_com_desc: "Lower power but bigger boom."
+bm_concussion_desc: "Stuns all enemies in range for several seconds.\n\nBREACH AND CLEAR!"
+bm_grenade_poison_gas_grenade_desc: "Emits a poisonous cloud that dissipates after 15 seconds.\n\nThere is no context in which using this thing could be justified..."
+bm_grenade_molotov_desc: "Creates a flaming pool at the point of impact that burns for 15 seconds.\n\nCheap and effective, just don't drink from the wrong bottle."
+bm_dynamite_desc: "Did you know that dynamite is remarkably stable? It won't detonate upon being shot, but it will still remove your legs all the same."
+bm_grenade_sticky_grenade_desc: "Sticks to surfaces, but takes longer to detonate.\n\nI heard this was first used by some black ops guys who went above and beyond the call of duty."
+bm_grenade_electric: "Pig Tickler"
+bm_grenade_electric_desc: "Stuns all enemies in range for several seconds.\n\nJiu Feng said this was a prototype and he'd like to take it to mass market. There's no way these will catch on, right?"
+
+# Perk Consumables
+bm_ability_chico_injector_desc: "Press the throwable key to activate. While active, 25% of all damage taken is converted into healing. This effect lasts 6 seconds."
+bm_grenade_smoke_screen_grenade_desc: "Grants +50 dodge to all crewmates standing inside the cloud, and decreases enemy accuracy by 50% if they enter it. Lasts 10 seconds."
+bm_grenade_tag_team_desc: "Press the throwable key while looking at an ally to activate. When you or the tagged ally get a kill, you restore 2 health and the tagged ally restores 1. This effect lasts 12 seconds, but is extended by 1 second per kill."
+bm_grenade_pocket_ecm_jammer_desc: "Press the throwable key to activate. During stealth this will jam phone calls for 6 seconds. In loud it will instead activate feedback, potentially stunning enemies within 10m.\n\nECM skills also apply to the Pocket ECM."
+bm_grenade_copr_ability_desc: "Press the throwable key to activate for 6 seconds. While active your armor is disabled and your health is divided into 5 segments. Taking damage removes a segment (two if the damage is higher than 200), while killing 2 enemies restores 1 segment. All kills block damage for 1 second."
+bm_grenade_damage_control_desc: "Press the throwable key to negate stacked damage."
+
+# Black Market
+bm_menu_stamina: "Recovery Time"
+menu_bm_total_cost: ""
+
+# Infamy
+menu_infamy_go_infamous_error_money: "You need $200,000,000 in offshore."
+
+### SKILLS ###
+# Description Changes
+st_menu_hoxton_pack: "Convict"
+
+# Subtree names
+st_menu_mastermind_single_shot: "Marksman"
+st_menu_enforce_shotgun: "Mercenary"
+st_menu_enforcer_armor: "Muscle"
+st_menu_technician_auto: "Gunsmith"
+st_menu_ghost_stealth: "Infiltrator"
+st_menu_ghost_concealed: "Agent"
+st_menu_ghost_silencer: "Hitman"
+st_menu_fugitive_pistol_akimbo: "Substance Abuser"
+
+## Mastermind
+menu_tea_time_beta_desc: "$lv1;Place doctor bags and first aid kits ##50%## faster."
+
+menu_fast_learner_beta_desc: "$lv1;Crewmates that you revive take ##50%## less damage for ##5## seconds.\n\n$lv2;Damage reduction is increased to ##100%##."
+
+menu_revive_reduction_desc: "$lv1;Gain ##50%## damage reduction while reviving a crewmate.\n\n$lv2;Damage reduction persists for ##5## seconds after reviving."
+
+menu_reviver_bonus_heal: "Transfusion"
+menu_reviver_bonus_heal_desc: "$lv1;Crewmates that you revive have ##50%## more health.\n\n$lv2;Crewmates that you revive have ##100%## more health."
+
+menu_fak_capacity: "Walking Pharmacy"
+menu_fak_capacity_desc: "$lv1;You can hold ##7## first aid kits.\n\n$lv2;You can hold ##10## first aid kits."
+
+menu_uppers_desc: "$lv1;Your first aid kits are automatically used if a crewmate would have gone down within ##5m## of one."
+
+menu_code_blue: "Code Blue"
+menu_code_blue_desc: "$lv1;You revive crewmates ##100%## faster."
+
+menu_docbag_quantity: "Field Surgeon"
+menu_docbag_quantity_desc: "$lv1;Carry ##1## extra doctor bag.\n\n$lv2;Carry ##2## extra doctor bags."
+
+menu_docbag_capacity: "Blood Bank"
+menu_docbag_capacity_desc: "$lv1;Your doctor bags have ##1## extra charge.\n\n$lv2;Your doctor bags have ##2## extra charges."
+
+menu_healing_damage_reduction: "Triage"
+menu_healing_damage_reduction_desc: "$lv1;Crewmates that use your doctor bags or first aid kits gain ##10%## damage reduction for ##2 minutes##."
+
+menu_inspire_beta_desc: "$lv1;Shouting at crewmates increases their movement and reload speeds by ##20%## for ##10## seconds.\n\n$lv2;Shouting at downed crewmates has a ##50%## chance to revive them."
+
+menu_fak_lives: "Amphetamine"
+menu_fak_lives_desc: "$lv1;You have a ##50%## chance to restore ##1## down when using a first aid kit.\n\n$lv2;You always restore ##1## down when using a first aid kit."
+
+menu_cable_guy: "Cable Guy"
+menu_cable_guy_desc: "$lv1;You tie up civilians ##75%## faster.\n\n$lv2;The crew gains ##0.5## damage absorption per hostage, up to ##8## hostages. This does not stack."
+
+menu_deep_throat: "Deep Throat"
+menu_deep_throat_desc: "$lv1;Your shout range is increased by ##50%##.\n\n$lv2;Your shout range is increased by ##100%##."
+
+menu_joker_beta_desc: "$lv1;You can convert a dominated cop to fight for you.\n\n$lv2;Your conversion speed is ##50%## faster and you can now have ##2## converted cops fighting for you at once."
+
+menu_joker_damage: "Punisher"
+menu_joker_damage_desc: "THIS SKILL REQUIRES ##JOKER##!\n\n$lv1;Your converts deal ##50%## more damage.\n\n$lv2;Your converts deal ##100%## more damage."
+
+menu_joker_dr: "Kevlar"
+menu_joker_dr_desc: "THIS SKILL REQUIRES ##JOKER##!\n\n$lv1;Your converts take ##50%## less damage.\n\n$lv2;Your converts take ##99%## less damage."
+
+menu_control_freak_beta_desc: "THIS SKILL REQUIRES ##JOKER##!\n\n$lv1;Your movement speed is increased by ##10%## while you have a convert.\n\n$lv2;Your max health is increased by ##50## while you have a convert."
+
+menu_stockholm_syndrome_beta_desc: "$lv1;Civilians that you tie up won't flee after being freed. Once per heist, you can be traded from custody during an assault."
+
+menu_crowd_control: "Crowd Control"
+menu_crowd_control_desc: "$lv1;Civilians within ##10m## of you remain intimidated at all times.\n\n$lv2;Civilians are intimidated by noise that you make."
+
+menu_mobile: "Mobile"
+menu_mobile_desc: "$lv1;Move at full speed while aiming down sights."
+
+menu_target_acquisition: "Target Acquisition"
+menu_target_acquisition_desc: "$lv1;Aim down sights ##100%## faster.\n\n$lv2;Zoom while aiming down sights is increased by ##25%##."
+
+menu_single_shot_ammo_return_beta_desc: "$lv1;While using a single-fire weapon, landing ##3## headshots within ##6## seconds will return ##1## bullet to your magazine.\n\n$lv2;Only ##2## headshots are required."
+
+menu_speedy_reload_beta_desc: "$lv1;Headshot kills with single-fire weapons increase your reload speed by ##100%## for ##4## seconds."
+
+menu_sniper_graze_damage_desc: "$lv1;Headshots with a sniper rifle deal ##50%## damage to all enemies within ##1m## of the bullet's trajectory.\n\n$lv2;Damage is now ##100%##, but the radius is reduced to ##50cm##."
+
+menu_long_shot: "Long Shot"
+menu_long_shot_desc: "$lv1;Marked enemies further than ##10m## away take ##50%## more damage."
+
+## Enforcer
+menu_underdog_beta_desc: "$lv1;Deal ##15%## more damage while three enemies are within ##18m## of you."
+
+menu_overdog: "Overdog"
+menu_overdog_desc: "$lv1;Take ##10%## less damage while three enemies are within ##18m## of you."
+
+menu_shotgun_impact_beta_desc: "$lv1;Shotguns deal ##10%## more damage.\n\n$lv2;Shotguns deal ##25%## more damage."
+
+menu_shotgun_stability_desc: "$lv1;Stability with shotguns increased by ##8##."
+
+menu_shotgun_cqb_beta_desc: "$lv1;Reload shotguns ##15%## faster.\n\n$lv2;Reload shotguns ##35%## faster."
+
+menu_shotgun_ads_speed_desc: "$lv1;Aim down sights with shotguns ##125%## faster."
+
+menu_close_by_beta_desc: "$lv1;Hipfire shotguns while sprinting."
+
+menu_shotgun_rof: "Slamfire"
+menu_shotgun_rof_desc: "$lv1;Rate of fire with single-fire shotguns is increased by ##35%## when hipfiring."
+
+menu_shotgun_accuracy: "Skeet Shooting"
+menu_shotgun_accuracy_desc: "$lv1;Shotgun accuracy is increased by ##40%## while aiming down sights."
+
+menu_far_away_beta_desc: "$lv1;Shotgun effective range is increased by ##50%## while aiming down sights."
+
+menu_overkill_beta_desc: "$lv1;Kills with shotguns or the OVE9000 saw grant a ##50%## damage bonus for ##5## seconds."
+
+menu_team_armor_regen: "Herd Mentality"
+menu_team_armor_regen_desc: "$lv1;Armor recovery speed for the crew is increased by ##25%##. This does not stack."
+
+menu_iron_man_beta_desc: "$lv1;Hitting a shield can cause it to stagger. Meleeing a shield will always cause it to stagger."
+
+menu_nerves_of_steel_name: "Nerves of Steel"
+menu_nerves_of_steel_desc: "$lv1;Damage taken is reduced by ##50%## while performing an interaction."
+
+menu_show_of_force_beta_desc: "$lv1;Armor of the three ballistic vests is increased by ##20##."
+
+menu_pack_mule_beta: "Catapult"
+menu_pack_mule_beta_desc: "$lv1;Bag throwing distance is increased by ##50%##."
+
+menu_armor_bag_reduction: "Beast of Burden"
+menu_armor_bag_reduction_desc: "$lv1;Bag movement penalty is reduced by ##1%## for every ##10## points of armor.\n\n$lv2;The bag movement penalty does not affect you."
+
+menu_oppressor_beta_desc: "$lv1;Your armor recovers ##15%## faster."
+
+menu_stun_resistance: "Stun Resistance"
+menu_stun_resistance_desc: "$lv1;Recover from flashbangs slightly faster.\n\n$lv2;Recover from flashbangs significantly faster."
+
+menu_bulletproof_name: "Bulletproof"
+
+menu_juggernaut_beta_desc: "$lv1;Unlocks the ##Advanced Tactical Vest##."
+
+menu_extra_ammo_box: "Double Dip"
+menu_extra_ammo_box_desc: "$lv1;Every 6th enemy killed drops an extra ammo box."
+
+menu_scavenger_desc: "$lv1;Ammo pickup range is increased by ##50%##."
+
+menu_portable_saw_desc: "$lv1;Unlock the ##primary## OVE9000 saw.\n\n$lv2;Unlock the ##secondary## OVE9000 saw."
+
+menu_carbon_blade: "Carbon Blade"
+menu_carbon_blade_desc: "$lv1;OVE9000 saw is ##40%## more efficient against locks.\n\n$lv2;OVE9000 saw is ##80%## more efficient against enemies and penetrates body armor.\n\n$lv3;OVE9000 saw penetrates shields and has a ##50%## chance on kill to cause panic within ##10m##."
+
+menu_ammo_reservoir_beta_desc: "$lv1;Your ammo bags grant infinite ammo for up to ##10## seconds after use, based on how much ammo you restored.\n\n$lv2;Infinite ammo can last up to ##20## seconds."
+
+menu_stockpile_name: "Deep Pockets"
+menu_stockpile_desc: "$lv1;Carry ##1## extra ammo bag.\n\n$lv2;Carry ##2## extra ammo bags."
+
+menu_ammobag_capacity: "Stockpile"
+menu_ammobag_capacity_desc: "$lv1;Your ammo bags hold ##100%## more ammo.\n\n$lv2;Your ammo bags hold ##200%## more ammo."
+
+menu_fully_loaded_desc: "$lv1;Ammo pickup is increased by ##25%##.\n\n$lv2;Ammo pickup is increased by ##50%##."
+
+menu_scrounger_name: "Scrounger"
+menu_scrounger_desc: "$lv1;Picking up an ammo box reduces your grenade recharge time by ##1## second.\n\n$lv2;Time reduction is now ##2## seconds per ammo box."
+
+menu_max_ammo_inc: "Big Game Hunter"
+menu_max_ammo_inc_desc: "$lv1;Ammo capacity increased by ##25%##."
+
+menu_spotter_teamwork_beta_desc: "$lv1;Special enemies that you aim at are marked.\n\n$lv2;Enemies that you mark take ##25%## more damage."
+
+## Technician
+menu_toolkit: "Toolkit"
+menu_toolkit_desc: "$lv1;You repair broken drills and saws ##25%## faster."
+
+menu_silent_drilling: "Silent Drilling"
+menu_silent_drilling_desc: "$lv1;Guards will only move to investigate drills or saws that you placed or upgraded within ##9m##.\n\n$lv2;Guards will not move to investigate drills or saws that you placed or upgraded."
+
+menu_drill_restart: "Repair System"
+menu_drill_restart_desc: "$lv1;Drills or saws that you placed or upgraded have a ##50%## chance to automatically restart ##5## to ##15## seconds after breaking.\n\n$lv2;Drills or saws that you placed or upgraded will always restart ##5## to ##15## seconds after breaking."
+
+menu_drill_expert_beta_desc: "$lv1;Drills or saws that you placed or upgraded finish ##15%## faster.\n\n$lv2;Drills or saws that you placed or upgraded finish ##30%## faster."
+
+menu_trip_mine_damage: "Fragmentation"
+menu_trip_mine_damage_desc: "$lv1;Your trip mines deal enough damage to kill ##heavies## and ##cloakers##.\n\n$lv2;Your trip mines deal enough damage to kill ##Winters shields##."
+
+menu_trip_mine_radius: "Demolition Man"
+menu_trip_mine_radius_desc: "$lv1;Your trip mine explosions are ##50%## bigger.\n\n$lv2;Trip mine explosions are ##100%## bigger."
+
+menu_trip_mine_quantity: "McCallister"
+menu_trip_mine_quantity_desc: "$lv1;You can hold ##7## trip mines.\n\n$lv2;You can hold ##14## trip mines."
+
+menu_kick_starter_beta_desc: "$lv1;Meleeing a broken drill or saw will restart it."
+
+menu_sensor_mines: "Sensor Mines"
+menu_sensor_mines_desc: "$lv1;You can interact with trip mines to switch them to sensor mode, allowing them to automatically mark anyone that walks through them."
+
+menu_shaped_charge: "Shaped Charge"
+menu_shaped_charge_desc: "$lv1;In addition to trip mines, you gain ##4## shaped charges which can be used to open safes or doors.\n\n$lv2;You now have ##8## shaped charges.\n\n$lv3;You now have ##12## shaped charges."
+
+menu_fire_trap_beta_desc: "$lv1;Upon detonation trip mines create ##4m## of fire for ##10## seconds.\n\n$lv2;Fire now reaches ##6m## and lasts ##20## seconds."
+
+menu_heavy_impact_beta_desc: "$lv1;Bullets have a ##10%## chance to stagger enemies (does not apply to Captain Winters).\n\n$lv2;Chance increased to ##20%##."
+
+menu_fire_control_beta_desc: "$lv1;Hipfire accuracy increased by ##12##."
+
+menu_shock_and_awe_beta_desc: "$lv1;Killing ##3## enemies with a full-auto weapon will increase your reload speed by up to ##100%##. This bonus is reduced by ##4%## for each bullet above ##5## currently in your magazine, and is lost if you change weapon."
+
+menu_body_expertise_beta_desc: "$lv1;Body shots apply ##50%## of the headshot damage bonus.\n\n$lv2;Body shots apply ##100%## of the headshot damage bonus."
+
+menu_sprint_shoot: "Close By"
+menu_sprint_shoot_desc: "$lv1;You can hipfire while sprinting."
+
+menu_hollow_point: "Black Tip"
+menu_hollow_point_desc: "$lv1;Bullets have a ##50%## chance to ignore body armor.\n\n$lv2;Bullets will always ignore body armor."
+
+menu_sentry_shield: "Plating"
+menu_sentry_shield_desc: "$lv1;Sentries gain a frontal shield, protecting them from damage."
+
+menu_eco_sentry_beta_desc: "$lv1;Sentries have ##150%## more health."
+
+menu_sentry_ammo: "Ammo Reserve"
+menu_sentry_ammo_desc: "$lv1;Sentries have ##100%## more ammo.\n\n$lv2;Sentries have ##200%## more ammo."
+
+menu_sentry_accuracy: "Precision Engineering"
+menu_sentry_accuracy_desc: "$lv1;Sentries are ##100%## more accurate."
+
+menu_sentry_rotation: "Servo Grease"
+menu_sentry_rotation_desc: "$lv1;Sentries rotate ##150%## faster."
+
+menu_sentry_ap: "Armor Penetration"
+menu_sentry_ap_desc: "$lv1;Sentries can toggle AP rounds, lowering fire rate by ##75%## but increasing damage by ##250%## and piercing enemies/shields."
+
+menu_jack_of_all_trades_beta_desc: "$lv1;You can equip a second deployable. Your second deployable has the quantity halved."
+
+menu_tower_defense_beta_desc: "$lv1;Carry ##1## extra sentry gun.\n\n$lv2;Carry ##3## extra sentry guns."
+
+## Ghost
+menu_scavenger_beta_desc: "$lv1;Movement speed is increased by ##30%## for ##5## seconds on armor break.\n\n$lv2;Also applies to the crew when triggered."
+
+menu_dire_need_beta_desc: "$lv1;Your first shot on an enemy inflicts stagger while your armor is broken.\n\n$lv2;Effect lasts for ##6## seconds after armor recovers."
+
+menu_moving_target_desc: "$lv1;You can sprint while strafing.\n\n$lv2;You can sprint in any direction."
+
+menu_sprinter: "Sprinter"
+menu_sprinter_desc: "$lv1;Sprint speed increased by ##25%##.\n\n$lv2;Dodge is increased by ##10## while sprinting."
+
+menu_move_speed: "Endurance"
+menu_move_speed_desc: "$lv1;Move ##25%## faster while walking and ##10%## faster while crouching.\n\n$lv2;Sprint speed increased by ##25%##. Dodge increased by ##10## while sprinting.\n\n$lv3;Movement speed increased by ##10%##."
+
+menu_sprint_loaded: "Sprint Loaded"
+menu_sprint_loaded_desc: "$lv1;You can reload while sprinting."
+
+menu_hidden_blade: "Hidden Blade"
+menu_hidden_blade_desc: "$lv1;Melee weapon concealment increased by ##2##."
+
+menu_vest_conceal: "Hidden Vest"
+menu_vest_conceal_desc: "$lv1;Ballistic vest concealment increased by ##4##."
+
+menu_insulation_beta_desc: "$lv1;Being tased no longer forces you to shoot.\n\n$lv2;You have a ##30%## chance every second to break free from a taser.\n\n$lv3;Interacting with a taser allows you to break free."
+
+menu_jail_diet_beta_desc: "$lv1;Gain ##1## dodge (up to ##10##) for each ##3## points of detection risk below ##35##.\n\n$lv2;Dodge is now granted for each point of detection risk below ##35##."
+
+menu_optic_illusions_desc: "$lv1;Your target rate is reduced by ##33%##.\n\n$lv2;Your target rate is reduced by ##50%##."
+
+menu_silence_expert_beta_desc: "$lv1;Stability with silenced weapons increased by ##8##.\n\n$lv2;Accuracy with silenced weapons increased by ##12##."
+
+menu_silence_conceal: "Pocket Silencer"
+menu_silence_conceal_desc: "$lv1;Silencers gain ##1## concealment and their concealment penalty is reduced by ##2##."
+
+menu_backstab_beta_desc: "$lv1;Gain ##3%## crit chance (up to ##30%##) for each ##3## points of detection risk below ##35##.\n\n$lv2;Crit chance is now granted for each point of detection risk below ##35##."
+
+menu_inside_man: "Inside Man"
+menu_inside_man_desc: "$lv1;You can buy additional assets.\n\n$lv2;You can buy all assets."
+
+menu_chameleon_beta_desc: "$lv1;In stealth, standing still for ##3.5s## will automatically mark everyone within ##10m##."
+
+menu_cam_loop: "Secure Loop"
+menu_cam_loop_desc: "$lv1;You can interact with a single camera to disable it for ##7.5## seconds.\n\n$lv2;Duration is extended to ##15## seconds.\n\n$lv3;You can disable cameras from ##50%## further away."
+
+menu_lockpick_speed: "Dexterity"
+menu_lockpick_speed_desc: "$lv1;Your lockpicking speed is doubled.\n\n$lv2;You can lockpick non-Titan safes."
+
+menu_cleaner_beta_desc: "$lv1;Your body bag capacity is increased by ##1##.\n\n$lv2;Carry ##1## extra body bag case."
+
+menu_ecm_feedback: "Feedback"
+menu_ecm_feedback_desc: "$lv1;You can interact with placed ECMs to enable feedback for ##15## seconds, potentially stunning all cops within ##100m##.\n\n$lv2;ECMs will recharge over ##4## minutes."
+
+menu_ecm_duration: "Lithium-ion"
+menu_ecm_duration_desc: "$lv1;Your ECM effects last ##25%## longer.\n\n$lv2;Your ECM effects last ##50%## longer."
+
+menu_ecm_booster_beta: "Appliance Breach"
+menu_ecm_overdrive_desc: "$lv1;Your ECMs block cameras.\n\n$lv2;Your ECMs block pagers.\n\n$lv3;You can use ECMs to open security doors."
+
+menu_ecm_quantity: "Cyber Warfare"
+menu_ecm_quantity_desc: "$lv1;Carry ##1## extra ECM.\n\n$lv2;Carry ##3## extra ECMs."
+
+## Fugitive
+menu_quick_draw: "Quick Draw"
+menu_quick_draw_desc: "$lv1;Weapon switch speed is ##33%## faster with pistols."
+
+menu_akimbo_skill_beta_desc: "$lv1;Akimbo stability penalty reduced by ##8##.\n\n$lv2;Akimbo stability penalty reduced by ##16##.\n\n$lv3;Akimbo stability penalty reduced by ##24##."
+
+menu_expert_handling_desc: "$lv1;Successful pistol hits grant a stacking ##10%## accuracy bonus (##50%## max) for ##3## seconds."
+
+menu_bleedout_timer_skill: "More Blood To Bleed"
+menu_bleedout_timer_skill_desc: "$lv1;Max bleedout time increased by ##10## seconds.\n\n$lv2;Max bleedout time increased by ##20## seconds.\n\n$lv3;Max bleedout time increased by ##30## seconds."
+
+menu_revive_swap_speed: "Revive Swap Speed"
+menu_revive_swap_speed_desc: "$lv1;Switch weapons ##100%## faster for ##10## seconds after being revived.\n\n$lv2;Reload ##100%## faster for 10 seconds after being revived."
+
+menu_running_from_death_beta_desc: "$lv1;Move ##30%## faster for ##10## seconds after being revived."
+
+menu_perseverance_beta_desc: "$lv1;You keep standing for ##3## seconds after going down, but your movement speed is decreased by ##60%##.\n\n$lv2;You keep standing for ##6## seconds."
+
+menu_vengeful_swan: "Vengeful Swan"
+menu_vengeful_swan_desc: "THIS SKILL REQUIRES ##SWAN SONG##!\n\n$lv1;You have infinite ammo while ##Swan Song## is active."
+
+menu_feign_death_desc: "$lv1;You have a ##50%## chance to self-revive. Self-reviving decreases your down timer by ##10## seconds.\n\n$lv2;Chance is increased to ##100%##."
+
+menu_pistol_beta_messiah_desc: "$lv1;You can self-revive after getting a kill while down. This can only happen once.\n\n$lv2;You can self-revive again after using a doctor bag."
+
+menu_coup_de_grace: "Coup de Grâce"
+menu_coup_de_grace_desc: "$lv1;The final bullet in your magazine deals triple damage."
+
+menu_trigger_happy_beta_desc: "$lv1;Damage is doubled for ##2## seconds after landing a pistol shot.\n\n$lv2;Damage bonus lasts ##5## seconds."
+
+menu_because_of_training: "Because Of Training"
+menu_because_of_training_desc: "$lv1;Incoming melee damage is reduced by ##50%##.\n\n$lv2;Charging your melee allows you to block incoming melee attacks."
+
+menu_steroids_beta_desc: "$lv1;Deal ##100%## more melee damage against non-special enemies.\n\n$lv2;Bonus damage also applies to specials."
+
+menu_bloodthirst_desc: "$lv1;Weapon kills increase your melee damage by ##100%##, up to ##1000%##. Damage resets on melee kill."
+
+menu_melee_reload_speed: "Mag Steal"
+menu_melee_reload_speed_desc: "$lv1;Reload speed is ##100%## faster for ##3## seconds after a melee kill."
+
+menu_drop_soap_beta_desc: "$lv1;Charging your melee allows you to block cloaker kicks."
+
+menu_wolverine_beta_desc: "$lv1;While below ##50%## health your melee/saw damage scales with health lost, up to ##250%## more damage. Healing is disabled while this skill is active."
+
+menu_gunserker: "Gunserker"
+menu_gunserker_desc: "$lv1;While below ##50%## health your weapon damage scales with health lost, up to ##100%## more damage. Healing is disabled while this skill is active."
+
+menu_frenzy_desc: "$lv1;Gain ##25%## damage reduction, but your health and healing are capped at ##25%##.\n\n$lv2;Damage reduction is increased to ##50%## and health is capped at ##1%##."
+
+## Perk Decks
+menu_perk_dmg: "$lv1;Weapon damage increased by ##10%##.\n\n$lv2;Weapon damage increased by ##25%##."
+menu_perk_headshot: "$lv1;Headshot damage multiplier increased by ##50%##.\n\n$lv2;Headshot damage multiplier increased by ##100%##."
+
+menu_deck2_1_skill: "$lv1;Max health increased by ##25##.\n\n$lv2;Max health increased by ##50##.\n\n$lv3;Max health increased by ##75##.\n\n$lv4;Max health increased by ##100##.\nRestore ##1## health every ##5## seconds."
+
+menu_deck2_7_skill: "$lv1;Suppressed enemies can panic. Your target rate is increased by ##15%##.\n\n$lv2;Kills within ##10m## have a ##50%## chance to cause panic."
+
+menu_armorer_skill: "Impact Plate"
+menu_armorer_skill_desc: "$lv1;Armor increased by ##25%##.\n\n$lv2;Armor increased by ##50%##.\n\n$lv3;Armor increased by ##75%##.\n\n$lv4;Armor increased by ##100%##. Armor recovery is ##50%## less effective and locked at ##50%## slower, but occurs even while in combat."
+
+menu_yakuza_speed: "Adrenaline"
+menu_yakuza_speed_desc: "$lv1;While below ##50%## health your armor recovery speed scales with health lost, to a maximum of ##60%##.\n\n$lv2;Movement speed also increases by up to ##20%## with health lost."
+
+menu_deck4_5_skill: "$lv1;Dodge increased by ##25##.\n\n$lv2;Dodge increased by ##50##.\n\n$lv3;Dodge increased by ##75##.\n\n$lv4;Dodging a bullet damages the enemy that fired it."
+
+menu_rogue_switch: "$lv1;Weapon switch speed is increased by ##80%##.\n\n$lv2;Weapon switch speed is increased by ##160%##.\n\n$lv3;Weapon switch speed is increased by ##320%##."
+
+menu_hitman_skill_desc: "$lv1;Armor recovers ##15%## faster.\n\n$lv2;Armor recovers ##30%## faster.\n\n$lv3;Armor recovers ##45%## faster.\n\n$lv4;Your armor will always recover after a maximum of ##3## seconds, even while taking damage.\n"
+
+menu_break_skill: "$lv1;While you have armor, store ##4## health per crew kill that is consumed on armor recovery.\n\n$lv2;Store ##8## health per crew kill.\n\n$lv3;Store ##12## health per crew kill."
+
+menu_crook_skill: "Composure"
+menu_crook_skill_desc: "$lv1;Ballistic vests have their armor increased by ##40%## and their dodge increased by ##5##.\n\n$lv2;Armor is now increased by ##80%## and dodge is increased by ##10##.\n\n$lv3;Armor is increased further to ##120%## and dodge is increased by ##15##."
+
+menu_burglar_stealth: "$lv1;Bag corpses ##20%## faster.\n\n$lv2;Answer pagers ##10%## faster.\n\n$lv3;Pick locks ##20%## faster."
+
+menu_infil_melee: "Psychopath"
+menu_infil_melee_desc: "$lv1;Every successful melee hit within ##5## seconds of a previous hit will deal an additional ##50%## damage, up to a total of ##1000%##.\n\n$lv2;Damage bonus is increased to ##100%##, but the activation window is reduced to ##3## seconds."
+menu_infil_close_desc: "$lv1;Gain ##8%## damage reduction while an enemy within ##10m## is targeting you.\n\n$lv2;Damage reduction is now ##16%##.\n\n$lv3;Damage reduction is now ##24%##."
+menu_infil_heal_desc: "$lv1;Heal ##20%## of your max health when dealing melee damage. This can only occur once every ##10## seconds.\n\n$lv2;Heal ##10%## of your max health on melee kill."
+
+menu_deck14_1_skill: "$lv1;The crew gains ##0.5## damage absorption (up to ##8##) for every ##30## damage you deal, resetting every ##2## seconds. If multiple people have this skill, the highest absorption is used.\n\n$lv2;Damage required is now ##20##, and the max absorption is increased to ##12##.\n\n$lv3;Any damage absorption you apply to yourself is doubled."
+
+menu_anarch_rise: "$lv1;Armor is increased by ##20##, but health is reduced by ##25##.\n\n$lv2;Armor is increased by ##40##, but health is reduced by ##50##.\n\n$lv3;Armor is increased by ##60##, but health is reduced by ##75##."
+
+menu_mag_throw: "Mag Throw"
+menu_mag_throw_desc: "$lv1;Picking up ammo triggers an ammo pickup for the rest of the crew."
+
+menu_gambler_heal: "$lv1;Picking up ammo can heal you for up to ##2## health. The crew heals for up to ##1## health.\n\n$lv2;Ammo can heal you for up to ##4## health, and the crew for ##2## health.\n\n$lv3;Ammo can heal you for up to ##6## health, and the crew for ##3## health."
+
+menu_kingpin_priority: "INJECTOR UNLOCKS AT LEVEL 60!\n\n$lv1;Your target rate is increased by ##1000%## while the ##Injector## is active."
+menu_kingpin_cooldown: "INJECTOR UNLOCKS AT LEVEL 60!\n\n$lv1;Cooldown of the ##Injector## is reduced by ##1## second for every ##50## health restored while at max health."
+menu_kingpin_healing: "INJECTOR UNLOCKS AT LEVEL 60!\n\n$lv1;While the ##Injector## is active and you are below half health, healing is increased by ##25%##."
+menu_kingpin_base: "INJECTOR UNLOCKS AT LEVEL 60!\n\n$lv1;Base healing of the ##Injector## increased to ##50%##.\n\n$lv2;Healing is further increased to ##75%##."
+
+menu_stoic_skill: "$lv1;Unlocks the ##Stoic's Hip Flask##. All damage taken is now applied quickly over ##6## seconds. Using the flask negates any remaining damage with a ##10## second cooldown.\n\n$lv2;Cooldown is reduced by ##1## second per kill when health is below ##100%##."
+menu_stoic_negation: "$lv1;Remaining damage from ##Virtue## is negated after not taking damage for ##1.5## seconds."
+menu_stoic_regen: "$lv1;Your armor is converted into health.\n\n$lv2;##50%## of negated damage from ##Virtue## is turned into healing."
+
+menu_h3h3_cooldown: "GAS DISPENSER UNLOCKS AT LEVEL 80!\n\n$lv1;Kills from you or your ##Gas Dispenser## target decrease the cooldown by ##1## second."
+menu_h3h3_absorb: "GAS DISPENSER UNLOCKS AT LEVEL 80!\n\n$lv1;Kills from you or your ##Gas Dispenser## target grant ##0.4## absorption (max ##12##) while the Gas Dispenser is active. Absorption is reset when the cooldown expires."
+
+menu_leech_swan: "LEECH AMPULE UNLOCKS AT LEVEL 100!\n\n$lv1;Running out of health while the ##Leech Ampule## is active allows you to keep fighting with ##80%## reduced movement speed.\n\n$lv2;The ##Leech Ampule## can be used while down to get back up temporarily. Using a ##doctor bag## or reviving a crewmate allows you to stay up if you have health when the effect ends."
+menu_leech_duration: "LEECH AMPULE UNLOCKS AT LEVEL 100!\n\n$lv1;Cooldown of the ##Leech Ampule## is reduced by ##1## second per kill.\n\n$lv2;Effect of the ##Leech Ampule## now lasts ##10## seconds."
+menu_leech_healing: "LEECH AMPULE UNLOCKS AT LEVEL 100!\n\n$lv1;Crewmates recover ##10## health when you take damage while the ##Leech Ampule## is active.\n\n$lv2;You recover ##40%## of your health when activating the ##Leech Ampule##."
+menu_leech_segments: "LEECH AMPULE UNLOCKS AT LEVEL 100!\n\n$lv1;Activating the ##Leech Ampule## divides your health into ##10## segments, instead of ##5##."
+
+menu_tac_reload: "Tactical Reload"
+menu_tac_reload_desc: "$lv1;Your unequipped weapon is reloaded after ##10## kills.\n\n$lv2;Weapon switch speed is increased by ##480%## for ##3## seconds after reload is triggered."
+
+## Outcast
+# Removed skills
+menu_oldholm_syndrome: "Helsinki Syndrome"
+menu_oldholm_syndrome_desc: "$lv1;Untied civilians may revive you when shouting at them.\n\n$lv2;Potentially receive an ammo pickup when revived by a civilian."
+
+menu_tough_guy: "Tough Guy"
+menu_tough_guy_desc: "$lv1;Screen shake from damage reduced by ##50%##."
+
+menu_hip_accuracy: "From The Hip"
+menu_hip_accuracy_desc: "$lv1;Hipfire spread reduced by ##50%##."
+
+menu_mag_plus: "Mag Plus"
+menu_mag_plus_desc: "$lv1;Magazine capacity increased by ##50%## for all weapons.\n\n$lv2;Magazine capacity increased by ##100%## for all weapons."
+
+menu_smg_rof: "SMG Specialist"
+menu_smg_rof_desc: "$lv1;Fire rate with SMGs increased by ##20%##."
+
+menu_custody_timer: "Master Trader"
+menu_custody_timer_desc: "$lv1;Custody timer reduced by ##50%##."
+
+menu_crouch_dodge: "Duck and Cover"
+menu_crouch_dodge_desc: "$lv1;Gain ##5## dodge while crouching.\n\n$lv2;Gain ##15## dodge while crouching."
+
+menu_dominator: "Dominator"
+menu_dominator_desc: "$lv1;Your intimidation against cops is ##100%## more effective.\n\n$lv2;You can intimidate cops during assaults."
+
+menu_oppressor_name: "Oppressor"
+menu_oppressor_desc: "$lv1;Threat is increased by ##10%##.\n\n$lv2;Threat is increased by ##20%##.\n\n$lv3;Threat is increased by ##50%##."
+
+menu_downed_ads: "Last Stand"
+menu_downed_ads_desc: "$lv1;You can use your primary weapon while down.\n\n$lv2;You can ADS while down."
+
+menu_shinobi: "Shinobi"
+menu_shinobi_desc: "$lv1;Walk ##25%## faster and move ##10%## faster while crouched."
+
+menu_drop_cloth: "Drop Cloth"
+menu_drop_cloth_desc: "$lv1;Enemy death alert radius reduced by ##95%##."
+
+menu_daredevil: "Thrill Seeker"
+menu_daredevil_desc: "$lv1;Ladder climbing speed increased by ##20%##.\n\n$lv2;Ladder climbing speed increased by ##75%##."
+
+# Weapon skills
+menu_ar_stability: "Barrel Alignment"
+menu_ar_stability_desc: "$lv1;Accuracy increased by ##8## for all weapons.\n\n$lv2;Accuracy bonus is increased to ##16##."
+
+menu_stable_shot_beta_desc: "$lv1;Accuracy increased by ##16## while stationary."
+
+menu_lmg_stability: "Heat Shield"
+menu_lmg_stability_desc: "$lv1;Stability increased by ##8## for all weapons.\n\n$lv2;Stability bonus is increased to ##16##."
+
+menu_single_shot_acc: "Barrel Crown"
+menu_single_shot_acc_desc: "$lv1;Single fire weapons have their spread reduced by ##20%##."
+
+menu_reload_speed: "Magazine Funnel"
+menu_reload_speed_desc: "$lv1;All weapons reload ##25%## faster.\n\n$lv2;Reload speed is now ##50%## faster.\n\n$lv3;Reload speed is now ##100%## faster."
+
+menu_tinkerer: "Tinkerer"
+menu_tinkerer_desc: "$lv1;Weapons with attachments gain a ##10%## stability bonus.\n\n$lv2;Weapons with attachments gain a ##10%## accuracy bonus.\n\n$lv3;Weapons with attachments gain a ##25%## damage bonus."
+
+menu_illegal_parts: "Illegal Parts"
+menu_illegal_parts_desc: "$lv1;All weapons gain a ##50%## bonus to their fire rate.\n\n$lv2;Fire rate is now increased by ##100%##."
+
+menu_silencer_statboost: "Chamber Vent"
+menu_silencer_statboost_desc: "$lv1;Silenced weapons gain ##50%## more stability.\n\n$lv2;Silenced weapons gain ##50%## more accuracy."
+
+# Unused skills
+menu_blanks: "Warning Shot"
+menu_blanks_desc: "$lv1;The first time you shoot a civilian they won't die."
+
+menu_loud_and_proud: "Loud And Proud"
+menu_loud_and_proud_desc: "$lv1;Deal an additional ##5%## damage for each ##7## points of detection risk above ##40##, up to ##25%## extra damage.\n\n$lv2;Damage is increased to ##10%## per ##7## points, for a total of ##50%## extra damage."
+
+menu_pager_snatch: "Pager Snatch"
+menu_pager_snatch_desc: "$lv1;Killing a guard with melee has a ##25%## chance to not set off their pager.\n\n$lv2;Melee kills now have a ##50%## chance of ignoring pagers.\n\n$lv3;Melee kills now have a ##75%## chance of ignoring pagers.\n\n$lv4;Melee kills will never trigger pagers."
+
+menu_sharp_damage: "Vicious Warrior"
+menu_sharp_damage_desc: "$lv1;Damage and knockdown of ##sharp## melee weapons increased by ##100%##.\n\n$lv2;Damage and knockdown of ##sharp## melee weapons increased by ##200%##.\n\n$lv3;Damage and knockdown of ##sharp## melee weapons increased by ##300%##."
+
+menu_shell_dimension: "Feeling Lucky"
+menu_shell_dimension_desc: "$lv1;Bullets have a ##10%## chance to not be consumed when fired.\n\n$lv2;Chance is increased to ##25%##."
+
+menu_hypocritical: "Hypocritical"
+menu_hypocritical_desc: "$lv1;Crit chance increased by ##10%##.\n\n$lv2;Crit chance increased by ##20%##."
+
+menu_nebula_plus: "Nebula Plus"
+menu_nebula_plus_desc: "$lv1;Asset cost reduced by ##10%##.\n\n$lv2;Asset cost reduced by ##25%##.\n\n$lv3;Asset cost reduced by ##50%##."
+
+### VARIOUS TEXT CHANGES ###
+# Based on VTC 6.11.2 with some backported fixes #
+
+# INFAMY
+menu_infamy_name_root: "The Infamous"  # Infamy I
+menu_infamy_name_ghost: "The Assassin"  # Infamy Ghost
+menu_infamy_name_mastermind: "The Doctor"  # Infamy Mastermind
+menu_infamy_name_technician: "The Ingenious"  # Infamy Technician
+menu_infamy_name_enforcer: "The Butcher"  # Infamy Enforcer
+menu_infamy_name_balaclava: "The Thug"  # Infamy Balaclava
+menu_infamy_name_pain: "The Bane"  # Infamy Venger Mask
+menu_infamy_name_hood: "The Wraith"  # Infamy Kamul Mask
+menu_infamy_name_daft: "The Punk"  # Infamy Android Mask
+menu_infamy_name_destroyer: "The Conqueror"  # Infamy Demonshank Mask
+menu_infamy_name_lurker: "The Lurker"  # Infamy Lurker Mask
+menu_infamy_name_ranger: "The Ranger"  # Infamy Heister Sentry Mask
+menu_infamy_name_punk: "The Inventor"  # Infamy The Being Mask
+menu_infamy_name_xp: "EXP Boost"  # Infamy XP Bonus
+
+# LOBBY
+savefile_saving: "Saving"
+hud_offshore_account: "Offshore"
+menu_waiting_is_not_ready: "" # Not Ready
+menu_lobby_player_slot_available: ""
+menu_description: "Briefing" # finally fixed this, no clue why they did it this way
+menu_description_bain: "Briefing" # they could've used a macro instead of separate strings, like "$handler's Plan"
+menu_description_locke: "Briefing" # then each heist could've just had a value indicating the handler that changed VO/macros
+menu_assets: "Assets"
+menu_loadout: "Loadout"
+menu_team_loadout: "Crew"
+menu_jukebox: "Music"
+hud_skip_blackscreen: "$BTN_ACCEPT"
+menu_lobby_menu_state_lobby: "" # removes the "READY" text while in the main menu
+menu_lobby_menu_state_crimenet: "Viewing side jobs"
+menu_lobby_menu_state_skilltree: "Selecting skills"
+menu_edit_game_settings: "Lobby Settings"
+menu_reputation_permission: "Level Limit"
+menu_toggle_drop_in: "Drop-in"
+menu_toggle_auto_kick: "Auto-kick"
+menu_lobby_menu_state_options: "Options"
+menu_invite_friends: "Invite"
+menu_loading_progress: "$prog%"
+menu_ghost_bonus: "$BTN_GHOST EXP Bonus: +$exp_bonus%"
+menu_ghostable_job: "$BTN_GHOST Stealth Bonus: +$bonus% EXP"
+menu_heat_warm: "EXP Bonus: +$job_heat%"
+menu_heat_cold: "EXP Reduction: -$job_heat%"
+menu_exp_short: "EXP"
+cn_menu_num_players_online: "Active Players: $amount"
+menu_jukebox_playlist_all: "Random"
+menu_jukebox_random_heist_playlist: "Random From Playlist"
+menu_jukebox_playlist_heist: "Heist Track"
+menu_jukebox_your_choice: "Custom"
+menu_lby_crimenet: "Crime.net"
+menu_lby_job_crimenet: "Crime.net"
+menu_leave_lobby: "Leave"
+menu_start_the_game: "Start"
+menu_es_coins_progress: "C-Stacks"
+menu_es_safehouse_reward_coins: "$amount C-Stacks"
+menu_cs_continental_coin_cost: "$cost C-Stacks."
+bm_cs_continental_coin_cost: "$cost C-Stacks."
+menu_cs_upgrade_cost: "This upgrade costs ##$cost## C-Stacks and increases loot value by ##2.5%##."
+
+menu_l_lootscreen: "Card Drop"
+menu_l_choose_card_local: ""
+menu_l_choose_card_chosen_suspense: ""
+menu_l_waiting_for_all: ""
+menu_l_you_got: "$category:\n$item"
+menu_l_choose_card_waiting: "Waiting for response..."
+menu_l_choose_card_chosen: "Revealed in $time..."
+menu_l_choose_card_peer: ""
+failed_disconnected_continue: "Continue"
+menu_gamemode_heist: "Standard"
+
+menu_asset_gage_assignment: "Gage Packages"
+
+# Difficulties
+menu_asset_risklevel_6: "Death Sentence"
+menu_risk_sm_wish: "5x reward multiplier."
+menu_asset_risklevel_5: "Death Wish"
+menu_risk_elite: "3.5x reward multiplier."
+menu_asset_risklevel_4: "Mayhem"
+menu_risk_easy_wish: "3x reward multiplier."
+menu_asset_risklevel_3: "OVERKILL"
+menu_risk_special: "2.5x reward multiplier."
+menu_asset_risklevel_2: "Very Hard"
+menu_risk_fbi: "2x reward multiplier."
+menu_asset_risklevel_1: "Hard"
+menu_risk_swat: "1.5x reward multiplier."
+menu_asset_risklevel_0: "Normal"
+menu_risk_pd: "1x reward multiplier."
+menu_stat_job_completed: "\nCompleted $stat times."
+
+cn_menu_contract_jobpay_header: "Heist Payout:"
+
+# Gameplay Hints
+loading_gameplay_1: "Failing heists may have consequences."
+loading_gameplay_2: "Running dry? Consider bringing ammo bags to keep the party going, or try making more efficient use of both of your weapons."
+loading_gameplay_4: "Gage packages will grant an XP bonus for each package collected, regardless of whether the Gage Mod Courier DLC is owned."
+loading_gameplay_8: "On most heists masking up will trigger the alarm. Staying unmasked can allow you to complete some objectives, but eventually you will need to fight."
+loading_gameplay_10: "You get extra money for each surviving crew member."
+loading_gameplay_11: "Low detection helps with making progress during stealth, but can also help you in combat with the correct skills."
+loading_gameplay_12: "Cloakers have learned restraint, but some of them will do anything to stop you - even if it involves ending their own lives."
+loading_gameplay_13: "Medics stand out in a crowd and will drain your ammo if left unchecked."
+loading_gameplay_14: "Shields come in various flavours. Marshal shields can blind you, and Winters' shields have extra health."
+loading_gameplay_15: "ZEAL will stop at nothing to stop you, and will even work with GenSec if necessary."
+loading_gameplay_16: "Tasers will stun you so that nearby enemies can take you down. If you are stunned for too long you will be incapacitated."
+loading_gameplay_17: "Snipers can be located by their lasers and tracer rounds."
+loading_gameplay_19: "Perk decks have had their effects moved to skill trees."
+loading_gameplay_20: "The 'Medic' subtree aims to keep the crew alive."
+loading_gameplay_21: "The 'Marksman' subtree rewards hitting your shots with semi-auto weapons."
+loading_gameplay_22: "The 'Controller' subtree helps keep hostages in check."
+loading_gameplay_23: "The 'Ammo Specialist' subtree keeps the crew's weapons loaded."
+loading_gameplay_24: "The 'Mercenary' subtree lets you dish it out."
+loading_gameplay_25: "The 'Muscle' subtree lets you stay in the fight for extended periods of time."
+loading_gameplay_26: "The 'Engineer' subtree grants your sentries superior area denial."
+loading_gameplay_27: "The 'Gunsmith' subtree gives your weapons powerful bonuses."
+loading_gameplay_28: "The 'Breacher' subtree improves the reliability of drills."
+loading_gameplay_29: "The 'Infiltrator' subtree increases your stealth potential."
+loading_gameplay_30: "The 'Hitman' subtree rewards concealment."
+loading_gameplay_31: "The 'Agent' subtree enhances your mobility."
+loading_gameplay_32: "The 'Substance Abuser' subtree boosts the power of consumables."
+loading_gameplay_33: "The 'Brawler' subtree allows your melee weapons to kill bulldozers."
+loading_gameplay_34: "The 'Revenant' subtree helps you get back on your feet."
+loading_gameplay_35: "Don't be afraid to leave bags alone - cops don't tamper with evidence."
+loading_gameplay_37: "Making effective use of both your weapons is necessary to survive. Don't forget to switch weapons if needed!"
+loading_gameplay_38: "Saws can drastically speed up objectives or grant access to additional loot, if you have the skill points for it."
+loading_gameplay_40: "Cloakers won't try to cuff you if you're the last one standing."
+loading_gameplay_41: "Cops are more easily intimidated if you are behind them and they are alone."
+loading_gameplay_42: "Headshots deal double damage."
+loading_gameplay_45: "Being incapacitated by a taser might not take away your health, but it will drain your remaining down time."
+loading_gameplay_46: "Snipers hurt - they can take out all your armor in a single shot, or if your armor is broken, instantly down you."
+loading_gameplay_51: "Just because a camera can't see you now doesn't mean it won't see you in a few seconds. Keep your eye on which direction they're facing!"
+loading_gameplay_53: "Cops aren't easily afraid - you can always take them as hostages between assaults, but need the 'Dominator' skill to take hostages during an assault."
+loading_gameplay_55: "Doctor bags restore 10 seconds of down time per charge. First aid kits only restore health, but can restore down time with the 'Amphetamine' skill (Mastermind)."
+loading_gameplay_57: "If you are taken into custody you will remain in custody at the start of the next heist."
+loading_gameplay_58: "First aid kits are better than doctor bags if you haven't been down yet or just need a quick pick-me-up."
+loading_gameplay_60: "Sticking together increases your chances of survival. Split up at your own risk."
+loading_gameplay_61: "You cannot stun a bulldozer. Do not even try."
+loading_gameplay_62: "Cloakers are resistant to damage. Headshots are the key."
+loading_gameplay_63: "Cloakers are immune to ECM feedback."
+loading_gameplay_65: "Some heists are able to be completed in stealth. One heist can even be completed unmasked!"
+loading_gameplay_72: "Ballistic vests are affected by suppression, while the higher tier armors are not."
+loading_gameplay_76: "Bulldozers do not shower. Beware their scent."
+loading_gameplay_77: "Sensor mines mark anyone that walk through them and benefit from any marking skills you have. Try combining them with 'High Value Target'!"
+loading_gameplay_78: "Keep an eye on your objectives!"
+loading_gameplay_81: "Medics will fully heal any non-special that you try to kill near them. Prioritise them to avoid wasting ammo!"
+loading_gameplay_82: "Flashbangs will detonate quicker on higher difficulties."
+loading_gameplay_85: "ECM feedback can stun enemies within a wide area."
+loading_gameplay_87: "Most stealthable heists have a camera operator. Taking him out will massively increase your chance of success."
+loading_gameplay_88: "Upgrading your safehouse will increase the value of loot."
+loading_gameplay_89: "ECM jammers will block phone calls, but won't block cameras without the 'Appliance Breach' skill. If you haven't taken out the cameras, this could spell disaster!"
+loading_gameplay_92: "On higher difficulties snipers will disable their lasers. Be very careful when stepping out of cover!"
+loading_gameplay_96: "Captain Winters' presence massively boosts the number of cops. Deal with him quickly to avoid being overrun!"
+loading_gameplay_97: "Captain Winters will retreat when his shield wall is dead, but you can also kill Winters himself to prevent him from appearing again."
+loading_gameplay_98: "Cable ties are now infinite."
+loading_gameplay_106: "Leaving loot at potential secure points can be a good way to quickly finish a heist, if you just want to escape as soon as possible."
+loading_gameplay_110: "ECM feedback requires a skill to activate, and can only be used once without the second level."
+loading_gameplay_111: "Melee has been overhauled into its own weapon class. If you need to quickly hit something, try using Quick Melee instead!"
+loading_gameplay_114: "The SWAT turret's weak point is the circular camera under the gun. It can only be shot after the shield is fully destroyed."
+loading_gameplay_116: "On some heists you can board up windows to block entrances or gain some additional cover."
+loading_gameplay_133: "Having hostages will delay the start of the next assault by up to 30 seconds. The longer the heist has been going, the more hostages you need - but never more than six."
+
+# Heister Tips
+loading_heister_1: "As the late Almir once said, 'keep those helmets flying'! He then punched me in the face."
+loading_heister_3: "Subscribe to Nebula+ for discounts on future DLC and access to a new microtransaction store!"
+loading_heister_5: "If you do not succeed on Hell's Island, Bain will die."
+loading_heister_7: "Trophies are a good source of C-Stacks, if you can unlock them, that is..."
+loading_heister_9: "It is important that you get downed crew mates back up as soon as possible. Every second counts!"
+loading_heister_11: "Don't have a crosshair? Use a laser!"
+loading_heister_12: "Some mutators have been turned into default features. Be careful around cloakers!"
+loading_heister_13: "I bite my elbows - I am a bad motherfucker."
+loading_heister_15: "Friendly fire is enabled by default. The damage scales with difficulty, up to full damage on Death Sentence."
+loading_heister_16: "Offshore can be used to unlock new skill sets or infamy. Choose wisely!"
+loading_heister_18: "New to Thievenfall? Join the Discord server to ask for help!"
+loading_heister_19: "Skills can synergise in interesting ways. Take time to read their effects and experiment."
+loading_heister_20: "The difficulty will gradually increase as you progress through the campaign. After completing the campaign, all heists will be played on Death Sentence."
+loading_heister_22: "Weapon mods need to first be unlocked, but remain available indefinitely."
+loading_heister_23: "Perks are now skills."
+loading_heister_24: "A good crew will have a diverse set of deployables, with each heister specialising in a specific one."
+loading_heister_26: "Consumable perk decks are now unlocked every 20th level, with the exception of Stoic which is unlocked through Convict's 'Substance Abuser' subtree."
+loading_heister_33: "Reloading with at least one bullet left will give you an extra bullet in the chamber, though be careful not to reload too early - ammo left in the magazine is lost forever."
+loading_heister_34: "After finishing the main campaign you can continue playing randomly generated campaigns."
+loading_heister_37: "If there's a ghost next to the day indicator then the heist is stealthable. If there isn't then it can only be completed loud."
+loading_heister_39: "Stealthable Elephant heists offer greater rewards for completing them quietly."
+loading_heister_40: "Vlad's jobs are unpredictable."
+loading_heister_44: "Heavy units wear body armor. Aim for the head, bring armor piercing weapons, or use appropriate skills to counter them."
+loading_heister_46: "There are many types of bulldozer: green and black pack shotguns, medicdozers heal nearby cops, and skulldozers carry LMGs."
+loading_heister_49: "Your weapons are less accurate while moving, and more accurate while crouching and aiming down sights."
+loading_heister_52: "The core gameplay changes very little on higher difficulties, but your margin for error does."
+
+# Trivia
+loading_trivia_2: "Jimmy owns a theme park. It was closed due to an active shooter (it was Jimmy)."
+loading_trivia_3: "Jimmy is the head of a very successful corporation."
+loading_trivia_4: "Jimmy claims that if he saw a block of cocaine he would ignore it. He's lying."
+loading_trivia_5: "THAT WAS FUCKING LOUD!"
+loading_trivia_6: "Jimmy."
+loading_trivia_7: "Jacket is very unlikely to be the real Jacket. The arcade machine in his room supports this, implying Hotline Miami never happened and he is merely a fan of the game."
+loading_trivia_8: "Jacket's position in the crew is questionable as he doesn't seem to care about money, rather craving violence."
+loading_trivia_9: "Jacket's Piece never appeared in Hotline Miami, and only appears as his signature weapon in PAYDAY."
+loading_trivia_10: "Do you like hurting other people? Who are leaving messages on your answering machine? Where are you right now? Why are we having this conversation?"
+loading_trivia_11: "Tony was confirmed by OVERKILL in 2017 to be a copycat instead of the real Tony Montana."
+loading_trivia_12: "The Scarface Character Pack was delisted in 2020, making it the first piece of licensed content to be removed from the game."
+loading_trivia_13: "The contents of Tony's injector are unconfirmed, but it's most likely to be morphine, adrenaline, or both."
+loading_trivia_15: "Hoxton still has nightmares about his time in prison."
+loading_trivia_16: "Hoxton is very unique. He's both a fugitive AND a crook."
+loading_trivia_17: "Hoxton loves to repeat his own name like a Pokémon."
+loading_trivia_18: "Hoxton realised he was gay while in prison. He does not know how to tell the rest of the crew this."
+loading_trivia_20: "Sydney's hair is naturally blue."
+loading_trivia_23: "John Wick and Chains served in the military together. They question whether Captain Winters actually served."
+loading_trivia_25: "John Wick was removed from the game in 2024. He is no longer accessible to new players."
+loading_trivia_27: "Bain once recorded a guide. He won't tell anyone what it's about, though."
+loading_trivia_28: "Bain is a master vaper. He never goes anywhere without his vape."
+loading_trivia_29: "Bain still uses a fax machine."
+loading_trivia_30: "Bain is out of touch and out of time. He's out of his head when you're not around."
+loading_trivia_31: "Dallas often requests a medic bag, even though it's actually called a doctor bag."
+loading_trivia_32: "Dallas is the only member of the original crew to not have his voice actor changed across all three mainline games."
+loading_trivia_33: "Dallas was originally going to become a contractor and be replaced by a new Dallas, voiced by Eric Etebari."
+loading_trivia_34: "Dallas doesn't like going to the proctologist."
+loading_trivia_35: "Prior to December 2025, almost all of Wolf's lines were reused from PAYDAY: The Heist. Only his masking up and pager lines were new."
+loading_trivia_36: "Wolf once had to GTFO from a den of wolves. That has nothing to do with his name, though."
+loading_trivia_37: "Wolf once willingly spent an extended period of time in a psych ward. He's still crazy though."
+loading_trivia_38: "Wolf once committed a massacre in a nightclub."
+loading_trivia_39: "Bodhi complains about Nintendo but bought a Switch 2 on launch day."
+loading_trivia_40: "Bodhi hates corporations and would gladly crash his car into an Amazon warehouse. Hoxton keeps daring him to do it."
+loading_trivia_41: "Bodhi wants to fight. Who wants to fight?"
+loading_trivia_42: "Bodhi's mother named him after Bodhi's Pool Repair, her favourite local plumbing company."
+loading_trivia_43: "Damion Poitier was originally cast as Thanos in Marvel's Cinematic Universe."
+loading_trivia_44: "Chains often talks in third person."
+loading_trivia_45: "Chains was killed between PAYDAY: The Heist and PAYDAY 2. The current Chains is not who he claims he is."
+loading_trivia_46: "Chains was killed between PAYDAY 2 and PAYDAY 3. The current Chains is not who he claims he is."
+loading_trivia_47: "Clover claims to be Irish despite being born and raised in England."
+loading_trivia_48: "Clover claims to have several late siblings. The exact number varies based on who she's talking to."
+loading_trivia_49: "Clover is incredibly unlucky. Everything she tries goes wrong in a cartoonishly fucked up way."
+loading_trivia_50: "Clover claims to be a horror fan. She has only watched Scary Movie 2."
+loading_trivia_51: "Houston is openly gay. He thinks Hoxton may be closeted, but isn't 100% sure."
+loading_trivia_52: "Houston refuses to drink alcohol out of fear that he may post something racist online and get cancelled on X (formerly Twitter)."
+loading_trivia_53: "Houston occasionally plays Roblox. The rest of the crew mocks him for this."
+loading_trivia_54: "Despite having enough money to buy any car he wants, Houston still drives around in a Honda Civic."
+loading_trivia_55: "Bonnie sleeps in a dog bed."
+loading_trivia_56: "Bonnie constantly leaves a dehumidifier running in the safe house, despite Dallas' asthma."
+loading_trivia_57: "Bonnie occasionally cries herself to sleep, and then asks the crew if they heard her crying the next morning."
+loading_trivia_58: "Bonnie is a crippling alcoholic, and refuses to seek help for her drinking problem."
+loading_trivia_59: "Captain Winters is part of GenSec's elite force, being brought in to help take down the clowns on Mayhem and above."
+loading_trivia_60: "He might seem invincible, but Captain Winters is just as vulnerable to bullets as anyone else."
+loading_trivia_61: "Captain Winters doesn't care about how many people die. He just wants to see the clowns behind bars."
+loading_trivia_62: "Captain Winters was hired by GenSec for his prior military experience, however he never actually saw service."
+loading_trivia_63: "Ron Perlman has famously claimed that he did not care about his role as Rust and simply did it for the money."
+loading_trivia_64: "Rust occasionally posts videos online talking about the corrupt elite."
+loading_trivia_71: "Jiro worked his way up the Osaka yakuza before being betrayed due to an affair with the boss's daughter."
+loading_trivia_72: "Jiro was imprisoned for 20 years after being betrayed. Upon being released, he single-handedly wiped out the Osaka yakuza while trying to find his son, Kento."
+loading_trivia_73: "Jiro came to D.C. because Bain was the one man capable of helping him find his son."
+loading_trivia_74: "In-game, Jiro only has a single line that is spoken in English. The rest of his lines are all in Japanese."
+loading_trivia_75: "Dragan once stole a car to make sure no civilians would get away. The car belonged to none other than Jerry Seinfeld."
+loading_trivia_76: "Fresh fish!"
+loading_trivia_77: "Dragan's actor once took part in a real bank robbery. He was later caught and sentenced to 3 years in prison."
+loading_trivia_79: "Aldstone's voice actor, John Cleese, was planned to play Hitler in RAID: World War 2. He was only informed of his role right before filming was scheduled, and he refused to do it."
+loading_trivia_80: "Aldstone is a descendant of Control, a character introduced in RAID: World War 2. Both characters are portrayed by John Cleese."
+loading_trivia_83: "Gage is infertile."
+loading_trivia_84: "Gage could walk if he really wanted to."
+loading_trivia_85: "Gage served in Afghanistan. He believes Captain Winters is lying about his service."
+loading_trivia_86: "FIFTEEN"
+loading_trivia_87: "Bob McKendrick is out of control."
+loading_trivia_88: "Internet lolcow Chris Chan was once convinced that Bob McKendrick is a real person."
+loading_trivia_92: "Jiro has a katana. Try using it while playing as him!"
+loading_trivia_93: "Bodhi hates tasers. Try killing one with a weapon that deals at least 100 base damage!"
+loading_trivia_94: "Many, MANY goats were harmed during the making of the Goat Simulator heist. Call PETA. We dare you."
+loading_trivia_95: "Hector is the one that moved the Mayan gold from OVERDRILL. Seems like a standout guy, really..."
+loading_trivia_96: "The event heists are not part of the main campaign, but can be randomly chosen in the post-game."
+loading_trivia_97: "The Dentist is an immortal eldritch being that can destroy planets."
+loading_trivia_98: "The classic heists returned from PAYDAY: The Heist, but due to gameplay changes they do not play the same. Try the original game if you haven't!"
+loading_trivia_99: "He's a hacker, not a planner dammit."
+
+# Heist End
+menu_victory_goto_next_stage: "Next Day"
+menu_victory_goto_payday: "Card Drop"
+menu_victory_retry_stage: "Retry"
+menu_es_calculating_experience: "Calculating..." # can't be removed or it bugs out
+victory_client_waiting_for_server: "Waiting For Host"
+debug_mission_end_continue: "Continue"
+menu_es_safehouse_earned_income: "You have earned $amount C-Stacks."
+
+# MENU BUTTONS
+fast_net_title: "Server List"  # FAST.NET
+fast_net_friends_title: "(Friends) Server List"  # FAST.NET Friends
+# apparently fast.net still exists and this compatibility is still required
+
+create_empty_lobby_title: "Empty Lobby"
+create_empty_lobby_desc: "Create a lobby without selecting a heist."
+
+menu_or_press_any_xbox_button: "or controller button"
+
+menu_debug: ""  # If you have the Fast.net mod or the (old) freecam mod this hides the debug button
+debug_start_the_game: ""  # If you have the Fast.net mod or the (old) freecam mod this hides the debug button
+# I don't know if the debug button is even activated by mods anymore, but I'm leaving this for reasons of "I'm scared and don't know"
+
+menu_player_inventory: "Loadout"  # New Inventory
+menu_player_inventory_help: "View your weapons and skills."
+menu_visit_community_help: "Opens the Community Hub in the Steam overlay."
+menu_option_default: "Reset Options"
+menu_option_default_help: "Resets all of your options to the defaults."
+dialog_default_options_message: "This will reset all of your settings to the default. Are you sure you want to do this?"
+menu_visit_fbi_files_help: "Opens the FBI files in the Steam overlay."
+menu_custom_safehouse: "Safe House"
+menu_steam_inventory: "Skins"
+menu_steam_inventory_help: "View your collection of skins and accept new ones."
+menu_movie_theater: "Movies"
+menu_movie_theater_help: "Watch cinematics related to the PAYDAY 2 story."
+
+menu_reset_account: "Delete Save Data"
+menu_reset_account_help: "Deletes your save data. Only do this if you're 100% sure this is what you want to do."
+dialog_are_you_sure_you_want_to_clear_progress: "This process is irreversible.\n\nYour loadout will be wiped and you will be reset to infamy 0, level 0.\n\nAre you 100% certain you want to do this?"
+
+# Side Jobs
+menu_challenge_monthly_reward: "Replacement for stat boosts hasn't been implemented yet!"
+
+# PAUSE SCREEN
+menu_resume_game: "Resume"
+menu_restart_game: "Restart"
+menu_players_list: "Players"
+menu_end_game: "Main Menu"
+dialog_are_you_sure_you_want_to_leave_game: "Are you sure you want to return to the main menu?\n\nYou will leave your current lobby (if in one)."
+menu_abort_mission: "Exit Heist"
+dialog_abort_mission_text: "Are you sure you want to exit the current heist?\n\nYou and your crew will be returned to the lobby where you can pick another heist."
+
+# CRIME.NET SIDEBAR
+dialog_mutators_active_text: "Mutators are enabled. Do you want to play with mutators?"
+
+menu_challenge_safehouse_daily_reward: "6 C-Stacks."
+menu_challenge_daily_reward: "Money and a weapon mod."
+
+menu_cs_enter_safehouse: "Enter"
+menu_cs_map: "Map"
+menu_cs_change_floor: "Floor"
+menu_cs_top_floor: "Upstairs"
+menu_cs_ground_floor: "Downstairs"
+menu_trophy_display_all: "Display All"
+menu_trophy_displayed: "Displayed"
+menu_trophy_hide_all: "Hide All"
+menu_trophy_not_displayed: "Hidden"
+menu_cs_cant_afford: "Not enough C-Stacks."
+menu_cs_rooms_help_hover_no_upgrade: "Room fully upgraded"
+menu_cs_rooms_help_hover: "Room is upgradeable"
+menu_cs_total_upgrades: "Upgrades"
+menu_cs_coins: "C-Stacks"
+dialog_upgrade_safehouse: "Upgrading $character;'s room will cost $cost C-Stacks."
+
+menu_cn_chill_combat_defend: "Defend"
+menu_cn_chill_combat_ignore_defend: "Ignore"
+
+# Lobby Settings
+menu_cn_game_settings: "Settings" # if removed then the "Mods" tab also vanishes when looking at lobbies
+menu_friends_only_game: "Friends Only"
+menu_private_game: "Invite Only"
+menu_drop_in_on: "Automatic"
+menu_drop_in_prompt: "Confirm"
+menu_drop_in_stealth_prompt: "Confirm (Stealth)"
+
+menu_cn_legend_risk: "Difficulty"
+menu_cn_legend_mutated: "Mutators"
+menu_cn_legend_host: "Heist"
+menu_cn_legend_join: "Public Lobby"
+menu_cn_legend_friends: "Friend Lobby"
+menu_risk: "Difficulty"
+menu_new: "" 
+menu_permission: "Privacy"
+menu_kicking_allowed_option: "Kick / Restart"
+menu_kick_server: "Host"
+menu_kick_vote: "Vote"
+menu_kick_disabled: "Kick Disabled"
+
+menu_back: "BACK"
+
+cn_menu_community: ""  # Community tag
+menu_ultimate_edition_short: "" # UE tag (deprecated?)
+cn_menu_dlc: "" # DLC tag
+menu_mutators_reset_all: "Reset All"
+menu_toggle_ai: "AI Teammates"
+
+# STATS SCREEN
+# Crew Stats
+victory_time_played: "Time Taken"
+victory_most_downs: "Most Downs"
+victory_best_accuracy: "Most Accurate"
+victory_best_killer: "Most Kills"
+victory_best_special: "Most Specials Killed"
+victory_group_total_downed: "Total Downs"
+victory_group_hit_accuracy: "Crew Accuracy"
+victory_criminals_finished: "Surviving Players"
+victory_most_damage: "Most Damage"
+
+# Personal Stats
+victory_total_downed: "Downs"
+victory_hit_accuracy: "Accuracy"
+victory_total_kills: "Total Kills"
+victory_total_specials_kills: "Specials Killed"
+victory_total_head_shots: "Headshot Kills"
+victory_favourite_weapon: "Favorite Weapon"
+victory_civilians_killed_penalty: "Civilians Killed"
+victory_session_damage: "Total Damage"
+
+# Coins
+menu_es_safehouse_summary: "C-Stacks"
+menu_es_safehouse_total_coins: "You have $amount C-Stacks."
+menu_es_safehouse_upgrade_available: ""
+
+# Popups
+menu_es_ghost_bonus_day: "##$BTN_GHOST ##Day successfully ##stealthed##."
+menu_es_ghost_bonus_job: "##$BTN_GHOST Stealth bonus## earned:\n+$bonus% EXP on the next heist."
+menu_es_gage_assignment_package_complete: "Completed a Courier assignment."
+
+# Payout Summary
+victory_stage_cash_summary_name: ""
+victory_stage_cash_summary_name_job: "Heist payout: $job_cash."
+victory_stage_cash_summary_name_bags: "\n$bag_amount bag(s): $bag_cash."
+victory_stage_cash_summary_name_loose: "\nExtra loot: $loose_cash."
+victory_stage_cash_summary_name_vehicles: "\n$vehicle_amount car(s): $vehicle_cash."
+victory_stage_cash_summary_name_offshore: "Offshore: $cash."
+victory_stage_cash_summary_name_spending: "Spending: $cash."
+victory_stage_cash_summary_name_crew: "\n$winners players: $crew_cash."
+failed_summary_name: "Heist failed. No payout given."
+
+# PREPLANNING
+menu_preplanning_enter: "Preplanning"
+menu_pp_tooltip_costs: "Costs $money and $budget favors."
+menu_preplanning_title: ""
+menu_item_preplanning_help: "Help"
+menu_pp_total_cost: "Cost: $money"
+menu_pp_sub_voting: "Required"
+menu_pp_sub_place: "Optional"
+menu_pp_sub_info: "Info"
+menu_pp_cat_dead_drop: "Deployables"
+menu_pp_cat_dead_drop_desc: "Place deployables at useful locations."
+menu_pp_cat_insider_help: "Inside Man"
+menu_pp_cat_mission_equipment: "Equipment"
+menu_pp_cat_vault_plan: "Drill Alternatives"
+menu_pp_cat_vault_plan_desc: "Alternative locations for the drill or ways to open the vault.\n\nRequires a majority vote. In the case of a tie, the host's vote wins."
+menu_pp_cat_escape_plan: "Escape"
+menu_pp_cat_escape_plan_desc: "Alternative escape plans.\n\nRequires a majority vote. In the case of a tie, the host's vote wins."
+menu_pp_cat_entry_plan: "Entry"
+menu_pp_cat_entry_plan_generic: "Entry" # added with Hostile Takeover I think. going to lose my shit
+menu_pp_free_of_charge: "No cost."
+menu_pp_asset_drill_parts: "Drill Bits"
+menu_pp_asset_highlight_keybox: "Mark Keys"
+menu_pp_asset_highlight_keybox_desc: "Mark the location of the vault cage keychain."
+menu_pp_vault_big_drill: "The Beast (Default)"
+menu_pp_vault_big_drill_desc: "Assemble The Beast and keep it running.\n\nTakes 5 minutes to finish."
+menu_pp_vault_thermite_desc: "Set up the thermite and watch it burn.\n\nTakes 5 minutes to finish."
+menu_pp_escape_helicopter_loud: "Airlift (Default)"
+menu_pp_escape_helicopter_loud_desc: "Bile will come and pick you up on the roof. Long distance, high risk."
+menu_pp_escape_elevator_loud: "Elevator Trick"
+menu_pp_escape_elevator_loud_desc: "Open an elevator in the vault entry hall and escape through a sub-level parking lot."
+menu_pp_escape_c4_loud_desc: "Blow up the wall to an adjacent building and zipline the bags to a dump truck across the street."
+menu_pp_escape_bus_loud_desc: "Crash a bus through a weak spot in the wall, creating a bridge to a parking lot where the van is waiting."
+menu_pp_branchbank_lance_desc: "Set up the drill and keep it drilling."
+menu_pp_asset_safe_escape_desc: "Nullifies escapes."
+menu_pp_asset_sniper_spot_desc: "Grants access to a sniping spot."
+menu_pp_asset_bag_shortcut_desc: "Opens a vent on the roof that connects to the hallway outside the bedroom."
+menu_pp_asset_bag_zipline: "Bag Zipline"
+menu_pp_asset_bag_zipline_desc: "Places a zipline that you can safely send loot bags across."
+menu_pp_asset_delay_police_10: "Alarm 10s. Delay"
+menu_pp_asset_delay_police_10_desc: "Delays the first police response by 10 seconds."
+menu_pp_asset_delay_police_20: "Alarm 20s. Delay"
+menu_pp_asset_delay_police_20_desc: "Delays the first police response by 20 seconds."
+menu_pp_asset_delay_police_30: "Alarm 30s. Delay"
+menu_pp_asset_delay_police_30_desc: "Delays the first police response by 30 seconds."
+menu_pp_asset_delayed_police: "30s. Assault Delay"
+menu_pp_asset_delayed_police_desc: "Delays the first police response by 30 seconds."
+menu_pp_asset_reduce_mobsters_desc: "Fewer mobsters to deal with thanks to a masked friend."
+menu_pp_asset_reduce_timelock_60: "Faster Timelock"
+menu_pp_asset_reduce_timelock_60_desc: "Speed up the timelock by 30 seconds."
+menu_pp_asset_keycard_desc: "Place a keycard in a specific location."
+menu_pp_asset_disable_guards_cake_desc: "Make a guard sick, forcing them to stay in a specific location."
+menu_pp_asset_unlocked_window: "Open Window"
+menu_pp_asset_unlocked_window_desc: "Open a window, giving you more movement options."
+menu_pp_asset_unlocked_door: "Open Door"
+menu_pp_asset_unlocked_door_desc: "Open a door, giving you more movement options."
+menu_pp_asset_kenaz_loud_entry_with_c4: "Loud (C4)"
+menu_pp_asset_kenaz_loud_entry_with_c4_desc: "Start masked up with a bag of C4. The alarm will immediately go off."
+menu_pp_asset_kenaz_loud_entry: "Loud"
+menu_pp_asset_kenaz_loud_entry_desc: "Start masked up. The alarm will immediately go off."
+menu_pp_asset_kenaz_silent_entry: "Silent (Default)"
+menu_pp_asset_kenaz_silent_entry_desc: "Start the heist without your equipment."
+menu_pp_asset_kenaz_vault_gate_key: "Keys"
+menu_pp_asset_branchbank_vault_key: "Keys"
+menu_pp_asset_branchbank_vault_key_desc: "Start with the vault cage key."
+menu_pp_asset_kenaz_limo_escape: "Limo (Default)"
+menu_pp_asset_kenaz_limo_escape_desc: "The furthest escape, but the cheapest.\n\nLoud only."
+menu_pp_asset_kenaz_zeppelin_escape: "Blimp"
+menu_pp_asset_kenaz_zeppelin_escape_desc: "Secure bags on the BFD and then escape with it.\n\nLoud only."
+menu_pp_asset_kenaz_van_escape: "Van"
+menu_pp_asset_kenaz_van_escape_desc: "A van waits in the delivery area.\n\nDefault in stealth."
+menu_pp_asset_kenaz_sabotage_skylight_barrier: "Skylight Barrier"
+menu_pp_asset_kenaz_sabotage_skylight_barrier_desc: "The skylight barrier won't close when the alarm goes off."
+menu_pp_asset_kenaz_unlocked_doors: "Unlock Doors"
+menu_pp_asset_kenaz_unlocked_doors_desc: "Unlocks the employee only doors."
+menu_pp_asset_kenaz_unlocked_cages: "Unlock Cage Doors"
+menu_pp_asset_kenaz_unlocked_cages_desc: "Unlocks the cage doors around the security room."
+menu_pp_asset_kenaz_guitar_case_position_desc: "Place the guitar case in a specific location."
+menu_pp_asset_kenaz_disable_metal_detectors_desc: "Disable all metal detectors throughout the casino."
+menu_pp_asset_spotter_desc: "Automatically marks guards and special enemies within the assigned area."
+menu_pp_asset_kenaz_faster_blimp: "Turbo Blimp"
+menu_pp_asset_kenaz_faster_blimp_desc: "The blimp arrives 30 seconds faster."
+menu_pp_asset_sniper_desc: "Ilija will periodically kill enemies throughout the heist."
+menu_pp_asset_kenaz_drill_improved_cooling_system_desc: "The water tanks last twice as long."
+menu_pp_asset_kenaz_drill_engine_optimization_desc: "The BFD will finish in 6 minutes instead of 7 minutes.\n\nIncompatible with \"Additional Engine Power\"."
+menu_pp_asset_kenaz_drill_engine_additional_power_desc: "The BFD will finish in 5 minutes instead of 7 minutes.\n\nIncompatible with \"Engine Optimization\"."
+menu_pp_asset_kenaz_drill_better_plasma_cutter_desc: "Lowers the chance of the BFD overheating when the water tanks are empty."
+menu_pp_asset_kenaz_celebrity_visit_desc: "Force the red keypad digit to be in the V.I.P room."
+menu_pp_asset_kenaz_ace_pilot_desc: "The winch will be dropped 30 seconds faster."
+menu_pp_asset_kenaz_drill_toolbox_desc: "Contains three tools for repairing the BFD."
+menu_pp_asset_kenaz_drill_timer_desc: "Show how much time is remaining."
+menu_pp_asset_kenaz_drill_sentry_desc: "Mount a sentry gun to the top of the BFD."
+menu_pp_asset_kenaz_drill_medkit_desc: "Mount a medkit to the side of the BFD."
+menu_pp_asset_kenaz_drill_extra_battery_desc: "Replace one of the power cables with a mounted battery."
+menu_pp_asset_bodybags_bag_desc: "Place a body bag case containing three body bags."
+menu_pp_asset_grenade_crate: "Throwables"
+menu_pp_asset_grenade_crate_desc: "Place a briefcase containing three throwables."
+menu_pp_asset_ammo_desc: "Place an ammo bag containing 600% ammo."
+menu_pp_asset_sentry_gun_desc: "Place a sentry gun."
+menu_pp_asset_health_desc: "Place a doctor bag with four charges."
+menu_pp_asset_drill_parts_desc: "Place a box containing additional drill bits."
+menu_asset_spycam_desc: "Automatically marks guards and special enemies within the assigned area."
+menu_pp_camera_access: "Access Point"
+menu_pp_camera_access_desc: "Allows you to view camera feeds."
+menu_pp_asset_extra_cameras: "Hidden Cameras"
+menu_pp_asset_extra_cameras_desc: "Place extra cameras that don't detect you.\n\nView them from a security room or access point."
+menu_pp_asset_chas_open_window: "Open Window"
+menu_pp_asset_chas_garbage_truck: "Garbage Truck"
+menu_pp_asset_chas_garbage_truck_desc: "A garbage truck waits for the bags.\n\nStealth only."
+menu_pp_asset_chca_entry_as_crew: "Crew Deck"
+menu_pp_asset_chca_entry_as_crew_desc: "Start in the crew deck already masked up."
+menu_pp_asset_chca_entry_helicopter: "Helicopter (Loud)"
+menu_pp_asset_chca_entry_helicopter_desc: "Start the heist in loud on the ship's bow. The alarm will immediately go off."
+menu_pp_asset_chca_entry_as_guest: "Guest Cabin (Default)"
+menu_pp_asset_chca_entry_as_guest_desc: "Start the heist without your equipment."
+menu_pp_asset_chca_spiked_drink: "Spiked Drink"
+menu_pp_asset_chca_spiked_drink_desc: "Li Deng's drink has been given something a little extra...\n\nStealth only."
+menu_pp_asset_pent_carkeys: "Car Keys"
+menu_pp_asset_pent_carkeys_desc: "The car keys are moved to a more convenient location."
+menu_pp_pent_thermite_desc: "Burn open the meeting room door."
+menu_pp_asset_trai_lower_hacktime_desc: "Reduce the time it takes to hack the vault doors."
+menu_pp_asset_ranc_reduce_countermeasure: "Countermeasures"
+menu_pp_asset_ranc_reduce_countermeasure_desc: "Reduce the chance of electronic countermeasures activating.\n\nStealth only."
+menu_pp_asset_ranc_plane_loot_secure: "Fulton Extraction"
+menu_pp_asset_ranc_plane_loot_secure_desc: "Extract the loot using a surface-to-air balloon."
+menu_pp_asset_pent_lower_hacktime_desc: "Reduces the time it takes for the laptop to decrypt the hard drive.\n\nStealth only."
+menu_pp_cas_tram_desc: "The drill is delivered in a special way."
+menu_pp_asset_fex_stealth_semi_open_garage_door: "Garage Door"
+menu_pp_asset_fex_stealth_semi_open_garage_door_desc: "The garage door has been left semi-open for you to sneak through."
+menu_pp_asset_bex_garbage_truck_desc: "A garbage truck will be waiting for you to throw bags into.\n\nStealth only."
+menu_pp_asset_bex_car_pull_desc: "Vlad has an alternate way into the bank prepared..."
+menu_pp_asset_corp_lower_hacktime: "Overclocking"
+menu_pp_asset_corp_lower_hacktime_desc: "Reduce the time it takes to hack the lab doors."
+
+menu_asset_buy_all_button: "Buy All"
+menu_asset_buy_all_desc: "Total cost: $price"
+
+# HUD
+hud_instruct_mask_on: ""  # Prompt telling you how to mask up. Pointless after playing one heist.
+crimdusk_mask_on_loud: "Mask up to go loud"
+crimdusk_mask_on_stealth: "Mask up when ready"
+hud_suspicion_detected: "- ALERT -"  # Someone has detected you
+hud_instruct_throw_bag: "" # "PRESS G TO THROW BAG" text. Pointless once you've played one heist.
+hud_custody_in: "BLEEDOUT" # didn't need changing but it looks nicer
+hud_uncuffed_in: "BREAKOUT" # didn't need changing but it looks nicer
+hud_potential_xp: "EXP on completion: $XP"
+
+# BIG BOX
+hud_civilian_killed_title: "Civilian Killed"
+hud_civilian_killed_message: "-$AMOUNT"
+present_obtained_mission_equipment_title: "Item Obtained"
+
+# INTERACTIONS
+# Generic Interactions
+hud_int_equipment_drill: "$BTN_INTERACT Mount Drill"
+debug_interact_saw: "$BTN_INTERACT Place Saw"
+hud_int_equipment_no_keycard: ""
+hud_int_equipment_keycard: "$BTN_INTERACT Insert Keycard"
+hud_int_pickup_keycard: "$BTN_INTERACT Take Keycard"
+hud_int_pick_lock: "$BTN_INTERACT Pick Lock"
+hud_int_hold_pickup_lance: "$BTN_INTERACT Pickup Drill"
+debug_interact_intimidate: "$BTN_INTERACT Tie Civilian"
+debug_interact_hostage_move: "$BTN_INTERACT Stand Up"
+debug_interact_hostage_stay: "$BTN_INTERACT Sit Down"
+debug_interact_equipment_cable_tie: ""
+hud_int_equipment_drill_jammed: "$BTN_INTERACT Fix Drill"
+hud_int_equipment_lance: "$BTN_INTERACT Start Drill"
+hud_int_equipment_lance_jammed: "$BTN_INTERACT Fix Drill"
+hud_int_hostage_convert: "$BTN_INTERACT Convert"
+hud_int_access_camera: "$BTN_INTERACT View Cameras"
+debug_interact_equipment_stash_planks: ""
+debug_interact_stash_planks_pickup: "$BTN_INTERACT Take Planks"
+debug_interact_stash_planks: "$BTN_INTERACT Board Up"
+debug_interact_money_wrap_single_bundle_take_money: "$BTN_INTERACT Take Money" # why is this so long
+debug_interact_being_revived: ""
+hud_starting_heist: "Masking Up"
+hud_int_barrier_numpad: "$BTN_INTERACT Activate Barrier"
+debug_interact_gage_assignment_take: "$BTN_INTERACT Take Package"
+hud_int_hold_cut_fence: "$BTN_INTERACT Cut Fence"
+hud_access_camera_feed_lost: "- CAMERA OUT OF OPERATION -"
+hud_action_try_keys_no_key: ""
+hud_deploy_valid_help: ""
+hud_deploying_equipment: ""
+hud_int_take: "$BTN_INTERACT Take Item"
+debug_interact_money_wrap_take_money: "$BTN_INTERACT Bag Money"
+debug_interact_gold_pile_take_money: "$BTN_INTERACT Bag Gold"
+hud_int_hold_grab_the_bag: "$BTN_INTERACT Pickup Bag"
+hud_int_hold_grab_the_painting: "$BTN_INTERACT Pickup Painting"
+hud_int_cut_glass: "$BTN_INTERACT Cut Glass"
+debug_interact_temp_interact_box_press: "$BTN_INTERACT Interact"
+hud_int_type_in_password: "$BTN_INTERACT Type Password"
+debug_interact_hack_ipad: "$BTN_INTERACT Hack Device"
+hud_int_take_jewelry: "$BTN_INTERACT Take Jewelry"
+hud_int_equipment_shaped_charge: "$BTN_INTERACT Place Charge"
+debug_interact_gas: "$BTN_INTERACT Place Gas"
+debug_interact_equipment_gas: ""
+hud_int_hold_take_gas: "$BTN_INTERACT Take Gas"
+debug_interact_c4_bag: "$BTN_INTERACT Take C4"
+debug_interact_c4: "$BTN_INTERACT Place C4"
+debug_interact_equipment_c4: ""
+hud_int_disable_alarm_pager: "$BTN_INTERACT Answer Pager"
+hud_int_dispose_corpse: "$BTN_INTERACT Bag Corpse"
+hud_int_take_diamonds_dah: "$BTN_INTERACT Pickup Diamonds"
+debug_interact_equipment_crowbar: "Need Crowbar"
+debug_interact_equipment_saw: ""
+debug_interact_saw_jammed: "$BTN_INTERACT Fix Saw"
+hud_int_hold_take_saw: "$BTN_INTERACT Take Saw"
+hud_int_hold_crack_crate: "$BTN_INTERACT Open Crate"
+hud_int_hold_born_untie: "$BTN_INTERACT Set Free"
+hud_int_use_ecm_jammer: "$BTN_INTERACT Place ECM"
+hud_int_invisible_interaction_open: "$BTN_INTERACT Open"
+hud_int_tape_loop: "$BTN_INTERACT Loop Camera"
+hud_int_hold_take_painting: "$BTN_INTERACT Bag Painting"
+hud_int_hold_take_jewelry: "$BTN_INTERACT Bag Jewelry"
+debug_interact_security_station: "$BTN_INTERACT Security Override"
+debug_interact_circuit_breaker: "$BTN_INTERACT Use Circuit Breaker"
+hud_int_setup_zipline: "$BTN_INTERACT Setup Zipline"
+hud_int_use_zipline: "$BTN_INTERACT Ride Zipline"
+mission_objective_activated: "New Objective"
+hud_int_hold_take_handcuffs: "$BTN_INTERACT Take Handcuffs"
+debug_interact_grenade_crate_take_grenades: "$BTN_INTERACT Take Throwable"
+hud_int_vehicle_drive: "$BTN_INTERACT Drive"
+hud_int_driving_drive: "$BTN_INTERACT Enter Vehicle"
+hud_int_vehicle_enter: "$BTN_INTERACT Passenger"
+hud_int_vehicle_open_trunk: "$BTN_INTERACT Open Trunk"
+hud_int_vehicle_repair: "$BTN_INTERACT Repair Vehicle"
+hud_int_vehicle_loot: "$BTN_INTERACT Pickup From Vehicle"
+hud_int_vehicle_close_trunk: "$BTN_INTERACT Close Trunk"
+hud_int_take_weapons: "$BTN_INTERACT Bag Weapons"
+hud_int_hold_take_cocaine: "$BTN_INTERACT Bag Cocaine"
+hud_int_take_harddrive: "$BTN_INTERACT Take HDD"
+hud_int_place_harddrive: "$BTN_INTERACT Place HDD"
+hud_int_hold_take_server: "$BTN_INTERACT Pickup Server"
+debug_interact_open_door: "$BTN_INTERACT Open Door"
+hud_int_take_keys: "$BTN_INTERACT Take Keys"
+hud_int_hold_take_blow_torch: "$BTN_INTERACT Take Blowtorch"
+hud_int_equipment_blow_torch: "Blowtorch"
+hud_int_hold_open_vent: "$BTN_INTERACT Open Vent"
+hud_int_big_computer_hackable: "$BTN_INTERACT Hack"
+hud_int_need_thermite_paste: ""
+hud_int_take_thermite_paste: "$BTN_INTERACT Take Paste"
+hud_int_hold_ignite_thermite_paste: "$BTN_INTERACT Ignite Paste"
+hud_int_take_thermal_paste: "$BTN_INTERACT Take Paste"
+hud_int_hold_ignite_thermal_paste: "$BTN_INTERACT Ignite Paste"
+debug_interact_thermite: "$BTN_INTERACT Place Thermite"
+hud_int_take_thermite: "$BTN_INTERACT Take Thermite"
+hud_int_hack_box: "$BTN_INTERACT Hack Electrical Box"
+hud_int_hold_cut_wires: "$BTN_INTERACT Cut Wires"
+hud_int_take_crowbar: "$BTN_INTERACT Take Crowbar"
+hud_int_hold_take_artifact: "$BTN_INTERACT Bag Artifact"
+hud_int_hold_cut: "$BTN_INTERACT Cut"
+hud_int_timelock_panel: "$BTN_INTERACT Insert Keycard"
+debug_interact_trade: "$BTN_INTERACT Trade Hostage"
+debug_interact_revive: "$BTN_INTERACT Revive"
+debug_interact_numpad: "$BTN_INTERACT Enter Code"
+hud_int_hold_take_necklace: "$BTN_INTERACT Pickup Necklace"
+hud_int_grab_server: "$BTN_INTERACT Take Server" # in Counterfeit it's Take, in HoxOut it's Pickup. Flip a coin, fuck you
+hint_usb_stick: ""
+hud_int_press_activate: "$BTN_INTERACT Activate"
+hud_int_equipment_drill_upgrade: "$BTN_INTERACT Upgrade Drill"
+hud_int_equipment_lance_upgrade: "$BTN_INTERACT Upgrade Drill"
+hud_int_equipment_saw_upgrade: "$BTN_INTERACT Upgrade Saw"
+hud_int_rewire_box: "$BTN_INTERACT Rewire"
+hud_int_rewire_timelock: "$BTN_INTERACT Rewire"
+hud_int_hold_open_vault: "$BTN_INTERACT Open Vault"
+debug_c4_diffusible: "$BTN_INTERACT Defuse C4"
+hud_int_place_flare: "$BTN_INTERACT Place Flare"
+hud_int_use_flare: "$BTN_INTERACT Light Flare"
+hud_equipment_need_glass_cutter: ""
+debug_interact_free: "$BTN_INTERACT Free"
+debug_interact_temp_interact_box: "$BTN_INTERACT Interact" # credit to Eightan
+hud_int_press_interaction_open: "$BTN_INTERACT Open/Close" # hud_int_open_slash_close exists, use it for Sangres' revolver case instead of this.
+hud_int_press_interaction_close: "$BTN_INTERACT Open/Close" # This is open/close because they didn't use the close interaction for Sangres' weapon case
+hud_int_escape_taser: "$BTN_INTERACT Break Free"
+hud_int_pick_up_item: "$BTN_INTERACT Take Anniversary Item"
+debug_interact_cutter_jammed: "$BTN_INTERACT Restart Cutter"
+hud_int_press_cancel: "$BTN_INTERACT Cancel"
+hud_int_release_cancel: "Release $BTN_INTERACT to Cancel"
+hud_int_press_cancel_alarm: "$BTN_INTERACT Trigger Alarm"
+hud_int_hold_xm20_mask: "$BTN_INTERACT Take Mask"
+
+# Deployables
+debug_interact_doctor_bag_heal: "$BTN_INTERACT Heal"
+debug_interact_ammo_bag_take_ammo: "$BTN_INTERACT Take Ammo"
+debug_interact_trip_mine: "$BTN_INTERACT Toggle Mine"
+hud_int_equipment_normal_mode_trip_mine: "$BTN_INTERACT Switch to Explosive"
+hud_int_equipment_sensor_mode_trip_mine: "$BTN_INTERACT Switch to Sensor"
+hud_int_equipment_ecm_feedback: "$BTN_INTERACT ECM Feedback"
+debug_interact_bodybags_bag_take_bodybag: "$BTN_INTERACT Take Body Bag"
+hud_interact_pickup_sentry_gun: "$BTN_INTERACT Pickup Sentry Gun"
+hud_interact_sentry_gun_switch_fire_mode: "$BTN_INTERACT Change Ammo Type ($AMMO_LEFT%)"
+
+# Golden Grin, AKA "How Many Interactions Can We Shove In One Heist"
+hud_cas_take_gear: "$BTN_INTERACT Take Gear"
+hud_cas_open_guitar_case: "$BTN_INTERACT Open Case"
+hud_take_sleeping_gas: "$BTN_INTERACT Take Gas"
+hud_cas_open_door: "$BTN_INTERACT Open Door"
+hud_cas_close_door: "$BTN_INTERACT Close Door"
+hud_int_hold_play_slots: "$BTN_INTERACT Play Slots"
+hud_int_hold_moon_attach_winch: "$BTN_INTERACT Attach Hook"
+hud_open_cas_securityroom_door: "$BTN_INTERACT Open Door"
+hud_take_???: "$BTN_INTERACT Pickup Coffer" # credit to Phantom
+hud_open_cas_briefcase: "$BTN_INTERACT Open Briefcase"
+hud_take_casino_chips: "$BTN_INTERACT Take Chips"
+hud_int_search_blueprints: "$BTN_INTERACT Search"
+hud_int_hold_scan_blueprints: "$BTN_INTERACT Scan Blueprints"
+hint_no_blueprints: ""
+hud_int_send_blueprints: "$BTN_INTERACT Send Blueprints"
+hud_int_copy_data_usb: "$BTN_INTERACT Copy Guest List"
+hud_take_usb_key_data: "$BTN_INTERACT Take USB"
+hud_insert_usb: "$BTN_INTERACT Insert USB"
+hud_int_take_bottle: "$BTN_INTERACT Take Bottle"
+hud_int_pour_drink: "$BTN_INTERACT Pour Drink"
+hint_no_bottle: ""
+hud_insert_hotel_room_key: "$BTN_INTERACT Insert Keycard"
+hud_place_sleeping_gass: "$BTN_INTERACT Place Gas"
+hud_cas_security_door: "$BTN_INTERACT Pick Lock"
+hud_disable_lasers: "$BTN_INTERACT Disable Lasers"
+hud_int_try_keys: "$BTN_INTERACT Try Key"
+hud_int_take_hotel_keycard: "$BTN_INTERACT Take Keycard"
+hud_hack_skylight_barrier: "$BTN_INTERACT Hack Barrier"
+hud_take_bfd_tool: "$BTN_INTERACT Take Tool"
+hud_screw_down: "$BTN_INTERACT Screw Down"
+hud_cas_take_fireworks_bag: "$BTN_INTERACT Pickup Fireworks"
+hud_cas_ignite_fireworks: "$BTN_INTERACT Light Fireworks"
+hud_int_take_win_slip: "$BTN_INTERACT Take Slip"
+hud_take_hook: "$BTN_INTERACT Take Hook"
+hud_connect_which_hook: "$BTN_INTERACT Connect Hook"
+hud_start_winch: "$BTN_INTERACT Start Winch"
+hud_connect_cable: "$BTN_INTERACT Connect Cable"
+hud_cas_open_powerbox: "$BTN_INTERACT Pick Lock"
+hud_start_drill: "$BTN_INTERACT Start BFD"
+hud_take_watertank: "$BTN_INTERACT Pickup Water Tank"
+hud_cas_open_compartment: "$BTN_INTERACT Open Compartment"
+hud_stop_drill: "$BTN_INTERACT Stop BFD"
+hint_no_bfd_tool: ""
+hud_fix_bfd_drill: "$BTN_INTERACT Fix BFD"
+hint_no_data_usb_key: ""
+hint_no_usb_key: ""
+hud_open_cas_elevator: "$BTN_INTERACT Open/Close"
+hud_int_hold_pick_up: "$BTN_INTERACT Take"
+hud_unpack_turret: "$BTN_INTERACT Unpack Turret" # credit to Eightan
+
+# Aftershock
+hud_int_hold_take_safe: "$BTN_INTERACT Pickup Safe" # I'm still annoyed about COP
+hud_int_hold_pku_knife: "$BTN_INTERACT Take Knife"
+
+# Stealth Tutorial
+hud_int_grab_code: "$BTN_INTERACT Take Code"
+
+# Cursed Kill Room
+hud_int_hold_to_choose_mask: "$BTN_INTERACT Choose Mask"
+hud_int_hold_take_mask: "$BTN_INTERACT Take Mask"
+
+# Meth
+hud_int_take_hydrogen_chloride: "$BTN_INTERACT Take Hydrogen"
+hud_int_methlab_gas_to_salt: "$BTN_INTERACT Hydrogen Chloride"
+hud_int_no_hydrogen_chloride: ""
+
+hud_int_take_caustic_soda: "$BTN_INTERACT Take Caustic Soda"
+hud_int_methlab_caustic_cooler: "$BTN_INTERACT Caustic Soda"
+hud_int_no_caustic_soda: ""
+
+hud_int_take_acid: "$BTN_INTERACT Take Muriatic Acid"
+hud_int_methlab_bubbling: "$BTN_INTERACT Muriatic Acid"
+hud_int_no_acid: ""
+
+hud_int_hold_take_meth: "$BTN_INTERACT Bag Meth"
+
+# Slaughterhouse
+hud_int_hold_start_crane: "$BTN_INTERACT Move Crane"
+hud_int_hold_ignite_trap: "$BTN_INTERACT Ignite Gas"
+hud_int_hold_take_pig: "$BTN_INTERACT Pickup Pig"
+
+# Goat Simulator
+hud_int_hold_grab_goat: "$BTN_INTERACT Pickup Goat"
+hud_int_hold_remove_debris: "$BTN_INTERACT Move Debris"
+
+# Hoxton Revenge
+hud_int_play_tape: "$BTN_INTERACT Play Tape"
+hud_int_hold_take_evidence: "$BTN_INTERACT Bag Evidence"
+hud_int_break_planks: "$BTN_INTERACT Break Planks"
+hud_int_hold_open_slash_close_sec_box: "$BTN_INTERACT Open/Close"
+debug_interact_hospital_security_cable: "$BTN_INTERACT Cut Cable"
+
+# Ukrainian Job
+hud_int_pickup_tiara: "$BTN_INTERACT Take Tiara"
+
+# Hotline Miami
+hud_int_hold_roll_carpet: "$BTN_INTERACT Move Carpet"
+hud_int_hold_connect_equip: "$BTN_INTERACT Connect Cable"
+hud_int_hold_start_motor: "$BTN_INTERACT Start Engine"
+hud_int_hold_read_barcode: "$BTN_INTERACT Read Barcode"
+hud_int_hold_activate_reader: "$BTN_INTERACT Reactivate" # credit to Eightan
+hud_int_hold_barcode: "$BTN_INTERACT Take Barcode"
+hud_int_hold_open_circuitbreaker: "$BTN_INTERACT Open Breaker"
+hud_int_hold_remove_cover: "$BTN_INTERACT Remove Cover"
+hud_int_hold_cut_cable: "$BTN_INTERACT Cut Cable"
+hud_int_hold_activate_sprinklers: "$BTN_INTERACT Activate Sprinklers"
+hud_int_equipment_barcode_opa_locka: "Barcode (Shaw)"
+hud_int_equipment_barcode_isles_beach: "Barcode (Foggy Bottom)"
+hud_int_equipment_barcode_brickell: "Barcode (Georgetown)"
+hud_int_equipment_barcode_downtown: "Barcode (Downtown)"
+hud_int_equipment_barcode_edgewater: "Barcode (West End)"
+hud_int_hold_disarm_bomb: "$BTN_INTERACT Disarm Bomb"
+
+# Alaskan Deal
+hud_generator_start: "$BTN_INTERACT Start Generator"
+hud_int_remove_rope: "$BTN_INTERACT Remove Rope"
+hud_int_hold_detach_hose: "$BTN_INTERACT Detach Hose"
+hud_int_move_gangplank: "$BTN_INTERACT Move Gangplank"
+
+# Stealing Xmas
+hud_int_hold_search_computer: "$BTN_INTERACT Search Computer"
+hud_int_hold_take_shoes: "$BTN_INTERACT Pickup Shoes"
+hud_int_hold_take_toy: "$BTN_INTERACT Pickup Toy"
+hud_int_hold_open_shopping_bag: "$BTN_INTERACT Open Bag"
+hud_int_pickup_tablet: "$BTN_INTERACT Take Tablet"
+hud_int_pickup_phone: "$BTN_INTERACT Take Phone"
+hud_int_hold_take_expensive_wine: "$BTN_INTERACT Pickup Wine"
+hud_int_hold_take_vr_headset: "$BTN_INTERACT Pickup Headset" # credit to Eightan
+
+# Election Day
+hud_int_hold_resume_upload: "$BTN_INTERACT Resume Upload"
+hud_int_hold_place_gps_tracker: "$BTN_INTERACT Place Tracker"
+hud_int_hold_close_crate: "$BTN_INTERACT Close Crate"
+hud_int_fork_lift_sound: "$BTN_INTERACT Turn On Forklift"
+
+# Hoxton Breakout
+hud_int_hold_move_car: "$BTN_INTERACT Move Car"
+hud_int_signal_driver: "$BTN_INTERACT Signal Driver"
+hud_equipment_use_bridge: ""
+hud_int_take_bridge: "$BTN_INTERACT Take Sheets"
+hud_int_use_bridge: "$BTN_INTERACT Make Bridge"
+hud_int_take_ticket: "$BTN_INTERACT Take Ticket"
+hud_int_keyboard_hox_1: "$BTN_INTERACT Lower Bollards"
+hud_int_remove_stinger: "$BTN_INTERACT Remove Stinger" # credit to Eightan
+hud_int_hold_remove_armor_plating: "$BTN_INTERACT Remove Armor"
+hud_int_use_ticket: "$BTN_INTERACT Use Ticket"
+hud_int_invisible_interaction_close: "$BTN_INTERACT Close"
+hud_int_hold_hack_computer: "$BTN_INTERACT Hack Computer"
+hud_int_hold_approve_request: "$BTN_INTERACT Approve Request"
+hud_int_hold_download_keys: "$BTN_INTERACT Download Keys"
+hud_int_hold_gather_evidence: "$BTN_INTERACT Take Evidence"
+hud_equipment_need_evidence: ""
+hud_int_hold_check_evidence: "$BTN_INTERACT Check Evidence" # was "Scan Evidence" but they reused this in Breakfast in Tijuana
+hud_int_search_files: "$BTN_INTERACT Search"
+hud_int_use_files: "$BTN_INTERACT Slide Files"
+
+# Car Shop
+hud_equipment_need_car_keys: ""
+hud_int_hold_unlock_car: "$BTN_INTERACT Unlock Car"
+
+# Lab Rats
+hud_int_hold_take_pills: "$BTN_INTERACT Pickup Pills"
+hud_int_bag_zipline: "$BTN_INTERACT Attach to Zipline"
+
+hud_int_equipment_hydrogen_chloride: "Hydrogen Chloride"
+hud_int_equipment_caustic_soda: "Caustic Soda"
+hud_int_equipment_acid: "Muriatic Acid"
+
+# Rats
+hud_int_hold_steal_meth: "$BTN_INTERACT Steal Meth"
+
+# Birth of Sky
+hud_int_push_button: "$BTN_INTERACT Press Button"
+hud_int_hold_grab_parachute: "$BTN_INTERACT Pickup Parachute"
+hud_int_hold_fasten_strap: "$BTN_INTERACT Attach Strap"
+
+# Santa's Workshop
+hud_int_hold_bag_present: "$BTN_INTERACT Bag Present"
+
+# White Xmas
+hud_int_hold_take_pure_cocaine: "$BTN_INTERACT Bag Cocaine"
+hud_int_hold_open_xmas_present: "$BTN_INTERACT Open Present"
+hud_int_hold_take_sandwich: "$BTN_INTERACT Bag Toast"
+
+# Greenbridge
+hud_int_hold_raise_balloon: "$BTN_INTERACT Raise Balloon"
+
+# Scarface Mansion
+hud_int_insert_flash_dive: "$BTN_INTERACT Insert USB"
+hud_int_hack_laptop: "$BTN_INTERACT Hack Laptop"
+hud_take_usb_key: "$BTN_INTERACT Take USB"
+hud_int_hold_rewire_fuse_box: "$BTN_INTERACT Cut Wires"
+debug_interact_hack_ipad_jammed: "$BTN_INTERACT Reboot"
+hud_int_hold_open_coke: "$BTN_INTERACT Search Coke"
+hud_mil_hold_remove_bug: "$BTN_INTERACT Take Recorder"
+hud_int_hold_phone_office: "$BTN_INTERACT Call Office" # don't let go like I did.
+hud_int_hold_open_lid: "$BTN_INTERACT Open"
+hud_int_hold_take_yayo: "$BTN_INTERACT Bag Cocaine"
+hud_int_hold_attach_magnet: "$BTN_INTERACT Attach Magnet"
+hud_int_hold_unfold_ladder: "$BTN_INTERACT Unfold Ladder" # credit to Eightan
+
+# Shadow Raid
+debug_interact_sewer_manhole: "$BTN_INTERACT Open Manhole"
+hud_int_set_off_alarm: "$BTN_INTERACT Trigger Alarm"
+hud_int_hold_bag_sa_armor: "$BTN_INTERACT Bag Armor"
+
+# No Mercy
+debug_interact_hospital_phone: "$BTN_INTERACT Answer Phone"
+hud_int_hold_check_file: "$BTN_INTERACT Check File"
+hud_int_set_up_sentry: "$BTN_INTERACT Place Sentry"
+hud_int_hold_take_blood_sample: "$BTN_INTERACT Take Sample"
+hud_int_insert_blood_sample: "$BTN_INTERACT Test Sample"
+hint_no_blood_sample: ""
+hud_int_hold_take_blood_valid_sample: "$BTN_INTERACT Take Sample"
+hud_int_call_elevator: "$BTN_INTERACT Call Elevator"
+hud_int_hold_stash_vial: "$BTN_INTERACT Stash Sample"
+hud_int_hold_breach: "$BTN_INTERACT Breach"
+
+# Prison Nightmare
+press_insert_keycard: "$BTN_INTERACT Insert Keycard"
+hud_int_hold_pull_switch: "$BTN_INTERACT Pull Switch"
+hud_int_hold_repair_wheel: "$BTN_INTERACT Restart Timer"
+
+# First World Bank
+hud_int_hold_close_shutters: "$BTN_INTERACT Close Shutters"
+hud_int_hold_open_shutters: "$BTN_INTERACT Open Shutters"
+debug_interact_copy_machine: "$BTN_INTERACT Open Copy Machine"
+debug_interact_equipment_thermite: ""
+hud_int_take_envelope: "$BTN_INTERACT Take Envelope" # let's be real you're not taking this
+
+# Biker Heist
+hud_int_hold_born_take_bike_part: "$BTN_INTERACT Pickup Part" # used for chrome skull as well. not much I can do
+hud_int_hold_born_receive_item_blow_torch: "$BTN_INTERACT Take Blowtorch"
+hud_int_hold_hand_over_chrome_skull: "$BTN_INTERACT Give Skull"
+hud_int_hold_release_hatch: "$BTN_INTERACT Release Hatch"
+hud_int_hold_open_case: "$BTN_INTERACT Open Case"
+hud_int_hold_take_helmet: "$BTN_INTERACT Pickup Helmet"
+hud_int_hold_born_search_tools: "$BTN_INTERACT Search"
+hud_int_hold_hand_over_tool: "$BTN_INTERACT Give Tool"
+hud_born_plug_in_powercord: "$BTN_INTERACT Plug In"
+hud_int_hold_born_soda: "$BTN_INTERACT Take Cola" # credit to Eightan
+hud_int_hold_hand_over_soda: "$BTN_INTERACT Give Cola" # credit to Eightan
+
+# Beneath The Mountain
+hud_int_hold_pku_breaching_charges: "$BTN_INTERACT Pickup Charges"
+hud_int_hold_plant_breaching_charge: "$BTN_INTERACT Plant Charge"
+hud_int_hold_place_breaching_detonator: "$BTN_INTERACT Place Detonator"
+hud_int_open_panicroom: "$BTN_INTERACT Insert Keycard" # definitely not a panic room
+hud_int_hold_take_prototype: "$BTN_INTERACT Pickup Prototype"
+hud_int_hold_unlock_display_ares: "Ares"
+hud_int_hold_unlock_display_demeter: "Demeter"
+hud_int_hold_unlock_display_poseidon: "Poseidon"
+hud_int_hold_unlock_display_zeus: "Zeus"
+hud_int_hold_unlock_display_hades: "Hades"
+hud_int_hold_unlock_display_chronos: "Chronos"
+hud_int_hold_place_breaching_detonator_rearm: "$BTN_INTERACT Restart Detonator"
+
+# The Diamond
+hud_int_hold_open_display: "$BTN_INTERACT Open Display"
+debug_interact_diamond: "$BTN_INTERACT Pickup Diamond"
+hud_int_hold_turn_on_power: "$BTN_INTERACT Turn Power On"
+hud_int_hack_timelock: "$BTN_INTERACT Hack Timelock"
+
+# Panic Room
+debug_interact_equiptment_apartment_key: ""
+hud_int_take_chavez_keys: "$BTN_INTERACT Take Key"
+debug_interact_apartment_key: "$BTN_INTERACT Unlock Door"
+hud_int_hold_take_toothbrush: "$BTN_INTERACT Pickup Toothbrush"
+debug_interact_apartment_helicopter: "$BTN_INTERACT Attach Magnet"
+
+# Wolf Pack Heists
+debug_interact_crowbar: "$BTN_INTERACT Breach"
+debug_interact_crowbar2: "$BTN_INTERACT Breach" # credit to Eightan
+debug_interact_hold_to_breach: "$BTN_INTERACT Breach" # fuck yeah, THREE breach interactions
+debug_interact_interaction_ball: "$BTN_INTERACT Pull Hose" # ball?
+hud_int_take_paper_roll: "$BTN_INTERACT Take Roll"
+hud_int_take_printer_ink: "$BTN_INTERACT Take Ink"
+hud_int_equipment_printer_ink: "Ink"
+debug_interact_water_tap: "$BTN_INTERACT Turn Tap"
+hud_int_take_plates: "$BTN_INTERACT Take Plates"
+hud_int_hold_insert_plates: "$BTN_INTERACT Insert Plates"
+hud_int_hold_insert_printer_ink: "$BTN_INTERACT Insert Ink"
+hud_int_hold_insert_paper_roll: "$BTN_INTERACT Insert Roll"
+hud_int_hold_start_printer: "$BTN_INTERACT Start Printer"
+debug_interact_transformer_box: "$BTN_INTERACT Turn On"
+hud_int_hold_take_counterfeit_money: "$BTN_INTERACT Bag Money"
+hud_int_hold_connect_hose: "$BTN_INTERACT Connect Hose"
+debug_interact_stash_server_cord: "$BTN_INTERACT Plug In"
+debug_interact_stash_server: "$BTN_INTERACT Connect Server"
+hud_man_apply_tape: "$BTN_INTERACT Tape Up"
+hud_equipment_need_paper_roll: ""
+hud_equipment_need_printer_ink: ""
+
+# Diamond Store
+hud_int_numpad_keycard: "$BTN_INTERACT Disable Alarm"
+hud_int_numpad_no_keycard: ""
+
+# Heat Street
+debug_interact_embassy_door: "$BTN_INTERACT Open Door"
+hud_int_take_missing_animal_poster: "$BTN_INTERACT Take Poster"
+debug_interact_open_trunk: "$BTN_INTERACT Open Trunk"
+hud_int_hold_pick_up_turtle: "$BTN_INTERACT Take Turtle"
+
+# Reservoir Dogs
+hud_int_take_liquid_nitrogen: "$BTN_INTERACT Take Nitrogen"
+hud_int_hold_place_liquid_nitrogen: "$BTN_INTERACT Place Nitrogen"
+hud_equipment_liquid_nitrogen: ""
+
+# Brooklyn Bank
+hud_int_hold_search_dumpster: "$BTN_INTERACT Search Dumpster"
+hud_int_hold_search_toilet: "$BTN_INTERACT Search Toilet"
+hud_int_hold_take_medallion: "$BTN_INTERACT Take Medallion"
+hud_int_hold_cut_tarp: "$BTN_INTERACT Cut Tarp"
+hud_connect_which_hook_brb: "$BTN_INTERACT Attach Hook"
+
+# White House
+hud_int_hold_cut_wire_red: "$BTN_INTERACT Cut Red Wire"
+hud_int_hold_cut_wire_green: "$BTN_INTERACT Cut Green Wire"
+hud_int_hold_cut_wire_blue: "$BTN_INTERACT Cut Blue Wire"
+hud_int_hold_cut_wire_yellow: "$BTN_INTERACT Cut Yellow Wire"
+hud_int_hold_remove_painting: "$BTN_INTERACT Move Painting"
+hud_int_hold_search_clues: "$BTN_INTERACT Search Laptop"
+hud_int_hold_search_usb_key: "$BTN_INTERACT Search"
+hud_int_hold_insert_usb: "$BTN_INTERACT Insert USB"
+hud_int_hold_open_safe: "$BTN_INTERACT Open Safe"
+hud_int_hold_search_books: "$BTN_INTERACT Move Books"
+hud_int_hold_start_hack: "$BTN_INTERACT Hack Computer"
+hud_int_hold_relay_locke: "$BTN_INTERACT Relay Locke"
+hud_int_hold_bypass_firewall: "$BTN_INTERACT Bypass Firewall"
+hud_int_hold_take_pardons: "$BTN_INTERACT Take Pardon"
+hud_int_hold_reboot: "$BTN_INTERACT Reboot"
+hud_int_hold_postpone_update: "$BTN_INTERACT Pause Update"
+
+hud_int_hold_pull_lever: "$BTN_INTERACT Pull Lever" # oh yeah, you best believe I changed the secret stuff
+hud_int_place_mayan_gold_bar: "$BTN_INTERACT Place Gold"
+hud_int_equipment_no_mayan_gold: ""
+hud_int_take_mayan_gold_bar: "$BTN_INTERACT Take Gold"
+hud_int_hold_pku_uno_gold: "$BTN_INTERACT Pickup Gold"
+hud_int_equipment_mayan_gold_bar: "Mayan Gold"
+
+# Breaking Feds
+hud_int_hold_hack_barrier: "$BTN_INTERACT Hack Barrier"
+hud_int_hold_turn_off_light: "$BTN_INTERACT Turn Off Lights"
+hud_int_hold_take_box: "$BTN_INTERACT Pickup Coffer"
+hud_take_stapler: "$BTN_INTERACT Take Stapler"
+hud_int_press_place_stapler: "$BTN_INTERACT Place Stapler"
+hud_hint_need_stapler: ""
+hud_int_hold_disable_alarm: "$BTN_INTERACT Disable Alarm"
+hud_int_press_take_elevator: "$BTN_INTERACT Ride Elevator"
+hud_int_press_take_chimichanga: "$BTN_INTERACT Take Chimichanga"
+hud_int_press_place_chimichanga: "$BTN_INTERACT Place Chimichanga"
+hud_int_press_knock_on_door: "$BTN_INTERACT Knock"
+
+# Alesso Heist
+hud_int_hold_search_c4: "$BTN_INTERACT Search"
+hud_int_hold_answer_call: "$BTN_INTERACT Answer"
+debug_interact_glass_cutter: "$BTN_INTERACT Place Cutter"
+hud_int_hold_take_circle_cutter: "$BTN_INTERACT Take Cutter"
+hud_int_hold_place_laptop: "$BTN_INTERACT Place Laptop"
+hud_int_are_turn_on_tv: "$BTN_INTERACT Turn On TV" # credit to Eightan
+hud_int_press_for_info: "$BTN_INTERACT Play" # credit to Eightan
+hud_int_hold_take_fire_extinguisher: "$BTN_INTERACT Take Fire Extinguisher" # credit to Eightan
+hud_int_hold_extinguish_fire: "$BTN_INTERACT Put Out Fire" # credit to Eightan
+
+# Armored Transport
+hud_int_german_folder: "$BTN_INTERACT Take Folder"
+hud_int_hold_disassemble_turret: "$BTN_INTERACT Bag Turret"
+hud_int_hold_pack_shells: "$BTN_INTERACT Bag Shells"
+hud_int_take_confidential_folder_event: "$BTN_INTERACT Take Folder"
+
+# Murky Station
+hud_hold_remove_screw: "$BTN_INTERACT Unscrew" # credit to Eightan
+
+# GO Bank
+hud_int_bank_note: "$BTN_INTERACT Search" # credit to Eightan
+hud_int_hold_pickup_boards: "$BTN_INTERACT Take Boards" # credit to Eightan
+hud_equipment_boards: "Boards" # credit to Eightan
+hud_equipment_need_boards: "" # credit to Eightan
+
+# Boiling Point
+hud_int_fire_missiles: "$BTN_INTERACT Fire Missiles"
+hud_hold_open_bomb_hatch: "$BTN_INTERACT Open Hatch"
+hud_hold_start_bomb_charge: "$BTN_INTERACT Charge EMP"
+hud_int_hold_grab_body: "$BTN_INTERACT Bag Body"
+hud_hold_turn_of_gas: "$BTN_INTERACT Stop Gas"
+hud_hold_start_scanning: "$BTN_INTERACT Activate Scanner"
+hud_int_hold_pku_briefcase: "$BTN_INTERACT Take Briefcase"
+hud_hold_removing_hand: "$BTN_INTERACT Take Hand" # credit to Eightan
+hud_hold_scan_hand: "$BTN_INTERACT Scan Hand" # credit to Eightan
+
+# Big Oil
+hud_int_take_confidential_folder: "$BTN_INTERACT Take Intel"
+hud_int_hold_take_blueprints: "$BTN_INTERACT Take Blueprints"
+hud_int_hold_take_reaktor: "$BTN_INTERACT Pickup Engine" # their inner swedes came out with this one
+
+# Bomb Heists
+hud_pku_manifest: "$BTN_INTERACT Take Manifest"
+hud_int_hold_call_captain: "$BTN_INTERACT Call Moretta"
+hud_move_ship_gps_coords: "$BTN_INTERACT Enter Coordinates"
+hud_int_hold_disassemble_cro_loot: "$BTN_INTERACT Pickup Bomb"
+hud_int_open_cargo_door: "$BTN_INTERACT Open Door"
+hud_hack_ship_control: "$BTN_INTERACT Hack Computer"
+hud_int_hold_remove_ladder: "$BTN_INTERACT Pickup Ladder"
+hud_int_take_chainsaw: "$BTN_INTERACT Take Chainsaw"
+hint_no_chainsaw: ""
+hud_int_hold_cut_tree: "$BTN_INTERACT Cut Tree"
+
+# Big Bank
+hud_int_big_computer_server: "$BTN_INTERACT Access Computer"
+hud_int_big_computer_unhackable: ""
+hud_int_timelock_numpad: "$BTN_INTERACT Start Timelock"
+hud_int_use_scanner: "$BTN_INTERACT Scan Thumb"
+hud_int_enter_code: "$BTN_INTERACT Enter Code"
+debug_interact_money_printed_take_money: "$BTN_INTERACT Take Money"
+hud_int_use_phone_signal_bus: "$BTN_INTERACT Signal Bus"
+hud_int_crane_left: "$BTN_INTERACT Move Crane"
+hud_int_crane_release: "$BTN_INTERACT Release Crane"
+hud_int_take_lance_part: "$BTN_INTERACT Take Drill Part"
+hud_int_equipment_huge_lance: "$BTN_INTERACT Start The Beast"
+hud_int_equipment_huge_lance_jammed: "$BTN_INTERACT Fix The Beast"
+hud_int_equipment_no_lance_part: ""
+hud_int_hold_assemble_thermite: "$BTN_INTERACT Place Thermite" # credit to Eightan
+hud_int_hold_ignite_thermite: "$BTN_INTERACT Ignite" # credit to Eightan
+
+# Framing Frame
+hud_int_answer_phone: "$BTN_INTERACT Answer Phone"
+debug_interact_move_bookshelf: "$BTN_INTERACT Move Shelf"
+hud_int_hold_hack_numpad: "$BTN_INTERACT Hack Keypad"
+hud_int_old_wine: "$BTN_INTERACT Pickup Wine"
+hud_int_hold_take_hdd: "$BTN_INTERACT Take HDD"
+hud_int_use_computer: "$BTN_INTERACT Take Laptop"
+hud_int_hold_use_computer: "$BTN_INTERACT Use Computer" # I'd change this to "Place Laptop" but it's used by other stuff
+hud_int_hold_use_device: "$BTN_INTERACT Place Device"
+
+# Yacht Heist
+hud_int_search_fridge: "$BTN_INTERACT Search Fridge"
+hud_int_search_steel_cabinet: "$BTN_INTERACT Search Cabinet"
+hud_int_search_cart: "$BTN_INTERACT Search Cart"
+hud_int_search_drawers: "$BTN_INTERACT Search Drawers"
+hud_int_search_drawer: "$BTN_INTERACT Search Drawer"
+hud_int_search_luggage: "$BTN_INTERACT Search Luggage"
+hud_int_search_shower: "$BTN_INTERACT Search Shower"
+hud_int_search_cigar_boxes: "$BTN_INTERACT Search Cigar Boxes"
+hud_int_search_capsule: "$BTN_INTERACT Search Capsule"
+hud_int_search_bookshelf: "$BTN_INTERACT Search Bookshelf"
+hud_int_open_window: "$BTN_INTERACT Open Window"
+hud_int_close_window: "$BTN_INTERACT Close Window"
+hud_int_hack_server_room: "$BTN_INTERACT Hack Laptop"
+hud_int_turn_off: "$BTN_INTERACT Turn Valve"
+
+# Brooklyn 10-10
+hud_int_pry_open_elevator_door: "$BTN_INTERACT Open Door"
+hud_int_hold_open_hatch: "$BTN_INTERACT Open Hatch"
+
+# Shacklethorne Auction
+hud_int_press_pay_respects: "$BTN_INTERACT Pay Respects"
+hud_int_hold_to_place_device: "$BTN_INTERACT Place Device"
+hud_int_hold_turn_off_power: "$BTN_INTERACT Turn Off"
+hud_int_hold_to_take_tablet: "$BTN_INTERACT Pickup Tablet"
+hud_int_hold_take_wrench: "$BTN_INTERACT Take Wrench"
+
+# Firestarter
+hud_take_briefcase: "$BTN_INTERACT Take Briefcase"
+hud_int_place_camera: "$BTN_INTERACT Place Camera"
+hud_int_hold_ignite_money: "$BTN_INTERACT Burn Money"
+hud_int_take_camera: "$BTN_INTERACT Take Camera"
+
+# Meltdown
+hud_int_hold_jam_vent: "$BTN_INTERACT Jam Vent"
+hud_int_hold_take_warhead: "$BTN_INTERACT Pickup Warhead"
+
+# Hell's Island
+hud_int_pickup_asset: "$BTN_INTERACT Take Keys"
+
+# Safehouse Nightmare
+hud_int_trick_treat: "$BTN_INTERACT Trick or Treat?"
+
+# Diamond Heist
+hud_int_take_red_diamond: "$BTN_INTERACT Pickup Diamond"
+
+# Henry's Rock
+hud_int_hold_add_compound_a: "$BTN_INTERACT Compound A"
+hint_no_compound_a: ""
+hud_int_hold_add_compound_b: "$BTN_INTERACT Compound B"
+hint_no_compound_b: ""
+hud_int_hold_add_compound_c: "$BTN_INTERACT Compound C"
+hint_no_compound_c: ""
+hud_int_hold_add_compound_d: "$BTN_INTERACT Compound D"
+hint_no_compound_d: ""
+hud_int_hold_mix_concoction: "$BTN_INTERACT Mix Compounds"
+hud_int_hold_take_concoction: "$BTN_INTERACT Take Mixture"
+hud_int_need_concoction_paste: ""
+hud_int_equipment_concoction: "Volatile Mixture"
+hud_int_hold_ignite_concoction: "$BTN_INTERACT Ignite Mixture"
+hud_int_hold_search_documents: "$BTN_INTERACT Search Documents"
+hud_int_hold_move_crane: "$BTN_INTERACT Move Crane"
+hud_int_hold_aim_laser: "$BTN_INTERACT Aim Laser"
+hud_int_hold_take_battery: "$BTN_INTERACT Pickup Battery"
+hold_interact_charge_gun: "$BTN_INTERACT Charge Laser"
+hud_int_press_fire_laser: "$BTN_INTERACT Fire Laser"
+hud_int_hold_remove_battery: "$BTN_INTERACT Remove Battery"
+
+# Border Crossing (not playing this again)
+hud_int_remove_tarp: "$BTN_INTERACT Move Tarp"
+hud_int_mex_pickup_murky_uniform: "$BTN_INTERACT Take Uniform"
+hud_int_hold_bag_ro_armor: "$BTN_INTERACT Bag Armor"
+hud_int_unlock_gate: "$BTN_INTERACT Unlock Gate"
+
+# San Martin Bank
+hud_int_take_tape: "$BTN_INTERACT Take Tape"
+hud_int_take_fingerprint: "$BTN_INTERACT Take Fingerprint"
+hud_int_hold_open_door: "$BTN_INTERACT Open Door"
+hud_int_hold_cut_wire_grey: "$BTN_INTERACT Cut Wire"
+hud_int_hold_take_faberge_egg: "$BTN_INTERACT Pickup Egg"
+hud_int_hold_take_treasure: "$BTN_INTERACT Pickup Treasure"
+hud_int_take_record_tape: "$BTN_INTERACT Take Tape"
+hud_int_hold_start_new_hack: "$BTN_INTERACT Hack"
+hud_int_restore_power: "$BTN_INTERACT Turn On Power"
+hud_int_activate_flare: "$BTN_INTERACT Deploy Smoke"
+
+# Breakfast In Tijuana, AKA "The Second Most Unique Interactions In One Heist"
+hud_int_pku_medal: "$BTN_INTERACT Take Medal"
+hud_equipment_evidance_find_a_tag: ""
+hud_hold_pick_up_breaching_device: "$BTN_INTERACT Pickup Door Breaker"
+hud_equipment_need_bolt_cutter: ""
+hud_int_hold_cut_chains: "$BTN_INTERACT Cut Chains"
+hud_equipment_find_burnable_liquid: ""
+hud_hold_pex_burn: "$BTN_INTERACT Burn Evidence"
+hud_hold_placing_the_breacher: "$BTN_INTERACT Start Breaching"
+hud_press_pex_give_keys: "$BTN_INTERACT Give Keys"
+hud_hold_take_unloaded_card: "$BTN_INTERACT Take RFID Tag"
+hud_hold_take_loaded_card: "$BTN_INTERACT Code RFID Tag"
+hud_hold_use_evidance_tag: "$BTN_INTERACT Open Door"
+hud_int_hold_destroy_evidence: "$BTN_INTERACT Destroy Evidence"
+hud_int_pickup_cutter: "$BTN_INTERACT Take Bolt Cutter"
+hud_int_hold_take_police_uniform: "$BTN_INTERACT Take Uniform"
+hud_int_hand_over_uniform: "$BTN_INTERACT Give Uniform"
+hud_int_hold_place_evidance: "$BTN_INTERACT Place Evidence"
+hud_int_pku_flammable_liquid: "$BTN_INTERACT Take Fluid"
+hud_equipment_flammable_liquid: "Lighter Fluid"
+hud_hold_set_burnable_liquid: "$BTN_INTERACT Pour Fluid"
+hud_int_hold_turn_off_sprinklers: "$BTN_INTERACT Turn Off Sprinklers"
+hud_int_armory_hack: "$BTN_INTERACT Hack"
+hud_hold_hook_car: "$BTN_INTERACT Attach Hook"
+
+# Dragon Heist
+hud_int_hold_flip_light: "$BTN_INTERACT Turn On" # ahhhhh, feels good to be back.
+hud_press_to_interact: "$BTN_INTERACT Interact" # first interaction already says "hold" when it's a press...
+hud_int_take_tea_set: "$BTN_INTERACT Pickup Tea Set"
+hud_int_take_c4: "$BTN_INTERACT Take C4"
+hud_int_hold_take_dragon_statue: "$BTN_INTERACT Bag Statue"
+hud_int_take_tablets: "$BTN_INTERACT Take Device"
+hud_equipment_need_forklift_keys: "Need Keys"
+hud_int_pickup_keychain_forklift: "$BTN_INTERACT Take Keys"
+hud_int_hold_unlock_forklift: "$BTN_INTERACT Start Forklift"
+hud_int_hold_breach_shutter: "$BTN_INTERACT Open Shutter"
+hud_int_hold_hack_box: "$BTN_INTERACT Open"
+
+# Ukrainian Prisoner, the new 2nd place for most interactions
+hud_int_hit_gong: "Don't Press $BTN_INTERACT"
+hud_int_take_gas_canister: "$BTN_INTERACT Take Gas"
+hud_int_place_gas_canister: "$BTN_INTERACT Place Gas"
+hud_int_take_laxative: "$BTN_INTERACT Take Cleaner"
+hud_int_spike_cake: "$BTN_INTERACT Spike Cake"
+hud_int_take_note: "$BTN_INTERACT Take Note"
+hud_int_place_note: "$BTN_INTERACT Place Note"
+hud_int_open_handcuffs: "$BTN_INTERACT Remove Handcuffs"
+hud_int_start_defibrillator: "$BTN_INTERACT Charge Defibrillator"
+hud_int_take_paddles: "$BTN_INTERACT Take Defibrillator"
+hud_int_use_paddles: "$BTN_INTERACT Use Defibrillator"
+hud_int_place_paddles: "$BTN_INTERACT Charge Defibrillator"
+hud_int_open_first_aid_kit: "$BTN_INTERACT Open"
+hud_int_take_adrenaline: "$BTN_INTERACT Take Adrenaline"
+hud_int_use_adrenaline: "$BTN_INTERACT Use Adrenaline"
+hud_int_search_for_documents: "$BTN_INTERACT Search Documents"
+hud_int_take_usb: "$BTN_INTERACT Take USB"
+hud_int_place_documents: "$BTN_INTERACT Place Documents"
+hud_int_insert_usb: "$BTN_INTERACT Insert USB"
+hud_int_open_slide_gate: "$BTN_INTERACT Open Gate"
+hud_int_open_warehouse_door: "$BTN_INTERACT Open Door"
+hud_int_move_cargo: "$BTN_INTERACT Move Pallet Jack"
+hud_int_move_truck: "$BTN_INTERACT Move Truck"
+hud_int_raise_ramp: "$BTN_INTERACT Raise Ramp"
+hud_int_slide_ramp: "$BTN_INTERACT Move Ramp"
+hud_hold_place_gas_can: "$BTN_INTERACT Place Gas"
+
+# Black Cat
+hud_int_passenger_manifest: "$BTN_INTERACT Access Manifest"
+hud_int_hold_take_diesel: "$BTN_INTERACT Take Diesel"
+hud_int_take_business_card: "$BTN_INTERACT Take Business Card"
+hud_int_lower_painting: "$BTN_INTERACT Move Painting"
+hud_equipment_need_keychain: ""
+hud_int_open_safe: "$BTN_INTERACT Open Safe"
+hud_int_hold_place_bug: "$BTN_INTERACT Place Bug"
+hud_int_hold_take_hand: "$BTN_INTERACT Take Hand"
+hud_int_pku_disable_firewall: "$BTN_INTERACT Disable Firewall"
+hud_int_use_handprint: "$BTN_INTERACT Scan Hand"
+chca_int_hold_burn_money: "$BTN_INTERACT Burn Money"
+hud_int_ink_money: "$BTN_INTERACT Place Ink Bomb"
+hud_int_pour_diesel: "$BTN_INTERACT Pour Diesel"
+hud_int_lower_lifeboat: "$BTN_INTERACT Lower Lifeboat"
+hud_int_ignite_flare: "$BTN_INTERACT Light Flare"
+
+# Mountain Master
+debug_interact_elevator_door: "$BTN_INTERACT Call Elevator"
+debug_interact_crowbar_breach: "$BTN_INTERACT Breach"
+hud_int_pku_force_open_vent: "$BTN_INTERACT Open Vent"
+hud_int_press_signal_operator: "$BTN_INTERACT Signal"
+hint_no_notepad: ""
+hud_int_hold_start_fire_alarm: "$BTN_INTERACT Trigger Alarm"
+hud_int_hold_repair_cable: "$BTN_INTERACT Fix Cable"
+hud_int_hold_take_gnome: "$BTN_INTERACT Pickup Gnome"
+hud_int_press_take_wire: "$BTN_INTERACT Take Wire"
+hud_int_hold_remove_elevator_hatch: "$BTN_INTERACT Remove Hatch"
+hud_int_hold_connect_wire_to_elevator: "$BTN_INTERACT Connect Wire"
+hud_int_hold_connect_wire_to_door: "$BTN_INTERACT Connect Hook"
+hud_int_press_car_platform: "$BTN_INTERACT Rotate Platform"
+debug_interact_press_open_trunk: "$BTN_INTERACT Open Trunk"
+hud_int_press_take_gas_can: "$BTN_INTERACT Take Gas"
+hud_int_press_take_car_jack: "$BTN_INTERACT Take Jack"
+debug_interact_long_pour_gas: "$BTN_INTERACT Pour Gas"
+hud_int_hold_lift_car: "$BTN_INTERACT Lift Car"
+hud_int_press_release_car_jack: "$BTN_INTERACT Release Jack"
+hud_int_hold_start_brew: "$BTN_INTERACT Start Coffee Machine"
+
+# Ranch Heist, nevermind this is the new 2nd place
+hud_int_pickup_horseshoe: "$BTN_INTERACT Take Horseshoe"
+hud_int_take_bugging_device: "$BTN_INTERACT Take Bug"
+hud_int_wake_computer: "$BTN_INTERACT Start Computer"
+hud_int_plant_bugging_device: "$BTN_INTERACT Plant Bug"
+hud_int_take_hammer: "$BTN_INTERACT Take Hammer"
+hud_int_place_hammer: "$BTN_INTERACT Place Hammer"
+hud_hint_need_hammer: ""
+hud_int_take_mould: "$BTN_INTERACT Take Mold"
+hud_int_place_mould: "$BTN_INTERACT Place Mold"
+hud_hint_need_mould: ""
+hud_int_take_silver_ingot: "$BTN_INTERACT Take Ingot"
+debug_interact_equipment_silver_ingot: ""
+hud_int_craft_sheriff_star: "$BTN_INTERACT Create Star"
+hud_int_take_sheriff_star: "$BTN_INTERACT Take Star"
+hud_int_adjust_temperature: "$BTN_INTERACT Change Temperature"
+hud_int_turn_on_firepit: "$BTN_INTERACT Turn On"
+hud_int_take_barrel: "$BTN_INTERACT Take Barrel"
+hud_int_place_barrel: "$BTN_INTERACT Place Barrel"
+hud_int_take_stock: "$BTN_INTERACT Take Stock"
+hud_int_place_stock: "$BTN_INTERACT Place Stock"
+hud_int_take_receiver: "$BTN_INTERACT Take Receiver"
+hud_int_place_receiver: "$BTN_INTERACT Place Receiver"
+hud_int_construct_weapon: "$BTN_INTERACT Assemble Weapon"
+hud_hint_need_stock: "Need Stock"
+hud_hint_need_barrel: "Need Barrel"
+hud_hint_need_receiver: "Need Receiver"
+hud_int_take_ranc_acid: "$BTN_INTERACT Take Acid"
+hud_int_enter_turret: "$BTN_INTERACT Use Turret"
+hud_int_disassemble_turret: "$BTN_INTERACT Disassemble"
+hud_int_assemble_turret: "$BTN_INTERACT Assemble"
+hud_int_pour_acid: "$BTN_INTERACT Pour Acid"
+hud_int_take_laptop: "$BTN_INTERACT Take Laptop"
+hud_int_place_laptop: "$BTN_INTERACT Place Laptop"
+hud_int_release_brake: "$BTN_INTERACT Release Brake"
+hud_int_push_truck: "$BTN_INTERACT Push Truck"
+hud_int_take_winchhook: "$BTN_INTERACT Take Hook"
+hud_int_attach_winchhook: "$BTN_INTERACT Attach Hook"
+hud_int_start_truck: "$BTN_INTERACT Start Truck"
+
+# Lost In Transit
+hud_int_trai_connect_locke_walkietalkie: "$BTN_INTERACT Connect Locke" # oh god long interactions again
+hud_trai_hold_interact_place_thermite: "$BTN_INTERACT Place Thermite" # WHY
+hud_int_trai_toolsafe_lockpick: "$BTN_INTERACT Pick Lock" # why.
+hud_int_trai_hold_access_console: "$BTN_INTERACT Access"
+hud_int_hold_take_printing_plates: "$BTN_INTERACT Bag Plates"
+hud_int_trai_press_achievement_safe: "$BTN_INTERACT Open Safe"
+hud_int_trai_connect_locke: "$BTN_INTERACT Connect Locke" # i'm not even going to say anything
+hud_int_refuel_locomotive: "$BTN_INTERACT Fuel Train"
+hud_int_decouple_locomotive: "$BTN_INTERACT Decouple Train"
+hud_int_trai_hold_crane_control: "$BTN_INTERACT Move Crane" # i'm gonna snap
+hud_int_attach_hook: "$BTN_INTERACT Attach Hook"
+hud_int_start_locomotive: "$BTN_INTERACT Start Engine"
+hud_int_trai_turntable_console_use: "$BTN_INTERACT Rotate Turntable"
+hud_int_trai_fix_cable: "$BTN_INTERACT Fix Cable" # mountain master had this string already...
+
+# Buluc's Mansion
+hud_int_hold_take_fertilizer: "$BTN_INTERACT Take Fertilizer"
+hud_int_hold_take_wire: "$BTN_INTERACT Take Wires"
+hud_hold_interact_view_mask_list: "$BTN_INTERACT Show Masks"
+hud_int_hold_take_alarm_clock: "$BTN_INTERACT Take Clock"
+hud_int_hold_take_churros: "$BTN_INTERACT Take Churros"
+hud_int_hold_take_globe: "$BTN_INTERACT Take Globe"
+hud_int_hold_to_place_globe: "$BTN_INTERACT Place Globe"
+hud_int_hold_take_scythe: "$BTN_INTERACT Take Scythe"
+hud_int_hold_to_place_scythe: "$BTN_INTERACT Place Scythe"
+hud_hold_inspect_bookshelf: "$BTN_INTERACT Inspect Shelf"
+hud_hold_prop_wall_lamp: "$BTN_INTERACT Inspect Lamp"
+hud_hold_search_for_clue: "$BTN_INTERACT Search"
+hud_int_take_fex_harddrive: "$BTN_INTERACT Take HDD"
+hud_int_hold_to_place_wire: "$BTN_INTERACT Place Wire"
+hud_int_hold_to_place_diesel: "$BTN_INTERACT Place Diesel"
+hud_int_hold_to_place_alarm_clock: "$BTN_INTERACT Place Clock"
+hud_int_hold_to_place_fertilizer: "$BTN_INTERACT Place Fertilizer"
+hud_hold_assemble_bomb: "$BTN_INTERACT Assemble Bomb"
+
+hud_press_spider_button: "$BTN_INTERACT Spider"
+hud_press_lizard_button: "$BTN_INTERACT Lizard"
+hud_press_snail_button: "$BTN_INTERACT Snail"
+hud_press_frog_button: "$BTN_INTERACT Frog"
+hud_press_fish_button: "$BTN_INTERACT Fish"
+hud_press_bat_button: "$BTN_INTERACT Bat"
+hud_press_turtle_button: "$BTN_INTERACT Turtle"
+hud_press_ant_button: "$BTN_INTERACT Ant"
+hud_press_jaguar_button: "$BTN_INTERACT Jaguar"
+hud_press_squirrel_button: "$BTN_INTERACT Squirrel"
+hud_press_snake_button: "$BTN_INTERACT Snake"
+hud_press_millipede_button: "$BTN_INTERACT Millipede"
+hud_press_boar_button: "$BTN_INTERACT Boar"
+hud_press_dog_button: "$BTN_INTERACT Dog"
+hud_press_monkey_button: "$BTN_INTERACT Monkey"
+hud_press_crocodile_button: "$BTN_INTERACT Crocodile"
+hud_press_butterfly_button: "$BTN_INTERACT Butterfly"
+hud_press_crab_button: "$BTN_INTERACT Crab"
+hud_press_owl_button: "$BTN_INTERACT Owl"
+hud_press_bunny_button: "$BTN_INTERACT Bunny"
+hud_hold_center_button: "$BTN_INTERACT Activate"
+
+# Hostile Takeover
+corp_hold_computer_email: "$BTN_INTERACT Access Emails"
+corp_hold_computer_download_email: "$BTN_INTERACT Download Email"
+corp_hold_phone_play_voice_message: "$BTN_INTERACT Play Voicemail"
+corp_hold_desk_drawer_open: "$BTN_INTERACT Open Drawer"
+corp_hold_voice_recorder_play: "$BTN_INTERACT Play Recording"
+corp_hold_unlock_controlbox: "$BTN_INTERACT Open"
+corp_hold_close_curtains: "$BTN_INTERACT Close Curtains"
+corp_hold_pku_prototype: "$BTN_INTERACT Pickup Neo-2"
+corp_hud_hold_use_tag_reader: "$BTN_INTERACT Scan Tag"
+# this is a COMPLETELY different string structure to normal
+hud_int_corp_take_key_fob: "$BTN_INTERACT Take Tag"
+hud_hold_use_achievement_laptop: "$BTN_INTERACT Use Laptop"
+hud_corp_hold_shelf_research_documents: "$BTN_INTERACT Search Shelf"
+corp_hold_pku_paper_pile_bag: "$BTN_INTERACT Pickup Documents"
+hud_int_corp_prop_celing_wires_cut: "$BTN_INTERACT Cut Wires"
+corp_hold_computer_lead_schedule: "$BTN_INTERACT Access Schedule"
+
+# Crude Awakening
+deep_hud_int_hold_pickup_ladder: "$BTN_INTERACT Move Ladder"
+deep_hold_control_lever: "$BTN_INTERACT Pull Lever"
+deep_hud_int_open_door: "$BTN_INTERACT Open Door"
+hud_hold_pickup_oilsample: "$BTN_INTERACT Take Oil Sample"
+hud_deep_press_network_cable_connect: "$BTN_INTERACT Connect Cable"
+hud_hold_override_pc: "$BTN_INTERACT Override Network"
+deep_press_test_oil_sample: "$BTN_INTERACT Analyse Sample"
+deep_hold_pipe_corner_spin: "$BTN_INTERACT Rotate Pipe"
+deep_hud_press_intercom: "$BTN_INTERACT Activate"
+deep_hud_int_hold_open_valve: "$BTN_INTERACT Open Valve"
+deep_hud_int_hold_jam_vent: "$BTN_INTERACT Jam Vent"
+hud_hold_turn_on_gas: "$BTN_INTERACT Release Gas"
+hud_deep_press_pickup_texas_suit: "$BTN_INTERACT Take Suit"
+
+# Lost Tapes
+hud_int_action_lrm_safe_keycard: ""
+hud_int_use_lrm_safe_keycard: "$BTN_INTERACT Insert Keycard"
+
+# Holdout
+debug_interact_trade_hostage_skm: "$BTN_INTERACT Trade Hostage"
+
+# Keypad buttons. No interact key indicators because it looks stupid and you know what to press
+hud_int_press_0: "0"
+hud_int_press_01: "1"
+hud_int_press_02: "2"
+hud_int_press_03: "3"
+hud_int_press_04: "4"
+hud_int_press_05: "5"
+hud_int_press_06: "6"
+hud_int_press_07: "7"
+hud_int_press_08: "8"
+hud_int_press_09: "9"
+hud_int_press_number_sign: "#"
+hud_int_press_clear: "RESET"
+hud_int_press_enter: "ENTER"
+
+#Safehouse
+hud_int_talk_butler: "$BTN_INTERACT Talk"
+hud_int_talk_wild: "$BTN_INTERACT Talk"
+hud_int_talk_hoxton: "$BTN_INTERACT Talk"
+hud_int_talk_sydney: "$BTN_INTERACT Talk"
+hud_int_talk_sokol: "$BTN_INTERACT Talk"
+hud_int_talk_jacket: "$BTN_INTERACT Talk"
+hud_int_talk_bodhi: "$BTN_INTERACT Talk"
+hud_int_talk_wolf: "$BTN_INTERACT Talk"
+hud_int_talk_jowi: "$BTN_INTERACT Talk"
+hud_int_talk_chains: "$BTN_INTERACT Talk"
+hud_int_talk_bonnie: "$BTN_INTERACT Talk"
+hud_int_talk_dragon: "$BTN_INTERACT Talk"
+hud_int_talk_jimmy: "$BTN_INTERACT Talk"
+hud_int_talk_terry: "$BTN_INTERACT Talk"
+hud_int_talk_old_hoxton: "$BTN_INTERACT Talk"
+hud_int_talk_clover: "$BTN_INTERACT Talk"
+hud_int_talk_dallas: "$BTN_INTERACT Talk"
+hud_int_talk_max: "$BTN_INTERACT Talk"
+hud_int_talk_myh: "$BTN_INTERACT Talk"
+hud_int_talk_dragan: "$BTN_INTERACT Talk"
+hud_int_talk_ecp_male: "$BTN_INTERACT Talk"
+hud_int_talk_ecp_female: "$BTN_INTERACT Talk"
+hud_int_talk_joy: "$BTN_INTERACT Talk"
+hud_int_talk_vlad: "$BTN_INTERACT Talk"
+
+hud_press_play_music: "$BTN_INTERACT Play"
+hud_press_stop_music: "$BTN_INTERACT Stop"
+hud_press_new_paintjob: "$BTN_INTERACT Change Van"
+hud_press_answering_play: "$BTN_INTERACT Play Message"
+hud_int_hold_to_help_turtle: "$BTN_INTERACT Help Turtle"
+hud_hold_bet_slotmachine_chl: "$BTN_INTERACT Play Slots ($10,000)"
+hud_press_bet_red: "$BTN_INTERACT Red ($10,000)"
+hud_press_bet_black: "$BTN_INTERACT Black ($10,000)"
+hud_int_spin_wheel: "$BTN_INTERACT Spin"
+hud_int_press_shoot_puck: "$BTN_INTERACT Shoot"
+hud_press_play_jacket_sound: "$BTN_INTERACT Play Tape"
+hud_press_reset_damage_counter: "$BTN_INTERACT Reset Counter"
+hud_press_start_weapon_course: "$BTN_INTERACT Start Timer"
+hud_chill_access_pd2stash: "$BTN_INTERACT Open PD2Stash"
+hud_int_exit_to_crimenet: "$BTN_INTERACT Crime.net"
+hud_chill_access_fbi: "$BTN_INTERACT Open FBI Files"
+hud_int_open_slash_close: "$BTN_INTERACT Open/Close"
+hud_chill_access_bankinvader: "$BTN_INTERACT Play Bank Invaders 2"
+hud_int_press_pick_up: "$BTN_INTERACT Take"
+hud_int_touch_book: "$BTN_INTERACT Touch Book"
+hud_int_use_device: "$BTN_INTERACT Use Device"
+hud_chill_access_sidejobs: "$BTN_INTERACT View Trophies"
+hud_hold_burn_offshore_money: "$BTN_INTERACT Burn Offshore"
+hud_int_press_use_medallion: "$BTN_INTERACT Open Coffer"
+hud_int_hold_remove_parts: "$BTN_INTERACT Remove Parts"
+hud_int_assemble_device: "$BTN_INTERACT Assemble Device"
+
+# HINTS
+hint_been_tasered: "Being tased!"
+hud_hint_clean_block_interact: "Find your equipment."
+hud_hint_mask_off_block_interact: "Can't jump or crouch while unmasked."
+hud_hint_tape_loop_limit_reached: "Camera already looped."
+hud_hint_convert_enemy_failed: "Convert failed."
+hint_been_electrocuted: "Being electrocuted!"
+hint_cant_stand_up: "Can't stand up."
+hint_full_bodybags: "Max body bags."
+hint_full_ammo: "Full ammo."
+hint_full_grenades: "Max throwables."
+hint_full_health: "Full health."
+hint_max_special_equipment: "Can't pick up."
+hint_sentry_set_ap_rounds: "Using AP rounds."
+hint_sentry_normal_ammo: "Using normal rounds."
+hud_hint_zipline_no_bag: "Need a bag."
+hint_ability_no_grenade_pickup: "No grenades equipped."
+hud_hint_carry_block: "Already carrying something."
+hud_hint_body_bag_limit_reached: "No body bags."
+hud_hint_health_beserking: "Nothing can save you now..."
+hud_hint_phoneline_jammed: "Phone is jammed."
+hint_dropped_blood_sample: "Blood sample destroyed!"
+hint_full_keycard: "Already have keycard."
+hud_sentry_not_enough_ammo_to_place: "Not enough ammo."
+hud_gage_assignment_progress: "$peer_name found $assignment ($remaining left)."
+hud_hint_hostage_follow_limit: "Already moving a hostage."
+hud_vehicle_broken: "Vehicle is broken!"
+hud_vehicle_no_enter_beserker: "Can't enter vehicles in Swan Song."
+hint_cross_thugs: "Passing this point will blow your cover!"
+hud_hint_pent_speed_demon: "Good job, speed demon!"
+
+# Custody, down, reviving, etc
+hint_teammate_downed: "$TEAMMATE is down!"
+hint_you_helpedup: "You revived $TEAMMATE!"
+hint_teammate_helpedup: "$HELPER revived $TEAMMATE!"
+hint_teammate_revived: "$HELPER traded $TEAMMATE!"
+hint_you_revived: "You traded $TEAMMATE!"
+hint_you_rescued: "You uncuffed $TEAMMATE!"
+hint_teammate_rescued: "$HELPER uncuffed $TEAMMATE!"
+hint_teammate_dead: "$TEAMMATE is in custody!"
+hint_teammate_arrested: "$TEAMMATE was cuffed!"
+hint_you_were_helpedup: "$HELPER revived you!"
+hint_you_were_rescued: "$HELPER uncuffed you!"
+hint_you_were_revived: "$HELPER traded you!"
+hint_trade_offered: "Hostage trade available."
+
+# ALARM REASONS
+hud_hint_cam_criminal: "Alert: Camera detected a player."
+hud_hint_cam_dead_body: "Alert: Camera detected a dead body."
+hud_hint_cam_hostage: "Alert: Camera detected a hostage."
+hud_hint_cam_glass: "Alert: Camera detected broken glass."
+hud_hint_cam_drill: "Alert: Camera detected a drill."
+hud_hint_cam_distress: "Alert: Camera detected suspicious activity."
+hud_hint_cam_c4: "Alert: Camera heard an explosion." # can cameras even do this?
+hud_hint_cam_vault: "Alert: Camera detected an open vault."
+hud_hint_cam_sentry_gun: "Alert: Camera detected a sentry."
+hud_hint_cam_broken_cam: "Alert: Camera detected... a broken camera?" # if you can trigger this on a vanilla heist send me a screenshot
+hud_hint_body_bag: "Alert: Camera detected a body bag." # unused? seems like a bug
+hud_hint_cam_saw: "Alert: Camera detected a saw."
+
+hud_hint_civ_criminal: "Alert: Civilian detected a player."
+hud_hint_civ_dead_body: "Alert: Civilian detected a dead body."
+hud_hint_civ_hostage: "Alert: Civilian detected a hostage."
+hud_hint_civ_glass: "Alert: Civilian detected broken glass."
+hud_hint_civ_drill: "Alert: Civilian detected a drill."
+hud_hint_civ_distress: "Alert: Civilian detected suspicious activity."
+hud_hint_civ_c4: "Alert: Civilian heard an explosion."
+hud_hint_civ_computer: "Alert: Civilian detected a hacked computer." # I don't think this is used?
+hud_hint_civ_ecm_jammer: "Alert: Civilian was affected by feedback."
+hud_hint_civ_gunfire: "Alert: Civilian heard gunfire."
+hud_hint_civ_body_bag: "Alert: Civilian detected a body bag." # unused? seems like a bug
+hud_hint_civ_saw: "Alert: Civilian detected a saw."
+
+hud_hint_cop_criminal: "Alert: Guard detected a player."
+hud_hint_cop_dead_body: "Alert: Guard detected a dead body."
+hud_hint_cop_hostage: "Alert: Guard detected a hostage."
+hud_hint_cop_glass: "Alert: Guard detected broken glass."
+hud_hint_cop_drill: "Alert: Guard detected a drill."
+hud_hint_cop_distress: "Alert: Guard detected suspicious activity."
+hud_hint_cop_c4: "Alert: Guard heard an explosion."
+hud_hint_cop_computer: "Alert: Guard detected a hacked computer."
+hud_hint_cop_broken_cam: "Alert: Guard detected a broken camera."
+hud_hint_cop_gunfire: "Alert: Guard heard gunfire."
+hud_hint_cop_ecm_jammer: "Alert: Guard was affected by feedback."
+hud_hint_cop_sentry_gun: "Alert: Guard detected a sentry."
+hud_hint_cop_body_bag: "Alert: Guard detected a body bag." # unused? seems like a bug
+hud_hint_cop_vault: "Alert: Guard detected an open vault."
+hud_hint_cop_saw: "Alert: Guard detected a saw."
+
+hud_hint_alarm_civ: "Alert: Panic button pressed."
+hud_hint_blame_missing: "Alert: Someone saw suspicious activity."
+hud_hint_blame_csgo_gunfire: "Alert: Neighbors called police."
+hud_hint_mot_criminal: "Alert: Lasers tripped."
+hud_hint_alarm_pager_hang_up: "Alert: Pager dropped."
+hud_hint_alarm_pager_bluff_failed: "Alert: Pager limit reached."
+hud_hint_alarm_pager_not_answered: "Alert: Pager wasn't answered."
+hud_hint_alert_explosion: "Alert: An explosion was heard."
+hud_hint_blame_blackmailer: "Alert: Blackmailer called police."
+hud_hint_met_criminal: "Alert: Metal detector was triggered."
+hud_hint_blame_gensec: "Alert: GenSec called the police."
+hud_hint_blame_police: "Alert: Police were called."
+hud_hint_alarm_glass: "Alert: Alarmed glass broke."
+
+# TICKER
+hud_casing_mode_ticker: "UNMASKED"
+hud_assault_assault: "ASSAULT IN PROGRESS"
+hud_assault_vip: "REINFORCEMENT IN PROGRESS"
+hud_casing_mode_ticker_clean: "BLENDING IN"
+
+# BAG TYPES
+hud_carry_lance_bag: "Thermal Drill"
+hud_carry_person: "Body"
+hud_carry_cloaker_cocaine: "Cloakaine"
+hud_carry_box: "Coffer"
+hud_carry_???: "Coffer"
+hud_carry_giant_toothbrush: "Giant Toothbrush"
+hud_carry_yayo: "Cocaine"
+hud_carry_vr_headset: "VR Headset"
+hud_carry_roman_armor: "Roman Armor"
+hud_carry_samurai: "Samurai Armor"
+hud_carry_breaching_charges: "Breaching Charges"
+hud_carry_lost_artifact: "Lost Artifact"
+hud_carry_treasure: "Romanov Treasure"
+hud_carry_faberge_egg: "Fabergé Egg"
+hud_carry_black_tablet: "Black Tablet"
+hud_carry_master_server: "Master Server"
+hud_carry_mayan_gold: "Mayan Gold"
+hud_carry_watertank_full_bag: "Full Tank"
+hud_carry_watertank_empty_bag: "Empty Tank"
+hud_carry_winch_bag: "Winch"
+hud_carry_diamond_necklace: "Diamond Necklace"
+hud_carry_coke: "Cocaine"
+hud_carry_cage_bag: "Cage"
+hud_carry_expensive_wine: "Wine"
+hud_carry_old_wine: "Wine"
+hud_carry_turret: "Turret"
+hud_carry_weapons: "Rifles"
+hud_carry_weapon: "Rifles"
+hud_carry_weapon_scar: "Rifles"
+hud_carry_robot_toy: "Toy"
+hud_carry_shoes: "High Heels"
+hud_carry_hydraulic_opener: "Door Breaker"
+hud_carry_gnome: "Garden Gnome"
+hud_carry_corp_prototype: "Neo-2"
+
+# OPTIONS
+menu_controller_normal: "Normal"
+menu_controller_vehicle: "Vehicle"
+
+# LOADOUT
+menu_player_column_one_title: "Player & Equipment"
+menu_player_column_two_title: "Inventory"
+menu_player_column_three_title: "Skills"
+menu_button_hide: "[X]"
+menu_button_show: "[  ]"
+bm_menu_grenades: "Consumable"
+bm_menu_deployables: "Deployable"
+bm_menu_characters: "Characters"
+menu_preferred_character: "Character"
+menu_crew_management: "AI Loadout"
+menu_data_crew_item_unlock_cost: "Costs $cost C-Stacks to unlock."
+bm_menu_ability: "Ability"
+bm_menu_skill: "Boost"
+bm_menu_btn_unequip_weapon: "Unequip"
+menu_preferred_character_lobby_error: "You cannot change character while in a lobby."
+bm_menu_mod_preview: "Preview"
+bm_menu_buy_mask_title: "Mask Collection"
+bm_menu_buy_weapon_title: "Gage's Armory"
+bm_menu_btn_craft_mod: "Equip Mod"
+bm_menu_btn_remove_mod: "Remove Mod"
+bm_menu_btn_buy_mod: "Unlock Mod"
+dialog_bm_purchase_mod: "You are about to unlock $item."
+dialog_bm_purchase_coins: "This will cost $money C-Stacks!"
+bm_menu_btn_preview_with_mod: "Preview Mod"
+bm_menu_btn_preview_no_mod: "Preview Without Mod"
+bm_menu_btn_clear_mod_preview: "Reset Preview"
+bm_menu_weapon_cosmetics: "Skin"
+bm_menu_btn_stop_preview_weapon_cosmetic: "Preview Without Skin"
+bm_menu_btn_preview_weapon_cosmetic: "Preview"
+menu_mouse_search_market: " Search Market"
+menu_mouse_preview: " Preview"
+menu_mouse_select: " Select"
+menu_mouse_switch: " Switch"
+menu_mouse_refund: " Remove"
+menu_mouse_invest: " Unlock"
+menu_dlc_buy_weapon_color: "Buy DLC"
+bm_menu_btn_preview: "Preview"
+bm_menu_btn_preview_mask: "Preview"
+bm_menu_btn_preview_melee_weapon: "Preview"
+bm_menu_btn_preview_grenade: "Preview"
+bm_menu_btn_mod: "Modify"
+bm_menu_btn_mod_mask: "Customize"
+bm_menu_btn_sell: "Sell"
+bm_menu_btn_sell_mask: "Sell"
+bm_menu_missing_to_finalize_mask: "$missed_mods required to finalize."
+bm_menu_btn_buy_selected_mask: "Buy"
+bm_menu_btn_choose_mask_mod: "Apply"
+bm_menu_btn_customize_mask: "Finalize"
+dialog_blackmarket_finalize_item: "$ITEM\n\nThis will cost $money. The process is irreversible."
+dialog_blackmarket_abort_mask_warning: "You are about to exit mask customization."
+bm_menu_color_a: "Color 1"
+bm_menu_color_b: "Color 2"
+bm_menu_btn_choose_color_a: "Apply"
+bm_menu_btn_choose_color_b: "Apply"
+bm_menu_btn_buy_new_mask: "Buy Mask"
+bm_menu_empty_mask_slot: "Empty"
+bm_menu_btn_buy_new_weapon: "Buy Weapon"
+bm_menu_empty_weapon_slot: "Empty"
+bm_menu_btn_remove_mask: "Return"
+dialog_blackmarket_slot_mask_remove_suffix: "and you will be refunded $money"
+dialog_blackmarket_slot_mask_remove: "The mask will be returned$suffix."
+bm_menu_btn_equip_mask: "Equip"
+bm_menu_btn_equip_weapon: "Equip"
+bm_menu_btn_equip_melee_weapon: "Equip"
+bm_menu_btn_equip_grenade: "Equip"
+bm_menu_btn_equip_deployable: "Equip"
+bm_menu_btn_equip_primary_deployable: "Equip Primary"
+bm_menu_btn_equip_secondary_deployable: "Equip Secondary"
+bm_menu_btn_unequip_deployable: "Remove"
+bm_menu_btn_equip_armor: "Equip"
+bm_menu_btn_customize_armor: "Skins"
+bm_menu_btn_equip_armor_skin: "Apply"
+bm_menu_btn_preview_armor_skin: "Preview"
+bm_menu_btn_skin: "Edit"
+bm_menu_btn_equip_player_style: "Wear"
+bm_menu_btn_preview_player_style: "Preview"
+bm_menu_btn_equip_gloves: "Wear"
+bm_menu_btn_preview_gloves: "Preview"
+bm_askn_none: "Default"
+bm_menu_btn_move_weapon: "Move"
+bm_menu_btn_move_mask: "Move"
+bm_menu_equipped: "[X]"
+bm_menu_customize_weapon: "Skins"
+dialog_new_tradable_item_bonus: ""
+mel_modify_weapon: "Modify"
+bm_menu_stats_max_detection: ""
+bm_menu_stats_detection: ""
+bm_menu_stats_min_detection: ""
+bm_menu_btn_customize_player_style: "Variations"
+bm_menu_btn_equip_suit_variation: "Equip"
+bm_menu_btn_preview_suit_variation: "Preview"
+bm_menu_locked_weapon_slot: "Locked"
+bm_menu_btn_buy_weapon_slot: "Unlock"
+bm_menu_locked_mask_slot: "Locked"
+bm_menu_btn_buy_mask_slot: "Unlock"
+bm_menu_btn_sentry_ap_rounds: "Use Normal Rounds"
+bm_menu_btn_sentry_default_rounds: "Use AP Rounds"
+
+menu_hide_all: "$BTN_X Hide All"
+menu_specialization: "Perks"  # Perk Decks
+menu_st_skilltree: "Skills"  # Skill Trees
+menu_st_make_active_skill_switch: "Inactive"
+menu_st_points_unspent_skill_switch: "$points Skill Points"
+menu_st_points_all_spent_skill_switch: "No Skill Points"
+menu_st_switch_skillset: "$BTN_SKILLSET Switch Skillset"
+skill_tree_reset_skills_button: "$BTN_RESET_SKILLS Reset Tree"
+skill_tree_reset_all_skills_button: "$BTN_RESET_ALL_SKILLS Reset All"
+dialog_skills_respec_title: ""
+dialog_respec_skilltree_all: "Are you sure you want to reset all skill trees?"
+dialog_respec_skilltree: "Are you sure you want to reset the $tree skill trees?"
+
+menu_equipment_ecm_jammer: "ECM Jammer"
+
+menu_infamy_rank: "Infamy $rank"
+st_menu_infamy_available_points: "$points infamy points"
+menu_infamy_total_xp: "$xpboost% EXP bonus"
+menu_infamytree_help: ""
+
+menu_dialog_become_infamous_no_cash: "You need $cash in offshore."
+menu_dialog_become_infamous: "$200,000,000 will be deducted from offshore. You will be reset to level 0, and you will lose all spending cash.\n\nYou will keep all of your masks, weapons, and customization parts for both. Weapons will be level locked again.\n\nYou will gain one infamy level and one infamy point."
+menu_dialog_become_infamous_above_5: "You will be reset to level 0. No money will be deducted from offshore or spending.\n\nYou will keep all of your masks, weapons, and customization parts for both. Weapons will be level locked again.\n\nYou will gain one infamy level and one infamy point."
+menu_dialog_become_infamous_free: "You will be reset to level 0. No money will be deducted from offshore or spending.\n\nYou will keep all of your masks, weapons, and customization parts for both. Weapons will be level locked again.\n\nYou will gain one infamy level and one infamy point."
+# I'm not sure if "above_5" or "free" is used
+
+menu_preferred_character_title: "Character Hierarchy"
+bm_menu_btn_clear_preferred: "Reset"
+bm_menu_btn_swap_preferred_slots: "Swap"
+bm_menu_btn_set_preferred_to_slot: "Select"
+
+bm_armor_level_1: "Suit"
+bm_armor_level_6: "Tactical Vest"
+bm_armor_level_7: "Advanced Tactical Vest"
+
+bm_msk_character_locked: "Default"  # Default Mask
+bm_msk_character_locked_desc: "Equips the default mask for the character you are playing as."
+
+# WEAPON MODIFICATIONS
+bm_menu_ammo: "Ammo" # ammo type
+bm_menu_custom: "Fire Mode"
+bm_wp_upg_i_autofire: "Full-Auto"
+bm_wp_upg_i_singlefire: "Semi-Auto"
+bm_wp_upg_i_burstfire: "Burst"
+bm_wp_m1928_b_short: "Stubby Barrel" # Overkill never capitalised the B, so I'm fixing it
+bm_wp_m1928_b_long: "Long Barrel"
+bm_menu_disables_cosmetic_bonus: "Overrides skin boost."
+bm_menu_no_items: "Unavailable"
+bm_menu_item_amount: "Available: $amount"
+bm_mod_incompatibilities: "Incompatibile with $quantifier $category!"
+
+# STEAM INVENTORY
+bm_menu_btn_open_container: "Open"
+bm_menu_inventory_tradable_all: "All"
+bm_menu_inventory_tradable_safes: "Safes"
+bm_menu_btn_sell_tradable: "Sell"
+menu_steam_market_title: "Item Collections"
+bm_menu_inventory_tradable_weapon_skins: "Weapon Skins"
+bm_menu_inventory_tradable_weapon_drills: "Drills"
+bm_menu_inventory_tradable_armor_skins: "Armor Skins"
+bm_menu_btn_buy_tradable: "Buy Skin"
+menu_ti_steam_buy_drills_title: "Buy Drills"
+menu_ti_steam_open_safe_title: "Safe Preview"
+menu_ti_steam_open_container: "Open"
+bm_menu_ti_bonus: "Stat Boost"
+
+# TIMERS
+prop_timer_gui_malfunction: "//ERROR//"  # Drill Broke Top Text
+prop_timer_gui_error: "//UNKNOWN//"  # Drill Broke Timer
+prop_timer_hack_ipad_gui_working: "HACK IN PROGRESS"
+prop_timer_upload_gui_working: "UPLOAD IN PROGRESS"
+prop_computer_gui_analyzing: "ANALYSIS IN PROGRESS"
+prop_computer_gui_downloading: "DOWNLOAD IN PROGRESS"
+prop_computer_gui_hacking: "HACK IN PROGRESS"
+prop_computer_gui_unlocking: "UNLOCKING"
+prop_security_lock_title: "STAGE $NR"
+
+# DISCORD
+discord_rp_mp_heist: "[DUSK] Online"
+discord_rp_mp_heist_details: "$heist"
+discord_rp_mp_end: "[DUSK] Online (Summary)"
+discord_rp_mp_end_details: "$heist"
+discord_rp_single_heist: "[DUSK]"
+discord_rp_single_heist_details: "$heist"
+discord_rp_single_end: "[DUSK] Summary"
+discord_rp_single_end_details: "$heist"
+discord_rp_lobby_details: "$heist"
+discord_rp_day_string: ""
