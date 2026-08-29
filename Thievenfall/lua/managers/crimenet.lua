@@ -90,13 +90,15 @@ Hooks:OverrideFunction(CrimeNetManager, "activate_job", function(self)
     end
   return end
 
-  math.randomseed(os.time())
-  math.random() -- required for random number of heists to work, else always 3
+  math.randomseed(os.time() % math.floor(os.clock() * 1000000))
+  math.random() -- *seems* to make the rng more varied??
 
-  for i = 1, math.min(math.random(1, 3), #self._presets) do
+  for i = 1, math.min(math.random(3), #self._presets) do
     while true do
       local heist = math.random(#self._presets)
       if math.random() <= self._presets[heist].chance then
+
+        -- Reservoir Dogs is a special case; should be the only heist if selected
         if self._presets[heist].job_id == "cd_reservoir" then
           for index, _ in ipairs(self._active_jobs) do self._active_jobs[index] = nil end
           managers.crimenet:set_getting_hacked(0.5)
@@ -105,12 +107,15 @@ Hooks:OverrideFunction(CrimeNetManager, "activate_job", function(self)
           CrimDusk:WriteSave(FileIdent, "Reservoir Dogs chosen!")
         return end
 
+        -- Regular heists
         local contact = tweak_data.narrative.jobs[self._presets[heist].job_id].contact
         if not self._active_jobs[heist] and not table.contains(disabled_contacts, contact) then
           self._active_jobs[heist] = { added = false, active_timer = self._active_job_time }
           table.insert(HeistsGenerated, self._presets[heist].job_id)
         break end
       end
+
+      CrimDusk.Log(FileIdent, self._presets[heist].job_id .. " failed roll (" .. 100 * self._presets[heist].chance .. "% to be selected), rolling again", true)
     end
   end
 
