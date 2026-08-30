@@ -115,13 +115,17 @@ end
 
 Hooks:OverrideFunction(CrimeNetManager, "_get_jobs_by_jc", function(self)
   local t = {}
+  local ValidHeists = ValidHeistTable()
 
   for _, job_id in ipairs(tweak_data.narrative:get_jobs_index()) do
     local is_not_wrapped = not tweak_data.narrative.jobs[job_id].wrapped_to_job
     local dlc = tweak_data.narrative:job_data(job_id).dlc
     local is_not_dlc_or_got = not dlc or managers.dlc:is_dlc_unlocked(dlc)
     local pass_all_tests = is_not_wrapped and is_not_dlc_or_got
-    pass_all_tests = pass_all_tests and ValidHeists()[job_id]
+
+    if CrimDusk.IsPermadeath() ~= "_perma" and Global.CrimDusk.data.heists_won < #Global.CrimDusk.campaign then
+      pass_all_tests = pass_all_tests and job_id == Global.CrimDusk.campaign[Global.CrimDusk.data.heists_won + 1]
+    else pass_all_tests = pass_all_tests and ValidHeists[job_id] end
 
     if pass_all_tests then
       local job_data = tweak_data.narrative:job_data(job_id)

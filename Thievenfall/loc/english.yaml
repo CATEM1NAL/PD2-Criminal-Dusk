@@ -54,6 +54,7 @@ heist_arm_temp: "Armored Transport"
 heist_arm_crimenet: "I managed to dig up some info on a few GenSec truck routes. If we act fast enough we'll be gone before they have time to process what happened.\n\n» Break into the immobilized trucks\n» Crack open the strongboxes\n» Get the loot to the getaway vehicle"
 heist_bomb: "The Bomb"
 heist_bomb_crimenet: "Our girl's no stranger to weapons, and she's got her eyes on something very special. A high yield explosive is currently being transported through D.C. and the Butcher wants to get her hands on it before it's decommissioned. Our best bet is to either hit it while it's docked, or intercept it in transit - we'll let you know which when we're ready.\n\n» Locate and steal the bomb"
+heist_cd_erection_wrapper: "Election Day"
 
 ### STRING OVERRIDES ###
 # PDTH difficulties
