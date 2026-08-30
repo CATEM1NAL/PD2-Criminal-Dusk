@@ -15,17 +15,19 @@ Hooks:PostHook(VictoryState, "at_enter", "CrimDusk_HeistWon", function(self)
 
   local heists_won = "heists_won" .. CrimDusk.IsPermadeath()
   if managers.job:on_last_stage() then
-    local i = 1
+    do local i = 1
 
-    if Global.CrimDusk.data.heists_won < 77 and CrimDusk.IsPermadeath() ~= "_perma" then
-      local NextHeist = Global.CrimDusk.campaign[Global.CrimDusk.data[heists_won + 1 + i]]
-      while Global.CrimDusk.heist_dlc[NextHeist] and not managers.dlc:_check_dlc_data(NextHeist) do
-        i = i + 1
-        NextHeist = Global.CrimDusk.campaign[Global.CrimDusk.data[heists_won + 1 + i]]
+      if Global.CrimDusk.data.heists_won < 77 and CrimDusk.IsPermadeath() ~= "_perma" then
+        local NextHeist = Global.CrimDusk.campaign[Global.CrimDusk.data[heists_won] + i]
+        while Global.CrimDusk.heist_dlc[NextHeist] and not managers.dlc:_check_dlc_data(Global.CrimDusk.heist_dlc[NextHeist]) do
+          i = i + 1
+          NextHeist = Global.CrimDusk.campaign[Global.CrimDusk.data[heists_won] + i]
+        end
       end
+
+      Global.CrimDusk.data[heists_won] = Global.CrimDusk.data[heists_won] + i
     end
 
-    Global.CrimDusk.data[heists_won] = Global.CrimDusk.data[heists_won] + i
     CrimDusk.Log(FileIdent, "Heists won: " .. Global.CrimDusk.data[heists_won])
 
     if Global.CrimDusk.data[heists_won] == #Global.CrimDusk.campaign then

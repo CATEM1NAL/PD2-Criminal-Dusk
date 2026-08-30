@@ -154,7 +154,7 @@ Hooks:OverrideFunction(PlayerDamage, "_regenerated", function(self, no_messiah)
   -- Initial lives (start of heist)
   if Global.CrimDusk.data[lives] == "max" then -- Safehouse Raid & Holdout
     CrimDusk.Log(FileIdent, "Maxing out down time", true)
-    Global.CrimDusk.data[lives] = 30 + managers.player:upgrade_value("player", "additional_lives", 0)
+    Global.CrimDusk.data[lives] = self._max_lives - 1
     self._revives = Application:digest_value(Global.CrimDusk.data[lives] + 1, true)
 
   -- Regular heists

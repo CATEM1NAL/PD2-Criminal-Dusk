@@ -28,6 +28,7 @@ function CrimDusk:Init()
 
   self.SettingsData = io.load_as_json(CrimDusk.SettingsFile) or {}
   if not self.SettingsData then self.SettingsData = {} end
+  if not self.SettingsData.greyscreen then self.SettingsData.greyscreen = true end
 
   if Global.game_settings and Global.game_settings.difficulty then self.StartingDiff = Global.game_settings.difficulty end
 
@@ -193,7 +194,7 @@ function CrimDusk:Init()
     Global.CrimDusk.data["heist_chain" .. permadeath] = {}
     Global.CrimDusk.data["next_heists" .. permadeath] = {}
     Global.CrimDusk.data["heists_skipped" .. permadeath] = {}
-    Global.CrimDusk.data["lives" .. permadeath] = 30 + managers.player:upgrade_value("player", "additional_lives", 0)
+    Global.CrimDusk.data["lives" .. permadeath] = 60
     Global.CrimDusk.data["winters_dead" .. permadeath] = false
     Global.CrimDusk.data["hector_dead" .. permadeath] = false
     Global.CrimDusk.data["bain_freed" .. permadeath] = false
@@ -207,8 +208,8 @@ function CrimDusk:Init()
   function self:Reset()
     CrimDusk.Log(FileIdent, "Performing full reset!", true)
     Global.CrimDusk.data = {
-      heists_won = 0, heist_chain = {}, next_heists = {}, heists_skipped = {}, lives = 30,
-      heists_won_perma = 0, heist_chain_perma = {}, next_heists_perma = {}, heists_skipped_perma = {}, lives_perma = 30,
+      heists_won = 0, heist_chain = {}, next_heists = {}, heists_skipped = {}, lives = 60,
+      heists_won_perma = 0, heist_chain_perma = {}, next_heists_perma = {}, heists_skipped_perma = {}, lives_perma = 60,
 
       winters_dead = false, hector_dead = false,
       winters_dead_perma = false, hector_dead_perma = false,
@@ -291,8 +292,8 @@ function Global.CrimDusk:Init()
     self.data.next_heists_perma = self.data.next_heists_perma or {}
     self.data.heists_skipped = self.data.heists_skipped or {}
     self.data.heists_skipped_perma = self.data.heists_skipped_perma or {}
-    self.data.lives = self.data.lives or 30
-    self.data.lives_perma = self.data.lives_perma or 30
+    self.data.lives = self.data.lives or 60
+    self.data.lives_perma = self.data.lives_perma or 60
 
     -- Flags for post-game campaign
     self.data.bain_freed = self.data.bain_freed or false

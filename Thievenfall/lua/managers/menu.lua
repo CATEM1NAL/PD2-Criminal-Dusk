@@ -15,6 +15,12 @@ function MenuCallbackHandler:CrimDusk_SaveToggleSettings(item)
   io.save_as_json(CrimDusk.SettingsData, CrimDusk.SettingsFile)
 end
 
+function MenuCallbackHandler:CrimDusk_SaveToggleSettingsInGame(item)
+  CrimDusk.SettingsData[item:name():sub(10)] = item:value() == "on"
+  if item:name() == "crimdusk_greyscreen" then managers.environment_controller:set_last_life() end
+  io.save_as_json(CrimDusk.SettingsData, CrimDusk.SettingsFile)
+end
+
 -- Currently unused
 function MenuCallbackHandler:CrimDusk_SaveChoiceSettings(item)
   if Utils:IsInGameState() then CrimDusk.Log(FileIdent, "Can't change settings in-game!") return end

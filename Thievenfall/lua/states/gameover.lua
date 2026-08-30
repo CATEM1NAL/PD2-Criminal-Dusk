@@ -15,7 +15,7 @@ Hooks:PostHook(GameOverState, "at_enter", "CrimDusk_HeistFailed", function(self)
   return end
 
   local checkpoints = { [5] = true, [6] = true, [7] = true, [8] = true }
-  Global.CrimDusk.data.lives = 30 + managers.player:upgrade_value("player", "additional_lives", 0)
+  Global.CrimDusk.data.lives = 60
 
   if NetworkHelper:IsClient() then CrimDusk:WriteSave(FileIdent, "heist failed") return
   elseif managers.job:current_job_id() == "vit" then 
