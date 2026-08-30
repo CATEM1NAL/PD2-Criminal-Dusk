@@ -6,6 +6,8 @@ function MenuCallbackHandler:CrimDusk_CreateLobby()
   self:create_lobby()
 end
 
+function MenuCallbackHandler:CrimDusk_Safehouse() managers.menu:open_node("custom_safehouse") end
+
 -- Mod options
 function MenuCallbackHandler:CrimDusk_SaveToggleSettings(item)
   if Utils:IsInGameState() then CrimDusk.Log(FileIdent, "Can't change settings in-game!") return end
@@ -58,6 +60,25 @@ local function InjectCrimDuskButtons(node)
 
   local position = 1
   table.insert(node._items, position, new_item)
+
+  -- Add the safehouse button
+  data = { type = "CoreMenuItem.Item" }
+  params = {
+    name = "crimdusk_safehouse",
+    text_id = "menu_cn_chill",
+    help_id = "crimdusk_safehouse_desc",
+    callback = "CrimDusk_Safehouse",
+    visible_callback = "is_not_server",
+    font = tweak_data.menu.pd2_medium_font
+  }
+
+  new_item = node:create_item(data, params)
+
+  new_item.dirty_callback = callback(node, node, "item_dirty")
+  if node.callback_handler then new_item:set_callback_handler(node.callback_handler) end
+
+  position = 1
+  table.insert(node._items, position, new_item)
 end
 
 -- MENU CHANGES START HERE --
@@ -73,7 +94,7 @@ Hooks:Add("MenuManagerBuildCustomMenus", "CrimDusk_MenuTweaks", function(menu_ma
     InjectCrimDuskButtons(mainmenu)
 
     -- Hides all the unnecessary menu buttons
-    local HiddenButtons = { crimenet = true, story_missions = true }
+    local HiddenButtons = { crimenet = true, story_missions = true, crimdusk_safehouse = true }
 
     for i, item in pairs(mainmenu._items) do
       if HiddenButtons[item._parameters.name] then item:set_visible(false) end
