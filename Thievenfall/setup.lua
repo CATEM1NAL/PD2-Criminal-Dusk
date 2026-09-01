@@ -28,7 +28,7 @@ function CrimDusk:Init()
 
   self.SettingsData = io.load_as_json(CrimDusk.SettingsFile) or {}
   if not self.SettingsData then self.SettingsData = {} end
-  if not self.SettingsData.greyscreen then self.SettingsData.greyscreen = true end
+  if type(self.SettingsData.greyscreen) ~= "boolean" then self.SettingsData.greyscreen = true end
 
   if Global.game_settings and Global.game_settings.difficulty then self.StartingDiff = Global.game_settings.difficulty end
 

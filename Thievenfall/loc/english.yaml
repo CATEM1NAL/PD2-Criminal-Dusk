@@ -9,7 +9,7 @@ crimdusk_reset_campaign_desc: "Wipes all campaign progress for both Standard & P
 crimdusk_instantmelee_title: "Quick Melee"
 crimdusk_instantmelee_desc: "Press this key to use weapon butt."
 crimdusk_greyscreen_name: "Custody Timer Effect"
-crimdusk_greyscreen_desc: "Toggles the black & white effect when your custody timer is low."
+crimdusk_greyscreen_desc: "Toggles the grayscale effect when your custody timer is low."
 
 ## CAMPAIGN
 crimdusk_chat_campaign_short: "It might feel like you were just getting started,"
