@@ -142,6 +142,95 @@ bm_w_bessy_desc: "Penetrates enemies & insta-kills specials."
 
 # Weapon mods
 bm_wp_upg_a_grenade_launcher_hornet_desc: "Fire a burst of armor penetrating rounds."
+bm_wp_uupg_o_schmidt: "Tuunbaq Scope  x2.5  /"
+
+# Weapon names
+bm_w_usp: "Interceptor .45" # Starts as a Tactical, can be turned into a Match. Better to stay generic I think
+bm_w_glock_17: "Chimano 88"
+bm_w_ppk: "Gruber Kurz"
+bm_w_p226: "Signature .40"
+bm_w_colt_1911: "Crosskill Operator II" # Written on the gun
+bm_w_b92fs: "Bernetti 92" # Written on the gun
+bm_w_raging_bull: "Bronco .44"
+bm_w_m1911: "Crosskill 1911"
+bm_w_maxim9: "Gecko Max-9" # Real gun is Maxim-9, better connects the two
+bm_w_sparrow: "IMI Sparrow 941 RPL" # Written on the gun
+bm_w_pl14: "White Streak"
+bm_w_legacy: "SG M13" # Written on the gun
+bm_w_korth: "Korth .357"
+bm_w_g22c: "Chimano Custom"
+
+bm_w_c96: "Übertöten M1916" # Written on the gun.
+# DLC site says it's made by Schnauser instead, and in the same paragraph says it loads Mauser rounds.
+# Seems like a glaring mistake and implies to me that whoever wrote the site didn't put much thought into it,
+# so I'm going to take the text on the actual model itself as proof of intent.
+
+bm_w_type54: "Type 54"
+bm_w_breech: "Parabellum"
+bm_w_lemming: "Acuto Five-seveN" # Written on the gun
+bm_w_chinchilla: "J&M Castigo .44" # Based on PAYDAY 3
+bm_w_packrat: "SG Master 9" # Written on the gun
+bm_w_model3: "Model 3"
+bm_w_rsh12: "RSh-12" # Written on the gun... in Russian! Also just the real name of the revolver lmao
+bm_w_shrew: "Crosskill Guard"
+bm_wp_pis_g26: "Chimano 26" # Written on the gun
+bm_w_hs2000: "LEO-40" # Written on the gun
+bm_w_glock_18c: "Chimano 18C" # Written on the gun
+bm_w_beer: "Bernetti Automatic" # Written on the gun in Italian
+bm_w_czech: "Czech Sport II" # Written on the gun
+bm_w_stech: "Igor Automatik"
+bm_w_holt: "HOLT 9mm"
+bm_w_pmm: "Strix"
+bm_w_welrod: "Welrod"
+bm_w_peacemaker: "Peacemaker .45"
+bm_w_mateba: "Matever 521" # Gun is Mateba 2006M, can't find meaning of 2006M. 521 is the release date of Alesso (05/21/15)
+bm_w_deagle: "IMI Deagle .44"
+
+bm_w_mp7: "SG Compact-7" # More in-line with the MP5, matches with PAYDAY 3
+bm_w_mac10: "Ingrid MAC-11"
+bm_w_mp5: "SG Compact-5"
+bm_w_m1928: "Chicago Typewriter"
+bm_w_mp9: "B&T MP9" # MP9 is clearly written on the side of the gun, no name for a fake manufacturer exists
+bm_w_olympic: "Crosskill Para" # all AR-15s say Crosskill Tactical on them
+bm_w_baka: "Micro Uzi"
+bm_w_shepheard: "Signature PC9" # Based on PAYDAY 3
+bm_w_schakal: "SG AMP-45" # Gun has AMP written on it
+bm_w_erma: "MP40"
+bm_w_sr2: "Heather KP-SR2" # Gun has KP-SR2 written on it in Russian
+bm_w_tec9: "FT-9 Blaster" # Taken from OTWD
+bm_w_p90: "Kobus 90"
+bm_w_polymer: "Kross Vertex"
+bm_w_coal: "Bison PSMG-20" # Based on PP-19 Bizon-2
+bm_w_sterling: "Patchett MK4 L2A3"
+bm_w_uzi: "IMI Uzi"
+
+bm_w_serbu: "Reinbeck Tactical" # written on da gun
+bm_w_m37: "Ithaca Model 37" # replace company please
+bm_w_rota: "Goliath SIX12"
+bm_w_basset: "Spike X12K" # Grimm is a Saiga-12K with a CBRPS Spike X1S conversion kit, according to the wiki
+
+bm_w_scout: "SM Pronghorn" # they named their version of Steyr Mannlicher "Stefan Menschenlecker". I'm NOT fucking calling it Stefan.
+bm_w_contender: "J&M Law G2" # J&M is mentioned in this game I'm gonna vomit (it says LaW on the barrel so I'm assuming that's the name of the gun)
+bm_w_victor: "Simmons Armory North Star"
+
+bm_w_amcar: "Crosskill Commando"
+bm_w_scar: "VF-17" # Based on PAYDAY 3 / OTWD, but changed to make sense (SCAR is the Mk.17)
+bm_w_shak12: "ASh-12" # written on the gun in Russian
+bm_w_m4: "Crosskill Carbine"
+bm_w_groza: "KETCHNOV Bull-1"
+bm_w_sub2000: "Lion LGL15" # say it with me, written on the gun
+bm_w_g36: "PJ G36" # written ON THE GUN BABYYYYYYY
+bm_w_ak12: "AK-17"
+bm_w_tecci: "SG 416C"
+bm_w_l85a2: "Queen's Wrath"
+bm_w_m14: "SA M308" # Based on OTWD
+bm_w_vhs: "HVH Lion's Roar"
+bm_w_ak5: "Ak 5"
+bm_w_galil: "IMI Gecko"
+bm_w_komodo: "IMI Tavor-21" # THIS is the gun that tells us what IWI is called in-universe
+bm_w_m16: "Crosskill Tactical" # it's what it says on the gun idk man
+bm_w_contraband: "SG 417D"
+bm_w_hailstorm: "Hailstorm R-033"
 
 # Deployables
 bm_equipment_ammo_bag_desc: "Contains enough ammo to fully refill one weapon and half of another weapon. Can be upgraded with Enforcer skills."
