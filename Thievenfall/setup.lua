@@ -274,6 +274,7 @@ function Global.CrimDusk:Init()
   dofile(CrimDusk.ModPath .. "lua/tables/assets.lua")
   dofile(CrimDusk.ModPath .. "lua/tables/holdout.lua")
   dofile(CrimDusk.ModPath .. "lua/tables/weapons.lua")
+  dofile(CrimDusk.ModPath .. "lua/tables/weaponparts.lua")
   dofile(CrimDusk.ModPath .. "lua/tables/melee.lua")
   dofile(CrimDusk.ModPath .. "lua/tables/colours.lua")
 

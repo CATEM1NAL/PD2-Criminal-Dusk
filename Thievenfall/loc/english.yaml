@@ -86,11 +86,62 @@ menu_skirmish_weekly_reward_end_screen: ""
 # Crew AI
 menu_crew_motivated_desc: "Armor speed penalty reduced by 50%."
 
-# Weapons
-bm_w_lemming_desc: "Weapon penetrates enemies and body armor."
-bm_w_maxim9_desc: "Weapon is integrally suppressed."
-bm_wp_upg_a_grenade_launcher_hornet_desc: "Fire a burst of armor penetrating rounds."
+## Weapons
 bm_menu_weapon_movement_penalty_info: "Reduces movement speed by $penalty."
+
+# No AP
+bm_w_rpk_desc: "Penetrates enemies."
+bm_w_par_desc: "Penetrates enemies."
+bm_w_m60_desc: "Penetrates enemies."
+bm_w_hk51b_desc: "Penetrates enemies."
+bm_w_kacchainsaw_desc: "Penetrates enemies."
+bm_w_m249_desc: "Penetrates enemies."
+bm_w_akm_hcar: "Penetrates enemies."
+bm_w_mg42_desc: "Penetrates enemies."
+bm_w_hk21_desc: "Penetrates enemies."
+bm_w_korth_desc: "Penetrates enemies."
+bm_w_mateba_desc: "Penetrates enemies."
+bm_w_x_2006m_desc: "Penetrates enemies."
+bm_w_korth_desc: "Penetrates enemies."
+bm_w_x_korth_desc: "Penetrates enemies."
+
+# Basic AP
+bm_w_lemming_desc: "Penetrates enemies & body armor."
+bm_w_tti_desc: "Penetrates enemies & body armor."
+bm_w_qbu88_desc: "Penetrates enemies & body armor."
+bm_w_wa2000_desc: "Penetrates enemies & body armor."
+bm_w_siltstone_desc: "Penetrates enemies & body armor."
+bm_w_sbl_desc: "Penetrates enemies & body armor."
+bm_w_victor_desc: "Penetrates enemies & body armor."
+bm_w_raging_bull_desc: "Penetrates enemies & body armor."
+bm_w_x_rage_desc: "Penetrates enemies & body armor."
+bm_w_peacemaker_desc: "Penetrates enemies & body armor."
+bm_w_chinchilla_desc: "Penetrates enemies & body armor."
+bm_w_x_chinchilla_desc: "Penetrates enemies & body armor."
+
+# Shield AP
+bm_w_msr_desc: "Penetrates enemies, body armor, & shields."
+bm_w_r700_desc: "Penetrates enemies, body armor, & shields."
+bm_w_winchester1874_desc: "Penetrates enemies, body armor, & shields."
+bm_w_rsh12_desc: "Penetrates enemies, body armor, & shields."
+bm_w_scout_desc: "Penetrates enemies, body armor, & shields."
+
+# Full AP
+bm_w_awp_desc: "Penetrates all surfaces."
+bm_w_model70_desc: "Penetrates all surfaces."
+bm_w_desertfox_desc: "Penetrates all surfaces."
+bm_w_r93_desc: "Penetrates all surfaces."
+bm_w_mosin_desc: "Penetrates all surfaces."
+bm_w_m95_desc: "Penetrates all surfaces."
+bm_w_contender_desc: "Penetrates all surfaces."
+
+# Integral suppressors
+bm_w_maxim9_desc: "Weapon is integrally suppressed."
+bm_w_asval_desc: "Weapon is integrally suppressed."
+bm_w_bessy_desc: "Penetrates enemies & insta-kills specials."
+
+# Weapon mods
+bm_wp_upg_a_grenade_launcher_hornet_desc: "Fire a burst of armor penetrating rounds."
 
 # Deployables
 bm_equipment_ammo_bag_desc: "Contains enough ammo to fully refill one weapon and half of another weapon. Can be upgraded with Enforcer skills."

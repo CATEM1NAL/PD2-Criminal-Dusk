@@ -3,6 +3,13 @@ Hooks:OverrideFunction(WeaponFactoryTweakData, "create_bonuses", function() end)
 Hooks:PostHook(WeaponFactoryTweakData, "init", "CrimDusk_InitModTweakData", function(self)
   for _, data in pairs(self.parts) do data.is_a_unlockable = true end -- All weapon mods are infinite
 
+  -- Apply weapon part stat changes
+  for Part, StatTable in pairs(Global.CrimDusk.weapon_parts) do
+    local OriginalZoom = self.parts[Part].stats.zoom
+    self.parts[Part].stats = StatTable
+    self.parts[Part].stats.zoom = OriginalZoom
+  end
+
   -- Magazine capacities
   local Quadstack = { MagChange = 30, ReloadSpeed = -2 }
   local LowCapacity = { MagChange = -10, ReloadSpeed = 10 }

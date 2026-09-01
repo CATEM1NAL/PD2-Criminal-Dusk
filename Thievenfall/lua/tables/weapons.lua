@@ -8,10 +8,12 @@ Low damage rifles will all deal the same damage, etc.
 The following values exist:
 **dmg**: can be a direct damage value, but should be a lookup string to find the correct damage subclass.
 **dmgmult**: allows overriding the damage multiplier that exists for some weapons (snipers, etc).
+**ap**: lookup string to determine the type of penetration the weapon uses.
 
 **mag:** overrides base magazine capacity.
 **nummags**: overrides max number of magazines.
 **acc**: overrides base spread index.
+**stab**: overrides base recoil index.
 **reload**: overrides base reload speed.
 **rof**: overrides fire rate. value assigned as rpm, converted to correct format later.
 **pickup**: overrides ammo pickup if needed. can assign table directly, recommended to use lookup string.
@@ -83,40 +85,40 @@ Global.CrimDusk.weapons.classes = {
   },
 
   lmgs = {
-    mg42 = { dmg = "low", chamber = 0 },
-    kacchainsaw = { dmg = "low", chamber = 0 },
-    m249 = { dmg = "low", chamber = 0 },
-    par = { dmg = "low", chamber = 0 },
+    mg42 = { dmg = "low", ap = "none", chamber = 0 },
+    kacchainsaw = { dmg = "low", ap = "none", chamber = 0 },
+    m249 = { dmg = "low", ap = "none", chamber = 0 },
+    par = { dmg = "low", ap = "none", chamber = 0 },
 
-    rpk = { dmg = "med" },
-    hk21 = { dmg = "med" },
-    hk51b = { dmg = "med" },
+    rpk = { dmg = "med", ap = "none" },
+    hk21 = { dmg = "med", ap = "none" },
+    hk51b = { dmg = "med", ap = "none" },
 
-    hcar = { dmg = "high" },
-    m60 = { dmg = "high", chamber = 0 }
+    hcar = { dmg = "high", ap = "none" },
+    m60 = { dmg = "high", ap = "none", chamber = 0 }
   },
 
   snipers = {
-    bessy = { dmg = 60, chamber = 0 },
-    m95 = { dmgmult = 100, dmg = 15 },
+    bessy = { dmgmult = 1, dmg = 50, ap = "none", chamber = 0 },
+    m95 = { dmgmult = 100, dmg = 15, ap = "full" },
 
-    wa2000 = { dmg = "low" },
-    siltstone = { dmg = "low" },
-    qbu88 = { dmg = "low" },
-    tti = { dmg = "low" },
-    victor = { dmg = "low" },
-    msr = { dmg = "low" },
-    winchester1874 = { dmg = "low" },
-    scout = { dmg = "low" },
-    r700 = { dmg = "low" },
+    wa2000 = { dmg = "low", ap = "basic" },
+    siltstone = { dmg = "low", ap = "basic" },
+    qbu88 = { dmg = "low", ap = "basic" },
+    tti = { dmg = "low", ap = "basic" },
+    victor = { dmg = "low", ap = "basic" },
+    msr = { dmg = "low", ap = "shields" },
+    winchester1874 = { dmg = "low", ap = "shields" },
+    scout = { dmg = "low", ap = "shields" },
+    r700 = { dmg = "low", ap = "shields" },
 
-    r93 = { dmg = "high" },
-    model70 = { dmg = "high" },
-    desertfox = { dmg = "high" },
-    mosin = { dmg = "high" },
-    contender = { dmg = "high", chamber = 0 },
-    awp = { dmg = "high" },
-    sbl = { dmg = "high" }
+    r93 = { dmg = "high", ap = "full" },
+    model70 = { dmg = "high", ap = "full" },
+    desertfox = { dmg = "high", ap = "full" },
+    mosin = { dmg = "high", ap = "full" },
+    contender = { dmg = "high", ap = "full", chamber = 0 },
+    awp = { dmg = "high", ap = "full" },
+    sbl = { dmg = "high", ap = "basic" }
   },
 
   pistols = {
@@ -152,23 +154,23 @@ Global.CrimDusk.weapons.classes = {
     usp = { dmg = "med" },
     sparrow = { dmg = "med" },
 
-    lemming = { dmg = "high" },
+    lemming = { dmg = "high", ap = "basic" },
     model3 = { dmg = "high", chamber = 0 }
   },
 
   revolvers = {
     deagle = { dmg = "low" },
-    mateba = { dmg = "low", chamber = 0 },
-    x_2006m = { dmg = "low", chamber = 0 },
-    korth = { dmg = "low", chamber = 0 },
+    mateba = { dmg = "low", ap = "none", chamber = 0 },
+    x_2006m = { dmg = "low", ap = "none", chamber = 0 },
+    korth = { dmg = "low", ap = "none", chamber = 0 },
 
-    peacemaker = { dmgmult = 1, dmg = 100, chamber = 0 },
+    peacemaker = { dmgmult = 1, dmg = 100, ap = "basic", chamber = 0 },
 
-    new_raging_bull = { dmg = "high", chamber = 0 },
-    x_rage = { dmg = "high", chamber = 0 },
-    chinchilla = { dmg = "high", chamber = 0 },
+    new_raging_bull = { dmg = "high", ap = "basic", rof = 120, acc = 21, stab = 1, chamber = 0 },
+    x_rage = { dmg = "high", ap = "basic", rof = 120, acc = 11, stab = 1, chamber = 0 },
+    chinchilla = { dmg = "high", ap = "basic", rof = 240, acc = 9, stab = 21, chamber = 0 },
 
-    rsh12 = { dmg = 75, rof = 120, chamber = 0 }
+    rsh12 = { dmg = 75, ap = "shields", rof = 90, chamber = 0 }
   },
 
   smgs = {
@@ -229,7 +231,7 @@ Global.CrimDusk.weapons.classes = {
     arbiter = { dmgmult = 1, dmg = "gl", chamber = 0 },
     gre_m79 = { dmgmult = 2, dmg = "gl", chamber = 0 },
     slap = { dmgmult = 2, dmg = "gl", chamber = 0 },
-    m32 = { dmgmult = 2, dmg = "gl", chamber = 0 },
+    m32 = { dmgmult = 2, dmg = "gl", nummags = 1, chamber = 0 },
 
     saw = { chamber = 0 },
     saw_secondary = { chamber = 0 }
@@ -239,7 +241,7 @@ Global.CrimDusk.weapons.classes = {
 Global.CrimDusk.weapons.damage = {
   rifles = { low = 24, med = 32, high = 46, vhigh = 92 },
   shotguns = { base = 20 },
-  lmgs = { low = 32, med = 46, high = 92 },
+  lmgs = { low = 24, med = 32, high = 46 },
   snipers = { low = 75, high = 50 }, -- low x2, high x4
   pistols = { auto = 16, low = 32, med = 46, high = 65 },
   revolvers = { low = 80, high = 120 },
@@ -247,38 +249,45 @@ Global.CrimDusk.weapons.damage = {
   special = { flame = 4, xlow = 12, xhigh = 20, rpg = 15, mini = 23, bow = 30, gl = 150 }
 }
 
+Global.CrimDusk.weapons.ap = {
+  none = { enemy = true },
+  basic = { ap = 1, enemy = true },
+  shields = { ap = 1, enemy = true, shield = true },
+  full = { ap = 1, enemy = true, shield = true, wall = true }
+}
+
 Global.CrimDusk.weapons.spread = {
-  rifles = {
+  rifles = { -- Baseline. Solid when stationary, worse but not unusable when moving.
     standing = 2, crouching = 1, steelsight = 1.25,
     moving_standing = 4, moving_crouching = 2, moving_steelsight = 1
   },
-  shotguns = {
-    standing = 3, crouching = 1.5, steelsight = 1.2,
-    moving_standing = 3, moving_crouching = 2, moving_steelsight = 1
+  shotguns = { -- Unaffected by movement.
+    standing = 2.5, crouching = 1.5, steelsight = 1.2,
+    moving_standing = 2.5, moving_crouching = 1.5, moving_steelsight = 1
   },
-  lmgs = {
-    standing = 3, crouching = 2, steelsight = 1.25,
-    moving_standing = 6, moving_crouching = 4, moving_steelsight = 1
+  lmgs = { -- The action movie experience.
+    standing = 4, crouching = 3, steelsight = 1.2,
+    moving_standing = 2, moving_crouching = 1.5, moving_steelsight = 1
   },
-  snipers = {
+  snipers = { -- Incredibly precise while stationary, dogshit otherwise.
     standing = 1, crouching = 0.5, steelsight = 1.5,
     moving_standing = 8, moving_crouching = 4, moving_steelsight = 1
   },
-  pistols = {
-    standing = 2, crouching = 1, steelsight = 1.25,
-    moving_standing = 3, moving_crouching = 1.5, moving_steelsight = 1
+  pistols = { -- Secondary baseline. All around solid, but leaves something to be desired.
+    standing = 3, crouching = 2, steelsight = 1.2,
+    moving_standing = 4.5, moving_crouching = 2.5, moving_steelsight = 1
   },
-  revolvers = {
-    standing = 1.5, crouching = 0.75, steelsight = 1.5,
-    moving_standing = 6, moving_crouching = 3, moving_steelsight = 1
+  revolvers = { -- The sniper rifles of the pistol world.
+    standing = 1.5, crouching = 1, steelsight = 1.25,
+    moving_standing = 6, moving_crouching = 4, moving_steelsight = 1
   },
-  smgs = {
-    standing = 3, crouching = 1.5, steelsight = 1.2,
-    moving_standing = 4, moving_crouching = 2, moving_steelsight = 1
+  smgs = { -- Worse than pistol, but unaffected by movement.
+    standing = 4, crouching = 3, steelsight = 1.2,
+    moving_standing = 4, moving_crouching = 3, moving_steelsight = 1
   },
-  special = {
-    standing = 2, crouching = 1, steelsight = 1.25,
-    moving_standing = 4, moving_crouching = 2, moving_steelsight = 1
+  special = { -- All special weapons use this. May be too broad of a category?
+    standing = 1, crouching = 1, steelsight = 1.25,
+    moving_standing = 2, moving_crouching = 2, moving_steelsight = 1
   }
 }
 

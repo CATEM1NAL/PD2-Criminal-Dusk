@@ -92,6 +92,7 @@ local AmmoPickup = Global.CrimDusk.weapons.pickup
 local MaxMagazines = Global.CrimDusk.weapons.magazines
 local AkimboOverride = Global.CrimDusk.weapons.akimbo
 local CrewNameConversion = Global.CrimDusk.weapons.crew
+local APTypes = Global.CrimDusk.weapons.ap
 
 local function ModifyStats(self, WeaponClassName, WeaponClassData)
   for Weapon, Data in pairs(WeaponClassData) do
@@ -159,6 +160,10 @@ local function ModifyStats(self, WeaponClassName, WeaponClassData)
           self[Weapon].stats.spread_moving = self[Weapon].stats.spread
         end
 
+      elseif Stat == "stab" then -- Stability
+        self[Weapon].stats.recoil = Value
+        if Akimbo then Akimbo.stats.recoil = Value end
+
       elseif Stat == "mag" then -- Magazine size
         if self[Weapon .. "_crew"] then self[Weapon .. "_crew"].CLIP_AMMO_MAX = Value
         elseif self[CrewNameConversion[Weapon]] then self[CrewNameConversion[Weapon]].CLIP_AMMO_MAX = Value end
@@ -174,6 +179,21 @@ local function ModifyStats(self, WeaponClassName, WeaponClassData)
         if self[Weapon].single then self[Weapon].single.fire_rate = 60 / Value end
         if self[Weapon].auto then self[Weapon].auto.fire_rate = 60 / Value end
       end
+    end
+
+    -- Set weapon's AP parameters
+    self[Weapon].has_description = APTypes[Data.ap] and true or nil
+    self[Weapon].armor_piercing_chance = APTypes[Data.ap] and APTypes[Data.ap].ap or nil
+    self[Weapon].can_shoot_through_enemy = APTypes[Data.ap] and APTypes[Data.ap].enemy or nil
+    self[Weapon].can_shoot_through_shield = APTypes[Data.ap] and APTypes[Data.ap].shield or nil
+    self[Weapon].can_shoot_through_wall = APTypes[Data.ap] and APTypes[Data.ap].wall or nil
+
+    if Akimbo then
+      Akimbo.has_description = APTypes[Data.ap] and true or nil
+      Akimbo.armor_piercing_chance = APTypes[Data.ap] and APTypes[Data.ap].ap or nil
+      Akimbo.can_shoot_through_enemy = APTypes[Data.ap] and APTypes[Data.ap].enemy or nil
+      Akimbo.can_shoot_through_shield = APTypes[Data.ap] and APTypes[Data.ap].shield or nil
+      Akimbo.can_shoot_through_wall = APTypes[Data.ap] and APTypes[Data.ap].wall or nil
     end
 
     -- Stats derived from weapon class
@@ -206,8 +226,7 @@ Hooks:PostHook(WeaponTweakData, "init", "CrimDusk_WeaponTweakInit", function(sel
   self.hailstorm.categories = { "assault_rifle" }
   self.welrod.stats_modifiers = nil
 
-  self.lemming.can_shoot_through_shield = nil
-  self.lemming.can_shoot_through_wall = nil
-
   self.maxim9.do_shotgun_push = nil
+
+  self.bessy.special_damage_multiplier = 60
 end)
