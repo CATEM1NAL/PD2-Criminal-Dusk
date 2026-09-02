@@ -44,6 +44,7 @@ Global.CrimDusk.weapons.classes = {
     new_m14 = { dmg = "med" },
     ak5 = { dmg = "med" },
     fal = { dmg = "med" },
+    hajk = { dmg = "med" },
 
     scar = { dmg = "high", mag = 20 },
     ak74 = { dmg = "high", acc = 16 },
@@ -187,7 +188,6 @@ Global.CrimDusk.weapons.classes = {
     scorpion = { dmg = "vlow" },
 
     akmsu = { dmg = "low" },
-    hajk = { dmg = "low" },
     vityaz = { dmg = "low" },
     new_mp5 = { dmg = "low" },
     x_mp5 = { dmg = "low" },
@@ -226,7 +226,7 @@ Global.CrimDusk.weapons.classes = {
     shuno = { dmg = "mini", chamber = 0 },
     m134 = { dmg = "mini", chamber = 0 },
 
-    china = { dmgmult = 1, dmg = "gl", chamber = 0 },
+    china = { dmgmult = 1, dmg = "gl", nummags = 1, chamber = 0 },
     ms3gl = { dmgmult = 1, dmg = "gl", chamber = 0 },
     arbiter = { dmgmult = 1, dmg = "gl", chamber = 0 },
     gre_m79 = { dmgmult = 2, dmg = "gl", chamber = 0 },

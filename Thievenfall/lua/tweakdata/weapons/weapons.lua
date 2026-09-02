@@ -222,11 +222,17 @@ Hooks:PostHook(WeaponTweakData, "init", "CrimDusk_WeaponTweakInit", function(sel
   self.trip_mines.damage = 15
   for WeaponClassName, WeaponClassData in pairs(WeaponClasses) do ModifyStats(self, WeaponClassName, WeaponClassData) end
 
-  -- Attribute tweaks
+  -- Category changes
   self.hailstorm.categories = { "assault_rifle" }
+  self.hajk.categories = { "assault_rifle" }
+  self.hajk.use_data.selection_index = 2
+  self.scout.use_data.selection_index = 2
+  self.victor.use_data.selection_index = 2
+  self.rpg7.use_data.selection_index = 2
+  self.ray.use_data.selection_index = 2
+
+  -- Attribute tweaks
   self.welrod.stats_modifiers = nil
-
   self.maxim9.do_shotgun_push = nil
-
   self.bessy.special_damage_multiplier = 60
 end)
